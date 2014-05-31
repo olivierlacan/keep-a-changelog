@@ -3,39 +3,68 @@
 ## Logging is caring about your open source users.
 
 ### What's a CHANGELOG?
-A CHANGELOG is a file which contains a curated chronologically ordered list of notable changes for each version of an open source project.
+A CHANGELOG is a file which contains a curated chronologically ordered 
+list of notable changes for each version of an open source project.
 
 ![Changelog Example](assets/images/changelog_example.png)
 
 ### What's the point of a CHANGELOG?
-To make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.
-
-### Why can't people just use a git log diff?
-Because log diffs are full of noise. Can we really expect every single commit in an open source project to be meaningful and self-explanatory? That seems like a pipe dream.
-
-### Is there a standard CHANGELOG format?
-Sadly, no, but this is something I want to change. This project [contains what I hope will become the standard CHANGELOG file](CHANGELOG.md) for all open source projects, so take a look at it and please suggest improvements.
+To make it easier for users and contributors to see precisely what 
+notable changes have been made between each release (or version) of the project.
 
 ### What makes up a good CHANGELOG?
-I'm glad you asked, since I have quite a few opinions about that.
+I'm glad you asked.
 
-- a good CHANGELOG is made for humans, not machines, so it should be very legible.
-- the sub-sections of a CHANGELOG should be based on releases or versions.
+- it should be made for humans, not machines, so legibility is crucial.
+- one sub-section per versions.
 - each version should come with a release date in a sensible format: YYYY-MM-DD.
-- within each release, changes should be classified in specific sections that describe their impact on the project:
-  - `Added` for anything new: features, APIs, etc.
+- changes should be grouped to describe their impact on the project:
+  - `Added` for new features.
   - `Deprecated` for previously stable features that will be removed in upcoming releases.
   - `Removed` for previously stable features that are removed in this release.
   - `Fixed` for any bug fixes.
   - `Security` to invite users to upgrade in case of vulnerabilities and exposures.
 - each section and sub-section of a CHANGELOG should be easily linked to (hence Markdown over plain text)
 
+It would be nice to also mention whether the project 
+follows [Semantic Versioning](http://semver.org/) or not.
+
+### Is there a standard CHANGELOG format?
+Sadly, no, but this is something I want to change. This project 
+[contains what I hope will become the standard CHANGELOG file](CHANGELOG.md) 
+for all open source projects, so take a look at it and please suggest improvements.
+
+The maintainers of [Vandamme](http://tech-angels.github.io/vandamme/#changelogs-convention)
+have established interesting conventions, most of which are sensible.
+
+### What should the CHANGELOG file be named?
+Well, if you can't tell from the example above, `CHANGELOG.md` is the 
+best convention so far.
+
+Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`, 
+`NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
+It's a mess, that only makes it harder for people to find it.
+
+### Why can't people just use a git log diff?
+Because log diffs are full of noise. Can we really expect every single 
+commit in an open source project to be meaningful and self-explanatory? 
+That seems like a pipe dream.
+
 ### Can CHANGELOG files be automatically parsed?
-As the good people maintaining Gemnasium know too well, it's very hard. That's because people follow wildly different formats for their files. Again, I hope to change that, but in the meantime, you might be interested in [Vandamme](https://github.com/tech-angels/vandamme), a Ruby gem used by Gemnasium to parse many open source project CHANGELOGs.
+It's hard because people follow wildly different formats and file names. 
+The aforementioned [Vandamme](https://github.com/tech-angels/vandamme/) 
+is a Ruby gem used by [Gemnasium](http://gemnasium.com) which parses many 
+(but not all) open source project CHANGELOGs.
 
 ### Why do you keep writing CHANGELOG in all caps?
-You're right, that is a bit shouty. Maybe it's because of the de facto convention that files pertaining to an open source project should be in all caps, for instance: [`README`](README.md), [`LICENSE`](LICENSE), [`CONTRIBUTING`](CONTRIBUTING.md).
+You're right, that is a bit shouty. Maybe it's because of the de facto 
+convention that files pertaining to an open source project should be in 
+all caps, for instance: [`README`](README.md), [`LICENSE`](LICENSE), 
+[`CONTRIBUTING`](CONTRIBUTING.md).
 
-I like it because it denotes that these files are metadata for the project, similarly to [open source project badges](http://shields.io/) they draw attention to themselves as information people should be aware of if they mean to use the project or contribute to it.
+It denotes that these files are metadata for the project, similarly to 
+[open source project badges](http://shields.io/) they draw attention to 
+themselves as information people should be aware of if they mean to use 
+the project or contribute to it.
 
 
