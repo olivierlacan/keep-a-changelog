@@ -34,9 +34,6 @@ Sadly, no, but this is something I want to change. This project
 [contains what I hope will become the standard CHANGELOG file](CHANGELOG.md) 
 for all open source projects, so take a look at it and please suggest improvements.
 
-The maintainers of [Vandamme](http://tech-angels.github.io/vandamme/#changelogs-convention)
-have established interesting conventions, most of which are sensible.
-
 ### What should the CHANGELOG file be named?
 Well, if you can't tell from the example above, `CHANGELOG.md` is the 
 best convention so far.
