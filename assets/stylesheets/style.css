@@ -1,5 +1,6 @@
 html {
   font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
 }
 
 a {
@@ -45,6 +46,13 @@ article p {
   font-size: 1.3em;
 }
 
+article code {
+  border-radius: 0.315em;
+  border: 1px solid black;
+  padding: 0 0.3em 0.040em;
+  font-size: 0.9em;
+}
+
 article img {
   margin: 0 auto;
   max-width: 100%;
@@ -68,6 +76,7 @@ article ul {
 }
 
 footer {
+  font-size: .8em;
   border-top: 1px solid #e9e6e1;
   margin-top: 1em;
   margin-bottom: 2em;
