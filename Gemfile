@@ -1,9 +1,8 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'redcarpet'
-
 group :development do
-  gem 'pry'
+  gem 'redcarpet'
   gem 'thor'
+  gem 'pry'
 end
