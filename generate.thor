@@ -40,7 +40,7 @@ class Generate < Thor
             #{yield}
             <footer class="clearfix">
               <p class="license">This site is licensed under the <a href="http://choosealicense.com/licenses/mit/">MIT License</a>.</p>
-              <p class="about">Typed with trepidation by <a href="http://olivierlacan.com">Olivier Lacan</a> from <a href="http://codeschool.com">Code School</a></p>
+              <p class="about">Typed with trepidation by <a href="http://olivierlacan.com">Olivier Lacan</a> from <a href="http://codeschool.com">Code School</a>.</p>
             </footer>
           </article>
           <script type="text/javascript">
