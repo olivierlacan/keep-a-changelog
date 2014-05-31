@@ -1,21 +1,23 @@
 <html>
 <head>
 <title>Keep a Changelog</title>
+<link rel="stylesheet" href="assets/stylesheets/normalize.css" media="screen" charset="utf-8">
 <link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
 </head>
 <body>
 <article>
-<h1>Keep a Changelog</h1>
-<p>If you maintain an open source project, please keep a changelog.</p>
-<h2>What&#39;s a CHANGELOG?</h2>
+<h1>Keep a CHANGELOG</h1>
+<h2>Logging is caring about your open source users.</h2>
+<h3>What&#39;s a CHANGELOG?</h3>
 <p>A CHANGELOG is a file which contains a curated chronologically ordered list of notable changes for each version of an open source project.</p>
-<h2>What&#39;s the point of a CHANGELOG?</h2>
+<p><img src="assets/images/changelog_example.png" alt="Changelog Example"></p>
+<h3>What&#39;s the point of a CHANGELOG?</h3>
 <p>To make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.</p>
-<h2>Why can&#39;t people just use a git log diff?</h2>
+<h3>Why can&#39;t people just use a git log diff?</h3>
 <p>Because log diffs are full of noise. Can we really expect every single commit in an open source project to be meaningful and self-explanatory? That seems like a pipe dream to me.</p>
-<h2>Is there a standard CHANGELOG format?</h2>
-<p>Sadly, no, but this is something I want to change. This project <a href="changelog.md">contains what I hope will become the standard CHANGELOG file</a> for all open source projects, so take a look at it and please suggest improvements.</p>
-<h2>What makes up a good CHANGELOG?</h2>
+<h3>Is there a standard CHANGELOG format?</h3>
+<p>Sadly, no, but this is something I want to change. This project <a href="CHANGELOG.md">contains what I hope will become the standard CHANGELOG file</a> for all open source projects, so take a look at it and please suggest improvements.</p>
+<h3>What makes up a good CHANGELOG?</h3>
 <p>I&#39;m glad you asked, since I have quite a few opinions about that.</p>
 <ul>
 <li>a good CHANGELOG is made for humans, not machines, so it should be very legible.</li>
@@ -31,12 +33,11 @@
 </ul></li>
 <li>each section and sub-section of a CHANGELOG should be easily linked to (hence Markdown over plain text)</li>
 </ul>
-<h2>Can CHANGELOG files be automatically parsed?</h2>
+<h3>Can CHANGELOG files be automatically parsed?</h3>
 <p>As the good people maintaining Gemnasium know too well, it&#39;s very hard. That&#39;s because people follow wildly different formats for their files. Again, I hope to change that, but in the meantime, you might be interested in <a href="https://github.com/tech-angels/vandamme">Vandamme</a>, a Ruby gem used by Gemnasium to parse many open source project CHANGELOGs.</p>
-<h2>Why do you keep writing CHANGELOG in all caps?</h2>
-<p>I don&#39;t know. Maybe because of the de facto convention that files pertaining to an open source project should be in all caps, for instance: <code>README</code>, <code>LICENSE</code>, <code>CONTRIBUTING</code>.</p>
+<h3>Why do you keep writing CHANGELOG in all caps?</h3>
+<p>You&#39;re right, that is a bit shouty. Maybe it&#39;s because of the de facto convention that files pertaining to an open source project should be in all caps, for instance: <a href="README.md"><code>README</code></a>, <a href="LICENSE"><code>LICENSE</code></a>, <a href="CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p>
 <p>I like it because it denotes that these files are metadata for the project, similarly to <a href="http://shields.io/">open source project badges</a> they draw attention to themselves as information people should be aware of if they mean to use the project or contribute to it.</p>
-<p>Yes, it&#39;s a bit shouty.</p>
 <footer class="clearfix">
 <p class="license">This site is licensed under the <a href="http://choosealicense.com/licenses/mit/">MIT License</a>.</p>
 <p class="about">Typed with trepidation by <a href="http://olivierlacan.com">Olivier Lacan</a> from <a href="http://codeschool.com">Code School</a></p>

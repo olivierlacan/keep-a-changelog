@@ -1,13 +1,87 @@
 html {
-  font-family: Helvetica, Arial, sans-serif;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #E10FCE;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  color: #C647BF;
+  font-size: 4em;
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+
+h2 {
+  margin-bottom: 2em;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-bottom: 0;
+}
+
+h3 ~ p {
+  margin-top: 0;
 }
 
 article {
   margin: 0 auto;
-  width: 80%;
+  width: 940px;
 }
 
-h1 {
-  font-size: 4em;
-  font-weight: bold;
+article p {
+  font-size: 1.3em;
+}
+
+article img {
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
+  display: block;
+}
+
+article > ul {
+  font-size: 1.2em;
+  padding-left: 0;
+}
+
+article > ul ul {
+  padding-left: 1em;
+}
+
+article ul {
+  line-height: 1.5;
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+footer {
+  border-top: 1px solid #e9e6e1;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  padding-top: 1em;
+}
+
+.license {
+  float: left;
+}
+
+.about {
+  float: right;
+}
+
+.about, .license {
+  margin-top: 0;
 }

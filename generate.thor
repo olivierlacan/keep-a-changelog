@@ -32,6 +32,7 @@ class Generate < Thor
       <html>
         <head>
           <title>Keep a Changelog</title>
+          <link rel="stylesheet" href="assets/stylesheets/normalize.css" media="screen" charset="utf-8">
           <link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
         </head>
         <body>
