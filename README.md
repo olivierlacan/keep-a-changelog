@@ -1,6 +1,6 @@
 # Keep a CHANGELOG
 
-## Logging is caring about your open source users.
+## It's good for open source projects &amp; their users.
 
 ### What's a CHANGELOG?
 A CHANGELOG is a file which contains a curated chronologically ordered 
@@ -15,19 +15,19 @@ notable changes have been made between each release (or version) of the project.
 ### What makes up a good CHANGELOG?
 I'm glad you asked.
 
-- it's made for humans, not machines, so legibility is crucial.
-- one sub-section per versions.
-- each version should come with a release date in a sensible format: YYYY-MM-DD.
-- changes should be grouped to describe their impact on the project:
+- It's made for humans, not machines, so legibility is crucial.
+- One sub-section per versions.
+- Versions should come with a release date in a sensible format: YYYY-MM-DD.
+- Changes should be grouped to describe their impact on the project:
   - `Added` for new features.
-  - `Deprecated` for previously stable features that will be removed in upcoming releases.
-  - `Removed` for previously stable features that are removed in this release.
+  - `Deprecated` for once stable features removed in upcoming releases.
+  - `Removed` for deprecated features removed in this release.
   - `Fixed` for any bug fixes.
-  - `Security` to invite users to upgrade in case of vulnerabilities and exposures.
-- each section and sub-section of a CHANGELOG should be easily linked to (hence Markdown over plain text)
+  - `Security` to invite users to upgrade in case of vulnerabilities.
+- Each section should be easily linked to — hence Markdown over plain text.
 
-It would be nice to also mention whether the project 
-follows [Semantic Versioning](http://semver.org/) or not.
+It's also good to mention whether the project 
+follows [Semantic Versioning](http://semver.org/).
 
 ### Is there a standard CHANGELOG format?
 Sadly, no, but this is something I want to change. This project 
