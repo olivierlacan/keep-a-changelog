@@ -48,7 +48,7 @@ article p {
 
 article code {
   border-radius: 0.315em;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   padding: 0 0.3em 0.040em;
   font-size: 0.9em;
 }
