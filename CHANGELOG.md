@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to this project will be documented in this file in order to benefit users and contributors.
+All notable changes to this project will be documented in this file.
 
 ## 2014-05-31 - 0.0.1
 
