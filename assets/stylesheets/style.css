@@ -1,0 +1,13 @@
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+article {
+  margin: 0 auto;
+  width: 80%;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: bold;
+}

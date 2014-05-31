@@ -1,9 +1,53 @@
 <html>
-  <head>
-    <title>Keep a Changelog</title>
-  </head>
-  <body>
-    <h1>Keep a Changelog</h1>
-    <p>If you maintain an open source project, please keep a changelog.</p>
-  </body>
+<head>
+<title>Keep a Changelog</title>
+<link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
+</head>
+<body>
+<h1>Keep a Changelog</h1>
+<p>If you maintain an open source project, please keep a changelog.</p>
+<h2>What&#39;s a CHANGELOG?</h2>
+<p>A CHANGELOG is a file which contains a curated chronologically ordered list of notable changes for each version of an open source project.</p>
+<h2>What&#39;s the point of a CHANGELOG?</h2>
+<p>To make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.</p>
+<h2>Why can&#39;t people just use a git log diff?</h2>
+<p>Because log diffs are full of noise. Can we really expect every single commit in an open source project to be meaningful and self-explanatory? That seems like a pipe dream to me.</p>
+<h2>Is there a standard CHANGELOG format?</h2>
+<p>Sadly, no, but this is something I want to change. This project <a href="changelog.md">contains what I hope will become the standard CHANGELOG file</a> for all open source projects, so take a look at it and please suggest improvements.</p>
+<h2>What makes up a good CHANGELOG?</h2>
+<p>I&#39;m glad you asked, since I have quite a few opinions about that.</p>
+<ul>
+<li>a good CHANGELOG is made for humans, not machines, so it should be very legible.</li>
+<li>the sub-sections of a CHANGELOG should be based on releases or versions.</li>
+<li>each version should come with a release date in a sensible format: YYYY-MM-DD.</li>
+<li>within each release, changes should be classified in specific sections that describe their impact on the project:
+<ul>
+<li><code>Added</code> for anything new: features, APIs, etc.</li>
+<li><code>Deprecated</code> for previously stable features that will be removed in upcoming releases.</li>
+<li><code>Removed</code> for previously stable features that are removed in this release.</li>
+<li><code>Fixed</code> for any bug fixes.</li>
+<li><code>Security</code> to invite users to upgrade in case of vulnerabilities and exposures.</li>
+</ul></li>
+<li>each section and sub-section of a CHANGELOG should be easily linked to (hence Markdown over plain text)</li>
+</ul>
+<h2>Can CHANGELOG files be automatically parsed?</h2>
+<p>As the good people maintaining Gemnasium know too well, it&#39;s very hard. That&#39;s because people follow wildly different formats for their files. Again, I hope to change that, but in the meantime, you might be interested in <a href="https://github.com/tech-angels/vandamme">Vandamme</a>, a Ruby gem used by Gemnasium to parse many open source project CHANGELOGs.</p>
+<h2>Why do you keep writing CHANGELOG in all caps?</h2>
+<p>I don&#39;t know. Maybe because of the de facto convention that files pertaining to an open source project should be in all caps, for instance: <code>README</code>, <code>LICENSE</code>, <code>CONTRIBUTING</code>.</p>
+<p>I like it because it denotes that these files are metadata for the project, similarly to <a href="http://shields.io/">open source project badges</a> they draw attention to themselves as information people should be aware of if they mean to use the project or contribute to it.</p>
+<p>Yes, it&#39;s a bit shouty.</p>
+<script type="text/javascript">
+var _gauges = _gauges || [];
+(function() {
+var t   = document.createElement('script');
+t.type  = 'text/javascript';
+t.async = true;
+t.id    = 'gauges-tracker';
+t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
+t.src = '//secure.gaug.es/track.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(t, s);
+})();
+</script>
+</body>
 </html>
