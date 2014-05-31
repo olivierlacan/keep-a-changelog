@@ -35,7 +35,9 @@ class Generate < Thor
           <link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
         </head>
         <body>
-          #{yield}
+          <article>
+            #{yield}
+          </article>
           <script type="text/javascript">
             var _gauges = _gauges || [];
             (function() {
