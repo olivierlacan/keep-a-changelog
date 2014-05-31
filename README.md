@@ -49,9 +49,9 @@ That seems like a pipe dream.
 
 ### Can CHANGELOG files be automatically parsed?
 It's hard because people follow wildly different formats and file names. 
-The aforementioned [Vandamme](https://github.com/tech-angels/vandamme/) 
-is a Ruby gem used by [Gemnasium](http://gemnasium.com) which parses many 
-(but not all) open source project CHANGELOGs.
+[Vandamme](https://github.com/tech-angels/vandamme/) is a Ruby gem 
+created by the [Gemnasium](http://gemnasium.com) team and which parses 
+many (but not all) open source project CHANGELOGs.
 
 ### Why do you keep writing CHANGELOG in all caps?
 You're right, that is a bit shouty. Maybe it's because of the de facto 
