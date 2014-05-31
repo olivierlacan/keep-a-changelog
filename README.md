@@ -15,7 +15,7 @@ notable changes have been made between each release (or version) of the project.
 ### What makes up a good CHANGELOG?
 I'm glad you asked.
 
-- it should be made for humans, not machines, so legibility is crucial.
+- it's made for humans, not machines, so legibility is crucial.
 - one sub-section per versions.
 - each version should come with a release date in a sensible format: YYYY-MM-DD.
 - changes should be grouped to describe their impact on the project:
