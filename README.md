@@ -6,7 +6,7 @@
 A CHANGELOG is a file which contains a curated chronologically ordered 
 list of notable changes for each version of an open source project.
 
-![Changelog Example](assets/images/changelog_example.png)
+[![Changelog Example](assets/images/changelog_example.png)](CHANGELOG.md)
 
 ### What's the point of a CHANGELOG?
 To make it easier for users and contributors to see precisely what 
