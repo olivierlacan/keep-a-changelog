@@ -11,7 +11,7 @@ A CHANGELOG is a file which contains a curated chronologically ordered list of n
 To make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.
 
 ### Why can't people just use a git log diff?
-Because log diffs are full of noise. Can we really expect every single commit in an open source project to be meaningful and self-explanatory? That seems like a pipe dream to me.
+Because log diffs are full of noise. Can we really expect every single commit in an open source project to be meaningful and self-explanatory? That seems like a pipe dream.
 
 ### Is there a standard CHANGELOG format?
 Sadly, no, but this is something I want to change. This project [contains what I hope will become the standard CHANGELOG file](CHANGELOG.md) for all open source projects, so take a look at it and please suggest improvements.
