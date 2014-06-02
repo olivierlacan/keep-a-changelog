@@ -1,5 +1,5 @@
 html {
-  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px/1.4 "jaf-bernino-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
@@ -17,6 +17,7 @@ h1 {
   color: #C647BF;
   font-size: 3.5em;
   font-weight: bold;
+  font-family: "source-code-pro", monospace;
   margin-bottom: 0;
 }
 
