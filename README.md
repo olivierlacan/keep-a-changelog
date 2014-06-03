@@ -29,6 +29,17 @@ I'm glad you asked.
 It's also good to mention whether the project 
 follows [Semantic Versioning](http://semver.org/).
 
+### What makes unicorns cry?
+Alright, let's get into it:
+
+- Dumping a diff of commit logs. Just don't do that, you're helping nobody.
+- Not highlighting deprecations: when people upgrade from one version to 
+another it should be painfully clear when something will break.
+
+There's more. Help me collect thos unicorn tears by 
+[opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new) 
+or a pull request.
+
 ### Is there a standard CHANGELOG format?
 Sadly, no, but this is something I want to change. This project 
 [contains what I hope will become the standard CHANGELOG file](CHANGELOG.md) 
