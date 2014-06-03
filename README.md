@@ -25,6 +25,8 @@ I'm glad you asked.
   - `Fixed` for any bug fixes.
   - `Security` to invite users to upgrade in case of vulnerabilities.
 - Each section should be easily linked to — hence Markdown over plain text.
+- Write release dates in an international, sensible, and 
+language-independent format: `2012-06-02` for `June 2nd, 2012`.
 
 It's also good to mention whether the project 
 follows [Semantic Versioning](http://semver.org/).
@@ -33,8 +35,11 @@ follows [Semantic Versioning](http://semver.org/).
 Alright, let's get into it:
 
 - Dumping a diff of commit logs. Just don't do that, you're helping nobody.
-- Not highlighting deprecations: when people upgrade from one version to 
+- Not emphasizing deprecations: when people upgrade from one version to 
 another it should be painfully clear when something will break.
+- Dates in regionally-specific formats. Americans put the month first 
+("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits 
+use a robotic-looking "June 2 2012", yet pronounce it "June 2nd, 2012". 
 
 There's more. Help me collect thos unicorn tears by 
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new) 
