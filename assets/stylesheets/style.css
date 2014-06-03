@@ -62,6 +62,9 @@ article img {
   max-width: 100%;
   text-align: center;
   display: block;
+  box-shadow: rgba(0, 0, 0, 0.37) 0px 0px 6px;
+  border-radius: 7px;
+  padding: 0.4em 0.9em;
 }
 
 article > ul {
