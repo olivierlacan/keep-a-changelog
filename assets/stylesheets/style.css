@@ -15,10 +15,11 @@ a:hover {
 
 h1 {
   color: #C647BF;
-  font-size: 3.5em;
+  font-size: 3.8em;
   font-weight: bold;
   font-family: "source-code-pro", monospace;
   margin-bottom: 0;
+  line-height: 1;
 }
 
 h2 {
