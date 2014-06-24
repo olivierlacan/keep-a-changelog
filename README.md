@@ -1,6 +1,6 @@
 # Keep a CHANGELOG
 
-## It's good for open source projects &amp; their users.
+## Don’t let your friends dump git logs into CHANGELOGs.&trade;
 
 ### What's a CHANGELOG?
 A CHANGELOG is a file which contains a curated chronologically ordered 
@@ -81,7 +81,7 @@ themselves as information people should be aware of if they mean to use
 the project or contribute to it.
 
 ### How can I contribute?
-This document is not the **truth&copy;**, it's my carefully considered 
+This document is not the **truth**, it's my carefully considered 
 opinion with the information and examples I was able to gather. Although
 I provide an actual [CHANGELOG](CHANGELOG.md) on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
 I have purposefully not created a proper *release* or clear list of rules 
