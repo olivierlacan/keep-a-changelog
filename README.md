@@ -1,6 +1,6 @@
 # Keep a CHANGELOG
 
-## Don’t let your friends dump git logs into CHANGELOGs.&trade;
+## Don’t let your friends dump git logs into CHANGELOGs&trade;
 
 ### What's a CHANGELOG?
 A CHANGELOG is a file which contains a curated chronologically ordered 
