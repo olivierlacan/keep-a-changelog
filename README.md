@@ -80,4 +80,11 @@ It denotes that these files are metadata for the project, similarly to
 themselves as information people should be aware of if they mean to use 
 the project or contribute to it.
 
-
+### How can I contribute?
+This document is not the **truth&copy;**, it's my carefully considered 
+opinion with the information and examples I was able to gather. Although
+I provide an actual [CHANGELOG](CHANGELOG.md) on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
+I have purposefully not created a proper *release* or clear list of rules 
+to follow like [SemVer.org](http://semver.org/) does for instance. This is 
+because I want our community to reach a consensus. I believe the discussion 
+is as important as the end result. So please [**pitch in**](https://github.com/olivierlacan/keep-a-changelog/issues).
