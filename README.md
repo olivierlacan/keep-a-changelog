@@ -41,7 +41,7 @@ another it should be painfully clear when something will break.
 ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits 
 use a robotic-looking "June 2 2012", yet pronounce it "June 2nd, 2012". 
 
-There's more. Help me collect thos unicorn tears by 
+There's more. Help me collect those unicorn tears by 
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new) 
 or a pull request.
 
