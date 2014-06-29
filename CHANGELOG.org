@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-** 0.0.2 - 2014-06-31
+** 0.0.2 - 2014-06-29
 
 *** Added
 
