@@ -24,7 +24,7 @@ I'm glad you asked.
   - `Removed` for deprecated features removed in this release.
   - `Fixed` for any bug fixes.
   - `Security` to invite users to upgrade in case of vulnerabilities.
-- Each section should be easily linked to — hence Markdown over plain text.
+- Each section should be easily linked to — hence markup in formats like Markdown, Org mode, etc.. preferred over plain text.
 - Write release dates in an international, sensible, and 
 language-independent format: `2012-06-02` for `June 2nd, 2012`.
 
