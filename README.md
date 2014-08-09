@@ -12,6 +12,16 @@ list of notable changes for each version of an open source project.
 To make it easier for users and contributors to see precisely what
 notable changes have been made between each release (or version) of the project.
 
+### Why should I care?
+Well, because software tools are for people. If you don't care, why are
+you contributing to open source? There must be a kernel (ha) of care
+somewhere in that lovely little brain of yours.
+
+I [talked with Adam Stacoviak and Jerod Santo on The Changelog](http://5by5.tv/changelog/127)
+(fitting, right?) podcast about why open source maintainers and
+contributors should care, and the motivations behind this project. If
+you can spare the time (1:06), it's a good listen.
+
 ### What makes up a good CHANGELOG?
 I'm glad you asked.
 
@@ -42,8 +52,8 @@ another it should be painfully clear when something will break.
 ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
 use a robotic-looking "June 2 2012", yet pronounce it "June 2nd, 2012".
 
-There's more. Help me collect those unicorn tears by 
-[opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new) 
+There's more. Help me collect those unicorn tears by
+[opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
 or a pull request.
 
 ### Is there a standard CHANGELOG format?
