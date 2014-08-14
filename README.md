@@ -50,7 +50,7 @@ Alright, let’s get into it:
 another it should be painfully clear when something will break.
 - Dates in regionally-specific formats. Americans put the month first
 ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
-use a robotic-looking "June 2 2012", yet pronounce it "June 2nd, 2012".
+use a robotic-looking "2 June 2012", yet pronounce it "June 2nd, 2012".
 
 There’s more. Help me collect those unicorn tears by
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
