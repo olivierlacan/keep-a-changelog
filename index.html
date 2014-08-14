@@ -1,117 +1,146 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Keep a Changelog</title>
-<link rel="stylesheet" href="assets/stylesheets/normalize.css" media="screen" charset="utf-8">
-<link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
-<script type="text/javascript" src="//use.typekit.net/tng8liq.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <title>Keep a Changelog</title>
+    <link rel="stylesheet" media="screen" charset="utf-8" href="assets/stylesheets/normalize.css" />
+    <link rel="stylesheet" media="screen" charset="utf-8" href="assets/stylesheets/style.css" />
+    <script type="text/javascript" src="//use.typekit.net/tng8liq.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-<article>
-<h1>Keep a CHANGELOG</h1>
-<h2>Don’t let your friends dump git logs into CHANGELOGs&trade;</h2>
-<h3>What&#39;s a CHANGELOG?</h3>
-<p>A CHANGELOG is a file which contains a curated chronologically ordered
-list of notable changes for each version of an open source project.</p>
-<p><a href="CHANGELOG.md"><img src="assets/images/changelog_example.png" alt="Changelog Example"></a></p>
-<h3>What&#39;s the point of a CHANGELOG?</h3>
-<p>To make it easier for users and contributors to see precisely what
-notable changes have been made between each release (or version) of the project.</p>
-<h3>Why should I care?</h3>
-<p>Well, because software tools are for people. If you don&#39;t care, why are
-you contributing to open source? There must be a kernel (ha) of care
-somewhere in that lovely little brain of yours.</p>
-<p>I <a href="http://5by5.tv/changelog/127">talked with Adam Stacoviak and Jerod Santo on The Changelog</a>
-(fitting, right?) podcast about why open source maintainers and
-contributors should care, and the motivations behind this project. If
-you can spare the time (1:06), it&#39;s a good listen.</p>
-<h3>What makes up a good CHANGELOG?</h3>
-<p>I&#39;m glad you asked.</p>
-<ul>
-<li>It&#39;s made for humans, not machines, so legibility is crucial.</li>
-<li>One sub-section per versions.</li>
-<li>Versions should come with a release date in a sensible format: YYYY-MM-DD.</li>
-<li>Changes should be grouped to describe their impact on the project:
-<ul>
-<li><code>Added</code> for new features.</li>
-<li><code>Deprecated</code> for once stable features removed in upcoming releases.</li>
-<li><code>Removed</code> for deprecated features removed in this release.</li>
-<li><code>Fixed</code> for any bug fixes.</li>
-<li><code>Security</code> to invite users to upgrade in case of vulnerabilities.</li>
-</ul></li>
-<li>Each section should be easily linked to — hence Markdown over plain text.</li>
-<li>Write release dates in an international, sensible, and
-language-independent format: <code>2012-06-02</code> for <code>June 2nd, 2012</code>.</li>
-<li>Order the releases reverse chronologically (latest at the top).</li>
-</ul>
-<p>It&#39;s also good to mention whether the project
-follows <a href="http://semver.org/">Semantic Versioning</a>.</p>
-<h3>What makes unicorns cry?</h3>
-<p>Alright, let&#39;s get into it:</p>
-<ul>
-<li>Dumping a diff of commit logs. Just don&#39;t do that, you&#39;re helping nobody.</li>
-<li>Not emphasizing deprecations: when people upgrade from one version to
-another it should be painfully clear when something will break.</li>
-<li>Dates in regionally-specific formats. Americans put the month first
-(&quot;06-02-2012&quot; for June 2nd, 2012, which makes <em>no</em> sense), while Brits
-use a robotic-looking &quot;June 2 2012&quot;, yet pronounce it &quot;June 2nd, 2012&quot;.</li>
-</ul>
-<p>There&#39;s more. Help me collect those unicorn tears by
-<a href="https://github.com/olivierlacan/keep-a-changelog/issues/new">opening an issue</a>
-or a pull request.</p>
-<h3>Is there a standard CHANGELOG format?</h3>
-<p>Sadly, no, but this is something I want to change. This project
-<a href="CHANGELOG.md">contains what I hope will become the standard CHANGELOG file</a>
-for all open source projects, so take a look at it and please suggest improvements.</p>
-<h3>What should the CHANGELOG file be named?</h3>
-<p>Well, if you can&#39;t tell from the example above, <code>CHANGELOG.md</code> is the
-best convention so far.</p>
-<p>Some projects also use <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>,
-<code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, etc.
-It&#39;s a mess, that only makes it harder for people to find it.</p>
-<h3>Why can&#39;t people just use a git log diff?</h3>
-<p>Because log diffs are full of noise. Can we really expect every single
-commit in an open source project to be meaningful and self-explanatory?
-That seems like a pipe dream.</p>
-<h3>Can CHANGELOG files be automatically parsed?</h3>
-<p>It&#39;s hard because people follow wildly different formats and file names.
-<a href="https://github.com/tech-angels/vandamme/">Vandamme</a> is a Ruby gem
-created by the <a href="http://gemnasium.com">Gemnasium</a> team and which parses
-many (but not all) open source project CHANGELOGs.</p>
-<h3>Why do you keep writing CHANGELOG in all caps?</h3>
-<p>You&#39;re right, that is a bit shouty. Maybe it&#39;s because of the de facto
-convention that files pertaining to an open source project should be in
-all caps, for instance: <a href="README.md"><code>README</code></a>, <a href="LICENSE"><code>LICENSE</code></a>,
-<a href="CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p>
-<p>It denotes that these files are metadata for the project, similarly to
-<a href="http://shields.io/">open source project badges</a> they draw attention to
-themselves as information people should be aware of if they mean to use
-the project or contribute to it.</p>
-<h3>How can I contribute?</h3>
-<p>This document is not the <strong>truth</strong>, it&#39;s my carefully considered
-opinion with the information and examples I was able to gather. Although
-I provide an actual <a href="CHANGELOG.md">CHANGELOG</a> on <a href="https://github.com/olivierlacan/keep-a-changelog">the GitHub repo</a>,
-I have purposefully not created a proper <em>release</em> or clear list of rules
-to follow like <a href="http://semver.org/">SemVer.org</a> does for instance. This is
-because I want our community to reach a consensus. I believe the discussion
-is as important as the end result. So please <a href="https://github.com/olivierlacan/keep-a-changelog/issues"><strong>pitch in</strong></a>.</p>
-<footer class="clearfix">
-<p class="license">This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>.</p>
-<p class="about"><a href="https://github.com/olivierlacan/keep-a-changelog/">Typed</a> with trepidation by <a href="http://olivierlacan.com">Olivier Lacan</a> from <a href="http://codeschool.com">Code School</a>.</p>
-</footer>
-</article>
-<script type="text/javascript">
-var _gauges = _gauges || [];
-(function() {
-var t   = document.createElement('script');
-t.type  = 'text/javascript';
-t.async = true;
-t.id    = 'gauges-tracker';
-t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
-t.src = '//secure.gaug.es/track.js';
-var s = document.getElementsByTagName('script')[0];
-s.parentNode.insertBefore(t, s);
-})();
-</script>
+    <article>
+        <h1>Keep a CHANGELOG</h1>
+        <h2>Don’t let your friends dump git logs into CHANGELOGs&trade;</h2>
+        
+        
+        <h3>What&#39;s a CHANGELOG?</h3>
+        <p>A CHANGELOG is a file which contains a curated chronologically ordered
+        list of notable changes for each version of an open source project.</p>
+        <p><a href="CHANGELOG.md"><img src="assets/images/changelog_example.png" alt="Changelog Example" /></a></p>
+        
+        
+        <h3>What&#39;s the point of a CHANGELOG?</h3>
+        <p>To make it easier for users and contributors to see precisely what
+        notable changes have been made between each release (or version) of the project.</p>
+        
+        
+        <h3>Why should I care?</h3>
+        <p>Well, because software tools are for people. If you don&#39;t care, why are
+        you contributing to open source? There must be a kernel (ha) of care
+        somewhere in that lovely little brain of yours.</p>
+        <p>I <a href="http://5by5.tv/changelog/127">talked with Adam Stacoviak and 
+        Jerod Santo on The Changelog</a> (fitting, right?) podcast about why open 
+        source maintainers and contributors should care, and the motivations behind this project. 
+        If you can spare the time (1:06), it&#39;s a good listen.</p>
+        
+        
+        <h3>What makes up a good CHANGELOG?</h3>
+        <p>I&#39;m glad you asked.</p>
+        <ul>
+            <li>It&#39;s made for humans, not machines, so legibility is crucial.</li>
+            <li>One sub-section per versions.</li>
+            <li>Versions should come with a release date in a sensible format: YYYY-MM-DD.</li>
+            <li>Changes should be grouped to describe their impact on the project:
+                <ul>
+                    <li><code>Added</code> for new features.</li>
+                    <li><code>Deprecated</code> for once stable features removed in upcoming releases.</li>
+                    <li><code>Removed</code> for deprecated features removed in this release.</li>
+                    <li><code>Fixed</code> for any bug fixes.</li>
+                    <li><code>Security</code> to invite users to upgrade in case of vulnerabilities.</li>
+                </ul>
+            </li>
+            <li>Each section should be easily linked to — hence Markdown over plain text.</li>
+            <li>Write release dates in an international, sensible, and
+            language-independent format: <code>2012-06-02</code> for <code>June 2nd, 2012</code>.</li>
+            <li>Order the releases reverse chronologically (latest at the top).</li>
+        </ul>
+        <p>It&#39;s also good to mention whether the project
+        follows <a href="http://semver.org/">Semantic Versioning</a>.</p>
+        
+        
+        <h3>What makes unicorns cry?</h3>
+        <p>Alright, let&#39;s get into it:</p>
+        <ul>
+            <li>Dumping a diff of commit logs. Just don&#39;t do that, you&#39;re helping nobody.</li>
+            <li>Not emphasizing deprecations: when people upgrade from one version to
+            another it should be painfully clear when something will break.</li>
+            <li>Dates in regionally-specific formats. Americans put the month first
+            (&quot;06-02-2012&quot; for June 2nd, 2012, which makes <em>no</em> sense), while Brits
+            use a robotic-looking &quot;June 2 2012&quot;, yet pronounce it &quot;June 2nd, 2012&quot;.</li>
+        </ul>
+        <p>There&#39;s more. Help me collect those unicorn tears by
+        <a href="https://github.com/olivierlacan/keep-a-changelog/issues/new">opening an issue</a>
+        or a pull request.</p>
+        
+        
+        <h3>Is there a standard CHANGELOG format?</h3>
+        <p>Sadly, no, but this is something I want to change. This project
+        <a href="CHANGELOG.md">contains what I hope will become the standard CHANGELOG file</a>
+        for all open source projects, so take a look at it and please suggest improvements.</p>
+        
+        
+        <h3>What should the CHANGELOG file be named?</h3>
+        <p>Well, if you can&#39;t tell from the example above, <code>CHANGELOG.md</code> is the
+        best convention so far.</p>
+        <p>Some projects also use <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>,
+        <code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, etc.
+        It&#39;s a mess, that only makes it harder for people to find it.</p>
+        
+        
+        <h3>Why can&#39;t people just use a git log diff?</h3>
+        <p>Because log diffs are full of noise. Can we really expect every single
+        commit in an open source project to be meaningful and self-explanatory?
+        That seems like a pipe dream.</p>
+        
+        
+        <h3>Can CHANGELOG files be automatically parsed?</h3>
+        <p>It&#39;s hard because people follow wildly different formats and file names.
+        <a href="https://github.com/tech-angels/vandamme/">Vandamme</a> is a Ruby gem
+        created by the <a href="http://gemnasium.com">Gemnasium</a> team and which parses
+        many (but not all) open source project CHANGELOGs.</p>
+        
+        
+        <h3>Why do you keep writing CHANGELOG in all caps?</h3>
+        <p>You&#39;re right, that is a bit shouty. Maybe it&#39;s because of the de facto
+        convention that files pertaining to an open source project should be in
+        all caps, for instance: <a href="README.md"><code>README</code></a>, <a href="LICENSE"><code>LICENSE</code></a>,
+        <a href="CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p>
+        <p>It denotes that these files are metadata for the project, similarly to
+        <a href="http://shields.io">open source project badges</a> they draw attention to
+        themselves as information people should be aware of if they mean to use
+        the project or contribute to it.</p>
+        
+        
+        <h3>How can I contribute?</h3>
+        <p>This document is not the <strong>truth</strong>, it&#39;s my carefully considered
+        opinion with the information and examples I was able to gather. Although
+        I provide an actual <a href="CHANGELOG.md">CHANGELOG</a> on <a href="https://github.com/olivierlacan/keep-a-changelog">the GitHub repo</a>,
+        I have purposefully not created a proper <em>release</em> or clear list of rules
+        to follow like <a href="http://semver.org">SemVer.org</a> does for instance. This is
+        because I want our community to reach a consensus. I believe the discussion
+        is as important as the end result. So please <a href="https://github.com/olivierlacan/keep-a-changelog/issues"><strong>pitch in</strong></a>.</p>
+    
+        <footer class="clearfix">
+            <p class="license">This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>.</p>
+            <p class="about"><a href="https://github.com/olivierlacan/keep-a-changelog/">Typed</a>
+                with trepidation by 
+                <a href="http://olivierlacan.com">Olivier Lacan</a> from 
+                <a ="http://codeschool.com">Code School</a>.</p>
+        </footer>
+    </article>
+    
+    <script type="text/javascript">
+        var _gauges = _gauges || [];
+        (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+        })();
+    </script>
 </body>
 </html>
