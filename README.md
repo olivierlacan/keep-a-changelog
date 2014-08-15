@@ -6,7 +6,7 @@
 A CHANGELOG is a file which contains a curated chronologically ordered
 list of notable changes for each version of an open source project.
 
-[![Changelog Example](assets/images/changelog_example.png)](CHANGELOG.md)
+[![Changelog Example](assets/images/changelog_example.png)][CHANGELOG]
 
 ### What’s the point of a CHANGELOG?
 To make it easier for users and contributors to see precisely what
@@ -40,7 +40,7 @@ language-independent format: `2012-06-02` for `June 2nd, 2012`.
 - Order the releases reverse chronologically (latest at the top).
 
 It’s also good to mention whether the project
-follows [Semantic Versioning](http://semver.org/).
+follows [Semantic Versioning][semver].
 
 ### What makes unicorns cry?
 Alright, let’s get into it:
@@ -58,7 +58,7 @@ or a pull request.
 
 ### Is there a standard CHANGELOG format?
 Sadly, no, but this is something I want to change. This project
-[contains what I hope will become the standard CHANGELOG file](CHANGELOG.md)
+[contains what I hope will become the standard CHANGELOG file][CHANGELOG]
 for all open source projects, so take a look at it and please suggest improvements.
 
 ### What should the CHANGELOG file be named?
@@ -94,8 +94,12 @@ the project or contribute to it.
 ### How can I contribute?
 This document is not the **truth**, it’s my carefully considered
 opinion with the information and examples I was able to gather. Although
-I provide an actual [CHANGELOG](CHANGELOG.md) on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
+I provide an actual [CHANGELOG][] on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
 I have purposefully not created a proper *release* or clear list of rules
-to follow like [SemVer.org](http://semver.org/) does for instance. This is
+to follow like [SemVer.org][semver] does for instance. This is
 because I want our community to reach a consensus. I believe the discussion
 is as important as the end result. So please [**pitch in**](https://github.com/olivierlacan/keep-a-changelog/issues).
+
+
+[CHANGELOG]: ./CHANGELOG.md
+[semver]: http://semver.org
