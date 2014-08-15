@@ -87,7 +87,7 @@ all caps, for instance: [`README`](README.md), [`LICENSE`](LICENSE),
 [`CONTRIBUTING`](CONTRIBUTING.md).
 
 It denotes that these files are metadata for the project, similarly to
-[open source project badges](http://shields.io/) they draw attention to
+[open source project badges](http://shields.io) they draw attention to
 themselves as information people should be aware of if they mean to use
 the project or contribute to it.
 
