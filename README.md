@@ -41,6 +41,17 @@ I’m glad you asked.
 
 It’s also good to explicitly mention whether the project follows [Semantic Versioning][semver].
 
+### How can I minimize the effort required?
+
+Always have an "Unreleased" section at the top for keeping notes on any
+changes.
+
+This serves two purposes:
+
+- People can see what changes they might expect in upcoming releases
+- At release time, you just have to change "Unreleased" to the version number
+  and add a new "Unreleased" header at the top.
+
 ### What makes unicorns cry?
 Alright…let’s get into it.
 
