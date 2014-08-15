@@ -69,7 +69,7 @@ Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
 `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
 It’s a mess, that only makes it harder for people to find it.
 
-### Why can’t people just use a git log diff?
+### Why can’t people just use a `git log` diff?
 Because log diffs are full of noise. Can we really expect every single
 commit in an open source project to be meaningful and self-explanatory?
 That seems like a pipe dream.
