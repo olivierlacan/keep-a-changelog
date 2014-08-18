@@ -22,35 +22,35 @@ I [talked with Adam Stacoviak and Jerod Santo on The Changelog](http://5by5.tv/c
 contributors should care, and the motivations behind this project. 
 If you can spare the time (1:06), it’s a good listen.
 
-### What makes up a good CHANGELOG?
-I’m glad you asked.
+### What makes a good CHANGELOG?
+I’m glad you asked. 
+
+A good CHANGELOG sticks to these principles:
 
 - It’s made for humans, not machines, so legibility is crucial.
+- Easy to link to any section (hence Markdown over plain text).
 - One sub-section per version.
-- Versions should come with a release date in a sensible format: YYYY-MM-DD.
-- Changes should be grouped to describe their impact on the project:
-  - `Added` for new features.
-  - `Deprecated` for once stable features removed in upcoming releases.
-  - `Removed` for deprecated features removed in this release.
-  - `Fixed` for any bug fixes.
-  - `Security` to invite users to upgrade in case of vulnerabilities.
-- Each section should be easily linked to — hence Markdown over plain text.
-- Write release dates in an international, sensible, and language-independent 
-  format: `2012-06-02` for `June 2nd, 2012`.
-- Order the releases reverse chronologically (latest at the top).
-
-It’s also good to explicitly mention whether the project follows [Semantic Versioning][semver].
+- List releases in reverse-chronological order (newest on top).
+- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, sensible, and language-independent.
+- Explicitly mention whether the project follows [Semantic Versioning][semver].
+- Each version should:
+  - List its release date in the above format.
+  - Group changes to describe their impact on the project, as follows:
+    - `Added` for new features.
+    - `Deprecated` for once-stable features removed in upcoming releases.
+    - `Removed` for deprecated features removed in this release.
+    - `Fixed` for any bug fixes.
+    - `Security` to invite users to upgrade in case of vulnerabilities.
 
 ### How can I minimize the effort required?
-
-Always have an "Unreleased" section at the top for keeping notes on any
+Always have an `"Unreleased"` section at the top for keeping track of any
 changes.
 
 This serves two purposes:
 
 - People can see what changes they might expect in upcoming releases
-- At release time, you just have to change "Unreleased" to the version number
-  and add a new "Unreleased" header at the top.
+- At release time, you just have to change `"Unreleased"` to the version number
+  and add a new `"Unreleased"` header at the top.
 
 ### What makes unicorns cry?
 Alright…let’s get into it.
