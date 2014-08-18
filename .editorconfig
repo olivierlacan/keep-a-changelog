@@ -1,0 +1,16 @@
+# EditorConfig is awesome: http://EditorConfig.org
+#
+# All EditorConfig properties:
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+
+# Top-most EditorConfig file
+root = true
+
+# This is a small project; currently, we
+# use the same settings everywhere
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
