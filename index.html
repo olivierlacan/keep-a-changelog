@@ -25,34 +25,35 @@ of care somewhere in that lovely little brain of yours.</p>
 (fitting, right?) podcast about why open source maintainers and
 contributors should care, and the motivations behind this project. 
 If you can spare the time (1:06), it’s a good listen.</p>
-<h3>What makes up a good CHANGELOG?</h3>
-<p>I’m glad you asked.</p>
+<h3>What makes a good CHANGELOG?</h3>
+<p>I’m glad you asked. </p>
+<p>A good CHANGELOG sticks to these principles:</p>
 <ul>
 <li>It’s made for humans, not machines, so legibility is crucial.</li>
+<li>Easy to link to any section (hence Markdown over plain text).</li>
 <li>One sub-section per version.</li>
-<li>Versions should come with a release date in a sensible format: YYYY-MM-DD.</li>
-<li>Changes should be grouped to describe their impact on the project:
+<li>List releases in reverse-chronological order (newest on top).</li>
+<li>Write all dates in <code>YYYY-MM-DD</code> format. (Example: <code>2012-06-02</code> for <code>June 2nd, 2012</code>.) It’s international, sensible, and language-independent.</li>
+<li>Explicitly mention whether the project follows <a href="http://semver.org">Semantic Versioning</a>.</li>
+<li>Each version should:
 <ul>
+<li>List its release date in the above format.</li>
+<li>Group changes to describe their impact on the project, as follows:</li>
 <li><code>Added</code> for new features.</li>
-<li><code>Deprecated</code> for once stable features removed in upcoming releases.</li>
+<li><code>Deprecated</code> for once-stable features removed in upcoming releases.</li>
 <li><code>Removed</code> for deprecated features removed in this release.</li>
 <li><code>Fixed</code> for any bug fixes.</li>
 <li><code>Security</code> to invite users to upgrade in case of vulnerabilities.</li>
 </ul></li>
-<li>Each section should be easily linked to — hence Markdown over plain text.</li>
-<li>Write release dates in an international, sensible, and language-independent 
-format: <code>2012-06-02</code> for <code>June 2nd, 2012</code>.</li>
-<li>Order the releases reverse chronologically (latest at the top).</li>
 </ul>
-<p>It’s also good to explicitly mention whether the project follows <a href="http://semver.org">Semantic Versioning</a>.</p>
 <h3>How can I minimize the effort required?</h3>
-<p>Always have an &quot;Unreleased&quot; section at the top for keeping notes on any
+<p>Always have an <code>&quot;Unreleased&quot;</code> section at the top for keeping track of any
 changes.</p>
 <p>This serves two purposes:</p>
 <ul>
 <li>People can see what changes they might expect in upcoming releases</li>
-<li>At release time, you just have to change &quot;Unreleased&quot; to the version number
-and add a new &quot;Unreleased&quot; header at the top.</li>
+<li>At release time, you just have to change <code>&quot;Unreleased&quot;</code> to the version number
+and add a new <code>&quot;Unreleased&quot;</code> header at the top.</li>
 </ul>
 <h3>What makes unicorns cry?</h3>
 <p>Alright…let’s get into it.</p>
