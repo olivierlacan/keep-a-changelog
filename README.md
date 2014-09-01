@@ -2,30 +2,30 @@
 
 ## Don’t let your friends dump git logs into CHANGELOGs™
 
-### What’s a CHANGELOG?
-A CHANGELOG is a file which contains a curated, chronologically ordered
+### What’s a change log?
+A change log is a file which contains a curated, chronologically ordered
 list of notable changes for each version of an open source project.
 
 <a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
-### What’s the point of a CHANGELOG?
+### What’s the point of a change log?
 To make it easier for users and contributors to see precisely what
 notable changes have been made between each release (or version) of the project.
 
 ### Why should I care?
 Because software tools are for people. If you don’t care, why are
-you contributing to open source? Surely, there must be a kernel (ha!) 
+you contributing to open source? Surely, there must be a kernel (ha!)
 of care somewhere in that lovely little brain of yours.
 
 I [talked with Adam Stacoviak and Jerod Santo on The Changelog](http://5by5.tv/changelog/127)
 (fitting, right?) podcast about why open source maintainers and
-contributors should care, and the motivations behind this project. 
+contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.
 
-### What makes a good CHANGELOG?
-I’m glad you asked. 
+### What makes a good change log?
+I’m glad you asked.
 
-A good CHANGELOG sticks to these principles:
+A good change log sticks to these principles:
 
 - It’s made for humans, not machines, so legibility is crucial.
 - Easy to link to any section (hence Markdown over plain text).
@@ -66,13 +66,13 @@ There’s more. Help me collect those unicorn tears by
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
 or a pull request.
 
-### Is there a standard CHANGELOG format?
-Sadly, no. But I want to change that. 
+### Is there a standard change log format?
+Sadly, no. But I want to change that.
 
 This project [contains what I hope will become the standard CHANGELOG file][CHANGELOG]
 for all open source projects. Take a look at it, and please suggest improvements!
 
-### What should the CHANGELOG file be named?
+### What should the change log file be named?
 Well, if you can’t tell from the example above, `CHANGELOG.md` is the
 best convention so far.
 
@@ -86,33 +86,36 @@ Because log diffs are full of noise. Can we really expect every single
 commit in an open source project to be meaningful and self-explanatory?
 That seems like a pipe dream.
 
-### Can CHANGELOG files be automatically parsed?
+### Can change logs be automatically parsed?
 It’s difficult, because people follow wildly different formats and file names.
 
 [Vandamme](https://github.com/tech-angels/vandamme/) is a Ruby gem
 created by the [Gemnasium](http://gemnasium.com) team and which parses
-many (but not all) open source project CHANGELOGs.
+many (but not all) open source project change logs.
 
-### Why do you keep writing CHANGELOG in all caps?
-You’re right, that is a bit shouty. Maybe it’s because of the *de facto*
-convention: files pertaining to an open source project should be in
-all caps. For instance: [`README`](README.md), [`LICENSE`](LICENSE),
-[`CONTRIBUTING`](CONTRIBUTING.md).
+### Why do you alternate between spelling it "CHANGELOG" and "change log"?
+"CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
+historical convention followed by many open source project. Other
+examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
+and [`CONTRIBUTING`](CONTRIBUTING.md).
 
-This indicates that these files are metadata for the project. Much like
-[open source project badges](http://shields.io), they draw attention to
-themselves as information to be aware of if someone intends to use
-the project or contribute to it.
+The uppercase naming (which in old operating systems made these files stick
+to the top) is used to draw attention to them. Since they're important
+metadata about the project, they could be useful to anyone intending to use
+or contribute to it, much like [open source project badges](http://shields.io).
+
+When I refer to a "change log", I'm talking about the function of this
+file: to log changes.
 
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered
-opinion, along with information and examples I gathered. 
+opinion, along with information and examples I gathered.
 Although I provide an actual [CHANGELOG][] on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
 I have purposefully not created a proper *release* or clear list of rules
-to follow (as [SemVer.org][semver] does, for instance). 
+to follow (as [SemVer.org][semver] does, for instance).
 
-This is because I want our community to reach a consensus. I believe the 
-discussion is as important as the end result. 
+This is because I want our community to reach a consensus. I believe the
+discussion is as important as the end result.
 
 So please [**pitch in**](https://github.com/olivierlacan/keep-a-changelog/issues).
 

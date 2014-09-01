@@ -10,24 +10,24 @@
 <article>
 <h1>Keep a CHANGELOG</h1>
 <h2>Don’t let your friends dump git logs into CHANGELOGs™</h2>
-<h3>What’s a CHANGELOG?</h3>
-<p>A CHANGELOG is a file which contains a curated, chronologically ordered
+<h3>What’s a change log?</h3>
+<p>A change log is a file which contains a curated, chronologically ordered
 list of notable changes for each version of an open source project.</p>
 <p><a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a></p>
-<h3>What’s the point of a CHANGELOG?</h3>
+<h3>What’s the point of a change log?</h3>
 <p>To make it easier for users and contributors to see precisely what
 notable changes have been made between each release (or version) of the project.</p>
 <h3>Why should I care?</h3>
 <p>Because software tools are for people. If you don’t care, why are
-you contributing to open source? Surely, there must be a kernel (ha!) 
+you contributing to open source? Surely, there must be a kernel (ha!)
 of care somewhere in that lovely little brain of yours.</p>
 <p>I <a href="http://5by5.tv/changelog/127">talked with Adam Stacoviak and Jerod Santo on The Changelog</a>
 (fitting, right?) podcast about why open source maintainers and
-contributors should care, and the motivations behind this project. 
+contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.</p>
-<h3>What makes a good CHANGELOG?</h3>
-<p>I’m glad you asked. </p>
-<p>A good CHANGELOG sticks to these principles:</p>
+<h3>What makes a good change log?</h3>
+<p>I’m glad you asked.</p>
+<p>A good change log sticks to these principles:</p>
 <ul>
 <li>It’s made for humans, not machines, so legibility is crucial.</li>
 <li>Easy to link to any section (hence Markdown over plain text).</li>
@@ -68,11 +68,11 @@ use a robotic-looking &quot;2 June 2012&quot;, yet pronounce it &quot;June 2nd, 
 <p>There’s more. Help me collect those unicorn tears by
 <a href="https://github.com/olivierlacan/keep-a-changelog/issues/new">opening an issue</a>
 or a pull request.</p>
-<h3>Is there a standard CHANGELOG format?</h3>
-<p>Sadly, no. But I want to change that. </p>
+<h3>Is there a standard change log format?</h3>
+<p>Sadly, no. But I want to change that.</p>
 <p>This project <a href="./CHANGELOG.md">contains what I hope will become the standard CHANGELOG file</a>
 for all open source projects. Take a look at it, and please suggest improvements!</p>
-<h3>What should the CHANGELOG file be named?</h3>
+<h3>What should the change log file be named?</h3>
 <p>Well, if you can’t tell from the example above, <code>CHANGELOG.md</code> is the
 best convention so far.</p>
 <p>Some projects also use <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>,
@@ -82,28 +82,30 @@ best convention so far.</p>
 <p>Because log diffs are full of noise. Can we really expect every single
 commit in an open source project to be meaningful and self-explanatory?
 That seems like a pipe dream.</p>
-<h3>Can CHANGELOG files be automatically parsed?</h3>
+<h3>Can change logs be automatically parsed?</h3>
 <p>It’s difficult, because people follow wildly different formats and file names.</p>
 <p><a href="https://github.com/tech-angels/vandamme/">Vandamme</a> is a Ruby gem
 created by the <a href="http://gemnasium.com">Gemnasium</a> team and which parses
-many (but not all) open source project CHANGELOGs.</p>
-<h3>Why do you keep writing CHANGELOG in all caps?</h3>
-<p>You’re right, that is a bit shouty. Maybe it’s because of the <em>de facto</em>
-convention: files pertaining to an open source project should be in
-all caps. For instance: <a href="README.md"><code>README</code></a>, <a href="LICENSE"><code>LICENSE</code></a>,
-<a href="CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p>
-<p>This indicates that these files are metadata for the project. Much like
-<a href="http://shields.io">open source project badges</a>, they draw attention to
-themselves as information to be aware of if someone intends to use
-the project or contribute to it.</p>
+many (but not all) open source project change logs.</p>
+<h3>Why do you alternate between spelling it &quot;CHANGELOG&quot; and &quot;change log&quot;?</h3>
+<p>&quot;CHANGELOG&quot; is the name of the file itself. It&#39;s a bit shouty but it&#39;s a
+historical convention followed by many open source project. Other
+examples of similar files include <a href="README.md"><code>README</code></a>, <a href="LICENSE"><code>LICENSE</code></a>,
+and <a href="CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p>
+<p>The uppercase naming (which in old operating systems made these files stick
+to the top) is used to draw attention to them. Since they&#39;re important
+metadata about the project, they could be useful to anyone intending to use
+or contribute to it, much like <a href="http://shields.io">open source project badges</a>.</p>
+<p>When I refer to a &quot;change log&quot;, I&#39;m talking about the function of this
+file: to log changes.</p>
 <h3>How can I contribute?</h3>
 <p>This document is not the <strong>truth</strong>; it’s my carefully considered
-opinion, along with information and examples I gathered. 
+opinion, along with information and examples I gathered.
 Although I provide an actual <a href="./CHANGELOG.md">CHANGELOG</a> on <a href="https://github.com/olivierlacan/keep-a-changelog">the GitHub repo</a>,
 I have purposefully not created a proper <em>release</em> or clear list of rules
-to follow (as <a href="http://semver.org">SemVer.org</a> does, for instance). </p>
-<p>This is because I want our community to reach a consensus. I believe the 
-discussion is as important as the end result. </p>
+to follow (as <a href="http://semver.org">SemVer.org</a> does, for instance).</p>
+<p>This is because I want our community to reach a consensus. I believe the
+discussion is as important as the end result.</p>
 <p>So please <a href="https://github.com/olivierlacan/keep-a-changelog/issues"><strong>pitch in</strong></a>.</p>
 <footer class="clearfix">
 <p class="license">This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>.</p>
