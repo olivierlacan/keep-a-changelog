@@ -9,7 +9,7 @@ layout: default
 A change log is a file which contains a curated, chronologically ordered
 list of notable changes for each version of an open source project.
 
-[![An example of a CHANGELOG file.](images/changelog_example.png)](CHANGELOG.md)
+<a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
 ### What’s the point of a change log?
 To make it easier for users and contributors to see precisely what
