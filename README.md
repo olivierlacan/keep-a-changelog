@@ -59,8 +59,8 @@ Alright…let’s get into it.
 - **Not emphasizing deprecations.** When people upgrade from one version to
   another, it should be painfully clear when something will break.
 - **Dates in region-specific formats.** Americans put the month first
-  ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
-  use a robotic-looking "2 June 2012", yet pronounce it "June 2nd, 2012".
+  (“06-02-2012” for June 2nd, 2012, which makes *no* sense), while Brits
+  use a robotic-looking “2 June 2012”, yet pronounce it “June 2nd, 2012”.
 
 There’s more. Help me collect those unicorn tears by
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
@@ -93,18 +93,18 @@ It’s difficult, because people follow wildly different formats and file names.
 created by the [Gemnasium](http://gemnasium.com) team and which parses
 many (but not all) open source project change logs.
 
-### Why do you alternate between spelling it "CHANGELOG" and "change log"?
-"CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
+### Why do you alternate between spelling it “CHANGELOG” and “change log”?
+“CHANGELOG” is the name of the file itself. It’s a bit shouty, but it’s a
 historical convention followed by many open source project. Other
 examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
 and [`CONTRIBUTING`](CONTRIBUTING.md).
 
 The uppercase naming (which in old operating systems made these files stick
-to the top) is used to draw attention to them. Since they're important
+to the top) is used to draw attention to them. Since they’re important
 metadata about the project, they could be useful to anyone intending to use
 or contribute to it, much like [open source project badges](http://shields.io).
 
-When I refer to a "change log", I'm talking about the function of this
+When I refer to a “change log”, I’m talking about the function of this
 file: to log changes.
 
 ### How can I contribute?
