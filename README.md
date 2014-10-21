@@ -61,6 +61,9 @@ Alright…let’s get into it.
 - **Dates in region-specific formats.** Americans put the month first
   ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
   use a robotic-looking "2 June 2012", yet pronounce it "June 2nd, 2012".
+  "2014-06-02" works logically from largest to smallest, and doesn't overlap
+  in ambiguous ways with other date formats, and thus is the recommended 
+  date format for change logs.
 
 There’s more. Help me collect those unicorn tears by
 [opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
