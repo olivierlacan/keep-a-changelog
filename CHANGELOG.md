@@ -1,20 +1,20 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [Unreleased][head]
+## [Unreleased](head)
 - No significant changes.
 
-## [0.0.6][v0.0.6] - 2014-12-12
+## [0.0.6](v0.0.6) - 2014-12-12
 ### Added
 - README section on "yanked" releases.
 
-## [0.0.5][v0.0.5] - 2014-08-09
+## [0.0.5](v0.0.5) - 2014-08-09
 ### Added
 - Markdown links to version tags on release headings
 - Unreleased section to gather unreleased changes and encourage note
 keeping prior to releases.
 
-## [0.0.4][v0.0.4] - 2014-08-09
+## [0.0.4](v0.0.4) - 2014-08-09
 ### Added
 - Better explanation of the difference between the file ("CHANGELOG")
 and its function "the change log".
@@ -30,15 +30,15 @@ create too much noise in the file. People will have to assume that the
 missing sections were intentionally left out because they contained no
 notable changes.
 
-## [0.0.3][v0.0.3] - 2014-08-09
+## [0.0.3](v0.0.3) - 2014-08-09
 ### Added
 - "Why should I care?" section mentioning The Changelog podcast.
 
-## [0.0.2][v0.0.2] - 2014-07-10
+## [0.0.2](v0.0.2) - 2014-07-10
 ### Added
 - Explanation of the recommended reverse chronological release ordering.
 
-## [0.0.1][v0.0.1] - 2014-05-31
+## [0.0.1](v0.0.1) - 2014-05-31
 ### Added
 - This CHANGELOG file to hopefully serve as an evolving example of a standardized open source project CHANGELOG.
 - CNAME file to enable GitHub Pages custom domain
