@@ -111,6 +111,19 @@ or contribute to it, much like [open source project badges](http://shields.io).
 When I refer to a "change log", I'm talking about the function of this
 file: to log changes.
 
+## What about yanked releases?
+Yanked releases are versions that had to be pulled because of a serious
+bug or security issue. Often these versions don't even appear in change
+logs. They should. This is how you should display them:
+
+```
+## 0.0.5 - 2014-12-13 [YANKED]
+```
+
+The `[YANKED]` tag is loud for a reason. It's important for people to
+notice it. Since it's surrounded by brackets it's also easier to parse
+programmatically.
+
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered
 opinion, along with information and examples I gathered.

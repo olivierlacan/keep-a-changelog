@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased][head]
 - No significant changes.
 
+## [0.0.6][v0.0.6] - 2014-12-12
+### Added
+- README section on "yanked" releases.
+
 ## [0.0.5][v0.0.5] - 2014-08-09
 ### Added
 - Markdown links to version tags on release headings
