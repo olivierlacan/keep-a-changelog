@@ -14,7 +14,8 @@ class Generate < Thor
     # `r` means we're using the "read" mode with the file
     # we need a String for Redcarpet, it doesn't accept File objects.
     string = File.open(relative_path_to_readme, 'r') { |file| file.read }
-    markdown = ::Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    renderer = HTMLwithHeaderLinks.new
+    markdown = ::Redcarpet::Markdown.new(renderer, markdown_renderer_options)
 
     rendered_markdown = markdown.render(string)
 
@@ -61,5 +62,41 @@ class Generate < Thor
         </body>
       </html>
     HTML
+  end
+
+  def markdown_renderer_options
+    {
+      autolink: true,
+      no_intra_emphasis: true,
+      fenced_code_blocks: true,
+      disable_indented_code_blocks: true,
+      lax_spacing: true,
+      lax_html_blocks: true,
+      strikethrough: true,
+      superscript: true,
+      tables: true,
+      with_toc_data: true
+    }
+  end
+end
+
+class HTMLwithHeaderLinks < Redcarpet::Render::HTML
+  def header(title, level)
+    @headers ||= []
+    permalink = title.gsub(/\W+/, '-').downcase
+
+    if @headers.include?(permalink)
+      permalink += '_1'
+      permalink = permalink.succ while @headers.include?(permalink)
+    end
+
+    @headers << permalink
+
+    %(
+      <h#{level} id=\"#{permalink}\">
+        <a name="#{permalink}" class="anchor" href="##{permalink}"></a>
+        #{title}
+      </h#{level}>
+    )
   end
 end

@@ -35,6 +35,29 @@ h3 {
   font-size: 1.3em;
   font-family: "source-code-pro", monospace;
   margin-bottom: 0;
+  position: relative;
+  padding-left: .1em;
+}
+
+h3:hover .anchor, h3:focus .anchor {
+  display: block;
+}
+
+.anchor {
+  display: none;
+  font-style: normal;
+  font-weight: normal;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+
+.anchor::before {
+  content: '¶';
+}
+
+.anchor:hover {
+  text-decoration: none;
 }
 
 h3 ~ p {
