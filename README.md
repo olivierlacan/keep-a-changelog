@@ -31,7 +31,7 @@ A good change log sticks to these principles:
 - Easy to link to any section (hence Markdown over plain text).
 - One sub-section per version.
 - List releases in reverse-chronological order (newest on top).
-- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, sensible, and language-independent.
+- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](http://xkcd.com/1179/), and language-independent.
 - Explicitly mention whether the project follows [Semantic Versioning][semver].
 - Each version should:
   - List its release date in the above format.
@@ -63,7 +63,7 @@ Alright…let’s get into it.
   ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
   use a robotic-looking "2 June 2012", yet pronounce it "June 2nd, 2012".
   "2014-06-02" works logically from largest to smallest, and doesn't overlap
-  in ambiguous ways with other date formats, and thus is the recommended 
+  in ambiguous ways with other date formats, and thus is the recommended
   date format for change logs.
 
 There’s more. Help me collect those unicorn tears by
