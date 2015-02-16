@@ -73,10 +73,10 @@ or a pull request.
 
 ### Is there a standard change log format?
 Sadly, no. Calm down. I know you're furiously rushing to find that link
-to the GNU change log style guide, or the two-paragram GNU NEWS file
-"guideline". The GNU style guide is a nice start but it is incredibly
-naive. There's nothing wrong with being naive but when people need
-guidance, it's rarely very helpful. Especially when there are many
+to the GNU change log style guide, or the two-paragraph GNU NEWS file
+"guideline". The GNU style guide is a nice start but it is naive.
+There's nothing wrong with being naive but when people need
+guidance it's rarely very helpful. Especially when there are many
 situations and edge cases to deal with.
 
 This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG]
