@@ -3,13 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+### Changed
+- Update year to match in every README example.
+
+### Fixed
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
 
 ## [0.0.7] - 2015-02-16
 ### Added
-- Link, and make it obvious that date format is ISO 8601
+- Link, and make it obvious that date format is ISO 8601.
 
 ### Changed
-- Clarified the section on "Is there a standard change log format?"
+- Clarified the section on "Is there a standard change log format?".
 
 ### Fixed
 - Fix Markdown links to tag comparison URL with footnote-style links.
@@ -20,7 +26,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.0.5] - 2014-08-09
 ### Added
-- Markdown links to version tags on release headings
+- Markdown links to version tags on release headings.
 - Unreleased section to gather unreleased changes and encourage note
 keeping prior to releases.
 
