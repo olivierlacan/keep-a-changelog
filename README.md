@@ -17,7 +17,7 @@ Because software tools are for people. If you don’t care, why are
 you contributing to open source? Surely, there must be a kernel (ha!)
 of care somewhere in that lovely little brain of yours.
 
-I [talked with Adam Stacoviak and Jerod Santo on The Changelog](http://5by5.tv/changelog/127)
+I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
 (fitting, right?) podcast about why open source maintainers and
 contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.
@@ -68,14 +68,22 @@ Alright…let’s get into it.
   is the recommended date format for change logs.
 
 There’s more. Help me collect those unicorn tears by
-[opening an issue](https://github.com/olivierlacan/keep-a-changelog/issues/new)
+[opening an issue][issues]
 or a pull request.
 
 ### Is there a standard change log format?
-Sadly, no. But I want to change that.
+Sadly, no. Calm down. I know you're furiously rushing to find that link
+to the GNU change log style guide, or the two-paragram GNU NEWS file
+"guideline". The GNU style guide is a nice start but it is incredibly
+naive. There's nothing wrong with being naive but when people need
+guidance, it's rarely very helpful. Especially when there are many
+situations and edge cases to deal with.
 
-This project [contains what I hope will become the standard CHANGELOG file][CHANGELOG]
-for all open source projects. Take a look at it, and please suggest improvements!
+This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG]
+for all open source projects. Can the open source community learn from
+its mistake and not act as if the ten commandments were written long ago
+and got everything right? Alright. So please take a look around and
+remember that [discussions and suggestions for improvements are welcome][issues]!
 
 ### What should the change log file be named?
 Well, if you can’t tell from the example above, `CHANGELOG.md` is the
@@ -94,8 +102,8 @@ That seems like a pipe dream.
 ### Can change logs be automatically parsed?
 It’s difficult, because people follow wildly different formats and file names.
 
-[Vandamme](https://github.com/tech-angels/vandamme/) is a Ruby gem
-created by the [Gemnasium](http://gemnasium.com) team and which parses
+[Vandamme][vandamme] is a Ruby gem
+created by the [Gemnasium][gemnasium] team and which parses
 many (but not all) open source project change logs.
 
 ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
@@ -107,7 +115,7 @@ and [`CONTRIBUTING`](CONTRIBUTING.md).
 The uppercase naming (which in old operating systems made these files stick
 to the top) is used to draw attention to them. Since they're important
 metadata about the project, they could be useful to anyone intending to use
-or contribute to it, much like [open source project badges](http://shields.io).
+or contribute to it, much like [open source project badges][shields].
 
 When I refer to a "change log", I'm talking about the function of this
 file: to log changes.
@@ -126,15 +134,20 @@ programmatically.
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered
 opinion, along with information and examples I gathered.
-Although I provide an actual [CHANGELOG][] on [the GitHub repo](https://github.com/olivierlacan/keep-a-changelog),
+Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
 I have purposefully not created a proper *release* or clear list of rules
 to follow (as [SemVer.org][semver] does, for instance).
 
 This is because I want our community to reach a consensus. I believe the
 discussion is as important as the end result.
 
-So please [**pitch in**](https://github.com/olivierlacan/keep-a-changelog/issues).
-
+So please [**pitch in**][gh].
 
 [CHANGELOG]: ./CHANGELOG.md
+[gemnasium]: http://gemnasium.com
+[gh]: https://github.com/olivierlacan/keep-a-changelog
+[issues]: https://github.com/olivierlacan/keep-a-changelog/issues
 [semver]: http://semver.org
+[shields]: http://shields.io
+[thechangelog]: http://5by5.tv/changelog/127
+[vandamme]: https://github.com/tech-angels/vandamme/
