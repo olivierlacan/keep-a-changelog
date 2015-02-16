@@ -54,7 +54,7 @@ notable changes.
 - Good examples and basic guidelines, including proper date formatting.
 - Counter-examples: "What makes unicorns cry?"
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...HEAD
 [0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
