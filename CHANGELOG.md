@@ -3,8 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+
+## [0.0.7] - 2015-02-16
 ### Added
 - Link, and make it obvious that date format is ISO 8601
+### Changed
+- Clarified the section on "Is there a standard change log format?"
 ### Fixed
 - Fix Markdown links to tag comparison URL with footnote-style links.
 
@@ -51,6 +55,7 @@ notable changes.
 - Counter-examples: "What makes unicorns cry?"
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...HEAD
+[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
