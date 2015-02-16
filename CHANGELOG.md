@@ -7,8 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.0.7] - 2015-02-16
 ### Added
 - Link, and make it obvious that date format is ISO 8601
+
 ### Changed
 - Clarified the section on "Is there a standard change log format?"
+
 ### Fixed
 - Fix Markdown links to tag comparison URL with footnote-style links.
 
