@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 - Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world 
+  writes dates in a strange way.
 
 ### Fixed
 - Fix typos in recent README changes.
