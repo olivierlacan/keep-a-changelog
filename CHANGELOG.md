@@ -3,9 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+
+## [0.0.8] - 2015-02-17
 ### Changed
 - Update year to match in every README example.
-- Reluctantly stop making fun of Brits only, since most of the world 
+- Reluctantly stop making fun of Brits only, since most of the world
   writes dates in a strange way.
 
 ### Fixed
@@ -64,7 +66,8 @@ notable changes.
 - Good examples and basic guidelines, including proper date formatting.
 - Counter-examples: "What makes unicorns cry?"
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...HEAD
+[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
