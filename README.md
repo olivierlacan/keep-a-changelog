@@ -59,11 +59,11 @@ Alright…let’s get into it.
 - **Dumping a diff of commit logs.** Just don’t do that, you’re helping nobody.
 - **Not emphasizing deprecations.** When people upgrade from one version to
   another, it should be painfully clear when something will break.
-- **Dates in region-specific formats.** Americans put the month first
-  ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while Brits
-  use a robotic-looking "2 June 2012", yet pronounce it differently.
-  "2012-06-02" works logically from largest to smallest, doesn't overlap in
-  ambiguous ways with other date formats, and is an
+- **Dates in region-specific formats.** In the U.S., people put the month first
+  ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
+  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce 
+  it differently. "2012-06-02" works logically from largest to smallest, doesn't 
+  overlap in ambiguous ways with other date formats, and is an
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
   is the recommended date format for change logs.
 
@@ -108,7 +108,7 @@ many (but not all) open source project change logs.
 
 ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
 "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
-historical convention followed by many open source project. Other
+historical convention followed by many open source projects. Other
 examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
 and [`CONTRIBUTING`](CONTRIBUTING.md).
 
