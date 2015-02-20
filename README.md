@@ -95,9 +95,16 @@ Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
 It’s a mess. All these names only makes it harder for people to find it.
 
 ### Why can’t people just use a `git log` diff?
-Because log diffs are full of noise. Can we really expect every single
-commit in an open source project to be meaningful and self-explanatory?
-That seems like a pipe dream.
+Because log diffs are full of noise — by nature. They could not make a suitable
+change log even in a hypothetical project run by perfect humans who never make
+typos, never forget to commit new files, never miss any part of a refactoring.
+The purpose of a commit is to document one atomic step in the process by which
+the code evolves from one state to another. The purpose of a change log is to
+document the noteworthy differences between these states.
+
+As is the difference between good comments and the code itself,
+so is the difference between a change log and the commit log:
+one describes the *why*, the other the how.
 
 ### Can change logs be automatically parsed?
 It’s difficult, because people follow wildly different formats and file names.
