@@ -125,9 +125,15 @@ best convention so far.</p>
 <a name="why-can-t-people-just-use-a-code-git-log-code-diff-" class="anchor" href="#why-can-t-people-just-use-a-code-git-log-code-diff-"></a>
 Why can’t people just use a <code>git log</code> diff?
 </h3>
-<p>Because log diffs are full of noise. Can we really expect every single
-commit in an open source project to be meaningful and self-explanatory?
-That seems like a pipe dream.</p>
+<p>Because log diffs are full of noise — by nature. They could not make a suitable
+change log even in a hypothetical project run by perfect humans who never make
+typos, never forget to commit new files, never miss any part of a refactoring.
+The purpose of a commit is to document one atomic step in the process by which
+the code evolves from one state to another. The purpose of a change log is to
+document the noteworthy differences between these states.</p>
+<p>As is the difference between good comments and the code itself,
+so is the difference between a change log and the commit log:
+one describes the <em>why</em>, the other the how.</p>
 <h3 id="can-change-logs-be-automatically-parsed-">
 <a name="can-change-logs-be-automatically-parsed-" class="anchor" href="#can-change-logs-be-automatically-parsed-"></a>
 Can change logs be automatically parsed?
