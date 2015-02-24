@@ -113,6 +113,9 @@ It’s difficult, because people follow wildly different formats and file names.
 created by the [Gemnasium][gemnasium] team and which parses
 many (but not all) open source project change logs.
 
+### Can change logs be automatically generated?
+For GitHub projects you can use [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator). This gem generate change log file based on tags, issues and merged pull requests from GitHub issue tracker. This generator complies all conventions, that you read above.
+
 ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
 "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
 historical convention followed by many open source projects. Other
