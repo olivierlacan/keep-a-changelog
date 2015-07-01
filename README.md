@@ -42,6 +42,7 @@ A good change log sticks to these principles:
     - `Removed` for deprecated features removed in this release.
     - `Fixed` for any bug fixes.
     - `Security` to invite users to upgrade in case of vulnerabilities.
+    - `Breaks` to highlight any breaking changes.
 
 ### How can I minimize the effort required?
 Always have an `"Unreleased"` section at the top for keeping track of any
