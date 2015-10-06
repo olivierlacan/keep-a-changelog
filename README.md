@@ -61,8 +61,8 @@ Alright…let’s get into it.
   another, it should be painfully clear when something will break.
 - **Dates in region-specific formats.** In the U.S., people put the month first
   ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
-  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce 
-  it differently. "2012-06-02" works logically from largest to smallest, doesn't 
+  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce
+  it differently. "2012-06-02" works logically from largest to smallest, doesn't
   overlap in ambiguous ways with other date formats, and is an
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
   is the recommended date format for change logs.
@@ -137,6 +137,15 @@ logs. They should. This is how you should display them:
 The `[YANKED]` tag is loud for a reason. It's important for people to
 notice it. Since it's surrounded by brackets it's also easier to parse
 programmatically.
+
+### Should you ever rewrite a change log?
+Sure. There are always good reasons to improve a change log. I regularly open
+pull requests to add missing releases to open source projects with unmaintained
+change logs.
+
+It's also possible you may discover that you forgot to address a breaking change
+in the notes for a version. It's obviously important for you to update your
+change log in this case.
 
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered

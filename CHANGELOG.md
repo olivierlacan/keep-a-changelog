@@ -3,8 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.1.0] - 2015-10-06
+### Added
+- Answer "Should you ever rewrite a change log?".
+
 ### Changed
 - Improve argument against commit logs.
+- Start following [SemVer](http://semver.org) properly.
 
 ## [0.0.8] - 2015-02-17
 ### Changed
