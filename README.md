@@ -4,7 +4,7 @@
 
 ### What’s a change log?
 A change log is a file which contains a curated, chronologically ordered
-list of notable changes for each version of an open source project.
+list of notable changes for each version of a project.
 
 <a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
@@ -18,7 +18,7 @@ you contributing to open source? Surely, there must be a kernel (ha!)
 of care somewhere in that lovely little brain of yours.
 
 I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
-(fitting, right?) podcast about why open source maintainers and
+(fitting, right?) podcast about why maintainers and
 contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.
 
@@ -74,16 +74,16 @@ or a pull request.
 ### Is there a standard change log format?
 Sadly, no. Calm down. I know you're furiously rushing to find that link
 to the GNU change log style guide, or the two-paragraph GNU NEWS file
-"guideline". The GNU style guide is a nice start but it is naive.
+"guideline". The GNU style guide is a nice start but it is sadly naive.
 There's nothing wrong with being naive but when people need
 guidance it's rarely very helpful. Especially when there are many
 situations and edge cases to deal with.
 
-This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG]
-for all open source projects. Can the open source community learn from
-its mistake and not act as if the ten commandments were written long ago
-and got everything right? Alright. So please take a look around and
-remember that [discussions and suggestions for improvements are welcome][issues]!
+This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG].
+I don't think the status quo is good enough, and I think that as a community we
+can come up with better conventions if we try to extract good practices from
+real software projects. Please take a look around and remember that
+[discussions and suggestions for improvements are welcome][issues]!
 
 ### What should the change log file be named?
 Well, if you can’t tell from the example above, `CHANGELOG.md` is the
