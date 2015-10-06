@@ -61,8 +61,8 @@ Alright…let’s get into it.
   another, it should be painfully clear when something will break.
 - **Dates in region-specific formats.** In the U.S., people put the month first
   ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
-  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce 
-  it differently. "2012-06-02" works logically from largest to smallest, doesn't 
+  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce
+  it differently. "2012-06-02" works logically from largest to smallest, doesn't
   overlap in ambiguous ways with other date formats, and is an
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
   is the recommended date format for change logs.
@@ -158,3 +158,8 @@ So please [**pitch in**][gh].
 [shields]: http://shields.io
 [thechangelog]: http://5by5.tv/changelog/127
 [vandamme]: https://github.com/tech-angels/vandamme/
+
+### How can I generate an automatic change log from GitHub pull requests?
+[github-changes](https://github.com/lalitkapoor/github-changes) is an awesome tool
+created by [@lalitkapoor](https://github.com/lalitkapoor) that compiles the pull
+requests of a specific repository into a curated change log organized by tags.
