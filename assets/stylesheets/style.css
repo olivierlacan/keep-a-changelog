@@ -124,3 +124,17 @@ footer {
 .about, .license {
   margin-top: 0;
 }
+
+.lang {
+  margin: 1em auto 0;
+  width: 22em;
+}
+
+.lang ol {
+  list-style: none;
+}
+
+.lang ol li {
+  display: inline-block;
+  padding-right: 1em;
+}

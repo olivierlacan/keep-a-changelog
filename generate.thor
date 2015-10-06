@@ -1,8 +1,13 @@
 require 'pry'
 require 'redcarpet'
+require "pathname"
 
 class Generate < Thor
   include Thor::Actions
+
+  LANGUAGES = {
+    "pt-BR" => "Brazilian Portugese"
+  }
 
   desc "index", "generate index.html from README.md"
   def index
@@ -26,20 +31,70 @@ class Generate < Thor
     puts "All done!"
   end
 
+  desc "translations", "generate translations HTML from README.md"
+  def translations
+    puts "Processing translations to generate new translatations/language/index.html..."
+
+    path_to_translations = "translations/"
+    path_to_index = "index.html"
+
+    # `r` means we're using the "read" mode with the file
+    # we need a String for Redcarpet, it doesn't accept File objects.
+    translation_directories = Pathname.new(path_to_translations).children.select { |c| c.directory? }
+
+    translation_directories.each do |directory|
+      language_code = directory.basename.to_s
+      language = LANGUAGES[language_code]
+
+      string = File.open(directory + "README.md", 'r') { |file| file.read }
+      renderer = HTMLwithHeaderLinks.new
+      markdown = ::Redcarpet::Markdown.new(renderer, markdown_renderer_options)
+
+      rendered_markdown = markdown.render(string)
+      asset_path = "../../assets" # we're inside translations/<language_code>
+      html_output = template(language, asset_path) { rendered_markdown }
+
+      File.open(directory + path_to_index, 'w') { |file| file.write(html_output) }
+
+      puts "All done!"
+    end
+  end
+
   private
 
-  def template(&block)
+  def language_links
+    LANGUAGES.map do |language|
+      code = language.first
+      name = language.last
+
+      <<-HTML
+        <li>
+          <a lang="#{code}" rel="alternate" hreflang="#{code}" href="/translations/#{code}/index.html">
+            #{name}
+          </a>
+        </li>
+      HTML
+    end.join
+  end
+
+  def template(language = "English", assets_path = 'assets', &block)
     <<-HTML.gsub /^\s+/, ""
       <html>
         <head>
-          <title>Keep a Changelog</title>
-          <link rel="stylesheet" href="assets/stylesheets/normalize.css" media="screen" charset="utf-8">
-          <link rel="stylesheet" href="assets/stylesheets/style.css" media="screen" charset="utf-8">
+          <title>Keep a Changelog | #{language}</title>
+          <link rel="stylesheet" href="#{assets_path}/stylesheets/normalize.css" media="screen" charset="utf-8">
+          <link rel="stylesheet" href="#{assets_path}/stylesheets/style.css" media="screen" charset="utf-8">
           <script type="text/javascript" src="//use.typekit.net/tng8liq.js"></script>
           <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         </head>
         <body>
           <article>
+            <nav class="lang">
+              <ol>
+                <li><a href="/index.html">English</a></li>
+                #{language_links}
+              </ol>
+            </nav>
             #{yield}
             <footer class="clearfix">
               <p class="license">This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>.</p>
