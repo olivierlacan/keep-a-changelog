@@ -1,0 +1,63 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: fr
+---
+
+:markdown
+  # Gardez un CHANGELOG
+
+  ## Ne laissez pas vos amis déversent journaux git dans ChangeLogs™
+
+  ### Qu'est-ce qu'un journal de change log?
+  Un journal des modifications est un fichier qui contient un commissaire de
+  l'exposition, la liste par ordre chronologique des changements notables pour
+  chaque version d'un projet.
+
+%pre.changelog= File.read(File.expand_path("../../../CHANGELOG.md", __FILE__))
+
+:markdown
+  ### Quel est le point d'un journal des modifications?
+  Pour rendre plus facile pour les utilisateurs et contributeurs pour voir
+  précisément ce que des changements notables ont été réalisés entre chaque
+  version (ou une version) du projet.
+
+  ### Pourquoi devrais-je m'en soucier?
+  Parce que les outils logiciels sont pour les gens. Si vous ne vous souciez
+  pas, pourquoi êtes-vous contribuerez à l'Open Source? Sûrement, il doit y
+  avoir un noyau (ha!) Des soins, quelque part dans ce beau petit cerveau de la
+  vôtre.
+
+  Je [parlais avec Adam Stacoviak et Jerod Santo sur le
+  changelog][thechangelog] (montage, non?) Podcast sur ​​la raison
+  pour laquelle la maintenance et les contributeurs doivent prendre soin, et
+  les motivations derrière ce projet. Si vous pouvez épargner le temps (01:06),
+  il est une bonne écoute.
+
+  ### Ce qui fait un bon changement log?
+  Je suis content que vous posiez.
+
+  Un bon journal des modifications colle à ces principes:
+
+  - Il est fait pour les êtres humains, pas des machines, de sorte que la
+    lisibilité est crucial.
+  - Facile à créer un lien vers une section (d'où Markdown plus de texte brut).
+  - Une sous-section par version.
+  - Liste presse dans l'ordre chronologique inverse (les plus récents en haut).
+  - Écrivez toutes les dates dans `AAAA-MM-JJ` le format. (Exemple:
+    `2012-06-02` pour `2ème Juin, 2012`.) Il est international,
+    [sensée](http://xkcd.com/1179/), et indépendant de la langue.
+  - Mentionner explicitement si le projet suit [Versioning sémantique][semver].
+  - Chaque version devrait:
+    - Inscrivez sa date de sortie dans le format ci-dessus.
+    - Groupe change de décrire leur impact sur le projet, comme suit:
+      - `Ajouté` de nouvelles fonctionnalités.
+      - `Changé` pour des changements dans les fonctionnalités existantes.
+      - `Déconseillé` pour les fonctions autrefois stables supprimé dans les
+         prochaines versions.
+      - `Suppression` des fonctions obsolètes supprimés dans cette version.
+      - `Fixe` pour toutes les corrections de bugs.
+      - `Sécurité` d'inviter les utilisateurs à passer en cas de vulnérabilités.
+
+  ### Comment puis-je réduire les efforts nécessaires?
+  Toujours avoir un `"Unreleased"` section au sommet pour garder la trace de tous les changements.

@@ -1,0 +1,58 @@
+!!! 5
+%html
+  %head{lang: current_page.data.language}
+    %meta{charset: 'utf-8'}
+    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %meta{name: 'description', content: current_page.data.description}
+
+    -# Open Graph
+
+    %meta{property: 'og:article:publisher', content: publisher_url}
+    %meta{property: 'og:title', content: current_page.data.title}
+    %meta{property: 'og:type', content: 'article'}
+    %meta{property: 'og:url', content: path_to_url(current_page.url)}
+    %meta{property: 'og:description', content: current_page.data.description}
+    = yield_content :og
+
+    -# Icons
+
+    %link{rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico'}
+    %link{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
+
+    %link{rel: 'canonical', href: path_to_url(current_page.url)}
+
+    %title= current_page.data.title
+    = stylesheet_link_tag 'application'
+
+    = javascript_include_tag "//use.typekit.net/tng8liq.js"
+
+    :javascript
+      try{Typekit.load();}catch(e){}
+
+  %body
+    %article
+      = yield
+      %footer.clearfix
+        %p.license
+          This project is
+          #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
+        %p.about
+          #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
+          with trepidation by
+          #{link_to "Olivier Lacan", "http://olivierlacan.com"} from
+          #{link_to "Code School", "http://codeschool.com"}.
+
+  - unless gauges_id.blank?
+    :javascript
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '#{gauges_id}');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
