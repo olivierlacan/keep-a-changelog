@@ -58,6 +58,7 @@ page "/404.html", directory_index: false
 
 configure :build do
   set :gauges_id, "5389808eeddd5b055a00440d"
+  activate :asset_hash
   activate :gzip, {exts: %w[
     .css
     .eot
