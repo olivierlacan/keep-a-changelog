@@ -1,0 +1,106 @@
+<!DOCTYPE html> <html> <head lang="pt-BR"> <meta charset="utf-8"> <meta content="IE=edge" http-equiv="X-UA-Compatible"> <meta content="width=device-width, initial-scale=1.0" name="viewport"> <meta content="Mantenha um CHANGELOG" name="description"> <meta content="https://www.facebook.com/olivier.lacan.5" property="og:article:publisher"> <meta content="Mantenha um CHANGELOG" property="og:title"> <meta content="article" property="og:type"> <meta content="http://keepachangelog.com/pt-BR/" property="og:url"> <meta content="Mantenha um CHANGELOG" property="og:description"> <link href="http://keepachangelog.com/pt-BR/" rel="canonical"> <title>Mantenha um CHANGELOG</title> <link href="/assets/stylesheets/application-eb611a87.css" rel="stylesheet"/> <script src="//use.typekit.net/tng8liq.js"></script> <script>
+  try{Typekit.load();}catch(e){}
+</script> </head> <body> <article> <header role="banner"> <nav class="locales" role="navigation"> <ul> <li><a href="/">engish [en]</a></li> <li><a href="/pt-BR">português brasileiro [pt-BR]</a></li> <li><a href="/ru">pyccкий [ru]</a></li> </ul> </nav> </header> <div class="main" role="main"><h1>Mantenha um CHANGELOG</h1> <h2>Não deixe seus amigos despejar logs de commits em CHANGELOGs™</h2> <h3>O que é um change log?</h3> <p>Um <em>change log</em> é um arquivo que contém uma lista selecionada, ordenada cronologicamente de mudanças significativas para cada versão de um projeto open source.</p> <pre class="changelog"># Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+## [Unreleased]
+
+## [0.2.0] - 2015-10-06
+### Changed
+- Remove exclusionary mentions of "open source" since this project can benefit
+both "open" and "closed" source projects equally.
+
+## [0.1.0] - 2015-10-06
+### Added
+- Answer "Should you ever rewrite a change log?".
+
+### Changed
+- Improve argument against commit logs.
+- Start following [SemVer](http://semver.org) properly.
+
+## [0.0.8] - 2015-02-17
+### Changed
+- Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world
+  writes dates in a strange way.
+
+### Fixed
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
+
+## [0.0.7] - 2015-02-16
+### Added
+- Link, and make it obvious that date format is ISO 8601.
+
+### Changed
+- Clarified the section on "Is there a standard change log format?".
+
+### Fixed
+- Fix Markdown links to tag comparison URL with footnote-style links.
+
+## [0.0.6] - 2014-12-12
+### Added
+- README section on "yanked" releases.
+
+## [0.0.5] - 2014-08-09
+### Added
+- Markdown links to version tags on release headings.
+- Unreleased section to gather unreleased changes and encourage note
+keeping prior to releases.
+
+## [0.0.4] - 2014-08-09
+### Added
+- Better explanation of the difference between the file ("CHANGELOG")
+and its function "the change log".
+
+### Changed
+- Refer to a "change log" instead of a "CHANGELOG" throughout the site
+to differentiate between the file and the purpose of the file — the
+logging of changes.
+
+### Removed
+- Remove empty sections from CHANGELOG, they occupy too much space and
+create too much noise in the file. People will have to assume that the
+missing sections were intentionally left out because they contained no
+notable changes.
+
+## [0.0.3] - 2014-08-09
+### Added
+- "Why should I care?" section mentioning The Changelog podcast.
+
+## [0.0.2] - 2014-07-10
+### Added
+- Explanation of the recommended reverse chronological release ordering.
+
+## 0.0.1 - 2014-05-31
+### Added
+- This CHANGELOG file to hopefully serve as an evolving example of a standardized open source project CHANGELOG.
+- CNAME file to enable GitHub Pages custom domain
+- README now contains answers to common questions about CHANGELOGs
+- Good examples and basic guidelines, including proper date formatting.
+- Counter-examples: "What makes unicorns cry?"
+
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
+[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
+[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
+[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+</pre> <h3>Para que serve um <em>change log</em>?</h3> <p>Para facilitar para os usuários e contribuidores verem precisamente quais mudanças significativas foram realizadas entre cada versão publicada.</p> <h3>Por quê eu deveria me importar?</h3> <p>Porque softwares são feitos para pessoas. Se você não liga, porque está contribuindo a projetos open source? Certamente deve haver um fundo de carinho em algum lugar dessa sua cabeçinha.</p> <p>Eu <a href="http://5by5.tv/changelog/127">conversei com Adam Stacoviak e Jerod Santo no podcast do The Changelog</a> (faz sentido, hein?) sobre o por quê mantenedores e contribuidores open source devem se importar, e as motivações por trás deste projeto. Se você tem o tempo (1:06), é um bom programa.</p> <h3>O que faz um <em>change log</em> ser bom?</h3> <p>Que bom que perguntou.</p> <p>Um bom change log não foge desses princípios:</p> <ul> <li>É feito para seres humanos, não máquinas, então legibilidade é crucial.</li> <li>Ser fácil de referenciar (<em>linkar</em>) qualquer seção (por isso Markdown ao invés de puro texto).</li> <li>Uma sub-seção por versão.</li> <li>Lista as versões publicadas em ordem cronológica decrescente (mais novo em cima).</li> <li>Escreva todas as datas no formato <code>AAAA-MM-DD</code>. (Exemplo: <code>2012-06-02</code> para <code>2 de Junho de 2012</code>.) É internacional, <a href="http://xkcd.com/1179/">sensato</a>, e independente de língua.</li> <li>Explicite se o projeto segue <a href="http://semver.org/">Versionamento Semântico</a>.</li> <li>Cada versão deve: <ul> <li>Listar sua data de publicação no formato acima.</li> <li>Agrupar mudanças descrevendo seus impactos no projeto, como segue:</li> <li><code>Added</code> para novas funcionalidades.</li> <li><code>Changed</code> para mudanças em funcionalidades existentes.</li> <li><code>Deprecated</code> para funcionalidades uma vez estáveis removidas das próximas publicações.</li> <li><code>Removed</code> para funcionalidades removidas desta versão.</li> <li><code>Fixed</code> para qualquer correção de bug.</li> <li><code>Security</code> para convidar usuários a atualizar em caso de vulnerabilidades.</li> </ul></li> </ul> <h3>Como eu posso minimizar o esforço exigido?</h3> <p>Mantenha sempre uma seção <code>Unreleased</code> no topo para manter o controle de quaisquer mudanças.</p> <p>Isso serve a dois propósitos:</p> <ul> <li>As pessoas podem ver quais mudanças elas podem esperar em publicações futuras.</li> <li>No momento da publicação, você tem que somente mudar Não publicado para o número de versão e adicionar um novo cabeçalho <code>Unreleased</code> no topo.</li> </ul> <h3>O que faz os unicórnios chorarem?</h3> <p>Tudo bem...vamos lá.</p> <ul> <li>Despejar logs de commits. Simplesmente não faça isso, você não está ajudando ninguém.</li> <li>Não dar ênfase nas descontinuações. Quando as pessoas atualizam de uma versão para outra, deve ser incrivelmente claro quando algo irá quebrar.</li> <li>Datas em formatos específicos de uma região. Nos Estados Unidos, as pessoas colocam o mês primeiro (&quot;06-02-2012&quot; para 2 de Junho de 2012, o que <em>não</em> faz sentido), enquanto muitos no resto do mundo escrevem em aspecto robótico &quot;2 Junho 2012&quot;, e mesmo assim leem de forma diferente. &quot;2012-06-02&quot; funciona de maneira lógica do maior para o menor, não sobrescreve de maneira ambígua outros formatos, e é um <a href="http://www.iso.org/iso/home/standards/iso8601.htm">padrão ISO</a>. Portanto, é o formato recomendado para <em>change logs</em>.</li> </ul> <p>Tem mais. Ajude me a coletar essas lágrimas de unicórnio <a href="https://github.com/olivierlacan/keep-a-changelog/issues">abrindo uma issue</a> ou um pull request.</p> <h3>Existe um padrão de formato de <em>change log</em>?</h3> <p>Infelizmente, não. Calma. Eu sei que você está indo impetuosamente achar aquele link do guia de estilo de <em>change log</em> GNU, ou o arquivo &quot;guideline&quot; de dois paragráfos GNU NEWS. O estilo GNU é um bom começo mas é ingênuo. Não há nada de errado em ser ingênuo mas quando as pessoas precisam de orientação raramente ajuda. Especialmente quando existem muitas situações excepcionais para lidar.</p> <p>Este projeto <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md">contém o que eu espero se tornar um melhor padrão de arquivo CHANGELOG</a> para todos projetos open source. Pode a comunidade open source aprender com seus erros e não agir como se os dez mandamentos foram escritos a muito tempo atrás e estavam inteiramente certos? Tudo bem. Então por favor dê um olhada e lembre que <a href="https://github.com/olivierlacan/keep-a-changelog/issues">discussões e sugestões de melhorias são bem-vindas</a>!</p> <h3>Qual deve ser o nome do arquivo <em>change log</em>?</h3> <p>Bom, se você não notou no exemplo acima, <code>CHANGELOG.md</code> é a melhor padrão até agora.</p> <p>Alguns outros projetos também utilizam <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>, <code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, etc.</p> <p>É uma bagunça. Todos esses nome só dificultam as pessoas acharem.</p> <h3>Por quê as pessoas não podem simplesmente utilizar <code>git log</code>?</h3> <p>Porque logs de commit são cheios de distrações. Podemos realmente esperar que cada commit do projeto seja significativo e auto-explicativo? Só em sonho.</p> <h3>Podem os <em>change logs</em> ser automaticamente interpretados?</h3> <p>É difícil, por que as pessoas seguem formatos e nomes de arquivos radicalmente diferentes.</p> <p><a href="https://github.com/tech-angels/vandamme/">Vandamme</a> é uma gem criada pelo time <a href="https://gemnasium.com/">Gemnasium</a> que interpreta muitos (mas não todos) change logs de projetos open source.</p> <h3>Por que você alterna entre as grafias &quot;CHANGELOG&quot; e &quot;change log&quot;?</h3> <p>&quot;CHANGELOG&quot; é o nome do arquivo em si. É um pouco chamativo mas é uma convenção histórica seguida por muitos projetos open source. Outros exemplos similares de arquivo incluem <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md"><code>README</code></a>, <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE"><code>LICENSE</code></a>, e <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p> <p>O nome em letras maiúsculas (o que em sistemas operacionais antigos faziam estes arquivos serem mantidos no topo) é utilizado para chamar atenção a eles. Já que eles são importante metadados sobre o projeto, eles podem ser úteis a qualquer um pretendendo usar ou contribuir com ele, assim como os <a href="http://shields.io/">as badges de projeto open source</a>.</p> <p>Quando eu me refiro a &quot;<em>change log</em>&quot;, eu estou falando sobre a função deste arquivo: listar mudanças.</p> <h3>E sobre as publicações removidas?</h3> <p>Publicações removidas são versões que tiveram que ser removidas devido a um sério bug ou problema de segurança. Com frequência essas versões sequer aparecem em <em>change logs</em>. Deveriam. É assim que você deve exibi-las:</p> <p><code>## 0.0.5 - 2014-12-13 [YANKED]</code></p> <p>A tag <code>[YANKED]</code> é chamativa por uma razão. É importante que as pessoas a notem. E já que é cercada por colchetes é mais fácil detectá-la programaticamente.</p> <h3>Como eu posso contribuir?</h3> <p>Este documento não é a verdade; é minha cuidadosa opinião, junto com as informações e exemplos que reuni. Embora eu tenha providenciado um <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md">CHANGELOG</a> no <a href="https://github.com/olivierlacan/keep-a-changelog">repositório no GitHub</a>, eu não criei de propósito uma lista clara de regras a serem seguidas (como o <a href="http://semver.org/">SemVer.org</a> faz, por exemplo).</p> <p>Fiz isso porque eu gostaria que nossa comunidade chegasse a um consenso. Eu acredito que a discussão é tão importante quanto o resultado final.</p> <p>Então por favor <a href="https://github.com/olivierlacan/keep-a-changelog">entre em campo</a>.</p> </div> <footer class="clearfix" role="banner"> <p class="license"> This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>. </p> <p class="about"> <a href="https://github.com/olivierlacan/keep-a-changelog/">Typed</a> with trepidation by <a href="http://olivierlacan.com/">Olivier Lacan</a> from <a href="https://www.codeschool.com/">Code School</a>. </p> </footer> </article> </body> <script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script> </html>
