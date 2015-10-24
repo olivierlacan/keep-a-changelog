@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- RU translation from @aishek.
+- pt-BR translation from @tallesl.
 
 ## [0.2.0] - 2015-10-06
 ### Changed
