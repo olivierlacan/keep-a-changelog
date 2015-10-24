@@ -29,8 +29,15 @@
 
   %body
     %article
-      = yield
-      %footer.clearfix
+      %header{role: "banner"}
+        %nav.locales{role: "navigation"}
+          %ul
+            %li= link_to 'engish [en]', '/'
+            %li= link_to 'pyccкий [ru]', '/ru'
+
+      .main{role: "main"}= yield
+
+      %footer.clearfix{role: "banner"}
         %p.license
           This project is
           #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
