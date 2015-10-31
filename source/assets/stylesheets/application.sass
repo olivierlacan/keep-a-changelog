@@ -1,5 +1,8 @@
+$base-font-family: "Carrois Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif
+$source-code-font-family: "Source Code Pro", monospace
+
 html
-  font: 14px/1.4 "jaf-bernino-sans", "Helvetica Neue", Helvetica, Arial, sans-serif
+  font: 14px/1.4 $base-font-family
   color: #333
 
 a
@@ -14,7 +17,7 @@ h1
   color: #C647BF
   font-size: 3.8em
   font-weight: bold
-  font-family: "source-code-pro", monospace
+  font-family: $source-code-font-family
   margin-bottom: 0
   line-height: 1
 
@@ -27,7 +30,7 @@ h1, h2
 
 h3
   font-size: 1.3em
-  font-family: "source-code-pro", monospace
+  font-family: $source-code-font-family
   margin-bottom: 0
   position: relative
   padding-left: .1em
@@ -112,3 +115,6 @@ footer
   display: inline
   list-style-type: none
   padding-right: 20px
+
+pre
+  font-family: $source-code-font-family
