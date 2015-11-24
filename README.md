@@ -31,7 +31,7 @@ A good change log sticks to these principles:
 - Easy to link to any section (hence Markdown over plain text).
 - One sub-section per version.
 - List releases in reverse-chronological order (newest on top).
-- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](http://xkcd.com/1179/), and language-independent.
+- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](https://xkcd.com/1179/), and language-independent.
 - Explicitly mention whether the project follows [Semantic Versioning][semver].
 - Each version should:
   - List its release date in the above format.
@@ -160,7 +160,7 @@ discussion is as important as the end result.
 So please [**pitch in**][gh].
 
 [CHANGELOG]: ./CHANGELOG.md
-[gemnasium]: http://gemnasium.com
+[gemnasium]: https://gemnasium.com
 [gh]: https://github.com/olivierlacan/keep-a-changelog
 [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
 [semver]: http://semver.org
