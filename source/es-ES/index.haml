@@ -10,21 +10,25 @@ language: es-ES
   ## No dejes que tus amigos copien y peguen git logs en los CHANGELOGs™
 
   ### Qué es un registro de cambios (change log)?
-Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
+
+  Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
 
 %pre.changelog= File.read(File.expand_path("../../../CHANGELOG.md", __FILE__))
 
 :markdown
   ### Cuál es el propósito del change log?
+
   Para que les sea más fácil a los usuarios y contribuyentes, ver exactamente los cambios notables que se han hecho entre cada versión (o versiones) del proyecto.
 
   ### Por qué me debería importar?
+
   Debido a que las herramientas de software son para la gente. Si no te importa, ¿por qué contribuyes al código abierto? Sin duda, tiene que haber un "kernel" (ha!) de importancia en ese pequeño y encantador cerebro tuyo.
 
   [En el podcast "The Changelog" hablé con Adam Stacoviak y Jerod Santo][thechangelog]
   (muy apropiado, ¿no?) acerca de por qué nos debería importar y sobre las motivaciones que es están detrás del proyecto. Si tienes tiempo (1:06), escúchalo, vale la pena
 
   ### Cómo podemos hacer un buen change log?
+
   Me alegro de que te lo hayas preguntado.
 
   Un buen change log se guía por los siguientes principios:
@@ -46,6 +50,7 @@ Un registro de cambios o “change log” de ahora en adelante, es un archivo qu
       - `Security` para invitar a los usuarios a actualizar, en el caso de que haya vulnerabilidades.
 
   ### Cómo puedo minimizar el esfuerzo requerido?
+
   Siempre mantén una sección con el nombre `"Unreleased"` para hacer un seguimiento sobre los cambios
 
   Esto nos puede servir para dos cosas:
@@ -54,6 +59,7 @@ Un registro de cambios o “change log” de ahora en adelante, es un archivo qu
   - Una vez queramos hacer una release, sólo hay que cambiar `Unreleased` por el número de versión y añadir una nueva cabecera `Unreleased` en la parte superior.
 
   ### Qué es lo que hace llorar a los unicornios?
+
   Muy bien... vamos allá.
 
   - **Hacer un copia y pega de un diff o de los logs de los commits.** Simplemente no lo hagas, no estas ayudando a nadie.
@@ -63,13 +69,16 @@ Un registro de cambios o “change log” de ahora en adelante, es un archivo qu
   Pero espera! hay más ayúdame a coleccionar esas lágrimas de unicornio [abriendo una incidencia][issues] o haciendo un pull request.
 
   ### Hay algún formato estándar de formato para los change log?
+  
   Tristemente, no. Pero calma. Sé que estás corriendo furiosamente intentando encontrar ese link al libro de estilo de registro de cambios de GNU, or the two-paragraph GNU NEWS file
   "guideline". La guía de estilo GNU es un buen comienzo, pero es tristemente cándida. No hay nada malo en ser cándida, pero cuando la gente necesita orientación es rara la vez, que resulta ser muy útil. Sobre todo, cuando hay muchas situaciones y casos muy específicos.
 
   Este proyecto [contiene lo que espero se convierta en un mejor patrón de CHANGELOGs][CHANGELOG].
-No creo que la situación actual sea lo suficientemente buena, i creo que como comunidad que somos podemos llegar a mejores convenciones si tratamos de extraer buenas prácticas de proyectos de software reales. Por favor echa un pequeño vistazo y recuerda que las [sugerencias y discusiones para mejorar son bienvenidas][issues]!
+  
+  No creo que la situación actual sea lo suficientemente buena, i creo que como comunidad que somos podemos llegar a mejores convenciones si tratamos de extraer buenas prácticas de proyectos de software reales. Por favor echa un pequeño vistazo y recuerda que las [sugerencias y discusiones para mejorar son bienvenidas][issues]!
 
   ### Cómo se debería llamar el change log?
+
   Bueno, si te fijas en en ejemplo anterior, `CHANGELOG.md` es la convención más usada
 
   Otros proyectos también usan los siguientes nombres `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
@@ -78,22 +87,26 @@ No creo que la situación actual sea lo suficientemente buena, i creo que como c
   Es un desastre. Todos estos nombres sólo hacen más difícil la búsqueda del fichero.
 
   ### Por qué la gente no usa simplemente un `git log`?
+
   Debido a que están llenos de ruido - por naturaleza. No se podría hacer un change log adecuado ni siquiera en un proyecto hipotético dirigido por seres humanos perfectos que nunca se equivocan y que nunca se olvidan meter ningún archivo en un commit... etc. El propósito de un commit es el de documentar un cambio atómico en el cual el software evoluciona desde un estado hacia otro. El propósito del change log es el de documentar las diferencias notables entre estos estados.
   
   ### Se pueden parsear automáticamente los change logs?
+
   Es difícil, ya que la gente sigue formatos y nombres de archivo muy distintos.
 
   [Vandamme][vandamme] es un Ruby gem creado por el equipo [Gemnasium][gemnasium], que lo que hace es parsear algunos (no todos) los change logs de varios proyectos open source.
 
   ### Por que estás continuamente alternando los nombres de "CHANGELOG" a "change log"?
+
   "CHANGELOG" es el nombre del archivo en sí. Es un poco intrusivo pero es una convención histórica seguida por muchos proyectos de código abierto. Otro ejemplo de este tipo de nombres en archivos son [`README`][README], [`LICENSE`][LICENSE],
   y [`CONTRIBUTING`][CONTRIBUTING].
 
- Los nombres en mayúsculas (que en algunos sistemas operativos antiguos hacían que estos ficheros aparecieran los primeros) se utilizan para llamar la atención sobre ellos. Dado que son importantes metadatos sobre el proyecto, que podría ser útil a cualquier persona con la intención de utilizar o contribuir al mismo.
+  Los nombres en mayúsculas (que en algunos sistemas operativos antiguos hacían que estos ficheros aparecieran los primeros) se utilizan para llamar la atención sobre ellos. Dado que son importantes metadatos sobre el proyecto, que podría ser útil a cualquier persona con la intención de utilizar o contribuir al mismo.
 
   Cuando me refiero a "change log", estoy hablando de la función del fichero: registrar los cambios.
 
   ### Qué son las yanked releases?
+
   Las yanked releases son versiones que tuvieron que ser retiradas a causa de un grave error o problema de seguridad. A menudo, estas versiones ni siquiera aparecen en los change logs, y tendrían que aparecer. Así es como se muestran:
   
   `## 0.0.5 - 2014-12-13 [YANKED]`
@@ -101,9 +114,11 @@ No creo que la situación actual sea lo suficientemente buena, i creo que como c
   La sección `[YANKED]` va entre corchetes por una razón, es importante que destaque, y el echo de estar rodeado por corchetes lo hace más fácil de localizar programáticamente.
 
   ### Deberías volver a escribir un change log?
+
   Por supuesto. Siempre hay buenas razones para mejorar el change log. A veces abro "pull requests" para añadir registros faltantes en el change log de proyectos open source.
 
   ### Como puedo contribuir?
+
   Este documento no es la **verdad absoluta**; es mi cuidadosa opinión, junto con información y ejemplos que recogí.
 
   Esto es porque quiero que la comunidad llegue a un conceso. Creo que la discusión es tan importante como el resultado final.
