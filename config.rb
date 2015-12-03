@@ -73,7 +73,6 @@ configure :build do
     .woff
   ]}
   set :haml, {ugly: true, attr_wrapper: '"'}
-  activate :imageoptim
   activate :minify_css
   activate :minify_html do |html|
     html.remove_quotes = false
