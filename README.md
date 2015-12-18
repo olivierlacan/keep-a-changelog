@@ -1,134 +1,169 @@
-# 如何维护更新日志
+# Keep a CHANGELOG
 
-## 把git日志往更新日志里塞是一个错误的做饭
+## Don’t let your friends dump git logs into CHANGELOGs™
 
-### 更新日志是什么？
-更新日志（Change Log）是一个由人工编辑，以时间为倒叙的列表。
-这个列表记录所有版本的重大变动。
+### What’s a change log?
+A change log is a file which contains a curated, chronologically ordered
+list of notable changes for each version of a project.
 
-### 为何要提供更新日志？
-为了让用户和开发人员更好知道每一个版本有哪些区别。
+<a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
-### 为何我要在乎呢？
-因为归根结底软件是为人提供的。既然你不关心人，哪么为何写软件呢？
-多少你还是要关心你的受众。
+### What’s the point of a change log?
+To make it easier for users and contributors to see precisely what
+notable changes have been made between each release (or version) of the project.
 
-本文档原作者和另外两个人的一个[播客][thechangelog]向大家介绍了，
-为何代码的管理者和开发者应该在乎更新日志。如果你有一小时时间和很好的英文听力本领，
-不放听听。
+### Why should I care?
+Because software tools are for people. If you don’t care, why are
+you contributing to open source? Surely, there must be a kernel (ha!)
+of care somewhere in that lovely little brain of yours.
 
-### 怎么定义好的更新日志
-好问题！
+I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
+(fitting, right?) podcast about why maintainers and
+contributors should care, and the motivations behind this project.
+If you can spare the time (1:06), it’s a good listen.
 
-一个好的更新日志，一定满足：
+### What makes a good change log?
+I’m glad you asked.
 
-- 给人而不是机器写的。记住，要说人话。
-- 快速跳转到任意段。所以采用markdown格式
-- 一个版本对应一个章节。
-- 最新的版本在上，最老的在下面。
-- 所有日期采用'YYYY-MM-DD'这种规范。（例如北京奥运会的2008年8月8日是2008-08-08）这个是国际通用，任何语言
-都能理解的，并且还被[xkcd](http://xkcd.com/1179/)推荐呢！
-- 标出来是否遵守[语义化版本格式][semver]
-- 每一个软件的版本必须：
-- 标明日期（要用上面说过的规范）
-- 标明分类（采用英文）。规范如下：
-  - 'Added' 添加的新功能
-  - 'Changed' 功能变更
-  - 'Deprecated' 不建议使用，未来会删掉
-  - 'Removed' 之前不建议使用的功能，这次真的删掉了
-  - 'Fixed' 改的bug
-  - 'Security' 改的有关安全相关bug
+A good change log sticks to these principles:
 
+- It’s made for humans, not machines, so legibility is crucial.
+- Easy to link to any section (hence Markdown over plain text).
+- One sub-section per version.
+- List releases in reverse-chronological order (newest on top).
+- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](https://xkcd.com/1179/), and language-independent.
+- Explicitly mention whether the project follows [Semantic Versioning][semver].
+- Each version should:
+  - List its release date in the above format.
+  - Group changes to describe their impact on the project, as follows:
+    - `Added` for new features.
+    - `Changed` for changes in existing functionality.
+    - `Deprecated` for once-stable features removed in upcoming releases.
+    - `Removed` for deprecated features removed in this release.
+    - `Fixed` for any bug fixes.
+    - `Security` to invite users to upgrade in case of vulnerabilities.
 
-### 怎么尽可能减少耗费的精力？
-永远在文档最上方提供一个'Unreleased' 未发布区域，来记录当前的变化。
-这佯作有两大意义。
+### How can I minimize the effort required?
+Always have an `"Unreleased"` section at the top for keeping track of any
+changes.
 
-- 大家可以看到接下来会有什么变化
-- 在发布时，只要把'Unreleased'改为当前版本号，然后再添加一个新的'Unreleased'就行了
+This serves two purposes:
 
+- People can see what changes they might expect in upcoming releases
+- At release time, you just have to change `"Unreleased"` to the version number
+  and add a new `"Unreleased"` header at the top.
 
-### 吐槽环节到了
-请你一定要注意：
+### What makes unicorns cry?
+Alright…let’s get into it.
 
-- **把git日志扔到更新日志里。**看似有用，然并卵。
-- **不写'deprecations'就删功能。**不带这样坑队友的。
-- **采用各种不靠谱日期格式** 2012年12月12日，也就中国人能看懂了。
+- **Dumping a diff of commit logs.** Just don’t do that, you’re helping nobody.
+- **Not emphasizing deprecations.** When people upgrade from one version to
+  another, it should be painfully clear when something will break.
+- **Dates in region-specific formats.** In the U.S., people put the month first
+  ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
+  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce
+  it differently. "2012-06-02" works logically from largest to smallest, doesn't
+  overlap in ambiguous ways with other date formats, and is an
+  [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
+  is the recommended date format for change logs.
 
-如果你还有要吐槽的，欢迎留[issue][issues]或者直接PR
+There’s more. Help me collect those unicorn tears by
+[opening an issue][issues]
+or a pull request.
 
+### Is there a standard change log format?
+Sadly, no. Calm down. I know you're furiously rushing to find that link
+to the GNU change log style guide, or the two-paragraph GNU NEWS file
+"guideline". The GNU style guide is a nice start but it is sadly naive.
+There's nothing wrong with being naive but when people need
+guidance it's rarely very helpful. Especially when there are many
+situations and edge cases to deal with.
 
-### 世界上不是有标准的更新日志格式吗？
-貌似GNU或者GNU NEWS还是提过些规范的，事实是它们太过简陋了。
-开发有那么多中情况，采用那样的规范，确实是不太合适的。
+This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG].
+I don't think the status quo is good enough, and I think that as a community we
+can come up with better conventions if we try to extract good practices from
+real software projects. Please take a look around and remember that
+[discussions and suggestions for improvements are welcome][issues]!
 
-这个项目提供的[规范][CHANGELOG]是作者本人希望能够成为世界规范的。
-作者不认为当前的标准足够好，而且作为一个社区，我们是有能力提供更棒的规范。
-如果你对这个规范有不满的地方，不要忘记还可以[吐槽][issues]呢。
+### What should the change log file be named?
+Well, if you can’t tell from the example above, `CHANGELOG.md` is the
+best convention so far.
 
-### 更新日志文件名应该叫什么？
+Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
+`NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
 
-我们的案例中给的名字就是最好的规范：`CHANGELOG.md`，注意大小写。
+It’s a mess. All these names only makes it harder for people to find it.
 
-像`HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
-`NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`这么
-多文件名就太不统一了。
+### Why can’t people just use a `git log` diff?
+Because log diffs are full of noise — by nature. They could not make a suitable
+change log even in a hypothetical project run by perfect humans who never make
+typos, never forget to commit new files, never miss any part of a refactoring.
+The purpose of a commit is to document one atomic step in the process by which
+the code evolves from one state to another. The purpose of a change log is to
+document the noteworthy differences between these states.
 
-只会让大家更难找到。
+As is the difference between good comments and the code itself,
+so is the difference between a change log and the commit log:
+one describes the *why*, the other the how.
 
-### 为何不直接记录`git log`?
+### Can change logs be automatically parsed?
+It’s difficult, because people follow wildly different formats and file names.
 
-因为git日志一定是乱糟糟的。哪怕一个最理想的由完美的程序员开发的提交的，哪怕一个
-从不忘记每次提交全部文件，不写错别字，不忘记重构每一个部分——也无法保证git日志完美无瑕。
-况且git日志的核心在于记录代码的演化，而更新日志则是记录最重要的变更。
+[Vandamme][vandamme] is a Ruby gem
+created by the [Gemnasium][gemnasium] team and which parses
+many (but not all) open source project change logs.
 
-就像注释之于代码，更新日志之于git日志。前者解释*为什么*，而后者说明*发生了什么*。
+### Why do you alternate between spelling it "CHANGELOG" and "change log"?
+"CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
+historical convention followed by many open source projects. Other
+examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
+and [`CONTRIBUTING`](CONTRIBUTING.md).
 
+The uppercase naming (which in old operating systems made these files stick
+to the top) is used to draw attention to them. Since they're important
+metadata about the project, they could be useful to anyone intending to use
+or contribute to it, much like [open source project badges][shields].
 
-### 更新日志能机器识别吗？
-非常困难，因为有各种不同的文件格式和其他规范。
+When I refer to a "change log", I'm talking about the function of this
+file: to log changes.
 
-[Vandamme][vandamme]是一个Ruby程序（由[Gemnasium][gemnasium]团队制作），可以解析
-好多种（但绝对不是全部）开源库的更新日志。
-
-### 到底是CHANGELOG还是更新日志
-
-CHANGELOG是文件名，更新日志是常用说法。CHANGELOG采用大写是有历史根源的。就像很多类似的文件
-[`README`][README]， [`LICENSE`][LICENSE]，还有[`CONTRIBUTING`][CONTRIBUTING]。
-
-采用大写可以更加显著，毕竟这是项目很重要的元信息。就像[开源徽章][shields]。
-
-### 那些后来撤下的版本怎么办？
-因为各种安全/重大bug原因被撤下的版本被标记'YANKED'。这些版本一般不出现在更新日志里，但作者建议他们出现。
-显示方式应该是：
+### What about yanked releases?
+Yanked releases are versions that had to be pulled because of a serious
+bug or security issue. Often these versions don't even appear in change
+logs. They should. This is how you should display them:
 
 `## 0.0.5 - 2014-12-13 [YANKED]`
 
-`[YANKED]`采用大写更加显著，因为这个信息很重要。而采用方括号则容易被程序解析。
+The `[YANKED]` tag is loud for a reason. It's important for people to
+notice it. Since it's surrounded by brackets it's also easier to parse
+programmatically.
 
-### 是否可以重写更新日志
-当然。哪怕已经上线了，也可以重新更新更新日志。有许多开源项目更新日志不够新，所以作者就会帮忙更新。
+### Should you ever rewrite a change log?
+Sure. There are always good reasons to improve a change log. I regularly open
+pull requests to add missing releases to open source projects with unmaintained
+change logs.
 
-另外，很有可能你忘记记录一个重大功能更新。所以这时候应该去重写更新日志。
+It's also possible you may discover that you forgot to address a breaking change
+in the notes for a version. It's obviously important for you to update your
+change log in this case.
 
-### 如何贡献？
-本文档并不是**真理**。这只是原作者的个人建议，并且包括许多收集的例子。
-哪怕[本开源库][gh]提供一个[更新日志案例][CHANGELOG]，我刻意没有提供一个
-过于苛刻的规则列表（不像[语义化版本格式][semver]）。
+### How can I contribute?
+This document is not the **truth**; it’s my carefully considered
+opinion, along with information and examples I gathered.
+Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
+I have purposefully not created a proper *release* or clear list of rules
+to follow (as [SemVer.org][semver] does, for instance).
 
-这是因为我希望通过社区达到统一观点，我认为中间讨论的过程与结果一样重要。
+This is because I want our community to reach a consensus. I believe the
+discussion is as important as the end result.
 
-所以[欢迎贡献][gh]。
+So please [**pitch in**][gh].
 
-
-[CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
-[CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
-[LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
-[README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
-[gemnasium]: https://gemnasium.com/
+[CHANGELOG]: ./CHANGELOG.md
+[gemnasium]: https://gemnasium.com
 [gh]: https://github.com/olivierlacan/keep-a-changelog
 [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-[semver]: http://semver.org/lang/zh-CN/
-[shields]: http://shields.io/
+[semver]: http://semver.org
+[shields]: http://shields.io
 [thechangelog]: http://5by5.tv/changelog/127
 [vandamme]: https://github.com/tech-angels/vandamme/
