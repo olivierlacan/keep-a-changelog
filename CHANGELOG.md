@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+<<<<<<< HEAD
 
 ## [0.3.0] - 2015-12-03
 ### Added
@@ -22,6 +23,10 @@ both "open" and "closed" source projects equally.
 ### Changed
 - Improve argument against commit logs.
 - Start following [SemVer](http://semver.org) properly.
+=======
+### Changed
+- Improve argument against commit logs.
+>>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 
 ## [0.0.8] - 2015-02-17
 ### Changed
@@ -85,10 +90,14 @@ notable changes.
 - Good examples and basic guidelines, including proper date formatting.
 - Counter-examples: "What makes unicorns cry?"
 
+<<<<<<< HEAD
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...HEAD
 [0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
+=======
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...HEAD
+>>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 [0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
