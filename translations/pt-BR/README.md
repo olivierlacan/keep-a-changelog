@@ -4,11 +4,7 @@
 
 ### What’s a change log?
 A change log is a file which contains a curated, chronologically ordered
-<<<<<<< HEAD
-list of notable changes for each version of a project.
-=======
 list of notable changes for each version of an open source project.
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 
 <a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
@@ -22,11 +18,7 @@ you contributing to open source? Surely, there must be a kernel (ha!)
 of care somewhere in that lovely little brain of yours.
 
 I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
-<<<<<<< HEAD
-(fitting, right?) podcast about why maintainers and
-=======
 (fitting, right?) podcast about why open source maintainers and
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.
 
@@ -39,11 +31,7 @@ A good change log sticks to these principles:
 - Easy to link to any section (hence Markdown over plain text).
 - One sub-section per version.
 - List releases in reverse-chronological order (newest on top).
-<<<<<<< HEAD
-- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](https://xkcd.com/1179/), and language-independent.
-=======
 - Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](http://xkcd.com/1179/), and language-independent.
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 - Explicitly mention whether the project follows [Semantic Versioning][semver].
 - Each version should:
   - List its release date in the above format.
@@ -73,13 +61,8 @@ Alright…let’s get into it.
   another, it should be painfully clear when something will break.
 - **Dates in region-specific formats.** In the U.S., people put the month first
   ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
-<<<<<<< HEAD
   in the rest of the world write a robotic-looking "2 June 2012", yet pronounce
   it differently. "2012-06-02" works logically from largest to smallest, doesn't
-=======
-  in the rest of the world write a robotic-looking "2 June 2012", yet pronounce 
-  it differently. "2012-06-02" works logically from largest to smallest, doesn't 
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
   overlap in ambiguous ways with other date formats, and is an
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
   is the recommended date format for change logs.
@@ -91,28 +74,16 @@ or a pull request.
 ### Is there a standard change log format?
 Sadly, no. Calm down. I know you're furiously rushing to find that link
 to the GNU change log style guide, or the two-paragraph GNU NEWS file
-<<<<<<< HEAD
-"guideline". The GNU style guide is a nice start but it is sadly naive.
-=======
 "guideline". The GNU style guide is a nice start but it is naive.
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 There's nothing wrong with being naive but when people need
 guidance it's rarely very helpful. Especially when there are many
 situations and edge cases to deal with.
 
-<<<<<<< HEAD
-This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG].
-I don't think the status quo is good enough, and I think that as a community we
-can come up with better conventions if we try to extract good practices from
-real software projects. Please take a look around and remember that
-[discussions and suggestions for improvements are welcome][issues]!
-=======
 This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG]
 for all open source projects. Can the open source community learn from
 its mistake and not act as if the ten commandments were written long ago
 and got everything right? Alright. So please take a look around and
 remember that [discussions and suggestions for improvements are welcome][issues]!
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 
 ### What should the change log file be named?
 Well, if you can’t tell from the example above, `CHANGELOG.md` is the
@@ -167,18 +138,6 @@ The `[YANKED]` tag is loud for a reason. It's important for people to
 notice it. Since it's surrounded by brackets it's also easier to parse
 programmatically.
 
-<<<<<<< HEAD
-### Should you ever rewrite a change log?
-Sure. There are always good reasons to improve a change log. I regularly open
-pull requests to add missing releases to open source projects with unmaintained
-change logs.
-
-It's also possible you may discover that you forgot to address a breaking change
-in the notes for a version. It's obviously important for you to update your
-change log in this case.
-
-=======
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered
 opinion, along with information and examples I gathered.
@@ -192,11 +151,7 @@ discussion is as important as the end result.
 So please [**pitch in**][gh].
 
 [CHANGELOG]: ./CHANGELOG.md
-<<<<<<< HEAD
-[gemnasium]: https://gemnasium.com
-=======
 [gemnasium]: http://gemnasium.com
->>>>>>> 4984e2b91df7cdb0786b8f3d257d4219afb0e70b
 [gh]: https://github.com/olivierlacan/keep-a-changelog
 [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
 [semver]: http://semver.org
