@@ -4,7 +4,7 @@
 
 # ----- Site ----- #
 
-activate :i18n, langs: [:en, 'es-ES', 'pt-BR', :ru], :mount_at_root => :en
+activate :i18n, langs: [:en, 'es-ES', 'pt-BR', :ru, 'zh-CN', 'zh-TW'], :mount_at_root => :en
 set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
 set :site_url, 'http://keepachangelog.com'
