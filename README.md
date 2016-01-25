@@ -2,13 +2,13 @@
 
 ## Don’t let your friends dump git logs into CHANGELOGs™
 
-### What’s a change log?
-A change log is a file which contains a curated, chronologically ordered
+### What’s a changelog?
+A changelog is a file which contains a curated, chronologically ordered
 list of notable changes for each version of a project.
 
 <a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
-### What’s the point of a change log?
+### What’s the point of a changelog?
 To make it easier for users and contributors to see precisely what
 notable changes have been made between each release (or version) of the project.
 
@@ -22,10 +22,10 @@ I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
 contributors should care, and the motivations behind this project.
 If you can spare the time (1:06), it’s a good listen.
 
-### What makes a good change log?
+### What makes a good changelog?
 I’m glad you asked.
 
-A good change log sticks to these principles:
+A good changelog sticks to these principles:
 
 - It’s made for humans, not machines, so legibility is crucial.
 - Easy to link to any section (hence Markdown over plain text).
@@ -65,15 +65,15 @@ Alright…let’s get into it.
   it differently. "2012-06-02" works logically from largest to smallest, doesn't
   overlap in ambiguous ways with other date formats, and is an
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
-  is the recommended date format for change logs.
+  is the recommended date format for changelogs.
 
 There’s more. Help me collect those unicorn tears by
 [opening an issue][issues]
 or a pull request.
 
-### Is there a standard change log format?
+### Is there a standard changelog format?
 Sadly, no. Calm down. I know you're furiously rushing to find that link
-to the GNU change log style guide, or the two-paragraph GNU NEWS file
+to the GNU changelog style guide, or the two-paragraph GNU NEWS file
 "guideline". The GNU style guide is a nice start but it is sadly naive.
 There's nothing wrong with being naive but when people need
 guidance it's rarely very helpful. Especially when there are many
@@ -85,7 +85,7 @@ can come up with better conventions if we try to extract good practices from
 real software projects. Please take a look around and remember that
 [discussions and suggestions for improvements are welcome][issues]!
 
-### What should the change log file be named?
+### What should the changelog file be named?
 Well, if you can’t tell from the example above, `CHANGELOG.md` is the
 best convention so far.
 
@@ -96,24 +96,24 @@ It’s a mess. All these names only makes it harder for people to find it.
 
 ### Why can’t people just use a `git log` diff?
 Because log diffs are full of noise — by nature. They could not make a suitable
-change log even in a hypothetical project run by perfect humans who never make
+changelog even in a hypothetical project run by perfect humans who never make
 typos, never forget to commit new files, never miss any part of a refactoring.
 The purpose of a commit is to document one atomic step in the process by which
-the code evolves from one state to another. The purpose of a change log is to
+the code evolves from one state to another. The purpose of a changelog is to
 document the noteworthy differences between these states.
 
 As is the difference between good comments and the code itself,
-so is the difference between a change log and the commit log:
+so is the difference between a changelog and the commit log:
 one describes the *why*, the other the how.
 
-### Can change logs be automatically parsed?
+### Can changelogs be automatically parsed?
 It’s difficult, because people follow wildly different formats and file names.
 
 [Vandamme][vandamme] is a Ruby gem
 created by the [Gemnasium][gemnasium] team and which parses
-many (but not all) open source project change logs.
+many (but not all) open source project changelogs.
 
-### Why do you alternate between spelling it "CHANGELOG" and "change log"?
+### Why do you alternate between spelling it "CHANGELOG" and "changelog"?
 "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
 historical convention followed by many open source projects. Other
 examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
@@ -124,7 +124,7 @@ to the top) is used to draw attention to them. Since they're important
 metadata about the project, they could be useful to anyone intending to use
 or contribute to it, much like [open source project badges][shields].
 
-When I refer to a "change log", I'm talking about the function of this
+When I refer to a "changelog", I'm talking about the function of this
 file: to log changes.
 
 ### What about yanked releases?
@@ -138,14 +138,14 @@ The `[YANKED]` tag is loud for a reason. It's important for people to
 notice it. Since it's surrounded by brackets it's also easier to parse
 programmatically.
 
-### Should you ever rewrite a change log?
-Sure. There are always good reasons to improve a change log. I regularly open
+### Should you ever rewrite a changelog?
+Sure. There are always good reasons to improve a changelog. I regularly open
 pull requests to add missing releases to open source projects with unmaintained
-change logs.
+changelogs.
 
 It's also possible you may discover that you forgot to address a breaking change
 in the notes for a version. It's obviously important for you to update your
-change log in this case.
+changelog in this case.
 
 ### How can I contribute?
 This document is not the **truth**; it’s my carefully considered
