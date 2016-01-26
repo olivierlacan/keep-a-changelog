@@ -17,8 +17,8 @@ language: de
 
 :markdown
   ### Was ist der Zweck eines Changelogs?
-  Es für Benutzer und Entwickler einfacher zu machen, exakt zu sehen,
-  welche relevanten Änderungen zwischen Releases (oder Versionen) des Projekts gemacht wurden.
+  Es für Benutzer und Entwickler einfacher zu machen, die relevanten Änderungen, welche 
+  zwischen Releases (oder Versionen) des Projekts gemacht wurden, zu sehen.
 
   ### Warum sollte ich mich darum kümmern?
   Weil Software-Werkzeuge für Menschen gemacht sind. Wenn du dich nicht darum kümmerst, weshalb
@@ -35,10 +35,10 @@ language: de
   Ein gutes Changelog hält sich an die folgenden Prinzipien:
 
   - Es ist für Menschen, nicht Maschinen, gemacht, deshalb ist Lesbarkeit entscheidend.
-  - Einfach, jeden Bereich zu verlinken (also besser Markdown als einfacher Text).
+  - Es ist einfach, jeden Bereich zu verlinken (also besser Markdown als einfacher Text).
   - Ein Unterkapitel pro Version.
   - Liste die Releases in umgekehrt chronologischer Reihenfolge auf (neuestes zuoberst).
-  - Schreib alle Daten im `JJJJ-MM-TT` format. (Beispiel: `2012-06-02` für den `2. Juni 2012`.) Es ist international, [vernünftig](http://xkcd.com/1179/), und sprachunabhängig.
+  - Schreib alle Daten im Format `JJJJ-MM-TT`. (Beispiel: `2012-06-02` für den `2. Juni 2012`.) Es ist international, [vernünftig](http://xkcd.com/1179/), und sprachunabhängig.
   - Erwähne explizit, ob das Projekt nach [Semantic Versioning][semver] geführt wird.
   - Jede Version sollte:
     - Das Release-Datum im oben genannten Format auflisten.
@@ -51,43 +51,43 @@ language: de
       - `Security` um Benutzer im Fall von Sicherheitsrisiken zu einer Aktualisierung aufzufordern.
 
   ### Wie kann ich den Aufwand so klein wie möglich halten?
-  Hab immer eine `”Unreleased”`-Abschnitt ganz oben, um Änderungen zu verfolgen.
+  Hab immer einen `"Unreleased"`-Abschnitt zuoberst, um Änderungen im Auge zu behalten.
 
-  Dies hat zwei Ziele:
+  Dies verfolgt zwei Ziele:
 
-  - Man kann sehen, was für Änderungen in den nächsten Releases zu erwarten sind
-  - Wenn es Zeit für den Release ist, kannst du einfach `”Unreleased”` auf die
-    Versionsnummer ändern und einen neuen `”Unreleased”`-Titel oben einfügen.
+  - Man kann sehen, welche Änderungen in den nächsten Releases zu erwarten sind
+  - Wenn es Zeit für den Release ist, kannst du einfach `"Unreleased"` auf die
+    Versionsnummer ändern und einen neuen `"Unreleased"`-Titel oben einfügen.
 
   ### Was bringt Einhörner zum weinen?
   Also… Schauen wir uns das an.
 
-  - **Einen diff von Commit-Logs hineinwerfen.** Mach das nicht, das hilft niemandem.
+  - **Einen Diff von Commit-Logs ausgeben.** Mach das nicht, das hilft niemandem.
   - **Nicht mehr unterstützte Funktionen nicht hervorzuheben.** Wenn man von einer auf
     eine andere Version aktualisiert, sollte schmerzhaft klar sein, wenn dadurch etwas
     nicht mehr funktioniert.
   - **Datum in regionalen Formaten.** In den USA schreibt man den Monat zuerst
-    (“06-02-2012” für den 2. Juni 2012, was *keinen* Sinn macht), während im Rest
-    der Welt häufig ein roboterhaft aussehendes “2 June 2012” geschrieben, jedoch
-    völlig anders ausgesprochen wird. “2012-06-02” funktioniert logisch vom grössten
+    ("06-02-2012" für den 2. Juni 2012, was *keinen* Sinn macht), während im Rest
+    der Welt häufig ein roboterhaft aussehendes "2 June 2012" geschrieben, jedoch
+    völlig anders ausgesprochen wird. "2012-06-02" funktioniert logisch vom grössten
     zum kleinsten Wert, überlagert sich nicht auf mehrdeutige Art mit anderen Datumsformaten
     und ist ein [ISO-Standard](http://www.iso.org/iso/home/standards/iso8601.htm). Deshalb
     ist es das empfohlene Datumsformat für Changelogs
 
-  Das war noch nicht alles. Hilf mir, die Einhorn-Tränen zu sammeln und [eröffne ein Issue][issues]
+  Das war noch nicht alles. Hilf mir, diese Einhorn-Tränen zu sammeln und [eröffne ein Issue][issues]
   oder einen Pull-Request.
 
   ### Gibt es ein standardisiertes Changelog-Format?
   Leider nicht. Beruhige dich. Ich weiss, dass du wie wild nach dem Link für den
-  GNU change log style guide oder der zwei Absätze grossen GNU NEWS-Datei “Guideline”
-  suchst. Der GNU style guide ist ein guter Anfang, aber es ist leider sehr naiv.
-  Es ist sicher nicht falsch, naiv zu zu sein, aber beim Verfassen eines Leitfadens
-  ist es nicht wirklich hilfreich. Vor allem, wenn es viele Spezialfälle zu beachten gibt.
+  GNU Changelog Styleguide oder den zwei Absätze langen GNU NEWS-Datei "Leitfaden"
+  suchst. Der GNU Styleguide ist ein guter Anfang, aber er ist leider sehr naiv.
+  Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens
+  ist es nicht wirklich hilfreich. Vor allem nicht, wenn es viele Spezialfälle zu beachten gibt.
 
-  Dieses Projekt [enthält, was ich hoffe, wird zu einer besseren CHANGELOG-Datei-Konvention][CHANGELOG].
-  Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community
+  Dieses Projekt [enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention][CHANGELOG] 
+  wird. Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community
   eine bessere Konvention entwickeln können, wenn wir Bewährtes aus echten
-  Software-Projekten herausnehmen. Schau dich um und denk daran, dass
+  Software-Projekten entnehmen. Schau dich um und denk daran, dass
   [Diskussionen und Verbesserungsvorschläge sehr willkommen sind][issues]!
 
   ### Wie soll ich meine Changelog-Datei nennen?
@@ -99,71 +99,71 @@ language: de
 
   Es ist ein Chaos. Alle diese Namen machen es nur schwerer, die Datei zu finden.
 
-  ### Wieso sollte man nicht einfach `git log` diff verwenden?
-  Weil log diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht
-  einmal in einem hypothetischen Projekt, welches von perfekten Menschen geführt wird,
-  welche sich niemals vertippen, niemals vergessen, neue Dateien zu comitten und nie einen
-  Teil eines Refactorings übersehen, ein geeignetes Changelog.
-  Der Zweck von einem Commit ist es, einen atomaren Schritt eines Prozesses zu dokumentieren,
+  ### Wieso sollte man nicht einfach ein `git log` Diff verwenden?
+  Weil log Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht
+  einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten 
+  Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien 
+  zu comitten und nie einen Teil eines Refactorings übersehen.
+  Der Zweck eines Commits ist es, einen atomaren Schritt eines Prozesses zu dokumentieren,
   welcher den Code von einem Zustand in den nächsten bringt. Der Zweck eines Changelogs
   ist es, die nennenswerten Veränderungen zwischen diesen Zuständen zu dokumentieren.
 
   Der Unterschied zwischen dem Changelog und dem Commit-Log ist wie der Unterschied
   zwischen guten Kommentaren und dem Code selbst:
-  Das eine beschreibt das *wieso”, das andere das *wie*.
+  Das eine beschreibt das *wieso*, das andere das *wie*.
 
   ### Kann man Changelogs automatisiert parsen?
-  Es ist nicht einfach, weil sehr unterschiedliche Formate und Dateinamen verwendet
+  Es ist nicht einfach, weil äusserst unterschiedliche Formate und Dateinamen verwendet
   werden.
 
   [Vandamme][vandamme] ist ein Ruby gem vom [Gemnasium][gemnasium]-Team, welches
-  viele (aber nicht alle) Change Logs von Open-Source-Projekten parsen kann.
+  viele (aber nicht alle) Changelogs von Open-Source-Projekten parsen kann.
 
-  ### Wieso schreibst du mal “CHANGELOG” und mal “Changelog”?
-  “CHANGELOG” ist der Name der Datei selbst. Es ist ein bisschen laut, aber
+  ### Wieso schreibst du mal "CHANGELOG" und mal "Changelog"?
+  "CHANGELOG" ist der Name der Datei selbst. Es ist ein bisschen laut, aber
   es ist eine historische Konvention, welche von vielen Open-Source-Projekten
   angewendet wird. Andere Beispiele von ähnlichen Dateien sind [`README`][README],
   [`LICENSE`][LICENSE] und [`CONTRIBUTING`][CONTRIBUTING].
 
   Die Grossschreibung (welche in alten Betriebssystemen dafür gesorgt hat,
   dass die Dateien zuerst aufgelistet wurden) wird verwendet, um die Aufmerksamkeit
-  auf sie zu lenken. Da sie wichtige Metadaten über das Projekt enthalten, können
-  sie wichtig für jeden sein, der das Projekt gerne benutzen oder mitentwickeln
+  auf diese Dateien zu lenken. Da sie wichtige Metadaten über das Projekt enthalten, 
+  können sie wichtig für jeden sein, der das Projekt gerne benutzen oder mitentwickeln
   möchte, ähnlich wie [Open-Source-Projekt-Badges][shields].
 
-  Wenn ich über ein “Changelog” spreche, dann meine ich die Funktion der Datei:
+  Wenn ich über ein "Changelog" spreche, dann meine ich die Funktion der Datei:
   das Festhalten von Änderungen.
 
   ### Wie sieht es mit zurückgezogenen Releases aus?
-  Sogenannte “Yanked Releases” sind Versionen, welche wegen schwerwiegenden
+  Sogenannte "Yanked Releases" sind Versionen, welche wegen schwerwiegenden
   Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen
   diese im Changelog gar nicht vor. Das sollten sie aber. So solltest du diese
   darstellen:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
-  Der `[YANKED]`-Tag ist aus einem guten Grund laut. Es ist wichtig, dass er
-  wahrgenommen wird. Da es von Klammern umfasst ist, macht es auch einfacher,
-  ihn automatisiert zu parsen.
+  Das `[YANKED]`-Tag ist aus einem guten Grund laut. Es ist wichtig, dass es
+  wahrgenommen wird. Dass es von Klammern umfasst ist, vereinfacht auch
+  das automatisierte Parsen.
 
   ### Sollte ich ein Changelog je umschreiben?
   Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne
   regelmässig Pull Requests um Open-Source-Projekten mit schlecht gewarteten
   Changelogs fehlende Releases hinzuzufügen.
 
-  Es ist auch möglich, dass du eine wichtige Änderung vergessen hast in einer
+  Es ist auch möglich, dass du eine wichtige Änderung vergessen hast, in einer
   Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog
   zu aktualisieren.
 
   ### Wie kann ich mithelfen?
   Dieses Dokument ist nicht die **Wahrheit**; Es ist meine wohl überlegte Meinung,
-  zusammen mit Informationen und Beispielen, welche ich zusammengetragen habe.
+  zusammen mit von mir zusammengetragenen Informationen und Beispielen.
   Obwohl ich im [GitHub-Repository][gh] ein [CHANGELOG][] führe, habe ich
-  keine echten *Releases* oder klare zu befolgenden Regeln geschrieben (wie
-  [SemVer.org][semver] dies zum Beispiel tut).
+  keine echten *Releases* oder klare zu befolgenden Regeln geschrieben (wie dies
+  zum Beispiel [SemVer.org][semver] tut).
 
   Das ist so, weil ich möchte, dass die Community sich einig wird. Ich glaube,
-  dass die Diskussion genau so wichtig ist, wie das Endresultat.
+  dass die Diskussion genau so wichtig wie das Endresultat ist.
 
   Deshalb [**pack bitte mit an**][gh].
 
