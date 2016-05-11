@@ -1,7 +1,7 @@
 ---
 description: Keep a Changelog
 title: Keep a Changelog
-language: it
+language: it-IT
 ---
 
 :markdown
@@ -10,160 +10,158 @@ language: it
   ## Non lasciate che i vostri amici copino e incollino i git log nei CHANGELOG ™
 
   ### Cos'è un change log?
-  Un change log è un file che contiene una lista curata e ordinata cronologicamente delle modifiche degne di nota per ogni versione di un progetto.
+  Un change log è un file che contiene una lista curata e ordinata cronologicamente
+  delle modifiche degne di nota per ogni versione di un progetto.
 
 %pre.changelog= File.read(File.expand_path("../../CHANGELOG.md", __FILE__))
 
 :markdown
   ### A cosa serve un change log?
-  Per rendere facile agli utilizzatori e contributors vedere con precisione quali modifiche 
-  importanti sono state fatte tra ogni release (o versione) del progetto
+  Per rendere facile agli utilizzatori e contribuenti vedere con precisione quali modifiche 
+  importanti sono state fatte tra ogni release (o versione) del progetto.
 
-  ### Why should I care?
-  Because software tools are for people. If you don’t care, why are
-  you contributing to open source? Surely, there must be a kernel (ha!)
-  of care somewhere in that lovely little brain of yours.
+  ### Perché dovrebbe importarmi?
+  Perché gli strumenti software sono fatti per le persone.
+  Se non ti importa, perché contribuisci all'open source?
+  Di certo ci deve essere un "kernel" (ha!) di interesse 
+  da qualche parte in quel tuo amorevole cervello.
 
-  I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
-  (fitting, right?) podcast about why maintainers and
-  contributors should care, and the motivations behind this project.
-  If you can spare the time (1:06), it’s a good listen.
+  [Nel podcast "The Changelog" con Adam Stacoviak e Jerod Santo][thechangelog]
+  (titolo appropriato, vero?) ho parlato del perché maintainer e contribuenti
+  dovrebbero esserne interessati, e delle motivazioni dietro a questo progetto.
+  Se avete tempo (1:06), vale la pena ascoltarlo.
 
-  ### What makes a good change log?
-  I’m glad you asked.
+  ### Come si può fare un buon change log?
+  Sono contento che tu l'abbia chiesto.
 
-  Un buon change log si attiene ai seguenti principi:
+  Un buon change log è guidato dai seguenti principi:
 
-  - It’s made for humans, not machines, so legibility is crucial.
-  - Easy to link to any section (hence Markdown over plain text).
+  - È fatto per umani, non macchine, quindi la leggibilità è cruciale.
+  - Facile da linkare ad altre sezioni (da cui il Markdown invece che testo normale).
   - Una sotto-sezione per ogni versione.
   - Elenca le release in ordine cronologico inverso (quelle più recenti all'inizio).
-  - Scrive tutte le date nel formato `YYYY-MM-DD`. (Esempio: `2012-06-02` sta per `2 Giugno 2012`). è internazionale, [sensible](http://xkcd.com/1179/), e indipendente dalla lingua.
-  - Explicitly mention whether the project follows [Semantic Versioning][semver].
+  - Scrive tutte le date nel formato `YYYY-MM-DD`. (Esempio: `2012-06-02` sta per `2 Giugno 2012`). È internazionale, [sensato](http://xkcd.com/1179/), e indipendente dalla lingua.
+  - Dichiara esplicitamente se il progetto segue il [Semantic Versioning][semver].
   - Ogni versione dovrebbe:
-    - Elencare la sua data di rilascio nel formato specificato sopra.
-    - Group changes to describe their impact on the project, as follows:
-      - `Added` for new features.
-      - `Changed` for changes in existing functionality.
-      - `Deprecated` for once-stable features removed in upcoming releases.
-      - `Removed` for deprecated features removed in this release.
-      - `Fixed` for any bug fixes.
-      - `Security` to invite users to upgrade in case of vulnerabilities.
+    - Elencare la sua data di rilascio nel formato sopra specificato.
+    - Raggruppare le modifiche per descrivere il loro impatto sul progetto, come segue:
+      - `Added` per le nuove funzionalità.
+      - `Changed` per le modifiche a funzionalità esistenti.
+      - `Deprecated` per vecchie feature stabili che verranno rimosse nelle future release.
+      - `Removed` per funzionalità precedentemente deprecate rimosse in questa release.
+      - `Fixed` per tutti i bug fix.
+      - `Security` per invitare gli utilizzatori ad aggiornare in caso di vulnerabilità.
 
   ### Come posso minimizzare lo sforzo richiesto?
   Usa sempre una sezione `"Unreleased"` all'inizio per tenere traccia di qualsiasi modifica.
 
   Questo serve per due scopi:
 
-  - People can see what changes they might expect in upcoming releases
-  - At release time, you just have to change `"Unreleased"` to the version number
-    and add a new `"Unreleased"` header at the top.
+  - La gente può vedere quali modifiche si può aspettare in future release
+  - Ad una nuova release, si deve solo sostituire `"Unreleased"` con il numero di versione
+    e aggiungere una nuova sezione `"Unreleased"` all'inizio.
 
-  ### What makes unicorns cry?
-  Alright…let’s get into it.
+  ### Cosa fa piangere gli unicorni?
+  Bene...vediamo un po'.
 
-  - **Dumping a diff of commit logs.** Just don’t do that, you’re helping nobody.
-  - **Not emphasizing deprecations.** When people upgrade from one version to
-    another, it should be painfully clear when something will break.
-  - **Dates in region-specific formats.** In the U.S., people put the month first
-    ("06-02-2012" for June 2nd, 2012, which makes *no* sense), while many people
-    in the rest of the world write a robotic-looking "2 June 2012", yet pronounce
-    it differently. "2012-06-02" works logically from largest to smallest, doesn't
-    overlap in ambiguous ways with other date formats, and is an
-    [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
-    is the recommended date format for change logs.
+  - **Copia&incolla un diff di commig log.** Non fatelo, così non aiutate nessuno.
+  - **Non enfatizzare le funzioni deprecate.** Quando le persone aggiornano da una versione ad un'altra,
+    dovrebbe essere dolorosamente chiaro quando qualcosa si romperà.
+  - **Date in formati specifici per regione.** Negli Stati Uniti si mette prima il mese nelle date
+    ("06-02-2012" sta per 2 Giugno 2012, che non ha senso), mentre molte persone
+    nel resto del mondo scrivono un robotico "2 June 2012", ma lo pronunciano diversamente.
+    "2012-06-02" funziona con la logica dal più grande al più piccolo, non ha sovrapposizioni
+    ambigue con altri formati di date, ed è uno [standard ISO](http://www.iso.org/iso/home/standards/iso8601.htm).
+    Per tutti questi motivi, è il formato di date raccomandato per i change log.
 
-  There’s more. Help me collect those unicorn tears by
-  [opening an issue][issues]
-  or a pull request.
+  C'è di più. Aiutatemi a collezionare queste "lacrime di unicorno" [aprendo una "issue"][issues]
+  o una pull request.
 
-  ### Is there a standard change log format?
-  Sadly, no. Calm down. I know you're furiously rushing to find that link
-  to the GNU change log style guide, or the two-paragraph GNU NEWS file
-  "guideline". The GNU style guide is a nice start but it is sadly naive.
-  There's nothing wrong with being naive but when people need
-  guidance it's rarely very helpful. Especially when there are many
-  situations and edge cases to deal with.
+  ### Esiste un formato standard per i change log?
+  Purtroppo no. Calma. So che state furiosamente correndo a cercare quel link
+  alla guida di stile per i change log GNU, o alle linee guida per or il file a due paragrafi GNU NEWS.
+  La guida GNU è un buon punto di partenza, ma è tristemente ingenuo.
+  Non c'è nulla di male nell'essere ingenuo, ma quando le persone cercano una guida, questa caratteristica
+  è raramente d'aiuto. Specialmente se ci sono molte situazioni e casi limite da gestire.
 
-  This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG].
-  I don't think the status quo is good enough, and I think that as a community we
-  can come up with better conventions if we try to extract good practices from
-  real software projects. Please take a look around and remember that
-  [discussions and suggestions for improvements are welcome][issues]!
+  Questo progetto [contiene ciò che spero diventerà una migliore convenzione per i file CHANGELOG][CHANGELOG].
+  Non credo che lo status quo sia sufficientemente buono, e penso che noi, come comunità, 
+  possiamo arrivare a convenzioni migliori se tentiamo di estrarre le pratiche migliori
+  da progetti software reali. Vi consiglio di guardarvi intorno e ricordare che 
+  [ogni discussione e suggerimento per migliorare sono sempre benvenuti][issues]!
 
-  ### What should the change log file be named?
-  Well, if you can’t tell from the example above, `CHANGELOG.md` is the
-  best convention so far.
+  ### Come si dovrebbe chiamare il file contenente il change log?
+  Se non l'avete dedotto dall'esempio qui sopra, `CHANGELOG.md` è la convenzione migliore finora.
 
-  Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
+  Alcuni progetti usano anche `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
   `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
 
-  It’s a mess. All these names only makes it harder for people to find it.
+  È un disastro. Tutti questi nomi contribuiscono solo a rendere più difficile trovarlo.
 
-  ### Why can’t people just use a `git log` diff?
-  Because log diffs are full of noise — by nature. They could not make a suitable
-  change log even in a hypothetical project run by perfect humans who never make
-  typos, never forget to commit new files, never miss any part of a refactoring.
-  The purpose of a commit is to document one atomic step in the process by which
-  the code evolves from one state to another. The purpose of a change log is to
-  document the noteworthy differences between these states.
+  ### Perché la gente non si limita ad usare diff di `git log`?
+  Perché i log diff sono pieni di rumore, per loro natura. Non potrebbero creare un change log
+  decente nemmeno in un ipotetico progetto gestito da perfetti umani che non fanno mai errori
+  di digitazione, non dimenticano mai di fare commit dei nuovi file, non dimenticano mai
+  alcuna parte di un refactoring.
+  Lo scopo di un commit è di documentare un passo atomico nel processo di evoluzione del codice
+  da uno stato ad un altro. Lo scopo di un change log è di documentare le differenze 
+  degne di nota tra questi stati.
 
-  As is the difference between good comments and the code itself,
-  so is the difference between a change log and the commit log:
-  one describes the *why*, the other the how.
+  La differenza tra un change log e un commit log è
+  come la differenza tra un buon commento nel codice e il codice stesso:
+  uno descrive il *perché*, l'altro il come.
 
-  ### Can change logs be automatically parsed?
-  It’s difficult, because people follow wildly different formats and file names.
+  ### Si possono analizzare automaticamente i change log?
+  È difficile, perché le persone usano formati e nomi di file profondamente diversi.
+  
+  [Vandamme][vandamme] è una Ruby gem
+  creata dal team [Gemnasium][gemnasium] ed è in grado di fare il parsing dei
+  change log di molti (ma non tutti) i progetti open source.
 
-  [Vandamme][vandamme] is a Ruby gem
-  created by the [Gemnasium][gemnasium] team and which parses
-  many (but not all) open source project change logs.
+  ### Perché si alterna tra i nomi "CHANGELOG" e "change log"?
+  "CHANGELOG" è il nome del file. È un po' invadente ma è una 
+  convenzione storica seguita da molti progetti open source.
+  Altri esempi di file simili includono [`README`][README], [`LICENSE`][LICENSE],
+  e [`CONTRIBUTING`][CONTRIBUTING].
 
-  ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
-  "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
-  historical convention followed by many open source projects. Other
-  examples of similar files include [`README`][README], [`LICENSE`][LICENSE],
-  and [`CONTRIBUTING`][CONTRIBUTING].
+  I nomi in maiuscolo (che su vecchi sistemi operativi erano ordinati per primi) 
+  vengono usati per attirare l'attenzione su di essi. Poiché sono metadati
+  importanti relativi al progetto, possono essere utili per chiunque voglia usarlo
+  o contribuire ad esso, un po' come i [badge dei progetti open source][shields].
 
-  The uppercase naming (which in old operating systems made these files stick
-  to the top) is used to draw attention to them. Since they're important
-  metadata about the project, they could be useful to anyone intending to use
-  or contribute to it, much like [open source project badges][shields].
+  Quando mi riferisco a un "change log", sto parlando della funzione di questo file:
+  registrare le modifiche.
 
-  When I refer to a "change log", I'm talking about the function of this
-  file: to log changes.
-
-  ### What about yanked releases?
-  Yanked releases are versions that had to be pulled because of a serious
-  bug or security issue. Often these versions don't even appear in change
-  logs. They should. This is how you should display them:
+  ### Cosa sono le release "yanked"?
+  Le release "yanked" sono versioni che sono state rimosse a causa di bug seri
+  o problemi di sicurezza. Spesso queste versioni non appaiono nei change
+  log. Invece dovrebbero esserci, nel seguente modo:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
-  The `[YANKED]` tag is loud for a reason. It's important for people to
-  notice it. Since it's surrounded by brackets it's also easier to parse
-  programmatically.
+  L'etichetta `[YANKED]` è in maiuscolo per un motivo. È importante che la gente la noti.
+  Poiché è racchiusa tra parentesi quadre è anche più semplice da riconoscere nel parsing automatizzato.
 
-  ### Should you ever rewrite a change log?
-  Sure. There are always good reasons to improve a change log. I regularly open
-  pull requests to add missing releases to open source projects with unmaintained
-  change logs.
+  ### Si dovrebbe mai modificare un change log?
+  Certo. Ci sono sempre buoni motivi per migliorare un change log. Io apro regolarmente
+  delle pull request per aggiungere release mancanti ai progetti open source che non mantengono
+  correttamente i change log.
 
-  It's also possible you may discover that you forgot to address a breaking change
-  in the notes for a version. It's obviously important for you to update your
-  change log in this case.
+  È anche possibile che si scopra di aver dimenticato di annotare una modifica
+  non retro-compatibile nelle note per una versione. Ovviamente è importante aggiornare
+  il change log in questo caso.
 
   ### Come posso contribuire?
-  Questo documento non e' la **verità**; it’s my carefully considered
-  opinion, along with information and examples I gathered.
-  Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
-  I have purposefully not created a proper *release* or clear list of rules
-  to follow (as [SemVer.org][semver] does, for instance).
+  Questo documento non è la **verità assoluta**; è solo la mia attenta
+  opinione, arricchita dalle informazioni ed esempi che ho raccolto.
+  Anche se fornisco un [CHANGELOG][] reale sul [repository GitHub][gh],
+  ho volutamente evitato di creare una *release* o una chiara lista di regole
+  da seguire (come fa, ad esempio, [SemVer.org][semver]).
 
-  This is because I want our community to reach a consensus. I believe the
-  discussion is as important as the end result.
+  Questo è perché voglio che la nostra comunità raggiunga un consenso. Credo che 
+  la discussione sia importante almeno quanto il risultato finale.
 
-  So please [**pitch in**][gh].
+  Quindi per favore [**partecipate**][gh].
 
   [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
   [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
