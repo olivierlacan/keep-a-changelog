@@ -2,6 +2,7 @@
 description: Keep a Changelog
 title: Keep a Changelog
 language: de
+version: 0.3.0
 ---
 
 :markdown
@@ -9,15 +10,17 @@ language: de
 
   ## Lass deine Freunde nicht CHANGELOGs mit git logs füllen™
 
+  Version **#{current_page.metadata[:page]["version"]}**
+
   ### Was ist ein Changelog?
   Ein Changelog ist eine Datei, welche eine nachgeführte, chronologisch sortierte
   Liste aller relevanten Änderungen für jede Version eines Projektes enthält.
 
-%pre.changelog= File.read(File.expand_path("../../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read(File.join(root_path, "README.md"))
 
 :markdown
   ### Was ist der Zweck eines Changelogs?
-  Es für Benutzer und Entwickler einfacher zu machen, die relevanten Änderungen, welche 
+  Es für Benutzer und Entwickler einfacher zu machen, die relevanten Änderungen, welche
   zwischen Releases (oder Versionen) des Projekts gemacht wurden, zu sehen.
 
   ### Warum sollte ich mich darum kümmern?
@@ -84,7 +87,7 @@ language: de
   Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens
   ist es nicht wirklich hilfreich. Vor allem nicht, wenn es viele Spezialfälle zu beachten gibt.
 
-  Dieses Projekt [enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention][CHANGELOG] 
+  Dieses Projekt [enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention][CHANGELOG]
   wird. Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community
   eine bessere Konvention entwickeln können, wenn wir Bewährtes aus echten
   Software-Projekten entnehmen. Schau dich um und denk daran, dass
@@ -101,8 +104,8 @@ language: de
 
   ### Wieso sollte man nicht einfach ein `git log` Diff verwenden?
   Weil log Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht
-  einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten 
-  Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien 
+  einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten
+  Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien
   zu comitten und nie einen Teil eines Refactorings übersehen.
   Der Zweck eines Commits ist es, einen atomaren Schritt eines Prozesses zu dokumentieren,
   welcher den Code von einem Zustand in den nächsten bringt. Der Zweck eines Changelogs
@@ -127,7 +130,7 @@ language: de
 
   Die Grossschreibung (welche in alten Betriebssystemen dafür gesorgt hat,
   dass die Dateien zuerst aufgelistet wurden) wird verwendet, um die Aufmerksamkeit
-  auf diese Dateien zu lenken. Da sie wichtige Metadaten über das Projekt enthalten, 
+  auf diese Dateien zu lenken. Da sie wichtige Metadaten über das Projekt enthalten,
   können sie wichtig für jeden sein, der das Projekt gerne benutzen oder mitentwickeln
   möchte, ähnlich wie [Open-Source-Projekt-Badges][shields].
 
