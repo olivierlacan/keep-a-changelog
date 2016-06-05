@@ -26,7 +26,7 @@ redirect "index.html", to: "#{$last_version}/en/index.html"
 
 $languages.each do |language|
   language_param = language.last.parameterize
-  redirect "#{language.first}/", to: "#{$last_version}/#{language.first}/"
+  redirect "#{language.first}/index.html", to: "#{$last_version}/#{language.first}/index.html"
 end
 
 # ----- Assets ----- #
