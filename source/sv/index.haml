@@ -1,0 +1,188 @@
+---
+description: Håll en Changelog
+title: Håll en Changelog
+language: sv
+---
+
+:markdown
+  # Håll en CHANGELOG
+
+  ## Låt inte dina vänner slänga in en git logs i CHANGELOG™
+
+  ### Vad är en ändringslogg?
+  En ändringslogg är en fil innehållandes en sammanfattad, kronologiskt ordnad 
+  lista över ändringar för varje version av ett projekt.
+
+%pre.changelog= File.read(File.expand_path("../../CHANGELOG.md", __FILE__))
+
+:markdown
+  ### Vad är meningen med en ändringslogg?
+  För att göra det enkelt för användare och medarbetare att se exakt vilka
+  viktiga ändringar som har gjort mellan varje utgåva (eller version) av projektet.
+  
+  ### Varför ska jag bry mig?
+  Därför att mjukvaurverktyg är för människor. Om du inte bryr dig, varför 
+  bidrar du till öppen källkod? Visst finns det väl någon del i din vackra 
+  hjärna som bryr sig.
+
+  Jag [pratade med Adam Stacoviak och Jerod Santo på The Changelog][thechangelog]
+  (passande, eller hur?) podcast om varför ansvariga och bidragsgivare bör bry sig,
+  och motiveringen bakom detta projekt. 
+  Om du kan avvara lite tid (1:06), rekomenderar jag att lyssna på det.
+
+  ### Vad gör en bra ändringslogg?
+  Jag är glad att du frågade.
+
+  En bra ändringslogg håller sig till dessa principer:
+  
+  - Den är skapad för människor, inte maskiner, så läsbarhet är avgörande.
+  - Lätt att länka till valfri sektion (därav Markdown framför klartext). 
+  - En undersektion per version.  
+  - Lista utgåvor i omvänd kronologisk ordning (nyast högst upp).
+  - Skriv alla datum på formatet `YYYY-MM-DD`
+  (exempel: `2012-06-02` för 2:a juni 2012). Det är internationellt, 
+  [förnuftigt](http://xkcd.com/1179/) och språkoberoende.
+  - Ange uttryckligen att projektet följer [Semantisk versionshantering][SemVer].
+  - Varje version bör:
+    - Ange datum då utgåvan släptes på formatet angivet ovan.
+    - Gruppera ändringar för att beskriva deras inverkan på projektet enligt följande:
+      - `Added` för nya funktioner.
+      - `Changed` för ändringar på existerande funktionalitet.
+      - `Deprecated` för tidigare stabila funktioner som tas bort i nästa utgåva.
+      - `Removed` för funktioner tidigare markerade som `deprecated` som tas bort i denna version.
+      - `Fixed` för buggfixar.
+      - `Security` för att uppmana användare att uppgradera vid fall av sårbarheter.
+
+  ### Hur kan jag minimera den insats som krävs?
+  Ha alltid en sektion kallas `"Unreleased"` högst upp för att hålla reda på
+  alla ändringar.
+
+  Detta tjänar två syften:
+
+  - Folk kan se vilka ändringar som kan förväntas i kommande utgåvor
+  - Vid lansering behöver du bara ändra `"Unreleased"` till versionsnummret
+    och lägga till en ny `"Unreleased"` högst upp.
+
+  ### Vad får en Enhörning att gråta?
+  Okej...låt oss gå genom det.
+  
+  - **Dumpa ut en diff från commit-loggen.** Gör helt enkelt inte så, du hjälper ingen.
+  - **Inte betona `deprecations`.** När folk uppgraderar från en version till
+    en annan ska det vara smärtsamt uppenbart att något kommer att gå sönder.
+  - **Datum i region-specifikt format.** I USA lägger folk månaden föst 
+    ("06-02-2012" för 2:a juni 2012, vilket bara är *konstigt*), medan många 
+    andra människor runt om i världen skriver "2 June 2012" men uttala det anolunda.
+    "2012-06-02" fungerar logiskt från största till minsta, inte överlappar på ett
+    tvetydligt sätt med andra datumformat, och det är en 
+    [ISO-standard](http://www.iso.org/iso/home/standards/iso8601.htm). Dessutom
+    är det det rekomenderade datumformatet för ändringsloggar.
+
+
+  Det finns mer. Hjälp mig att samla dessa enhörningstårar genom att
+  [öppna en issue][issues]
+  eller en pull-förfrågan.
+
+  ### Finns det ett standardformat på ändringsloggar?
+  Tyvärr inte. Men lugn. Jag vet att du frustrerad kommer att rusa iväg för att hitta
+  den där länken till GUS:s format för ändringsloggar, eller den två stycken långa
+  GNu NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är 
+  tyvärr allt för naiv. Det är inget fel med att vara naiv, men när människor 
+  behöver vägledning är det inte speciellt hjälpsamt. Speciellt när det är många
+  olika situationer och spcialfall att hantera. 
+
+  Detta projekt [inehåller vad jag hoppas kommer att bli en bättre filkonvention
+  för CHANGELOG][CHANGELOG]. Jag tror inte att status quo är tillräckligt bra, 
+  och jag tror att vi tillsammans kan komma fram till en bättre konvention
+  om vi försöker att plocka ut bra erfarenheter från riktiga mjukvaruprojekt. 
+  Titta runt och kom ihåg att [diskutioner och förbättringsförslag är välkomna][issues]!
+
+  ### Vad bör filen med ändringsloggen heta?
+  Tja, om du inte kan lista ut det från exemplen ovan är `CHANGELOG.md`
+  den bästa konvention hittils. 
+
+  En del projekt använder också `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
+  `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
+
+  Det är ebn verklig röra. Alla dessa namn gör det bara svårare för ämnniskor att hitta.
+
+  ### Varför kan folk inte bara använda en diff från `git log`?
+  Eftersom logg-diffar av naturen är fulla med brus. Det kan inte ens användas 
+  för att göra en lämplig ändringslogg ens i ett hypotetiskt projekt drivet av
+  perfekta människor som aldrig skriver fel, aldrig glömmer att checka in nya filer 
+  eller aldrig glömmer någon del av en refaktorering. Syftet med en commit är att 
+  dokumentera ett enskilt steg i processen då koden utecklas från ett tillstånd till 
+  ett annat. Syftet med en ändringslogg är att dokumentera de anmärkningsvärda
+  skillnadenrna mellan dessa tillstånd.
+
+  På samma sätt som det är skillnad mellan bra kommentarer och själva koden, 
+  är det skillnad mellan ändringsloggen och commit-loggen:
+  en beskriver "varför" och den andra "hur".
+
+  ### Kan ändringsloggar bli automatiskt tolkade?
+  Det är svårt då människor följer vitt olika format och filnamn.
+
+  [Vandamme][vandamme] är en Ruby gem
+  skapad av gruppen bakom [Gemnasium][gemnasium] som tolkar många (men inte alla)
+  ändringsloggar för öppen källkod.
+  
+  
+  
+  
+  
+  ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
+  "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
+  historical convention followed by many open source projects. Other
+  examples of similar files include [`README`][README], [`LICENSE`][LICENSE],
+  and [`CONTRIBUTING`][CONTRIBUTING].
+
+  The uppercase naming (which in old operating systems made these files stick
+  to the top) is used to draw attention to them. Since they're important
+  metadata about the project, they could be useful to anyone intending to use
+  or contribute to it, much like [open source project badges][shields].
+
+  When I refer to a "change log", I'm talking about the function of this
+  file: to log changes.
+
+  ### What about yanked releases?
+  Yanked releases are versions that had to be pulled because of a serious
+  bug or security issue. Often these versions don't even appear in change
+  logs. They should. This is how you should display them:
+
+  `## 0.0.5 - 2014-12-13 [YANKED]`
+
+  The `[YANKED]` tag is loud for a reason. It's important for people to
+  notice it. Since it's surrounded by brackets it's also easier to parse
+  programmatically.
+
+  ### Should you ever rewrite a change log?
+  Sure. There are always good reasons to improve a change log. I regularly open
+  pull requests to add missing releases to open source projects with unmaintained
+  change logs.
+
+  It's also possible you may discover that you forgot to address a breaking change
+  in the notes for a version. It's obviously important for you to update your
+  change log in this case.
+
+  ### How can I contribute?
+  This document is not the **truth**; it’s my carefully considered
+  opinion, along with information and examples I gathered.
+  Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
+  I have purposefully not created a proper *release* or clear list of rules
+  to follow (as [SemVer.org][semver] does, for instance).
+
+  This is because I want our community to reach a consensus. I believe the
+  discussion is as important as the end result.
+
+  So please [**pitch in**][gh].
+
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [gemnasium]: https://gemnasium.com/
+  [gh]: https://github.com/olivierlacan/keep-a-changelog
+  [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
+  [semver]: http://semver.org/
+  [shields]: http://shields.io/
+  [thechangelog]: http://5by5.tv/changelog/127
+  [vandamme]: https://github.com/tech-angels/vandamme/
