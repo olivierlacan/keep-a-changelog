@@ -125,55 +125,51 @@ language: sv
   skapad av gruppen bakom [Gemnasium][gemnasium] som tolkar många (men inte alla)
   ändringsloggar för öppen källkod.
   
+  ### Varför alternerar du mellan att skriva det som "CHANGELOG" och "ändringslogg"?"
+  "CHANGELOG" är namnet på själva filen. Det sticker ut lite, men det är en 
+  historisk konvention använt i många öppen källkodsprojekt. Andra
+  exempel på liknande filer är [`README`][README], [`LICENSE`][LICENSE],
+  och [`CONTRIBUTING`][CONTRIBUTING].
   
-  
-  
-  
-  ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
-  "CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
-  historical convention followed by many open source projects. Other
-  examples of similar files include [`README`][README], [`LICENSE`][LICENSE],
-  and [`CONTRIBUTING`][CONTRIBUTING].
+  De stora bokstäverna i namnen (som gjorde att de i äldre operativsystem 
+  hamnade högst upp) används för att dra uppmärksamhet till dem. Då de är 
+  viktig metadata om projektet borde de vara användbara för att alla som 
+  vill använda eller bidra till det, ungefär som [open source project badges][shields].
 
-  The uppercase naming (which in old operating systems made these files stick
-  to the top) is used to draw attention to them. Since they're important
-  metadata about the project, they could be useful to anyone intending to use
-  or contribute to it, much like [open source project badges][shields].
+  När jag refererar till "ändringslogg" pratar jag om syftet med denna fil:
+  att logga ändringar.
 
-  When I refer to a "change log", I'm talking about the function of this
-  file: to log changes.
-
-  ### What about yanked releases?
-  Yanked releases are versions that had to be pulled because of a serious
-  bug or security issue. Often these versions don't even appear in change
-  logs. They should. This is how you should display them:
+  ### Hur är det med brådskande utgåvor ("yanked")?
+  Brådskande utgåvor är versioner som måste släppas p.g.a. alvarliga
+  buggar eller säkerhetsproblem. Oftast brukar dessa versioner inte ens 
+  finnas med i ändringsloggarna. De borde det. Så här borde du visa dem:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
-  The `[YANKED]` tag is loud for a reason. It's important for people to
-  notice it. Since it's surrounded by brackets it's also easier to parse
-  programmatically.
+  Taggen `[YANKED]` står ut av en anledning, det är viktigt för människor
+  att se den. Då den är omsluten med hakparanteser är det också lättare 
+  för ett program att tolka.
 
-  ### Should you ever rewrite a change log?
-  Sure. There are always good reasons to improve a change log. I regularly open
-  pull requests to add missing releases to open source projects with unmaintained
-  change logs.
+  ### Borde du någonsin förändra en ändringslogg?
+  Självklart. Det finns alltid en bra anlending att förbättra en ändringslogg. 
+  Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
+  för öppen källkodsprojekt som inte tar hand om sin ändringslogg.
 
-  It's also possible you may discover that you forgot to address a breaking change
-  in the notes for a version. It's obviously important for you to update your
-  change log in this case.
+  Det kan också hända att du upptäcker att du glömst att ta upp en icke 
+  bakåtkompatibel förändring i en version. I sånna fall är det självklart
+  viktigt att uppdatera din ändringslogg.
 
-  ### How can I contribute?
-  This document is not the **truth**; it’s my carefully considered
-  opinion, along with information and examples I gathered.
-  Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
-  I have purposefully not created a proper *release* or clear list of rules
-  to follow (as [SemVer.org][semver] does, for instance).
+  ### Hur kan jag bidra?
+  Detta dokuemtn är inte **sanningen**, det är en noga övervägd åsikt
+  tillsammans med information coh exempel jag har sammlat på mig.
+  Även om jag tillhandahåller en [CHANGELOG][] i min [GitHub repo][gh],
+  har jag avsiktligt inte skpat en egentlig *utgåva* eller en tydlig lista
+  med regler att följa (som t.ex. [SemVer.org][semver] gör).
 
-  This is because I want our community to reach a consensus. I believe the
-  discussion is as important as the end result.
-
-  So please [**pitch in**][gh].
+  Detta beror på att jag vill att vår gemenskap ska nå samförstånd. Jag 
+  tror att diskussionen är lika viktig som slutresultatet.
+  
+  Så välkomna att [**diskutera**]][gh].
 
   [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
   [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
