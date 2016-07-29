@@ -17,8 +17,8 @@ language: de
 
 :markdown
   ### Was ist der Zweck eines Changelogs?
-  Es für Benutzer und Entwickler einfacher zu machen, die relevanten Änderungen, welche 
-  zwischen Releases (oder Versionen) des Projekts gemacht wurden, zu sehen.
+  Es erleichtert Benutzer und Entwicklern, relevante Änderungen, die zwischen Releases
+  (oder Versionen) des Projekts gemacht wurden, zu sehen.
 
   ### Warum sollte ich mich darum kümmern?
   Weil Software-Werkzeuge für Menschen gemacht sind. Wenn du dich nicht darum kümmerst, weshalb
@@ -26,7 +26,7 @@ language: de
   einen kleinen Teil, dem das wichtig ist.
 
   Ich [habe mit Adam Stacoviak and Jerod Santo im The Changelog-Podcast][thechangelog] (passt, oder?)
-  darüber gesprochen (Englisch), weshalb sich Entwickler darum kümmern sollten und über die
+  darüber gesprochen (Englisch), warum sich Entwickler darum kümmern sollten und über die
   Beweggründe hinter diesem Projekt. Falls du die Zeit hast (1:06), es lohnt sich, reinzuhören.
 
   ### Was macht ein gutes Changelog aus?
@@ -35,29 +35,29 @@ language: de
   Ein gutes Changelog hält sich an die folgenden Prinzipien:
 
   - Es ist für Menschen, nicht Maschinen, gemacht, deshalb ist Lesbarkeit entscheidend.
-  - Es ist einfach, jeden Bereich zu verlinken (also besser Markdown als einfacher Text).
+  - Es ist einfach, jeden Bereich zu verlinken (deswegen ist Markdown besser als einfacher Text).
   - Ein Unterkapitel pro Version.
-  - Liste die Releases in umgekehrt chronologischer Reihenfolge auf (neuestes zuoberst).
-  - Schreib alle Daten im Format `JJJJ-MM-TT`. (Beispiel: `2012-06-02` für den `2. Juni 2012`.) Es ist international, [vernünftig](http://xkcd.com/1179/), und sprachunabhängig.
-  - Erwähne explizit, ob das Projekt nach [Semantic Versioning][semver] geführt wird.
+  - Führt die Releases in umgekehrt chronologischer Reihenfolge auf (neuestes zuoberst).
+  - Notiert alle Daten im Format `JJJJ-MM-TT`. (Beispiel: `2012-06-02` für den `2. Juni 2012`). Es ist international, [vernünftig](http://xkcd.com/1179/), und sprachunabhängig.
+  - Erwähnt explizit, ob das Projekt nach [Semantic Versioning][semver] geführt wird.
   - Jede Version sollte:
     - Das Release-Datum im oben genannten Format auflisten.
     - Änderungen wie folgt gruppieren, um ihren Einfluss auf das Projekt zu beschreiben:
       - `Added` für neue Features.
       - `Changed` für Änderungen an bestehender Funktionalität.
-      - `Deprecated` für einst stabile Features, welche in zukünftigen Versionen entfernt werden.
-      - `Removed` für Deprecated-Features, welche in dieser Version entfernt wurden.
+      - `Deprecated` für einst stabile Features, die in zukünftigen Versionen entfernt werden.
+      - `Removed` für Deprecated-Features, die in dieser Version entfernt wurden.
       - `Fixed` für Bug-Fixes.
-      - `Security` um Benutzer im Fall von Sicherheitsrisiken zu einer Aktualisierung aufzufordern.
+      - `Security` um Nutzer im Fall von Sicherheitsrisiken zum Updaten aufzufordern.
 
   ### Wie kann ich den Aufwand so klein wie möglich halten?
   Hab immer einen `"Unreleased"`-Abschnitt zuoberst, um Änderungen im Auge zu behalten.
 
-  Dies verfolgt zwei Ziele:
+  Dies dient zwei Zwecken:
 
-  - Man kann sehen, welche Änderungen in den nächsten Releases zu erwarten sind
-  - Wenn es Zeit für den Release ist, kannst du einfach `"Unreleased"` auf die
-    Versionsnummer ändern und einen neuen `"Unreleased"`-Titel oben einfügen.
+  - Es ich leicht zu sehen, welche Änderungen in den nächsten Releases zu erwarten sind.
+  - Wenn es Zeit für den Release ist, kann man einfach `"Unreleased"` zu einer
+    Versionsnummer ändern und einen neuen `"Unreleased"`-Abschnitt oben einfügen.
 
   ### Was bringt Einhörner zum weinen?
   Also… Schauen wir uns das an.
@@ -72,14 +72,14 @@ language: de
     völlig anders ausgesprochen wird. "2012-06-02" funktioniert logisch vom grössten
     zum kleinsten Wert, überlagert sich nicht auf mehrdeutige Art mit anderen Datumsformaten
     und ist ein [ISO-Standard](http://www.iso.org/iso/home/standards/iso8601.htm). Deshalb
-    ist es das empfohlene Datumsformat für Changelogs
+    ist es das empfohlene Datumsformat für Changelogs.
 
   Das war noch nicht alles. Hilf mir, diese Einhorn-Tränen zu sammeln und [eröffne ein Issue][issues]
   oder einen Pull-Request.
 
   ### Gibt es ein standardisiertes Changelog-Format?
   Leider nicht. Beruhige dich. Ich weiss, dass du wie wild nach dem Link für den
-  GNU Changelog Styleguide oder den zwei Absätze langen GNU NEWS-Datei "Leitfaden"
+  GNU Changelog Styleguide oder den zwei Absätze langen "Leitfaden" für die GNU NEWS-Datei
   suchst. Der GNU Styleguide ist ein guter Anfang, aber er ist leider sehr naiv.
   Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens
   ist es nicht wirklich hilfreich. Vor allem nicht, wenn es viele Spezialfälle zu beachten gibt.
@@ -97,12 +97,12 @@ language: de
   Einige Projekte nutzen auch `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
   `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
 
-  Es ist ein Chaos. Alle diese Namen machen es nur schwerer, die Datei zu finden.
+  Es herrscht leider Chaos. All diese Namen machen es nur schwer, die Datei zu finden.
 
   ### Wieso sollte man nicht einfach ein `git log` Diff verwenden?
-  Weil log Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht
+  Weil `git log` Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht
   einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten 
-  Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien 
+  Menschen geführt wird, die sich niemals vertippen, niemals vergessen, neue Dateien 
   zu comitten und nie einen Teil eines Refactorings übersehen.
   Der Zweck eines Commits ist es, einen atomaren Schritt eines Prozesses zu dokumentieren,
   welcher den Code von einem Zustand in den nächsten bringt. Der Zweck eines Changelogs
@@ -110,7 +110,7 @@ language: de
 
   Der Unterschied zwischen dem Changelog und dem Commit-Log ist wie der Unterschied
   zwischen guten Kommentaren und dem Code selbst:
-  Das eine beschreibt das *wieso*, das andere das *wie*.
+  Das eine beschreibt das *was*, das andere das *wie*.
 
   ### Kann man Changelogs automatisiert parsen?
   Es ist nicht einfach, weil äusserst unterschiedliche Formate und Dateinamen verwendet
@@ -156,7 +156,7 @@ language: de
   zu aktualisieren.
 
   ### Wie kann ich mithelfen?
-  Dieses Dokument ist nicht die **Wahrheit**; Es ist meine wohl überlegte Meinung,
+  Dieses Dokument ist nicht die **Wahrheit**; Es ist meine wohlüberlegte Meinung,
   zusammen mit von mir zusammengetragenen Informationen und Beispielen.
   Obwohl ich im [GitHub-Repository][gh] ein [CHANGELOG][] führe, habe ich
   keine echten *Releases* oder klare zu befolgenden Regeln geschrieben (wie dies
