@@ -1,6 +1,6 @@
 ---
-description: Håll en Changelog
-title: Håll en Changelog
+description: Håll en ändringslogg
+title: Håll en ändringslogg
 language: sv
 ---
 
@@ -21,14 +21,14 @@ language: sv
   viktiga ändringar som har gjort mellan varje utgåva (eller version) av projektet.
   
   ### Varför ska jag bry mig?
-  Därför att mjukvaurverktyg är för människor. Om du inte bryr dig, varför 
+  Därför att mjukvaruverktyg är för människor. Om du inte bryr dig, varför 
   bidrar du till öppen källkod? Visst finns det väl någon del i din vackra 
   hjärna som bryr sig.
 
   Jag [pratade med Adam Stacoviak och Jerod Santo på The Changelog][thechangelog]
   (passande, eller hur?) podcast om varför ansvariga och bidragsgivare bör bry sig,
   och motiveringen bakom detta projekt. 
-  Om du kan avvara lite tid (1:06), rekomenderar jag att lyssna på det.
+  Om du kan avvara lite tid (1:06), rekommenderar jag att lyssna på det.
 
   ### Vad gör en bra ändringslogg?
   Jag är glad att du frågade.
@@ -60,59 +60,59 @@ language: sv
   Detta tjänar två syften:
 
   - Folk kan se vilka ändringar som kan förväntas i kommande utgåvor
-  - Vid lansering behöver du bara ändra `"Unreleased"` till versionsnummret
+  - Vid lansering behöver du bara ändra `"Unreleased"` till versionsnumret
     och lägga till en ny `"Unreleased"` högst upp.
 
-  ### Vad får en Enhörning att gråta?
+  ### Vad får änglarna att gråta?
   Okej...låt oss gå genom det.
   
   - **Dumpa ut en diff från commit-loggen.** Gör helt enkelt inte så, du hjälper ingen.
   - **Inte betona `deprecations`.** När folk uppgraderar från en version till
-    en annan ska det vara smärtsamt uppenbart att något kommer att gå sönder.
+    en annan ska det vara smärtsamt uppenbart om något förväntas gå sönder.
   - **Datum i region-specifikt format.** I USA lägger folk månaden föst 
     ("06-02-2012" för 2:a juni 2012, vilket bara är *konstigt*), medan många 
-    andra människor runt om i världen skriver "2 June 2012" men uttala det anolunda.
+    andra runt om i världen skriver "2 June 2012" men uttala det annorlunda.
     "2012-06-02" fungerar logiskt från största till minsta, inte överlappar på ett
     tvetydligt sätt med andra datumformat, och det är en 
     [ISO-standard](http://www.iso.org/iso/home/standards/iso8601.htm). Dessutom
-    är det det rekomenderade datumformatet för ändringsloggar.
+    är det rekommenderat datumformat för ändringsloggar.
 
 
-  Det finns mer. Hjälp mig att samla dessa enhörningstårar genom att
+  Det finns mer. Hjälp mig att samla tårarna från änglarna genom att
   [öppna en issue][issues]
   eller en pull-förfrågan.
 
   ### Finns det ett standardformat på ändringsloggar?
   Tyvärr inte. Men lugn. Jag vet att du frustrerad kommer att rusa iväg för att hitta
   den där länken till GUS:s format för ändringsloggar, eller den två stycken långa
-  GNu NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är 
+  GNU NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är 
   tyvärr allt för naiv. Det är inget fel med att vara naiv, men när människor 
   behöver vägledning är det inte speciellt hjälpsamt. Speciellt när det är många
-  olika situationer och spcialfall att hantera. 
+  olika situationer och specialfall att hantera. 
 
-  Detta projekt [inehåller vad jag hoppas kommer att bli en bättre filkonvention
+  Detta projekt [innehåller vad jag hoppas kommer att bli en bättre filkonvention
   för CHANGELOG][CHANGELOG]. Jag tror inte att status quo är tillräckligt bra, 
   och jag tror att vi tillsammans kan komma fram till en bättre konvention
   om vi försöker att plocka ut bra erfarenheter från riktiga mjukvaruprojekt. 
-  Titta runt och kom ihåg att [diskutioner och förbättringsförslag är välkomna][issues]!
+  Titta runt och kom ihåg att [diskussioner och förbättringsförslag är välkomna][issues]!
 
   ### Vad bör filen med ändringsloggen heta?
   Tja, om du inte kan lista ut det från exemplen ovan är `CHANGELOG.md`
-  den bästa konvention hittils. 
+  den bästa konvention hittills. 
 
   En del projekt använder också `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
   `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
 
-  Det är ebn verklig röra. Alla dessa namn gör det bara svårare för ämnniskor att hitta.
+  Det är en verklig röra. Alla dessa namn gör det bara svårare för människor att hitta.
 
   ### Varför kan folk inte bara använda en diff från `git log`?
   Eftersom logg-diffar av naturen är fulla med brus. Det kan inte ens användas 
   för att göra en lämplig ändringslogg ens i ett hypotetiskt projekt drivet av
   perfekta människor som aldrig skriver fel, aldrig glömmer att checka in nya filer 
   eller aldrig glömmer någon del av en refaktorering. Syftet med en commit är att 
-  dokumentera ett enskilt steg i processen då koden utecklas från ett tillstånd till 
+  dokumentera ett enskilt steg i processen då koden utvecklas från ett tillstånd till 
   ett annat. Syftet med en ändringslogg är att dokumentera de anmärkningsvärda
-  skillnadenrna mellan dessa tillstånd.
+  skillnaderna mellan dessa tillstånd.
 
   På samma sätt som det är skillnad mellan bra kommentarer och själva koden, 
   är det skillnad mellan ändringsloggen och commit-loggen:
@@ -128,7 +128,7 @@ language: sv
   ### Varför alternerar du mellan att skriva det som "CHANGELOG" och "ändringslogg"?"
   "CHANGELOG" är namnet på själva filen. Det sticker ut lite, men det är en 
   historisk konvention använt i många öppen källkodsprojekt. Andra
-  exempel på liknande filer är [`README`][README], [`LICENSE`][LICENSE],
+  exempel på liknande filer är [`README`][README], [`LICENSE`][LICENSE]
   och [`CONTRIBUTING`][CONTRIBUTING].
   
   De stora bokstäverna i namnen (som gjorde att de i äldre operativsystem 
@@ -147,7 +147,7 @@ language: sv
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
   Taggen `[YANKED]` står ut av en anledning, det är viktigt för människor
-  att se den. Då den är omsluten med hakparanteser är det också lättare 
+  att se den. Då den är omsluten med hakparenteser är det också lättare 
   för ett program att tolka.
 
   ### Borde du någonsin förändra en ändringslogg?
@@ -155,15 +155,15 @@ language: sv
   Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
   för öppen källkodsprojekt som inte tar hand om sin ändringslogg.
 
-  Det kan också hända att du upptäcker att du glömst att ta upp en icke 
-  bakåtkompatibel förändring i en version. I sånna fall är det självklart
+  Det kan också hända att du upptäcker att du glömt att ta upp en icke 
+  bakåtkompatibel förändring i en version. I sådana fall är det självklart
   viktigt att uppdatera din ändringslogg.
 
   ### Hur kan jag bidra?
-  Detta dokuemtn är inte **sanningen**, det är en noga övervägd åsikt
-  tillsammans med information coh exempel jag har sammlat på mig.
+  Detta dokument är inte **sanningen**, det är en noga övervägd åsikt
+  tillsammans med information och exempel jag har samlat på mig.
   Även om jag tillhandahåller en [CHANGELOG][] i min [GitHub repo][gh],
-  har jag avsiktligt inte skpat en egentlig *utgåva* eller en tydlig lista
+  har jag avsiktligt inte skapat en egentlig *utgåva* eller en tydlig lista
   med regler att följa (som t.ex. [SemVer.org][semver] gör).
 
   Detta beror på att jag vill att vår gemenskap ska nå samförstånd. Jag 
