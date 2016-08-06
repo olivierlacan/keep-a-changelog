@@ -2,6 +2,7 @@
 description: Mantenha um CHANGELOG
 title: Mantenha um CHANGELOG
 language: pt-BR
+version: 0.3.0
 ---
 
 :markdown
@@ -9,13 +10,15 @@ language: pt-BR
 
   ## Não deixe seus amigos despejar logs de commits em CHANGELOGs™
 
+  Version **#{current_page.metadata[:page][:version]}**
+
   ### O que é um change log?
 
   Um *change log* é um arquivo que contém uma lista selecionada, ordenada
   cronologicamente de mudanças significativas para cada versão de um projeto
   open source.
 
-%pre.changelog= File.read(File.expand_path("../../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Para que serve um *change log*?
