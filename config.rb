@@ -22,11 +22,11 @@ set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
 set :site_url, 'http://keepachangelog.com'
 
-redirect "index.html", to: "#{$last_version}/en/index.html"
+redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
   language_param = language.last.parameterize
-  redirect "#{language.first}/index.html", to: "#{$last_version}/#{language.first}/index.html"
+  redirect "#{language.first}/index.html", to: "#{language.first}/#{$last_version}/index.html"
 end
 
 # ----- Assets ----- #
