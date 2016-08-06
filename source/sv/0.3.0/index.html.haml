@@ -2,6 +2,7 @@
 description: Håll en ändringslogg
 title: Håll en ändringslogg
 language: sv
+version: 0.3.0
 ---
 
 :markdown
@@ -9,11 +10,13 @@ language: sv
 
   ## Låt inte dina vänner slänga in en git logs i CHANGELOG™
 
+  Version **#{current_page.metadata[:page][:version]}**
+
   ### Vad är en ändringslogg?
   En ändringslogg är en fil innehållandes en sammanfattad, kronologiskt ordnad 
   lista över ändringar för varje version av ett projekt.
 
-%pre.changelog= File.read(File.expand_path("../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Vad är meningen med en ändringslogg?
