@@ -10,14 +10,14 @@ version: 0.3.0
 
   ## 更新日誌絕對不應該是git日誌的堆砌物
 
-  Version **#{current_page.metadata[:page]["version"]}**
+  Version **#{current_page.metadata[:page][:version]}**
 
   ### 更新日誌是什麽？
   更新日誌（Change Log）是壹個由人工編輯，以時間為倒敘的列表。
   這個列表記錄所有版本的重大變動。
 
 
-%pre.changelog= File.read(File.join(root_path, "CHANGELOG.md"))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### 為何要提供更新日誌？

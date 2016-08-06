@@ -10,13 +10,13 @@ version: 0.3.0
 
   ## Lass deine Freunde nicht CHANGELOGs mit git logs füllen™
 
-  Version **#{current_page.metadata[:page]["version"]}**
+  Version **#{current_page.metadata[:page][:version]}**
 
   ### Was ist ein Changelog?
   Ein Changelog ist eine Datei, welche eine nachgeführte, chronologisch sortierte
   Liste aller relevanten Änderungen für jede Version eines Projektes enthält.
 
-%pre.changelog= File.read(File.join(root_path, "CHANGELOG.md"))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Was ist der Zweck eines Changelogs?

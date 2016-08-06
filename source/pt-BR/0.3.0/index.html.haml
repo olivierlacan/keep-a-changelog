@@ -10,7 +10,7 @@ version: 0.3.0
 
   ## Não deixe seus amigos despejar logs de commits em CHANGELOGs™
 
-  Version **#{current_page.metadata[:page]["version"]}**
+  Version **#{current_page.metadata[:page][:version]}**
 
   ### O que é um change log?
 
@@ -18,7 +18,7 @@ version: 0.3.0
   cronologicamente de mudanças significativas para cada versão de um projeto
   open source.
 
-%pre.changelog= File.read(File.join(root_path, "CHANGELOG.md"))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Para que serve um *change log*?

@@ -8,7 +8,7 @@
 
     -# Open Graph
 
-    %meta{property: 'og:article:publisher', content: publisher_url}
+    %meta{property: 'og:article:publisher', content: config.publisher_url}
     %meta{property: 'og:title', content: current_page.data.title}
     %meta{property: 'og:type', content: 'article'}
     %meta{property: 'og:url', content: path_to_url(current_page.url)}
@@ -47,7 +47,7 @@
           #{link_to "Olivier Lacan", "http://olivierlacan.com/"} from
           #{link_to "Code School", "https://www.codeschool.com/"}.
 
-  - unless gauges_id.blank?
+  - unless config.gauges_id.blank?
     :javascript
       var _gauges = _gauges || [];
       (function() {
@@ -55,7 +55,7 @@
         t.type  = 'text/javascript';
         t.async = true;
         t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '#{gauges_id}');
+        t.setAttribute('data-site-id', '#{config.gauges_id}');
         t.src = '//secure.gaug.es/track.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(t, s);

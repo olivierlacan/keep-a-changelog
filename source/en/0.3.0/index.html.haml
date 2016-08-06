@@ -3,7 +3,6 @@ description: Keep a Changelog
 title: Keep a Changelog
 language: en
 version: 0.3.0
-redirect_path: /about/
 ---
 
 :markdown
@@ -11,13 +10,13 @@ redirect_path: /about/
 
   ## Don’t let your friends dump git logs into CHANGELOGs™
 
-  Version **#{current_page.metadata[:page]["version"]}**
+  Version **#{current_page.metadata[:page][:version]}**
 
   ### What’s a change log?
   A change log is a file which contains a curated, chronologically ordered
   list of notable changes for each version of a project.
 
-%pre.changelog= File.read(File.join(root_path, "CHANGELOG.md"))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### What’s the point of a change log?

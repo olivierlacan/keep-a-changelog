@@ -57,7 +57,7 @@ set :markdown, {
 
 helpers do
   def path_to_url(path)
-    Addressable::URI.join(site_url, path).normalize.to_s
+    Addressable::URI.join(config.site_url, path).normalize.to_s
   end
 end
 
