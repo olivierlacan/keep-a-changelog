@@ -3,11 +3,31 @@
 # --------------------------------------
 
 # ----- Site ----- #
+$last_version = "0.3.0"
+$languages = {
+  de: "Deutsch",
+  en: "English",
+  "es-ES" => "Español",
+  "pt-BR" => "Brazilian Portugese",
+  ru: "Pyccкий",
+  "zh-CN" => "简体中文",
+  "zh-TW" => " 繁體中文"
+}
 
-activate :i18n, langs: [:en, 'es-ES', 'pt-BR', :ru, 'zh-CN', 'zh-TW'], :mount_at_root => :en
+activate :i18n,
+  lang_map: $languages,
+  mount_at_root: :en
+
 set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
 set :site_url, 'http://keepachangelog.com'
+
+redirect "index.html", to: "en/#{$last_version}/index.html"
+
+$languages.each do |language|
+  language_param = language.last.parameterize
+  redirect "#{language.first}/index.html", to: "#{language.first}/#{$last_version}/index.html"
+end
 
 # ----- Assets ----- #
 
