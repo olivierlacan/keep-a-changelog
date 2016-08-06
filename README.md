@@ -1,4 +1,4 @@
-# Keep a CHANGELOG
+# Keep a CHANGELOG [![version](https://img.shields.io/badge/version-0.3.0-blue.svg)][CHANGELOG]
 
 ## Don’t let your friends dump git logs into CHANGELOGs™
 
