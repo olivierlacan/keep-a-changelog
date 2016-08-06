@@ -1,0 +1,116 @@
+<!DOCTYPE html> <html> <head lang="ru"> <meta charset="utf-8"> <meta content="IE=edge" http-equiv="X-UA-Compatible"> <meta content="width=device-width, initial-scale=1.0" name="viewport"> <meta content="Ведите Changelog" name="description"> <meta content="https://www.facebook.com/olivier.lacan.5" property="og:article:publisher"> <meta content="Ведите Changelog" property="og:title"> <meta content="article" property="og:type"> <meta content="http://keepachangelog.com/ru/0.3.0/" property="og:url"> <meta content="Ведите Changelog" property="og:description"> <link href="http://keepachangelog.com/ru/0.3.0/" rel="canonical"> <title>Ведите Changelog</title> <link href="//fonts.googleapis.com/css?family=Carrois+Gothic|Source+Code+Pro:400,700" rel="stylesheet"/> <link href="/assets/stylesheets/application-6c1aa85e.css" rel="stylesheet"/> <script>
+  try{Typekit.load();}catch(e){}
+</script> </head> <body> <article> <header role="banner"> <nav class="locales" role="navigation"> <ul> <li><a rel="alternate" lang="[:de, &quot;Deutsch&quot;]" hreflang="[:de, &quot;Deutsch&quot;]" href="/de/">Deutsch [de]</a></li> <li><a rel="alternate" lang="[:en, &quot;English&quot;]" hreflang="[:en, &quot;English&quot;]" href="/en/">English [en]</a></li> <li><a rel="alternate" lang="[&quot;es-ES&quot;, &quot;Español&quot;]" hreflang="[&quot;es-ES&quot;, &quot;Español&quot;]" href="/es-ES/">Español [es-ES]</a></li> <li><a rel="alternate" lang="[&quot;pt-BR&quot;, &quot;Brazilian Portugese&quot;]" hreflang="[&quot;pt-BR&quot;, &quot;Brazilian Portugese&quot;]" href="/pt-BR/">Brazilian Portugese [pt-BR]</a></li> <li><a rel="alternate" lang="[:ru, &quot;Pyccкий&quot;]" hreflang="[:ru, &quot;Pyccкий&quot;]" href="/ru/">Pyccкий [ru]</a></li> <li><a rel="alternate" lang="[&quot;zh-CN&quot;, &quot;简体中文&quot;]" hreflang="[&quot;zh-CN&quot;, &quot;简体中文&quot;]" href="/zh-CN/">简体中文 [zh-CN]</a></li> <li><a rel="alternate" lang="[&quot;zh-TW&quot;, &quot; 繁體中文&quot;]" hreflang="[&quot;zh-TW&quot;, &quot; 繁體中文&quot;]" href="/zh-TW/"> 繁體中文 [zh-TW]</a></li> </ul> </nav> </header> <div class="main" role="main"><h1>Ведите CHANGELOG</h1> <h2>Не позволяйте друзьям сливать логи гита в CHANGELOG™</h2> <p>Version <strong>0.3.0</strong></p> <h3>Что такое лог изменений?</h3> <p>Лог изменений – это файл, который содержит поддерживаемый, упорядоченный в хронологическом порядке список значимых изменений для каждой версии проекта с открытым исходным кодом.</p> <pre class="changelog"># Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+## [Unreleased]
+### Added
+- zh-CN and zh-TW translations from @tianshuo.
+- de translation from @mpbzh.
+
+## [0.3.0] - 2015-12-03
+### Added
+- RU translation from @aishek.
+- pt-BR translation from @tallesl.
+- es-ES translation from @ZeliosAriex.
+
+## [0.2.0] - 2015-10-06
+### Changed
+- Remove exclusionary mentions of "open source" since this project can benefit
+both "open" and "closed" source projects equally.
+
+## [0.1.0] - 2015-10-06
+### Added
+- Answer "Should you ever rewrite a change log?".
+
+### Changed
+- Improve argument against commit logs.
+- Start following [SemVer](http://semver.org) properly.
+
+## [0.0.8] - 2015-02-17
+### Changed
+- Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world
+  writes dates in a strange way.
+
+### Fixed
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
+
+## [0.0.7] - 2015-02-16
+### Added
+- Link, and make it obvious that date format is ISO 8601.
+
+### Changed
+- Clarified the section on "Is there a standard change log format?".
+
+### Fixed
+- Fix Markdown links to tag comparison URL with footnote-style links.
+
+## [0.0.6] - 2014-12-12
+### Added
+- README section on "yanked" releases.
+
+## [0.0.5] - 2014-08-09
+### Added
+- Markdown links to version tags on release headings.
+- Unreleased section to gather unreleased changes and encourage note
+keeping prior to releases.
+
+## [0.0.4] - 2014-08-09
+### Added
+- Better explanation of the difference between the file ("CHANGELOG")
+and its function "the change log".
+
+### Changed
+- Refer to a "change log" instead of a "CHANGELOG" throughout the site
+to differentiate between the file and the purpose of the file — the
+logging of changes.
+
+### Removed
+- Remove empty sections from CHANGELOG, they occupy too much space and
+create too much noise in the file. People will have to assume that the
+missing sections were intentionally left out because they contained no
+notable changes.
+
+## [0.0.3] - 2014-08-09
+### Added
+- "Why should I care?" section mentioning The Changelog podcast.
+
+## [0.0.2] - 2014-07-10
+### Added
+- Explanation of the recommended reverse chronological release ordering.
+
+## 0.0.1 - 2014-05-31
+### Added
+- This CHANGELOG file to hopefully serve as an evolving example of a standardized open source project CHANGELOG.
+- CNAME file to enable GitHub Pages custom domain
+- README now contains answers to common questions about CHANGELOGs
+- Good examples and basic guidelines, including proper date formatting.
+- Counter-examples: "What makes unicorns cry?"
+
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
+[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
+[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
+[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+</pre> <h3>Для чего нужен лог изменений?</h3> <p>Чтобы пользователи и контрибьюторы могли с меньшими усилиями точно определить, какие значимые изменения были сделаны в каждом релизе (или версии) проекта.</p> <h3>Почему я вообще должен думать об этом?</h3> <p>Потому, что инструменты программирования делаются для людей. Если вам пофигу, зачем вы вообще занимаетесь программным обеспечением с открытым исходным кодом? У вас обязательно в голове должен быть центр «не пофигу» :)</p> <p>Я <a href="http://5by5.tv/changelog/127">беседовал с Адамом Стаковиаком и с Джеродом Санто в подкасте The Changelog</a> (в тему название, правда?) о том почему авторам программного обеспечения с открытым исходным кодом и их коллегам должно быть не пофигу, и о моих мотивах в создании этого проекта. Послушайте, если у вас есть время (1:06).</p> <h3>Что должно быть в хорошем логе изменений?</h3> <p>Я рад, что вы спросили.</p> <p>Хороший лог изменений придерживается этих приниципов:</p> <ul> <li>Он сделан для людей, а не машин, так что понятность имеет решающее значение.</li> <li>Легко сослаться на любой раздел (поэтому Markdown лучше обычного текста).</li> <li>Один подраздел на каждую версию.</li> <li>Релизы перечислены в обратном хронологическом порядке (самые новые – сверху).</li> <li>Пишите все даты в формате <code>YYYY-MM-DD</code>. (Например: <code>2012-06-02</code> для даты <code>2&#x000A;июня 2012</code>.) Он международный, <a href="http://xkcd.com/1179/">рациональный</a>, и независим от языка.</li> <li>Ясно указывает, использует ли проект <a href="http://semver.org/">Семантическое Версионирование</a>.</li> <li>Каждая версия должна: <ul> <li>Показывать дату релиза в формате, упомянутом выше.</li> <li>Группировать изменения согласно их влиянию на проект следующим образом:</li> <li><code>Added</code> для новых функций.</li> <li><code>Changed</code> для изменений в существующей функциональности.</li> <li><code>Deprecated</code> для функциональности, которая будет удалена в следующих версиях.</li> <li><code>Removed</code> для функциональности, которая удалена в этой версии.</li> <li><code>Fixed</code> для любых исправлений.</li> <li><code>Security</code> для обновлений безопасности.</li> </ul></li> </ul> <h3>Как минимизировать время, необходимое для ведения лога изменений?</h3> <p>Всегда ведите секцию <code>Unreleased</code> в начале файла, чтобы держать в ней не выпущенные изменения.</p> <p>Это нужно для двух вещей:</p> <ul> <li>Люди смогут видеть, какие изменения ожидаются в ближайших релизах</li> <li>В момент релиза вам нужно всего лишь заменить секцию <code>Unreleased</code> на номер версии и добавить новую секцию <code>Unreleased</code> в начале файла.</li> </ul> <h3>Что заставляет плакать единорогов?</h3> <p>Хорошо… давайте разберёмся.</p> <ul> <li><strong>Выгрузка изменений лога коммитов.</strong> Просто не делайте так, это никому не принесёт пользы.</li> <li><strong>Отсутствие отметок планируемой к удалению функциональности.</strong> Когда люди обновляются от одной версии к другой, им должно быть очевидно до боли, что сломается.</li> <li><strong>Даты в местном формате.</strong> В Соединённых Штатах, люди сначала пишут месяц («06-02-2012» для даты 2 июня 2012, что не имеет <em>никакого</em> смысла), хотя много людей в остальном мире пишет роботоподобное «2 июня 2012», всё ещё произнося это по-другому. «2012-06-02» логично работает от самого большого к самому маленькому, не пересекается с другими форматами дат, и является <a href="http://www.iso.org/iso/home/standards/iso8601.htm">стандартом ISO</a>. Таким образом, этот формат является рекомендуемым для логов изменений.</li> </ul> <p>Существуют и другие. Помогите мне собрать слёзы единорогов, <a href="https://github.com/olivierlacan/keep-a-changelog/issues">открыв тикет</a> или пулл-реквест.</p> <h3>Существует стандарт формата лога изменений?</h3> <p>К сожалению, нет. Спокойней. Я знаю, что вы яростно бросились на поиски ссылки на GNU-руководства по стилю лога изменений, или на поиски файла «guideline» с парой параграфов в GNU NEWS. GNU-руководство по стилю неплохо для начала, но оно наивно. В наивности нет ничего плохого, но когда людям нужно руководство, она редко бывает полезна. Особенно, когда приходиться сталкиваться со множеством краевых случаев.</p> <p>Этот проект <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md">содержит информацию, которая, я надеюсь, станет соглашением получше о ведении файлов CHANGELOG</a> для всех проектов с открытым исходным кодом. Может ли сообщество учиться на своих ошибках, а не просто действовать согласно десяти записям, которые были написаны много лет назал, и, якобы, без одной ошибки? Хорошо. Поэтому, пожалуйста, посмотрите вокруг, и помните, что <a href="https://github.com/olivierlacan/keep-a-changelog/issues">обсуждения и предложения по улучшению приветствуются</a>!</p> <h3>Как можно назвать файл лога изменений?</h3> <p>Ну, если вы не не можете ответить на этот вопрос, глядя на пример выше, <code>CHANGELOG.md</code> пока наилучший вариант.</p> <p>Некоторые проекты используют <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>, <code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, и так далее.</p> <p>Это непорядок. Все эти имена только усложняют поиск нужного файла.</p> <h3>Почему люди не могут использовать просто дифф команды <code>git log</code>?</h3> <p>Потому, что диффы логов по своей природе содержат слишком много «шума». С их помощью невозможно сделать подходящий лог изменений даже в гипотетическом проекте, который делается идеальными программистами, которые никогда не делают опечаток, никогда не забывают коммитить новые файлы, никогда не пропускают ни одну часть рефакторинга. Назначение коммита в том, чтобы задокументировать один атомарный шаг в процессе развития кода от одного состояния к другому. Назначение лога изменений – документировать значимые различия между этими состояниями.</p> <p>Как отличаются хорошие комментарии к коду и сам код, также отличаются друг от друга и лог изменений с логом коммитов: первые отвечают на вопрос <em>почему</em>, а вторые на вопрос как.</p> <h3>Могут ли логи изменений быть автоматически распарсены?</h3> <p>Это сложно из-за того, что люди следуют сильно отличающимся форматам и соглашениям о именах файлов.</p> <p>Гем для Руби <a href="https://github.com/tech-angels/vandamme/">Vandamme</a>, который создали в команде <a href="https://gemnasium.com/">Gemnasium</a>, парсит многие (но не все) логи изменений проектов с открытым исходным кодом.</p> <h3>Почему вы пишите то «CHANGELOG», то «лог изменений»?</h3> <p>«CHANGELOG» – это имя файла. Оно несколько крикливо, но это историческое соглашение, которому следуют многие проекты с открытым исходным кодом. В качестве примеров подобных файлов можно привести <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md"><code>README</code></a>, <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE"><code>LICENSE</code></a>, и <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p> <p>Верхний регистр в имени файла (который в старых операционных системах заставляет эти файлы находиться наверху списков) используется для привлечения внимания. Так как в этих файлах содержится важная метаинформация о проекте, они могут быть полезны любому использующему или дорабатывющему проект, также как <a href="http://shields.io/">бейджи проектов с открытым исходным кодом</a>.</p> <p>Когда я упоминаю «лог изменений», я говорою о назначении этого файла: об учёте изменений.</p> <h3>Как насчёт yanked-релизов?</h3> <p>Yanked-релизы – это версии, которые изымаются из обращения из-за серьёзного бага или проблемы безопасности в них. Часто такие версии даже не упоминаются в логах изменений. А должны. И вот как вам следует их упоминать:</p> <p><code>## 0.0.5 - 2014-12-13 [YANKED]</code></p> <p>Тег <code>[YANKED]</code> такой «громкий» не просто так. Очень важно, чтобы люди его заметили. А из-за того, что он окружён скобками, его легче определить программно.</p> <h3>Стоит ли переписывать лог изменений?</h3> <p>Конечно. Всегда есть причины для улучшения лога изменений. Я регулярно открываю пулл-реквесты в проекты с открытым исходным кодом с неподдерживаемыми логами изменений для добавления недостающих релизов.</p> <p>Также вы можете обнаружить что вы забыли адресовать критичное изменение в описании версии. В этом случае очевидно, что нужно обновить лог изменений.</p> <h3>Как я могу помочь?</h3> <p>Этот документ <strong>не истина в последней инстанции</strong>; это моё тщательно сформулированное мнение вместе с информацией и примерами, которые я собрал. Хотя я предоставил настоящий <a href="https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md">CHANGELOG</a> из <a href="https://github.com/olivierlacan/keep-a-changelog">GitHub-репозитария</a>, я специально избегал цели создать <em>стандарт</em> или чёткий список правил (как это делает, например, <a href="http://semver.org/">SemVer.org</a>).</p> <p>Я сделал это потому, что хочу, чтобы наше сообщество достигло консенсуса. Я верю, что дискуссия также важна, как и её результат.</p> <p>Так что, пожалуйста, <a href="https://github.com/olivierlacan/keep-a-changelog"><strong>участвуйте</strong></a>.</p> </div> <footer class="clearfix" role="banner"> <p class="license"> This project is <a href="http://choosealicense.com/licenses/mit/">MIT Licensed</a>. </p> <p class="about"> <a href="https://github.com/olivierlacan/keep-a-changelog/">Typed</a> with trepidation by <a href="http://olivierlacan.com/">Olivier Lacan</a> from <a href="https://www.codeschool.com/">Code School</a>. </p> </footer> </article> </body> <script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script> </html>
