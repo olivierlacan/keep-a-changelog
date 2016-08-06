@@ -3,24 +3,18 @@
 ## Don’t let your friends dump git logs into CHANGELOGs™
 
 ### What’s a change log?
-A change log is a file which contains a curated, chronologically ordered
-list of notable changes for each version of a project.
+A change log is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
 
 <a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
 
 ### What’s the point of a change log?
-To make it easier for users and contributors to see precisely what
-notable changes have been made between each release (or version) of the project.
+To make it easier for users and contributors to see exactly what notable changes have taken place between each release (or version) of the project.
 
 ### Why should I care?
-Because software tools are for people. If you don’t care, why are
-you contributing to open source? Surely, there must be a kernel (ha!)
-of care somewhere in that lovely little brain of yours.
+Because software tools are for people. If you don’t care, why are you contributing to open source? Surely, there must be a kernel (ha!) of care somewhere in that lovely little brain of yours.
 
 I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
-(fitting, right?) podcast about why maintainers and
-contributors should care, and the motivations behind this project.
-If you can spare the time (1:06), it’s a good listen.
+(fitting, right?) podcast about why maintainers and contributors should care, and the motivations behind this project. If you can spare the time (1:06), it’s a good listen.
 
 ### What makes a good change log?
 I’m glad you asked.
@@ -44,8 +38,7 @@ A good change log sticks to these principles:
     - `Security` to invite users to upgrade in case of vulnerabilities.
 
 ### How can I minimize the effort required?
-Always have an `"Unreleased"` section at the top for keeping track of any
-changes.
+Always have an `"Unreleased"` section at the top for keeping track of any changes.
 
 This serves two purposes:
 
@@ -54,7 +47,7 @@ This serves two purposes:
   and add a new `"Unreleased"` header at the top.
 
 ### What makes unicorns cry?
-Alright…let’s get into it.
+Alright...let’s get into it.
 
 - **Dumping a diff of commit logs.** Just don’t do that, you’re helping nobody.
 - **Not emphasizing deprecations.** When people upgrade from one version to
@@ -67,27 +60,16 @@ Alright…let’s get into it.
   [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Thus, it
   is the recommended date format for change logs.
 
-There’s more. Help me collect those unicorn tears by
-[opening an issue][issues]
-or a pull request.
+There’s more. Help me collect those unicorn tears by [opening an issue][issues] or a pull request.
 
 ### Is there a standard change log format?
-Sadly, no. Calm down. I know you're furiously rushing to find that link
-to the GNU change log style guide, or the two-paragraph GNU NEWS file
-"guideline". The GNU style guide is a nice start but it is sadly naive.
-There's nothing wrong with being naive but when people need
-guidance it's rarely very helpful. Especially when there are many
-situations and edge cases to deal with.
+Unfortunately, no. Calm down. I know you're furiously rushing to find that link
+to the GNU change log style guide, or the two-paragraph GNU NEWS file "guideline". The GNU style guide is a nice start but it is naive. There's nothing wrong with being naive but when people need guidance it's rarely helpful. Especially when there are many situations and edge cases to deal with.
 
-This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG].
-I don't think the status quo is good enough, and I think that as a community we
-can come up with better conventions if we try to extract good practices from
-real software projects. Please take a look around and remember that
-[discussions and suggestions for improvements are welcome][issues]!
+This project [contains what I hope will become a better CHANGELOG file convention][CHANGELOG]. I don't think the status quo is good enough. I think that as a community we can come up with better conventions if we try to extract good practices from real software projects. Please take a look around and remember that [discussions and suggestions for improvements are welcome][issues]!
 
-### What should the change log file be named?
-Well, if you can’t tell from the example above, `CHANGELOG.md` is the
-best convention so far.
+### What should the change log file naming convention be?
+Well, if you can’t tell from the example above, `CHANGELOG.md` is the best convention so far.
 
 Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
 `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
@@ -95,37 +77,24 @@ Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
 It’s a mess. All these names only makes it harder for people to find it.
 
 ### Why can’t people just use a `git log` diff?
-Because log diffs are full of noise — by nature. They could not make a suitable
-change log even in a hypothetical project run by perfect humans who never make
-typos, never forget to commit new files, never miss any part of a refactoring.
-The purpose of a commit is to document one atomic step in the process by which
-the code evolves from one state to another. The purpose of a change log is to
-document the noteworthy differences between these states.
+Because log diffs are full of noise — by nature. Git log diffs could not make a suitable change log even in a hypothetical project run by perfect humans who never make typos, never forget to commit new files, never miss any part of a refactoring.
+The purpose of a commit is to document one atomic step in the process by which the code evolves from one state to another. The purpose of a change log is to document the noteworthy differences between these states.
 
-As is the difference between good comments and the code itself,
-so is the difference between a change log and the commit log:
-one describes the *why*, the other the how.
+As is the difference between good comments and the code itself, so is the difference between a change log and the commit log: one describes the *why*, the other the how.
 
 ### Can change logs be automatically parsed?
 It’s difficult, because people follow wildly different formats and file names.
 
-[Vandamme][vandamme] is a Ruby gem
-created by the [Gemnasium][gemnasium] team and which parses
-many (but not all) open source project change logs.
+[Vandamme][vandamme] is a Ruby gem created by the [Gemnasium][gemnasium] team and which parses many (but not all) open source project change logs.
 
 ### Why do you alternate between spelling it "CHANGELOG" and "change log"?
-"CHANGELOG" is the name of the file itself. It's a bit shouty but it's a
-historical convention followed by many open source projects. Other
-examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE),
-and [`CONTRIBUTING`](CONTRIBUTING.md).
+"CHANGELOG" is the name of the file itself. It's a bit loud but it's a historical convention followed by many open source projects. Other examples of similar files include [`README`](README.md), [`LICENSE`](LICENSE), and [`CONTRIBUTING`](CONTRIBUTING.md).
 
 The uppercase naming (which in old operating systems made these files stick
-to the top) is used to draw attention to them. Since they're important
-metadata about the project, they could be useful to anyone intending to use
+to the top) is used to draw attention to them. Since they're important metadata about the project, they could be useful to anyone intending to use
 or contribute to it, much like [open source project badges][shields].
 
-When I refer to a "change log", I'm talking about the function of this
-file: to log changes.
+When I refer to a "change log", I'm talking about the function of this file: to log changes.
 
 ### What about yanked releases?
 Yanked releases are versions that had to be pulled because of a serious
@@ -134,28 +103,19 @@ logs. They should. This is how you should display them:
 
 `## 0.0.5 - 2014-12-13 [YANKED]`
 
-The `[YANKED]` tag is loud for a reason. It's important for people to
-notice it. Since it's surrounded by brackets it's also easier to parse
+The `[YANKED]` tag is loud for a reason. It's important for people to notice it. Since it's surrounded by brackets it's also easier to parse
 programmatically.
 
 ### Should you ever rewrite a change log?
 Sure. There are always good reasons to improve a change log. I regularly open
-pull requests to add missing releases to open source projects with unmaintained
-change logs.
+pull requests to add missing releases to open source projects with unmaintained change logs.
 
-It's also possible you may discover that you forgot to address a breaking change
-in the notes for a version. It's obviously important for you to update your
-change log in this case.
+It's also possible you may discover that you forgot to address a breaking change in the notes for a version. It's obviously important for you to update your change log in this case.
 
 ### How can I contribute?
-This document is not the **truth**; it’s my carefully considered
-opinion, along with information and examples I gathered.
-Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh],
-I have purposefully not created a proper *release* or clear list of rules
-to follow (as [SemVer.org][semver] does, for instance).
+This document is not the **truth**; it’s my carefully considered opinion, along with information and examples I gathered. Although I provide an actual [CHANGELOG][] on [the GitHub repo][gh], I have purposefully not created a proper *release* or clear list of rules to follow (as [SemVer.org][semver] does, for instance).
 
-This is because I want our community to reach a consensus. I believe the
-discussion is as important as the end result.
+This is because I want our community to reach a consensus. I believe the discussion is as important as the end result.
 
 So please [**pitch in**][gh].
 
