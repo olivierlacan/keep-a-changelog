@@ -11,7 +11,8 @@ $languages = {
   "pt-BR" => "Brazilian Portugese",
   ru: "Pyccкий",
   "zh-CN" => "简体中文",
-  "zh-TW" => " 繁體中文"
+  "zh-TW" => " 繁體中文",
+  "sv"    => "Svenska"
 }
 
 activate :i18n,
