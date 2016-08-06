@@ -2,6 +2,7 @@
 description: Değişiklik kaydı tutun
 title: Değişiklik kaydı tutun
 language: tr-TR
+version: 0.3.0
 ---
 
 :markdown
@@ -13,7 +14,7 @@ language: tr-TR
   Değişiklik kayıtları bir proje için özel olarak hazırlanmış, tarihsel sıralamayla
   sıralanmış, önemli değişikliklerin bir bütünüdür.
 
-%pre.changelog= File.read(File.expand_path("../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Değişikliklerin kayıtlarını tutmanın anlamı ne?
@@ -42,7 +43,7 @@ language: tr-TR
   - Tüm tarihleri `YYYY-AA-GG` biçiminde yazın. (Örneğin `2 Haziran 2012` için `2012-06-02`.) Uluslararasıdır, [anlamlıdır](http://xkcd.com/1179/), ve lisan bağımsızdır.
   - [Anlamsal sürümlemeyi][semver] destekleyip desteklemediğini özellikle belirtin.
   - Her sürümde olması gerekenler:
-  	- Üstteki biçimde dağıtım tarihi.
+    - Üstteki biçimde dağıtım tarihi.
     - Projeye etkileri bakımından değişiklikleri gruplayın, şöyle ki:
       - `Eklendi`: yeni özellikler için.
       - `Değişti`: var olan beceriler değiştiyse.
@@ -108,7 +109,7 @@ language: tr-TR
   kayıtları ise bu durumlar arasında, önem arz eden değişiklikleri belgelemeyi
   amaçlıyor.
 
-  İyi yorumla ve kodun kendisi arasındaki fark,
+  İyi yorumlar ve kodun kendisi arasındaki fark,
   aynı şekilde değişiklik kayıtları ve commit kayıtları arasındaki gibidir:
   biri *neden* olduğunu, diğeri nasıl olduğunu açıklar.
 
@@ -132,7 +133,7 @@ language: tr-TR
   "Değişiklik kaydı"ndan bahsettiğim zamanlar bu dosyanın işlevinden bahsediyorum:
   Değişiklikleri kaydetmek.
 
-  ### Geri çekilen dağıtımlar?
+  ### Peki ya Geri çekilen dağıtımlar?
   Geri çekilen dağıtımlar, önemli hatalar ya da güvenlik sebepleri nedeniyle
   yayından geri çekilen sürümlerdir. Genelde bu sürümler değişiklik kayıtlarında
   görüntülenmezler. Görünmeliler. Tam da şu şekilde görünmeliler:
