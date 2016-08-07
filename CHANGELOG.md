@@ -6,7 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - zh-CN and zh-TW translations from @tianshuo.
 - de translation from @mpbzh.
-- sv translation from @magol
+- sv translation from @magol.
+- tr-TR translation from @karalamalar.
 
 ## [0.3.0] - 2015-12-03
 ### Added
