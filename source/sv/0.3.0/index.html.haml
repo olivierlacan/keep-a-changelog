@@ -13,7 +13,7 @@ version: 0.3.0
   Version **#{current_page.metadata[:page][:version]}**
 
   ### Vad är en ändringslogg?
-  En ändringslogg är en fil innehållandes en sammanfattad, kronologiskt ordnad 
+  En ändringslogg är en fil innehållandes en sammanfattad, kronologiskt ordnad
   lista över ändringar för varje version av ett projekt.
 
 %pre.changelog= File.read("CHANGELOG.md")
@@ -22,28 +22,28 @@ version: 0.3.0
   ### Vad är meningen med en ändringslogg?
   För att göra det enkelt för användare och medarbetare att se exakt vilka
   viktiga ändringar som har gjort mellan varje utgåva (eller version) av projektet.
-  
+
   ### Varför ska jag bry mig?
-  Därför att mjukvaruverktyg är för människor. Om du inte bryr dig, varför 
-  bidrar du till öppen källkod? Visst finns det väl någon del i din vackra 
+  Därför att mjukvaruverktyg är för människor. Om du inte bryr dig, varför
+  bidrar du till öppen källkod? Visst finns det väl någon del i din vackra
   hjärna som bryr sig.
 
   Jag [pratade med Adam Stacoviak och Jerod Santo på The Changelog][thechangelog]
   (passande, eller hur?) podcast om varför ansvariga och bidragsgivare bör bry sig,
-  och motiveringen bakom detta projekt. 
+  och motiveringen bakom detta projekt.
   Om du kan avvara lite tid (1:06), rekommenderar jag att lyssna på det.
 
   ### Vad gör en bra ändringslogg?
   Jag är glad att du frågade.
 
   En bra ändringslogg håller sig till dessa principer:
-  
+
   - Den är skapad för människor, inte maskiner, så läsbarhet är avgörande.
-  - Lätt att länka till valfri sektion (därav Markdown framför klartext). 
-  - En undersektion per version.  
+  - Lätt att länka till valfri sektion (därav Markdown framför klartext).
+  - En undersektion per version.
   - Lista utgåvor i omvänd kronologisk ordning (nyast högst upp).
   - Skriv alla datum på formatet `YYYY-MM-DD`
-  (exempel: `2012-06-02` för 2:a juni 2012). Det är internationellt, 
+  (exempel: `2012-06-02` för 2:a juni 2012). Det är internationellt,
   [förnuftigt](http://xkcd.com/1179/) och språkoberoende.
   - Ange uttryckligen att projektet följer [Semantisk versionshantering][SemVer].
   - Varje version bör:
@@ -68,15 +68,15 @@ version: 0.3.0
 
   ### Vad får änglarna att gråta?
   Okej...låt oss gå genom det.
-  
+
   - **Dumpa ut en diff från commit-loggen.** Gör helt enkelt inte så, du hjälper ingen.
   - **Inte betona `deprecations`.** När folk uppgraderar från en version till
     en annan ska det vara smärtsamt uppenbart om något förväntas gå sönder.
-  - **Datum i region-specifikt format.** I USA lägger folk månaden föst 
-    ("06-02-2012" för 2:a juni 2012, vilket bara är *konstigt*), medan många 
+  - **Datum i region-specifikt format.** I USA lägger folk månaden föst
+    ("06-02-2012" för 2:a juni 2012, vilket bara är *konstigt*), medan många
     andra runt om i världen skriver "2 June 2012" men uttala det annorlunda.
     "2012-06-02" fungerar logiskt från största till minsta, inte överlappar på ett
-    tvetydligt sätt med andra datumformat, och det är en 
+    tvetydligt sätt med andra datumformat, och det är en
     [ISO-standard](http://www.iso.org/iso/home/standards/iso8601.htm). Dessutom
     är det rekommenderat datumformat för ändringsloggar.
 
@@ -88,20 +88,20 @@ version: 0.3.0
   ### Finns det ett standardformat på ändringsloggar?
   Tyvärr inte. Men lugn. Jag vet att du frustrerad kommer att rusa iväg för att hitta
   den där länken till GUS:s format för ändringsloggar, eller den två stycken långa
-  GNU NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är 
-  tyvärr allt för naiv. Det är inget fel med att vara naiv, men när människor 
+  GNU NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är
+  tyvärr allt för naiv. Det är inget fel med att vara naiv, men när människor
   behöver vägledning är det inte speciellt hjälpsamt. Speciellt när det är många
-  olika situationer och specialfall att hantera. 
+  olika situationer och specialfall att hantera.
 
   Detta projekt [innehåller vad jag hoppas kommer att bli en bättre filkonvention
-  för CHANGELOG][CHANGELOG]. Jag tror inte att status quo är tillräckligt bra, 
+  för CHANGELOG][CHANGELOG]. Jag tror inte att status quo är tillräckligt bra,
   och jag tror att vi tillsammans kan komma fram till en bättre konvention
-  om vi försöker att plocka ut bra erfarenheter från riktiga mjukvaruprojekt. 
+  om vi försöker att plocka ut bra erfarenheter från riktiga mjukvaruprojekt.
   Titta runt och kom ihåg att [diskussioner och förbättringsförslag är välkomna][issues]!
 
   ### Vad bör filen med ändringsloggen heta?
   Tja, om du inte kan lista ut det från exemplen ovan är `CHANGELOG.md`
-  den bästa konvention hittills. 
+  den bästa konvention hittills.
 
   En del projekt använder också `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
   `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
@@ -109,15 +109,15 @@ version: 0.3.0
   Det är en verklig röra. Alla dessa namn gör det bara svårare för människor att hitta.
 
   ### Varför kan folk inte bara använda en diff från `git log`?
-  Eftersom logg-diffar av naturen är fulla med brus. Det kan inte ens användas 
+  Eftersom logg-diffar av naturen är fulla med brus. Det kan inte ens användas
   för att göra en lämplig ändringslogg ens i ett hypotetiskt projekt drivet av
-  perfekta människor som aldrig skriver fel, aldrig glömmer att checka in nya filer 
-  eller aldrig glömmer någon del av en refaktorering. Syftet med en commit är att 
-  dokumentera ett enskilt steg i processen då koden utvecklas från ett tillstånd till 
+  perfekta människor som aldrig skriver fel, aldrig glömmer att checka in nya filer
+  eller aldrig glömmer någon del av en refaktorering. Syftet med en commit är att
+  dokumentera ett enskilt steg i processen då koden utvecklas från ett tillstånd till
   ett annat. Syftet med en ändringslogg är att dokumentera de anmärkningsvärda
   skillnaderna mellan dessa tillstånd.
 
-  På samma sätt som det är skillnad mellan bra kommentarer och själva koden, 
+  På samma sätt som det är skillnad mellan bra kommentarer och själva koden,
   är det skillnad mellan ändringsloggen och commit-loggen:
   en beskriver "varför" och den andra "hur".
 
@@ -127,16 +127,16 @@ version: 0.3.0
   [Vandamme][vandamme] är en Ruby gem
   skapad av gruppen bakom [Gemnasium][gemnasium] som tolkar många (men inte alla)
   ändringsloggar för öppen källkod.
-  
+
   ### Varför alternerar du mellan att skriva det som "CHANGELOG" och "ändringslogg"?"
-  "CHANGELOG" är namnet på själva filen. Det sticker ut lite, men det är en 
+  "CHANGELOG" är namnet på själva filen. Det sticker ut lite, men det är en
   historisk konvention använt i många öppen källkodsprojekt. Andra
   exempel på liknande filer är [`README`][README], [`LICENSE`][LICENSE]
   och [`CONTRIBUTING`][CONTRIBUTING].
-  
-  De stora bokstäverna i namnen (som gjorde att de i äldre operativsystem 
-  hamnade högst upp) används för att dra uppmärksamhet till dem. Då de är 
-  viktig metadata om projektet borde de vara användbara för att alla som 
+
+  De stora bokstäverna i namnen (som gjorde att de i äldre operativsystem
+  hamnade högst upp) används för att dra uppmärksamhet till dem. Då de är
+  viktig metadata om projektet borde de vara användbara för att alla som
   vill använda eller bidra till det, ungefär som [open source project badges][shields].
 
   När jag refererar till "ändringslogg" pratar jag om syftet med denna fil:
@@ -144,21 +144,21 @@ version: 0.3.0
 
   ### Hur är det med brådskande utgåvor ("yanked")?
   Brådskande utgåvor är versioner som måste släppas p.g.a. alvarliga
-  buggar eller säkerhetsproblem. Oftast brukar dessa versioner inte ens 
+  buggar eller säkerhetsproblem. Oftast brukar dessa versioner inte ens
   finnas med i ändringsloggarna. De borde det. Så här borde du visa dem:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
   Taggen `[YANKED]` står ut av en anledning, det är viktigt för människor
-  att se den. Då den är omsluten med hakparenteser är det också lättare 
+  att se den. Då den är omsluten med hakparenteser är det också lättare
   för ett program att tolka.
 
   ### Borde du någonsin förändra en ändringslogg?
-  Självklart. Det finns alltid en bra anlending att förbättra en ändringslogg. 
+  Självklart. Det finns alltid en bra anlending att förbättra en ändringslogg.
   Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
   för öppen källkodsprojekt som inte tar hand om sin ändringslogg.
 
-  Det kan också hända att du upptäcker att du glömt att ta upp en icke 
+  Det kan också hända att du upptäcker att du glömt att ta upp en icke
   bakåtkompatibel förändring i en version. I sådana fall är det självklart
   viktigt att uppdatera din ändringslogg.
 
@@ -169,10 +169,10 @@ version: 0.3.0
   har jag avsiktligt inte skapat en egentlig *utgåva* eller en tydlig lista
   med regler att följa (som t.ex. [SemVer.org][semver] gör).
 
-  Detta beror på att jag vill att vår gemenskap ska nå samförstånd. Jag 
+  Detta beror på att jag vill att vår gemenskap ska nå samförstånd. Jag
   tror att diskussionen är lika viktig som slutresultatet.
-  
-  Så välkomna att [**diskutera**]][gh].
+
+  Så välkomna att [**diskutera**][gh].
 
   [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
   [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
