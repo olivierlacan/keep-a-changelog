@@ -9,6 +9,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - sv translation from @magol.
 - tr-TR translation from @karalamalar.
 
+### Changed
+- Start versioning based on the current English version at 0.3.0 to help
+translation authors keep things up-to-date.
+
 ## [0.3.0] - 2015-12-03
 ### Added
 - RU translation from @aishek.
