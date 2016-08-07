@@ -1,0 +1,178 @@
+---
+description: Değişiklik kaydı tutun
+title: Değişiklik kaydı tutun
+language: tr-TR
+version: 0.3.0
+---
+
+:markdown
+  # CHANGELOG dosyası kullanın
+
+  ## Arkadaşlarınızın git kayıtlarını CHANGELOG dosyalarına boşaltmasını engelleyin™
+
+  ### Nedir bu değişiklik kayıtları?
+  Değişiklik kayıtları bir proje için özel olarak hazırlanmış, tarihsel sıralamayla
+  sıralanmış, önemli değişikliklerin bir bütünüdür.
+
+%pre.changelog= File.read("CHANGELOG.md")
+
+:markdown
+  ### Değişikliklerin kayıtlarını tutmanın anlamı ne?
+  Bir projenin kullanıcılarının ya da katılımcılarının, dağıtımlar (ya da sürümler)
+  arasındaki tam olarak hangi önemli değişikliklerin olduğunu takip edebilmelerini sağlar.
+
+  ### Neden umrumda olsun ki?
+  Çünkü yazılım paketleri insanlar içindir. Eğer umrunuzda değilse neden açık kaynağa
+  katkıda bulunuyorsunuz ki? Mutlaka sevimli beyninizin bir yerlerinde bunu önemseyen
+  bir çekirdek (a-ha!) vardır.
+
+  [Adam Stacoviak ve Jerod Santo ile Changelog Podcast'inde][thechangelog](uyuyor,
+  değil mi?) neden geliştiricilerin ve katılımcıların umrunda olması gerektiğini ve
+  bu projenin arkasındaki motivasyonu konuştuk. Eğer vaktiniz varsa (1:06) iyi bir
+  söyleşi oldu.
+
+  ### Bir değişiklik kaydını iyi yapan nedir?
+  Bunu sorduğunuza sevindim.
+
+  İyi bir değişiklik kaydı şu prensiplere bağlıdır:
+
+  - İnsanlar için yapılmıştır, makineler için değil, yani okunurluğu kritik.
+  - Kolayca bölümler arası bağlantı kurulabilmeli (bu yüzden yalın metin yerine markdown).
+  - Her sürüm için bir alt bölüm.
+  - Dağıtımları tersine tarih sırası ile listeleyin (en yeni en üstte).
+  - Tüm tarihleri `YYYY-AA-GG` biçiminde yazın. (Örneğin `2 Haziran 2012` için `2012-06-02`.) Uluslararasıdır, [anlamlıdır](http://xkcd.com/1179/), ve lisan bağımsızdır.
+  - [Anlamsal sürümlemeyi][semver] destekleyip desteklemediğini özellikle belirtin.
+  - Her sürümde olması gerekenler:
+    - Üstteki biçimde dağıtım tarihi.
+    - Projeye etkileri bakımından değişiklikleri gruplayın, şöyle ki:
+      - `Eklendi`: yeni özellikler için.
+      - `Değişti`: var olan beceriler değiştiyse.
+      - `Rafa kalktı`: gelecekte yok olacak var olan beceriler.
+      - `Kaldırıldı`: bu sürümde kaldırılan, daha önce rafa kaldırılmış olan beceriler.
+      - `Düzeltildi`: ayıklanmış hatalar için.
+      - `Güvenlik`: açıkları kapatabilmeleri için kullanıcıları bilgilendirin.
+
+  ### Gerekli çabayı nasıl en aza indirebilirim?
+  Her zaman en üstte değişiklikleri takip ettiğiniz bir `"Yayımlanmadı"` bölümü olsun.
+
+  Bu, iki amaca hizmet eder:
+
+  - İnsanlar gelecek sürümlerde karşılarına ne gibi değişiklikler çıkacağını görebilirler
+  - Dağıtım zamanı geldiğinde `"Yayımlanmadı"` başlığını sürüm numarası ile değişitip
+    tepeye yeni bir `"Yayımlanmadı"` bölümü eklemeniz yeterli.
+
+  ### Tek boynuzlu atları ağlatan ne?
+  Peki… Gelelim sadede.
+
+  - **Commit kayıtlarının farkını yüklemek.** Sakın bunu yapmayın, kimseye yardım etmiyorsunuz.
+  - **Rafa kalkanları ön plana çıkarmamak.** Kullanıcılar bir sürümden diğerine
+    yükseltme yaptıklarında neyin bozulabileceği apaçık ortada olmalı.
+  - **Bölgesel biçimlenmiş tarihler.** ABD'de insanlar ay bilgisini önce kullanıyor
+    ("06-02-2012" demek 2 Haziran 2012 demek yani, ki tamamen *saçma*), diğer taraftan
+    dünyanın bir çok bölgesinde "2 Haziran 2012" gibi robotik bir yapı kullanıp farklı
+    şekilde dile getiriyor. "2012-06-02" hem mantıksal olarak en büyüğünden en küçüğüne çalışıyor,
+    hem de diğer tarih biçimleriyle çakışmıyor. Aynı zamanda [ISO standardında](http://www.iso.org/iso/home/standards/iso8601.htm).
+    Bu yüzden değişiklik kayıtları için önerilen tarih biçimidir.
+
+  Dahası da var. Bu tek boynuzlu at gözyaşlarını toplamak için
+  [bir başlık açın][issues]
+  ya da bir çekme isteği (pull request) gönderin.
+
+  ### Standart bir değişiklik kaydı biçimi var mı?
+  Ne yazık ki hayır. Sakin olun. Biliyorum, şu an alelacele GNU değişiklik kaydı
+  stil rehberi için bağlantı arıyorsunuz, ya da iki paragraflık GNU NEWS dosyasına
+  bakınıyorsunuz. GNU stil rehberi iyi bir başlangıç fakat üzücü derece naif.
+  Naif olmakta yanlış bir şey yok, fakat insanlar rehberlik aradığında nadiren
+  yardımcı oluyorlar. Özellikle ortada uğraşılacak bir çok durum ve uç örnekler
+  mevcutken.
+
+  Bu proje [umuyorum ki daha iyi CHANGELOG dosyaları için bir altyapı oluşturacak][CHANGELOG].
+  Mevcut durumun çok iyi olduğunu düşünmüyorum, ve topluluk olarak, gerçek yazılım
+  projelerinden iyi pratikleri toplayarak bundan daha iyisini yapabiliriz. Lütfen
+  etrafa bir göz gezdirin ve unutmayın [gelişme yolunda tartışmalara ve önerilere her zaman açığız][issues]!
+  
+  ### Değişiklik kayıtlarının dosya ismi ne olmalı?
+  Eh, üstteki örnekten çıkartamadıysanız eğer, `CHANGELOG.md` şu ana kadarki
+  en iyi çözüm.
+
+  Bazı projeler `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`, `NEWS.md`,
+  `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md` vb de kullanıyor.
+
+  Tam bir karmaşa. Tüm bu isimler insanların bu dosyayı bulmasını zorlaştırıyor.
+
+  ### Neden `git log` farkları kullanılmasın?
+  Çünkü kayıt farkları bir sürü gürültü içerir - doğal olarak. Mükemmel insanlar
+  tarafından yürütülen, hiç yazım hatasının yapılmadığı, dosyaların gönderilmesinin
+  hiç unutulmadığı, refaktör yapılmasının atlanmadığı varsayımsal bir projede bile
+  uygun bir değişiklik kaydı oluşmayacaktır. Dosyaları repoya göndermenin amacı
+  atomik seviyede kodun bir durumdan diğerine geçişinin sağlanmasıdır. Değişiklik
+  kayıtları ise bu durumlar arasında, önem arz eden değişiklikleri belgelemeyi
+  amaçlıyor.
+
+  İyi yorumlar ve kodun kendisi arasındaki fark,
+  aynı şekilde değişiklik kayıtları ve commit kayıtları arasındaki gibidir:
+  biri *neden* olduğunu, diğeri nasıl olduğunu açıklar.
+
+  ### Değişiklik kayıtları otomatik olarak toplanabilir mi?
+  Zor, çünkü insanlar bir çok farklı biçim ve dosya isimleri kullanıyorlar.
+
+  [Vandamme][vandamme], [Gemnasium][gemnasium] ekibi tarafından oluşturulmuş
+  bir Ruby Gem'idir ve bir çok (hepsini değil) açık kaynaklı projenin değişiklik
+  kayıtlarını ayrıştırabiliyor.
+
+  ### Neden arada bir "CHANGELOG" ve arada bir "değişiklik kaydı" yazıyorsun?
+  "CHANGELOG" dosyanın ismi. Biraz fazla şaşalı ama bir çok açık kaynak kodlu
+  proje tarafından uygulanan tarihi bir gelenek. Benzer dosyalar da var;
+  [`README`][README], [`LICENSE`][LICENSE], ve [`CONTRIBUTING`][CONTRIBUTING].
+
+  Büyük harfle isimlendirme (eski işletim sistemlerinde dosyaların tepede
+  gözükmelerini sağlardı) dikkat çekmek için. Proje hakkında önemli meta verileri
+  içerdikleri için, kullanmak ya da katkıda bulunmak isteyen herkesin işine
+  yarar, tıpkı [açık kaynaklı proje rozeleri][shields] gibi.
+
+  "Değişiklik kaydı"ndan bahsettiğim zamanlar bu dosyanın işlevinden bahsediyorum:
+  Değişiklikleri kaydetmek.
+
+  ### Peki ya Geri çekilen dağıtımlar?
+  Geri çekilen dağıtımlar, önemli hatalar ya da güvenlik sebepleri nedeniyle
+  yayından geri çekilen sürümlerdir. Genelde bu sürümler değişiklik kayıtlarında
+  görüntülenmezler. Görünmeliler. Tam da şu şekilde görünmeliler:
+
+  `## 0.0.5 - 2014-12-13 [GERİ ÇEKİLDİ]`
+
+  `[GERİ ÇEKİLDİ]` etiketi belirli bir sebepten büyük harf. İnsanların bunu fark
+  etmeleri çok önemli. Ayrıca köşeli parantezler ile çevrelenmiş olması
+  programatik olarak da ayrıştırılabilmeine olanak sağlıyor.
+
+  ### Değişiklik kayıtlarınızı tekrar yazmalı mısınız?
+  Tabii ki. Her zaman değişiklik kayıtlarını geliştirmek için iyi sebepler vardır.
+  Düzenli olarak açık kaynaklı projelerde bakım yapılmayan değişiklik kayıtları
+  için çekme istekleri yapıyorum.
+
+  Ayrıca bir sürümdeki notların arasında önemli bir değişiklikten bahsetmeyi
+  unutmuş olduğunuzu fark edebilirsiniz. Değişiklik kütüğünüzü bu bilgi ışığında
+  güncellemeniz gerekliliği gün gibi ortada.
+
+  ### Nasıl katkıda bulunabilirim?
+  Bu belge **doğrunun kendisi** değil; benim hesaplı görüşlerimdir. Beraberinde
+  toparlamış olduğum bilgiler ve örnekler bulunur.
+  [GitHub repo][gh]sunda güncel bir [CHANGELOG][] sağlıyor olsam da, özellikle
+  bir *sürüm* ya da ([SemVer.org][semver] benzeri) takip edilecek kurallar
+  oluşturmadım.
+  
+  Bunu istememin sebebi topluluğun ortak bir paydada buluşmasını istememdir.
+  İnanıyorum ki tartışmanın kendisi de sonucu kadar önemli.
+
+  Yani lütfen, [**siz de katılın**][gh].
+
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [gemnasium]: https://gemnasium.com/
+  [gh]: https://github.com/olivierlacan/keep-a-changelog
+  [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
+  [semver]: http://semver.org/
+  [shields]: http://shields.io/
+  [thechangelog]: http://5by5.tv/changelog/127
+  [vandamme]: https://github.com/tech-angels/vandamme/
