@@ -13,7 +13,7 @@ language: it-IT
   Un change log è un file che contiene una lista curata e ordinata cronologicamente
   delle modifiche degne di nota per ogni versione di un progetto.
 
-%pre.changelog= File.read(File.expand_path("../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### A cosa serve un change log?
