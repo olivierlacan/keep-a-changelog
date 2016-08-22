@@ -8,7 +8,7 @@
 
     -# Open Graph
 
-    %meta{property: 'og:article:publisher', content: publisher_url}
+    %meta{property: 'og:article:publisher', content: config.publisher_url}
     %meta{property: 'og:title', content: current_page.data.title}
     %meta{property: 'og:type', content: 'article'}
     %meta{property: 'og:url', content: path_to_url(current_page.url)}
@@ -31,14 +31,9 @@
       %header{role: "banner"}
         %nav.locales{role: "navigation"}
           %ul
-            %li= link_to 'english [en]', '/', {rel: "alternate", lang: "en", hreflang: "en"}
-            %li= link_to 'español [es-ES]', '/es-ES/', {rel: "alternate", lang: "es-ES", hreflang: "es-ES"}
-            %li= link_to 'italiano [it-IT]', '/it-IT/', {rel: "alternate", lang: "it-IT", hreflang: "it-IT"}
-            %li= link_to 'português brasileiro [pt-BR]', '/pt-BR/', {rel: "alternate", lang: "pt-BR", hreflang: "pt-BR"}
-            %li= link_to 'pyccкий [ru]', '/ru/', {rel: "alternate", lang: "ru", hreflang: "ru"}
-            %li= link_to '简体中文 [zh-CN]', '/zh-CN/', {rel: "alternate", lang: "zh-CN", hreflang: "zh-CN"}
-            %li= link_to '繁體中文 [zh-TW]', '/zh-TW/', {rel: "alternate", lang: "zh-TW", hreflang: "zh-TW"}
-            %li= link_to 'german [de]', '/de/', {rel: "alternate", lang: "de", hreflang: "de"}
+            - $languages.each do |language|
+              %li= link_to "#{language.last} [#{language.first}]", "/#{language.first}/",
+              { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
 
       .main{role: "main"}= yield
 
@@ -49,10 +44,9 @@
         %p.about
           #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
           with trepidation by
-          #{link_to "Olivier Lacan", "http://olivierlacan.com/"} from
-          #{link_to "Code School", "https://www.codeschool.com/"}.
+          #{link_to "Olivier Lacan", "http://olivierlacan.com/"}.
 
-  - unless gauges_id.blank?
+  - unless config.gauges_id.blank?
     :javascript
       var _gauges = _gauges || [];
       (function() {
@@ -60,7 +54,7 @@
         t.type  = 'text/javascript';
         t.async = true;
         t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '#{gauges_id}');
+        t.setAttribute('data-site-id', '#{config.gauges_id}');
         t.src = '//secure.gaug.es/track.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(t, s);
