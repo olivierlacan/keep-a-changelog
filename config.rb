@@ -5,15 +5,16 @@
 # ----- Site ----- #
 $last_version = "0.3.0"
 $languages = {
+  "de"    => "Deutsch",
+  "en"    => "English",
   "es-ES" => "Español",
+  "it-IT" => "Italiano",
   "pt-BR" => "Brazilian Portugese",
+  "ru"    => "Pyccкий",
   "sv"    => "Svenska",
+  "tr-TR" => "Türkçe",
   "zh-CN" => "简体中文",
-  "zh-TW" => " 繁體中文",
-  de: "Deutsch",
-  en: "English",
-  ru: "Pyccкий",
-  "tr-TR" => "Türkçe"
+  "zh-TW" => " 繁體中文"
 }
 
 activate :i18n,
