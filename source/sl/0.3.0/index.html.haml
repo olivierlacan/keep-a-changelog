@@ -1,0 +1,183 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: sl
+version: 0.3.0
+---
+
+:markdown
+  # Vzdržujte dnevnik sprememb oz. CHANGELOG
+
+  ## Ne dopustite, da vaši prijatelji odlagajo git dnevnike v CHANGELOG™
+
+  Verzija **#{current_page.metadata[:page][:version]}**
+
+  ### Kaj je dnevnik sprememb?
+  Dnevnik sprememb je datoteka, ki vsebuje kuriran, kronološko urejen
+  seznam opaznih sprememb za vsako verzijo projekta.
+
+%pre.changelog= File.read("CHANGELOG.md")
+
+:markdown
+  ### Kaj je smisel dnevnika sprememb?
+  Za poenostavitev, da uporabniki in prispevajoči sodelavci natančno vidijo, katere
+  opazne spremembe so bile narejene med vsako izdajo (ali verzijo) projekta.
+
+  ### Zakaj se truditi?
+  Ker so programska orodja za ljudi. Če vam to ni pomembno, zakaj
+  prispevate odprto kodnemu projektu? Zagotovo mora obstajati malenkost (hehe)
+  skrbnosti nekje v vaši lepi glavi.
+
+  Govorili smo z [Adam-om Stacoviak-om in Jerod-om Santo na temo Changelog-a][thechangelog]
+  (ustrezno, kajne?) podcast o tem zakaj bi se morali vzdrževalci in
+  sodelavci, ki prispevajo, truditi in o motivaciji za tem projektom.
+  Če imate na voljo nekaj časa (1:06), je odlično poslušanje.
+
+  ### Kaj naredi dnevnik sprememb odličen?
+  Veseli me, da ste vprašali.
+
+  Dober dnevnik sprememb se drži teh načel:
+
+  - Je enostaven za ljudi, ne stroje, tako da je čitljivost ključnega pomena.
+  - Enostaven za povezavo kateri koli sekciji (torej Markdown pred golim besedilom).
+  - Ena pod-sekcija na verzijo.
+  - Seznam izdaj v obratnem kronološkem vrstnem redu (najnovejše na vrhu).
+  - Zapis vseh datumov v `YYYY-MM-DD` formatu. (Na primer: `2012-06-02` za `2. junij 2012`.) Je mednarnodno, [smiselno](http://xkcd.com/1179/) in neodvisno od jezika.
+  - Eksplicitna omemba ali projekt sledi [semantičnim verzijam][semver].
+  - Vsaka verzija bi morala:
+    - Imeti seznam njenih datumov izdaje v zgornjem formatu.
+    - Skupine sprememb, ki opisujejo njihove vplive na projekt, kot sledi:
+      - `Added` za nove lastnosti.
+      - `Changed` za spremembe obstoječih lastnosti.
+      - `Deprecated` za nekoč stabilne lastnosti, ki bodo odstranjene v prihajajočih verzijah.
+      - `Removed` za zastarele lastnosti, ki so odstranjene v tej izdaji.
+      - `Fixed` za kakršne koli popravke hroščev.
+      - `Security` za povabilo uporabnikom, da nadgradijo v primeru varnostnih ranljivosti.
+
+  ### Kako zmanjšati potreben trud?
+  Vedno imejte `"Unreleased"` sekcijo na vrhu za sledenje katerih koli
+  sprememb.
+
+  To služi dvema namenoma:
+
+  - Ljudje lahko vidijo, katere spremembe lahko pričakujejo v prihajajočih izdajah
+  - Pri izdaji, morate tako samo spremembiti `"Unreleased"` v številko verzije
+    in dodati nov naslov `"Unreleased"` na vrh.
+
+  ### Kaj spravi samoroga v jok?
+  Dobro … pojdimo skozi.
+
+  - **Odlaganje sprememb git dnevnikov poslanih sprememb.** Temu se izogibajte, saj s tem ne pomagate nikomur.
+  - **Nepoudarjanje zastarelosti.** Ko uporabniki nadgradijo iz ene verzije na
+    drugo, bi moralo biti enostavno jasno, ko nekaj ne bo več delovalo.
+  - **Datumi v lokalnih oblikah.** V ZDA, uporabniki dajo mesec na prvo mesto
+    ("06-02-2012" za 2. junij, 2012, kar je brez smisla), medtem ko mnogi ostali
+    uporabniki drugod po svetu pišejo "2 June 2012" robotskega izgleda, vendar
+    izgovorijo to drugače. "2012-06-02" deluje logično po večini in se ne
+    prekriva na dvoumne načine z ostalimi oblikami datumov. To je tudi
+    [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Tako je to
+    priporočljiva oblika datuma za dnevnike sprememb.
+
+  Tega je še več. Pomagajte zbrati te solze samoroga preko
+  [odprtja težave][issues]
+  ali zahtevka potega.
+
+  ### Ali obstaja standardna oblika dnevnika sprememb?
+  Na žalost ne. Vendar mirno kri. Vem, da besno hitite najti to povezavo
+  v vodiču dnevnika sprememb GNU ali v datoteki dveh odstavkov "guideline" GNU
+  NEWS. Stilski vodič GNU je lep začetek, vendar je na žalost preveč enostaven.
+  S tem ni nič narobe, vendar ko uporabniki potrebujejo
+  vodič, je redko v pomoč. Posebej, ko je za reševati veliko
+  situacij in posebnih primerov.
+
+  Ta projekt [vsebuje, kar upamo, da bo postalo boljša datoteka konvencij CHANGELOG][CHANGELOG].
+  Mislimo, da status quo ni dovolj dober in mislimo, da lahko kot skupnost
+  naredimo boljšo konvencijo, če poskusimo izvleči dobre prakse iz
+  realnih programskih projektov. Prosimo, poglejte naokoli in si zapomnite, da
+  [diskusije in predlogi za izboljšave so dobrodošli][issues]!
+
+  ### Kako se mora dnevnik sprememb imenovati?
+  Če niste uspeli razbrati iz zgornjega primera, je `CHANGELOG.md`
+  najboljša konvencija do sedaj.
+
+  Nekateri projekti uporabljajo tudi `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
+  `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md` itd.
+
+  Gre za zmešnjavo. Vsa ta imena ljudem samo otežijo najti dnevnik sprememb.
+
+  ### Zakaj uporabniki ne morejo uporabiti enostavno samo `git log` sprememb?
+  Ker so spremembe dnevnika polne šuma - privzeto. Lahko bi naredili ustrezen
+  dnevnik sprememb tudi v hipotetičnem projektu, ki ga poganjajo popolni ljudje, ki nikoli ne naredijo
+  napak, nikoli ne pozabijo poslati novih datotek in nikoli ne zamudijo nobenega dela refaktorizacije.
+  Razlog pošiljke (commit-a) je dokumentirati en atomičen korak v procesu preko katerega
+  se koda razvija iz enega stanja v drugo. Razlog dnevnika sprememb je
+  dokumentiranje omembe vrednih sprememb med temi stanji.
+
+  Kakor obstaja razlika med dobrimi komentarji in samo kodo,
+  tako je razlika med dnevnikom sprememb in dnevnikom git commit-a:
+  eden opisuje *zakaj*, drugi pa *kako*.
+
+  ### Ali se da dnevnik sprememb samodejno razlčeniti?
+  Je težko, ker uporabniki sledijo divje različnim formatom in imenom datotek.
+
+  [Vandamme][vandamme] je Ruby gem,
+  ki ga je ustvarila ekipa [Gemnasium][gemnasium]. Razčlenjuje
+  mnoge (vendar ne vse) dnevnike sprememb odprto kodnih projektov.
+
+  ### Zakaj razlikovanje med črkovanjem "CHANGELOG" in "change log"?
+  "CHANGELOG" je ime same datoteke. Je nekoliko glasno, vendar je to
+  zgodovinska konvencija, kateri sledi mnogo odprto kodnih projektov. Drugi
+  primeri podobnih datotek vključujejo [`README`][README], [`LICENSE`][LICENSE],
+  in [`CONTRIBUTING`][CONTRIBUTING].
+
+  Ime z velikimi črkami (kar je datoteko v starih operacijskih sistemih prikazalo na
+  vrhu) je uporabljeno, da se povleče pozornost nanje. Ker gre za pomembne
+  meta podatke o projektu, so lahko uporabne za kogarkoli, ki namerava uporabiti
+  ali prispevati, precej enako kot [značke odprto kodnih projektov][shields].
+
+  Ko se sklicujemo na "change log", govorimo o funkciji te
+  datoteke: beleženje sprememb.
+
+  ### Kaj pa povlečene izdaje?
+  T.i. yanked ali povlečene izdaje so verzije, ki so bile primorane biti potegnjene zaradi resnega
+  hrošča ali varnostne težave. Pogostokrat se te verzije niti ne pojavijo v
+  dnevnikih sprememb. Vendar bi se morale. Prikazane bi morale biti sledeče:
+
+  `## 0.0.5 - 2014-12-13 [YANKED]`
+
+  Oznaka `[YANKED]` je izpisana z velikimi črkami z razlogom. Pomembno je, da jo uporabniki
+  opazijo. Ker je obdana z oglatimi oklepaji, jo je tudi enostavnejše razčleniti
+  programsko.
+
+  ### Ali bi morali kadarkoli prepisati dnevnik sprememb?
+  Seveda. Vedno obstajajo dobri razlogi, kako izboljšati dnevnik sprememb. Odpiranje
+  zahtevkov potegov je pogostokrat priporočljivo, da se doda manjkajoče izdaje
+  odprtokodnih projektov z nevzdrževanimi dnevniki sprememb.
+
+  Možno je tudi, da odkrijete, da ste pozabili nasloviti pomembne spremembe
+  v opombah verzije. Očitno je pomembno, da vaš
+  dnevnik sprememb v tem primeru posodobite.
+
+  ### Kako lahko pomagam?
+  Ta dokument ni **dejstvo**; je osebno temeljito premišljeno
+  mnenje, skupaj z informacijami in primeri, ki smo jih zbrali.
+  Čeprav ponujamo dejanski [CHANGELOG][] v [GitHub repozitoriju][gh],
+  namenoma ni ustvarjene primerne *izdaje* ali jasnega seznama pravil
+  za sledenje (kot ima to npr. [SemVer.org][semver]).
+
+  To je zato, ker želimo, da naša skupnost doseže soglasje. Verjamemo,
+  da je razprava tako pomembna kot končni rezultat.
+
+  Torej, prosimo [**pridružite se**][gh].
+
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [gemnasium]: https://gemnasium.com/
+  [gh]: https://github.com/olivierlacan/keep-a-changelog
+  [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
+  [semver]: http://semver.org/
+  [shields]: http://shields.io/
+  [thechangelog]: http://5by5.tv/changelog/127
+  [vandamme]: https://github.com/tech-angels/vandamme/
