@@ -11,6 +11,7 @@ $languages = {
   "it-IT" => "Italiano",
   "pt-BR" => "Brazilian Portugese",
   "ru"    => "Pyccкий",
+  "sl"    => "Slovenska",
   "sv"    => "Svenska",
   "tr-TR" => "Türkçe",
   "zh-CN" => "简体中文",
