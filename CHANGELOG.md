@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Start versioning based on the current English version at 0.3.0 to help
 translation authors keep things up-to-date.
+- Fix typos in zh-CN translation.
+- Fix typos in pt-BR translation.
 
 ## [0.3.0] - 2015-12-03
 ### Added
