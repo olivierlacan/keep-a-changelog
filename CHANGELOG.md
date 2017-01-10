@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - it-IT translation from @roalz.
 - sv translation from @magol.
 - tr-TR translation from @karalamalar.
+- fr translation from @zapashcanon.
 
 ### Changed
 - Start versioning based on the current English version at 0.3.0 to help

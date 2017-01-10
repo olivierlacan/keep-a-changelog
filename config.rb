@@ -8,6 +8,7 @@ $languages = {
   "de"    => "Deutsch",
   "en"    => "English",
   "es-ES" => "Español",
+  "fr"    => "Français",
   "it-IT" => "Italiano",
   "pt-BR" => "Brazilian Portugese",
   "ru"    => "Pyccкий",
