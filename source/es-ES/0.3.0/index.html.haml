@@ -2,6 +2,7 @@
 description: Mantenga un Changelog
 title: Mantenga un Changelog
 language: es-ES
+version: 0.3.0
 ---
 
 :markdown
@@ -9,11 +10,13 @@ language: es-ES
 
   ## No dejes que tus amigos copien y peguen git logs en los CHANGELOGs™
 
+  Version **#{current_page.metadata[:page][:version]}**
+
   ### Qué es un registro de cambios (change log)?
 
   Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
 
-%pre.changelog= File.read(File.expand_path("../../../CHANGELOG.md", __FILE__))
+%pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Cuál es el propósito del change log?
@@ -69,12 +72,12 @@ language: es-ES
   Pero espera! hay más ayúdame a coleccionar esas lágrimas de unicornio [abriendo una incidencia][issues] o haciendo un pull request.
 
   ### Hay algún formato estándar de formato para los change log?
-  
+
   Tristemente, no. Pero calma. Sé que estás corriendo furiosamente intentando encontrar ese link al libro de estilo de registro de cambios de GNU, or the two-paragraph GNU NEWS file
   "guideline". La guía de estilo GNU es un buen comienzo, pero es tristemente cándida. No hay nada malo en ser cándida, pero cuando la gente necesita orientación es rara la vez, que resulta ser muy útil. Sobre todo, cuando hay muchas situaciones y casos muy específicos.
 
   Este proyecto [contiene lo que espero se convierta en un mejor patrón de CHANGELOGs][CHANGELOG].
-  
+
   No creo que la situación actual sea lo suficientemente buena, i creo que como comunidad que somos podemos llegar a mejores convenciones si tratamos de extraer buenas prácticas de proyectos de software reales. Por favor echa un pequeño vistazo y recuerda que las [sugerencias y discusiones para mejorar son bienvenidas][issues]!
 
   ### Cómo se debería llamar el change log?
@@ -89,7 +92,7 @@ language: es-ES
   ### Por qué la gente no usa simplemente un `git log`?
 
   Debido a que están llenos de ruido - por naturaleza. No se podría hacer un change log adecuado ni siquiera en un proyecto hipotético dirigido por seres humanos perfectos que nunca se equivocan y que nunca se olvidan meter ningún archivo en un commit... etc. El propósito de un commit es el de documentar un cambio atómico en el cual el software evoluciona desde un estado hacia otro. El propósito del change log es el de documentar las diferencias notables entre estos estados.
-  
+
   ### Se pueden parsear automáticamente los change logs?
 
   Es difícil, ya que la gente sigue formatos y nombres de archivo muy distintos.
@@ -108,7 +111,7 @@ language: es-ES
   ### Qué son las yanked releases?
 
   Las yanked releases son versiones que tuvieron que ser retiradas a causa de un grave error o problema de seguridad. A menudo, estas versiones ni siquiera aparecen en los change logs, y tendrían que aparecer. Así es como se muestran:
-  
+
   `## 0.0.5 - 2014-12-13 [YANKED]`
 
   La sección `[YANKED]` va entre corchetes por una razón, es importante que destaque, y el echo de estar rodeado por corchetes lo hace más fácil de localizar programáticamente.

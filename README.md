@@ -1,51 +1,53 @@
-# Keep a CHANGELOG
+# Keep a CHANGELOG [![version](https://img.shields.io/badge/version-0.3.0-blue.svg)][CHANGELOG]
 
-## Don’t let your friends dump git logs into CHANGELOGs™
+Don’t let your friends dump git logs into CHANGELOGs™
 
 ### What’s a changelog?
 A changelog is a file which contains a curated, chronologically ordered
 list of notable changes for each version of a project.
+=======
+This repository generates http://keepachangelog.com/.
 
-<a href="CHANGELOG.md" title="An example of a CHANGELOG file."><iframe src="CHANGELOG.md" width="570" height="350" seamless="seamless" style="border: 1px solid #aaa; padding: 1em; margin: 0 0.5em;"></iframe></a>
+## Development
+### Dependencies
 
 ### What’s the point of a changelog?
 To make it easier for users and contributors to see precisely what
 notable changes have been made between each release (or version) of the project.
+=======
+- Ruby ([see version][ruby-version], [rbenv][rbenv] recommended)
+- Bundler (`gem install bundler`)
 
-### Why should I care?
-Because software tools are for people. If you don’t care, why are
-you contributing to open source? Surely, there must be a kernel (ha!)
-of care somewhere in that lovely little brain of yours.
+### Installation
 
-I [talked with Adam Stacoviak and Jerod Santo on The Changelog][thechangelog]
-(fitting, right?) podcast about why maintainers and
-contributors should care, and the motivations behind this project.
-If you can spare the time (1:06), it’s a good listen.
+- `git clone https://github.com/olivierlacan/keep-a-changelog.git`
+- `cd keep-a-changelog`
+- `bundle install`
+- `middleman` starts the local development server at http://localhost:4567
 
 ### What makes a good changelog?
 I’m glad you asked.
 
 A good changelog sticks to these principles:
+=======
+### Deployment
+- `rake publish` builds and pushes to the `gh-pages` branch 
 
-- It’s made for humans, not machines, so legibility is crucial.
-- Easy to link to any section (hence Markdown over plain text).
-- One sub-section per version.
-- List releases in reverse-chronological order (newest on top).
-- Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](https://xkcd.com/1179/), and language-independent.
-- Explicitly mention whether the project follows [Semantic Versioning][semver].
-- Each version should:
-  - List its release date in the above format.
-  - Group changes to describe their impact on the project, as follows:
-    - `Added` for new features.
-    - `Changed` for changes in existing functionality.
-    - `Deprecated` for once-stable features removed in upcoming releases.
-    - `Removed` for deprecated features removed in this release.
-    - `Fixed` for any bug fixes.
-    - `Security` to invite users to upgrade in case of vulnerabilities.
+### Translations
 
-### How can I minimize the effort required?
-Always have an `"Unreleased"` section at the top for keeping track of any
-changes.
+Create a new directory in [`source/`][source] named after the ISO 639-1 code 
+for the language you wish to translate Keep a CHANGELOG to. For example, 
+assuming you want to translate to French Canadian:
+- create the `source/fr-CA` directory.
+- duplicate the `source/en-US/index.html.haml` file in `source/fr-CA`.
+- edit `source/fr-CA/index.html.haml` until your translation is ready.
+- commit your changes to your own [fork][fork]
+- submit a [Pull Request][pull-request] with your changes
+
+It may take some time to review your submitted Pull Request. Try to involve a 
+few native speakers of the language you're translating to in the Pull Request
+comments. They'll help review your translation for simple mistakes and give us 
+a better idea of whether your translation is accurate.
 
 This serves two purposes:
 
@@ -158,12 +160,12 @@ This is because I want our community to reach a consensus. I believe the
 discussion is as important as the end result.
 
 So please [**pitch in**][gh].
+=======
+Thank you for your help improving software one changelog at a time!
 
 [CHANGELOG]: ./CHANGELOG.md
-[gemnasium]: https://gemnasium.com
-[gh]: https://github.com/olivierlacan/keep-a-changelog
-[issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-[semver]: http://semver.org
-[shields]: http://shields.io
-[thechangelog]: http://5by5.tv/changelog/127
-[vandamme]: https://github.com/tech-angels/vandamme/
+[rbenv]: https://github.com/rbenv/rbenv
+[ruby-version]: .ruby-version
+[source]: source/
+[pull-request]: https://help.github.com/articles/creating-a-pull-request/
+[fork]: https://help.github.com/articles/fork-a-repo/
