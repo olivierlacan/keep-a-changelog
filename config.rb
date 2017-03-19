@@ -3,7 +3,11 @@
 # --------------------------------------
 
 # ----- Site ----- #
-$last_version = "0.3.0"
+# Last version should be the latest English version since the manifesto is first 
+# written in English, then translated into other languages later.
+$last_version = (Dir.entries("source/en") - %w[. ..]).last
+
+# This list of languages populates the language navigation.
 $languages = {
   "cs"    => "Čeština",
   "de"    => "Deutsch",
@@ -32,13 +36,8 @@ redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
   code = language.first
-  available_versions = Dir.entries("source/#{code}") - %w[. ..]
-
-  if Dir.exists?("source/#{code}/#{$last_version}")
-    redirect "#{code}/index.html", to: "#{code}/#{$last_version}/index.html"
-  else
-    redirect "#{code}/index.html", to: "#{code}/#{available_versions.last}/index.html"
-  end
+  versions = Dir.entries("source/#{code}") - %w[. ..]
+  redirect "#{code}/index.html", to: "#{code}/#{versions.last}/index.html"
 end
 
 # ----- Assets ----- #
