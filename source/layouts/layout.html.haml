@@ -35,7 +35,19 @@
               %li= link_to "#{language.last} [#{language.first}]", "/#{language.first}/",
               { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
 
-      .main{role: "main"}= yield
+      .main{role: "main"}
+        - if current_page.metadata[:page][:version] != $last_version
+          - code = current_page.metadata[:page][:language]
+          - versions = Dir.entries("source/#{code}") - %w[. ..]
+          - if versions.include?($last_version)
+            = link_to "Version #{$last_version}", "#{code}/#{$last_version}"
+          - else
+            %p 
+              The latest version of Keep a Changelog is not yet available in 
+              this language but 
+              = link_to "you can read it in English", "/en/#{$last_version}"
+              for now.
+        = yield
 
       %footer.clearfix{role: "banner"}
         %p.license
