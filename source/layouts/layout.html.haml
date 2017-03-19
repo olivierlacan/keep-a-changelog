@@ -32,7 +32,7 @@
         %nav.locales{role: "navigation"}
           %ul
             - $languages.each do |language|
-              %li= link_to "#{language.last} [#{language.first}]", "/#{language.first}/",
+              %li= link_to "#{language.last}", "/#{language.first}/",
               { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
 
       .main{role: "main"}
