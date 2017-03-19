@@ -31,8 +31,14 @@ set :site_url, 'http://keepachangelog.com'
 redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
-  language_param = language.last.parameterize
-  redirect "#{language.first}/index.html", to: "#{language.first}/#{$last_version}/index.html"
+  code = language.first
+  available_versions = Dir.entries("source/#{code}") - %w[. ..]
+
+  if Dir.exists?("source/#{code}/#{$last_version}")
+    redirect "#{code}/index.html", to: "#{code}/#{$last_version}/index.html"
+  else
+    redirect "#{code}/index.html", to: "#{code}/#{available_versions.last}/index.html"
+  end
 end
 
 # ----- Assets ----- #
