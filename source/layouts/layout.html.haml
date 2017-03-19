@@ -43,10 +43,12 @@
             = link_to "Version #{$last_version}", "#{code}/#{$last_version}"
           - else
             %p 
-              The latest version of Keep a Changelog is not yet available in 
-              this language but 
+              The latest version (#{$last_version}) is not yet available in this 
+              language but
               = link_to "you can read it in English", "/en/#{$last_version}"
-              for now.
+              for now and 
+              = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues" 
+              it.
         = yield
 
       %footer.clearfix{role: "banner"}
