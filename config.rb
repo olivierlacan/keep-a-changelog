@@ -5,12 +5,15 @@
 # ----- Site ----- #
 $last_version = "0.3.0"
 $languages = {
+  "cs"    => "Čeština",
   "de"    => "Deutsch",
   "en"    => "English",
   "es-ES" => "Español",
+  "fr"    => "Français",
   "it-IT" => "Italiano",
   "pt-BR" => "Brazilian Portugese",
   "ru"    => "Pyccкий",
+  "sl"    => "Slovenščina",
   "sv"    => "Svenska",
   "tr-TR" => "Türkçe",
   "zh-CN" => "简体中文",
