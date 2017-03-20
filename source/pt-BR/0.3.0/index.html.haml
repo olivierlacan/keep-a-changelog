@@ -8,14 +8,14 @@ version: 0.3.0
 :markdown
   # Mantenha um CHANGELOG
 
-  ## Não deixe seus amigos despejar logs de commits em CHANGELOGs™
+  ## Não deixe seus amigos despejarem logs de commits em CHANGELOGs™
 
   Version **#{current_page.metadata[:page][:version]}**
 
   ### O que é um change log?
 
   Um *change log* é um arquivo que contém uma lista selecionada, ordenada
-  cronologicamente de mudanças significativas para cada versão de um projeto
+  cronologicamente, de mudanças significativas para cada versão de um projeto
   open source.
 
 %pre.changelog= File.read("CHANGELOG.md")
@@ -26,11 +26,11 @@ version: 0.3.0
   Para facilitar para os usuários e contribuidores verem precisamente quais
   mudanças significativas foram realizadas entre cada versão publicada.
 
-  ### Por quê eu deveria me importar?
+  ### Por que eu deveria me importar?
 
   Porque softwares são feitos para pessoas. Se você não liga, porque está
   contribuindo a projetos open source? Certamente deve haver um fundo de
-  carinho em algum lugar dessa sua cabeçinha.
+  carinho em algum lugar desse seu amável cerebrinho.
 
   Eu [conversei com Adam Stacoviak e Jerod Santo no podcast do The
   Changelog][thechangelog] (faz sentido, hein?) sobre o por quê mantenedores e
@@ -74,17 +74,17 @@ version: 0.3.0
 
   - As pessoas podem ver quais mudanças elas podem esperar em publicações
     futuras.
-  - No momento da publicação, você tem que somente mudar Não publicado para o
+  - No momento da publicação, você tem que somente mudar `Unreleased` para o
     número de versão e adicionar um novo cabeçalho `Unreleased` no topo.
 
   ### O que faz os unicórnios chorarem?
 
   Tudo bem...vamos lá.
 
-  - Despejar logs de commits. Simplesmente não faça isso, você não está
+  - Despejar logs de commits. Simplesmente não faça isso, não está
     ajudando ninguém.
   - Não dar ênfase nas descontinuações. Quando as pessoas atualizam de uma
-    versão para outra, deve ser incrivelmente claro quando algo irá quebrar.
+    versão para outra, deve ser dolorosamente claro quando algo irá quebrar.
   - Datas em formatos específicos de uma região. Nos Estados Unidos, as pessoas
     colocam o mês primeiro ("06-02-2012" para 2 de Junho de 2012, o que *não*
     faz sentido), enquanto muitos no resto do mundo escrevem em aspecto
@@ -101,17 +101,16 @@ version: 0.3.0
 
   Infelizmente, não. Calma. Eu sei que você está indo impetuosamente achar
   aquele link do guia de estilo de *change log* GNU, ou o arquivo "guideline"
-  de dois paragráfos GNU NEWS. O estilo GNU é um bom começo mas é ingênuo. Não
-  há nada de errado em ser ingênuo mas quando as pessoas precisam de orientação
-  raramente ajuda. Especialmente quando existem muitas situações excepcionais
-  para lidar.
+  de dois paragráfos de GNU NEWS. O estilo GNU é um bom começo mas é ingênuo. 
+  Não há nada de errado em ser ingênuo mas quando as pessoas precisam de 
+  orientação isso raramente ajuda. Especialmente quando existem muitas 
+  situações excepcionais e casos extremos com os quais se deve lidar.
 
   Este projeto [contém o que eu espero se tornar um melhor padrão de arquivo
-  CHANGELOG][CHANGELOG] para todos projetos open source. Pode a comunidade open
-  source aprender com seus erros e não agir como se os dez mandamentos foram
-  escritos a muito tempo atrás e estavam inteiramente certos? Tudo bem. Então
-  por favor dê um olhada e lembre que [discussões e sugestões de melhorias são
-  bem-vindas][issues]!
+  CHANGELOG][CHANGELOG]. Não acho que o status é bom o suficiente, e acho que
+  como uma comunidade nós podemos definir melhores padrões se tentarmos extrair
+  boas práticas de projetos de software reais. Então por favor dê um olhada e 
+  lembre que [discussões e sugestões para melhorias são bem-vindas][issues]!
 
   ### Qual deve ser o nome do arquivo *change log*?
 
@@ -122,12 +121,21 @@ version: 0.3.0
   `History.md`, `NEWS.txt`, `NEWS.md`, `News.txt`, `RELEASES.txt`,
   `RELEASE.md`, `releases.md`, etc.
 
-  É uma bagunça. Todos esses nome só dificultam as pessoas acharem.
+  É uma bagunça. Todos esses nome só dificultam que as pessoas o achem.
 
   ### Por quê as pessoas não podem simplesmente utilizar `git log`?
+  
+  Porque os logs do Git são cheios de ruído — por natureza. Eles não poderiam
+  escrever um change log adequado mesmo em um projeto hipotético desenvolvido
+  por humanos perfeitos que nunca cometem erros de grafia, nunca esquecem de
+  realizar commit de novos arquivos e nunca esquecem de nenhuma parte da
+  refatoração. O propósito de um commit é documentar um passo atômico no
+  processo no qual o código evolui de um estado a outro. O propósito de um
+  change log é documentar diferenças notáveis entre estes estados.
 
-  Porque logs de commit são cheios de distrações. Podemos realmente esperar que
-  cada commit do projeto seja significativo e auto-explicativo? Só em sonho.
+  Assim como são as diferenças entre bons comentários e o próprio código, há
+  a diferença entre o change log e o commit log: um descreve o porquê e o 
+  outro o como.
 
   ### Podem os *change logs* ser automaticamente interpretados?
 
@@ -144,10 +152,10 @@ version: 0.3.0
   similares de arquivo incluem [`README`][README], [`LICENSE`][LICENSE], e
   [`CONTRIBUTING`][CONTRIBUTING].
 
-  O nome em letras maiúsculas (o que em sistemas operacionais antigos faziam
-  estes arquivos serem mantidos no topo) é utilizado para chamar atenção a
-  eles. Já que eles são importante metadados sobre o projeto, eles podem ser
-  úteis a qualquer um pretendendo usar ou contribuir com ele, assim como os [as
+  O nome em letras maiúsculas (o que, em sistemas operacionais antigos, fazia
+  estes arquivos ficarem no topo da lista) é utilizado para chamar atenção para
+  eles. Já que são importante metadados sobre o projeto, eles podem ser úteis
+  a qualquer um pretendendo usar ou contribuir com ele, assim como os [as
   badges de projeto open source][shields].
 
   Quando eu me refiro a "*change log*", eu estou falando sobre a função deste
@@ -164,6 +172,16 @@ version: 0.3.0
   A tag `[YANKED]` é chamativa por uma razão. É importante que as pessoas a
   notem. E já que é cercada por colchetes é mais fácil detectá-la
   programaticamente.
+  
+  ### Se você deveria reescrever um change log?
+  
+  Claro. Sempre existem boas razões para melhorar um change log. Eu abro os pull
+  requests regularmente para adicionar releases que faltam a projetos open source
+  com change logs sem manutenção.
+  
+  É também possível que você descubra que esqueceu de registrar uma mudança
+  crucial nas anotações de uma versão. É obviamente importante que você atualize
+  seu change log neste caso.
 
   ### Como eu posso contribuir?
 

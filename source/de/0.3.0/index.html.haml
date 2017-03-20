@@ -8,32 +8,33 @@ version: 0.3.0
 :markdown
   # Führe ein CHANGELOG
 
-  ## Lass deine Freunde nicht CHANGELOGs mit git logs füllen™
+  ## Lass Deine Freunde nicht CHANGELOGs mit git logs füllen™
 
   Version **#{current_page.metadata[:page][:version]}**
 
   ### Was ist ein Changelog?
-  Ein Changelog ist eine Datei, welche eine nachgeführte, chronologisch sortierte
-  Liste aller relevanten Änderungen für jede Version eines Projektes enthält.
+  Ein Changelog ist eine Datei, welche eine handgepflegte, chronologisch sortierte
+  Liste aller erheblichen Änderungen enthält, die zwischen Veröffentlichungen (oder Versionen)
+  des Projekts umgesetzt wurden.
 
 %pre.changelog= File.read("CHANGELOG.md")
 
 :markdown
   ### Was ist der Zweck eines Changelogs?
-  Es für Benutzer und Entwickler einfacher zu machen, die relevanten Änderungen, welche
-  zwischen Releases (oder Versionen) des Projekts gemacht wurden, zu sehen.
+  Es Benutzern und Entwicklern einfacher zu machen, gerade die beachtenswerten Änderungen, welche
+  zwischen Veröffentlichungen (oder Versionen) des Projekts gemacht wurden, zu sehen.
 
-  ### Warum sollte ich mich darum kümmern?
-  Weil Software-Werkzeuge für Menschen gemacht sind. Wenn du dich nicht darum kümmerst, weshalb
-  beteiligst du dich dann an Open-Source? Wenn du tief in dich gehst, findest du bestimmt
+  ### Warum sollte mich das kümmern?
+  Weil Software-Werkzeuge für Menschen gemacht sind. Wenn es Dich nicht kümmert, warum
+  trägst Du dann zu Open Source bei? Wenn Du tief in Dich gehst, findest Du bestimmt
   einen kleinen Teil, dem das wichtig ist.
 
   Ich [habe mit Adam Stacoviak and Jerod Santo im The Changelog-Podcast][thechangelog] (passt, oder?)
   darüber gesprochen (Englisch), weshalb sich Entwickler darum kümmern sollten und über die
-  Beweggründe hinter diesem Projekt. Falls du die Zeit hast (1:06), es lohnt sich, reinzuhören.
+  Beweggründe hinter diesem Projekt. Falls Du die Zeit hast (1:06), es lohnt sich, reinzuhören.
 
   ### Was macht ein gutes Changelog aus?
-  Schön, dass du fragst.
+  Schön, dass Du fragst.
 
   Ein gutes Changelog hält sich an die folgenden Prinzipien:
 
@@ -59,7 +60,7 @@ version: 0.3.0
   Dies verfolgt zwei Ziele:
 
   - Man kann sehen, welche Änderungen in den nächsten Releases zu erwarten sind
-  - Wenn es Zeit für den Release ist, kannst du einfach `"Unreleased"` auf die
+  - Wenn es Zeit für den Release ist, kannst Du einfach `"Unreleased"` auf die
     Versionsnummer ändern und einen neuen `"Unreleased"`-Titel oben einfügen.
 
   ### Was bringt Einhörner zum weinen?
@@ -81,7 +82,7 @@ version: 0.3.0
   oder einen Pull-Request.
 
   ### Gibt es ein standardisiertes Changelog-Format?
-  Leider nicht. Beruhige dich. Ich weiss, dass du wie wild nach dem Link für den
+  Leider nicht. Beruhige Dich. Ich weiss, dass Du wie wild nach dem Link für den
   GNU Changelog Styleguide oder den zwei Absätze langen GNU NEWS-Datei "Leitfaden"
   suchst. Der GNU Styleguide ist ein guter Anfang, aber er ist leider sehr naiv.
   Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens
@@ -90,11 +91,11 @@ version: 0.3.0
   Dieses Projekt [enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention][CHANGELOG]
   wird. Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community
   eine bessere Konvention entwickeln können, wenn wir Bewährtes aus echten
-  Software-Projekten entnehmen. Schau dich um und denk daran, dass
+  Software-Projekten entnehmen. Schau Dich um und denk daran, dass
   [Diskussionen und Verbesserungsvorschläge sehr willkommen sind][issues]!
 
   ### Wie soll ich meine Changelog-Datei nennen?
-  Nun, falls du es noch nicht am Beispiel oben gesehen hast, `CHANGELOG.md`
+  Nun, falls Du es noch nicht am Beispiel oben gesehen hast, `CHANGELOG.md`
   ist bisher die beste Konvention.
 
   Einige Projekte nutzen auch `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
@@ -122,7 +123,7 @@ version: 0.3.0
   [Vandamme][vandamme] ist ein Ruby gem vom [Gemnasium][gemnasium]-Team, welches
   viele (aber nicht alle) Changelogs von Open-Source-Projekten parsen kann.
 
-  ### Wieso schreibst du mal "CHANGELOG" und mal "Changelog"?
+  ### Wieso schreibst Du mal "CHANGELOG" und mal "Changelog"?
   "CHANGELOG" ist der Name der Datei selbst. Es ist ein bisschen laut, aber
   es ist eine historische Konvention, welche von vielen Open-Source-Projekten
   angewendet wird. Andere Beispiele von ähnlichen Dateien sind [`README`][README],
@@ -140,7 +141,7 @@ version: 0.3.0
   ### Wie sieht es mit zurückgezogenen Releases aus?
   Sogenannte "Yanked Releases" sind Versionen, welche wegen schwerwiegenden
   Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen
-  diese im Changelog gar nicht vor. Das sollten sie aber. So solltest du diese
+  diese im Changelog gar nicht vor. Das sollten sie aber. So solltest Du diese
   darstellen:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
@@ -154,7 +155,7 @@ version: 0.3.0
   regelmässig Pull Requests um Open-Source-Projekten mit schlecht gewarteten
   Changelogs fehlende Releases hinzuzufügen.
 
-  Es ist auch möglich, dass du eine wichtige Änderung vergessen hast, in einer
+  Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer
   Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog
   zu aktualisieren.
 

@@ -1,0 +1,176 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: it-IT
+---
+
+:markdown
+  # Mantenere un CHANGELOG
+
+  ## Non lasciate che i vostri amici copino e incollino i git log nei CHANGELOG ™
+
+  ### Cos'è un change log?
+  Un change log è un file che contiene una lista curata e ordinata cronologicamente
+  delle modifiche degne di nota per ogni versione di un progetto.
+
+%pre.changelog= File.read("CHANGELOG.md")
+
+:markdown
+  ### A cosa serve un change log?
+  Per rendere facile agli utilizzatori e contribuenti vedere con precisione quali modifiche 
+  importanti sono state fatte tra ogni release (o versione) del progetto.
+
+  ### Perché dovrebbe importarmi?
+  Perché gli strumenti software sono fatti per le persone.
+  Se non ti importa, perché contribuisci all'open source?
+  Di certo ci deve essere un "kernel" (ha!) di interesse 
+  da qualche parte in quel tuo amorevole cervello.
+
+  [Nel podcast "The Changelog" con Adam Stacoviak e Jerod Santo][thechangelog]
+  (titolo appropriato, vero?) ho parlato del perché maintainer e contribuenti
+  dovrebbero esserne interessati, e delle motivazioni dietro a questo progetto.
+  Se avete tempo (1:06), vale la pena ascoltarlo.
+
+  ### Come si può fare un buon change log?
+  Sono contento che tu l'abbia chiesto.
+
+  Un buon change log è guidato dai seguenti principi:
+
+  - È fatto per umani, non macchine, quindi la leggibilità è cruciale.
+  - Facile da linkare ad altre sezioni (da cui il Markdown invece che testo normale).
+  - Una sotto-sezione per ogni versione.
+  - Elenca le release in ordine cronologico inverso (quelle più recenti all'inizio).
+  - Scrive tutte le date nel formato `YYYY-MM-DD`. (Esempio: `2012-06-02` sta per `2 Giugno 2012`). È internazionale, [sensato](http://xkcd.com/1179/), e indipendente dalla lingua.
+  - Dichiara esplicitamente se il progetto segue il [Semantic Versioning][semver].
+  - Ogni versione dovrebbe:
+    - Elencare la sua data di rilascio nel formato sopra specificato.
+    - Raggruppare le modifiche per descrivere il loro impatto sul progetto, come segue:
+      - `Added` per le nuove funzionalità.
+      - `Changed` per le modifiche a funzionalità esistenti.
+      - `Deprecated` per vecchie feature stabili che verranno rimosse nelle future release.
+      - `Removed` per funzionalità precedentemente deprecate rimosse in questa release.
+      - `Fixed` per tutti i bug fix.
+      - `Security` per invitare gli utilizzatori ad aggiornare in caso di vulnerabilità.
+
+  ### Come posso minimizzare lo sforzo richiesto?
+  Usa sempre una sezione `"Unreleased"` all'inizio per tenere traccia di qualsiasi modifica.
+
+  Questo serve per due scopi:
+
+  - La gente può vedere quali modifiche si può aspettare in future release
+  - Ad una nuova release, si deve solo sostituire `"Unreleased"` con il numero di versione
+    e aggiungere una nuova sezione `"Unreleased"` all'inizio.
+
+  ### Cosa fa piangere gli unicorni?
+  Bene...vediamo un po'.
+
+  - **Copia&incolla un diff di commig log.** Non fatelo, così non aiutate nessuno.
+  - **Non enfatizzare le funzioni deprecate.** Quando le persone aggiornano da una versione ad un'altra,
+    dovrebbe essere dolorosamente chiaro quando qualcosa si romperà.
+  - **Date in formati specifici per regione.** Negli Stati Uniti si mette prima il mese nelle date
+    ("06-02-2012" sta per 2 Giugno 2012, che non ha senso), mentre molte persone
+    nel resto del mondo scrivono un robotico "2 June 2012", ma lo pronunciano diversamente.
+    "2012-06-02" funziona con la logica dal più grande al più piccolo, non ha sovrapposizioni
+    ambigue con altri formati di date, ed è uno [standard ISO](http://www.iso.org/iso/home/standards/iso8601.htm).
+    Per tutti questi motivi, è il formato di date raccomandato per i change log.
+
+  C'è di più. Aiutatemi a collezionare queste "lacrime di unicorno" [aprendo una "issue"][issues]
+  o una pull request.
+
+  ### Esiste un formato standard per i change log?
+  Purtroppo no. Calma. So che state furiosamente correndo a cercare quel link
+  alla guida di stile per i change log GNU, o alle linee guida per or il file a due paragrafi GNU NEWS.
+  La guida GNU è un buon punto di partenza, ma è tristemente ingenuo.
+  Non c'è nulla di male nell'essere ingenuo, ma quando le persone cercano una guida, questa caratteristica
+  è raramente d'aiuto. Specialmente se ci sono molte situazioni e casi limite da gestire.
+
+  Questo progetto [contiene ciò che spero diventerà una migliore convenzione per i file CHANGELOG][CHANGELOG].
+  Non credo che lo status quo sia sufficientemente buono, e penso che noi, come comunità, 
+  possiamo arrivare a convenzioni migliori se tentiamo di estrarre le pratiche migliori
+  da progetti software reali. Vi consiglio di guardarvi intorno e ricordare che 
+  [ogni discussione e suggerimento per migliorare sono sempre benvenuti][issues]!
+
+  ### Come si dovrebbe chiamare il file contenente il change log?
+  Se non l'avete dedotto dall'esempio qui sopra, `CHANGELOG.md` è la convenzione migliore finora.
+
+  Alcuni progetti usano anche `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
+  `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
+
+  È un disastro. Tutti questi nomi contribuiscono solo a rendere più difficile trovarlo.
+
+  ### Perché la gente non si limita ad usare diff di `git log`?
+  Perché i log diff sono pieni di rumore, per loro natura. Non potrebbero creare un change log
+  decente nemmeno in un ipotetico progetto gestito da perfetti umani che non fanno mai errori
+  di digitazione, non dimenticano mai di fare commit dei nuovi file, non dimenticano mai
+  alcuna parte di un refactoring.
+  Lo scopo di un commit è di documentare un passo atomico nel processo di evoluzione del codice
+  da uno stato ad un altro. Lo scopo di un change log è di documentare le differenze 
+  degne di nota tra questi stati.
+
+  La differenza tra un change log e un commit log è
+  come la differenza tra un buon commento nel codice e il codice stesso:
+  uno descrive il *perché*, l'altro il come.
+
+  ### Si possono analizzare automaticamente i change log?
+  È difficile, perché le persone usano formati e nomi di file profondamente diversi.
+  
+  [Vandamme][vandamme] è una Ruby gem
+  creata dal team [Gemnasium][gemnasium] ed è in grado di fare il parsing dei
+  change log di molti (ma non tutti) i progetti open source.
+
+  ### Perché si alterna tra i nomi "CHANGELOG" e "change log"?
+  "CHANGELOG" è il nome del file. È un po' invadente ma è una 
+  convenzione storica seguita da molti progetti open source.
+  Altri esempi di file simili includono [`README`][README], [`LICENSE`][LICENSE],
+  e [`CONTRIBUTING`][CONTRIBUTING].
+
+  I nomi in maiuscolo (che su vecchi sistemi operativi erano ordinati per primi) 
+  vengono usati per attirare l'attenzione su di essi. Poiché sono metadati
+  importanti relativi al progetto, possono essere utili per chiunque voglia usarlo
+  o contribuire ad esso, un po' come i [badge dei progetti open source][shields].
+
+  Quando mi riferisco a un "change log", sto parlando della funzione di questo file:
+  registrare le modifiche.
+
+  ### Cosa sono le release "yanked"?
+  Le release "yanked" sono versioni che sono state rimosse a causa di bug seri
+  o problemi di sicurezza. Spesso queste versioni non appaiono nei change
+  log. Invece dovrebbero esserci, nel seguente modo:
+
+  `## 0.0.5 - 2014-12-13 [YANKED]`
+
+  L'etichetta `[YANKED]` è in maiuscolo per un motivo. È importante che la gente la noti.
+  Poiché è racchiusa tra parentesi quadre è anche più semplice da riconoscere nel parsing automatizzato.
+
+  ### Si dovrebbe mai modificare un change log?
+  Certo. Ci sono sempre buoni motivi per migliorare un change log. Io apro regolarmente
+  delle pull request per aggiungere release mancanti ai progetti open source che non mantengono
+  correttamente i change log.
+
+  È anche possibile che si scopra di aver dimenticato di annotare una modifica
+  non retro-compatibile nelle note per una versione. Ovviamente è importante aggiornare
+  il change log in questo caso.
+
+  ### Come posso contribuire?
+  Questo documento non è la **verità assoluta**; è solo la mia attenta
+  opinione, arricchita dalle informazioni ed esempi che ho raccolto.
+  Anche se fornisco un [CHANGELOG][] reale sul [repository GitHub][gh],
+  ho volutamente evitato di creare una *release* o una chiara lista di regole
+  da seguire (come fa, ad esempio, [SemVer.org][semver]).
+
+  Questo è perché voglio che la nostra comunità raggiunga un consenso. Credo che 
+  la discussione sia importante almeno quanto il risultato finale.
+
+  Quindi per favore [**partecipate**][gh].
+
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [gemnasium]: https://gemnasium.com/
+  [gh]: https://github.com/olivierlacan/keep-a-changelog
+  [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
+  [semver]: http://semver.org/
+  [shields]: http://shields.io/
+  [thechangelog]: http://5by5.tv/changelog/127
+  [vandamme]: https://github.com/tech-angels/vandamme/

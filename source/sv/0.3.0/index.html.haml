@@ -21,15 +21,15 @@ version: 0.3.0
 :markdown
   ### Vad är meningen med en ändringslogg?
   För att göra det enkelt för användare och medarbetare att se exakt vilka
-  viktiga ändringar som har gjort mellan varje utgåva (eller version) av projektet.
+  viktiga ändringar som har gjorts mellan varje utgåva (eller version) av projektet.
 
   ### Varför ska jag bry mig?
   Därför att mjukvaruverktyg är för människor. Om du inte bryr dig, varför
   bidrar du till öppen källkod? Visst finns det väl någon del i din vackra
   hjärna som bryr sig.
 
-  Jag [pratade med Adam Stacoviak och Jerod Santo på The Changelog][thechangelog]
-  (passande, eller hur?) podcast om varför ansvariga och bidragsgivare bör bry sig,
+  Jag [pratade med Adam Stacoviak och Jerod Santo från podcasten The Changelog][thechangelog]
+  (passande, eller hur?) om varför ansvariga och bidragsgivare bör bry sig,
   och motiveringen bakom detta projekt.
   Om du kan avvara lite tid (1:06), rekommenderar jag att lyssna på det.
 
@@ -41,23 +41,23 @@ version: 0.3.0
   - Den är skapad för människor, inte maskiner, så läsbarhet är avgörande.
   - Lätt att länka till valfri sektion (därav Markdown framför klartext).
   - En undersektion per version.
-  - Lista utgåvor i omvänd kronologisk ordning (nyast högst upp).
-  - Skriv alla datum på formatet `YYYY-MM-DD`
+  - Listar utgåvor i omvänd kronologisk ordning (nyast högst upp).
+  - Anger alla datum på formatet `YYYY-MM-DD`
   (exempel: `2012-06-02` för 2:a juni 2012). Det är internationellt,
   [förnuftigt](http://xkcd.com/1179/) och språkoberoende.
-  - Ange uttryckligen att projektet följer [Semantisk versionshantering][SemVer].
+  - Anger uttryckligen om projektet följer [Semantisk versionshantering][SemVer].
   - Varje version bör:
-    - Ange datum då utgåvan släptes på formatet angivet ovan.
+    - Ange datum då utgåvan släpptes på formatet angivet ovan.
     - Gruppera ändringar för att beskriva deras inverkan på projektet enligt följande:
       - `Added` för nya funktioner.
       - `Changed` för ändringar på existerande funktionalitet.
       - `Deprecated` för tidigare stabila funktioner som tas bort i nästa utgåva.
-      - `Removed` för funktioner tidigare markerade som `deprecated` som tas bort i denna version.
+      - `Removed` för funktioner tidigare markerade som `Deprecated` som tas bort i denna version.
       - `Fixed` för buggfixar.
       - `Security` för att uppmana användare att uppgradera vid fall av sårbarheter.
 
   ### Hur kan jag minimera den insats som krävs?
-  Ha alltid en sektion kallas `"Unreleased"` högst upp för att hålla reda på
+  Ha alltid en sektion kallad `"Unreleased"` högst upp för att hålla reda på
   alla ändringar.
 
   Detta tjänar två syften:
@@ -70,11 +70,11 @@ version: 0.3.0
   Okej...låt oss gå genom det.
 
   - **Dumpa ut en diff från commit-loggen.** Gör helt enkelt inte så, du hjälper ingen.
-  - **Inte betona `deprecations`.** När folk uppgraderar från en version till
+  - **Inte betona `deprecations`.** När användare uppgraderar från en version till
     en annan ska det vara smärtsamt uppenbart om något förväntas gå sönder.
-  - **Datum i region-specifikt format.** I USA lägger folk månaden föst
+  - **Datum i region-specifikt format.** I USA lägger folk månaden först
     ("06-02-2012" för 2:a juni 2012, vilket bara är *konstigt*), medan många
-    andra runt om i världen skriver "2 June 2012" men uttala det annorlunda.
+    andra runt om i världen skriver "2 June 2012" men uttalar det annorlunda.
     "2012-06-02" fungerar logiskt från största till minsta, inte överlappar på ett
     tvetydligt sätt med andra datumformat, och det är en
     [ISO-standard](http://www.iso.org/iso/home/standards/iso8601.htm). Dessutom
@@ -87,7 +87,7 @@ version: 0.3.0
 
   ### Finns det ett standardformat på ändringsloggar?
   Tyvärr inte. Men lugn. Jag vet att du frustrerad kommer att rusa iväg för att hitta
-  den där länken till GUS:s format för ändringsloggar, eller den två stycken långa
+  den där länken till GNU:s format för ändringsloggar, eller den två stycken långa
   GNU NEWS-filen med "guideline". Stilguiden från GNU är en bra start, men den är
   tyvärr allt för naiv. Det är inget fel med att vara naiv, men när människor
   behöver vägledning är det inte speciellt hjälpsamt. Speciellt när det är många
@@ -119,7 +119,7 @@ version: 0.3.0
 
   På samma sätt som det är skillnad mellan bra kommentarer och själva koden,
   är det skillnad mellan ändringsloggen och commit-loggen:
-  en beskriver "varför" och den andra "hur".
+  en beskriver *varför* och den andra *hur*.
 
   ### Kan ändringsloggar bli automatiskt tolkade?
   Det är svårt då människor följer vitt olika format och filnamn.
@@ -128,9 +128,9 @@ version: 0.3.0
   skapad av gruppen bakom [Gemnasium][gemnasium] som tolkar många (men inte alla)
   ändringsloggar för öppen källkod.
 
-  ### Varför alternerar du mellan att skriva det som "CHANGELOG" och "ändringslogg"?"
+  ### Varför alternerar du mellan att skriva det som "CHANGELOG" och "ändringslogg"?
   "CHANGELOG" är namnet på själva filen. Det sticker ut lite, men det är en
-  historisk konvention använt i många öppen källkodsprojekt. Andra
+  historisk konvention använt i många öppna källkodsprojekt. Andra
   exempel på liknande filer är [`README`][README], [`LICENSE`][LICENSE]
   och [`CONTRIBUTING`][CONTRIBUTING].
 
@@ -156,7 +156,7 @@ version: 0.3.0
   ### Borde du någonsin förändra en ändringslogg?
   Självklart. Det finns alltid en bra anlending att förbättra en ändringslogg.
   Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
-  för öppen källkodsprojekt som inte tar hand om sin ändringslogg.
+  för öppna källkodsprojekt som inte tar hand om sin ändringslogg.
 
   Det kan också hända att du upptäcker att du glömt att ta upp en icke
   bakåtkompatibel förändring i en version. I sådana fall är det självklart
