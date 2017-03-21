@@ -1,4 +1,4 @@
-# Keep a CHANGELOG [![version](https://img.shields.io/badge/version-0.3.0-blue.svg)][CHANGELOG]
+# Keep a CHANGELOG [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] 
 
 Don’t let your friends dump git logs into CHANGELOGs™
 
@@ -39,8 +39,11 @@ a better idea of whether your translation is accurate.
 Thank you for your help improving software one changelog at a time!
 
 [CHANGELOG]: ./CHANGELOG.md
+[LICENSE]: ./LICENSE
 [rbenv]: https://github.com/rbenv/rbenv
 [ruby-version]: .ruby-version
 [source]: source/
 [pull-request]: https://help.github.com/articles/creating-a-pull-request/
 [fork]: https://help.github.com/articles/fork-a-repo/
+[version-badge]: https://img.shields.io/badge/version-0.3.0-blue.svg
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
