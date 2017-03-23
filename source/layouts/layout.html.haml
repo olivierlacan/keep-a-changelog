@@ -32,7 +32,7 @@
         %nav.locales{role: "navigation"}
           %ul
             - $languages.each do |language|
-              %li= link_to "#{language.last}", "/#{language.first}/",
+              %li= link_to "#{language.last[:name]}", "/#{language.first}/",
               { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
 
       .main{role: "main"}
@@ -42,13 +42,16 @@
           - if versions.include?($last_version)
             = link_to "Version #{$last_version}", "#{code}/#{$last_version}"
           - else
-            %p 
-              The latest version (#{$last_version}) is not yet available in this 
-              language but
-              = link_to "you can read it in English", "/en/#{$last_version}"
-              for now and 
-              = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues" 
-              it.
+            - if $languages[code][:notice]
+              %p.last-version-notice= $languages[code][:notice]
+            - else
+              %p 
+                The latest version (#{$last_version}) is not yet available in
+                this language but
+                = link_to "you can read it in English", "/en/#{$last_version}"
+                for now and 
+                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues" 
+                it.
         = yield
 
       %footer.clearfix{role: "banner"}

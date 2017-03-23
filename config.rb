@@ -8,20 +8,74 @@
 $last_version = (Dir.entries("source/en") - %w[. ..]).last
 
 # This list of languages populates the language navigation.
+issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
 $languages = {
-  "cs"    => "Čeština",
-  "de"    => "Deutsch",
-  "en"    => "English",
-  "es-ES" => "Español",
-  "fr"    => "Français",
-  "it-IT" => "Italiano",
-  "pt-BR" => "Brazilian Portugese",
-  "ru"    => "Pyccкий",
-  "sl"    => "Slovenščina",
-  "sv"    => "Svenska",
-  "tr-TR" => "Türkçe",
-  "zh-CN" => "简体中文",
-  "zh-TW" => " 繁體中文"
+  "cs"    => { 
+    name: "Čeština", 
+    notice: "" 
+  },
+  "de"    => { 
+    name: "Deutsch", 
+    notice: "Die neuste version (#{$last_version}) ist noch nicht auf Deutsch
+    verfügbar, aber du kannst sie dir <a href='/en/'>auf Englisch durchlesen</a>
+    und <a href='#{issues_url}'>bei der Übersetzung mithelfen</a>."
+  },
+  "en"    => { 
+    name: "English", 
+    notice: ""
+  },
+  "es-ES" => { 
+    name: "Español", 
+    notice: "Aún no está disponible la última versión (#{$last_version}) en
+    español, pero por ahora puedes <a href='/en/'>leerla en inglés</a> y <a
+    href='#{issues_url}'>ayudar a traducirla</a>."
+  },
+  "fr"    => { 
+    name: "Français", 
+    notice: "La dernière version (#{$last_version}) n'est pas encore disponible
+    en français, mais vous pouvez la <a href='/en/'>lire en anglais</a> pour
+    l'instant et <a href='#{issues_url}'>aider à la traduire</a>."
+  },
+  "it-IT" => { 
+    name: "Italiano", 
+    notice: "L'ultima versione (#{$last_version}) non è ancora disponibile in
+    Italiano, ma la potete <a href='/en/'>leggere in Inglese</a> per ora e
+    potete <a href='#{issues_url}'>contribuire a tradurla</a>."
+  },
+  "pt-BR" => { 
+    name: "Brazilian Portugese", 
+    notice: "A última versão (#{$last_version}) ainda não está disponível em 
+    Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e 
+    <a href='#{issues_url}'>ajudar em sua tradução</a>." 
+  },
+  "ru"    => { 
+    name: "Pyccкий", 
+    notice: "Самая последняя версия (#{$last_version}) ещё пока не переведена на
+    русский, но вы можете <a href='/en/'>прочитать её на английском</a> и <a
+    href='#{issues_url}'>помочь с переводом</a>."
+  },
+  "sl"    => { 
+    name: "Slovenščina", 
+    notice: "" 
+  },
+  "sv"    => { 
+    name: "Svenska", 
+    notice: "Den senaste versionen (#{$last_version}) är ännu inte tillgänglig på Svenska,
+    men du kan <a href='/en/'>läsa det på engelska</a> och även <a
+    href='#{issues_url}'>hjälpa till att översätta det</a>."
+  },
+  "tr-TR" => { 
+    name: "Türkçe", 
+    notice: "" 
+  },
+  "zh-CN" => { 
+    name: "简体中文", 
+    notice: "" 
+  },
+  "zh-TW" => { 
+    name: "繁體中文", 
+    notice: "" 
+  }
 }
 
 activate :i18n,
