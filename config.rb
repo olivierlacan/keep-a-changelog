@@ -55,12 +55,32 @@ activate :automatic_image_sizes
 
 activate :syntax
 set :markdown_engine, :redcarpet
+
+## Override default Redcarpet renderer in order to define a class 
+class CustomMarkdownRenderer < Redcarpet::Render::HTML
+  def header(text, header_level)
+    slug = text.gsub(" ", "-").downcase
+    tag_name = "h#{header_level}"
+    anchor_link = "<a id='#{slug}' class='anchor' href='##{slug}' aria-hidden='true'></a>"
+    header_tag_open = "<#{tag_name} id='#{slug}'>"
+
+    output = ""
+    output << header_tag_open
+    output << anchor_link
+    output << text
+    output << "</#{tag_name}>"
+
+    output
+  end
+end
+
 $markdown_config = {
   fenced_code_blocks: true,
   footnotes: true,
   smartypants: true,
   tables: true,
-  with_toc_data: true
+  with_toc_data: true,
+  renderer: CustomMarkdownRenderer
 }
 set :markdown, $markdown_config
 
@@ -130,8 +150,12 @@ module Haml::Filters
   module Markdown
     include Haml::Filters::Base
 
+    def renderer
+      $markdown_config[:renderer]
+    end
+
     def render(text)
-      Redcarpet::Markdown.new(Redcarpet::Render::HTML.new($markdown_config)).render(text)
+      Redcarpet::Markdown.new(renderer.new($markdown_config)).render(text)
     end
   end
 end
