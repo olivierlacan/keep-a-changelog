@@ -55,12 +55,14 @@ activate :automatic_image_sizes
 
 activate :syntax
 set :markdown_engine, :redcarpet
-set :markdown, {
+$markdown_config = {
   fenced_code_blocks: true,
   footnotes: true,
   smartypants: true,
-  tables: true
+  tables: true,
+  with_toc_data: true
 }
+set :markdown, $markdown_config
 
 # --------------------------------------
 #   Helpers
@@ -116,4 +118,20 @@ end
 activate :autoprefixer do |config|
   config.browsers = ['last 2 versions', 'Explorer >= 10']
   config.cascade  = false
+end
+
+# Haml doesn't pick up on Markdown configuration so we have to remove the 
+# default Markdown Haml filter and reconfigure one that follows our 
+# global configuration.
+
+module Haml::Filters
+  remove_filter("Markdown") #remove the existing Markdown filter
+
+  module Markdown
+    include Haml::Filters::Base
+
+    def render(text)
+      Redcarpet::Markdown.new(Redcarpet::Render::HTML.new($markdown_config)).render(text)
+    end
+  end
 end
