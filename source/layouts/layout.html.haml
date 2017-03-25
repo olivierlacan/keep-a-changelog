@@ -33,7 +33,7 @@
           %ul
             - $languages.each do |language|
               %li= link_to "#{language.last} [#{language.first}]", "/#{language.first}/",
-              { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
+              { rel: "alternate", lang: "#{language.first}", hreflang: "#{language.first}" }
 
       .main{role: "main"}= yield
 
