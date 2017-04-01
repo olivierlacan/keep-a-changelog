@@ -41,7 +41,7 @@ version: 0.3.0
   - Wszystkie daty zapisuj w formacie `YYYY-MM-DD`. (Przykład: `2012-06-02` dla `2 czerwca 2012 r.`). To [rozsądny](http://xkcd.com/1179/), niezależny od języka międzynarodowy format.
   - Zawsze określaj, czy projekt jest zgodny z [Semantycznym Wersjonowaniem][semver].
   - Każda wersja powinna:
-    - Zawierać datę w wyżej wymienonym formacie.
+    - Zawierać datę w wyżej wymienionym formacie.
     - Grupować zmiany w celu opisu ich wpływu na projekt, w następujący sposób:
       - `Added` dla nowych funkcji.
       - `Changed` dla zmian w istniejącej funkcjonalności.
@@ -65,7 +65,7 @@ version: 0.3.0
   - **Niewyszczególnianie przestarzałych funkcji.** Użytkownik powinien zostać wyraźnie poinformowany, że coś przestanie działać po aktualizacji.
   - **Daty w formatach regionalnych.** W USA ludzie zapisują miesiąc na samym początku daty ("06-02-2012" dla 2 czerwca 2012 r.,
     co nie ma *najmniejszego* sensu), podczas gdy gdzie indziej wiele osób pisze "2 czerwiec 2012", jednak wymawia to w inny sposób.
-    "2012-06-02" to logiczny format zapisywany od największej, do najmniejszej wartości, oraz nie pokrywa się z innymi formatami w niejednoznaczny sposób.
+    "2012-06-02" to logiczny format zapisywany od największej, do najmniejszej wartości oraz nie pokrywa się z innymi formatami w niejednoznaczny sposób.
     Jest to jednocześnie [standard ISO](http://www.iso.org/iso/home/standards/iso8601.htm). To wszystko sprawia, że jest to rekomendowany format zapisywania daty w changelogach.
 
   To jeszcze nie koniec. Pomóż mi zebrać wszystkie łzy jednorożców [zgłaszając problem][issues] lub wprowadzając zmianę poprzez pull request.
@@ -82,7 +82,7 @@ version: 0.3.0
   Proszę, zapoznaj się z projektem i pamiętaj, że [dyskusja i sugestie są zawsze mile widziane][issues]!
 
   ### Jak powinien być nazwany plik changelog?
-  Jeśli nie potrafisz wywnioskować z powyższego przykładu, `CHANGELOG.md` to do tej pory najepsza konwencja.
+  Jeśli nie potrafisz wywnioskować z powyższego przykładu, `CHANGELOG.md` to do tej pory najlepsza konwencja.
 
   Niektóre projekty również stosują `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
   `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, itd.
@@ -91,7 +91,7 @@ version: 0.3.0
 
   ### Dlaczego nie mielibyśmy po prostu stosować raportu `git log`?
   Ponieważ logi typu diff są z natury zagmatwane. Nawet przy hipotetycznym projekcie stworzonym przez doskonałe istoty ludzkie, które nigdy nie popełniają literówek,
-  nigdy nie zapominają o zsynchronizowaniu nowo dodanych plików czy nigdy niczego nie pomijają porczas refaktoryzacji kodu, logi diff nie mogłyby zastąpić changelogu.
+  nigdy nie zapominają o zsynchronizowaniu nowo dodanych plików czy nigdy niczego nie pomijają podczas refaktoryzacji kodu, logi diff nie mogłyby zastąpić changelogu.
   Celem `git commit` jest udokumentowanie jednego kroku w procesie, dzięki któremu kod ewoluuje z jednego stanu w kolejny. Celem changelogu jest udokumentowanie tych różnic pomiędzy stanami kodu, które są godne uwagi.
 
   Różnica między changelogiem a logiem diff, tak samo jak różnica między dobrymi komentarzami a kodem, jest następująca: pierwsze opisuje *dlaczego*, drugie - *jak*.
@@ -121,8 +121,8 @@ version: 0.3.0
   ### Czy powinno się kiedykolwiek poprawiać changelog?
   Oczywiście. Zawsze istnieją powody, by ulepszyć changelog. Często zdarza mi się edytować changelogi w projektach open source w których pominięto udokumentowanie istotnych zmian.
 
-  Może się również zdarzyć, że odkryjesz, iż podczas przygotowywania notatek dla wersji projektu, zapomniałeś udokumentować istotną zmianę która ma wpływ na działanie aplikacji.
-  Ważne jest, by zaktualizować changelog szczególnie jeśli jest to zmiana która w istotny sposób wpływa na kompatybilność aplikacji.
+  Może się również zdarzyć, że odkryjesz, iż podczas przygotowywania notatek dla wersji projektu, zapomniałeś udokumentować istotną zmianę, która ma wpływ na działanie aplikacji.
+  Ważne jest, by zaktualizować changelog szczególnie jeśli jest to zmiana, która w istotny sposób wpływa na kompatybilność aplikacji.
 
   ### Jak mogę wnieść wkład w projekt?
   Ten dokument to nie jedna i jedyna **prawda**; to moja starannie sformułowana opinia wraz z informacją i przykładami które zebrałem.
