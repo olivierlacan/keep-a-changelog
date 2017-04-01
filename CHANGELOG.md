@@ -6,18 +6,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- zh-CN and zh-TW translations from @tianshuo.
-- de translation from @mpbzh.
-- it-IT translation from @roalz.
-- sv translation from @magol.
-- tr-TR translation from @karalamalar.
-- fr translation from @zapashcanon.
+- Simplified and Traditional Chinese translations from @tianshuo.
+- German translation from @mpbzh.
+- Italian translation from @roalz.
+- Swedish translation from @magol.
+- Turkish translation from @karalamalar.
+- French translation from @zapashcanon.
+- Brazilian Portugese translation from @aisamu.
+- Polish translation from @amielucha.
+-
 
 ### Changed
 - Start versioning based on the current English version at 0.3.0 to help
 translation authors keep things up-to-date.
-- Fix typos in zh-CN translation.
-- Fix typos in pt-BR translation.
+- Fix typos in Simplified Chinese and Traditional Chinese translations.
+- Fix typos in Brazilian Portugese translation.
+- Fix typos in Turkish translation.
+- Fix typos in Czech translation.
+- Fix typos in Swedish translation.
+- Improve phrasing in French translation.
+- Fix phrasing and spelling in German translation.
+
 
 ## [0.3.0] - 2015-12-03
 ### Added
