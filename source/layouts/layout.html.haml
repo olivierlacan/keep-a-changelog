@@ -20,7 +20,7 @@
     %link{rel: 'canonical', href: path_to_url(current_page.url)}
 
     %title= current_page.data.title
-    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Carrois+Gothic|Source+Code+Pro:400,700'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
     = stylesheet_link_tag 'application'
 
     :javascript
@@ -45,12 +45,12 @@
             - if $languages[code][:notice]
               %p.last-version-notice= $languages[code][:notice]
             - else
-              %p 
+              %p
                 The latest version (#{$last_version}) is not yet available in
                 this language but
                 = link_to "you can read it in English", "/en/#{$last_version}"
-                for now and 
-                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues" 
+                for now and
+                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
                 it.
         = yield
 
