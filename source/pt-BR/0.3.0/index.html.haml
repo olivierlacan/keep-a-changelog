@@ -18,9 +18,8 @@ version: 0.3.0
   cronologicamente, de mudanças significativas para cada versão de um projeto
   open source.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Para que serve um *change log*?
 
   Para facilitar para os usuários e contribuidores verem precisamente quais
@@ -101,15 +100,15 @@ version: 0.3.0
 
   Infelizmente, não. Calma. Eu sei que você está indo impetuosamente achar
   aquele link do guia de estilo de *change log* GNU, ou o arquivo "guideline"
-  de dois paragráfos de GNU NEWS. O estilo GNU é um bom começo mas é ingênuo. 
-  Não há nada de errado em ser ingênuo mas quando as pessoas precisam de 
-  orientação isso raramente ajuda. Especialmente quando existem muitas 
+  de dois paragráfos de GNU NEWS. O estilo GNU é um bom começo mas é ingênuo.
+  Não há nada de errado em ser ingênuo mas quando as pessoas precisam de
+  orientação isso raramente ajuda. Especialmente quando existem muitas
   situações excepcionais e casos extremos com os quais se deve lidar.
 
   Este projeto [contém o que eu espero se tornar um melhor padrão de arquivo
   CHANGELOG][CHANGELOG]. Não acho que o status é bom o suficiente, e acho que
   como uma comunidade nós podemos definir melhores padrões se tentarmos extrair
-  boas práticas de projetos de software reais. Então por favor dê um olhada e 
+  boas práticas de projetos de software reais. Então por favor dê um olhada e
   lembre que [discussões e sugestões para melhorias são bem-vindas][issues]!
 
   ### Qual deve ser o nome do arquivo *change log*?
@@ -124,7 +123,7 @@ version: 0.3.0
   É uma bagunça. Todos esses nome só dificultam que as pessoas o achem.
 
   ### Por quê as pessoas não podem simplesmente utilizar `git log`?
-  
+
   Porque os logs do Git são cheios de ruído — por natureza. Eles não poderiam
   escrever um change log adequado mesmo em um projeto hipotético desenvolvido
   por humanos perfeitos que nunca cometem erros de grafia, nunca esquecem de
@@ -134,7 +133,7 @@ version: 0.3.0
   change log é documentar diferenças notáveis entre estes estados.
 
   Assim como são as diferenças entre bons comentários e o próprio código, há
-  a diferença entre o change log e o commit log: um descreve o porquê e o 
+  a diferença entre o change log e o commit log: um descreve o porquê e o
   outro o como.
 
   ### Podem os *change logs* ser automaticamente interpretados?
@@ -172,13 +171,13 @@ version: 0.3.0
   A tag `[YANKED]` é chamativa por uma razão. É importante que as pessoas a
   notem. E já que é cercada por colchetes é mais fácil detectá-la
   programaticamente.
-  
+
   ### Se você deveria reescrever um change log?
-  
+
   Claro. Sempre existem boas razões para melhorar um change log. Eu abro os pull
   requests regularmente para adicionar releases que faltam a projetos open source
   com change logs sem manutenção.
-  
+
   É também possível que você descubra que esqueceu de registrar uma mudança
   crucial nas anotações de uma versão. É obviamente importante que você atualize
   seu change log neste caso.

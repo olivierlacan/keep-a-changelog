@@ -15,9 +15,8 @@ version: 0.3.0
   ### Czym jest changelog?
   Changelog, inaczej rejestr zmian lub historia zmian, to plik zawierający chronologicznie uporządkowaną listę istotnych zmian dla każdej wersji projektu.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Co jest celem prowadzenia changelogu?
   Changelog pomaga użytkownikom zrozumieć, jakie znaczące zmiany zostały wprowadzone w każdej wersji projektu.
 
