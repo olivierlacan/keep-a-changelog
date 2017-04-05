@@ -53,8 +53,6 @@
                 = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
                 it.
 
-        - content = Haml::Filters::Code.render(yield)
-        = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new(nesting_level: 5), { with_toc_data: true }).render(content).html_safe
         = yield
 
       %footer.clearfix{role: "banner"}

@@ -116,8 +116,25 @@ set :markdown_engine, :redcarpet
 
 ## Override default Redcarpet renderer in order to define a class
 class CustomMarkdownRenderer < Redcarpet::Render::HTML
+  def doc_header
+    %Q[<nav role="navigation">#{@header}</nav>]
+  end
+
+  def preprocess(full_document)
+    version_regex = /Version \*\*\d.\d.\d\*\*/
+    top = full_document.split("<pre").first.split(version_regex).last
+    bottom = full_document.split("</pre>").last
+
+    @header = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML_TOC.new(nesting_level: 4),
+      { with_toc_data: true }
+    ).render(top + bottom).html_safe
+
+    full_document
+  end
+
   def header(text, header_level)
-    slug = text.gsub(" ", "-").downcase
+    slug = text.parameterize
     tag_name = "h#{header_level}"
     anchor_link = "<a id='#{slug}' class='anchor' href='##{slug}' aria-hidden='true'></a>"
     header_tag_open = "<#{tag_name} id='#{slug}'>"
