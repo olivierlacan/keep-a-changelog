@@ -13,6 +13,32 @@ a
 a:hover
   text-decoration: underline
 
+.toc
+  position: fixed
+  z-index: 9999
+  top: 10%
+  left: 0
+
+  ul
+    padding: 0 0 0 1em
+    list-style-type: decimal-leading-zero
+    li
+      padding-left: 1em
+      line-height: 2
+      a
+        padding: 0 1em
+        line-height: 2
+        display: none
+
+    li:hover
+      color: $color-sand
+      background: $color-black
+    li:hover a
+      color: $color-sand
+      font-weight: bold
+      background-color: $color-black
+      display: inline-block
+
 h1
   color: #C647BF
   font-size: 4.1em

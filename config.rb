@@ -117,7 +117,7 @@ set :markdown_engine, :redcarpet
 ## Override default Redcarpet renderer in order to define a class
 class CustomMarkdownRenderer < Redcarpet::Render::HTML
   def doc_header
-    %Q[<nav role="navigation">#{@header}</nav>]
+    %Q[<nav role="navigation" class="toc">#{@header}</nav>]
   end
 
   def preprocess(full_document)
