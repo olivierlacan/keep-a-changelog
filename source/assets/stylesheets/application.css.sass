@@ -1,12 +1,19 @@
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 $source-code-font-family: "Source Code Pro", monospace
 
+$color-black: #342828
+$color-ocre: #E05735
+$color-gold: #EFA33C
+$color-sand: #F2DDBC
+$color-light-sand: lighten($color-sand, 10%)
+
 html
-  font: 14px/1.4 $base-font-family
-  color: #333
+  font: 16px/1.4 $base-font-family
+  color: #342828
+  background-color: #F2DDBC
 
 a
-  color: #E10FCE
+  color: $color-ocre
   font-weight: bold
   text-decoration: none
 
@@ -40,15 +47,17 @@ a:hover
       display: inline-block
 
 h1
-  color: #C647BF
-  font-size: 4.1em
+  color: $color-ocre
+  font-size: 4.7em
   font-weight: bold
   font-family: $base-font-family
   margin-bottom: 0
   line-height: 1
+  text-transform: lowercase
 
 h2
-  margin-top: 0.1em
+  font-size: 1.4em
+  margin-top: 0.2em
   margin-bottom: 2em
 
 h1, h2
@@ -145,4 +154,5 @@ footer
   white-space: nowrap
 
 pre, code
+  background-color: $color-light-sand
   font-family: $source-code-font-family
