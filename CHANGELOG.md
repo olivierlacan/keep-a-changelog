@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - "Why keep a changelog?" section
 - "Who needs a changelog?" section
 - "How do I make a changelog?" section
+- New "Guiding Principles" sub-section to "How do I make a changelog?".
 - Simplified and Traditional Chinese translations from @tianshuo.
 - German translation from @mpbzh.
 - Italian translation from @roalz.
