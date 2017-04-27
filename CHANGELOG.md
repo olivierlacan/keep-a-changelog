@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- "Why keep a changelog?" section
+- "Who needs a changelog?" section
+- "How do I make a changelog?" section
 - Simplified and Traditional Chinese translations from @tianshuo.
 - German translation from @mpbzh.
 - Italian translation from @roalz.
@@ -19,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Start using "changelog" over "change log" since it's the common usage.
 - Start versioning based on the current English version at 0.3.0 to help
 translation authors keep things up-to-date.
+- Rewrite "What makes unicorns cry?" section.
 - Fix typos in Simplified Chinese and Traditional Chinese translations.
 - Fix typos in Brazilian Portugese translation.
 - Fix typos in Turkish translation.
@@ -27,6 +31,8 @@ translation authors keep things up-to-date.
 - Improve phrasing in French translation.
 - Fix phrasing and spelling in German translation.
 
+### Removed
+- Section about "changelog" vs "CHANGELOG".
 
 ## [0.3.0] - 2015-12-03
 ### Added
