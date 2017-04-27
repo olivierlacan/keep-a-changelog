@@ -126,9 +126,9 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
     bottom = full_document.split("</pre>").last
 
     @header = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML_TOC.new(nesting_level: 4),
+      Redcarpet::Render::HTML_TOC.new(nesting_level: 3),
       { with_toc_data: true }
-    ).render(top + bottom).html_safe
+    ).render(top).html_safe
 
     full_document
   end
