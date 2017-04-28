@@ -68,12 +68,25 @@ version: 0.4.0
 
   #### Commit log diffs
 
-  Just don’t do that, you’re helping nobody.
+  Using commit log diffs as changelogs is a bad idea: they're full of noise.
+  Things like merge commits, commits with obscure titles, documentation changes,
+  etc.
+
+  The purpose of a commit is to document a step in the evolution of the source
+  code. Some projects clean up commits, some don't.
+
+  The purpose of a changelog entry is to document the noteworthy difference,
+  often across multiple commits, to communicate them clearly to end users.
 
   #### Ignoring Deprecations
 
   When people upgrade from one version to another, it should be painfully clear
-  when something will break.
+  when something will break. It should be possible to upgrade to a version
+  that lists deprecations, remove what's deprecated, then upgrade to the version
+  where the deprecations become removals.
+
+  If you do nothing else, list deprecations, removals, and any breaking changes
+  in your changelog.
 
   #### Confusing Dates
 
@@ -104,26 +117,10 @@ version: 0.4.0
 
   ### What should the changelog file be named?
 
-  Well, if you can’t tell from the example above, `CHANGELOG.md` is the
-  best convention so far.
-
-  Some projects also use `HISTORY.txt`, `HISTORY.md`, `History.md`, `NEWS.txt`,
-  `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`, `releases.md`, etc.
-
-  It’s a mess. All these names only makes it harder for people to find it.
-
-  ### Why can’t people just use a git log diff?
-
-  Because log diffs are full of noise — by nature. They could not make a suitable
-  changelog even in a hypothetical project run by perfect humans who never make
-  typos, never forget to commit new files, never miss any part of a refactoring.
-  The purpose of a commit is to document one atomic step in the process by which
-  the code evolves from one state to another. The purpose of a changelog is to
-  document the noteworthy differences between these states.
-
-  As is the difference between good comments and the code itself,
-  so is the difference between a changelog and the commit log:
-  one describes the *why*, the other the how.
+  Call it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`.
+  While it's easy to think that the name of your changelog file doesn't matter
+  that much, why make it harder for your end users to consistently find notable
+  changes?
 
   ### Can changelogs be automatically parsed?
   It’s difficult, because people follow wildly different formats and file names.
