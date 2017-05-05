@@ -77,12 +77,17 @@ version: 0.4.0
 
   #### Confusing Dates
 
-  In the U.S., people put the month first ("06-02-2012" for June 2nd, 2012,
-  which makes *no* sense), while many people in the rest of the world write a
-  robotic-looking "2 June 2012", yet pronounce it differently. "2012-06-02"
-  works logically from largest to smallest, doesn't overlap in ambiguous ways
-  with other date formats, and is an [ISO standard][iso]. Thus, it is the
-  recommended date format for changelogs.
+  In the U.S., people put the month first: "06/02/2012" for June 2nd, 2012
+  ("m/d/y"). This of course makes *no* sense. Luckily, the slash `/` delimiter
+  is rare enough outside the U.S. that [many parsers][php-date] will guess the
+  date is in this format. 
+  
+  Many people in the rest of the world write a robotic-looking "2 June 2012", 
+  yet pronounce it differently. 
+  
+  "2012-06-02" ("y-m-d") works logically from largest to smallest, doesn't 
+  overlap in ambiguous ways with other date formats, and is an 
+  [ISO standard][iso]. Thus, it is the recommended date format for changelogs.
 
   There’s more. Help me collect those unicorn tears by [opening an
   issue][issues] or a pull request.
@@ -183,3 +188,4 @@ version: 0.4.0
   [thechangelog]: http://5by5.tv/changelog/127
   [vandamme]: https://github.com/tech-angels/vandamme/
   [iso]: http://www.iso.org/iso/home/standards/iso8601.htm
+  [php-date]: http://php.net/manual/en/function.strtotime.php
