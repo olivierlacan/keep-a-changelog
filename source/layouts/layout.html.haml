@@ -1,41 +1,42 @@
 !!! 5
 %html
-  %head{lang: current_page.data.language}
-    %meta{charset: 'utf-8'}
-    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    %meta{name: 'description', content: current_page.data.description}
+  %head{ lang: current_page.data.language }
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ name: 'description', content: current_page.data.description }
 
     -# Open Graph
 
-    %meta{property: 'og:article:publisher', content: config.publisher_url}
-    %meta{property: 'og:title', content: current_page.data.title}
-    %meta{property: 'og:type', content: 'article'}
-    %meta{property: 'og:url', content: path_to_url(current_page.url)}
-    %meta{property: 'og:description', content: current_page.data.description}
+    %meta{ property: 'og:article:publisher', content: config.publisher_url }
+    %meta{ property: 'og:title', content: current_page.data.title }
+    %meta{ property: 'og:type', content: 'article' }
+    %meta{ property: 'og:url', content: path_to_url(current_page.url) }
+    %meta{ property: 'og:description', content: current_page.data.description }
     = yield_content :og
 
     -# Icons
 
-    %link{rel: 'canonical', href: path_to_url(current_page.url)}
+    %link{ rel: 'canonical', href: path_to_url(current_page.url) }
 
     %title= current_page.data.title
+
+    %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:400,700" }
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
     = stylesheet_link_tag 'application'
-
-    :javascript
-      try{Typekit.load();}catch(e){}
+    = javascript_include_tag 'all'
 
   %body
     %article
-      %header{role: "banner"}
-        %nav.locales{role: "navigation"}
-          %ul
+      %header{ role: "banner" }
+        = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
+        %nav.locales{ role: "navigation" }
+          %select
             - $languages.each do |language|
-              %li= link_to "#{language.last[:name]}", "/#{language.first}/",
-              { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
+              - selected = current_page.metadata[:page][:language] == language.first
+              %option{ selected: selected, label: language.last[:name], value: language.first }
 
-      .main{role: "main"}
+      .main{ role: "main" }
         - if current_page.metadata[:page][:version] != $last_version
           - code = current_page.metadata[:page][:language]
           - versions = Dir.entries("source/#{code}") - %w[. ..]
@@ -55,14 +56,14 @@
 
         = yield
 
-      %footer.clearfix{role: "banner"}
-        %p.license
-          This project is
-          #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
-        %p.about
-          #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
-          with trepidation by
-          #{link_to "Olivier Lacan", "http://olivierlacan.com/"}.
+        %footer.footer.clearfix{ role: "banner" }
+          %p.license
+            This project is
+            #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
+          %p.about
+            #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
+            with trepidation by
+            #{link_to "Olivier Lacan", "http://olivierlacan.com/"}.
 
   - unless config.gauges_id.blank?
     :javascript
