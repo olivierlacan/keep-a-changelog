@@ -8,7 +8,7 @@ version: 0.3.0
 :markdown
   # CHANGELOG dosyası kullanın
 
-  ## Arkadaşlarınızın git kayıtlarını CHANGELOG dosyalarına boşaltmasını engelleyin™
+  ## Arkadaşlarınızın, git kayıtlarını CHANGELOG dosyalarına yığmasını engelleyin™
 
   ### Nedir bu değişiklik kayıtları?
   Değişiklik kayıtları bir proje için özel olarak hazırlanmış, tarihsel sıralamayla
@@ -25,7 +25,7 @@ version: 0.3.0
   katkıda bulunuyorsunuz ki? Mutlaka sevimli beyninizin bir yerlerinde bunu önemseyen
   bir çekirdek (a-ha!) vardır.
 
-  [Adam Stacoviak ve Jerod Santo ile Changelog Podcast'inde][thechangelog](uyuyor,
+  [Adam Stacoviak ve Jerod Santo ile Changelog Podcast'inde][thechangelog] (uyuyor,
   değil mi?) neden geliştiricilerin ve katılımcıların umrunda olması gerektiğini ve
   bu projenin arkasındaki motivasyonu konuştuk. Eğer vaktiniz varsa (1:06) iyi bir
   söyleşi oldu.
@@ -35,20 +35,20 @@ version: 0.3.0
 
   İyi bir değişiklik kaydı şu prensiplere bağlıdır:
 
-  - İnsanlar için yapılmıştır, makineler için değil, yani okunurluğu kritik.
-  - Kolayca bölümler arası bağlantı kurulabilmeli (bu yüzden yalın metin yerine markdown).
-  - Her sürüm için bir alt bölüm.
-  - Dağıtımları tersine tarih sırası ile listeleyin (en yeni en üstte).
-  - Tüm tarihleri `YYYY-AA-GG` biçiminde yazın. (Örneğin `2 Haziran 2012` için `2012-06-02`.) Uluslararasıdır, [anlamlıdır](http://xkcd.com/1179/), ve lisan bağımsızdır.
-  - [Anlamsal sürümlemeyi][semver] destekleyip desteklemediğini özellikle belirtin.
+  - İnsanlar için yapılmıştır, makineler için değil, yani okunabilirliği kritiktir.
+  - Kolayca bölümler arası bağlantı kurulabilmelidir. (Bu yüzden yalın metin yerine markdown)
+  - Her sürüm için bir alt bölüm içermelidir.
+  - Dağıtımları tersine tarih sırası ile listemelidir. (En yeni en üstte)
+  - Tüm tarihler `YYYY-AA-GG` biçiminde olmalıdır. (Örneğin `2 Haziran 2012` için `2012-06-02`) Uluslararasıdır, [anlamlıdır](http://xkcd.com/1179/), ve lisan bağımsızdır.
+  - [Anlamsal sürümleme][semver]nin desteklenip desteklenmediğini özellikle belirtilmelidir.
   - Her sürümde olması gerekenler:
     - Üstteki biçimde dağıtım tarihi.
-    - Projeye etkileri bakımından değişiklikleri gruplayın, şöyle ki:
-      - `Eklendi`: yeni özellikler için.
-      - `Değişti`: var olan beceriler değiştiyse.
-      - `Rafa kalktı`: gelecekte yok olacak var olan beceriler.
-      - `Kaldırıldı`: bu sürümde kaldırılan, daha önce rafa kaldırılmış olan beceriler.
-      - `Düzeltildi`: ayıklanmış hatalar için.
+    - Projeye etkileri bakımından değişikliklerin gruplanması, şöyle ki:
+      - `Eklendi`: yeni özellikler için,
+      - `Değişti`: var olan beceriler değiştiyse,
+      - `Rafa kalktı`: gelecekte yok olacak var olan beceriler,
+      - `Kaldırıldı`: bu sürümde kaldırılan, daha önce rafa kaldırılmış olan beceriler,
+      - `Düzeltildi`: ayıklanmış hatalar,
       - `Güvenlik`: açıkları kapatabilmeleri için kullanıcıları bilgilendirin.
 
   ### Gerekli çabayı nasıl en aza indirebilirim?
@@ -64,7 +64,7 @@ version: 0.3.0
   Peki… Gelelim sadede.
 
   - **Commit kayıtlarının farkını yüklemek.** Sakın bunu yapmayın, kimseye yardım etmiyorsunuz.
-  - **Rafa kalkanları ön plana çıkarmamak.** Kullanıcılar bir sürümden diğerine
+  - **Rafa kaldırılanları ön plana çıkarmamak.** Kullanıcılar için bir sürümden diğerine
     yükseltme yaptıklarında neyin bozulabileceği apaçık ortada olmalı.
   - **Bölgesel biçimlenmiş tarihler.** ABD'de insanlar ay bilgisini önce kullanıyor
     ("06-02-2012" demek 2 Haziran 2012 demek yani, ki tamamen *saçma*), diğer taraftan
@@ -100,12 +100,12 @@ version: 0.3.0
   Tam bir karmaşa. Tüm bu isimler insanların bu dosyayı bulmasını zorlaştırıyor.
 
   ### Neden `git log` farkları kullanılmasın?
-  Çünkü kayıt farkları bir sürü gürültü içerir - doğal olarak. Mükemmel insanlar
+  Çünkü kayıt farkları bir sürü parazit içerir - doğal olarak. Mükemmel insanlar
   tarafından yürütülen, hiç yazım hatasının yapılmadığı, dosyaların gönderilmesinin
-  hiç unutulmadığı, refaktör yapılmasının atlanmadığı varsayımsal bir projede bile
-  uygun bir değişiklik kaydı oluşmayacaktır. Dosyaları repoya göndermenin amacı
+  hiç unutulmadığı, refaktör yapılmasının atlanmadığı varsayımsal bir projede bile,
+  uygun bir değişiklik kaydı oluşmayacaktır. Dosyaları repoya göndermenin amacı,
   atomik seviyede kodun bir durumdan diğerine geçişinin sağlanmasıdır. Değişiklik
-  kayıtları ise bu durumlar arasında, önem arz eden değişiklikleri belgelemeyi
+  kayıtları ise, bu durumlar arasında önem arz eden değişiklikleri belgelemeyi
   amaçlıyor.
 
   İyi yorumlar ve kodun kendisi arasındaki fark,
@@ -127,7 +127,7 @@ version: 0.3.0
   Büyük harfle isimlendirme (eski işletim sistemlerinde dosyaların tepede
   gözükmelerini sağlardı) dikkat çekmek için. Proje hakkında önemli meta verileri
   içerdikleri için, kullanmak ya da katkıda bulunmak isteyen herkesin işine
-  yarar, tıpkı [açık kaynaklı proje rozeleri][shields] gibi.
+  yarar, tıpkı [açık kaynaklı proje rozetleri][shields] gibi.
 
   "Değişiklik kaydı"ndan bahsettiğim zamanlar bu dosyanın işlevinden bahsediyorum:
   Değişiklikleri kaydetmek.
@@ -141,7 +141,7 @@ version: 0.3.0
 
   `[GERİ ÇEKİLDİ]` etiketi belirli bir sebepten büyük harf. İnsanların bunu fark
   etmeleri çok önemli. Ayrıca köşeli parantezler ile çevrelenmiş olması
-  programatik olarak da ayrıştırılabilmeine olanak sağlıyor.
+  programatik olarak da ayrıştırılabilmesine olanak sağlıyor.
 
   ### Değişiklik kayıtlarınızı tekrar yazmalı mısınız?
   Tabii ki. Her zaman değişiklik kayıtlarını geliştirmek için iyi sebepler vardır.

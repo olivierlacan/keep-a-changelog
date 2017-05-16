@@ -12,175 +12,173 @@ version: 0.3.0
 
   Version **#{current_page.metadata[:page][:version]}**
 
-  ### O que é um change log?
+  ### O que é um *changelog*?
 
-  Um *change log* é um arquivo que contém uma lista selecionada, ordenada
+  Um *changelog* é um arquivo que contém uma lista selecionada, ordenada
   cronologicamente, de mudanças significativas para cada versão de um projeto
-  open source.
+  *open source*.
 
   <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-  ### Para que serve um *change log*?
+:markdown
+  ### Para que serve um *changelog*?
 
-  Para facilitar para os usuários e contribuidores verem precisamente quais
+  Para facilitar que usuários e contribuidores vejam precisamente quais
   mudanças significativas foram realizadas entre cada versão publicada.
 
   ### Por que eu deveria me importar?
 
-  Porque softwares são feitos para pessoas. Se você não liga, porque está
-  contribuindo a projetos open source? Certamente deve haver um fundo de
+  Porque softwares são feitos para pessoas. Se você não liga, por que está
+  contribuindo com projetos *open source*? Certamente deve haver um fundo de
   carinho em algum lugar desse seu amável cerebrinho.
 
   Eu [conversei com Adam Stacoviak e Jerod Santo no podcast do The
-  Changelog][thechangelog] (faz sentido, hein?) sobre o por quê mantenedores e
-  contribuidores open source devem se importar, e as motivações por trás deste
-  projeto. Se você tem o tempo (1:06), é um bom programa.
+  Changelog][thechangelog] (faz sentido, hein?) sobre por que mantenedores e
+  contribuidores *open source* devem se importar e as motivações por trás desse
+  projeto. Se você tem tempo (1:06), é um bom programa.
 
-  ### O que faz um *change log* ser bom?
+  ### O que faz um *changelog* ser bom?
 
   Que bom que perguntou.
 
-  Um bom change log não foge desses princípios:
+  Um bom *changelog* se atém a esses princípios:
 
   - É feito para seres humanos, não máquinas, então legibilidade é crucial.
-  - Ser fácil de referenciar (*linkar*) qualquer seção (por isso Markdown ao
+  - É fácil de referenciar (*linkar*) qualquer seção (por isso Markdown ao
     invés de puro texto).
-  - Uma sub-seção por versão.
+  - Uma subseção por versão.
   - Lista as versões publicadas em ordem cronológica decrescente (mais novo em
     cima).
-  - Escreva todas as datas no formato `AAAA-MM-DD`. (Exemplo: `2012-06-02` para
+  - Usa todas as datas no formato `AAAA-MM-DD`. (Exemplo: `2012-06-02` para
     `2 de Junho de 2012`.) É internacional, [sensato](http://xkcd.com/1179/), e
     independente de língua.
-  - Explicite se o projeto segue [Versionamento Semântico][semver].
+  - Menciona explicitamente se o projeto segue o [Versionamento Semântico][semver].
   - Cada versão deve:
     - Listar sua data de publicação no formato acima.
     - Agrupar mudanças descrevendo seus impactos no projeto, como segue:
-      - `Added` para novas funcionalidades.
-      - `Changed` para mudanças em funcionalidades existentes.
-      - `Deprecated` para funcionalidades uma vez estáveis removidas das
-        próximas publicações.
-      - `Removed` para funcionalidades removidas desta versão.
-      - `Fixed` para qualquer correção de bug.
-      - `Security` para convidar usuários a atualizar em caso de
+      - `Added`/`Adicionado` para novas funcionalidades.
+      - `Changed`/`Modificado` para mudanças em funcionalidades existentes.
+      - `Deprecated`/`Obsoleto` para funcionalidades estáveis que foram removidas das
+        próximas versões.
+      - `Removed`/`Removido` para funcionalidades removidas desta versão.
+      - `Fixed`/`Consertado` para qualquer correção de bug.
+      - `Security`/`Segurança` para incentivar usuários a atualizarem em caso de
         vulnerabilidades.
 
   ### Como eu posso minimizar o esforço exigido?
 
-  Mantenha sempre uma seção `Unreleased` no topo para manter o controle de
+  Mantenha sempre uma seção `"Unreleased"`\`"A publicar"` no topo para manter o controle de
   quaisquer mudanças.
 
   Isso serve a dois propósitos:
 
   - As pessoas podem ver quais mudanças elas podem esperar em publicações
     futuras.
-  - No momento da publicação, você tem que somente mudar `Unreleased` para o
-    número de versão e adicionar um novo cabeçalho `Unreleased` no topo.
+  - No momento da publicação, você apenas tem de mudar o `"Unreleased"`\`"A publicar"` para o
+    número de versão e adicionar um novo cabeçalho `"Unreleased"`\`"A publicar"` no topo.
 
   ### O que faz os unicórnios chorarem?
 
-  Tudo bem...vamos lá.
+  Tudo bem... vamos lá.
 
-  - Despejar logs de commits. Simplesmente não faça isso, não está
+  - **Despejar logs de commits.** Simplesmente não faça isso, você não está
     ajudando ninguém.
-  - Não dar ênfase nas descontinuações. Quando as pessoas atualizam de uma
-    versão para outra, deve ser dolorosamente claro quando algo irá quebrar.
-  - Datas em formatos específicos de uma região. Nos Estados Unidos, as pessoas
+  - **Não dar ênfase nas obsolências.** Quando as pessoas atualizam de uma versão
+    para outra, deve ser incrivelmente claro quando algo irá parar de funcionar.
+  - **Datas em formatos específicos de uma região.** Nos Estados Unidos, as pessoas
     colocam o mês primeiro ("06-02-2012" para 2 de Junho de 2012, o que *não*
     faz sentido), enquanto muitos no resto do mundo escrevem em aspecto
     robótico "2 Junho 2012", e mesmo assim leem de forma diferente.
     "2012-06-02" funciona de maneira lógica do maior para o menor, não
-    sobrescreve de maneira ambígua outros formatos, e é um [padrão
+    se confunde de maneira ambígua com outros formatos, e é um [padrão
     ISO](http://www.iso.org/iso/home/standards/iso8601.htm).  Portanto, é o
-    formato recomendado para *change logs*.
+    formato recomendado para *changelogs*.
 
-  Tem mais. Ajude me a coletar essas lágrimas de unicórnio [abrindo uma
-  issue][issues] ou um pull request.
+  Tem mais. Ajude-me a coletar essas lágrimas de unicórnio [abrindo uma
+  issue][issues] ou um *pull request*.
 
-  ### Existe um padrão de formato de *change log*?
+  ### Existe um padrão de formato de *changelog*?
 
-  Infelizmente, não. Calma. Eu sei que você está indo impetuosamente achar
-  aquele link do guia de estilo de *change log* GNU, ou o arquivo "guideline"
-  de dois paragráfos de GNU NEWS. O estilo GNU é um bom começo mas é ingênuo.
-  Não há nada de errado em ser ingênuo mas quando as pessoas precisam de
-  orientação isso raramente ajuda. Especialmente quando existem muitas
-  situações excepcionais e casos extremos com os quais se deve lidar.
+  Infelizmente, não. Calma. Eu sei que você está buscando furiosamente
+  aquele link do guia GNU de estilo de *changelog*, ou o arquivo "guideline"
+  de dois paragráfos do GNU NEWS. O estilo GNU é um bom começo mas, infelizmente, é ingênuo.
+  Não há nada de errado em ser ingênuo mas, quando as pessoas precisam de orientação,
+  raramente ajuda. Especialmente quando existem muitas situações excepcionais
+  para lidar.
 
   Este projeto [contém o que eu espero se tornar um melhor padrão de arquivo
-  CHANGELOG][CHANGELOG]. Não acho que o status é bom o suficiente, e acho que
-  como uma comunidade nós podemos definir melhores padrões se tentarmos extrair
-  boas práticas de projetos de software reais. Então por favor dê um olhada e
-  lembre que [discussões e sugestões para melhorias são bem-vindas][issues]!
+  CHANGELOG][CHANGELOG] para todos os projetos *open source*. Eu não acredito que o status quo 
+  seja bom o suficiente, e acho que, como uma comunidade, nós podemos encontrar novas convenções
+  se tentarmos extrair boas práticas de projetos de software reais. Por favor, dê uma olhada e 
+  lembre-se de que [discussões e sugestões de melhorias são bem-vindas][issues]!
 
-  ### Qual deve ser o nome do arquivo *change log*?
+  ### Qual deve ser o nome do arquivo *changelog*?
 
-  Bom, se você não notou no exemplo acima, `CHANGELOG.md` é a melhor padrão até
-  agora.
+  Bom, se você não notou no exemplo acima, `CHANGELOG.md` é a melhor convenção até agora.
 
   Alguns outros projetos também utilizam `HISTORY.txt`, `HISTORY.md`,
   `History.md`, `NEWS.txt`, `NEWS.md`, `News.txt`, `RELEASES.txt`,
   `RELEASE.md`, `releases.md`, etc.
 
-  É uma bagunça. Todos esses nome só dificultam que as pessoas o achem.
+  É uma bagunça. Todos esses nomes só dificultam encontrar o *changelog*.
 
-  ### Por quê as pessoas não podem simplesmente utilizar `git log`?
+  ### Por que as pessoas não podem simplesmente utilizar `git log`?
 
-  Porque os logs do Git são cheios de ruído — por natureza. Eles não poderiam
-  escrever um change log adequado mesmo em um projeto hipotético desenvolvido
-  por humanos perfeitos que nunca cometem erros de grafia, nunca esquecem de
-  realizar commit de novos arquivos e nunca esquecem de nenhuma parte da
-  refatoração. O propósito de um commit é documentar um passo atômico no
-  processo no qual o código evolui de um estado a outro. O propósito de um
-  change log é documentar diferenças notáveis entre estes estados.
+  Porque os logs do Git são cheios de ruído — por natureza. Eles não serviriam como um 
+  changelog adequado mesmo em um projeto hipotético executado por humanos perfeitos, que
+  nunca erram uma letra, nunca esquecem de *commitar* arquivos, nunca cometem deslizes
+  em uma refatoração. O propósito de um *commit* é documentar um passo atômico no 
+  processo pelo qual o código evolui de um estado a outro. O propósito de um *changelog*
+  é documentar as diferenças relevantes entre esses estados.
+  
+  A mesma diferença que existe entre bons comentários e o código em si existe entre o 
+  *changelog* e o *commit log*: um descreve o *porquê*, o outro descreve o *como*.
 
-  Assim como são as diferenças entre bons comentários e o próprio código, há
-  a diferença entre o change log e o commit log: um descreve o porquê e o
-  outro o como.
+  ### Podem os *changelogs* ser automaticamente interpretados?
 
-  ### Podem os *change logs* ser automaticamente interpretados?
-
-  É difícil, por que as pessoas seguem formatos e nomes de arquivos
+  É difícil, porque as pessoas seguem formatos e nomes de arquivos
   radicalmente diferentes.
 
   [Vandamme][vandamme] é uma gem criada pelo time [Gemnasium][gemnasium] que
-  interpreta muitos (mas não todos) change logs de projetos open source.
+  interpreta muitos (mas não todos) *changelogs* de projetos *open source*.
 
-  ### Por que você alterna entre as grafias "CHANGELOG" e "change log"?
+  ### Por que você alterna entre as grafias "CHANGELOG" e "changelog"?
 
   "CHANGELOG" é o nome do arquivo em si. É um pouco chamativo mas é uma
-  convenção histórica seguida por muitos projetos open source. Outros exemplos
+  convenção histórica seguida por muitos projetos *open source*. Outros exemplos
   similares de arquivo incluem [`README`][README], [`LICENSE`][LICENSE], e
   [`CONTRIBUTING`][CONTRIBUTING].
 
-  O nome em letras maiúsculas (o que, em sistemas operacionais antigos, fazia
-  estes arquivos ficarem no topo da lista) é utilizado para chamar atenção para
-  eles. Já que são importante metadados sobre o projeto, eles podem ser úteis
-  a qualquer um pretendendo usar ou contribuir com ele, assim como os [as
-  badges de projeto open source][shields].
+  O nome em letras maiúsculas (o que em sistemas operacionais antigos faziam
+  estes arquivos ficarem no topo da lista) é utilizado para chamar atenção.
+  Por conterem importantes metadados do projeto, *changelogs* são úteis a
+  qualquer um que pretenda utilizar ou contribuir com o projeto, da maneira
+  equivalente às [badges de projetos *open source*][shields].
 
-  Quando eu me refiro a "*change log*", eu estou falando sobre a função deste
+  Quando eu me refiro a "*changelog*", eu estou falando sobre a função desse
   arquivo: listar mudanças.
 
   ### E sobre as publicações removidas?
 
   Publicações removidas são versões que tiveram que ser removidas devido a um
   sério bug ou problema de segurança. Com frequência essas versões sequer
-  aparecem em *change logs*. Deveriam. É assim que você deve exibi-las:
+  aparecem em *changelogs*. Deveriam. É assim que você deve exibi-las:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
+  
+  A tag `[YANKED]`/`[REMOVIDA]` é chamativa por uma razão. É importante que
+  as pessoas a notem. Além disso, já que é cercada por colchetes, é mais
+  fácil detectá-la programaticamente.
 
-  A tag `[YANKED]` é chamativa por uma razão. É importante que as pessoas a
-  notem. E já que é cercada por colchetes é mais fácil detectá-la
-  programaticamente.
+  ### Devemos alterar o *changelog* em alguma circunstância?
+ 
+  Claro. Sempre existem bons motivos para melhorar um *changelog*. Eu regularmente
+  abro *pull requests* para adicionar versões faltantes em projetos *open source*
+  com *changelogs* abandonados.
 
-  ### Se você deveria reescrever um change log?
-
-  Claro. Sempre existem boas razões para melhorar um change log. Eu abro os pull
-  requests regularmente para adicionar releases que faltam a projetos open source
-  com change logs sem manutenção.
-
-  É também possível que você descubra que esqueceu de registrar uma mudança
-  crucial nas anotações de uma versão. É obviamente importante que você atualize
-  seu change log neste caso.
+  Também é possível que você perceba que se esqueceu de registrar mudanças
+  importantes nas notas de uma versão. É obviamente importante que você atualize
+  seu *changelog* nesse caso.
 
   ### Como eu posso contribuir?
 
@@ -193,7 +191,7 @@ version: 0.3.0
   Fiz isso porque eu gostaria que nossa comunidade chegasse a um consenso. Eu
   acredito que a discussão é tão importante quanto o resultado final.
 
-  Então por favor [entre em campo][gh].
+  Então, por favor, [entre em campo][gh].
 
   [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
   [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md

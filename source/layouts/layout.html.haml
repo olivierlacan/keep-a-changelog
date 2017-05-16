@@ -56,15 +56,6 @@
 
         = yield
 
-        %footer.footer.clearfix{ role: "banner" }
-          %p.license
-            This project is
-            #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
-          %p.about
-            #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
-            with trepidation by
-            #{link_to "Olivier Lacan", "http://olivierlacan.com/"}.
-
   - unless config.gauges_id.blank?
     :javascript
       var _gauges = _gauges || [];
