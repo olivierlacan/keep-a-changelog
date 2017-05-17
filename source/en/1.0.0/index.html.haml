@@ -212,6 +212,28 @@ version: 1.0.0
     doesn't matter that much, why make it harder for your end users to
     consistently find notable changes?
 
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    What about GitHub Releases?
+
+  %p
+    It's a great initiative. #{link_to "Releases", ghr} can be used to
+    turn simple git tags (for example a tag named <code>v1.0.0</code>)
+    into rich release notes by manually adding release notes or it can
+    pull annotated git tag messages and turn them into notes.
+
+  %p
+    GitHub Releases create a non-portable changelog that can only be
+    displayed to users within the context of GitHub. It's possible to
+    make them look very much like the Keep a Changelog format, but it
+    tends to be a bit more involved.
+
+  %p
+    The current version of GitHub releases is also arguably not very
+    discoverable by end-users, unlike the typical uppercase files
+    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
+    minor issue is that the interface doesn't currently offer links to
+    commit logs between each release.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
