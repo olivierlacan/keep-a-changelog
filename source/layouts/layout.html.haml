@@ -13,6 +13,7 @@
     %meta{property: 'og:type', content: 'article'}
     %meta{property: 'og:url', content: path_to_url(current_page.url)}
     %meta{property: 'og:description', content: current_page.data.description}
+    %meta{property: 'og:image', content: image_path("logo.png")}
     = yield_content :og
 
     -# Icons
