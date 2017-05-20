@@ -17,7 +17,7 @@ $languages = {
   "sv"    => "Svenska",
   "tr-TR" => "Türkçe",
   "zh-CN" => "简体中文",
-  "zh-TW" => " 繁體中文"
+  "zh-TW" => "正體中文"
 }
 
 activate :i18n,
