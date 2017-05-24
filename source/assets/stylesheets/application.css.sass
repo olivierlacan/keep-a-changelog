@@ -6,7 +6,7 @@ $color-white: #FFFFFF
 $color-ocre: #E05735
 $color-gold: #faa930
 $color-bark: #3F2B2D
-$color-sand: #F2DDBC
+$color-sand: #FEECD3
 $color-light-sand: lighten($color-sand, 10%)
 
 @import "layout"
@@ -60,23 +60,27 @@ h1, h2, h3
   margin-top: 0
   padding-top: 1em
 
-.license
-  float: left
+.about
+  text-align: center
 
 .about
-  float: right
-
-.about, .license
   margin-top: 0
 
-.locales, .mark
-  margin-bottom: -2em
-  margin-top: 2em
-  margin-right: 2em
+header
+  .locales, .mark
+    margin-bottom: -2em
+    margin-top: 2em
+    margin-right: 2em
 
-.mark
-  margin-left: 3em
-  float: left
+  .mark
+    margin-left: 3em
+    float: left
+
+.footer
+  line-height: 2.2
+
+  .mark
+    float: left
 
 .locales
   float: right

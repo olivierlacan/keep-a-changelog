@@ -14,14 +14,16 @@ version: 1.0.0
 - thechangelog = "http://5by5.tv/changelog/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
 
 .header
   .title
     %h1 Keep a Changelog
-
     %h2 Don’t let your friends dump git logs into changelogs.
 
-  Version <strong>#{current_page.metadata[:page][:version]}</strong>
+  = link_to changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
 
   %pre.changelog= File.read("CHANGELOG.md")
 
@@ -75,36 +77,40 @@ version: 1.0.0
     %li
       The release date of each versions is displayed.
     %li
-      Mention if the project follows
-      = link_to "Semantic Versioning.", semver
+      Mention whether you follow #{link_to "Semantic Versioning", semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Types of changes
 
   %ul
     %li
-      <code>Added</code> for new features.
+      %code Added
+      for new features.
     %li
-      <code>Changed</code> for changes in existing functionality.
+      %code Changed
+      for changes in existing functionality.
     %li
-      <code>Deprecated</code> for once-stable features removed in
-      upcoming releases.
+      %code Deprecated
+      for soon-to-be removed features.
     %li
-      <code>Removed</code> for deprecated features removed in this
-      release.
+      %code Removed
+      for now removed features.
     %li
-      <code>Fixed</code> for any bug fixes.
+      %code Fixed
+      for any bug fixes.
     %li
-      <code>Security</code> to invite users to upgrade in case of
-      vulnerabilities.
+      %code Security
+      in case of vulnerabilities.
 
 .effort
-  %a.anchor{ href: "#effort", aria_hidden: "true" }
-  %h3#effort How can I reduce the effort required to maintain a changelog?
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    How can I reduce the effort required to maintain a changelog?
 
   %p
-    Keep an <code>Unreleased</code> section at the top to
-    track upcoming changes.
+    Keep an <code>Unreleased</code> section at the top to track upcoming
+    changes.
 
   %p This serves two purposes:
 
@@ -161,16 +167,16 @@ version: 1.0.0
     Confusing Dates
 
   %p
-    In the U.S., people put the month first ("06-02-2012" for June 2nd,
-    2012, which makes *no* sense), while many people in the rest of the
-    world write a robotic-looking "2 June 2012", yet pronounce it
-    differently. "2012-06-02" works logically from largest to smallest,
-    doesn't overlap in ambiguous ways with other date formats, and is an
-    [ISO standard][iso]. Thus, it is the recommended date format for
-    changelogs.
+    In the U.S., people put the month first (<code>06-02-2012</code> for
+    June 2nd, 2012), while many people in the rest of the world write a
+    robotic-looking <code>2 June 2012</code>, yet pronounce it
+    differently. <code>2012-06-02</code> works logically from largest to
+    smallest, doesn't overlap in ambiguous ways with other date formats,
+    and is an #{link_to "ISO standard", iso}. Thus, it is the
+    recommended date format for changelogs.
 
-  %p
-    There’s more. Help me collect those unicorn tears by
+  %aside
+    There’s more. Help me collect these antipatterns by
     = link_to "opening an issue", "#issues"
     or a pull request.
 
@@ -298,10 +304,11 @@ version: 1.0.0
     This is because I want our community to reach a consensus. I believe
     the discussion is as important as the end result.
 
-  %p So please <strong>#{link_to "pitch in", gh}</strong>.
+  %p
+    So please <strong>#{link_to "pitch in", gh}</strong>.
 
 .press
-  %h3 Press
+  %h3 Conversations
   %p
     I went on #{link_to "The Changelog podcast", thechangelog}
     about why maintainers and contributors should care, and the

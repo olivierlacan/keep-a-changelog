@@ -1,6 +1,6 @@
 div.header
-  padding-top: 6em
-  padding-bottom: 1em
+  padding-top: 5em
+  padding-bottom: 0.1em
   background-color: $color-ocre
   background-image: image-url("bg-hero@2x.png")
   background-size: 100%
@@ -11,19 +11,25 @@ div.header
   h2
     font-weight: normal
 
+  a
+    color: $color-black
+
   .title
     width: 80%
     margin: 0 auto
+    margin-bottom: -2em
 
   .changelog
-    margin: 1em 0.5em
-    padding: 1em
-    overflow-x: auto
-    height: 20em
-    font-size: 0.8em
-    margin-bottom: -16em
     background-color: $color-white
     box-shadow: 0px 4px 12px 0px hsla(0, 0%, 0%, 0.2)
+    font-size: 0.8em
+    height: 20em
+    margin-bottom: -14em
+    margin-left: 0.5em
+    margin-right: 0.5em
+    margin-top: 1em
+    overflow-x: auto
+    padding: 1em
 
 div.answers
   margin-top: 12em
@@ -47,6 +53,10 @@ div.answers
   background-position: bottom left
   background-repeat: no-repeat
   background-size: 100%
+  padding-top: 2em
+
+  a.anchor
+    color: $color-black
 
   h3
     font-size: 1.6em
@@ -54,15 +64,16 @@ div.answers
     width: 50%
 
   h4
-    padding-left: 13em
+    padding-left: 15em
 
   ul
     font-size: 1em
-    padding-left: 14em
+    padding-left: 16em
 
-  a
-    color: $color-white
-    text-decoration: underline
+  p
+    a
+      color: $color-white
+      text-decoration: underline
 
 div.bad-practices
   color: $color-white
@@ -71,13 +82,23 @@ div.bad-practices
   background-position: bottom left
   background-repeat: no-repeat
   background-size: 100%
+  padding-top: 3em
 
-  a
-    color: $color-gold
-    text-decoration: underline
+  code
+    color: $color-black
+    background-color: desaturate(lighten($color-bark, 50%), 10%)
+    border: none
+
+  p, aside
+    a
+      color: $color-gold
+      text-decoration: underline
+
+  aside
+    a
+      text-decoration: none
 
   h3
-    padding-top: 3em
     font-size: 1.7em
     color: $color-gold
     float: left
@@ -90,6 +111,7 @@ div.bad-practices
     font-size: 1em
 
 div.effort
+  padding-top: 2em
   padding-left: 25%
   padding-right: 25%
   background-color: $color-white
@@ -100,6 +122,7 @@ div.effort
     color: $color-ocre
 
 div.frequently-asked-questions
+  padding-top: 2em
   padding-left: 25%
   padding-right: 25%
   background-color: $color-white
@@ -107,10 +130,15 @@ div.frequently-asked-questions
   h2
     color: $color-ocre
 
+  h3
+    color: $color-ocre
+    margin-bottom: 1.5em
+    font-size: 1.7em
+
   h4
     cursor: pointer
-    border-bottom: 1px solid black
-    padding: 0.4em 1.1em
+    border-bottom: 1px solid transparentize($color-bark, 0.8)
+    padding: 0 1.1em 1.3em 0
 
     &:after
       content: "⌄"
@@ -140,10 +168,11 @@ div.frequently-asked-questions
   padding-right: 2em
 
   background-color: $color-ocre
-  color: $color-white
+  color: $color-sand
 
   a
-    color: $color-black
+    color: $color-white
+    text-decoration: underline
 
   &:after
     content: ""
