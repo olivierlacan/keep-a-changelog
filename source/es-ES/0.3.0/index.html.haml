@@ -16,9 +16,8 @@ version: 0.3.0
 
   Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Cuál es el propósito del change log?
 
   Para que les sea más fácil a los usuarios y contribuyentes, ver exactamente los cambios notables que se han hecho entre cada versión (o versiones) del proyecto.

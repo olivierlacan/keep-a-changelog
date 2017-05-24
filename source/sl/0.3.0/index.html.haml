@@ -16,9 +16,8 @@ version: 0.3.0
   Dnevnik sprememb je datoteka, ki vsebuje kuriran, kronološko urejen
   seznam opaznih sprememb za vsako verzijo projekta.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Kaj je smisel dnevnika sprememb?
   Za poenostavitev, da uporabniki in prispevajoči sodelavci natančno vidijo, katere
   opazne spremembe so bile narejene med vsako izdajo (ali verzijo) projekta.
