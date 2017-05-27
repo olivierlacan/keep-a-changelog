@@ -16,9 +16,8 @@ version: 0.3.0
   更新日誌（Change Log）是一個由人工編輯，以時間為倒序的列表。
   這個列表紀錄所有版本的重大變動。
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### 為何要提供更新日誌？
   為了讓用戶和開發人員更好知道每一個版本有哪些區別。
 

@@ -17,7 +17,7 @@ This repository generates http://keepachangelog.com/.
 - `git clone https://github.com/olivierlacan/keep-a-changelog.git`
 - `cd keep-a-changelog`
 - `bundle install`
-- `middleman` starts the local development server at http://localhost:4567
+- `bundle exec middleman` starts the local development server at http://localhost:4567
 
 ### Deployment
 - `rake publish` builds and pushes to the `gh-pages` branch 

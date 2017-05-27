@@ -6,18 +6,41 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- zh-CN and zh-TW translations from @tianshuo.
-- de translation from @mpbzh.
-- it-IT translation from @roalz.
-- sv translation from @magol.
-- tr-TR translation from @karalamalar.
-- fr translation from @zapashcanon.
+- "Why keep a changelog?" section.
+- "Who needs a changelog?" section.
+- "How do I make a changelog?" section.
+- "Frequently Asked Questions" section.
+- New "Guiding Principles" sub-section to "How do I make a changelog?".
+- Simplified and Traditional Chinese translations from @tianshuo.
+- German translation from @mpbzh.
+- Italian translation from @roalz.
+- Swedish translation from @magol.
+- Turkish translation from @karalamalar.
+- French translation from @zapashcanon.
+- Brazilian Portugese translation from @aisamu.
+- Polish translation from @amielucha.
 
 ### Changed
+- Start using "changelog" over "change log" since it's the common usage.
 - Start versioning based on the current English version at 0.3.0 to help
 translation authors keep things up-to-date.
-- Fix typos in zh-CN translation.
-- Fix typos in pt-BR translation.
+- Rewrite "What makes unicorns cry?" section.
+- Rewrite "Ignoring Deprecations" sub-section to clarify the ideal
+  scenario.
+- Improve "Commit log diffs" sub-section to further argument against
+  them.
+- Merge "Why can’t people just use a git log diff?" with "Commit log
+  diffs"
+- Fix typos in Simplified Chinese and Traditional Chinese translations.
+- Fix typos in Brazilian Portugese translation.
+- Fix typos in Turkish translation.
+- Fix typos in Czech translation.
+- Fix typos in Swedish translation.
+- Improve phrasing in French translation.
+- Fix phrasing and spelling in German translation.
+
+### Removed
+- Section about "changelog" vs "CHANGELOG".
 
 ## [0.3.0] - 2015-12-03
 ### Added
@@ -27,8 +50,8 @@ translation authors keep things up-to-date.
 
 ## [0.2.0] - 2015-10-06
 ### Changed
-- Remove exclusionary mentions of "open source" since this project can benefit
-both "open" and "closed" source projects equally.
+- Remove exclusionary mentions of "open source" since this project can
+benefit both "open" and "closed" source projects equally.
 
 ## [0.1.0] - 2015-10-06
 ### Added
@@ -94,7 +117,8 @@ notable changes.
 
 ## 0.0.1 - 2014-05-31
 ### Added
-- This CHANGELOG file to hopefully serve as an evolving example of a standardized open source project CHANGELOG.
+- This CHANGELOG file to hopefully serve as an evolving example of a
+  standardized open source project CHANGELOG.
 - CNAME file to enable GitHub Pages custom domain
 - README now contains answers to common questions about CHANGELOGs
 - Good examples and basic guidelines, including proper date formatting.
