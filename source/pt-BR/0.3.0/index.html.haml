@@ -18,7 +18,7 @@ version: 0.3.0
   cronologicamente, de mudanças significativas para cada versão de um projeto
   *open source*.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
 :markdown
   ### Para que serve um *changelog*?
@@ -165,7 +165,7 @@ version: 0.3.0
   aparecem em *changelogs*. Deveriam. É assim que você deve exibi-las:
 
   `## 0.0.5 - 2014-12-13 [YANKED]`
-
+  
   A tag `[YANKED]`/`[REMOVIDA]` é chamativa por uma razão. É importante que
   as pessoas a notem. Além disso, já que é cercada por colchetes, é mais
   fácil detectá-la programaticamente.

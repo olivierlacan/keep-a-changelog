@@ -16,9 +16,8 @@ version: 0.3.0
   A change log is a file which contains a curated, chronologically ordered
   list of notable changes for each version of a project.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### What’s the point of a change log?
   To make it easier for users and contributors to see precisely what
   notable changes have been made between each release (or version) of the project.

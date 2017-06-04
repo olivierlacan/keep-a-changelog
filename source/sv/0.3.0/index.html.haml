@@ -16,9 +16,8 @@ version: 0.3.0
   En ändringslogg är en fil innehållandes en sammanfattad, kronologiskt ordnad
   lista över ändringar för varje version av ett projekt.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Vad är meningen med en ändringslogg?
   För att göra det enkelt för användare och medarbetare att se exakt vilka
   viktiga ändringar som har gjorts mellan varje utgåva (eller version) av projektet.

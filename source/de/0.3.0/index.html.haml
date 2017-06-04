@@ -17,9 +17,8 @@ version: 0.3.0
   Liste aller erheblichen Änderungen enthält, die zwischen Veröffentlichungen (oder Versionen)
   des Projekts umgesetzt wurden.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Was ist der Zweck eines Changelogs?
   Es Benutzern und Entwicklern einfacher zu machen, gerade die beachtenswerten Änderungen, welche
   zwischen Veröffentlichungen (oder Versionen) des Projekts gemacht wurden, zu sehen.
