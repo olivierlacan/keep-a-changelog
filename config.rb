@@ -11,8 +11,7 @@ $last_version = (Dir.entries("source/en") - %w[. ..]).last
 issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
 $languages = {
   "cs"    => {
-    name: "Čeština",
-    notice: ""
+    name: "Čeština"
   },
   "de"    => {
     name: "Deutsch",
@@ -23,7 +22,7 @@ $languages = {
   "en"    => {
     default: true,
     name: "English",
-    notice: ""
+    new: "A new version is available"
   },
   "es-ES" => {
     name: "Español",
@@ -35,7 +34,8 @@ $languages = {
     name: "Français",
     notice: "La dernière version (#{$last_version}) n'est pas encore disponible
     en français, mais vous pouvez la <a href='/en/'>lire en anglais</a> pour
-    l'instant et <a href='#{issues_url}'>aider à la traduire</a>."
+    l'instant et <a href='#{issues_url}'>aider à la traduire</a>.",
+    new: "Une nouvelle version est disponible"
   },
   "it-IT" => {
     name: "Italiano",
@@ -44,8 +44,7 @@ $languages = {
     potete <a href='#{issues_url}'>contribuire a tradurla</a>."
   },
   "pl-PL" => {
-    name: "Polskie",
-    notice: ""
+    name: "Polskie"
   },
   "pt-BR" => {
     name: "Brazilian Portugese",
@@ -60,8 +59,7 @@ $languages = {
     href='#{issues_url}'>помочь с переводом</a>."
   },
   "sl"    => {
-    name: "Slovenščina",
-    notice: ""
+    name: "Slovenščina"
   },
   "sv"    => {
     name: "Svenska",
@@ -70,16 +68,13 @@ $languages = {
     href='#{issues_url}'>hjälpa till att översätta det</a>."
   },
   "tr-TR" => {
-    name: "Türkçe",
-    notice: ""
+    name: "Türkçe"
   },
   "zh-CN" => {
-    name: "简体中文",
-    notice: ""
+    name: "简体中文"
   },
   "zh-TW" => {
-    name: "繁體中文",
-    notice: ""
+    name: "繁體中文"
   }
 }
 
