@@ -20,10 +20,12 @@
     %meta{ property: 'og:type', content: 'article' }
     %meta{ property: 'og:url', content: path_to_url(current_page.url) }
     %meta{ property: 'og:description', content: current_page.data.description }
+    %meta{ property: 'og:image', content: image_path("logo.png") }
     = yield_content :og
 
     -# Icons
 
+    %link{ rel: "shortcut icon", type: "image/x-icon", href: image_path("favicon.ico") }
     %link{ rel: 'canonical', href: path_to_url(current_page.url) }
 
     %title= current_page.data.title
