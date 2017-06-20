@@ -1,3 +1,9 @@
+// Variables
+- latest_version= current_page.metadata[:page][:version] != $last_version
+- language_code = current_page.metadata[:page][:language]
+- versions = Dir.entries("source/#{language_code}") - %w[. ..]
+- current_version = current_page.metadata[:page][:version]
+
 !!! 5
 %html
   %head{ lang: current_page.data.language }
@@ -26,25 +32,26 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'all'
 
-  %body
+  %body{ class: latest_version ? "latest" : "legacy" }
     %article
       %header{ role: "banner" }
         = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
         %nav.locales{ role: "navigation" }
           %select
             - $languages.each do |language|
-              - selected = current_page.metadata[:page][:language] == language.first
-              %option{ selected: selected, label: language.last[:name], value: language.first }
+              - version_exists = File.exists?("source/#{language.first}/#{current_version}")
+              - selected = language_code == language.first
+              - if version_exists
+                %option{ selected: selected, label: language.last[:name], value: language.first }
 
       .main{ role: "main" }
-        - if current_page.metadata[:page][:version] != $last_version
-          - code = current_page.metadata[:page][:language]
-          - versions = Dir.entries("source/#{code}") - %w[. ..]
+        - if latest_version
+
           - if versions.include?($last_version)
-            = link_to "Version #{$last_version}", "#{code}/#{$last_version}"
+            = link_to "Version #{$last_version}", "#{language_code}/#{$last_version}"
           - else
-            - if $languages[code][:notice]
-              %p.last-version-notice= $languages[code][:notice]
+            - if $languages[language_code][:notice]
+              %p.last-version-notice= $languages[language_code][:notice]
             - else
               %p
                 The latest version (#{$last_version}) is not yet available in
