@@ -17,9 +17,8 @@ version: 0.3.0
   une liste triée chronologiquement des changements notables pour chaque
   version d’un projet
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Quel est l’intérêt d’un change log ?
   Il permet aux utilisateurs et aux contributeurs de voir plus simplement
   les changements notables qui ont été réalisés entre chaque publication
@@ -181,7 +180,7 @@ version: 0.3.0
   J'ouvre souvent des pull requests pour ajouter des publications manquantes sur
   des projets open source avec des change logs non-maintenus.
 
-  Il est aussi possible que vous découvriez que vous aviez oublié de mentionner 
+  Il est aussi possible que vous découvriez que vous aviez oublié de mentionner
   un changement majeur dans les notes de version. Il est évidemment important
   que vous mettiez votre change log à jour dans ce cas.
 

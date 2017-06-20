@@ -8,14 +8,14 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    autoprefixer-rails (6.4.0.1)
+    autoprefixer-rails (6.7.7.2)
       execjs
     backports (3.6.8)
     coderay (1.1.1)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.12.2)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     concurrent-ruby (1.0.2)
@@ -117,7 +117,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    redcarpet (3.3.3)
+    redcarpet (3.4.0)
     rouge (2.0.5)
     sass (3.4.22)
     servolux (0.12.0)
@@ -127,7 +127,7 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.1)
+    uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
@@ -146,4 +146,4 @@ DEPENDENCIES
   redcarpet
 
 BUNDLED WITH
-   1.12.0
+   1.13.6

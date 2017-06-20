@@ -14,9 +14,8 @@ version: 0.3.0
   Değişiklik kayıtları bir proje için özel olarak hazırlanmış, tarihsel sıralamayla
   sıralanmış, önemli değişikliklerin bir bütünüdür.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Değişikliklerin kayıtlarını tutmanın anlamı ne?
   Bir projenin kullanıcılarının ya da katılımcılarının, dağıtımlar (ya da sürümler)
   arasındaki tam olarak hangi önemli değişikliklerin olduğunu takip edebilmelerini sağlar.
@@ -90,7 +89,7 @@ version: 0.3.0
   Mevcut durumun çok iyi olduğunu düşünmüyorum, ve topluluk olarak, gerçek yazılım
   projelerinden iyi pratikleri toplayarak bundan daha iyisini yapabiliriz. Lütfen
   etrafa bir göz gezdirin ve unutmayın [gelişme yolunda tartışmalara ve önerilere her zaman açığız][issues]!
-  
+
   ### Değişiklik kayıtlarının dosya ismi ne olmalı?
   Eh, üstteki örnekten çıkartamadıysanız eğer, `CHANGELOG.md` şu ana kadarki
   en iyi çözüm.
@@ -159,7 +158,7 @@ version: 0.3.0
   [GitHub repo][gh]sunda güncel bir [CHANGELOG][] sağlıyor olsam da, özellikle
   bir *sürüm* ya da ([SemVer.org][semver] benzeri) takip edilecek kurallar
   oluşturmadım.
-  
+
   Bunu istememin sebebi topluluğun ortak bir paydada buluşmasını istememdir.
   İnanıyorum ki tartışmanın kendisi de sonucu kadar önemli.
 

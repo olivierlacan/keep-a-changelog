@@ -13,17 +13,16 @@ language: it-IT
   Un change log è un file che contiene una lista curata e ordinata cronologicamente
   delle modifiche degne di nota per ogni versione di un progetto.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### A cosa serve un change log?
-  Per rendere facile agli utilizzatori e contribuenti vedere con precisione quali modifiche 
+  Per rendere facile agli utilizzatori e contribuenti vedere con precisione quali modifiche
   importanti sono state fatte tra ogni release (o versione) del progetto.
 
   ### Perché dovrebbe importarmi?
   Perché gli strumenti software sono fatti per le persone.
   Se non ti importa, perché contribuisci all'open source?
-  Di certo ci deve essere un "kernel" (ha!) di interesse 
+  Di certo ci deve essere un "kernel" (ha!) di interesse
   da qualche parte in quel tuo amorevole cervello.
 
   [Nel podcast "The Changelog" con Adam Stacoviak e Jerod Santo][thechangelog]
@@ -85,9 +84,9 @@ language: it-IT
   è raramente d'aiuto. Specialmente se ci sono molte situazioni e casi limite da gestire.
 
   Questo progetto [contiene ciò che spero diventerà una migliore convenzione per i file CHANGELOG][CHANGELOG].
-  Non credo che lo status quo sia sufficientemente buono, e penso che noi, come comunità, 
+  Non credo che lo status quo sia sufficientemente buono, e penso che noi, come comunità,
   possiamo arrivare a convenzioni migliori se tentiamo di estrarre le pratiche migliori
-  da progetti software reali. Vi consiglio di guardarvi intorno e ricordare che 
+  da progetti software reali. Vi consiglio di guardarvi intorno e ricordare che
   [ogni discussione e suggerimento per migliorare sono sempre benvenuti][issues]!
 
   ### Come si dovrebbe chiamare il file contenente il change log?
@@ -104,7 +103,7 @@ language: it-IT
   di digitazione, non dimenticano mai di fare commit dei nuovi file, non dimenticano mai
   alcuna parte di un refactoring.
   Lo scopo di un commit è di documentare un passo atomico nel processo di evoluzione del codice
-  da uno stato ad un altro. Lo scopo di un change log è di documentare le differenze 
+  da uno stato ad un altro. Lo scopo di un change log è di documentare le differenze
   degne di nota tra questi stati.
 
   La differenza tra un change log e un commit log è
@@ -113,18 +112,18 @@ language: it-IT
 
   ### Si possono analizzare automaticamente i change log?
   È difficile, perché le persone usano formati e nomi di file profondamente diversi.
-  
+
   [Vandamme][vandamme] è una Ruby gem
   creata dal team [Gemnasium][gemnasium] ed è in grado di fare il parsing dei
   change log di molti (ma non tutti) i progetti open source.
 
   ### Perché si alterna tra i nomi "CHANGELOG" e "change log"?
-  "CHANGELOG" è il nome del file. È un po' invadente ma è una 
+  "CHANGELOG" è il nome del file. È un po' invadente ma è una
   convenzione storica seguita da molti progetti open source.
   Altri esempi di file simili includono [`README`][README], [`LICENSE`][LICENSE],
   e [`CONTRIBUTING`][CONTRIBUTING].
 
-  I nomi in maiuscolo (che su vecchi sistemi operativi erano ordinati per primi) 
+  I nomi in maiuscolo (che su vecchi sistemi operativi erano ordinati per primi)
   vengono usati per attirare l'attenzione su di essi. Poiché sono metadati
   importanti relativi al progetto, possono essere utili per chiunque voglia usarlo
   o contribuire ad esso, un po' come i [badge dei progetti open source][shields].
@@ -158,7 +157,7 @@ language: it-IT
   ho volutamente evitato di creare una *release* o una chiara lista di regole
   da seguire (come fa, ad esempio, [SemVer.org][semver]).
 
-  Questo è perché voglio che la nostra comunità raggiunga un consenso. Credo che 
+  Questo è perché voglio che la nostra comunità raggiunga un consenso. Credo che
   la discussione sia importante almeno quanto il risultato finale.
 
   Quindi per favore [**partecipate**][gh].
