@@ -5,7 +5,9 @@
 # ----- Site ----- #
 # Last version should be the latest English version since the manifesto is first
 # written in English, then translated into other languages later.
-$last_version = (Dir.entries("source/en") - %w[. ..]).last
+$versions = (Dir.entries("source/en") - %w[. ..])
+$last_version = $versions.last
+$previous_version = $versions[$versions.index($last_version) - 1]
 
 # This list of languages populates the language navigation.
 issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
