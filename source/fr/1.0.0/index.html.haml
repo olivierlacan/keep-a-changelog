@@ -33,7 +33,7 @@ version: 1.0.0
     Qu'est-ce qu'un changelog ?
 
   %p
-    Un changelog (journal de modifications) est un fichier qui contient
+    Un changelog (journal des modifications) est un fichier qui contient
     une liste triée chronologiquement des changements notables pour
     chaque version d’un projet
 
@@ -42,8 +42,8 @@ version: 1.0.0
     Pourquoi tenir un changelog ?
 
   %p
-    Pour permettre aux utilisateurs et contributeurs de voir précisement
-    quel changements notables ont été faits entre chaque publication
+    Pour permettre aux utilisateurs et contributeurs de voir précisément
+    quels changements notables ont été faits entre chaque publication
     (ou version) d'un projet.
 
   %h3#who
@@ -51,10 +51,10 @@ version: 1.0.0
     Qui a besoin d'un changelog ?
 
   %p
-    Tout le monde. Qu'ils soient consomateurs ou developeurs, les
+    Tout le monde. Qu'ils soient consommateurs ou développeurs, les
     utilisateurs de logiciels sont des êtres humains qui se soucient
     de connaître le contenu des logiciels qu'ils utilisent. Quand un
-    logiciel change, ces même personnes veulent savoir comment et pourquoi.
+    logiciel change, ces mêmes personnes veulent savoir comment et pourquoi.
 
 .good-practices
   %h3#how
@@ -69,7 +69,7 @@ version: 1.0.0
     %li
       Les changelogs sont <em>pour les êtres humains</em>, pas les machines.
     %li
-      Il doit il y avoir une section pour chaque version.
+      Il doit y avoir une section pour chaque version.
     %li
       Les changements similaires doivent être groupés.
     %li
@@ -102,7 +102,7 @@ version: 1.0.0
       pour les corrections de bugs.
     %li
       %code Security
-      en cas de vulnerabilités.
+      en cas de vulnérabilités.
 
 .effort
 
@@ -114,11 +114,11 @@ version: 1.0.0
     Gardez une section <code>Unreleased</code> en haut du fichier afin de lister
     tous les changements qui n'ont pas encore été publiés.
 
-  %p Cela rempli deux objectifs:
+  %p Cela permet deux choses:
 
   %ul
     %li
-      Les gens peuvent voir les changements auxquels ils peuvent s’attendrent
+      Les gens peuvent voir les changements auxquels ils peuvent s’attendre
       dans les prochaines publications.
     %li
       Au moment de la publication, vous pouvez déplacer les changements listés
@@ -134,12 +134,12 @@ version: 1.0.0
 
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
-    Diffs de journaux git
+    Diffs de journaux gits
 
   %p
-    Utiliser des diffs de journaux git en tant que changelogs est une mauvaise
-    idée: ils sont remplis de bruit. Les journaux git sont remplis de choses
-    comme des commits de merge, des commits avec des titres obscures, des
+    Utiliser des diffs de journaux gits en tant que changelogs est une mauvaise
+    idée: ils sont remplis de bruit. Les journaux gits sont remplis de choses
+    comme des commits de merge, des commits avec des titres obscurs, des
     changements concernant la documentation, etc.
 
   %p
@@ -147,9 +147,9 @@ version: 1.0.0
     source. Certains projets nettoient leurs commits, d'autres non.
 
   %p
-    Le but d'une section de changelog est de documenter la difference notable
-    entre deux versions, souvent à travers de multiples commits, afin de la
-    communiquer clairement aux utilisateurs.
+    Le but d'une section de changelog est de documenter les différences
+    notables entre deux versions, souvent à travers de multiples
+    commits, afin de les communiquer clairement aux utilisateurs.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
@@ -157,7 +157,7 @@ version: 1.0.0
 
   %p
     Lorsque l'on passe d'une version d'un logiciel à une autre, il devrait être
-    très clair si quelque chose peut ne pas fonctionner. Il devrait être
+    très clair si quelque chose peut ne plus fonctionner. Il devrait être
     possible de mettre à jour vers un version qui offre une liste des
     fonctionnalités dépréciées, de retirer ce qui est déprécié, puis de mettre
     à jour vers la version où les dépréciations deviennent des suppressions de
@@ -180,10 +180,10 @@ version: 1.0.0
     prononcent différement. <code>2012-06-02</code> fonctionne logiquement, du plus grand
     au plus petit, ne laisse pas place à la confusion avec un autre format et
     est un #{link_to "standard ISO", iso}. C'est pour cela que ce format de date
-    est recommandé pour les change logs.
+    est recommandé pour les changelogs.
 
   %aside
-    Il y en a d’autres. Aidez-moi à collecter ces anti-patrons en
+    Il y en a d’autres. Aidez-moi à collecter ces antipatrons en
     #{link_to "ouvrant une issue", "#issues"} ou une pull request.
 
 .frequently-asked-questions
@@ -198,7 +198,7 @@ version: 1.0.0
   %p
     Pas vraiment. Il y a le guide de style GNU pour les changelogs, ou les
     instructions GNU de deux paragraphes pour les fichiers NEWS. Ces deux
-    resources sont inappropriées et insuffisantes.
+    ressources sont inappropriées et insuffisantes.
 
   %p
     Ce projet vise à devenir
@@ -213,16 +213,16 @@ version: 1.0.0
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Comment doit-être nommé le fichier de change log ?
+    Comment doit-être nommé le fichier de changelog ?
 
   %p
-    Nommez le <code>CHANGELOG.md</code>. Certains projects utilisent
+    Nommez-le <code>CHANGELOG.md</code>. Certains projets utilisent
     <code>HISTORY</code>, <code>NEWS</code> ou <code>RELEASES</code>.
 
   %p
     Même s'il est facile d'imaginer que le nom d'un fichier de changelog n'a
-    pas grant interêt, pourquoi rendre la tâche difficile que nécessaire pour
-    les utilisateurs qui cherchent à trouver les changements notables de votre
+    pas grand intérêt, pourquoi rendre la tâche plus difficile que nécessaire
+    aux utilisateurs qui cherchent à trouver les changements notables de votre
     projet ?
 
   %h4#github-releases
@@ -238,19 +238,19 @@ version: 1.0.0
 
   %p
     GitHub Releases crée un changelog non-portable qui n'est visible par les
-    utilisateurs qu'à l'interieur du context de GitHub. Il est possible de
+    utilisateurs qu'à l'intérieur du contexte de GitHub. Il est possible de
     suivre le même format que Keep a Changelog, mais c'est plus difficile.
 
   %p
     La version actuelle de GitHub Releases est également difficile à découvrir
     pour les utilisateurs, contrairement aux fichiers en majuscules typiques
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Un autre soucis
-    mineur est que l'interface ne permet pas actuellement d'offrir des liens
-    vers les journaux git entre chaque publication.
+    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Un autre souci
+    mineur est que l'interface n'offre actuellement pas de lien vers les
+    journaux gits entre chaque publication.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Les change logs peuvent-ils être parsés automatiquement ?
+    Les changelogs peuvent-ils être parsés automatiquement ?
 
   %p
     C'est difficile, parce que les gens suivent des formats et utilisent des noms
@@ -258,7 +258,7 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} est une Ruby gem créée par l'équipe
-    #{link_to "Gemnasium", gemnasium} qui parse les change logs de
+    #{link_to "Gemnasium", gemnasium} qui parse les changelogs de
     beaucoup (mais pas tous) de projets open source.
 
 
