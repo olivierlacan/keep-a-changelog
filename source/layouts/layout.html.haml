@@ -1,3 +1,10 @@
+// Variables
+- latest_version = current_page.metadata[:page][:version] == $last_version
+- language_code = current_page.metadata[:page][:language]
+- versions = Dir.entries("source/#{language_code}") - %w[. ..]
+- current_version = current_page.metadata[:page][:version]
+- newer_version_available = File.exists?("source/#{language_code}/#{$last_version}")
+
 !!! 5
 %html
   %head{ lang: current_page.data.language }
@@ -23,30 +30,43 @@
 
     %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:400,700" }
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
-    = stylesheet_link_tag 'application'
+    - if latest_version
+      = stylesheet_link_tag 'application'
+    - else
+      = stylesheet_link_tag 'legacy'
     = javascript_include_tag 'all'
 
   %body
     %article
       %header{ role: "banner" }
-        = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
+        - if latest_version
+          = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
         %nav.locales{ role: "navigation" }
           %select
             - $languages.each do |language|
-              - selected = current_page.metadata[:page][:language] == language.first
-              %option{ selected: selected, label: language.last[:name], value: language.first }
+              - version_exists = File.exists?("source/#{language.first}/#{$last_version}")
+              - selected = language_code == language.first
+              - if version_exists
+                %option{ selected: selected, label: "#{$last_version} #{language.last[:name]}", value: language.first }
+              - else
+                - previous_version = File.exists?("source/#{language.first}/#{$previous_version}")
+                - if previous_version
+                  %option{ selected: selected, label: "#{$previous_version} #{language.last[:name]}", value: language.first }
 
       .main{ role: "main" }
-        - if current_page.metadata[:page][:version] != $last_version
-          - code = current_page.metadata[:page][:language]
-          - versions = Dir.entries("source/#{code}") - %w[. ..]
+        - if !latest_version
           - if versions.include?($last_version)
-            = link_to "Version #{$last_version}", "#{code}/#{$last_version}"
+            %p.newer
+              - if $languages[language_code][:new]
+                = "#{$languages[language_code][:new]}: "
+              - else
+                There is a newer version available:
+              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
           - else
-            - if $languages[code][:notice]
-              %p.last-version-notice= $languages[code][:notice]
+            - if $languages[language_code][:notice]
+              %p.last-version-notice= $languages[language_code][:notice]
             - else
-              %p
+              %p.last-version-notice
                 The latest version (#{$last_version}) is not yet available in
                 this language but
                 = link_to "you can read it in English", "/en/#{$last_version}"
