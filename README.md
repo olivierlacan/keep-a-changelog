@@ -27,9 +27,10 @@ This repository generates http://keepachangelog.com/.
 Create a new directory in [`source/`][source] named after the ISO 639-1 code
 for the language you wish to translate Keep a Changelog to. For example,
 assuming you want to translate to French Canadian:
+
 - create the `source/fr-CA` directory.
-- duplicate the `source/en-US/index.html.haml` file in `source/fr-CA`.
-- edit `source/fr-CA/index.html.haml` until your translation is ready.
+- duplicate the `source/en/1.0.0/index.html.haml` file in `source/fr-CA`.
+- edit `source/fr-CA/1.0.0/index.html.haml` until your translation is ready.
 - commit your changes to your own [fork][fork]
 - submit a [Pull Request][pull-request] with your changes
 
