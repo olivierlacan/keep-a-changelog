@@ -20,7 +20,7 @@ This repository generates http://keepachangelog.com/.
 - `bundle exec middleman` starts the local development server at http://localhost:4567
 
 ### Deployment
-- `rake publish` builds and pushes to the `gh-pages` branch
+- `bundle exec rake publish` builds and pushes to the `gh-pages` branch
 
 ### Translations
 
