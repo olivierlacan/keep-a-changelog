@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var faqHeaders = document.querySelectorAll('.frequently-asked-questions h4');
 
-  for(header of faqHeaders){
+  for (var i = 0; i < faqHeaders.length; ++i) {
+    header = faqHeaders[i]
     header.addEventListener('click', toggleVisibility);
   }
 
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function(){
       paragraphs.push(lastParagraph)
     }
 
-    for(paragraph of paragraphs) {
+    for (var i = 0; i < paragraphs.length; ++i) {
+      paragraph = paragraphs[i]
       paragraph.classList.toggle('is-visible');
     }
   }
