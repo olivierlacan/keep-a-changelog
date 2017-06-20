@@ -28,9 +28,9 @@ $languages = {
   },
   "es-ES" => {
     name: "Español",
-    notice: "Aún no está disponible la última versión (#{$last_version}) en
-    español, pero por ahora puedes <a href='/en/'>leerla en inglés</a> y <a
-    href='#{issues_url}'>ayudar a traducirla</a>."
+    notice: "La última versión (#{$last_version}) aun no está disponible en
+    Español, por ahora puedes <a href='/en/'>leerla en Inglés</a> y
+    <a href='#{issues_url}'>ayudar a traducirla</a>."
   },
   "fr"    => {
     name: "Français",
@@ -73,10 +73,12 @@ $languages = {
     name: "Türkçe"
   },
   "zh-CN" => {
-    name: "简体中文"
+    name: "简体中文",
+    notice: "最新版 (#{$last_version}) 暂时还没有翻译到简体中文，您可以阅读最新的英语版，并且帮助翻译，不胜感激。"
   },
   "zh-TW" => {
-    name: "繁體中文"
+    name: "繁體中文",
+    notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到繁體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
   }
 }
 
