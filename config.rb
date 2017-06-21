@@ -187,7 +187,7 @@ configure :build do
     .txt
     .woff
   ]}
-  set :haml, {ugly: true, attr_wrapper: '"'}
+  set :haml, { attr_wrapper: '"' }
   activate :minify_css
   activate :minify_html do |html|
     html.remove_quotes = false
