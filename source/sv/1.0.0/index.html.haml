@@ -64,7 +64,7 @@ version: 1.0.0
 
   %ul
     %li
-      Ändringsloggar är <em>för människor</em>, inte maskiner. 
+      Ändringsloggar är <em>för människor</em>, inte maskiner.
     %li
       Det bör finnas en post för varje enskild version.
     %li
@@ -117,7 +117,7 @@ version: 1.0.0
     %li
       Folk kan se vilka ändringar de kan förvänta sig i kommande utgåvor
     %li
-      Vid lansering behöver du bara flytta innehållet i sektionen 
+      Vid lansering behöver du bara flytta innehållet i sektionen
       <code>Unreleased</code> till en ny versionspost.
 
 .bad-practices
@@ -132,8 +132,8 @@ version: 1.0.0
     Diffar från incheckningsloggen.
 
   %p
-    Det är en dålig idé att använda incheckningsloggen som ändringslogg: 
-    de är fulla av brus. Saker så som merge-incheckningar, incheckningar med 
+    Det är en dålig idé att använda incheckningsloggen som ändringslogg:
+    de är fulla av brus. Saker så som merge-incheckningar, incheckningar med
     otydliga titlar, dokumentationsförändringar etc.
 
   %p
@@ -150,14 +150,14 @@ version: 1.0.0
     Ignorera föråldrad funktionalitet (deprecations)
 
   %p
-    När användare uppgraderar från en version till en annan, ska det vara 
+    När användare uppgraderar från en version till en annan, ska det vara
     smärtsamt uppenbart när något förväntas gå sönder. Den bör vara möjligt
     att uppgradera till en version som listar föråldrad funktionalitet, ta
-    bort dessa beroenden i sitt program, och sedan uppgradera till en version 
+    bort dessa beroenden i sitt program, och sedan uppgradera till en version
     där den föråldrade funktionaliteten är borttagen.
 
   %p
-    Om du inte gör något annat, lista åtminstone föråldrad och borttagen 
+    Om du inte gör något annat, lista åtminstone föråldrad och borttagen
     funktionalitet samt förstörande förändringar i din ändringslogg.
 
   %h4#confusing-dates
@@ -165,11 +165,11 @@ version: 1.0.0
     Förvillande datum
 
   %p
-    I USA lägger folk månaden först (<code>06-02-2012</code> för 2:a juni 2012), 
-    medan många andra runt om i världen skriver <code>2 June 2012</code> men 
-    uttalar det annorlunda. <code>2012-06-02</code> fungerar logiskt från störst 
-    till minst, överlappar inte på något tvetydligt sätt med andra datumformat, 
-    och är en #{link_to "ISO-standard", iso}. Dessutom är det rekommenderat 
+    I USA lägger folk månaden först (<code>06-02-2012</code> för 2:a juni 2012),
+    medan många andra runt om i världen skriver <code>2 June 2012</code> men
+    uttalar det annorlunda. <code>2012-06-02</code> fungerar logiskt från störst
+    till minst, överlappar inte på något tvetydligt sätt med andra datumformat,
+    och är en #{link_to "ISO-standard", iso}. Dessutom är det rekommenderat
     datumformat för ändringsloggar.
 
   %aside
@@ -187,9 +187,9 @@ version: 1.0.0
     Finns det ett standardformat på ändringsloggar?
 
   %p
-    Inte riktigt. GNU:s stilguide för ändringsloggar och den två stycke 
-    långa GNU NEWS-filen med riktlinjer finns. Båda är bristfälliga och 
-    otillräckliga. 
+    Inte riktigt. GNU:s stilguide för ändringsloggar och den två stycke
+    långa GNU NEWS-filen med riktlinjer finns. Båda är bristfälliga och
+    otillräckliga.
 
   %p
     Detta projekt har som mål att bli
@@ -219,20 +219,20 @@ version: 1.0.0
 
   %p
     Det är ett fantasiskt initiativ. #{link_to "Releases", ghr} kan användas
-    för att göra enkla git-taggar (t.ex. en tagg kallad <code>v1.0.0</code>) 
-    till formaterade versionsanteckningar genom att manuellt lägga till 
-    versionsanteckningar eller så kan den hämta meddelandena i kommenterade 
+    för att göra enkla git-taggar (t.ex. en tagg kallad <code>v1.0.0</code>)
+    till formaterade versionsanteckningar genom att manuellt lägga till
+    versionsanteckningar eller så kan den hämta meddelandena i kommenterade
     git-taggar och omvandla dessa till versionsanteckningar.
 
   %p
     GitHub Releases skapar en icke porterbar ändringslogg som enbart kan visas
     för användare på GitHub. Det är möjligt att formatera det ungefär som på
     Håll en ändringslogg-formatet, men det tendera att bli lite mer invecklat.
-    
+
   %p
     Nuvarande version av GitHub releases är möjligtvis också lite svår att
-    hitta för slutanvändare, till skillnad från filer med normalt stora 
-    bokstäver (<code>README</code>, <code>CONTRIBUTING</code>, etc.). 
+    hitta för slutanvändare, till skillnad från filer med normalt stora
+    bokstäver (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
     Ett annat bekymmer är att användargränssnittet för närvarande inte
     erbjuder länkar till incheckningsloggar mellan olika versioner.
 
@@ -244,10 +244,10 @@ version: 1.0.0
     Det är svårt då människor följer vitt olika format och filnamn.
 
   %p
-    #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen 
+    #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen
     #{link_to "Gemnasium", gemnasium} som tolkar många (men inte alla)
     ändringsloggar för öppen källkod.
-    
+
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
     Hur är det med brådskande utgåvor ("yanked")?
@@ -277,7 +277,7 @@ version: 1.0.0
     Det kan också hända att du upptäcker att du glömt att ta upp en icke
     bakåtkompatibel förändring i en version. I sådana fall är det självklart
     viktigt att uppdatera din ändringslogg.
-    
+
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
     Hur kan jag bidra?
@@ -288,10 +288,10 @@ version: 1.0.0
 
   %p
     Detta beror på att jag vill att vår gemenskap ska nå enighet. Jag tror på
-    att diskussionen är lika viktig som slutresultatet. 
+    att diskussionen är lika viktig som slutresultatet.
 
   %p
-    Så tveka inte att <strong>#{link_to kasta dig in i diskussionen, gh}</strong>.
+    Så tveka inte att <strong>#{link_to "kasta dig in i diskussionen", gh}</strong>.
 
 .press
   %h3 Samtal
