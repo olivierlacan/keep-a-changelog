@@ -65,19 +65,19 @@ version: 1.0.0
 
   %ul
     %li
-      Değişiklik kayıtları <em>insanlar</em> içindir, makineler için dğeil.
+      Değişiklik kayıtları <em>insanlar</em> içindir, makineler için değil.
     %li
       Her sürüm için bir girdi içermelidir.
     %li
       Benzer değişiklikler gruplanmalıdır.
     %li
-      SÜrümler ve bölümlere bağlantı verilebilir olmalıdır.
+      Sürümler ve bölümlere bağlantı verilebilir olmalıdır.
     %li
-      En son sürüm ilk başta olur.
+      En son sürüm ilk başta olmalıdır.
     %li
       Her sürümün dağıtım tarihi bulunmalıdır.
     %li
-      Geliştirirken #{link_to "Anlamlı sürümlendirme", semver} kullanıp kullanmadığınızı bildirin.
+      Geliştirirken #{link_to "anlamlı sürümlendirme (Semver)", semver} kullanıp kullanmadığınızı bildirin.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Değişiklik tipleri
@@ -126,7 +126,7 @@ version: 1.0.0
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
     Değişiklik kütükleri kötü olabilirler mi?
 
-  %p Evet. Buyrun size işe yaramayacak bir kaç örnek.
+  %p Evet. Buyrun size işe yaramayacak bir kaç örnek;
 
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
@@ -153,13 +153,13 @@ version: 1.0.0
   %p
     İnsanlar bir sürümden diğerine yükselttiklerinde, bir şeylerin bozulup
     bozulmayacağı acı verici derecede açık olmalıdır. Rafa kalkan özelliklerin
-    listelendiği, sonra bu rafa kaldırılanlara yönelik kendi geliştirmelerini
-    yapabileceği ve sonrasında da özelliklerin tamamen kaldırıldığı sürüme
+    listelendiği sürüme geçip, bu rafa kaldırılanlara yönelik kendi geliştirmelerini
+    yaparak, en nihayetinde özelliklerin tamamen kaldırıldığı sürüme
     geçiş yapabilmeliler.
 
   %p
-    Eğer hiç bir şey yapmasanız bile, rafa kalkanlaı, kaldırılanları ve
-    önemli değişiklikleri değişiklik kayıtlarınızda listeleyin.
+    Eğer hiç bir şey yapmasanız bile, rafa kalkanları, kaldırılanları ve
+    önemli değişiklikleri, değişiklik kayıtlarınızda listeleyin.
 
 
   %h4#confusing-dates
@@ -169,15 +169,15 @@ version: 1.0.0
   %p
     A.B.D.'de insanlar ay kısmını önce kullanırken (2 Haziran 2012 için
     <code>06-02-2012</code>), dünyanın bir çok bölümünde daha robotik bir
-    kullanım <code>2 Haizran 2012</code> söz konusu. <code>2012-06-02</code>
-    biçimi en küçüğünden en büyüğüne tüm biçimlerle çalışmadan kullanılabiliyor
-    ve #{link_to "ISO standardı", iso}. Bu sebeple değişiklik kayıtlaro için
-    önerilen tarih biçimidir.
+    kullanım <code>2 Haziran 2012</code> söz konusu. <code>2012-06-02</code>
+    biçimi en küçüğünden en büyüğüne tüm biçimlerle çakışmadan kullanılabiliyor
+    ve aynı zamanda bir #{link_to "ISO standardı", iso}. Bu sebeple değişiklik
+    kayıtları için önerilen tarih biçimidir.
 
   %aside
-    Dahası da var. Bu karşıt desenleri toplamam için 
+    Mutlaka dahası da vardır. Benzer durumları toplamam için 
     = link_to "bir çağrı açın", "#issues"
-    ua da bir çekme isteği gönderin.
+    ya da bir çekme isteği gönderin.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
@@ -189,14 +189,14 @@ version: 1.0.0
     Standart bir değişiklik kayıt biçimi var mı?
 
   %p
-    Pek sayılmaz. GNU değişiklik kayıtları sil rehberi mevcut ya da
-    iki paragraf GNU NEWS dosyası "guideline" var. İkisi de uygun
+    Pek sayılmaz. GNU değişiklik kayıtları stil rehberi mevcut ya da
+    iki paragraflık GNU NEWS "rehber" dosyası var. İkisi de uygun
     değiller ve yetersizler.
 
   %p
     Bu proje daha iyi
-    = link_to "bir değişiklik kayıtları düzeni.", changelog
-    oluşturmaya çalışıyor. Bunun için de açık kaynaklı topluluklardaki,
+    = link_to "bir değişiklik kayıtları düzeni", changelog
+    oluşturmaya çalışıyor. Bunun için de açık kaynaklı topluluklardaki
     en iyi kullanımları inceleyip, topluyoruz.
 
   %p
@@ -216,12 +216,12 @@ version: 1.0.0
 
   %p
     Dosya isminin çok da önemli olmadığını düşünebilirsiniz, fakat
-    nedne kullanıcılarınızın değişiklikleri taki edebilmesi için
+    neden kullanıcılarınızın değişiklikleri takip edebilmesi için
     onların işlerini zorlaştırasınız ki?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    GitHub dağıtımları ne olacak?
+    Peki ya GitHub dağıtımları?
 
   %p
     Harika bir girişim. #{link_to "Dağıtımlar", ghr} içine kendiniz
@@ -232,13 +232,13 @@ version: 1.0.0
   %p
     GtHub dağıtımları sadece GitHub içeriğinde görüntülenebilecek,
     taşınamaz değişiklik kayıtları oluşturur. Biraz emek harcayarak
-    "Keep a Changelog" biçimine uygun hale getirilebilir.
+    "Değişiklik kayıtları tutun" biçimine uygun hale getirilebilir.
 
   %p
     Ayrıca GitHub dağıtımlarının şu anki hali son kullanıcılar tarafından
     çok kolay bulunabilir değil. Tipik büyük harfli dosyalar
     (<code>README</code>, <code>CONTRIBUTING</code>, vb.) daha çok göze
-    çarpıyor. Bir başka konu da mevcut arayüz her dağıtım arasındaki 
+    çarpıyor. Bir başka konu da, mevcut arayüz her dağıtım arasındaki 
     commit kayıtlarına bağlantı vermeye izin vermiyor..
 
   %h4#automatic
@@ -257,7 +257,7 @@ version: 1.0.0
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Peki ya Geri çekilen dağıtımlar?
+    Peki ya geri çekilen dağıtımlar?
 
   %p
     Geri çekilen dağıtımlar, önemli hatalar ya da güvenlik sebepleri nedeniyle
@@ -296,11 +296,11 @@ version: 1.0.0
     ve örnekler bulunur.
 
   %p
-    Bunu istememin sebebi topluluğun ortak bir paydada buluşmasını istememdir.
+    Burada yapmaya çalıştığım topluluğun ortak bir paydada buluşmasını sağlamak.
     İnanıyorum ki tartışmanın kendisi de sonucu kadar önemli.
 
   %p
-    Yani, lütfen <strong>#{link_to "siz de katılın", gh}</strong>.
+    Yani lütfen, <strong>#{link_to "siz de katılın", gh}</strong>.
 
 .press
   %h3 Sohbetler
