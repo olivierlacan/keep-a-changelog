@@ -51,8 +51,8 @@ version: 1.0.0
 
   %p
     Le persone ne hanno bisogno. Che si tratti di consumatori o di sviluppatori, gli utenti finali 
-    del software sono persone interessate di ciò che è nel software. 
-    Se il software è cambiato, allora le persone vogliono sapere perché e come.
+    del software sono persone interessate a ciò che avviene in esso.
+    Se il software è cambiato, allora le persone vogliono sapere come e perché.
 
 .good-practices
   %h3#how
@@ -65,7 +65,7 @@ version: 1.0.0
 
   %ul
     %li
-      Changelogs sono <em>per le persone</em>, non per le macchine.
+      I Changelogs sono <em>per le persone</em>, non per le macchine.
     %li
       Dovrebbe essere una voce per ogni singola versione.
     %li
@@ -91,7 +91,7 @@ version: 1.0.0
       per le modifiche a funzionalità esistenti.
     %li
       %code Deprecated
-      per le funzionalità che saranno rimosse nelle release future.
+      per le funzionalità che saranno rimosse nelle future release.
     %li
       %code Removed
       per funzionalità deprecate rimosse in questa release.
@@ -106,47 +106,46 @@ version: 1.0.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    How can I reduce the effort required to maintain a changelog?
+    Come posso ridurre gli sforzi necessari a mantenere un changelog?
 
   %p
-    Keep an <code>Unreleased</code> section at the top to track upcoming
-    changes.
+    Tieni una sezione <code>Unreleased</code> in cima al changelog in modo da tenere traccia
+    dei cambiamenti imminenti.
 
-  %p This serves two purposes:
+  %p Questo serve per due scopi:
 
   %ul
     %li
-      People can see what changes they might expect in upcoming releases
+      Le persone possono vedere quali modifiche si possono aspettare nelle future release.
     %li
-      At release time, you can move the <code>Unreleased</code> section
-      changes into a new release version section.
+    Ad una nuova release, si deve solo spostare i cambiamenti della sezione 
+    `"Unreleased"` in una nuova sezione con il suo numero di versione.
 
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    Can changelogs be bad?
-  %p Yes. Here are a few ways they can be less than useful.
+    I changelogs possono essere cattivi?
+  %p Si. Ecco alcuni modi in cui possono essere meno utili.
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
     Commit log diffs
 
   %p
-    Using commit log diffs as changelogs is a bad idea: they're full of
-    noise. Things like merge commits, commits with obscure titles,
-    documentation changes, etc.
+    Usare commit log diffs al posto dei changelogs è una brutta idea: contengono solo cose superflue.
+    Come come merge commits, commits con titoli oscuri,
+    modifiche della documentazione, etc.
 
   %p
-    The purpose of a commit is to document a step in the evolution of
-    the source code. Some projects clean up commits, some don't.
+    Lo scopo di un commit è quello di documentare un passo nell'evoluzione 
+    del codice sorgente. Alcuini progetti ripuliscono i commit, altri non lo fanno.
 
   %p
-    The purpose of a changelog entry is to document the noteworthy
-    difference, often across multiple commits, to communicate them
-    clearly to end users.
+    Lo scopo di una voce changelog è quello di documentare le differenze rilevanti, 
+    spesso attraverso commit mulptipli, per comunicarli in mdo chiaro agli utenti finali.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignoring Deprecations
+    Ignorare le Deprecazioni
   %p
     When people upgrade from one version to another, it should be
     painfully clear when something will break. It should be possible to
