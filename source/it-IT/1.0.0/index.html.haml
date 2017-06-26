@@ -20,7 +20,7 @@ version: 1.0.0
 .header
   .title
     %h1 Tenere un Changelog
-    %h2 Non lasciare che i tuoi amici facciano copia incolla dei git logs nei changelogs.
+    %h2 Non lasciare che i tuoi amici facciano copia incolla dei git logs nei changelog.
 
   = link_to changelog do
     Versione
@@ -34,7 +34,7 @@ version: 1.0.0
     Cos'è un changelog?
 
   %p
-    Un change log è un file che contiene una lista curata e ordinata cronologicamente 
+    Un changelog è un file che contiene una lista curata e ordinata cronologicamente 
     delle modifiche degne di nota per ogni versione di un progetto.
 
   %h3#why
@@ -124,14 +124,14 @@ version: 1.0.0
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    I changelogs possono essere cattivi?
+    I changelog possono essere cattivi?
   %p Si. Ecco alcuni modi in cui possono essere meno utili.
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
     Commit log diffs
 
   %p
-    Usare commit log diffs al posto dei changelogs è una brutta idea: contengono solo cose superflue.
+    Usare commit log diffs al posto dei changelog è una brutta idea: contengono solo cose superflue.
     Come come merge commits, commits con titoli oscuri,
     modifiche della documentazione, etc.
 
@@ -147,77 +147,77 @@ version: 1.0.0
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     Ignorare le Deprecazioni
   %p
-    When people upgrade from one version to another, it should be
-    painfully clear when something will break. It should be possible to
-    upgrade to a version that lists deprecations, remove what's
-    deprecated, then upgrade to the version where the deprecations
-    become removals.
+    Quando le persone aggiornano da una versione ad un'altra,
+    dovrebbe essere dolorosamente chiaro quando qualcosa si romperà.
+    Dovrebbe essere possibile eseguire l'aggiornamento a una versione 
+    che elenca le deprecazioni, rimuove ciò che è deprecato, quindi 
+    aggiorna alla versione in cui le deprecazioni diventano rimozioni.
   %p
-    If you do nothing else, list deprecations, removals, and any
-    breaking changes in your changelog.
+    Se non fai nient'altro elenca le deprecazioni, le rimozioni e 
+    qualsiasi altro cambiamento nel tuo changelog.
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
-    Confusing Dates
+    Confusione delle date
 
   %p
-    In the U.S., people put the month first (<code>06-02-2012</code> for
-    June 2nd, 2012), while many people in the rest of the world write a
-    robotic-looking <code>2 June 2012</code>, yet pronounce it
-    differently. <code>2012-06-02</code> works logically from largest to
-    smallest, doesn't overlap in ambiguous ways with other date formats,
-    and is an #{link_to "ISO standard", iso}. Thus, it is the
-    recommended date format for changelogs.
+    Negli Stati Uniti si mette prima il mese nelle date (<code>06-02-2012</code> sta per
+    il 2 Giugno 2012), mentre molte persone nel resto del mondo scrivono un 
+    robotico <code>2 June 2012</code>, ma lo pronunciano diversamente.
+    <code>2012-06-02</code> funziona con la logica dal più grande al più piccolo, 
+    non ha sovrapposizioni ambigue con altri formati di date, ed è uno #{link_to "ISO standard", iso}. 
+    Per tutti questi motivi, è il formato di date raccomandato per i changelog.
 
   %aside
-    There’s more. Help me collect these antipatterns by
-    = link_to "opening an issue", issues
-    or a pull request.
+    C'è di più. Aiutatemi a collezionare questi anti-modelli 
+    = link_to "aprendo un issue", issues
+    o una pull request.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    Domande frequenti
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+    Esiste un formato standard per i changelog?
 
   %p
-    Not really. There's the GNU changelog style guide, or the two-
-    paragraph-long GNU NEWS file "guideline". Both are inadequate or
-    insufficient.
+    Non esattamente. Esistono le linee guida GNU sullo stile dei changelog, oppure 
+    i due lunghi paragrafi nel documento di GNU NEWS denominato "guideline". Entrambe
+    sono inadeguate o insufficienti.
 
   %p
-    This project aims to be
-    = link_to "a better changelog convention.", changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
+    Questo progetto vuole essere
+    = link_to "una migliore convenzione  per i file changelog.", changelog
+    Per questo motivo osserviamo le migliori pratiche della comunità open source 
+    e le portiamo avanti.
 
   %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", issues
+    Critiche, discussioni e suggerimenti per migliorare
+    = link_to "sono ben accetti.", issues
 
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+    Come si dovrebbe chiamare il file di changelog?
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
+    Chiamalo <code>CHANGELOG.md</code>. Alcuni progetti usano anche
+    <code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    Mentre è facile pensare che il nome del tuo file changelog 
+    non sia poi così importante, perchè non rendere facile la 
+    vita ai tuoi utenti, usando sempre lo stesso nome?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    Cosa dire delle GitHub Releases?
   %p
-    It's a great initiative. #{link_to "Releases", ghr} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    È una bella iniziativa. #{link_to "Releases", ghr} può essere usato
+    per rendere semplice i git tags (per esempio il nome del tag <code>v1.0.0</code>)
+    All'interno di note di rilascio ben dettagliate si possono aggiungere le note manualmente oppure è possibile
+    utilizzare le note dei messaggi dei git tag inserendole dentro nelle note di rilascio.
+    j
   %p
     GitHub Releases create a non-portable changelog that can only be
     displayed to users within the context of GitHub. It's possible to
