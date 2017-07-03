@@ -72,7 +72,7 @@ version: 1.0.0
     %li
       Versioni e sezioni dovrebbero essere collegabili.
     %li
-      L'ultima versione viene prima.
+      L'ultima versione viene per prima.
     %li
       Viene mostrata la data di release di ogni versione.
     %li
@@ -118,7 +118,7 @@ version: 1.0.0
       Le persone possono vedere quali modifiche si possono aspettare nelle future release.
     %li
       Ad una nuova release, si deve solo spostare i cambiamenti della sezione
-      `"Unreleased"` in una nuova sezione con il suo numero di versione.
+      `"Unreleased"` in una nuova sezione con il corrispettivo numero di versione.
 
 .bad-practices
   %h3#bad-practices
@@ -132,9 +132,9 @@ version: 1.0.0
     Commit log diffs
 
   %p
-    Usare commit log diffs al posto dei changelog è una brutta idea: contengono solo cose superflue.
-    Come come merge commits, commits con titoli oscuri,
-    modifiche della documentazione, etc.
+    Usare i commit log diffs al posto dei changelog è una brutta idea: contengono solo cose superflue.
+    Come come i merge commits, i commits con titoli oscuri,
+    le modifiche della documentazione, etc.
 
   %p
     Lo scopo di un commit è quello di documentare un passo nell'evoluzione
@@ -149,7 +149,7 @@ version: 1.0.0
     Ignorare le Deprecazioni
   %p
     Quando le persone aggiornano da una versione ad un'altra,
-    dovrebbe essere dolorosamente chiaro quando qualcosa si romperà.
+    dovrebbe essere dolorosamente chiaro che qualcosa si romperà.
     Dovrebbe essere possibile eseguire l'aggiornamento a una versione
     che elenca le deprecazioni, rimuove ciò che è deprecato, quindi
     aggiorna alla versione in cui le deprecazioni diventano rimozioni.
@@ -165,11 +165,11 @@ version: 1.0.0
     il 2 Giugno 2012), mentre molte persone nel resto del mondo scrivono un
     robotico <code>2 June 2012</code>, ma lo pronunciano diversamente.
     <code>2012-06-02</code> funziona con la logica dal più grande al più piccolo,
-    non ha sovrapposizioni ambigue con altri formati di date, ed è uno #{link_to "ISO standard", iso}.
+    non ha sovrapposizioni ambigue con altri formati di date, ed è uno #{link_to "standard ISO", iso}.
     Per tutti questi motivi, è il formato di date raccomandato per i changelog.
 
   %aside
-    C'è di più. Aiutatemi a collezionare questi anti-modelli
+    C'è di più. Aiutatemi a collezionare altre situazioni cattive
     = link_to "aprendo un issue", issues
     o una pull request.
 
@@ -219,7 +219,7 @@ version: 1.0.0
     per rendere semplice i git tags (per esempio il nome del tag
     <code>v1.0.0</code>) All'interno di note di rilascio ben dettagliate
     si possono aggiungere le note manualmente oppure è possibile
-    utilizzare le note dei messaggi dei git tag inserendole dentro nelle
+    utilizzare i messaggi dei git tag inserendoli dentro le
     note di rilascio.
 
   %p
@@ -247,7 +247,7 @@ version: 1.0.0
   %p
     #{link_to "Vandamme", vandamme} è una Ruby gem creata dal team
     #{link_to "Gemnasium", gemnasium} ed è in grado di fare il parsing dei
-    change log di molti (ma non tutti) i progetti open source.
+    changelog di molti (ma non tutti) i progetti open source.
 
 
   %h4#yanked
@@ -257,7 +257,7 @@ version: 1.0.0
   %p
     Le release "yanked" sono versioni che sono state rimosse a causa di
     bug seri o problemi di sicurezza. Spesso queste versioni non
-    appaiono nei change log. Invece dovrebbero esserci, nel seguente
+    appaiono nei changelog. Invece dovrebbero esserci, nel seguente
     modo:
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
@@ -266,7 +266,7 @@ version: 1.0.0
     L'etichetta <code>[YANKED]</code> è in maiuscolo per un motivo.
     È importante che le persone la notino.
     Poiché è racchiusa tra parentesi quadre è anche
-    più semplice da riconoscere nel parsing automatizzato.
+    più semplice da riconoscere nel parsing automatico.
 
 
   %h4#rewrite
@@ -292,11 +292,11 @@ version: 1.0.0
     opinione, arricchita dalle informazioni ed esempi che ho raccolto.
 
   %p
-    Questo è perché voglio che la nostra comunità raggiunga un consenso. Credo che
+    Questo perché voglio che la nostra comunità raggiunga un consenso. Credo che
     la discussione sia importante almeno quanto il risultato finale.
 
   %p
-    Quindi per favore <strong>#{link_to "partecipate e dateci dentro", gh}</strong>.
+    Quindi per favore <strong>#{link_to "partecipate", gh}</strong>.
 
 .press
   %h3 Conversations
