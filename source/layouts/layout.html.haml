@@ -50,10 +50,12 @@
               - selected = language_code == language.first
               - if version_exists
                 %option{ selected: selected, label: "#{$last_version} #{language.last[:name]}", value: language.first }
+                  = "#{$last_version} #{language.last[:name]}"
               - else
                 - previous_version = File.exists?("source/#{language.first}/#{$previous_version}")
                 - if previous_version
                   %option{ selected: selected, label: "#{$previous_version} #{language.last[:name]}", value: language.first }
+                    = "#{$previous_version} #{language.last[:name]}"
 
       .main{ role: "main" }
         - if !latest_version
