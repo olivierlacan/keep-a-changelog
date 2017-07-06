@@ -46,16 +46,10 @@
         %nav.locales{ role: "navigation" }
           %select
             - $languages.each do |language|
-              - version_exists = File.exists?("source/#{language.first}/#{$last_version}")
               - selected = language_code == language.first
-              - if version_exists
-                %option{ selected: selected, label: "#{$last_version} #{language.last[:name]}", value: language.first }
-                  = "#{$last_version} #{language.last[:name]}"
-              - else
-                - previous_version = File.exists?("source/#{language.first}/#{$previous_version}")
-                - if previous_version
-                  %option{ selected: selected, label: "#{$previous_version} #{language.last[:name]}", value: language.first }
-                    = "#{$previous_version} #{language.last[:name]}"
+              - if available_translation = available_translation_for(language)
+                %option{ selected: selected, label: available_translation, value: language.first }
+                  = available_translation
 
       .main{ role: "main" }
         - if !latest_version
