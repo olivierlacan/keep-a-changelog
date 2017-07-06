@@ -49,7 +49,7 @@ $languages = {
     name: "Polskie"
   },
   "pt-BR" => {
-    name: "Brazilian Portugese",
+    name: "Português do Brasil",
     notice: "A última versão (#{$last_version}) ainda não está disponível em
     Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
