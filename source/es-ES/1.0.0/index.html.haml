@@ -34,8 +34,8 @@ version: 1.0.0
 
   %p
     Un registro de cambios, «changelog» de ahora en adelante, es un archivo que
-contiene una lista cronológicamente ordenada de los cambios más destacables
-para cada versión de un proyecto.
+contiene una lista cronológicamente ordenada de los cambios más destacables para
+cada versión de un proyecto.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
@@ -91,8 +91,8 @@ Cuando el software cambia, la gente quiere saber el porqué y el cómo.
       para los cambios en las funcionalidades existentes.
     %li
       %code Deprecated
-      para indicar que una característica o funcionalidad está obsoleta y que
-se eliminará en las próximas versiones.
+      para indicar que una característica o funcionalidad está obsoleta y que se
+eliminará en las próximas versiones.
     %li
       %code Removed
       para las características en desuso que se eliminaron en esta versión.
@@ -117,7 +117,8 @@ seguimiento sobre los próximos cambios.
 
   %ul
     %li
-      La gente puede ver qué cambios podrían esperar en los próximos lanzamientos.
+      La gente puede ver qué cambios podrían esperar en los próximos
+lanzamientos.
     %li
       Al lanzar una nueva versión, tan sólo habría que mover el contenido de
 <code>Unreleased</code> a una sección para la nueva versión.
@@ -165,15 +166,14 @@ cualquier otro cambio sin compatibilidad hacia atrás en tu changelog.
     Fechas confusas
 
   %p
-    Los formatos de fecha regionales varían en todo el mundo y con
-frecuencia es difícil encontrar un formato intuitivo para todos. La
-ventaja de las fechas con el formato <code>2017-07-17</code> es que
-siguen un orden de unidades de mayor a menor: año, mes y día. Este
-formato tampoco coincide de forma ambigua con otros formatos de fecha,
-a diferencia de algunos que intercambian la posición del mes y el día.
-Todo esto, junto al hecho de ser un #{link_to "estándar ISO", iso}, son
-los motivos por los que es el formato de fecha recomendado para las
-entradas del changelog.
+    Los formatos de fecha regionales varían en todo el mundo y con frecuencia es
+difícil encontrar un formato intuitivo para todos. La ventaja de las fechas con
+el formato <code>2017-07-17</code> es que siguen un orden de unidades de mayor a
+menor: año, mes y día. Este formato tampoco coincide de forma ambigua con otros
+formatos de fecha, a diferencia de algunos que intercambian la posición del mes
+y el día. Todo esto, junto al hecho de ser un #{link_to "estándar ISO", iso},
+son los motivos por los que es el formato de fecha recomendado para las entradas
+del changelog.
 
   %aside
     Hay más. Ayúdame a recoger estos anti-patrones
@@ -211,7 +211,7 @@ recopilando las mismas.
 
   %p
     Llámalo <code>CHANGELOG.md</code>. Algunos proyectos utilizan
-    <code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
+<code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
 
   %p
     Si bien es fácil pensar que el nombre de tu archivo de changelog no importa
@@ -232,15 +232,15 @@ convertirlas en notas.
   %p
     Los releases de Github crean un changelog no portable que sólo pueden ser
 mostrados a usuarios dentro del contexto de Github. Es posible hacer que luzcan
-muy parecidas al formato de <em>Mantenga un changelog</em>, pero tiende a ser
-un poco más complicado.
+muy parecidas al formato de <em>Mantenga un changelog</em>, pero tiende a ser un
+poco más complicado.
 
   %p
     La versión actual de los releases de Github es también discutiblemente no
 muy detectable por los usuarios finales, diferente a los típicos archivos en
-mayúsculas (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Otro
-problema menor es que la interfaz actualmente no ofrece enlaces a los registros
-de los commits entre cada lanzamiento.
+mayúsculas (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Otro problema
+menor es que la interfaz actualmente no ofrece enlaces a los registros de los
+commits entre cada lanzamiento.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
