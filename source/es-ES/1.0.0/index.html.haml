@@ -165,13 +165,15 @@ cualquier otro cambio sin compatibilidad hacia atrás en tu changelog.
     Fechas confusas
 
   %p
-    En los EE.UU., la gente pone primero el mes (<code>06-02-2012</code> para
-el 2 de junio del 2012), mientras que muchas personas en el resto del mundo
-escriben de una manera muy robótica <code>2 Junio 2012</code> aunque lo
-proununcien diferente. <code>2012-06-02</code> funciona logicamente desde el
-más grande al más pequeño, no se solapa de maneras ambiugas con otros formatos
-de fecha y es un #{link_to "Estándar ISO", iso}. Por lo cual, es el formato de
-fecha recomendado para el changelog.
+    Los formatos de fecha regionales varían en todo el mundo y con
+frecuencia es difícil encontrar un formato intuitivo para todos. La
+ventaja de las fechas con el formato <code>2017-07-17</code> es que
+siguen un orden de unidades de mayor a menor: año, mes y día. Este
+formato tampoco coincide de forma ambigua con otros formatos de fecha,
+a diferencia de algunos que intercambian la posición del mes y el día.
+Todo esto, junto al hecho de ser un #{link_to "estándar ISO", iso}, son
+los motivos por los que es el formato de fecha recomendado para las
+entradas del changelog.
 
   %aside
     Hay más. Ayúdame a recoger estos anti-patrones
