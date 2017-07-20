@@ -49,7 +49,7 @@ $languages = {
     name: "Polskie"
   },
   "pt-BR" => {
-    name: "Brazilian Portugese",
+    name: "Português do Brasil",
     notice: "A última versão (#{$last_version}) ainda não está disponível em
     Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
@@ -153,6 +153,19 @@ set :markdown, $markdown_config
 helpers do
   def path_to_url(path)
     Addressable::URI.join(config.site_url, path).normalize.to_s
+  end
+
+  def available_translation_for(language)
+    language_name = language.last[:name]
+    language_path = "source/#{language.first}"
+
+    if File.exists?("#{language_path}/#{$last_version}")
+      "#{$last_version} #{language_name}"
+    elsif File.exists?("#{language_path}/#{$previous_version}")
+      "#{$previous_version} #{language_name}"
+    else
+      nil
+    end
   end
 end
 

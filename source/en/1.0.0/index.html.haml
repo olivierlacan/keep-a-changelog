@@ -167,13 +167,16 @@ version: 1.0.0
     Confusing Dates
 
   %p
-    In the U.S., people put the month first (<code>06-02-2012</code> for
-    June 2nd, 2012), while many people in the rest of the world write a
-    robotic-looking <code>2 June 2012</code>, yet pronounce it
-    differently. <code>2012-06-02</code> works logically from largest to
-    smallest, doesn't overlap in ambiguous ways with other date formats,
-    and is an #{link_to "ISO standard", iso}. Thus, it is the
-    recommended date format for changelogs.
+    Regional date formats vary throughout the world and it's often
+    difficult to find a human-friendly date format that feels intuitive
+    to everyone. The advantage of dates formatted like
+    <code>2017-07-17</code> is that they follow the order of largest to
+    smallest units: year, month, and day. This format also doesn't
+    overlap in ambiguous ways with other date formats, unlike some
+    regional formats that switch the position of month and day numbers.
+    These reasons, and the fact this date format is an
+    #{link_to "ISO standard", iso} are why it is the recommended date
+    format for changelog entries.
 
   %aside
     There’s more. Help me collect these antipatterns by
