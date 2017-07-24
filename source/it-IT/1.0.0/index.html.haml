@@ -161,12 +161,16 @@ version: 1.0.0
     Confusione delle date
 
   %p
-    Negli Stati Uniti si mette prima il mese nelle date (<code>06-02-2012</code> sta per
-    il 2 Giugno 2012), mentre molte persone nel resto del mondo scrivono un
-    robotico <code>2 June 2012</code>, ma lo pronunciano diversamente.
-    <code>2012-06-02</code> funziona con la logica dal più grande al più piccolo,
-    non ha sovrapposizioni ambigue con altri formati di date, ed è uno #{link_to "standard ISO", iso}.
-    Per tutti questi motivi, è il formato di date raccomandato per i changelog.
+    I formati di date variano da Paese a Paese e spesso
+    trovare un formato human-friendly che sia intuitivo per tutti
+    è cosa ardua. Il vantaggio delle date formattate come
+    <code>2017-07-17</code> è che seguono l'ordine dal maggiore
+    al minore: anno, mese e giorno. Inoltre questo formato non
+    ha sovrapposizioni ambigue con altri formati di date, a differenza
+    di alcuni formati regionali che scambiano la posizione del mese e del giorno.
+    Queste motivazioni e il fatto che questo formato di data è uno
+    #{link_to "standard ISO", iso} spiegano perchè questo è il formato di date
+    raccomandato per i changelog.
 
   %aside
     C'è di più. Aiutatemi a collezionare altre situazioni cattive
@@ -299,7 +303,7 @@ version: 1.0.0
     Quindi per favore <strong>#{link_to "partecipate", gh}</strong>.
 
 .press
-  %h3 Conversations
+  %h3 Dialogo
   %p
     Sono andato su #{link_to "The Changelog podcast", thechangelog}
     per parlare del perché i gestori e i contributori dovrebbero preoccuparsi dei changelog
