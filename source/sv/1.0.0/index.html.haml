@@ -165,12 +165,16 @@ version: 1.0.0
     Förvillande datum
 
   %p
-    I USA lägger folk månaden först (<code>06-02-2012</code> för 2:a juni 2012),
-    medan många andra runt om i världen skriver <code>2 June 2012</code> men
-    uttalar det annorlunda. <code>2012-06-02</code> fungerar logiskt från störst
-    till minst, överlappar inte på något tvetydligt sätt med andra datumformat,
-    och är en #{link_to "ISO-standard", iso}. Dessutom är det rekommenderat
-    datumformat för ändringsloggar.
+    Lokala datumformat varierar över hela världen, och det är ofta
+    svårt att hitta ett användbart datumformat som känns intuitivt
+    för alla. Fördelen med datumformat så som
+    <code>2017-07-17</code> är att det följer storleksordningen från störst till
+    minst: år, månad och dag. Detta format överlappar inte heller 
+    på ett tvetydligt sätt med andra datumformat, till skillnad från
+    lokala format som kan växla positionen på månad och dag.
+    Dessa anledningar tillsammans med det faktum att detta datumformat är en
+    #{link_to "ISO-standard", iso} gör att detta är rekommenderat
+    format för ändringsloggar.
 
   %aside
     Det finns mer. Hjälp mig att samla dessa antimönster genom att
