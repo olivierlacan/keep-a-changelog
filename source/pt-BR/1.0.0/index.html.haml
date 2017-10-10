@@ -177,136 +177,134 @@ version: 1.0.0
     recomendado para as entradas do <em>changelog</em>.
 
   %aside
-    There’s more. Help me collect these antipatterns by
-    = link_to "opening an issue", issues
-    or a pull request.
+    Tem mais. Me ajude a colecionar essas más práticas
+     = link_to "enviando uma dúvida", issues
+     ou pedindo mudanças.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    Perguntas frequentes
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+    Existe um padrão para o formato do <em>changelog</em>?
 
   %p
-    Not really. There's the GNU changelog style guide, or the two-
-    paragraph-long GNU NEWS file "guideline". Both are inadequate or
-    insufficient.
+    Na verdade não. Existe o guia de estilo de <em>changelog</em> do
+    GNU ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados 
+    ou insuficientes.
 
   %p
-    This project aims to be
-    = link_to "a better changelog convention.", changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
+    Este projeto pretende ser
+    = link_to "uma convenção de <em>changelog</em> melhor.", changelog
+    Ele vem de observar e coletar as boas práticas em código aberto da comunidade.
 
   %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", issues
-
+    Críticas saudáveis, discussões e sugestões de melhorias
+    = link_to "são bem-vindas.", issues
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+    Qual nome o arquivo <em>changelog</em> deve ter?
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
+    Chame-o <code>CHANGELOG.md</code>. Alguns projetos usam
+    <code>HISTORY</code>, <code>NEWS</code> ou <code>RELEASES</code>.
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    Embora seja fácil pensar que o nome do seu arquivo <em>changelog</em>
+    não importa muito, por que tornar mais difícil para seus usuários 
+    finais encontrarem consistentemente mudanças notáveis?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    E sobre o <em>GitHub Releases</em>?
 
   %p
-    It's a great initiative. #{link_to "Releases", ghr} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados 
+    para converter simples marcadores do <em>git</em> (por exemplo, um 
+    marcador chamado <code>v1.0.0</code>) em notas de versão ricas, 
+    adicionando manualmente notas de versão ou pode puxar as mensagens 
+    anotadas no marcador do <em>git</em> e transformá-las em notas.
 
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    <em>GitHub Releases</em> cria um <em>changelog</em> não portátil 
+    que só pode ser exibido para usuários no contexto do GitHub. 
+    É possível fazê-los parecer muito como o formato 
+    <em>Keep a Changelog</em>, mas tende a estar um pouco mais envolvido.
 
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    A versão atual do <em>GitHub Releases</em> não são facilmente
+    por usuários finais, ao contrário dos arquivos maiúsculos típicos
+    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
+    problema menor é que a interface atualmente não oferece links para
+    confirmar alterações entre cada lançamento.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    Os <em>changelogs</em> podem ser criados automaticamente?
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    É difícil, porque as pessoas seguem formatos e nomes de arquivos 
+    totalmente diferentes.
 
   %p
-    #{link_to "Vandamme", vandamme} is a Ruby gem created by the
-    #{link_to "Gemnasium", gemnasium} team and which parses many (but
-    not all) open source project changelogs.
-
+    #{link_to "Vandamme", vandamme} é um <em>gem Ruby</em> criado pelo
+    time #{link_to "Gemnasium", gemnasium} e que analisa muitas 
+    (mas não todas) alterações de projetos de código aberto.
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    E o lançamentos removidos?
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    Lançamentos removidos são versões que foram retiradas por causa de
+    problemas sérios ou falhas de segurança. Muitas vezes essas versões
+    nem aparecem no histórico de alterações. Eles deviam. É assim que
+    você deve exibi-los:
 
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+  %p <code>## 0.0.5 - 2014-12-13 [REMOVIDO]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
-
+    O marcador <code>[REMOVIDO]</code> está em caixa alta por uma razão.
+    É importante que as pessoas o percebam. Uma vez que está entre
+    colchetes é fácil de ser analisado programaticamente.
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    Você deve reescrever um <em>changelog</em>?
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    Claro. Sempre existe razão para melhorar um <em>changelog</em>. Eu 
+    regularmente solicito uma alteração em projetos de código livre
+    para adicionar <em>changelogs</em> não mantidos.
 
   %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
-
+    Também é possível que você descubra que você esqueceu de abordar 
+    uma mudança abrupta nas notas para uma versão. 
+    Obviamente é importante para você atualizar seu <em>changelog</em> neste caso.
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    Como eu posso ajudar?
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    Esse documento não é uma <strong>verdade absoluta</strong>; É minha 
+    opinião cuidadosamente considerada, juntamente com informações e 
+    exemplos que eu reuni.
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    Isso é porque eu quero que nossa comunidade chegue a um consenso. 
+    Eu acredito que a discussão é tão importante quanto o resultado final.
 
   %p
-    So please <strong>#{link_to "pitch in", gh}</strong>.
+    Então, por favor <strong>#{link_to "contribua", gh}</strong>.
 
 .press
-  %h3 Conversations
+  %h3 Discussões
   %p
-    I went on #{link_to "The Changelog podcast", thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    Eu fui em #{link_to "<em>The Changelog podcast</em>", thechangelog} 
+    para falar sobre por que os mantenedores e contribuidores devem se 
+    preocupar com os <em>changelogs</em>, e também sobre as motivações 
+    por trás desse projeto.
