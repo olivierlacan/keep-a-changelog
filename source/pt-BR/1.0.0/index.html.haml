@@ -89,10 +89,10 @@ version: 1.0.0
       para novos recursos.
     %li
       %code Changed/Modificado
-      for changes in existing functionality.
+      para alterações em recursos existentes.
     %li
       %code Deprecated/Obsoleto
-      para funcionalidades que serão removidas nas próximas versões.
+      para recursos que serão removidos nas próximas versões.
     %li
       %code Removed/Removido
       para recursos removidos nesta versão.
@@ -134,7 +134,7 @@ version: 1.0.0
     Usar um registro de alterações automático
 
   %p
-    Usar um registro de alterações automático é uma má idéia: eles estão
+    Usar um registro de alterações automático é uma má ideia: eles estão
     cheios de bagunça. Coisas como solicitação de mesclagem, envio com títulos
     estranhos, alterações de documentação, etc.
 
@@ -152,14 +152,14 @@ version: 1.0.0
     Ignorando depreciações
 
   %p
-    Quando pessoas atualizam de uma versão para outra, deve ser dolorosamente
-    claro quando algo vai quebrar. Deve ser possível atualizar para uma versão
+    Quando pessoas atualizam de uma versão para outra, deve ficar muitíssimo claro 
+    quando algo vai quebrar. Deve ser possível atualizar para uma versão
     com depreciações listadas, remova o que é obsoleto, depois atualize
     para a versão onde as depreciações se tornam remoções.
 
   %p
-    Se você não fizer mais nada, liste as depreciações, remoções e quaisquer
-    mudanças de quebra no seu <em>changelog</em>.
+    Se você não fizer mais nada, liste no seu <em>changelog</em> as depreciações, 
+    remoções e quaisquer mudanças que gerem falhas.
 
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
@@ -170,10 +170,10 @@ version: 1.0.0
     é difícil encontrar um formato de data amigável que seja intuitivo para todos.
     A vantagem das datas formatadas como <code>2017-07-17</code> é que elas seguem
     a ordem da maior para a menor unidade de tempo: ano, mês e dia. Este formato
-    também não se sobrepôem de maneira ambígua como em outros formatos de data, ao
+    também não se confunde de maneira ambígua com outros formatos de data, ao
     contrário de alguns formatos regionais que alteram a posição dos números do mês
-    e dia. Esses motivos, e o fato de ser um formato de data suportado pelo 
-    #{link_to "ISO standard", iso} são as razões para ele ser o formato de data
+    e dia. Esses motivos, e o fato de ser um formato de data suportado pela 
+    #{link_to "norma ISO", iso} são as razões para ele ser o formato de data
     recomendado para as entradas do <em>changelog</em>.
 
   %aside
@@ -232,14 +232,14 @@ version: 1.0.0
     <em>GitHub Releases</em> cria um <em>changelog</em> não portátil 
     que só pode ser exibido para usuários no contexto do GitHub. 
     É possível fazê-los parecer muito como o formato 
-    <em>Keep a Changelog</em>, mas tende a estar um pouco mais envolvido.
+    <em>Keep a Changelog</em>, mas tende a ser um pouco mais complicado.
 
   %p
-    A versão atual do <em>GitHub Releases</em> não são facilmente
+    A versão atual do <em>GitHub Releases</em> não é facilmente descoberta
     por usuários finais, ao contrário dos arquivos maiúsculos típicos
     (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
-    problema menor é que a interface atualmente não oferece links para
-    confirmar alterações entre cada lançamento.
+    problema de menor magnitude é que a interface atualmente não oferece 
+    links para confirmar alterações entre cada lançamento.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
@@ -268,22 +268,23 @@ version: 1.0.0
 
   %p
     O marcador <code>[REMOVIDO]</code> está em caixa alta por uma razão.
-    É importante que as pessoas o percebam. Uma vez que está entre
-    colchetes é fácil de ser analisado programaticamente.
+    É importante que as pessoas o percebam. Já que está entre
+    colchetes, também fica mais fácil de ser analisado programaticamente.
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
     Você deve reescrever um <em>changelog</em>?
 
   %p
-    Claro. Sempre existe razão para melhorar um <em>changelog</em>. Eu 
-    regularmente solicito uma alteração em projetos de código livre
-    para adicionar <em>changelogs</em> não mantidos.
+    Claro. Sempre existe razão para melhorar um <em>changelog</em>.
+    Eu regularmente solicito alterações em projetos de código livre que 
+    possuem <em>changelogs</em> não mantidos para adicionar lançamentos 
+    que não estão presentes nestes.
 
   %p
     Também é possível que você descubra que você esqueceu de abordar 
     uma mudança abrupta nas notas para uma versão. 
-    Obviamente é importante para você atualizar seu <em>changelog</em> neste caso.
+    Obviamente é importante que você atualize seu <em>changelog</em> neste caso.
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
@@ -295,7 +296,7 @@ version: 1.0.0
     exemplos que eu reuni.
 
   %p
-    Isso é porque eu quero que nossa comunidade chegue a um consenso. 
+    Isso porque o que eu quero é que nossa comunidade chegue a um consenso. 
     Eu acredito que a discussão é tão importante quanto o resultado final.
 
   %p
@@ -304,7 +305,7 @@ version: 1.0.0
 .press
   %h3 Discussões
   %p
-    Eu fui em #{link_to "<em>The Changelog podcast</em>", thechangelog} 
+    Eu fui no #{link_to "<em>The Changelog podcast</em>", thechangelog} 
     para falar sobre por que os mantenedores e contribuidores devem se 
     preocupar com os <em>changelogs</em>, e também sobre as motivações 
     por trás desse projeto.
