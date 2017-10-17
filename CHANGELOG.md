@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Brazilian Portugese translation from @aisamu.
 - Polish translation from @amielucha.
 - Russian translation from @aishek.
+- Czech translation from @h4vry.
 - Slovak translation from @jkostolansky.
 
 ### Changed
