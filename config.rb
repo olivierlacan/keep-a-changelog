@@ -60,6 +60,9 @@ $languages = {
     русский, но вы можете <a href='/en/'>прочитать её на английском</a> и <a
     href='#{issues_url}'>помочь с переводом</a>."
   },
+  "sk"    => {
+    name: "Slovenčina"
+  },
   "sl"    => {
     name: "Slovenščina"
   },
