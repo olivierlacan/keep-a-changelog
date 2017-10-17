@@ -152,13 +152,13 @@ version: 1.0.0
     Ignorando depreciações
 
   %p
-    Quando pessoas atualizam de uma versão para outra, deve ficar muitíssimo claro 
+    Quando pessoas atualizam de uma versão para outra, deve ficar muitíssimo claro
     quando algo vai quebrar. Deve ser possível atualizar para uma versão
     com depreciações listadas, remova o que é obsoleto, depois atualize
     para a versão onde as depreciações se tornam remoções.
 
   %p
-    Se você não fizer mais nada, liste no seu <em>changelog</em> as depreciações, 
+    Se você não fizer mais nada, liste no seu <em>changelog</em> as depreciações,
     remoções e quaisquer mudanças que gerem falhas.
 
   %h4#confusing-dates
@@ -172,7 +172,7 @@ version: 1.0.0
     a ordem da maior para a menor unidade de tempo: ano, mês e dia. Este formato
     também não se confunde de maneira ambígua com outros formatos de data, ao
     contrário de alguns formatos regionais que alteram a posição dos números do mês
-    e dia. Esses motivos, e o fato de ser um formato de data suportado pela 
+    e dia. Esses motivos, e o fato de ser um formato de data suportado pela
     #{link_to "norma ISO", iso} são as razões para ele ser o formato de data
     recomendado para as entradas do <em>changelog</em>.
 
@@ -191,14 +191,14 @@ version: 1.0.0
     Existe um padrão para o formato do <em>changelog</em>?
 
   %p
-    Na verdade não. Existe o guia de estilo de <em>changelog</em> do
-    GNU ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados 
-    ou insuficientes.
+    Na verdade não. Existe o guia de estilo de <em>changelog</em> do GNU
+    ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados ou
+    insuficientes.
 
   %p
-    Este projeto pretende ser
-    = link_to "uma convenção de <em>changelog</em> melhor.", changelog
-    Ele vem de observar e coletar as boas práticas em código aberto da comunidade.
+    Este projeto pretende ser #{link_to "uma convenção de <em>changelog</em> melhor.", changelog}
+    Ele vem de observar e coletar as boas práticas em código aberto da
+    comunidade.
 
   %p
     Críticas saudáveis, discussões e sugestões de melhorias
@@ -214,7 +214,7 @@ version: 1.0.0
 
   %p
     Embora seja fácil pensar que o nome do seu arquivo <em>changelog</em>
-    não importa muito, por que tornar mais difícil para seus usuários 
+    não importa muito, por que tornar mais difícil para seus usuários
     finais encontrarem consistentemente mudanças notáveis?
 
   %h4#github-releases
@@ -222,23 +222,23 @@ version: 1.0.0
     E sobre o <em>GitHub Releases</em>?
 
   %p
-    É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados 
-    para converter simples marcadores do <em>git</em> (por exemplo, um 
-    marcador chamado <code>v1.0.0</code>) em notas de versão ricas, 
-    adicionando manualmente notas de versão ou pode puxar as mensagens 
+    É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados
+    para converter simples marcadores do <em>git</em> (por exemplo, um
+    marcador chamado <code>v1.0.0</code>) em notas de versão ricas,
+    adicionando manualmente notas de versão ou pode puxar as mensagens
     anotadas no marcador do <em>git</em> e transformá-las em notas.
 
   %p
-    <em>GitHub Releases</em> cria um <em>changelog</em> não portátil 
-    que só pode ser exibido para usuários no contexto do GitHub. 
-    É possível fazê-los parecer muito como o formato 
+    <em>GitHub Releases</em> cria um <em>changelog</em> não portátil
+    que só pode ser exibido para usuários no contexto do GitHub.
+    É possível fazê-los parecer muito como o formato
     <em>Keep a Changelog</em>, mas tende a ser um pouco mais complicado.
 
   %p
     A versão atual do <em>GitHub Releases</em> não é facilmente descoberta
     por usuários finais, ao contrário dos arquivos maiúsculos típicos
     (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
-    problema de menor magnitude é que a interface atualmente não oferece 
+    problema de menor magnitude é que a interface atualmente não oferece
     links para confirmar alterações entre cada lançamento.
 
   %h4#automatic
@@ -246,12 +246,12 @@ version: 1.0.0
     Os <em>changelogs</em> podem ser criados automaticamente?
 
   %p
-    É difícil, porque as pessoas seguem formatos e nomes de arquivos 
+    É difícil, porque as pessoas seguem formatos e nomes de arquivos
     totalmente diferentes.
 
   %p
     #{link_to "Vandamme", vandamme} é um <em>gem Ruby</em> criado pelo
-    time #{link_to "Gemnasium", gemnasium} e que analisa muitas 
+    time #{link_to "Gemnasium", gemnasium} e que analisa muitas
     (mas não todas) alterações de projetos de código aberto.
 
   %h4#yanked
@@ -277,13 +277,13 @@ version: 1.0.0
 
   %p
     Claro. Sempre existe razão para melhorar um <em>changelog</em>.
-    Eu regularmente solicito alterações em projetos de código livre que 
-    possuem <em>changelogs</em> não mantidos para adicionar lançamentos 
+    Eu regularmente solicito alterações em projetos de código livre que
+    possuem <em>changelogs</em> não mantidos para adicionar lançamentos
     que não estão presentes nestes.
 
   %p
-    Também é possível que você descubra que você esqueceu de abordar 
-    uma mudança abrupta nas notas para uma versão. 
+    Também é possível que você descubra que você esqueceu de abordar
+    uma mudança abrupta nas notas para uma versão.
     Obviamente é importante que você atualize seu <em>changelog</em> neste caso.
 
   %h4#contribute
@@ -291,12 +291,12 @@ version: 1.0.0
     Como eu posso ajudar?
 
   %p
-    Esse documento não é uma <strong>verdade absoluta</strong>; É minha 
-    opinião cuidadosamente considerada, juntamente com informações e 
+    Esse documento não é uma <strong>verdade absoluta</strong>; É minha
+    opinião cuidadosamente considerada, juntamente com informações e
     exemplos que eu reuni.
 
   %p
-    Isso porque o que eu quero é que nossa comunidade chegue a um consenso. 
+    Isso porque o que eu quero é que nossa comunidade chegue a um consenso.
     Eu acredito que a discussão é tão importante quanto o resultado final.
 
   %p
@@ -305,7 +305,7 @@ version: 1.0.0
 .press
   %h3 Discussões
   %p
-    Eu fui no #{link_to "<em>The Changelog podcast</em>", thechangelog} 
-    para falar sobre por que os mantenedores e contribuidores devem se 
-    preocupar com os <em>changelogs</em>, e também sobre as motivações 
+    Eu fui no #{link_to "<em>The Changelog podcast</em>", thechangelog}
+    para falar sobre por que os mantenedores e contribuidores devem se
+    preocupar com os <em>changelogs</em>, e também sobre as motivações
     por trás desse projeto.
