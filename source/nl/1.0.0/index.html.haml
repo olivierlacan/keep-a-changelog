@@ -221,83 +221,79 @@ version: 1.0.0
     door geannoteerde git tag berichten te gebruiken om release notes te genereren.
 
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    GitHub Releases maken changelog wat alleen getoond kan worden aan gebruikers
+    binnen de context van GitHub. Het is mogelijk om deze dicht bij het format
+    te krijgen wat wij hier promoten, maar er zal iets meer werk voor nodig zijn.
 
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    De huidige versie van GitHub releases is naar mijn mening niet
+    echt goed vindbaar voor gebruikers, in tegenstelling tot de typische
+    bestanden die in een naam in hoofdletters hebben
+    (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
+    Een ander knelpunt is dat de interface geen links toestaat naar
+    commit logs van elke release.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    Kunnen changelogs automatisch geparsed worden?
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    Dat is lasig, mensen gebruiken immers veel verschillende formats en bestandsnamen.
 
   %p
-    #{link_to "Vandamme", vandamme} is a Ruby gem created by the
-    #{link_to "Gemnasium", gemnasium} team and which parses many (but
-    not all) open source project changelogs.
+    #{link_to "Vandamme", vandamme} is een Ruby gem van het
+    #{link_to "Gemnasium", gemnasium} team wat de changelogs van veel (maar niet alle)
+    open source projecten kan parsen.
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    Wat doen we met teruggetrokken (yanked) releases?
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    Teruggetrokken releases zijn versies die teruggetrokken zijn als gevolg
+    van een serieuze bug of beveiligings probleem. Vaak zijn ze niet eens te zien in
+    de changelogs. Dat zou wel moeten. Zo zou je een teruggetrokken release moeten tonen:
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+    De <code>[YANKED]</code> tag is in hoofdletters voor een reden. Het is belanrijk
+    dat mensen dit zien. Omdat het tussen blokhaken genoteerd is, is het ook makkelijker
+    automatisch te parsen.
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    Mag je een changelog aanpassen/herschrijven?
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    Natuurlijk. Er zijn goede redenen om een changelog te verbeteren.
+    Ik open regelmatig een pull request om missende releases toe te
+    voegen aan open source projecten met een slecht onderhouden changelog.
 
   %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
-
+    Het kan ook zo zijn dat je ontdekt dat je een belanrijke aanpassing niet
+    vermeld hebt in je changelog. Het is dan natuurlijk zaak om dit alsnog
+    in je changelog te vermelden.
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    Hoe kan ik bijdragen?
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    Dit document is niet de <strong>waarheid</strong; het is mijn
+    weloverwogen mening, samen met wat informatie en voorbeelden die ik verzameld heb.
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    Dit heb ik gedaan omdat ik wil dat de programmeer gemeenschap een consensus bereikt.
+    Ik denk dat de discussie net zo belanrijk is als het eindresultaat.
 
   %p
-    So please <strong>#{link_to "pitch in", gh}</strong>.
+    Dus <strong>#{link_to "alle hulp is welkom", gh}</strong>.
 
 .press
-  %h3 Conversations
+  %h3 Conversaties
   %p
-    I went on #{link_to "The Changelog podcast", thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    Ik was te gast bij #{link_to "The Changelog podcast", thechangelog} om te praten over
+    waarom een changelog belanrijk zou moeten zijn voor programmeurs, en over mijn motivatie achter dit project.
