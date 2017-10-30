@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$color-ocre".
-        on line 12 of /Users/olivierlacan/Development/oss/keep-a-changelog/source/assets/stylesheets/anchors.sass
+        on line 12 of /Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/anchors.sass
 
 7:   top: 0
 8: 
@@ -15,7 +15,7 @@ Error: Undefined variable: "$color-ocre".
 17:     text-decoration: none
 
 Backtrace:
-/Users/olivierlacan/Development/oss/keep-a-changelog/source/assets/stylesheets/anchors.sass:12
+/Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/anchors.sass:12
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/script/tree/node.rb:58:in `perform'
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -137,25 +137,25 @@ Backtrace:
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor.rb:369:in `dispatch'
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/base.rb:444:in `start'
 /Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-cli-4.1.14/bin/middleman:70:in `<top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/bin/middleman:23:in `load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/bin/middleman:23:in `<top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli/exec.rb:74:in `load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli/exec.rb:74:in `kernel_load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli/exec.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli.rb:362:in `exec'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/vendor/thor/lib/thor.rb:387:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli.rb:22:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/vendor/thor/lib/thor/base.rb:466:in `start'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/cli.rb:13:in `start'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/exe/bundle:30:in `block in <top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/lib/bundler/friendly_errors.rb:121:in `with_friendly_errors'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.15.4/exe/bundle:22:in `<top (required)>'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bin/middleman:23:in `load'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bin/middleman:23:in `<top (required)>'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:74:in `load'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:74:in `kernel_load'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:27:in `run'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:332:in `exec'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor.rb:359:in `dispatch'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:20:in `dispatch'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/base.rb:440:in `start'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:11:in `start'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/exe/bundle:34:in `block in <top (required)>'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/friendly_errors.rb:100:in `with_friendly_errors'
+/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/exe/bundle:26:in `<top (required)>'
 /Users/olivierlacan/.rbenv/versions/2.3.1/bin/bundle:23:in `load'
 /Users/olivierlacan/.rbenv/versions/2.3.1/bin/bundle:23:in `<main>'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-ocre\".\A         on line 12 of /Users/olivierlacan/Development/oss/keep-a-changelog/source/assets/stylesheets/anchors.sass\A \A 7:   top: 0\A 8: \A 9: .anchor::before\A 10:   line-height: 3.2\A 11:   content: \"∞\"\A 12:   color: $color-ocre\A 13:   padding-right: 0.1em\A 14: \A 15: .anchor:hover\A 16:   a\A 17:     text-decoration: none"; }
+  content: "Error: Undefined variable: \"$color-ocre\".\A         on line 12 of /Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/anchors.sass\A \A 7:   top: 0\A 8: \A 9: .anchor::before\A 10:   line-height: 3.2\A 11:   content: \"∞\"\A 12:   color: $color-ocre\A 13:   padding-right: 0.1em\A 14: \A 15: .anchor:hover\A 16:   a\A 17:     text-decoration: none"; }
