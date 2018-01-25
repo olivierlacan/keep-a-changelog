@@ -42,15 +42,15 @@ version: 1.0.0
 
   %p
     Om het makkelijker te maken voor gebruikers en programmeurs om precies te zien welke
-    noemenswaardige aanassingen er gedaan zijn tussen elke release (of versie) van het project.
+    noemenswaardige aanpassingen er gedaan zijn tussen elke release (of versie) van het project.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
     Wie heeft een changelog nodig?
 
   %p
-    Mensen hebben dat nodig. Of het nou consumenten of developers zijn, eindgebruikers van
-    software zijn mensen die er om gevenwat er in de software zit die ze gebruiken.
+    Mensen hebben het nodig. Of het nu consumenten of ontwikkelaars zijn, eindgebruikers van
+    software zijn mensen die er om geven wat er in de software zit die ze gebruiken.
     Als de software veranderd, wil men weten wat en hoe.
 
 .good-practices
@@ -71,7 +71,7 @@ version: 1.0.0
     %li
       Aanpassingen van het zelfde type moeten gegroepeerd worden.
     %li
-      Versies en secties souden linkbaar moeten zijn.
+      Versies en secties zouden linkbaar moeten zijn.
     %li
       De laatste versie staat bovenaan.
     %li
@@ -106,7 +106,7 @@ version: 1.0.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    Hoe kan ik zo min mogelijk moeite stoppen in het bijhouden van een changelog?
+    Hoe kan ik, met zo min mogelijk moeite, een changelog bij houden?
 
   %p
     Houd bovenin een <code>Unreleased</code> sectie bij met aanpassingen voor de komende release.
@@ -115,7 +115,7 @@ version: 1.0.0
 
   %ul
     %li
-      Mensen kunnen zien wat ze kunnen verwachten in aankomende releases.
+      Mensen kunnen zien wat te verwachten in de aankomende release.
     %li
       Als je een release doet kan je eenvoudig de <code>Unreleased</code> sectie
       aanpassen naar een nieuwe release sectie.
@@ -152,7 +152,7 @@ version: 1.0.0
     Wanneer mensen upgraden van de ene naar de andere versie,
     moet het overduidelijk zijn als er iets niet meer zal werken.
     Het moet mogelijk zijn om te upgraden naar een versie met deprications,
-    afhanlekijkheden van de deprications weg te halen, en vervolgens
+    vervolgens de deprications weg te halen, en vervolgens
     de upgrade kunnen doen naar de versie waar de deprications removals zijn geworden.
 
   %p
@@ -185,13 +185,13 @@ version: 1.0.0
     Is er een standaard changelog template?
 
   %p
-    Niet echt. Er is de GNU changelog style guide, en de twee paragrafen GNU NEWS bestand "richtlijnen".
+    Niet echt. Er is de GNU changelog style guide, en het twee paragrafen lange GNU NEWS bestand "richtlijnen".
     Beiden zijn niet volledig genoeg.
 
   %p
     Dit project poogt
     = link_to "een betere changelog standaard", changelog
-    te creëren. Dit op basis van bewezen "good practices" uit de open source wereld.
+    te creëren. Dit op basis van "good practices" uit de open source wereld.
 
   %p
     Opbouwende kritiek, discussie en suggesties voor verbetering
@@ -216,7 +216,7 @@ version: 1.0.0
 
   %p
     Het is een goed initiatief. #{link_to "Releases", ghr} kan gebruikt worden
-    om simpele git tags (bijvoorbeeld een tag met naam  <code>v1.0.0</code>)
+    om simpele git tags (bijvoorbeeld een tag met de naam  <code>v1.0.0</code>)
     te veranderen in uitgebreide release notes door deze handmatig toe te voegen of
     door geannoteerde git tag berichten te gebruiken om release notes te genereren.
 
@@ -258,7 +258,7 @@ version: 1.0.0
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
-    De <code>[YANKED]</code> tag is in hoofdletters voor een reden. Het is belanrijk
+    De <code>[YANKED]</code> tag is in hoofdletters voor een reden. Het is belangrijk
     dat mensen dit zien. Omdat het tussen blokhaken genoteerd is, is het ook makkelijker
     automatisch te parsen.
 
@@ -267,27 +267,27 @@ version: 1.0.0
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
     Mag je een changelog aanpassen/herschrijven?
 
-  %p
-    Natuurlijk. Er zijn goede redenen om een changelog te verbeteren.
-    Ik open regelmatig een pull request om missende releases toe te
-    voegen aan open source projecten met een slecht onderhouden changelog.
+    %p
+      Natuurlijk. Er zijn goede redenen om een changelog te verbeteren.
+      Ik open regelmatig een pull request om missende releases toe te
+      voegen aan open source projecten met een slecht onderhouden changelog.
 
-  %p
-    Het kan ook zo zijn dat je ontdekt dat je een belanrijke aanpassing niet
-    vermeld hebt in je changelog. Het is dan natuurlijk zaak om dit alsnog
-    in je changelog te vermelden.
+    %p
+      Het kan ook zo zijn dat je ontdekt dat je een belanrijke aanpassing niet
+      vermeld hebt in je changelog. Het is dan natuurlijk zaak om dit alsnog
+      in je changelog te vermelden.
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Hoe kan ik bijdragen?
+    %h4#contribute
+      %a.anchor{ href: "#contribute", aria_hidden: "true" }
+      Hoe kan ik bijdragen?
 
-  %p
-    Dit document is niet de <strong>waarheid</strong>; het is mijn
-    weloverwogen mening, samen met wat informatie en voorbeelden die ik verzameld heb.
+    %p
+      Dit document is niet de <strong>waarheid</strong>; het is mijn
+      weloverwogen mening, samen met wat informatie en voorbeelden die ik verzameld heb.
 
-  %p
-    Dit heb ik gedaan omdat ik wil dat de programmeer gemeenschap een consensus bereikt.
-    Ik denk dat de discussie net zo belanrijk is als het eindresultaat.
+    %p
+      Dit heb ik gedaan omdat ik wil dat de programmeer gemeenschap een consensus bereikt.
+      Ik denk dat de discussie net zo belanrijk is als het eindresultaat.
 
   %p
     Dus <strong>#{link_to "alle hulp is welkom", gh}</strong>.
@@ -296,4 +296,4 @@ version: 1.0.0
   %h3 Conversaties
   %p
     Ik was te gast bij #{link_to "The Changelog podcast", thechangelog} om te praten over
-    waarom een changelog belanrijk zou moeten zijn voor programmeurs, en over mijn motivatie achter dit project.
+    waarom een changelog belanrijk is programmeurs, en over mijn motivatie achter dit project.
