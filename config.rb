@@ -39,6 +39,10 @@ $languages = {
     l'instant et <a href='#{issues_url}'>aider à la traduire</a>.",
     new: "Une nouvelle version est disponible"
   },
+  "id-ID" => {
+    name: "Indonesia",
+    new: "Ada versi baru tersedia"
+  },
   "it-IT" => {
     name: "Italiano",
     notice: "L'ultima versione (#{$last_version}) non è ancora disponibile in
