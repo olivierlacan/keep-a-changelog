@@ -49,6 +49,9 @@ $languages = {
     Italiano, ma la potete <a href='/en/'>leggere in Inglese</a> per ora e
     potete <a href='#{issues_url}'>contribuire a tradurla</a>."
   },
+  "nl" => {
+    name: "Nederlands"
+  },
   "pl-PL" => {
     name: "Polskie"
   },
