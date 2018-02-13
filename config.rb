@@ -52,7 +52,7 @@ $languages = {
   "nl" => {
     name: "Nederlands"
   },
-  "pl-PL" => {
+  "pl" => {
     name: "Polskie"
   },
   "pt-BR" => {
