@@ -1,6 +1,6 @@
 ---
-description: Mantenha um <em>Changelog</em>
-title: Mantenha um <em>Changelog</em>
+description: Mantenha um Changelog
+title: Mantenha um Changelog
 language: pt-BR
 version: 1.0.0
 ---
@@ -18,8 +18,8 @@ version: 1.0.0
 
 .header
   .title
-    %h1 Mantenha um <em>Changelog</em>
-    %h2 Não deixe seus amigos despejarem <em>logs</em> de <em>commits</em> no <em>Changelog</em>
+    %h1 Mantenha um Changelog
+    %h2 Não deixe seus amigos despejarem logs de commits no Changelog
 
   = link_to changelog do
     Version
@@ -30,15 +30,15 @@ version: 1.0.0
 .answers
   %h3#what
     %a.anchor{ href: "#what", aria_hidden: "true" }
-    O que é um <em>changelog</em>?
+    O que é um changelog?
 
   %p
-    Um <em>changelog</em> é um arquivo que contém uma lista selecionada, ordenada
+    Um changelog é um arquivo que contém uma lista selecionada, ordenada
     cronologicamente, de mudanças significativas para cada versão de um projeto.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
-    Por que manter um <em>changelog</em>?
+    Por que manter um changelog?
 
   %p
     Para facilitar que usuários e contribuidores vejam precisamente quais
@@ -47,18 +47,18 @@ version: 1.0.0
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
-    Quem precisa de um <em>changelog</em>?
+    Quem precisa de um changelog?
 
   %p
     Pessoas precisam. Seja consumidores ou desenvolvedores,
-    os usuários finais de <em>softwares</em> são seres humanos
-    que se preocupam com o que está no <em>software</em>. Quando
-    o <em>software</em> muda, as pessoas querem saber por que e como.
+    os usuários finais de softwares são seres humanos
+    que se preocupam com o que está no software. Quando
+    o software muda, as pessoas querem saber por que e como.
 
 .good-practices
   %h3#how
     %a.anchor{ href: "#how", aria_hidden: "true" }
-    Como fazer um bom <em>changelog</em>?
+    Como fazer um bom changelog?
 
   %h4#principles
     %a.anchor{ href: "#principles", aria_hidden: "true" }
@@ -66,13 +66,13 @@ version: 1.0.0
 
   %ul
     %li
-      <em>Changelogs</em> são <em>para humanos</em>, não máquinas.
+      Changelogs são <em>para humanos</em>, não máquinas.
     %li
       Deve haver uma entrada para cada versão.
     %li
       Alterações do mesmo tipo devem ser agrupadas.
     %li
-      Versões e seções devem ser vinculáveis (com <em>links</em>).
+      Versões e seções devem ser vinculáveis (com links).
     %li
       A versão mais recente vem em primeiro lugar.
     %li
@@ -107,7 +107,7 @@ version: 1.0.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    Como eu posso minimizar o esforço exigido para manter um <em>changelog<em>?
+    Como eu posso minimizar o esforço exigido para manter um changelog?
 
   %p
     Mantenha sempre uma seção <code>Não publicado</code> no topo para manter o controle das novas mudanças.
@@ -125,7 +125,7 @@ version: 1.0.0
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    Os <em>changelogs<em> podem ser ruins?
+    Os changelogs podem ser ruins?
 
   %p Sim. Aqui estão algumas maneiras pelas quais eles podem ser inúteis.
 
@@ -139,12 +139,12 @@ version: 1.0.0
     estranhos, alterações de documentação, etc.
 
   %p
-    O propósito de um <em>commit</em> é documentar a etapa na evolução do código
-    fonte. Alguns projetos limpam os <em>commits</em>, outros não.
+    O propósito de um commit é documentar a etapa na evolução do código
+    fonte. Alguns projetos limpam os commits, outros não.
 
   %p
-    O propósito de uma entrada de <em>changelog</em> é documentar as diferenças
-    notáveis, muitas vezes de múltiplos <em>commits</em>, para comunicar de forma
+    O propósito de uma entrada de changelog é documentar as diferenças
+    notáveis, muitas vezes de múltiplos commits, para comunicar de forma
     clara os usuários.
 
   %h4#ignoring-deprecations
@@ -158,7 +158,7 @@ version: 1.0.0
     para a versão onde as depreciações se tornam remoções.
 
   %p
-    Se você não fizer mais nada, liste no seu <em>changelog</em> as depreciações,
+    Se você não fizer mais nada, liste no seu changelog as depreciações,
     remoções e quaisquer mudanças que gerem falhas.
 
   %h4#confusing-dates
@@ -174,12 +174,12 @@ version: 1.0.0
     contrário de alguns formatos regionais que alteram a posição dos números do mês
     e dia. Esses motivos, e o fato de ser um formato de data suportado pela
     #{link_to "norma ISO", iso} são as razões para ele ser o formato de data
-    recomendado para as entradas do <em>changelog</em>.
+    recomendado para as entradas do changelog.
 
   %aside
     Tem mais. Me ajude a colecionar essas más práticas
-     = link_to "enviando uma dúvida", issues
-     ou pedindo mudanças.
+    = link_to "enviando uma dúvida", issues
+    ou pedindo mudanças.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
@@ -188,15 +188,15 @@ version: 1.0.0
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Existe um padrão para o formato do <em>changelog</em>?
+    Existe um padrão para o formato do changelog?
 
   %p
-    Na verdade não. Existe o guia de estilo de <em>changelog</em> do GNU
+    Na verdade não. Existe o guia de estilo de changelog do GNU
     ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados ou
     insuficientes.
 
   %p
-    Este projeto pretende ser #{link_to "uma convenção de <em>changelog</em> melhor.", changelog}
+    Este projeto pretende ser #{link_to "uma convenção de changelog melhor.", changelog}
     Ele vem de observar e coletar as boas práticas em código aberto da
     comunidade.
 
@@ -206,36 +206,36 @@ version: 1.0.0
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Qual nome o arquivo <em>changelog</em> deve ter?
+    Qual nome o arquivo changelog deve ter?
 
   %p
     Chame-o <code>CHANGELOG.md</code>. Alguns projetos usam
     <code>HISTORY</code>, <code>NEWS</code> ou <code>RELEASES</code>.
 
   %p
-    Embora seja fácil pensar que o nome do seu arquivo <em>changelog</em>
+    Embora seja fácil pensar que o nome do seu arquivo changelog
     não importa muito, por que tornar mais difícil para seus usuários
     finais encontrarem consistentemente mudanças notáveis?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    E sobre o <em>GitHub Releases</em>?
+    E sobre o GitHub Releases?
 
   %p
     É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados
-    para converter simples marcadores do <em>git</em> (por exemplo, um
+    para converter simples marcadores do git (por exemplo, um
     marcador chamado <code>v1.0.0</code>) em notas de versão ricas,
     adicionando manualmente notas de versão ou pode puxar as mensagens
-    anotadas no marcador do <em>git</em> e transformá-las em notas.
+    anotadas no marcador do git e transformá-las em notas.
 
   %p
-    <em>GitHub Releases</em> cria um <em>changelog</em> não portátil
+    GitHub Releases cria um changelog não portátil
     que só pode ser exibido para usuários no contexto do GitHub.
     É possível fazê-los parecer muito como o formato
-    <em>Keep a Changelog</em>, mas tende a ser um pouco mais complicado.
+    Keep a Changelog, mas tende a ser um pouco mais complicado.
 
   %p
-    A versão atual do <em>GitHub Releases</em> não é facilmente descoberta
+    A versão atual do GitHub Releases não é facilmente descoberta
     por usuários finais, ao contrário dos arquivos maiúsculos típicos
     (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
     problema de menor magnitude é que a interface atualmente não oferece
@@ -243,14 +243,14 @@ version: 1.0.0
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Os <em>changelogs</em> podem ser criados automaticamente?
+    Os changelogs podem ser criados automaticamente?
 
   %p
     É difícil, porque as pessoas seguem formatos e nomes de arquivos
     totalmente diferentes.
 
   %p
-    #{link_to "Vandamme", vandamme} é um <em>gem Ruby</em> criado pelo
+    #{link_to "Vandamme", vandamme} é um gem Ruby criado pelo
     time #{link_to "Gemnasium", gemnasium} e que analisa muitas
     (mas não todas) alterações de projetos de código aberto.
 
@@ -273,18 +273,18 @@ version: 1.0.0
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Você deve reescrever um <em>changelog</em>?
+    Você deve reescrever um changelog?
 
   %p
-    Claro. Sempre existe razão para melhorar um <em>changelog</em>.
+    Claro. Sempre existe razão para melhorar um changelog.
     Eu regularmente solicito alterações em projetos de código livre que
-    possuem <em>changelogs</em> não mantidos para adicionar lançamentos
+    possuem changelogs não mantidos para adicionar lançamentos
     que não estão presentes nestes.
 
   %p
     Também é possível que você descubra que você esqueceu de abordar
     uma mudança abrupta nas notas para uma versão.
-    Obviamente é importante que você atualize seu <em>changelog</em> neste caso.
+    Obviamente é importante que você atualize seu changelog neste caso.
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
@@ -305,7 +305,7 @@ version: 1.0.0
 .press
   %h3 Discussões
   %p
-    Eu fui no #{link_to "<em>The Changelog podcast</em>", thechangelog}
+    Eu fui no #{link_to "The Changelog podcast", thechangelog}
     para falar sobre por que os mantenedores e contribuidores devem se
-    preocupar com os <em>changelogs</em>, e também sobre as motivações
+    preocupar com os changelogs, e também sobre as motivações
     por trás desse projeto.
