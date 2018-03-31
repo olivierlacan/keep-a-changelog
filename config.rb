@@ -89,7 +89,10 @@ $languages = {
   "zh-TW" => {
     name: "正體中文",
     notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到正體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
-  }
+  },
+  "ko" => {
+    name: "한국어"
+  } 
 }
 
 activate :i18n,
