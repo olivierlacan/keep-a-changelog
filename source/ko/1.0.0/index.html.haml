@@ -33,7 +33,7 @@ version: 1.0.0
     Changelog는 무엇인가요?
 
   %p
-    Changelog는 프로젝트의 각 버전에 대해 눈에 띄는 변경사항을 시간 순서대로 정리해둔 파일입니다.
+    Changelog는 프로젝트의 각 버전에 대해 선별된 눈에 띄는 변경사항을 시간 순서대로 정리해둔 파일입니다.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
@@ -61,7 +61,7 @@ version: 1.0.0
 
   %ul
     %li
-      Changelogs는 <em>사람을 위한 것이지</em>, 기계를 위한 것이 아닙니다.
+      Changelogs는 <em>사람을 위한 것입니다.</em> 기계를 위한 것이 아닙니다.
     %li
       모든 단일 버전에 대한 항목이 있어야 합니다.
     %li
@@ -102,25 +102,25 @@ version: 1.0.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    changelog를 유지하는 노력을 어떻게 줄일 수 있나요?
+    changelog를 관리하는 노력을 어떻게 줄일 수 있나요?
 
   %p
-    다가올 변경사항을 추적할 수 있도록 <code>Unreleased</code> 섹션을 가장 위에 관리하세요.
+    <code>Unreleased</code> 섹션을 가장 위에 두어 다가올 변경사항을 추적할 수 있도록 하세요.
 
   %p 이것은 두 가지 용도로 사용됩니다:
 
   %ul
     %li
-      사람들이 다음 릴리즈에서 기대할 수 있는 변경사항을 확인할 수 있습니다.
+      사람들이 다음 릴리즈에서 기대하는 변경사항을 확인할 수 있습니다.
     %li
-      릴리즈 시점에 <code>Unreleased</code> 섹션을 새 릴리즈의 변경사항 섹션으로 이동할 수 있습니다.
+      릴리즈 시점에 <code>Unreleased</code> 섹션의 변경사항을 새 릴리즈 섹션으로 이동할 수 있습니다.
 
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
     changelogs가 안좋게 될 수 있습니까?
 
-  %p 네. 여기에 몇가지 쓸모없게 되는 경우들이 있습니다.
+  %p 네. 여기에 changelog가 쓸모없게 되는 몇가지 경우들이 있습니다.
 
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
@@ -136,17 +136,17 @@ version: 1.0.0
 
   %p
     changelog 기입의 목적은 종종 다수의 커밋 중에서 주목할만한 차이를 
-    최종 사용자와 명확하게 전달하기 위해 문서화하는 것입니다.
+    최종 사용자에게 명확하게 전달하기 위해 문서화하는 것입니다.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     없어질 기능들(Deprecations) 무시하기
 
   %p
-    사람들이 다른 버전으로 업그레이드 할 때, 언제 어떤 것이 고장날지 고통스럽게 분명해야 합니다.
-    앞으로 사라질 기능들이 나열된 버전으로 업그레이드하고,
-    더 이상 사용하지 않는 것을 제거한 뒤 그 사라질 기능들이
-    정말 사라진 버전으로 업데이트 하는 것이 가능해야 합니다.
+    사람들이 다른 버전으로 업그레이드 할 때, 언제 어떤 것이 손상될수있는지(breakable) 고통스럽게 분명해야 합니다.
+    앞으로 사라질 기능들(deprecations)이 나열된 버전으로 업그레이드하고,
+    더 이상 사용하지 않는 것(deprecated)을 제거한 뒤, 그 사라질 기능들이
+    정말 없어진 버전으로 업데이트 하는 것이 가능해야 합니다.
 
   %p
     아무 작업도 수행하지 않는다면, 없어질 기능들, 제거된 것, 모든 급격한 변화를 changelog에 남기십시오.
@@ -157,9 +157,9 @@ version: 1.0.0
     날짜를 혼동하는 것
 
   %p
-    지역 날짜 포맷은 전세계에 걸쳐 다르고 종종 모두에게 직관적인 인간 친화적인 날짜 포맷을 찾기 힘듭니다.
-    <code>2017-07-17</code> 같은 포맷으로 나타낸 날짜의 장점은 
-    큰 단위부터 작은 단위의 순서를 따른다는 것입니다: 연, 월, 일.
+    지역 날짜 포맷은 전세계에 걸쳐 다르고 종종 모두에게 직관적인 인간 친화적 날짜 포맷을 찾기 힘듭니다.
+    <code>2017-07-17</code> 같은 날짜 포맷(연, 월, 일)의 장점은 
+    큰 단위부터 작은 단위의 순서를 따른다는 것입니다.
     월과 일의 위치가 뒤바뀐 어떤 포맷과 다르게, 이 포맷은 다른 날짜 포맷과 모호하게 겹치는 부분이 없습니다.
     이런 이유와 이 포맷이 #{link_to "ISO standard", iso}라는 사실이 
     changelog 기입을 위해 이 날짜 포맷을 추천하는 이유입니다.
@@ -173,14 +173,14 @@ version: 1.0.0
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    자주 하는 질문
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
     changelog의 표준 포맷이 있나요?
 
   %p
-    없습니다. GNU changelog 스타일 가이드나 두 문단길이의 GNU NEWS '가이드라인'이 있습니다.
+    없습니다. GNU changelog 스타일 가이드나 두 문단정도의 GNU NEWS '가이드라인'이 있습니다.
     하지만 둘다 부적절하거나 충분하지 않습니다.
 
   %p
@@ -203,8 +203,8 @@ version: 1.0.0
     <code>HISTORY</code>, <code>NEWS</code> 또는 <code>RELEASES</code>를 사용합니다.
 
   %p
-    changelog 파일의 이름이 무슨 문제가 될거라고 생각하기 쉽겠지만, 
-    왜 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
+    changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만, 
+    왜 굳이 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
@@ -217,7 +217,7 @@ version: 1.0.0
     )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
 
   %p
-    깃허브 릴리즈는 이동 불가능한 깃허브 유저들만 표시되는 changelog를 생성합니다. 
+    깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다. 
     Keep a Changelog 포맷처럼 보이게 만드는 게 가능하지만, 좀 더 복잡해지는 경향이 있습니다.
 
   %p
@@ -230,7 +230,7 @@ version: 1.0.0
     Changelog를 자동으로 파싱할 수 있나요?
 
   %p
-    사람들이 크게 다른 포맷과 파일 이름을 따르기 때문에 어렵습니다.
+    사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
 
   %p
     #{link_to "Vandamme", vandamme}은 #{link_to "Gemnasium", gemnasium} 팀에 의해
@@ -249,7 +249,7 @@ version: 1.0.0
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
-    <code>[YANKED]</code> 태그가 소리가 큰 데에는 이유가 있습니다. 
+    <code>[YANKED]</code> 태그가 요란한 이유가 있습니다. 
     사람들이 알아차리는 것이 중요합니다. 대괄호 안에 있기 때문에 프로그래밍적으로 파싱하기에도 용이합니다.
 
 
