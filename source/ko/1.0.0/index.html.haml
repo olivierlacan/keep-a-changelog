@@ -1,0 +1,287 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: ko
+version: 1.0.0
+---
+
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
+- gemnasium = "https://gemnasium.com/"
+- gh = "https://github.com/olivierlacan/keep-a-changelog"
+- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
+- semver = "http://semver.org/"
+- shields = "http://shields.io/"
+- thechangelog = "http://5by5.tv/changelog/127"
+- vandamme = "https://github.com/tech-angels/vandamme/"
+- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
+
+.header
+  .title
+    %h1 Changelog 관리
+    %h2 동료가 git 로그를 changelogs에 덤프하게 내버려 두지 마세요.
+
+  = link_to changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Changelog는 무엇인가요?
+
+  %p
+    Changelog는 프로젝트의 각 버전에 대해 선별된 눈에 띄는 변경사항을 시간 순서대로 정리해둔 파일입니다.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    왜 changelog를 유지해야 하나요?
+
+  %p
+    사용자와 기여자가 프로젝트의 각 릴리즈(또는 버전)간에 정확히 어떤 주목할만한 변경사항이 있는지 보기 쉽도록 합니다.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    누가 changelog를 필요로 하나요?
+
+  %p
+    사람들이 필요로 합니다. 개발자이든 사용자이든, 소프트웨어의 최종 사용자는 소프트웨어에 무엇이 있는지 관심이 있는 사람입니다.
+    소프트웨어가 변할 때, 사람들은 왜 그리고 어떻게 바뀌었는지 알고 싶어합니다.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    어떻게 좋은 changelog를 만들수 있나요?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    가이드 원칙
+
+  %ul
+    %li
+      Changelogs는 <em>사람을 위한 것입니다.</em> 기계를 위한 것이 아닙니다.
+    %li
+      모든 단일 버전에 대한 항목이 있어야 합니다.
+    %li
+      같은 유형의 변경사항은 모아야 합니다.
+    %li
+      버전과 섹션은 연결할 수 있어야 합니다.
+    %li
+      최신 버전이 처음에 나옵니다.
+    %li
+      각 버전의 릴리즈 날짜를 표시해야 합니다.
+    %li
+      #{link_to "시멘틱 버저닝", semver}를 따르는지 언급해 주세요.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types 변경 유형
+
+  %ul
+    %li
+      %code Added
+      새로운 기능
+    %li
+      %code Changed
+      기존 기능의 변경사항
+    %li
+      %code Deprecated
+      곧 지워질 기능
+    %li
+      %code Removed
+      지금 지워진 기능
+    %li
+      %code Fixed
+      버그 픽스
+    %li
+      %code Security
+      취약점이 있는 경우
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    changelog를 관리하는 노력을 어떻게 줄일 수 있나요?
+
+  %p
+    <code>Unreleased</code> 섹션을 가장 위에 두어 다가올 변경사항을 추적할 수 있도록 하세요.
+
+  %p 이것은 두 가지 용도로 사용됩니다:
+
+  %ul
+    %li
+      사람들이 다음 릴리즈에서 기대하는 변경사항을 확인할 수 있습니다.
+    %li
+      릴리즈 시점에 <code>Unreleased</code> 섹션의 변경사항을 새 릴리즈 섹션으로 이동할 수 있습니다.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    changelogs가 안좋게 될 수 있습니까?
+
+  %p 네. 여기에 changelog가 쓸모없게 되는 몇가지 경우들이 있습니다.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    커밋 로그 차이(Commit log diffs)
+
+  %p
+    커밋 로그 차이를 changelog로 사용하는 것은 안좋은 생각입니다: 
+    머지 커밋, 모호한 타이틀을 가진 커밋, 문서 변경 등 노이즈로 가득차 있습니다.
+
+  %p
+    커밋의 목적은 소스 코드 진화의 단계를 기록하기 위함입니다.
+    어떤 프로젝트는 커밋을 정리하지만, 어떤 프로젝트는 하지 않습니다.
+
+  %p
+    changelog 기입의 목적은 종종 다수의 커밋 중에서 주목할만한 차이를 
+    최종 사용자에게 명확하게 전달하기 위해 문서화하는 것입니다.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    없어질 기능들(Deprecations) 무시하기
+
+  %p
+    사람들이 다른 버전으로 업그레이드 할 때, 언제 어떤 것이 손상될수있는지(breakable) 고통스럽게 분명해야 합니다.
+    앞으로 사라질 기능들(deprecations)이 나열된 버전으로 업그레이드하고,
+    더 이상 사용하지 않는 것(deprecated)을 제거한 뒤, 그 사라질 기능들이
+    정말 없어진 버전으로 업데이트 하는 것이 가능해야 합니다.
+
+  %p
+    아무 작업도 수행하지 않는다면, 없어질 기능들, 제거된 것, 모든 급격한 변화를 changelog에 남기십시오.
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    날짜를 혼동하는 것
+
+  %p
+    지역 날짜 포맷은 전세계에 걸쳐 다르고 종종 모두에게 직관적인 인간 친화적 날짜 포맷을 찾기 힘듭니다.
+    <code>2017-07-17</code> 같은 날짜 포맷(연, 월, 일)의 장점은 
+    큰 단위부터 작은 단위의 순서를 따른다는 것입니다.
+    월과 일의 위치가 뒤바뀐 어떤 포맷과 다르게, 이 포맷은 다른 날짜 포맷과 모호하게 겹치는 부분이 없습니다.
+    이런 이유와 이 포맷이 #{link_to "ISO standard", iso}라는 사실이 
+    changelog 기입을 위해 이 날짜 포맷을 추천하는 이유입니다.
+
+  %aside
+    안티패턴은 더 있습니다.
+    = link_to "이슈 오픈하기", issues
+    나 pull 요청을 통해
+    안티패턴들을 모으는 것을 도와주세요.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    자주 하는 질문
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    changelog의 표준 포맷이 있나요?
+
+  %p
+    없습니다. GNU changelog 스타일 가이드나 두 문단정도의 GNU NEWS '가이드라인'이 있습니다.
+    하지만 둘다 부적절하거나 충분하지 않습니다.
+
+  %p
+    이 프로젝트의 목표는
+    = link_to "더 나은 changelog 규칙", changelog
+    입니다.
+    이것은 오픈소스 커뮤니티에서 좋은 용례를 관찰하고 모으는데서 나옵니다.
+
+  %p
+    건강한 비판, 토론 및 개선 제안은
+    = link_to "환영합니다.", issues
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    changelog 파일의 이름을 무엇으로 지어야 하나요?
+
+  %p
+    <code>CHANGELOG.md</code>라고 만드세요. 어떤 프로젝트는
+    <code>HISTORY</code>, <code>NEWS</code> 또는 <code>RELEASES</code>를 사용합니다.
+
+  %p
+    changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만, 
+    왜 굳이 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    깃허브 릴리즈는 어떻게 하나요?
+
+  %p
+    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는 
+    직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔 
+    간단한 깃 태그(예를 들어 <code>v1.0.0</code> 태그
+    )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
+
+  %p
+    깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다. 
+    Keep a Changelog 포맷처럼 보이게 만드는 게 가능하지만, 좀 더 복잡해지는 경향이 있습니다.
+
+  %p
+    전형적인 대문자 파일들과 달리(<code>README</code>, <code>CONTRIBUTING</code>, 등), 
+    깃허브 릴리즈의 현재 버전은 최종 사용자가 거의 찾아볼 수 없습니다.
+    다른 사소한 이슈는 인터페이스가 현재 각 릴리즈 사이에 로그를 커밋할 수 있는 링크를 제공하지 않는 것입니다.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Changelog를 자동으로 파싱할 수 있나요?
+
+  %p
+    사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
+
+  %p
+    #{link_to "Vandamme", vandamme}은 #{link_to "Gemnasium", gemnasium} 팀에 의해
+    생성된 루비잼이고 많은(전부는 아니고) 오픈소스 프로젝트의 changelog를 파싱합니다.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    삭제된 릴리즈(Yanked release)는 어떻게 하나요?
+
+  %p
+    삭제된(Yanked) 릴리즈는 심각한 버그나 보안 이슈 때문에 소스에서 들어내버린 버전을 말합니다. 
+    대게 이런 버전은 changelog에 아예 나오지도 않지만, 나와야 합니다. 이것이 삭제된 릴리즈를 
+    표시하는 방법입니다:
+
+  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+
+  %p
+    <code>[YANKED]</code> 태그가 요란한 이유가 있습니다. 
+    사람들이 알아차리는 것이 중요합니다. 대괄호 안에 있기 때문에 프로그래밍적으로 파싱하기에도 용이합니다.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    changelog를 다시 써야하나요?
+
+  %p
+    물론입니다. changelog를 개선할 좋은 이유는 항상 있습니다. 저는 정기적으로
+    changelog가 관리되지 않는 오픈소스에 빠진 릴리즈를 추가하기 위해 pull request를 오픈합니다.
+
+  %p
+    어떤 버전의 급격한 변화에 대해 언급하는 것을 잊은 것을 발견할 수도 있습니다.
+    이 경우엔 changelog를 업데이트하는 것이 당연히 중요합니다.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    어떻게 기여할 수 있나요?
+
+  %p
+    이 문서가 <strong>진리</strong>는 아닙니다. 이것은 제가 모은 정보와 예제들과 함께
+    신중하게 고려한 의견입니다.
+
+  %p
+    왜냐하면 우리 커뮤니티가 공감대를 형성하기를 원하기 때문입니다. 저는 최종결과 못지않게 토론도 중요하다고 생각합니다.
+
+  %p
+    그러니 <strong>#{link_to "참여", gh}</strong>를 부탁합니다.
+
+.press
+  %h3 대화
+  %p
+    왜 관리자와 기여자가 changelog를 신경써야하는지, 또한 이 프로젝트를 하게된 동기에 대해 이야기하기 위해
+    #{link_to "The Changelog 팟캐스트", thechangelog}에 다녀왔습니다.
