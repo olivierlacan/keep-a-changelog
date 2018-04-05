@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Russian translation from @aishek.
 - Czech translation from @h4vry.
 - Slovak translation from @jkostolansky.
+- Korean translation from @pierceh89.
 
 ### Changed
 - Start using "changelog" over "change log" since it's the common usage.
