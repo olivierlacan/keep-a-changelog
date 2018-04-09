@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.0] - 2017-06-20
 ### Added
-- New visual identity by @tylerfortune8.
+- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
 - Version navigation.
 - Links to latest released version in previous versions.
 - "Why keep a changelog?" section.
@@ -16,18 +16,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - "How do I make a changelog?" section.
 - "Frequently Asked Questions" section.
 - New "Guiding Principles" sub-section to "How do I make a changelog?".
-- Simplified and Traditional Chinese translations from @tianshuo.
-- German translation from @mpbzh & @Art4.
-- Italian translation from @azkidenz.
-- Swedish translation from @magol.
-- Turkish translation from @karalamalar.
-- French translation from @zapashcanon.
-- Brazilian Portugese translation from @aisamu.
-- Polish translation from @amielucha.
-- Russian translation from @aishek.
-- Czech translation from @h4vry.
-- Slovak translation from @jkostolansky.
-- Korean translation from @pierceh89.
+- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).
+- German translation from [@mpbzh](https://github.com/mpbzh) & [@Art4](https://github.com/Art4).
+- Italian translation from [@azkidenz](https://github.com/azkidenz).
+- Swedish translation from [@magol](https://github.com/magol).
+- Turkish translation from [@karalamalar](https://github.com/karalamalar).
+- French translation from [@zapashcanon](https://github.com/zapashcanon).
+- Brazilian Portugese translation from [@aisamu](https://github.com/aisamu).
+- Polish translation from [@amielucha](https://github.com/amielucha).
+- Russian translation from [@aishek](https://github.com/aishek).
+- Czech translation from [@h4vry](https://github.com/h4vry).
+- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
+- Korean translation from [@pierceh89](https://github.com/pierceh89).
 
 ### Changed
 - Start using "changelog" over "change log" since it's the common usage.
@@ -53,9 +53,9 @@ translation authors keep things up-to-date.
 
 ## [0.3.0] - 2015-12-03
 ### Added
-- RU translation from @aishek.
-- pt-BR translation from @tallesl.
-- es-ES translation from @ZeliosAriex.
+- RU translation from [@aishek](https://github.com/aishek).
+- pt-BR translation from [@tallesl](https://github.com/tallesl).
+- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).
 
 ## [0.2.0] - 2015-10-06
 ### Changed
