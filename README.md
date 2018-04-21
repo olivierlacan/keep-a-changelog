@@ -4,7 +4,7 @@
 
 Don’t let your friends dump git logs into changelogs™
 
-This repository generates http://keepachangelog.com/.
+This repository generates https://keepachangelog.com/.
 
 ## Development
 ### Dependencies
