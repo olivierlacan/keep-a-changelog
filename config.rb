@@ -101,7 +101,7 @@ activate :i18n,
 
 set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
-set :site_url, 'http://keepachangelog.com'
+set :site_url, 'https://keepachangelog.com'
 
 redirect "index.html", to: "en/#{$last_version}/index.html"
 
