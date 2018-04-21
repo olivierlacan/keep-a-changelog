@@ -39,6 +39,10 @@ few native speakers of the language you're translating to in the Pull Request
 comments. They'll help review your translation for simple mistakes and give us
 a better idea of whether your translation is accurate.
 
+## Contribute
+
+Please do contribute! Issues and pull requests are welcome.
+
 Thank you for your help improving software one changelog at a time!
 
 [CHANGELOG]: ./CHANGELOG.md
