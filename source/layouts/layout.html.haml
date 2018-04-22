@@ -36,7 +36,7 @@
       = stylesheet_link_tag 'application'
     - else
       = stylesheet_link_tag 'legacy'
-    = javascript_include_tag 'all'
+    = javascript_include_tag 'all', defer: true
 
   %body
     %article

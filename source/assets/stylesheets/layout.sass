@@ -2,26 +2,28 @@ $break-small: em(480px)
 $break-medium: em(800px)
 $break-large: em(1024px)
 
+body
+  margin: 0
+
 article
   margin: 0 auto
-  width: 65em
+  max-width: 65em
 
 .main
   background-color: $color-white
-  margin-bottom: 2em
 
   div
-    padding-left: 20%
-    padding-right: 20%
+    padding-left: 5%
+    padding-right: 5%
     padding-bottom: 3em
 
     aside
       background-color: lighten(desaturate($color-bark, 5%), 10%)
       margin-bottom: -3em
-      margin-left: -35%
-      margin-right: -35%
+      margin-left: -5%
+      margin-right: -5%
       margin-top: 3em
-      padding: 2em 20%
+      padding: 2em 5%
       text-align: center
 
     aside &
@@ -41,3 +43,19 @@ article ul
   line-height: 1.5
   list-style-type: square
   padding-left: 1em
+
+@media (min-width: 1077px)
+  body
+    margin: 8px
+
+  .main
+    margin-bottom: 2em
+
+    div
+      padding-left: 20%
+      padding-right: 20%
+
+      aside
+        margin-left: -35%
+        margin-right: -35%
+        padding: 2em 20%

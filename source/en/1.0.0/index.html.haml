@@ -9,12 +9,14 @@ version: 1.0.0
 - gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "http://semver.org/"
-- shields = "http://shields.io/"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
 - thechangelog = "http://5by5.tv/changelog/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
 
 .header
   .title
@@ -75,7 +77,7 @@ version: 1.0.0
     %li
       The latest version comes first.
     %li
-      The release date of each versions is displayed.
+      The release date of each version is displayed.
     %li
       Mention whether you follow #{link_to "Semantic Versioning", semver}.
 
@@ -175,7 +177,7 @@ version: 1.0.0
     overlap in ambiguous ways with other date formats, unlike some
     regional formats that switch the position of month and day numbers.
     These reasons, and the fact this date format is an
-    #{link_to "ISO standard", iso} are why it is the recommended date
+    #{link_to "ISO standard", iso}, are why it is the recommended date
     format for changelog entries.
 
   %aside
@@ -193,9 +195,9 @@ version: 1.0.0
     Is there a standard changelog format?
 
   %p
-    Not really. There's the GNU changelog style guide, or the two-
-    paragraph-long GNU NEWS file "guideline". Both are inadequate or
-    insufficient.
+    Not really. There's the #{link_to "GNU changelog style guide", 
+    gnustyle}, or the #{link_to "two-paragraph-long GNU NEWS file", gnunews}
+    "guideline". Both are inadequate or insufficient.
 
   %p
     This project aims to be

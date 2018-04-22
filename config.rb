@@ -39,14 +39,21 @@ $languages = {
     l'instant et <a href='#{issues_url}'>aider à la traduire</a>.",
     new: "Une nouvelle version est disponible"
   },
+  "id-ID" => {
+    name: "Indonesia",
+    new: "Ada versi baru tersedia"
+  },
   "it-IT" => {
     name: "Italiano",
     notice: "L'ultima versione (#{$last_version}) non è ancora disponibile in
     Italiano, ma la potete <a href='/en/'>leggere in Inglese</a> per ora e
     potete <a href='#{issues_url}'>contribuire a tradurla</a>."
   },
-  "pl-PL" => {
-    name: "Polskie"
+  "nl" => {
+    name: "Nederlands"
+  },
+  "pl" => {
+    name: "polski"
   },
   "pt-BR" => {
     name: "Português do Brasil",
@@ -59,6 +66,9 @@ $languages = {
     notice: "Самая последняя версия (#{$last_version}) ещё пока не переведена на
     русский, но вы можете <a href='/en/'>прочитать её на английском</a> и <a
     href='#{issues_url}'>помочь с переводом</a>."
+  },
+  "sk"    => {
+    name: "Slovenčina"
   },
   "sl"    => {
     name: "Slovenščina"
@@ -77,9 +87,12 @@ $languages = {
     notice: "最新版 (#{$last_version}) 暂时还没有翻译到简体中文，您可以阅读最新的英语版，并且帮助翻译，不胜感激。"
   },
   "zh-TW" => {
-    name: "繁體中文",
-    notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到繁體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
-  }
+    name: "正體中文",
+    notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到正體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
+  },
+  "ko" => {
+    name: "한국어"
+  } 
 }
 
 activate :i18n,
@@ -88,7 +101,7 @@ activate :i18n,
 
 set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
-set :site_url, 'http://keepachangelog.com'
+set :site_url, 'https://keepachangelog.com'
 
 redirect "index.html", to: "en/#{$last_version}/index.html"
 
