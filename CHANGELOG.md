@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Swedish translation from @magol.
 - Turkish translation from @karalamalar.
 - French translation from @zapashcanon.
-- Brazilian Portugese translation from @aisamu.
+- Brazilian Portuguese translation from @aisamu.
 - Polish translation from @amielucha.
 - Russian translation from @aishek.
 - Czech translation from @h4vry.
@@ -41,7 +41,7 @@ translation authors keep things up-to-date.
 - Merge "Why can’t people just use a git log diff?" with "Commit log
   diffs"
 - Fix typos in Simplified Chinese and Traditional Chinese translations.
-- Fix typos in Brazilian Portugese translation.
+- Fix typos in Brazilian Portuguese translation.
 - Fix typos in Turkish translation.
 - Fix typos in Czech translation.
 - Fix typos in Swedish translation.
