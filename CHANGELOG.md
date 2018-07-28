@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Swedish translation from @magol.
 - Turkish translation from @karalamalar.
 - French translation from @zapashcanon.
-- Brazilian Portuguese translation from @aisamu.
+- Brazilian Portugese translation from @Webysther.
 - Polish translation from @amielucha.
 - Russian translation from @aishek.
 - Czech translation from @h4vry.
