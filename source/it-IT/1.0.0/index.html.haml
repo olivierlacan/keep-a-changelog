@@ -9,8 +9,8 @@ version: 1.0.0
 - gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "http://semver.org/"
-- shields = "http://shields.io/"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
 - thechangelog = "http://5by5.tv/changelog/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
@@ -50,7 +50,7 @@ version: 1.0.0
 
   %p
     Le persone ne hanno bisogno. Che si tratti di consumatori o di sviluppatori, gli utenti finali
-    del software sono persone interessate a ciò che avviene in esso.
+    sono persone interessate a ciò che avviene in esso.
     Se il software è cambiato, allora le persone vogliono sapere come e perché.
 
 .good-practices
@@ -64,11 +64,11 @@ version: 1.0.0
 
   %ul
     %li
-      I Changelogs sono <em>per le persone</em>, non per le macchine.
+      I changelog sono <em>per le persone</em>, non per le macchine.
     %li
-      Dovrebbe essere una voce per ogni singola versione.
+      Dovrebbe esserci una voce per ogni singola versione.
     %li
-      Gli stessi tipi di modifiche dovrebbero essere raggruppati.
+      Le modifiche dello stesso tipo dovrebbero essere raggruppate.
     %li
       Versioni e sezioni dovrebbero essere collegabili.
     %li
@@ -93,7 +93,7 @@ version: 1.0.0
       per le funzionalità che saranno rimosse nelle future release.
     %li
       %code Removed
-      per funzionalità deprecate rimosse in questa release.
+      per funzionalità rimosse in questa release.
     %li
       %code Fixed
       per tutti i bug fix.
@@ -133,7 +133,7 @@ version: 1.0.0
 
   %p
     Usare i commit log diffs al posto dei changelog è una brutta idea: contengono solo cose superflue.
-    Come come i merge commits, i commits con titoli oscuri,
+    Cose come i merge commits, i commits con titoli oscuri,
     le modifiche della documentazione, etc.
 
   %p
@@ -146,13 +146,13 @@ version: 1.0.0
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignorare le Deprecazioni
+    Ignorare le deprecazioni
   %p
     Quando le persone aggiornano da una versione ad un'altra,
     dovrebbe essere dolorosamente chiaro che qualcosa si romperà.
     Dovrebbe essere possibile eseguire l'aggiornamento a una versione
-    che elenca le deprecazioni, rimuove ciò che è deprecato, quindi
-    aggiorna alla versione in cui le deprecazioni diventano rimozioni.
+    che elenca le deprecazioni, rimuovere ciò che è deprecato, quindi
+    aggiornare alla versione in cui le deprecazioni diventano rimozioni.
   %p
     Se non fai nient'altro elenca le deprecazioni, le rimozioni e
     qualsiasi altro cambiamento nel tuo changelog.
@@ -210,8 +210,8 @@ version: 1.0.0
     <code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
 
   %p
-    Mentre è facile pensare che il nome del tuo file changelog
-    non sia poi così importante, perchè non rendere facile la
+    Risulta facile pensare che il nome del tuo file changelog
+    non sia poi così importante, allora perchè non rendere facile la
     vita ai tuoi utenti, usando sempre lo stesso nome?
 
   %h4#github-releases
@@ -305,6 +305,6 @@ version: 1.0.0
 .press
   %h3 Dialogo
   %p
-    Sono andato su #{link_to "The Changelog podcast", thechangelog}
+    Sono andato a #{link_to "The Changelog podcast", thechangelog}
     per parlare del perché i gestori e i contributori dovrebbero preoccuparsi dei changelog
     e anche delle motivazioni dietro questo progetto.
