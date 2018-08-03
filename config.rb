@@ -5,7 +5,7 @@
 # ----- Site ----- #
 # Last version should be the latest English version since the manifesto is first
 # written in English, then translated into other languages later.
-$versions = (Dir.entries("source/en") - %w[. ..])
+$versions = (Dir.entries("source/en").sort - %w[. ..])
 $last_version = $versions.last
 $previous_version = $versions[$versions.index($last_version) - 1]
 
@@ -107,7 +107,7 @@ redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
   code = language.first
-  versions = Dir.entries("source/#{code}") - %w[. ..]
+  versions = Dir.entries("source/#{code}").sort - %w[. ..]
   redirect "#{code}/index.html", to: "#{code}/#{versions.last}/index.html"
 end
 
