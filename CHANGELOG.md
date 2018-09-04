@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Czech translation from [@h4vry](https://github.com/h4vry).
 - Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
 - Korean translation from [@pierceh89](https://github.com/pierceh89).
+- Croatian translation from [@porx](https://github.com/porx).
 
 ### Changed
 - Start using "changelog" over "change log" since it's the common usage.
