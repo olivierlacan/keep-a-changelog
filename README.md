@@ -1,6 +1,6 @@
 # <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/1L1w0v431V0d1K410f3Y/keepAChangelog-logo-dark.svg" height=150 alt="Keep a Changelog" />
 
-[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
+[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] [![release notes][release-notes-badge]][release-notes]
 
 Don’t let your friends dump git logs into changelogs™
 
@@ -52,5 +52,7 @@ Thank you for your help improving software one changelog at a time!
 [source]: source/
 [pull-request]: https://help.github.com/articles/creating-a-pull-request/
 [fork]: https://help.github.com/articles/fork-a-repo/
+[release-notes]: https://release-notes.com/@open-source-community/olivierlacan-keep-a-changelog
 [version-badge]: https://img.shields.io/badge/version-1.0.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[release-notes-badge]: https://release-notes.com/badges/v2.svg
