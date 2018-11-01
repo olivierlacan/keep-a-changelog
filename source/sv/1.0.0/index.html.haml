@@ -15,6 +15,8 @@ version: 1.0.0
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
 
 .header
   .title
@@ -173,7 +175,7 @@ version: 1.0.0
     på ett tvetydligt sätt med andra datumformat, till skillnad från
     lokala format som kan växla positionen på månad och dag.
     Dessa anledningar tillsammans med det faktum att detta datumformat är en
-    #{link_to "ISO-standard", iso} gör att detta är rekommenderat
+    #{link_to "ISO-standard", iso}, gör att detta är rekommenderat
     format för ändringsloggar.
 
   %aside
@@ -191,9 +193,9 @@ version: 1.0.0
     Finns det ett standardformat på ändringsloggar?
 
   %p
-    Inte riktigt. GNU:s stilguide för ändringsloggar och den två stycke
-    långa GNU NEWS-filen med riktlinjer finns. Båda är bristfälliga och
-    otillräckliga.
+    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", gnustyle} och 
+    den #{link_to "två stycke långa GNU NEWS-filen", gnunews} med "riktlinjer" finns. 
+    Båda är bristfälliga och otillräckliga.
 
   %p
     Detta projekt har som mål att bli
