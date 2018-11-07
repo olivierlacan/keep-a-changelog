@@ -6,7 +6,6 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
 - semver = "https://semver.org/"
@@ -121,9 +120,9 @@ version: 1.0.0
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
     有很糟糕的更新日志吗？
-    
+
   %p 当然有，下面就是一些糟糕的方式。
-  
+
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
     使用git日志
@@ -138,19 +137,19 @@ version: 1.0.0
 
   %p
     更新日志的目的则是记录重要的变更以供最终受众阅读，而记录范围通常涵盖多次提交。
-    
+
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     无视即将弃用功能
-    
+
   %p
     当从一个版本升级至另一个时，人们应清楚（尽管痛苦）的知道哪些部分将出现问题。
     应该允许先升级至一个列出哪些功能将会被弃用的版本，待去掉那些不再支持的部分后，
     再升级至把那些弃用功能真正移除的版本。
-    
+
   %p
     即使其他什么都不做，也要在更新日志中列出derecations，removals以及其他重大变动。
-    
+
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
     易混淆的日期格式
@@ -170,7 +169,7 @@ version: 1.0.0
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     常见问题
-    
+
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
     是否有一个标准化的更新日志格式？
@@ -204,7 +203,7 @@ version: 1.0.0
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
     对于GitHub发布呢？
-    
+
   %p
     这是个非常好的倡议。#{link_to "Releases", ghr}可通过手动添加发布日志或将带
     有注释的git标签信息抓取后转换的方式，将简单的git标签（如一个叫<code>v1.0.0</code>的标签）
@@ -215,7 +214,7 @@ version: 1.0.0
     多时间，但将之处理成更新日志格式是完全可能的。
 
   %p
-    现行版本的GitHub发布不像哪些典型的大写文件(<code>README</code>, 
+    现行版本的GitHub发布不像哪些典型的大写文件(<code>README</code>,
     <code>CONTRIBUTING</code>, etc.)，仍可以认为是不利于最终用户探索的。
     另一个小问题则是界面并不提供不同版本间commit日志的链接。
 
@@ -225,18 +224,18 @@ version: 1.0.0
 
   %p
     非常困难，因为有各种不同的文件格式和命名。
-    
+
 
   %p
     #{link_to "Vandamme", vandamme} 是一个Ruby程序，由
-    #{link_to "Gemnasium", gemnasium} 团队制作，可以解析多种
+    Gemnasium 团队制作，可以解析多种
     （但绝对不是全部）开源库的更新日志。
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
     那些后来撤下的版本怎么办？
-    
+
   %p
     因为各种安全/重大bug原因被撤下的版本被标记'YANKED'。
     这些版本一般不出现在更新日志里，但建议他们出现。

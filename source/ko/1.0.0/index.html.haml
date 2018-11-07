@@ -6,7 +6,6 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
 - semver = "https://semver.org/"
@@ -127,7 +126,7 @@ version: 1.0.0
     커밋 로그 차이(Commit log diffs)
 
   %p
-    커밋 로그 차이를 changelog로 사용하는 것은 안좋은 생각입니다: 
+    커밋 로그 차이를 changelog로 사용하는 것은 안좋은 생각입니다:
     머지 커밋, 모호한 타이틀을 가진 커밋, 문서 변경 등 노이즈로 가득차 있습니다.
 
   %p
@@ -135,7 +134,7 @@ version: 1.0.0
     어떤 프로젝트는 커밋을 정리하지만, 어떤 프로젝트는 하지 않습니다.
 
   %p
-    changelog 기입의 목적은 종종 다수의 커밋 중에서 주목할만한 차이를 
+    changelog 기입의 목적은 종종 다수의 커밋 중에서 주목할만한 차이를
     최종 사용자에게 명확하게 전달하기 위해 문서화하는 것입니다.
 
   %h4#ignoring-deprecations
@@ -158,10 +157,10 @@ version: 1.0.0
 
   %p
     지역 날짜 포맷은 전세계에 걸쳐 다르고 종종 모두에게 직관적인 인간 친화적 날짜 포맷을 찾기 힘듭니다.
-    <code>2017-07-17</code> 같은 날짜 포맷(연, 월, 일)의 장점은 
+    <code>2017-07-17</code> 같은 날짜 포맷(연, 월, 일)의 장점은
     큰 단위부터 작은 단위의 순서를 따른다는 것입니다.
     월과 일의 위치가 뒤바뀐 어떤 포맷과 다르게, 이 포맷은 다른 날짜 포맷과 모호하게 겹치는 부분이 없습니다.
-    이런 이유와 이 포맷이 #{link_to "ISO standard", iso}라는 사실이 
+    이런 이유와 이 포맷이 #{link_to "ISO standard", iso}라는 사실이
     changelog 기입을 위해 이 날짜 포맷을 추천하는 이유입니다.
 
   %aside
@@ -203,7 +202,7 @@ version: 1.0.0
     <code>HISTORY</code>, <code>NEWS</code> 또는 <code>RELEASES</code>를 사용합니다.
 
   %p
-    changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만, 
+    changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만,
     왜 굳이 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
 
   %h4#github-releases
@@ -211,17 +210,17 @@ version: 1.0.0
     깃허브 릴리즈는 어떻게 하나요?
 
   %p
-    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는 
-    직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔 
+    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는
+    직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔
     간단한 깃 태그(예를 들어 <code>v1.0.0</code> 태그
     )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
 
   %p
-    깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다. 
+    깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다.
     Keep a Changelog 포맷처럼 보이게 만드는 게 가능하지만, 좀 더 복잡해지는 경향이 있습니다.
 
   %p
-    전형적인 대문자 파일들과 달리(<code>README</code>, <code>CONTRIBUTING</code>, 등), 
+    전형적인 대문자 파일들과 달리(<code>README</code>, <code>CONTRIBUTING</code>, 등),
     깃허브 릴리즈의 현재 버전은 최종 사용자가 거의 찾아볼 수 없습니다.
     다른 사소한 이슈는 인터페이스가 현재 각 릴리즈 사이에 로그를 커밋할 수 있는 링크를 제공하지 않는 것입니다.
 
@@ -233,7 +232,7 @@ version: 1.0.0
     사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
 
   %p
-    #{link_to "Vandamme", vandamme}은 #{link_to "Gemnasium", gemnasium} 팀에 의해
+    #{link_to "Vandamme", vandamme}은 Gemnasium 팀에 의해
     생성된 루비잼이고 많은(전부는 아니고) 오픈소스 프로젝트의 changelog를 파싱합니다.
 
 
@@ -242,14 +241,14 @@ version: 1.0.0
     삭제된 릴리즈(Yanked release)는 어떻게 하나요?
 
   %p
-    삭제된(Yanked) 릴리즈는 심각한 버그나 보안 이슈 때문에 소스에서 들어내버린 버전을 말합니다. 
-    대게 이런 버전은 changelog에 아예 나오지도 않지만, 나와야 합니다. 이것이 삭제된 릴리즈를 
+    삭제된(Yanked) 릴리즈는 심각한 버그나 보안 이슈 때문에 소스에서 들어내버린 버전을 말합니다.
+    대게 이런 버전은 changelog에 아예 나오지도 않지만, 나와야 합니다. 이것이 삭제된 릴리즈를
     표시하는 방법입니다:
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
-    <code>[YANKED]</code> 태그가 요란한 이유가 있습니다. 
+    <code>[YANKED]</code> 태그가 요란한 이유가 있습니다.
     사람들이 알아차리는 것이 중요합니다. 대괄호 안에 있기 때문에 프로그래밍적으로 파싱하기에도 용이합니다.
 
 

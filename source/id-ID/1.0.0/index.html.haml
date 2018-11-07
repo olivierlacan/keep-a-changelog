@@ -6,7 +6,6 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
 - semver = "https://semver.org/"
@@ -34,15 +33,15 @@ version: 1.0.0
     %a.anchor{ href: "#what", aria_hidden: "true" }
     Apa itu changelog?
 
-  %p    
+  %p
     Changelog adalah sebuah file yang berisi daftar perubahan yang
     diurutkan secara kronologis untuk setiap versi dari sebuah project.
 
   %h3#why
-    %a.anchor{ href: "#why", aria_hidden: "true" }    
+    %a.anchor{ href: "#why", aria_hidden: "true" }
     Kenapa perlu untuk mencatat changelog?
 
-  %p    
+  %p
     Supaya pengguna dan kontributor lebih mudah melihat perubahan
     apa saja yang terjadi di setiap rilis (atau versi) dari sebuah project.
 
@@ -50,10 +49,10 @@ version: 1.0.0
     %a.anchor{ href: "#who", aria_hidden: "true" }
     Siapa yang butuh changelog?
 
-  %p    
+  %p
     Semua orang membutuhkannya. Baik pengguna ataupun pengembang, setiap
     orang yang menggunakan perangkat lunak adalah manusia yang peduli dengan
-    apa yang ada di perangkat lunak tersebut. Mereka ingin tahu apa 
+    apa yang ada di perangkat lunak tersebut. Mereka ingin tahu apa
     dan kenapa terjadi perubahan.
 
 .good-practices
@@ -68,11 +67,11 @@ version: 1.0.0
   %ul
     %li
       Changelog ditulis untuk <em>manusia</em>, bukan mesin.
-    %li      
+    %li
       Harus ada catatan untuk setiap versi.
     %li
       Setiap tipe perubahan yang sama harus dikelompokkan.
-    %li      
+    %li
       Versi dan seksi harus ditulis dalam bentuk link.
     %li
       Versi yang terakhir harus ditulis di paling atas.
@@ -107,10 +106,10 @@ version: 1.0.0
 .effort
 
   %h3#effort
-    %a.anchor{ href: "#effort", aria_hidden: "true" }    
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
     Bagaimana usaha untuk menjaga changelog tetap tercatat dengan benar?
 
-  %p    
+  %p
     Sisakan bagian <code>Unreleased/Belum Dirilis</code> di bagian paling atas
     file changelog untuk mencatat perubahan yang akan datang.
 
@@ -121,13 +120,13 @@ version: 1.0.0
     %li
       People can see what changes they might expect in upcoming releases
       Orang-orang bisa melihat perubahan apa saja yang akan datang.
-    %li      
+    %li
       Saat waktu rilis datang, tinggal pindahkan bagian <code>Unreleased/Belum Dirilis</code>
       ke catatan rilis versi baru di bawah.
 
 .bad-practices
   %h3#bad-practices
-    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }    
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
     Apakah changelog bisa menjadi tidak bermanfaat?
 
   %p Bisa, berikut beberapa skenario ketika changelog menjadi tidak bermanfaat:
@@ -136,7 +135,7 @@ version: 1.0.0
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
     Menggunakan Commit log diffs sebagai changelog
 
-  %p    
+  %p
     Menggunakan commit log diffs (catatan perbedaan setiap commit) bisa
     membuat changelog susah untuk dibaca. Commit dengan judul yang tidak jelas,
     dokumentasi perubahan, dan sebagainya, malah akan membuat
@@ -148,7 +147,7 @@ version: 1.0.0
     Tujuan utama dari commit adalah untuk mencatat setiap perubahan dari source
     code. Beberapa project mengatur commitnya, beberapa tidak.
 
-  %p    
+  %p
     Tujuan dari changelog adalah untuk mencatat perubahan yang pantas
     untuk dicatat, bisa jadi beberapa commit dijadikan satu catatan
     untuk lebih memudahkan pembaca.
@@ -157,14 +156,14 @@ version: 1.0.0
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     Mengabaikan Depcreations (fitur yang akan dihilangkan)
 
-  %p    
-    Saat menaikkan versi, harus ditulis dengan jelas apa saja 
+  %p
+    Saat menaikkan versi, harus ditulis dengan jelas apa saja
     yang kira-kira bisa membuat sistem tidak berjalan. Sebaiknya
     terdapat versi yang mencatat apa saja yang akan dihilangkan,
     lalu menghapus fitur yang dihilangkan, dan naikkan lagi ke versi
     dengan fitur yang sudah dihilangkan.
 
-  %p    
+  %p
     Jika kalian tidak merubah apapun, tetap catat fitur yang akan
     dihilangkan, fitur yang sudah dihilangkan, dan perubahan-perubahan
     lain yang bisa membuat sistem tidak berjalan.
@@ -174,7 +173,7 @@ version: 1.0.0
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
     Perbedaan Format Tanggal
 
-  %p 
+  %p
     Format tanggal regional berbeda-beda sesuai dengan budaya masing-masing,
     dan seringkali perbedaan ini susah untuk dipahami dan dimengerti.
     Penggunaan format tanggal <code>2017-07-17</code> lebih mudah untuk dimengerti,
@@ -182,7 +181,7 @@ version: 1.0.0
     Format ini juga merupakan #{link_to "ISO standard", iso}, sehingga
     inilah yang dipakai untuk pencatatan changelog.
 
-  %aside    
+  %aside
     Ada beberapa permasalahan lainnya, bantu kami dengan beberapa antipatterns
     dengan = link_to "mengirimkan issue", issues atau kirimkan pull request.
 
@@ -196,7 +195,7 @@ version: 1.0.0
     Is there a standard changelog format?
     Apakah ada standar untuk format changelog?
 
-  %p    
+  %p
     Tidak, ada format GNU untuk changelog, atau format 2 paragraf GNU NEWS.
     Keduanya tidak benar-benar cukup, gunakan format yang disetujui tim masing-masing.
 
@@ -204,10 +203,10 @@ version: 1.0.0
     Project ini ditujukan untuk
     = link_to "membuat aturan changelog yang lebih baik", changelog
     berdasarkan observasi beberapa changelog di komunitas open source
-    dan menyatukan mereka.    
+    dan menyatukan mereka.
 
   %p
-    Kritik yang membangun, diskusi, dan saran untuk perbaikan    
+    Kritik yang membangun, diskusi, dan saran untuk perbaikan
     = link_to "sangat diterima.", issues
 
 
@@ -218,7 +217,7 @@ version: 1.0.0
 
   %p
     Gunakan nama <code>CHANGELOG.md</code>, beberapa project
-    menggunakan <code>HISTORY</code>, <code>NEWS</code> atau <code>RELEASE</code>.    
+    menggunakan <code>HISTORY</code>, <code>NEWS</code> atau <code>RELEASE</code>.
 
   %p
     Sebenarnya tidak terlalu susah untuk menamai file changelog, cukup
@@ -227,31 +226,31 @@ version: 1.0.0
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Apa itu GitHub Releases?    
+    Apa itu GitHub Releases?
 
-  %p    
+  %p
     #{link_to "Github Release", ghr} adalah salah satu
     insiatif dari GitHub untuk membuat changelog berdasarkan git tags,
     contohnya, tag dengan nama <code>v1.0.0</code>. Isi dari changelog
     bisa ditulis manual atau menggunakan pesan yang ditulis bersamaan dengan
     tags.
 
-  %p    
+  %p
     GitHub Releases membuat changelog yang tidak portable dan hanya bisa
     bekerja dengan baik di lingkup GitHub. Sangat mungkin untuk
     membuat GitHub Releases terlihat mirip dengan format pencatatan changelog
     yang dijelaskan di sini, tapi butuh usaha ekstra.
 
-  %p  
+  %p
     Versi GitHub releases yang sekarang juga tidak terlalu umum
     untuk orang-orang, dan hanya bisa dibuka melalui sub menu
-    di GitHub, berbeda dengan file-file seperti 
+    di GitHub, berbeda dengan file-file seperti
     (<code>README</code>, <code>CONTRIBUTING</code>, dsb.) yang
     langsung terlihat saat project pertama kali dibuka. Keterbatasan lainnya
     adalah tidak adanya link di GitHub releases.
 
   %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }    
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
     Apakah Changelog Bisa Diparse Secara Otomatis?
 
   %p
@@ -260,23 +259,23 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} adalah Ruby Gem yang dibuat oleh tim
-    #{link_to "Gemnasium", gemnasium} yang bisa memparse (but
+    Gemnasium yang bisa memparse (but
     not all) changelog beberapa project open source.
 
 
   %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }    
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
     Bagaimana dengan Rilis YANKED (rilis yang dibatalkan)?
 
   %p
     Rilis yang dibatalkan adalah rilis yang dibatalkan, bisa jadi
     karena ada bug yang fatal dan permasalahan keamanan. Versi
     ini sering tidak dimasukkan ke changelog, padahal seharusnya ditulis
-    sebagaimana berikut.    
+    sebagaimana berikut.
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED/DIBATALKAN]</code>
 
-  %p    
+  %p
     Tag <code>[YANKED/DIBATALKAN]</code> ditulis dengan jelas supaya
     orang memperhatikannya, dan dikurung dengan kurung kotak supaya
     mudah untuk diparse.
@@ -286,7 +285,7 @@ version: 1.0.0
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
     Bolehkan Menulis Ulang Changelog?
 
-  %p    
+  %p
     Tentu saja, ada banyak alasan bagus untuk menulis ulang changelog,
     salah satunya untuk rilis-rilis yang lupa untuk dituliskan di
     beberapa project.
@@ -301,11 +300,11 @@ version: 1.0.0
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
     Bagaimana Saya Bisa Berkontribusi?
 
-  %p    
+  %p
     Dokumen ini bukan kebenaran absolut, ini hanyalah opini yang dikumpulkan
     dari beberapa informasi dan contoh yang kami kumpulkan.
 
-  %p    
+  %p
     Ini karena kami ingin komunitasi terus berdiskusi untuk mencapai konsensus
     yang terbaik untuk pencatatan changelog.
 
@@ -316,7 +315,7 @@ version: 1.0.0
     %a.anchor{ href: "#about-translation", aria_hidden: "true" }
     Tentang Terjemahan Bahasa Indonesia
 
-  %p    
+  %p
     Terjemahan Bahasa Indonesia diterjemahkan oleh #{link_to "Aditya Purwa", aditya}
     dan dikoreksi oleh #{link_to "Edi Santoso", edicyber}, silahkan
     sampaikan jika ada terjemahan yang lebih baik.
