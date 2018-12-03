@@ -42,18 +42,18 @@ version: 1.0.0
     Kenapa perlu untuk mencatat changelog?
 
   %p
-    Supaya pengguna dan kontributor lebih mudah melihat perubahan
-    apa saja yang terjadi di setiap rilis (atau versi) dari sebuah project.
+    Untuk mempermudah pengguna dan kontributor melihat perubahan
+    apa saja yang terjadi antara setiap rilis (atau versi) dari sebuah project.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
-    Siapa yang butuh changelog?
+    Siapa yang membutuhkan changelog?
 
   %p
     Semua orang membutuhkannya. Baik pengguna ataupun pengembang, setiap
-    orang yang menggunakan perangkat lunak adalah manusia yang peduli dengan
-    apa yang ada di perangkat lunak tersebut. Mereka ingin tahu apa
-    dan kenapa terjadi perubahan.
+    orang yang menggunakan perangkat lunak adalah manusia yang peduli tentang
+    apa yang ada di dalam perangkat lunak tersebut. Ketika perangkat lunak berubah,
+    mereka ingin tahu apa yang berubah dan mengapa.
 
 .good-practices
   %h3#how
@@ -72,11 +72,11 @@ version: 1.0.0
     %li
       Setiap tipe perubahan yang sama harus dikelompokkan.
     %li
-      Versi dan seksi harus ditulis dalam bentuk link.
+      Versi dan seksi harus dapat dirujuk.
     %li
       Versi yang terakhir harus ditulis di paling atas.
     %li
-      Tiap catatan harus disertai dengan tanggal.
+      Tanggal rilis setiap versi harus ditulis.
     %li
       Berikan informasi jika kalian menggunakan #{link_to "Semantic Versioning", semver}.
 
@@ -88,7 +88,7 @@ version: 1.0.0
       %code Added/Ditambahkan
       untuk fitur yang baru.
     %li
-      %code Changed/Dirubah
+      %code Changed/Diubah
       untuk perubahan di fitur yang sudah ada.
     %li
       %code Deprecated/Akan Dhilangkan
@@ -107,7 +107,7 @@ version: 1.0.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    Bagaimana usaha untuk menjaga changelog tetap tercatat dengan benar?
+    Apa yang bisa saya lakukan untuk mempermudah pemeliharaan changelog?
 
   %p
     Sisakan bagian <code>Unreleased/Belum Dirilis</code> di bagian paling atas
@@ -118,7 +118,6 @@ version: 1.0.0
 
   %ul
     %li
-      People can see what changes they might expect in upcoming releases
       Orang-orang bisa melihat perubahan apa saja yang akan datang.
     %li
       Saat waktu rilis datang, tinggal pindahkan bagian <code>Unreleased/Belum Dirilis</code>
@@ -164,7 +163,7 @@ version: 1.0.0
     dengan fitur yang sudah dihilangkan.
 
   %p
-    Jika kalian tidak merubah apapun, tetap catat fitur yang akan
+    Jika kalian tidak mengubah apapun, tetap catat fitur yang akan
     dihilangkan, fitur yang sudah dihilangkan, dan perubahan-perubahan
     lain yang bisa membuat sistem tidak berjalan.
 
@@ -183,7 +182,7 @@ version: 1.0.0
 
   %aside
     Ada beberapa permasalahan lainnya, bantu kami dengan beberapa antipatterns
-    dengan = link_to "mengirimkan issue", issues atau kirimkan pull request.
+    dengan #{link_to "mengirimkan issue", issues} atau kirimkan pull request.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
@@ -293,7 +292,7 @@ version: 1.0.0
   %p
     Juga sangat mungkin saat menulis ulang, kalian ingat tentang perubahan
     yang bisa membuat sistem tidak bekerja yang belum dituliskan. Dalam hal ini,
-    sangat penting untuk merubah changelog supaya datanya lebih akurat.
+    sangat penting untuk mengubah changelog supaya datanya lebih akurat.
 
 
   %h4#contribute
