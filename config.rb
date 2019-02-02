@@ -76,6 +76,9 @@ $languages = {
   "sl"    => {
     name: "Slovenščina"
   },
+  "sr" => {
+    name: "Srpski"
+  },
   "sv"    => {
     name: "Svenska",
     notice: "Den senaste versionen (#{$last_version}) är ännu inte tillgänglig på Svenska,
