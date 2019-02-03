@@ -128,7 +128,6 @@ version: 1.0.0
     コミットログの差分
 
   %p
-    documentation changes, etc.
     変更履歴としてコミットログの差分を使用することはよくない考えです。それはノイズに満ちています。
     マージコミット、あいまいな表題のコミット、ドキュメントの変更などがあります。
 
@@ -175,7 +174,7 @@ version: 1.0.0
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    変更履歴の標準的なフォーマットがありますか？
+    変更履歴の標準的な書式がありますか？
 
   %p
     実はありません。 #{link_to "GNU changelog style guide", gnustyle} 、
@@ -195,39 +194,32 @@ version: 1.0.0
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+    変更履歴ファイルにはどのような名前をつけるべきですか？
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
+    <code>CHANGELOG.md</code> と呼びます。いくつかのプロジェクトでは
+    <code>HISTORY</code> や <code>NEWS</code> 、 <code>RELEASES</code> が使われています。
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    あなたの変更履歴ファイルの名前はそれほど重要でないと考えることは容易ですが、
+    なぜエンドユーザーが一貫して注目の変更を見つけることを難しくするのですか？
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    GitHubリリースはどうですか？
 
   %p
-    It's a great initiative. #{link_to "Releases", ghr} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    素晴らしい主導権です。 #{link_to "Releases", ghr} は手動でリリースノートを追加することによって、
+    単純なGitタグ(例えば <code>v1.0.0</code> という名前のタグ)をリッチなリリースノートに変換するために使用することができます。
 
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    Githubリリースは、Githubのコンテキスト内でのみユーザーに表示できる移植性のない変更履歴を作成します。
+    それらをKeep a Changelogの書式のように見せることは可能ですが、もう少し複雑になる傾向があります。
 
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    Githubリリースの現在のバージョンも、典型的な大文字のファイル(<code>README</code> や <code>CONTRIBUTING</code>など)
+    とは異なり、おそらくエンドユーザーにはあまり発見できません。
+    もう一つの目立たない問題は、インターフェースが現在各リリース間のコミット履歴へのリンクを提供していないということです。
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
