@@ -53,7 +53,7 @@ GEM
     middleman-autoprefixer (2.8.0)
       autoprefixer-rails (>= 7.0.1, < 8.0.0)
       middleman-core (>= 3.3.3)
-    middleman-blog (4.0.1)
+    middleman-blog (4.0.3)
       addressable (~> 2.3)
       middleman-core (>= 4.0.0)
       tzinfo (>= 0.3.0)
@@ -109,7 +109,7 @@ GEM
     rack (2.0.6)
     rack-livereload (0.3.16)
       rack
-    rake (10.4.2)
+    rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
