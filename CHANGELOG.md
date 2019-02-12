@@ -128,7 +128,7 @@ notable changes.
 ### Added
 - Explanation of the recommended reverse chronological release ordering.
 
-## 0.0.1 - 2014-05-31
+## [0.0.1] - 2014-05-31
 ### Added
 - This CHANGELOG file to hopefully serve as an evolving example of a
   standardized open source project CHANGELOG.
@@ -149,3 +149,4 @@ notable changes.
 [0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
