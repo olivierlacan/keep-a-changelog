@@ -53,7 +53,7 @@ GEM
     middleman-autoprefixer (2.8.0)
       autoprefixer-rails (>= 7.0.1, < 8.0.0)
       middleman-core (>= 3.3.3)
-    middleman-blog (4.0.1)
+    middleman-blog (4.0.3)
       addressable (~> 2.3)
       middleman-core (>= 4.0.0)
       tzinfo (>= 0.3.0)
