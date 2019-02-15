@@ -88,6 +88,9 @@ $languages = {
   "tr-TR" => {
     name: "Türkçe"
   },
+  "uk" => {
+    name: "Українська"
+  },
   "zh-CN" => {
     name: "简体中文",
     notice: "最新版 (#{$last_version}) 暂时还没有翻译到简体中文，您可以阅读最新的英语版，并且帮助翻译，不胜感激。"
