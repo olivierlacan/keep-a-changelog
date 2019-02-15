@@ -1,5 +1,6 @@
 // Variables
 - latest_version = current_page.metadata[:page][:version] == $last_version
+- legacy_version = current_page.metadata[:page][:version] < $last_version
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
@@ -32,10 +33,10 @@
 
     %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:400,700" }
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
-    - if latest_version
-      = stylesheet_link_tag 'application'
-    - else
+    - if legacy_version
       = stylesheet_link_tag 'legacy'
+    - else
+      = stylesheet_link_tag 'application'
     = javascript_include_tag 'all', defer: true
 
   %body
@@ -52,7 +53,7 @@
                   = available_translation
 
       .main{ role: "main" }
-        - if !latest_version
+        - if !latest_version && legacy_version
           - if versions.include?($last_version)
             %p.newer
               - if $languages[language_code][:new]
