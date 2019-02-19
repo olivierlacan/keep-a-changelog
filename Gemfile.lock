@@ -44,12 +44,12 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     memoist (0.16.0)
     method_source (0.9.2)
-    middleman (4.3.2)
+    middleman (4.3.3)
       coffee-script (~> 2.2)
       haml (>= 4.0.5)
       kramdown (~> 1.2)
-      middleman-cli (= 4.3.2)
-      middleman-core (= 4.3.2)
+      middleman-cli (= 4.3.3)
+      middleman-core (= 4.3.3)
     middleman-autoprefixer (2.10.0)
       autoprefixer-rails (>= 9.1.4)
       middleman-core (>= 3.3.3)
@@ -57,9 +57,9 @@ GEM
       addressable (~> 2.3)
       middleman-core (>= 4.0.0)
       tzinfo (>= 0.3.0)
-    middleman-cli (4.3.2)
+    middleman-cli (4.3.3)
       thor (>= 0.17.0, < 2.0)
-    middleman-core (4.3.2)
+    middleman-core (4.3.3)
       activesupport (>= 4.2, < 5.1)
       addressable (~> 2.3)
       backports (~> 3.6)
@@ -133,7 +133,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  middleman (~> 4.3.2)
+  middleman (~> 4.3.3)
   middleman-autoprefixer
   middleman-blog
   middleman-gh-pages
