@@ -23,7 +23,7 @@ This repository generates https://keepachangelog.com/.
 
 - `git clone https://github.com/olivierlacan/keep-a-changelog.git`
 - `cd keep-a-changelog`
-- `docker build -t keep-a-changelog`
+- `docker build -t keep-a-changelog .`
 - `docker run -p 4567:4567 keep-a-changelog` starts the docker development server and binds it at http://localhost:4567
 
 ### Deployment
