@@ -164,8 +164,8 @@ version: 1.0.0
 
   %aside
     これだけではありません。
-    = link_to "opening an issue", issues
-    またはPull Requestにてこれらのアンチパターンの収集を手伝ってください。
+    = link_to "懸念事項を開く", issues
+    か、プルリクエストにてこれらのアンチパターンの収集を手伝ってください。
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
@@ -223,69 +223,64 @@ version: 1.0.0
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    変更履歴を自動的に解析できますか？
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    人々は大きく異なるフォーマットやファイル名に従うので、難しいです。
 
   %p
-    #{link_to "Vandamme", vandamme} is a Ruby gem created by the
-    Gemnasium team and which parses many (but
-    not all) open source project changelogs.
+    #{link_to "Vandamme", vandamme} はGemnasiumチームによって作成されたRuby gemであり、
+    （全てではないが）多くのオープンソースプロジェクトの変更履歴を解析します。
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    ヤンクリリースについてはどうですか？
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    ヤンクリリースは、深刻なバグやセキュリティの問題のために
+    引っ張られなければならなかったバージョンです。
+    多くの場合、これらのバージョンは変更履歴に表示されません。表示しないべきである。
+    次のように表示すべきである。
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+    <code>[YANKED]</code> は大きな理由です。それに気付くことは人々にとって重要です。
+    大括弧で囲まれているので、プログラムで解析するのも簡単です。
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    変更履歴を書き換える必要がありますか？
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    もちろんです。変更履歴を改善するためには、常にもっともな理由があります。
+    メンテナンスされていない変更履歴のあるオープンソースプロジェクトに
+    不足しているリリースを追加するためのプルリクエストが常に開かれています。
 
   %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
+    バージョンのノートにある破壊的変更への対応を忘れたことを発見するかもしれません。
+    この場合、変更履歴を更新することは明らかに重要です。
 
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    どうやって貢献できますか？
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    この文書は <strong>真実</strong> ではありません。
+    私が集めた情報と例と共に、慎重に考えられた私の意見です。
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    私たちのコミュニティが合意に達することを望んでいるからです。
+    私は議論が最終結果と同じくらい重要であると思います。
 
   %p
-    So please <strong>#{link_to "pitch in", gh}</strong>.
+    なので <strong>#{link_to "協力", gh}</strong> してください。
 
 .press
-  %h3 Conversations
+  %h3 座談
   %p
-    I went on #{link_to "The Changelog podcast", thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    私は #{link_to "The Changelog podcast", thechangelog} で、メンテナーや貢献者がなぜ変更履歴を気にすべきなのか、
+    そしてこのプロジェクトの背後にある動機について話しました。
