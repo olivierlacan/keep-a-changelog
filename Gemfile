@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "addressable"
-gem "middleman", "~> 4.1.0"
+gem "middleman", "~> 4.3.3"
 gem "middleman-autoprefixer"
 gem "middleman-blog"
 gem "middleman-livereload"

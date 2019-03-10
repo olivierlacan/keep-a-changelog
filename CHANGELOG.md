@@ -5,8 +5,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Changed
-- Update and improvement of Polish translation from [@m-aciek](https://github.com/m-aciek).
 
 ## [1.0.0] - 2017-06-20
 ### Added
@@ -25,13 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Turkish translation from [@karalamalar](https://github.com/karalamalar).
 - French translation from [@zapashcanon](https://github.com/zapashcanon).
 - Brazilian Portugese translation from [@Webysther](https://github.com/Webysther).
-- Polish translation from [@amielucha](https://github.com/amielucha).
+- Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).
 - Russian translation from [@aishek](https://github.com/aishek).
 - Czech translation from [@h4vry](https://github.com/h4vry).
 - Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
 - Korean translation from [@pierceh89](https://github.com/pierceh89).
 - Croatian translation from [@porx](https://github.com/porx).
 - Persian translation from [@Hameds](https://github.com/Hameds).
+- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
 
 ### Changed
 - Start using "changelog" over "change log" since it's the common usage.
@@ -128,7 +127,7 @@ notable changes.
 ### Added
 - Explanation of the recommended reverse chronological release ordering.
 
-## 0.0.1 - 2014-05-31
+## [0.0.1] - 2014-05-31
 ### Added
 - This CHANGELOG file to hopefully serve as an evolving example of a
   standardized open source project CHANGELOG.
@@ -149,3 +148,4 @@ notable changes.
 [0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1

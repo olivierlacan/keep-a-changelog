@@ -1,7 +1,7 @@
 ---
 description: Vodite changelog
 title: Vodite changelog
-language: hr
+language: sr
 version: 1.0.0
 ---
 
@@ -31,18 +31,18 @@ version: 1.0.0
 .answers
   %h3#what
     %a.anchor{ href: "#what", aria_hidden: "true" }
-    Što je changelog?
+    Šta je changelog?
 
   %p
-    Changelog je datoteka koja sadrži uređeni kronološki
-    poredani popis značajnih promjena unutar svake verzije projekta.
+    Changelog je datoteka koja sadrži uređeni hronološki
+    poređani popis značajnih promena unutar svake verzije projekta.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
     Zašto voditi changelog?
 
   %p
-    Kako bi korisnici i suradnici detaljno vidjeli
+    Kako bi korisnici i saradnici detaljno videli
     značajne promjene među pojedinim izdanjima (ili verzijama)
     projekta.
 
@@ -53,7 +53,7 @@ version: 1.0.0
   %p
     Ljudima. Bilo da su uobičajeni korisnici ili programeri, krajnji su korisnici
     softvera ljudska bića kojima je stalo do toga od čega je sastavljen. Kada
-    se softver mijenja, korisnici žele znati kako i zašto.
+    se softver menja, korisnici žele znati kako i zašto.
 
 .good-practices
   %h3#how
@@ -66,22 +66,22 @@ version: 1.0.0
 
   %ul
     %li
-      Changelogs služi <em> ljudima</em>, ne strojevima.
+      Changelogs služi <em> ljudima</em>, ne mašinama.
     %li
       Potrebno je stvoriti unos za svaku verziju.
     %li
-      Slične promjene potrebno je grupirati.
+      Slične promene potrebno je grupisati.
     %li
-      Verzije i sekcije trebaju imati poveznicu.
+      Verzije i odeljci trebaju imati vezu.
     %li
-      Posljednja verzija treba biti na prvom mjestu.
+      Poslednja verzija treba biti na prvom mestu.
     %li
       Datum izdavanja svake pojedine verzije treba biti vidljiv.
     %li
       Navesti prati li se #{link_to "Semantičko verzioniranje", semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
-  %h4#types Vrste promjena
+  %h4#types Vrste promena
 
   %ul
     %li
@@ -89,7 +89,7 @@ version: 1.0.0
       za nove funkcionalnosti.
     %li
       %code Changed
-      za promjene u postojećim funkcionalnostima.
+      za promene u postojećim funkcionalnostima.
     %li
       %code Deprecated
       za funkcionalnosti koje će se ukloniti u budućim verzijama.
@@ -98,7 +98,7 @@ version: 1.0.0
       za uklonjene funkcionalnosti.
     %li
       %code Fixed
-      za ispravke bugova.
+      za ispravke bagova.
     %li
       %code Security
       za slučaj sigurnosnih propusta.
@@ -110,14 +110,14 @@ version: 1.0.0
     Kako održavati changelog sa što manje napora?
 
   %p
-    Na vrh postavite <code>Unreleased</code> sekciju gdje ćete navoditi nadolazeće
-    promjene.
+    Na vrh postavite <code>Unreleased</code> sekciju gde ćete navoditi nadolazeće
+    promene.
 
   %p To radimo iz dva razloga:
 
   %ul
     %li
-      Korisnici mogu vidjeti promjene koje mogu očekivati u nadolazećim izdanjima
+      Korisnici mogu videti promene koje mogu očekivati u nadolazećim izdanjima
     %li
       Kod izdavanja nove verzije, moguće je <code>Unreleased</code> sekciju
       samo preimenovati u novo izdanje.
@@ -136,32 +136,32 @@ version: 1.0.0
   %p
     Korištenje commit log diffova u svrhu changeloga nije dobra ideja:
     puni su šuma. Npr. merge commitovi, commitovi s nejasnim naslovima,
-    promjene u dokumentaciji i sl.
+    promene u dokumentaciji i sl.
 
   %p
-    Svrha commita je da bilježi korake u razvoju izvornog koda.
+    Svrha commita je da beleži korake u razvoju izvornog koda.
     U nekim projektima se comittovi čiste, no ponekad i ne.
 
   %p
-    Svrha unosa u changelogu je da bilježi značajne razlike, a
+    Svrha unosa u changelogu je da beleži značajne razlike, a
     često kroz više commitova i jasno ih prenese krajnjem
     korisniku.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignoriranje uklonjenih funkcionalnosti
+    Ignorisanje uklonjenih funkcionalnosti
 
   %p
     Kad korisnici nadograde softver na noviju verziju, treba biti potpuno
-    jasno da postoji mogućnost da će se neki dio pokvariti. Softver treba biti
+    jasno da postoji mogućnost da će se neki deo pokvariti. Softver treba biti
     moguće nadograditi na verziju koja će navesti funkcionalnosti koje trebaju
     biti uklonjene, uklanja takve te se kasnije može nadograditi na verziju
-    gdje su već uklonjene.
+    gde su već uklonjene.
 
   %p
     U najmanju ruku, potrebno je u changelogu navoditi funkcionalnosti koje će
-    biti uklonjene, funkcionalnosti koje su uklonjene i promjene koje će
-    utjecati na rad softvera (breaking change).
+    biti uklonjene, funkcionalnosti koje su uklonjene i promene koje će
+    uticati na rad softvera (breaking change).
 
 
   %h4#confusing-dates
@@ -169,17 +169,17 @@ version: 1.0.0
     Nejasni datumi
 
   %p
-    Regionalni formati datuma variraju diljem svijeta, pa je često
+    Regionalni formati datuma variraju delom sveta, pa je često
     teško pronaći format datuma koji će odgovarati svima.
-    Prednost datuma u formatu <code>2017-07-17</code> je to što je poredan
-    od veće prema manjoj jedinici: godina, mjesec, dan. Ovaj je format također
-    teško zamijeniti s drugim regionalnim formatima, za razliku od nekih koji,
-    primjerice mijenjaju poziciju oznake mjeseca i dana.
+    Prednost datuma u formatu <code>2017-07-17</code> je to što je poređan
+    od veće prema manjoj jedinici: godina, mesec, dan. Ovaj je format takođe
+    teško zameniti s drugim regionalnim formatima, za razliku od nekih koji,
+    primera radi, menjaju poziciju oznake meseca i dana.
     Iz tog razloga, a i zbog toga što je navedeni format #{link_to "ISO standard", iso},
-    taj se format preporuča za changelog unose.
+    taj se format preporučuje za changelog unose.
 
   %aside
-    Ali to nije sve. Pomozite prikupiti primjere loše prakse
+    Ali to nije sve. Pomozite u prikupljanju primera loše prakse
     = link_to "otvorivši issue", issues
     ili pull request.
 
@@ -198,13 +198,13 @@ version: 1.0.0
     "priručnik od dva odlomka". Nijedan nije adekvatan ni dovoljan.
 
   %p
-    Cilj je ovoga projekta
+    Cilj ovoga projekta
     = link_to "kvalitetniji changelog standard.", changelog
-    Nastao je prikupljanjem primjera dobra prakse u
+    Nastao je prikupljanjem primera dobra prakse u
     open source zajednici.
 
   %p
-    Konstruktivna kritika, raprave i prijedlozi za poboljšanje
+    Konstruktivna kritika, raprave i predlozi za poboljšanje
     = link_to "su dobrodošli.", issues
 
 
@@ -217,88 +217,88 @@ version: 1.0.0
     <code>HISTORY</code>, <code>NEWS</code> ili <code>RELEASES</code>.
 
   %p
-    Iako može djelovati da naziv changelog datoteke i nije toliko
+    Iako može delovati da naziv changelog datoteke i nije toliko
     bitan, čemu otežavati korisnicima da dođu do informacije o promjenama?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Što s GitHub Releases?
+    Šta s GitHub Releases?
 
   %p
     To je ozbiljna inicijativa. #{link_to "Releases", ghr} se mogu koristiti
     kako bi git oznake (npr. git oznaka <code>v1.0.0</code>) pretvorili
-    u opširnije bilješke o izdanju, upisujući ih ručno ili pak preuzimajući
+    u opširnije beleške o izdanju, upisujući ih ručno ili pak preuzimajući
     anotirane git oznake i pretvarajući ih u unose.
 
   %p
     GitHub Releases stvara statični changelog vidljiv korisnicima
-    unutar GitHub repozitorija. Moguće ih je urediti u format koji
+    unutar GitHub repozitorijuma. Moguće ih je urediti u format koji
     bi odgovarao Vodite changelog formatu, no često je nešto opširniji.
 
   %p
     Trenutna GitHub releases verzija i nije baš sasvim vidljiva
     korisnicima, za razliku od uobičajenih datoteka označenih velikim slovima
     (<code>README</code>, <code>CONTRIBUTING</code>, itd.). Još je jedan
-    manji problem što trenutno sučelje ne nudi poveznice na commit logove
+    manji problem što trenutno interfejs ne nudi poveznice na commit logove
     između izdanja.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Mogu li changelogovi automatski parsati?
+    Mogu li changelogovi automatski parsirati?
 
   %p
     Teže, jer se koriste vrlo različiti formati, kao i nazivi datoteka.
 
   %p
     #{link_to "Vandamme", vandamme} je Ruby gem koji je kreirao
-    Gemnasium tim i može parsati mnoge (ali
-    ne sve) changeloge projekata otvorenog koda.
+    Gemnasium tim i može parsirati mnoge (ali
+    ne sve) changelogove projekata otvorenog koda.
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Što s povučenim izdanjima?
+    Šta s povučenim izdanjima?
 
   %p
     Povučena ili 'Yanked' izdanja su verzije koje su uklonjene zbog
-    ozbiljnijeg buga ili sigurnosnog propusta. Takva se izdanja najčešće
+    ozbiljnijeg baga ili sigurnosnog propusta. Takva se izdanja najčešće
     i ne pojavljuju u changelogu, iako bi trebala. Trebala bi biti navedena
-    na sljedeći način:
+    na sledeći način:
 
   %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
 
   %p
     <code>[YANKED]</code> oznaka jasno je istaknuta s razlogom. Bitno je
-    da ju je lako primijetiti. Buduće da je okružena zagradama, također ju
-    je lakše parsati.
+    da ju je lako primetiti. Buduće da je okružena zagradama, takođe ju
+    je lakše parsirati.
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Je li potrebno prepravljati changelog?
+    Da li je potrebno prepravljati changelog?
 
   %p
     Naravno. Često postoje dobri razlozi da bismo poboljšali changelog. Ja
     često otvaram pull requestove kako bih dodao nedostajuća izdanja projektima
-    otvorenog koda, koji ne održavaju changeloge.
+    otvorenog koda, koji ne održavaju changelogove.
 
   %p
-    Moguće je, također da otkrijete, kako ste zaboravili navesti promjenu koja
-    bi utjecala na rad (breaking change). U tom je slučaju, očito, vrlo bitno
+    Moguće je, takođe da otkrijete, kako ste zaboravili navesti promenu koja
+    bi uticala na rad (breaking change). U tom slučaju je, očito, vrlo bitno
     ažurirati changelog.
 
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Kako doprinijeti?
+    Kako doprineti?
 
   %p
     Ovaj dokument nije <em>Sveto Pismo</em>; ovo je samo pažljivo
-    razmotreno mišljenje, uz informacije i primjere koje sam skupio.
+    razmotreno mišljenje, uz informacije i primere koje sam skupio.
 
   %p
-    Razlog je tome to što želim da zajednica postigne konsenzus. Vjerujem,
-    također, da je i sama rasprava bitna kao i krajnjni rezultat.
+    Razlog je tome to što želim da zajednica postigne konsenzus. Verujem,
+    takođe, da je i sama rasprava bitna kao i krajnji rezultat.
 
   %p
     Zato, molimo <strong>#{link_to "uskočite", gh}</strong>.
@@ -307,5 +307,5 @@ version: 1.0.0
   %h3 Razgovori
   %p
     Gostovao sam na #{link_to "The Changelog podcastu", thechangelog}
-    gdje sam pokušao objasniti zašto začetnici projekata i suradnici trebaju
+    gde sam pokušao objasniti zašto začetnici projekata i saradnici trebaju
     brinuti o changelogovima te motivaciji iza ovog projekta.
