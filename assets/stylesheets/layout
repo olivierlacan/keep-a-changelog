@@ -1,161 +1,51 @@
-/*
-Error: Undefined variable: "$color-white".
-        on line 13 of /Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/layout.sass
+body {
+  margin: 0; }
 
-8: article
-9:   margin: 0 auto
-10:   max-width: 65em
-11: 
-12: .main
-13:   background-color: $color-white
-14: 
-15:   div
-16:     padding-left: 5%
-17:     padding-right: 5%
-18:     padding-bottom: 3em
+article {
+  margin: 0 auto;
+  max-width: 65em; }
 
-Backtrace:
-/Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/layout.sass:13
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/script/tree/variable.rb:49:in `_perform'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/script/tree/node.rb:58:in `perform'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `block in with_base'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `with_base'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:433:in `map'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `block in with_base'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `with_base'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `map'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:20:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.24/lib/sass/engine.rb:281:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/renderers/sass.rb:68:in `evaluate'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/tilt-2.0.7/lib/tilt/template.rb:109:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/file_renderer.rb:79:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/template_renderer.rb:184:in `_render_with_all_renderers'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/template_renderer.rb:147:in `block in render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.4/lib/active_support/notifications.rb:166:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/util.rb:21:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/template_renderer.rb:146:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/sitemap/resource.rb:154:in `render'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/rack.rb:112:in `process_request'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/rack.rb:66:in `block in call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/rack.rb:65:in `catch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/rack.rb:65:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/urlmap.rb:68:in `block in call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/urlmap.rb:53:in `each'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/urlmap.rb:53:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/extensions/minify_javascript.rb:55:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/extensions/minify_css.rb:63:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/htmlcompressor-0.2.0/lib/htmlcompressor/rack.rb:36:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-autoprefixer-2.8.0/lib/middleman-autoprefixer/extension.rb:48:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/core_extensions/inline_url_rewriter.rb:74:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/head.rb:12:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/lint.rb:49:in `_call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/lint.rb:37:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/builder.rb:153:in `call'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/mock.rb:74:in `request'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-2.0.3/lib/rack/mock.rb:56:in `get'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:230:in `block in output_resource'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.4/lib/active_support/notifications.rb:166:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/util.rb:21:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:223:in `output_resource'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:484:in `call_with_index'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:455:in `process_incoming_jobs'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:437:in `block in worker'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:428:in `fork'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:428:in `worker'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:419:in `block in create_workers'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:418:in `each'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:418:in `each_with_index'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:418:in `create_workers'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:358:in `work_in_processes'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/parallel-1.11.2/lib/parallel.rb:264:in `map'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:135:in `output_resources'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:129:in `output_files'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:71:in `block in run!'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.4/lib/active_support/notifications.rb:166:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/util.rb:21:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/builder.rb:70:in `run!'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_reference.rb:43:in `send_to'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/call_with.rb:76:in `call_with'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/contracts-0.13.0/lib/contracts/method_handler.rb:138:in `block in redefine_method'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-cli-4.1.14/lib/middleman-cli/build.rb:80:in `block in build'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.4/lib/active_support/notifications.rb:166:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-core-4.1.14/lib/middleman-core/util.rb:21:in `instrument'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-cli-4.1.14/lib/middleman-cli/build.rb:79:in `build'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/command.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:126:in `invoke_command'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:133:in `block in invoke_all'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:133:in `each'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:133:in `map'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:133:in `invoke_all'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/group.rb:232:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:115:in `invoke'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor.rb:40:in `block in register'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/command.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/invocation.rb:126:in `invoke_command'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor.rb:369:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/thor-0.19.4/lib/thor/base.rb:444:in `start'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/middleman-cli-4.1.14/bin/middleman:70:in `<top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bin/middleman:23:in `load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bin/middleman:23:in `<top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:74:in `load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:74:in `kernel_load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli/exec.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:332:in `exec'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor.rb:359:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:20:in `dispatch'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/vendor/thor/lib/thor/base.rb:440:in `start'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/cli.rb:11:in `start'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/exe/bundle:34:in `block in <top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/friendly_errors.rb:100:in `with_friendly_errors'
-/Users/olivierlacan/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/exe/bundle:26:in `<top (required)>'
-/Users/olivierlacan/.rbenv/versions/2.3.1/bin/bundle:23:in `load'
-/Users/olivierlacan/.rbenv/versions/2.3.1/bin/bundle:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$color-white\".\A         on line 13 of /Users/olivierlacan/Library/Mobile Documents/com~apple~CloudDocs/Development/perso/keep-a-changelog/source/assets/stylesheets/layout.sass\A \A 8: article\A 9:   margin: 0 auto\A 10:   max-width: 65em\A 11: \A 12: .main\A 13:   background-color: $color-white\A 14: \A 15:   div\A 16:     padding-left: 5%\A 17:     padding-right: 5%\A 18:     padding-bottom: 3em"; }
+.main {
+  background-color: #FFFFFF; }
+  .main div {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3em; }
+    .main div aside {
+      background-color: #594446;
+      margin-bottom: -3em;
+      margin-left: -5%;
+      margin-right: -5%;
+      margin-top: 3em;
+      padding: 2em 5%;
+      text-align: center; }
+    aside .main div {
+      background-position: top; }
+
+article p {
+  font-size: 1.3em; }
+
+article code {
+  border-radius: 0.315em;
+  border: 1px solid #ccc;
+  padding: 0 0.3em 0.040em;
+  font-size: 0.9em; }
+
+article ul {
+  font-size: 1.1em;
+  line-height: 1.5;
+  list-style-type: square;
+  padding-left: 1em; }
+
+@media (min-width: 1077px) {
+  body {
+    margin: 8px; }
+  .main {
+    margin-bottom: 2em; }
+    .main div {
+      padding-left: 20%;
+      padding-right: 20%; }
+      .main div aside {
+        margin-left: -35%;
+        margin-right: -35%;
+        padding: 2em 20%; } }
