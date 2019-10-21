@@ -1,12 +1,13 @@
 # <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/1L1w0v431V0d1K410f3Y/keepAChangelog-logo-dark.svg" height=150 alt="Keep a Changelog" />
 
-[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
+[![version][version-badge]][changelog] [![license][license-badge]][license]
 
 Don’t let your friends dump git logs into changelogs™
 
 This repository generates https://keepachangelog.com/.
 
 ## Development
+
 ### Dependencies
 
 - Ruby ([see version][ruby-version], [rbenv][rbenv] recommended)
@@ -27,6 +28,7 @@ This repository generates https://keepachangelog.com/.
 - `docker run -p 4567:4567 keep-a-changelog` starts the docker development server and binds it at http://localhost:4567
 
 ### Deployment
+
 - `bundle exec rake publish` builds and pushes to the `gh-pages` branch
 
 ### Translations
@@ -52,8 +54,8 @@ Please do contribute! Issues and pull requests are welcome.
 
 Thank you for your help improving software one changelog at a time!
 
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./LICENSE
+[changelog]: ./CHANGELOG.md
+[license]: ./LICENSE
 [rbenv]: https://github.com/rbenv/rbenv
 [ruby-version]: .ruby-version
 [source]: source/
