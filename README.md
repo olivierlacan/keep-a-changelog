@@ -20,13 +20,6 @@ This repository generates https://keepachangelog.com/.
 - `bundle install`
 - `bundle exec middleman` starts the local development server at http://localhost:4567
 
-### Docker
-
-- `git clone https://github.com/olivierlacan/keep-a-changelog.git`
-- `cd keep-a-changelog`
-- `docker build -t keep-a-changelog .`
-- `docker run -p 4567:4567 keep-a-changelog` starts the docker development server and binds it at http://localhost:4567
-
 ### Deployment
 
 - `bundle exec rake publish` builds and pushes to the `gh-pages` branch
