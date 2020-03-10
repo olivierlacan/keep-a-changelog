@@ -35,7 +35,7 @@ version: 1.0.0
 
   %p
     Changelog adalah sebuah file yang berisi daftar perubahan yang
-    diurutkan secara kronologis untuk setiap versi dari sebuah project.
+    diurutkan secara kronologis untuk setiap versi dari sebuah proyek.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
@@ -43,7 +43,7 @@ version: 1.0.0
 
   %p
     Untuk mempermudah pengguna dan kontributor melihat perubahan
-    apa saja yang terjadi antara setiap rilis (atau versi) dari sebuah project.
+    apa saja yang terjadi antara setiap rilis (atau versi) dari sebuah proyek.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
@@ -141,10 +141,10 @@ version: 1.0.0
     changelog terlalu berisik dan susah dibaca.
 
   %p
-    The purpose of a commit is to document a step in the evolution of
-    the source code. Some projects clean up commits, some don't.
+    <em>The purpose of a commit is to document a step in the evolution of
+    the source code. Some projects clean up commits, some don't</em>.
     Tujuan utama dari commit adalah untuk mencatat setiap perubahan dari source
-    code. Beberapa project mengatur commitnya, beberapa tidak.
+    code. Beberapa proyek merapikan commitnya, beberapa tidak.
 
   %p
     Tujuan dari changelog adalah untuk mencatat perubahan yang pantas
@@ -153,7 +153,7 @@ version: 1.0.0
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Mengabaikan Depcreations (fitur yang akan dihilangkan)
+    Mengabaikan Deprecations (fitur yang akan dihilangkan)
 
   %p
     Saat menaikkan versi, harus ditulis dengan jelas apa saja
@@ -177,7 +177,7 @@ version: 1.0.0
     dan seringkali perbedaan ini susah untuk dipahami dan dimengerti.
     Penggunaan format tanggal <code>2017-07-17</code> lebih mudah untuk dimengerti,
     karena diurutkan berdasarkan unit terbesar: tahun, bulan, dan tanggal.
-    Format ini juga merupakan #{link_to "ISO standard", iso}, sehingga
+    Format ini juga merupakan #{link_to "Standar ISO", iso}, sehingga
     inilah yang dipakai untuk pencatatan changelog.
 
   %aside
@@ -191,7 +191,6 @@ version: 1.0.0
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
     Apakah ada standar untuk format changelog?
 
   %p
@@ -199,7 +198,7 @@ version: 1.0.0
     Keduanya tidak benar-benar cukup, gunakan format yang disetujui tim masing-masing.
 
   %p
-    Project ini ditujukan untuk
+    Proyek ini ditujukan untuk
     = link_to "membuat aturan changelog yang lebih baik", changelog
     berdasarkan observasi beberapa changelog di komunitas open source
     dan menyatukan mereka.
@@ -211,11 +210,10 @@ version: 1.0.0
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
     Apa nama file yang cocok untuk file changelog?
 
   %p
-    Gunakan nama <code>CHANGELOG.md</code>, beberapa project
+    Gunakan nama <code>CHANGELOG.md</code>, beberapa proyek
     menggunakan <code>HISTORY</code>, <code>NEWS</code> atau <code>RELEASE</code>.
 
   %p
@@ -245,7 +243,7 @@ version: 1.0.0
     untuk orang-orang, dan hanya bisa dibuka melalui sub menu
     di GitHub, berbeda dengan file-file seperti
     (<code>README</code>, <code>CONTRIBUTING</code>, dsb.) yang
-    langsung terlihat saat project pertama kali dibuka. Keterbatasan lainnya
+    langsung terlihat saat proyek pertama kali dibuka. Keterbatasan lainnya
     adalah tidak adanya link di GitHub releases.
 
   %h4#automatic
@@ -258,8 +256,7 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} adalah Ruby Gem yang dibuat oleh tim
-    Gemnasium yang bisa memparse (but
-    not all) changelog beberapa project open source.
+    Gemnasium yang bisa mem-parsing (tetapi tidak semua) changelog proyek open source.
 
 
   %h4#yanked
@@ -282,12 +279,12 @@ version: 1.0.0
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Bolehkan Menulis Ulang Changelog?
+    Bolehkah Menulis Ulang Changelog?
 
   %p
     Tentu saja, ada banyak alasan bagus untuk menulis ulang changelog,
     salah satunya untuk rilis-rilis yang lupa untuk dituliskan di
-    beberapa project.
+    beberapa proyek.
 
   %p
     Juga sangat mungkin saat menulis ulang, kalian ingat tentang perubahan
@@ -304,7 +301,7 @@ version: 1.0.0
     dari beberapa informasi dan contoh yang kami kumpulkan.
 
   %p
-    Ini karena kami ingin komunitasi terus berdiskusi untuk mencapai konsensus
+    Ini karena kami ingin komunitas terus berdiskusi untuk mencapai konsensus
     yang terbaik untuk pencatatan changelog.
 
   %p
@@ -320,8 +317,8 @@ version: 1.0.0
     sampaikan jika ada terjemahan yang lebih baik.
 
 .press
-  %h3 Conversations
+  %h3 Percakapan
   %p
-    Kami mengisi acara di #{link_to "The Changelog podcast", thechangelog}
+    Kami mengisi acara di #{link_to "Podcast Changelog", thechangelog}
     untuk berbicara tentang kenapa maintainer dan kontributor harus peduli
-    dengan changelog, dan motivasi dari project ini.
+    dengan changelog, dan motivasi dari proyek ini.
