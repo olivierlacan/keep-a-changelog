@@ -83,6 +83,9 @@ $languages = {
   "sk"    => {
     name: "Slovenčina"
   },
+  "ka"    => {
+    name: "ქართული"
+  },
   "sl"    => {
     name: "Slovenščina"
   },
