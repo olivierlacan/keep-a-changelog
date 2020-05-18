@@ -6,12 +6,11 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "http://semver.org/"
-- shields = "http://shields.io/"
-- thechangelog = "http://5by5.tv/changelog/127"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
@@ -42,8 +41,8 @@ version: 1.0.0
     Was ist der Zweck eines Changelogs?
 
   %p
-    Ein Changelog soll es  Benutzern und Entwicklern einfacher machen, gerade die 
-    beachtenswerten Änderungen, die zwischen Veröffentlichungen (oder Versionen) 
+    Ein Changelog soll es  Benutzern und Entwicklern einfacher machen, gerade die
+    beachtenswerten Änderungen, die zwischen Veröffentlichungen (oder Versionen)
     des Projekts gemacht wurden, zu sehen.
 
   %h3#who
@@ -110,7 +109,7 @@ version: 1.0.0
     Wie kann ich den Aufwand der Changelog-Pflege so klein wie möglich halten?
 
   %p
-    Habe immer einen <code>Unreleased</code>-Abschnitt über der neusten Version, 
+    Habe immer einen <code>Unreleased</code>-Abschnitt über der neusten Version,
     um zukünftige Änderungen im Auge zu behalten.
 
   %p Dies hat zwei Vorteile:
@@ -119,7 +118,7 @@ version: 1.0.0
     %li
       Menschen können sehen, welche Änderungen sie mit dem nächsten Release zu erwarten haben.
     %li
-      Wenn der Zeitpunkt für den Release gekommen ist, kannst du den Inhalt des 
+      Wenn der Zeitpunkt für den Release gekommen ist, kannst du den Inhalt des
       <code>Unreleased</code>-Abschnitts in den neuen Release-Abschnitt verschieben.
 
 .bad-practices
@@ -135,8 +134,8 @@ version: 1.0.0
     Einen Diff von Commit-Logs ausgeben
 
   %p
-    Commit-Logs in einem Changelog sind eine schlechte Idee: Sie beinhalten lauter 
-    überflüssige Dinge, wie Merge-Commit, Commits mit schlechten Bezeichnungen, 
+    Commit-Logs in einem Changelog sind eine schlechte Idee: Sie beinhalten lauter
+    überflüssige Dinge, wie Merge-Commit, Commits mit schlechten Bezeichnungen,
     Änderungen an der Dokumentation, etc.
 
   %p
@@ -144,8 +143,8 @@ version: 1.0.0
     Manche Projekte haben saubere Commits, andere nicht.
 
   %p
-    Der Sinn eines Changelog-Eintrags ist die Dokumentation der merkbaren 
-    Unterschiede, die meist über mehrere Commits hinweg entstanden sind, dem 
+    Der Sinn eines Changelog-Eintrags ist die Dokumentation der merkbaren
+    Unterschiede, die meist über mehrere Commits hinweg entstanden sind, dem
     Endnutzer klar und deutlich zu kommunizieren.
 
 
@@ -157,7 +156,7 @@ version: 1.0.0
     Wenn der Endnutzer auf eine neue Version upgradet, sollte ihm unmissverständlich
     klar gemacht werden, wenn etwas kaputt gehen wird. Es sollte immer möglich sein,
     zu einer Version zu upgraden, die die zu entfernenden Features auflistet, um so
-    in seinem Source Code auf diese Features zu verzichten. Anschließend sollte man 
+    in seinem Source Code auf diese Features zu verzichten. Anschließend sollte man
     auf eine Version upgraden können, in der die Features entfernt wurden.
 
   %p
@@ -170,7 +169,7 @@ version: 1.0.0
     Verwirrende Datumsformate
 
   %p
-    In den USA setzen die Menschen den Monat an den Anfang eines Datums 
+    In den USA setzen die Menschen den Monat an den Anfang eines Datums
     (<code>06-02-2012</code> für den 2. Juni 2012), wohingegen viele Menschen
     im Rest der Welt ein roboterhaft aussehendes <code>2 June 2012</code>
     schreiben, aber es völlig unterschiedlich aussprechen. <code>2012-06-02</code>
@@ -180,7 +179,7 @@ version: 1.0.0
 
   %aside
     Es gibt sicher noch mehr. Hilf mir alle schlechten Tipps zu sammeln, indem du
-    = link_to "ein Issue eröffnest", "#issues"
+    = link_to "ein Issue eröffnest", issues
     oder einen Pull-Request erstellst.
 
 .frequently-asked-questions
@@ -193,8 +192,8 @@ version: 1.0.0
     Gibt es ein standardisiertes Changelog-Format?
 
   %p
-    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den 
-    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber 
+    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
+    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
     unzureichend.
 
   %p
@@ -219,7 +218,7 @@ version: 1.0.0
   %p
     Man könnte zwar meinen, dass der Name der Changelog-Datei keine große
     Bedeutung hat, aber warum sollte man es den Endnutzern nicht einfach machen,
-    die Änderungen des Projekts zu finden, indem man einen einheitlichen Namen 
+    die Änderungen des Projekts zu finden, indem man einen einheitlichen Namen
     verwendet?
 
 
@@ -228,21 +227,21 @@ version: 1.0.0
     Was ist mit GitHub Releases?
 
   %p
-    Prinzipiell sind #{link_to "GitHub Releases", ghr} eine gute Sache. 
-    Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen 
-    Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release 
+    Prinzipiell sind #{link_to "GitHub Releases", ghr} eine gute Sache.
+    Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen
+    Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release
     auszustatten, indem man sie manuell bearbeitet, oder die Änderungen in eine
-    Git Tag Nachricht schreibt, wo sie durch GitHub automatisch in die 
+    Git Tag Nachricht schreibt, wo sie durch GitHub automatisch in die
     Release-Notizen gesetzt werden.
 
   %p
-    Leider lassen sich GitHub Releases aber nicht so einfach exportieren 
+    Leider lassen sich GitHub Releases aber nicht so einfach exportieren
     und sind nur über GitHub selber zu lesen. Man kann sie auch so gestalten,
     dass sie dem Keep a Changelog Format sehr ähnlich sehen, aber dazu betreibt
     man in der Regel einen größeren Aufwand.
 
   %p
-    Die derzeitige Version der GitHub Releases sind außerdem nicht leicht 
+    Die derzeitige Version der GitHub Releases sind außerdem nicht leicht
     durch die Endnutzer zu finden, ganz im Gegenteil zu den typischerweise
     großgeschriebenen Dateien (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
     Ein weiterer kleiner Nachteil ist, dass das Web Interface zurzeit keinen Link
@@ -259,7 +258,7 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} ist ein Ruby gem erstellt vom
-    #{link_to "Gemnasium", gemnasium} Team, das viele (aber nicht alle)
+    Gemnasium Team, das viele (aber nicht alle)
     Changelogs von Open-Source-Projekten einlesen kann.
 
 
@@ -273,7 +272,7 @@ version: 1.0.0
     diese im Changelog gar nicht vor, aber das sollten sie. So solltest Du diese
     Versionen darstellen:
 
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
     Der <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,

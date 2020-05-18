@@ -1,5 +1,6 @@
 // Variables
 - latest_version = current_page.metadata[:page][:version] == $last_version
+- legacy_version = current_page.metadata[:page][:version] < $last_version
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
@@ -32,11 +33,11 @@
 
     %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:400,700" }
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
-    - if latest_version
-      = stylesheet_link_tag 'application'
-    - else
+    - if legacy_version
       = stylesheet_link_tag 'legacy'
-    = javascript_include_tag 'all'
+    - else
+      = stylesheet_link_tag 'application'
+    = javascript_include_tag 'all', defer: true
 
   %body
     %article
@@ -46,17 +47,13 @@
         %nav.locales{ role: "navigation" }
           %select
             - $languages.each do |language|
-              - version_exists = File.exists?("source/#{language.first}/#{$last_version}")
               - selected = language_code == language.first
-              - if version_exists
-                %option{ selected: selected, label: "#{$last_version} #{language.last[:name]}", value: language.first }
-              - else
-                - previous_version = File.exists?("source/#{language.first}/#{$previous_version}")
-                - if previous_version
-                  %option{ selected: selected, label: "#{$previous_version} #{language.last[:name]}", value: language.first }
+              - if available_translation = available_translation_for(language)
+                %option{ selected: selected, label: available_translation, value: language.first }
+                  = available_translation
 
       .main{ role: "main" }
-        - if !latest_version
+        - if !latest_version && legacy_version
           - if versions.include?($last_version)
             %p.newer
               - if $languages[language_code][:new]

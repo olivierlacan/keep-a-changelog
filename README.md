@@ -1,12 +1,13 @@
 # <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/1L1w0v431V0d1K410f3Y/keepAChangelog-logo-dark.svg" height=150 alt="Keep a Changelog" />
 
-[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
+[![Keep a Changelog v1.1.0 badge][changelog-badge]][changelog] [![Version 1.1.0 Badge][version-badge]][changelog] [![MIT License Badge][license-badge]][license]
 
 Don’t let your friends dump git logs into changelogs™
 
-This repository generates http://keepachangelog.com/.
+This repository generates https://keepachangelog.com/.
 
 ## Development
+
 ### Dependencies
 
 - Ruby ([see version][ruby-version], [rbenv][rbenv] recommended)
@@ -20,6 +21,7 @@ This repository generates http://keepachangelog.com/.
 - `bundle exec middleman` starts the local development server at http://localhost:4567
 
 ### Deployment
+
 - `bundle exec rake publish` builds and pushes to the `gh-pages` branch
 
 ### Translations
@@ -39,14 +41,19 @@ few native speakers of the language you're translating to in the Pull Request
 comments. They'll help review your translation for simple mistakes and give us
 a better idea of whether your translation is accurate.
 
+## Contribute
+
+Please do contribute! Issues and pull requests are welcome.
+
 Thank you for your help improving software one changelog at a time!
 
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./LICENSE
+[changelog]: ./CHANGELOG.md
+[changelog-badge]: https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.1.0-%23E05735
+[license]: ./LICENSE
 [rbenv]: https://github.com/rbenv/rbenv
 [ruby-version]: .ruby-version
 [source]: source/
 [pull-request]: https://help.github.com/articles/creating-a-pull-request/
 [fork]: https://help.github.com/articles/fork-a-repo/
-[version-badge]: https://img.shields.io/badge/version-1.0.0-blue.svg
+[version-badge]: https://img.shields.io/badge/version-1.1.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

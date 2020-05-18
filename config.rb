@@ -5,8 +5,11 @@
 # ----- Site ----- #
 # Last version should be the latest English version since the manifesto is first
 # written in English, then translated into other languages later.
-$versions = (Dir.entries("source/en") - %w[. ..])
-$last_version = $versions.last
+$versions = Dir.glob("source/en/*").map{ |e| e.sub("source/en/","") }.sort
+# NOTE: for now, while 1.1.0 is in development let's pin the latest
+# version to 1.0.0 manually.
+# $last_version = $versions.last
+$last_version = "1.0.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
 
 # This list of languages populates the language navigation.
@@ -14,6 +17,10 @@ issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
 $languages = {
   "cs"    => {
     name: "Čeština"
+  },
+  "da"    => {
+    name: "Dansk",
+    new: "En ny version er tilgængelig"
   },
   "de"    => {
     name: "Deutsch",
@@ -39,17 +46,30 @@ $languages = {
     l'instant et <a href='#{issues_url}'>aider à la traduire</a>.",
     new: "Une nouvelle version est disponible"
   },
+  "hr" => {
+    name: "Hrvatski"
+  },
+  "id-ID" => {
+    name: "Indonesia",
+    new: "Ada versi baru tersedia"
+  },
   "it-IT" => {
     name: "Italiano",
     notice: "L'ultima versione (#{$last_version}) non è ancora disponibile in
     Italiano, ma la potete <a href='/en/'>leggere in Inglese</a> per ora e
     potete <a href='#{issues_url}'>contribuire a tradurla</a>."
   },
-  "pl-PL" => {
-    name: "Polskie"
+  "ja" => {
+    name: "日本語"
+  },
+  "nl" => {
+    name: "Nederlands"
+  },
+  "pl" => {
+    name: "polski"
   },
   "pt-BR" => {
-    name: "Brazilian Portugese",
+    name: "Português do Brasil",
     notice: "A última versão (#{$last_version}) ainda não está disponível em
     Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
@@ -60,8 +80,17 @@ $languages = {
     русский, но вы можете <a href='/en/'>прочитать её на английском</a> и <a
     href='#{issues_url}'>помочь с переводом</a>."
   },
+  "sk"    => {
+    name: "Slovenčina"
+  },
+  "ka"    => {
+    name: "ქართული"
+  },
   "sl"    => {
     name: "Slovenščina"
+  },
+  "sr" => {
+    name: "Srpski"
   },
   "sv"    => {
     name: "Svenska",
@@ -72,13 +101,22 @@ $languages = {
   "tr-TR" => {
     name: "Türkçe"
   },
+  "uk" => {
+    name: "Українська"
+  },
   "zh-CN" => {
     name: "简体中文",
     notice: "最新版 (#{$last_version}) 暂时还没有翻译到简体中文，您可以阅读最新的英语版，并且帮助翻译，不胜感激。"
   },
   "zh-TW" => {
-    name: "繁體中文",
-    notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到繁體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
+    name: "正體中文",
+    notice: "最新版 (#{$last_version}) 暫時還沒有翻譯到正體中文，您可以閱讀最新的英語版，並且幫助翻譯，不勝感激。"
+  },
+  "ko" => {
+    name: "한국어"
+  },
+  "fa-IR" => {
+    name: "فارسی"
   }
 }
 
@@ -88,13 +126,13 @@ activate :i18n,
 
 set :gauges_id, ''
 set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
-set :site_url, 'http://keepachangelog.com'
+set :site_url, 'https://keepachangelog.com'
 
 redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
   code = language.first
-  versions = Dir.entries("source/#{code}") - %w[. ..]
+  versions = Dir.entries("source/#{code}").sort - %w[. ..]
   redirect "#{code}/index.html", to: "#{code}/#{versions.last}/index.html"
 end
 
@@ -153,6 +191,19 @@ set :markdown, $markdown_config
 helpers do
   def path_to_url(path)
     Addressable::URI.join(config.site_url, path).normalize.to_s
+  end
+
+  def available_translation_for(language)
+    language_name = language.last[:name]
+    language_path = "source/#{language.first}"
+
+    if File.exists?("#{language_path}/#{$last_version}")
+      "#{$last_version} #{language_name}"
+    elsif File.exists?("#{language_path}/#{$previous_version}")
+      "#{$previous_version} #{language_name}"
+    else
+      nil
+    end
   end
 end
 

@@ -6,12 +6,11 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "http://semver.org/"
-- shields = "http://shields.io/"
-- thechangelog = "http://5by5.tv/changelog/127"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
@@ -258,7 +257,7 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} est une Ruby gem créée par l'équipe
-    #{link_to "Gemnasium", gemnasium} qui parse les changelogs de
+    Gemnasium qui parse les changelogs de
     beaucoup (mais pas tous) de projets open source.
 
 
@@ -271,7 +270,7 @@ version: 1.0.0
     sérieux bug ou d'un problème de sécurité. Souvent ces version n'apparaissent
     même pas dans les changelogs. Elles devraient. Voilà comment les afficher:
 
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
     Le tag <code>[YANKED]</code> n'est pas mis en avant pour rien. Il est

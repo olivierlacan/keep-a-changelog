@@ -1,0 +1,284 @@
+---
+description: لاگ تغییرات را نگه دارید
+title: لاگ تغییرات را نگه دارید
+language: fa-IR
+version: 1.0.0
+---
+
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
+- gh = "https://github.com/olivierlacan/keep-a-changelog"
+- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
+- vandamme = "https://github.com/tech-angels/vandamme/"
+- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/font-face.css">
+
+<style>
+body,html,h1,h2,h3,h4,h5,h6,a{font-family:Vazir;direction:rtl;text-align:right}
+div.frequently-asked-questions h4:after{float:left}
+pre {direction:ltr;text-align:left}
+</style>
+
+.header
+  .title
+    %h1 لاگ تغییرات را نگه دارید
+    %h2 اجازه ندهید دوستانتان، لاگ git را در لاگ تغییرات خالی کنند
+
+  = link_to changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    لاگ تغییرات چیست؟
+
+  %p
+    لاگ تغییرات فایلی است که لیست تغییرات قابل توجه برای هر نسخه یک پروژه که بر اساس تاریخ مرتب شدند را شامل می‌شود
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    چرا لیست تغییرات را حفظ کنیم؟
+
+  %p
+    برای اینکه کاربران و مشارکت‌کنندگان، ساده‌تر بتوانند دقیقاً متوجه تغییرات مهم بین هر عرضه (یا نسخه) پروژه بشوند
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    چه کسی به لیست تغییرات نیاز دارد؟
+
+  %p
+  مردم. خواه مصرف کننده یا توسعه‌دهنده، کاربران نهایی نرم‌افزار انسان‌هایی هستند که به آنچه در نرم‌افزار هست اهمیت می‌دهند. وقتی نرم‌افزار تغییر می‌کنند،‌مردم می‌خواهند بدانند چرا و چگونه.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    چطور یک لاگ تغییرات خوب بسازم؟
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    اصول راهنما
+
+  %ul
+    %li
+      لاگ تغییرات  <em>برای انسان‌ها</em>هستند، نه ماشین‌ها.
+    %li
+      برای هر کدام از نسخه‌ها باید یک مدخل وجود داشته باشد
+    %li
+      انواع مشابه تغییرات باید دسته‌بندی شوند.
+    %li
+      نسخه‌ها و بخش‌ها باید پیوند پذیر باشند.
+    %li
+      آخرین نسخه اول می‌آید.
+    %li
+      تاریخ عرضه هر کدام از نسخه‌ها، نمایش داده می‌شود.
+    %li
+      به اینکه #{link_to "نسخه‌بندی معنایی", semver} را رعایت می‌کنید اشاره کنید
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types انواع تغییرات
+
+  %ul
+    %li
+      %code Added
+      برای امکانات جدید.
+    %li
+      %code Changed
+      برای تغییر در عملکرد موجود.
+    %li
+      %code Deprecated
+      برای امکاناتی که به زودی حذف می‌شوند.
+    %li
+      %code Removed
+      برای امکانات حذف شده.
+    %li
+      %code Fixed
+      برای هر نوع رفع خطا.
+    %li
+      %code Security
+      در صورت وجود آسیب‌پذیری امنیتی.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    چطور تلاش لازم برای نگهداری لاگ تغییرات را کم کنم؟
+
+  %p
+    بخش <code>Unreleased</code> را برای دنبال کردن تغییرات پیش رو به بالا اضافه کنید
+
+  %p این کار دو هدف را دنبال می‌کند:
+
+  %ul
+    %li
+      افراد بتوانند ببینند چه تغییراتی را می‌توانند در عرضه‌های بعدی انتظار داشته باشند.
+    %li
+      در زمان عرضه، می‌توانید بخش <code>Unreleased</code> را به بخش release منتقل کنید.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    آیا لاگ تغییرات می‌توانند بد باشند؟
+
+  %p بلی. این‌ها شرایطی هستند که لاگ تغییرات کمتر مفیدند.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    تفاوت (diff) لاگ کامیت‌ها
+
+  %p
+    استفاده از لاگ تفاوت کامیت‌های به عنوان لازم تغییرات ایده بدی است: چون پر از پازایت هستند. پارازیت‌هایی مثل کامیت‌های ادغام، کامیت‌هایی با عناوین مبهم، تغییر مستندات و ...
+
+  %p
+    هدف کامیت مستند کردن یک گام در سیر تکاملی سورس کد است. بعضی پروژه‌ها، کامیت‌ها را تمیز می‌کنند و بعضی این کار را نمی‌کنند.
+
+  %p
+    هدف یک مدخل لاگ تغییرات مستند کردن تفاوت‌های مهم، معمولاً از میان چندین کامیت، برای انتقال شفاف این تغییرات به کاربران نهایی است.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    نادیده گرفتن منسوخ شده‌ها
+    Ignoring Deprecations
+
+  %p
+    وقتی مردم از یک نسخه به نسخه دیگری به روز رسانی می‌کنند، باید کاملاً شفاف باشد که چه موقع چیزی می‌شکند.
+    باید ممکن باشد که به نسخه‌ای که منسوخ شده‌ها (deprecations) را فهرست کند، آنچه منسوخ شده را حذف کند و سپس به نسخه‌ای به روز رسانی کرد که منسوخ شده‌ها را برداشته است.
+
+  %p
+    حتی اگر کار دیگری نمی‌کنید، منسوخ شده‌ها، امکانات حذف شده یا هر نوع تغییرات منجر به شکست را در لاگ تغییرات فهرست کنید
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    تاریخ‌های گیج کننده
+
+  %p
+    فرمت‌های تاریخ محلی در سراسر جهان متفاوت است و معمولاً مشکل است که یک فرمت انسان پسند تاریخ پیدا کنیم که همه درکش کنند.
+    مزیت استفاده از فرمت‌هایی مثل
+    <code>2017-07-17</code>
+    این است که شما ترتیب بزرگترین به کوچگترین واحدها را رعایت می کنید: سال، ماه و روز.
+    این فرمت همچنین بر خلاف بعضی فرمت‌های محلی که که جای اعداد ماه و روز را عوضی می‌کنند، با فرمت‌های دو پهلوی تاریخ همپوشانی ندارد،
+    این دلایل، و این واقعیت که این فرمت یک
+    #{link_to "استاندارد ایزو", iso} است، دلیل پیشنهاد شدن این فرمت برای مدخل‌های لاگ تغییرات است.
+
+  %aside
+    موارد بیشتری وجود دارد. با
+    = link_to "ارسال issue", issues
+    یا ارسال Pull request به من کمک کنید این ضد الگوها را جمع‌آوری کنم
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    پرسش‌های متداول
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    آیا فرمت استانداردی برای لاگ تغییرات وجود دارد؟
+
+  %p
+    خیر. "راهنمای" #{link_to "راهنمای شیوه لاگ تغییرات GNU", gnustyle},
+    یا #{link_to "فایل دو پاراگرافی GNU NEWS", gnunews}
+    وجود دارد. این نارسا و ناکافی هستند.
+
+  %p
+    این پروژه قصد دارد
+    = link_to "یک قرارداد بهتر برای لاگ تغییرات باشد", changelog
+    که از مشاهده و جمع آوری شیوه‌های خوب جامعه متن باز آمده است
+
+  %p
+    از نقد سالم، بحث و گفتگو و پیشنهادات برای بهبود
+    = link_to "استقبال می‌کنیم.", issues
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    فایل لاگ تغییرات باید چه نامیده شود؟
+
+  %p
+    نامش را <code>CHANGELOG.md</code> بگذارید. بعضی پروژه‌ها از
+    <code>HISTORY</code>, <code>NEWS</code> یا <code>RELEASES</code> استفاده می‌کنند.
+
+  %p
+    در حالی گه ساده است فکر کنیم که اسم فایل لاگ تغییرات اهمیتی ندارد، چرا پیدا کردن تغییرات مهم را برای کاربران نهایی سخت کنیم؟
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Release های گیت‌هاب چطور؟
+
+  %p
+    ابتکار فوق‌العاده‌ای است. #{link_to "Release", ghr} ها می‌توانند برای تبدیل برچسب‌های ساده گیت
+    (مثلاً برچسبی به نام <code>v1.0.0</code>)
+    به یادداشت عرضه (Release Note) غنی استفاده شوند. یا با اضافه کردن دستی یادداشت عرضه یا با گرفتن پیام‌های حاشیه‌نویسی شده برچسب گیت و تبدیلشان به یادداشت.
+
+  %p
+    Release های گیت‌هاب لاگ‌های تغییرات غیرقابل حمل که فقط در گیت‌هاب به کاربران نمایش داده می‌شوند را ایجاد می‌کنند.
+    شبیه کردن‌شان به فرمت پیشنهادی این سند ممکن است اما تلاش بیشتری می‌طلبد.
+
+  %p
+    نسخه فعلی release های گیت‌هاب نسبت به فایل‌های با حرف بزرگ دیگر
+    (<code>README</code>, <code>CONTRIBUTING</code>, غیره.)
+    کمتر توسط کاربران پیدا می‌شوند
+    مشکل کوچک دیگر این است که رابط کاربری فعلی امکان ایجاد پیوند به لاگ کامیت‌ها را بین هر عرضه نمی‌دهد.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    آیا لاگ تغییرات را می‌توان به صورت اتوماتیک، پارس کرد؟
+
+  %p
+    مشکل است، چون افراد فرمت‌ها و فایل‌ها خیلی متفاوتی را استفاده می‌کنند.
+
+  %p
+    #{link_to "Vandamme", vandamme} یک روبی gem ساخته شده توسط تیم
+    Gemnasium است که اغلب (اما نه همه) لاگ تغییرات پروژه‌های متن باز را پارس می‌کند.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    عرضه‌های yanked چطور؟
+
+  %p
+    عرضه‌های Yanked نسخه‌هایی هستند که به خاطر باگ جدی یا مشکل امنیتی باید گرفته شوند.
+    معمولاً این عرضه‌ها در لاگ تغییرات دیده نمی‌شوند، اما باید اضافه شوند. این روشی است که باید آن‌ها را نمایش دهید:
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    برچسب <code>[YANKED]</code> به دلیلی پر سر و صداست.
+    مهم است که مردم به آن توجه کنند. چون با کروشه محصور شده پارس کردن نرم‌افزاری آن‌ها هم ساده‌تر است.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    آیا هرگز باید یک لاگ تغییرات را بازنویسی کنید؟
+
+  %p
+    حتماً. همیشه دلیل خوبی برای بهبود لاگ تغییرات وجود دارد. من معمولاً برای اضافه کردن عرضه‌های فراموش شده به پروژه‌های متن باز که لاگ تغییرات را نگهداری نمی‌کنند Pull Request ایجاد می‌کنم.
+
+  %p
+    ممکن است متوجه شوید گه فراموش کردید تغییرات منجر به شکست را در یادداشت‌‌های یک نسخه بنویسید. به طور مشخص در چنین شرایطی مهم است که لاگ تغییرات را به روز رسانی کنید.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    چطور می‌توانم مشارکت کنیم؟
+
+  %p
+    این سند <strong>حقیقت</strong> نیست; این نظر به دقت در نظر گرفته شده من به همراه اطلاعات و مثال‌هایی است که من گردآوری کردم
+
+  %p
+    این سند برای آن است که جامعه نرم‌افزاری به اجماع برسند. معتقدم بحث و گفتگو به اندازه نتیجه نهایی مهم است
+
+  %p
+    بنابراین لطفاً <strong>#{link_to "دست به کار شوید", gh}</strong>.
+
+.press
+  %h3 گفتگو
+  %p
+    به #{link_to "پادکست Changelog", thechangelog} رفتم تا درباره اینکه چرا متصدیان نگهداری و مشارکت‌کنندگان پروژه‌ها باید به لاگ تغییرات اهمیت بدهند و همچنین انگیزه‌های پشت این پروژه صحبت کنم.

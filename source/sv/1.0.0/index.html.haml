@@ -6,15 +6,16 @@ version: 1.0.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
-- gemnasium = "https://gemnasium.com/"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "http://semver.org/"
-- shields = "http://shields.io/"
-- thechangelog = "http://5by5.tv/changelog/127"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
 
 .header
   .title
@@ -165,16 +166,20 @@ version: 1.0.0
     Förvillande datum
 
   %p
-    I USA lägger folk månaden först (<code>06-02-2012</code> för 2:a juni 2012),
-    medan många andra runt om i världen skriver <code>2 June 2012</code> men
-    uttalar det annorlunda. <code>2012-06-02</code> fungerar logiskt från störst
-    till minst, överlappar inte på något tvetydligt sätt med andra datumformat,
-    och är en #{link_to "ISO-standard", iso}. Dessutom är det rekommenderat
-    datumformat för ändringsloggar.
+    Lokala datumformat varierar över hela världen, och det är ofta
+    svårt att hitta ett användbart datumformat som känns intuitivt
+    för alla. Fördelen med datumformat så som
+    <code>2017-07-17</code> är att det följer storleksordningen från störst till
+    minst: år, månad och dag. Detta format överlappar inte heller
+    på ett tvetydligt sätt med andra datumformat, till skillnad från
+    lokala format som kan växla positionen på månad och dag.
+    Dessa anledningar tillsammans med det faktum att detta datumformat är en
+    #{link_to "ISO-standard", iso}, gör att detta är rekommenderat
+    format för ändringsloggar.
 
   %aside
     Det finns mer. Hjälp mig att samla dessa antimönster genom att
-    = link_to "skapa ett issue", "#issues"
+    = link_to "skapa ett issue", issues
     eller en pull requests
 
 .frequently-asked-questions
@@ -187,9 +192,9 @@ version: 1.0.0
     Finns det ett standardformat på ändringsloggar?
 
   %p
-    Inte riktigt. GNU:s stilguide för ändringsloggar och den två stycke
-    långa GNU NEWS-filen med riktlinjer finns. Båda är bristfälliga och
-    otillräckliga.
+    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", gnustyle} och
+    den #{link_to "två stycke långa GNU NEWS-filen", gnunews} med "riktlinjer" finns.
+    Båda är bristfälliga och otillräckliga.
 
   %p
     Detta projekt har som mål att bli
@@ -245,19 +250,20 @@ version: 1.0.0
 
   %p
     #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen
-    #{link_to "Gemnasium", gemnasium} som tolkar många (men inte alla)
+    Gemnasium som tolkar många (men inte alla)
     ändringsloggar för öppen källkod.
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Hur är det med brådskande utgåvor ("yanked")?
+    Hur är det med återtagna utgåvor ("yanked")?
 
   %p
-    Brådskande utgåvor är versioner som måste släppas på grund av alvarliga
-    buggar eller säkerhetsproblem. Oftast brukar dessa versioner inte ens
-    finnas med i ändringsloggarna. De borde det. Så här borde du visa dem:
+    Återtagna utgåvor är versioner som måste tas tillbaka på grund av
+    allvarliga buggar eller säkerhetsproblem. Oftast brukar dessa versioner
+    inte ens finnas med i ändringsloggarna. De borde det. Så här borde du
+    visa dem:
 
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
     Taggen <code>[YANKED]</code> står ut av en anledning, det är viktigt
