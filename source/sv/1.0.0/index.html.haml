@@ -187,117 +187,131 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Vanliga frågor
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Finns det ett standardformat på ändringsloggar?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Finns det ett standardformat på ändringsloggar?
 
-  %p
-    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", gnustyle} och
-    den #{link_to "två stycke långa GNU NEWS-filen", gnunews} med "riktlinjer" finns.
-    Båda är bristfälliga och otillräckliga.
+    %p
+      Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", gnustyle} och
+      den #{link_to "två stycke långa GNU NEWS-filen", gnunews} med "riktlinjer" finns.
+      Båda är bristfälliga och otillräckliga.
 
-  %p
-    Detta projekt har som mål att bli
-    = link_to "en bättre konvention för ändringsloggar.", changelog
-    Det utgår från uppenbart goda praxis från öppen källkods-världen och sammanför dem.
+    %p
+      Detta projekt har som mål att bli
+      = link_to "en bättre konvention för ändringsloggar.", changelog
+      Det utgår från uppenbart goda praxis från öppen källkods-världen och sammanför dem.
 
-  %p
-    Konstruktiv kritik, diskussion och förslag till förbättring
-    = link_to "är välkommen.", issues
+    %p
+      Konstruktiv kritik, diskussion och förslag till förbättring
+      = link_to "är välkommen.", issues
 
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Vad bör filen med ändringsloggen heta?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Vad bör filen med ändringsloggen heta?
 
-  %p
-    Döp den till <code>CHANGELOG.md</code>. En del projekt använder
-    <code>HISTORY</code>, <code>NEWS</code> eller <code>RELEASES</code>.
+    %p
+      Döp den till <code>CHANGELOG.md</code>. En del projekt använder
+      <code>HISTORY</code>, <code>NEWS</code> eller <code>RELEASES</code>.
 
-  %p
-    Även om det är lätt att tänka att det inte spelar så stor roll vad filen
-    med ändringsloggar kallas, varför göra det svårare för dina slutanvändare
-    att enkelt hitta de viktigaste ändringarna?
+    %p
+      Även om det är lätt att tänka att det inte spelar så stor roll vad filen
+      med ändringsloggar kallas, varför göra det svårare för dina slutanvändare
+      att enkelt hitta de viktigaste ändringarna?
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Hur är det med GitHub Releases?
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Hur är det med GitHub Releases?
 
-  %p
-    Det är ett fantasiskt initiativ. #{link_to "Releases", ghr} kan användas
-    för att göra enkla git-taggar (t.ex. en tagg kallad <code>v1.0.0</code>)
-    till formaterade versionsanteckningar genom att manuellt lägga till
-    versionsanteckningar eller så kan den hämta meddelandena i kommenterade
-    git-taggar och omvandla dessa till versionsanteckningar.
+    %p
+      Det är ett fantasiskt initiativ. #{link_to "Releases", ghr} kan användas
+      för att göra enkla git-taggar (t.ex. en tagg kallad <code>v1.0.0</code>)
+      till formaterade versionsanteckningar genom att manuellt lägga till
+      versionsanteckningar eller så kan den hämta meddelandena i kommenterade
+      git-taggar och omvandla dessa till versionsanteckningar.
 
-  %p
-    GitHub Releases skapar en icke porterbar ändringslogg som enbart kan visas
-    för användare på GitHub. Det är möjligt att formatera det ungefär som på
-    Håll en ändringslogg-formatet, men det tendera att bli lite mer invecklat.
+    %p
+      GitHub Releases skapar en icke porterbar ändringslogg som enbart kan visas
+      för användare på GitHub. Det är möjligt att formatera det ungefär som på
+      Håll en ändringslogg-formatet, men det tendera att bli lite mer invecklat.
 
-  %p
-    Nuvarande version av GitHub releases är möjligtvis också lite svår att
-    hitta för slutanvändare, till skillnad från filer med normalt stora
-    bokstäver (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
-    Ett annat bekymmer är att användargränssnittet för närvarande inte
-    erbjuder länkar till incheckningsloggar mellan olika versioner.
+    %p
+      Nuvarande version av GitHub releases är möjligtvis också lite svår att
+      hitta för slutanvändare, till skillnad från filer med normalt stora
+      bokstäver (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
+      Ett annat bekymmer är att användargränssnittet för närvarande inte
+      erbjuder länkar till incheckningsloggar mellan olika versioner.
 
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Kan ändringsloggar bli automatiskt tolkade?
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Kan ändringsloggar bli automatiskt tolkade?
 
-  %p
-    Det är svårt då människor följer vitt olika format och filnamn.
+    %p
+      Det är svårt då människor följer vitt olika format och filnamn.
 
-  %p
-    #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen
-    Gemnasium som tolkar många (men inte alla)
-    ändringsloggar för öppen källkod.
+    %p
+      #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen
+      Gemnasium som tolkar många (men inte alla)
+      ändringsloggar för öppen källkod.
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Hur är det med återtagna utgåvor ("yanked")?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Hur är det med återtagna utgåvor ("yanked")?
 
-  %p
-    Återtagna utgåvor är versioner som måste tas tillbaka på grund av
-    allvarliga buggar eller säkerhetsproblem. Oftast brukar dessa versioner
-    inte ens finnas med i ändringsloggarna. De borde det. Så här borde du
-    visa dem:
+    %p
+      Återtagna utgåvor är versioner som måste tas tillbaka på grund av
+      allvarliga buggar eller säkerhetsproblem. Oftast brukar dessa versioner
+      inte ens finnas med i ändringsloggarna. De borde det. Så här borde du
+      visa dem:
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
-  %p
-    Taggen <code>[YANKED]</code> står ut av en anledning, det är viktigt
-    att folk se det. Då den är omsluten med hakparenteser är det också lättare
-    för ett program att tolka det.
+    %p
+      Taggen <code>[YANKED]</code> står ut av en anledning, det är viktigt
+      att folk se det. Då den är omsluten med hakparenteser är det också lättare
+      för ett program att tolka det.
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Borde du någonsin förändra en ändringslogg?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Borde du någonsin förändra en ändringslogg?
 
-  %p
-    Självklart. Det finns alltid en bra anledning att förbättra en ändringslogg.
-    Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
-    för öppna källkodsprojekt som inte tar hand om sin ändringslogg.
+    %p
+      Självklart. Det finns alltid en bra anledning att förbättra en ändringslogg.
+      Jag öppnar regelbundet pull requests för att lägga till saknade utgåvor
+      för öppna källkodsprojekt som inte tar hand om sin ändringslogg.
 
-  %p
-    Det kan också hända att du upptäcker att du glömt att ta upp en icke
-    bakåtkompatibel förändring i en version. I sådana fall är det självklart
-    viktigt att uppdatera din ändringslogg.
+    %p
+      Det kan också hända att du upptäcker att du glömt att ta upp en icke
+      bakåtkompatibel förändring i en version. I sådana fall är det självklart
+      viktigt att uppdatera din ändringslogg.
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Hur kan jag bidra?
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Hur kan jag bidra?
 
-  %p
-    Detta dokument är inte <strong>sanningen</strong>, det är en noga övervägd
-    åsikt tillsammans med information och exempel jag har samlat på mig.
+    %p
+      Detta dokument är inte <strong>sanningen</strong>, det är en noga övervägd
+      åsikt tillsammans med information och exempel jag har samlat på mig.
 
-  %p
-    Detta beror på att jag vill att vår gemenskap ska nå enighet. Jag tror på
-    att diskussionen är lika viktig som slutresultatet.
+    %p
+      Detta beror på att jag vill att vår gemenskap ska nå enighet. Jag tror på
+      att diskussionen är lika viktig som slutresultatet.
 
-  %p
-    Så tveka inte att <strong>#{link_to "kasta dig in i diskussionen", gh}</strong>.
+    %p
+      Så tveka inte att <strong>#{link_to "kasta dig in i diskussionen", gh}</strong>.
 
 .press
   %h3 Samtal

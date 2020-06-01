@@ -145,16 +145,14 @@ div.frequently-asked-questions
       width: 1em
       text-align: center
 
-
-    &.is-visible:after
-      content: "-"
-
   h4 ~ p
-    display: none
     font-size: 0.9em
 
-  h4 ~ p.is-visible
-    display: inherit
+  details ~ summary
+    list-style: none
+
+  details ~ p
+    font-size: inherit
 
 .footer
   font-size: .6em

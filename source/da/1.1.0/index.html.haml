@@ -205,124 +205,138 @@ version: 1.1.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Ofte stillede spørgsmål
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Er der et standard changelog-format?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Er der et standard changelog-format?
 
-  %p
-    Ikke rigtig. Der er #{link_to "GNU changelog style guide", gnustyle},
-    eller #{link_to "two-paragraph-long GNU NEWS file", gnunews}. De
-    er begge utilstrækkelige eller uhensigtsmæssige.
+    %p
+      Ikke rigtig. Der er #{link_to "GNU changelog style guide", gnustyle},
+      eller #{link_to "two-paragraph-long GNU NEWS file", gnunews}. De
+      er begge utilstrækkelige eller uhensigtsmæssige.
 
-  %p
-    Dette projekt sigter efter at være
-    = link_to "en bedre changelog konvention.", changelog
-    Det kommer af at observere god praksis i opensource-verdenen
-    og samle disse.
+    %p
+      Dette projekt sigter efter at være
+      = link_to "en bedre changelog konvention.", changelog
+      Det kommer af at observere god praksis i opensource-verdenen
+      og samle disse.
 
-  %p
-    Konstruktiv kritik diskussion og forbedringsforslag
-    = link_to "er velkomne.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Hvad skal changelog-filen hedde?
-
-  %p
-    Kald den <code>CHANGELOG.md</code>. Nogle projekter bruger
-    <code>HISTORY</code>, <code>NEWS</code> eller <code>RELEASES</code>.
-
-  %p
-    Selvom det er nemt at mene, at navnet på changelog-filen er
-    irrelevant, hvorfor så gøre det sværere for dine slugbrugere
-   at finde bemærkelsesværdige ændringer?
+    %p
+      Konstruktiv kritik diskussion og forbedringsforslag
+      = link_to "er velkomne.", issues
 
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Hvad med GitHub Releases?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Hvad skal changelog-filen hedde?
 
-  %p
-    Det er et godt initiativ. #{link_to "Releases", ghr} kan bruges
-    til at gøre simple git tags (for eksempel, et tag <code>v1.0.0</code>)
-    til fyldige udgivelsesnoter ved manuelt at tilføje noter til disse
-    eller bruge en annoteret git-tag-besked som udgivelsesnoter.
+    %p
+      Kald den <code>CHANGELOG.md</code>. Nogle projekter bruger
+      <code>HISTORY</code>, <code>NEWS</code> eller <code>RELEASES</code>.
 
-  %p
-    GitHub Releases laver en ikke-flytbar changelog, der kun kan vises
-    til bruger i konteksten af GitHub. Det er muligt at få dem til at
-    ligne Hold en changelog-formatet, men det har en tendens til at
-    være lidt mere kompliceret.
-
-  %p
-    Den nuværende version af GitHub releases er, diskutérbart,
-    ikke særligt synlig for slutbrugere, ikke lig de typiske
-    kapitaliserede filer (<code>README</code>,
-    <code>CONTRIBUTING</code>, osv.). Et andet mindre problem, er
-    at interfacet ikke tilbyder links til commit logs mellem hvert
-    release.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Kan changelogs læses og fortolkes automatisk?
-
-  %p
-    Det er besværligt, fordi folk følger vidt forskellige formater
-    og filnavne.
-
-  %p
-    #{link_to "Vandamme", vandamme} er en Ruby gem lavet af
-    holdet bag Gemnasium, som læser og fortolker mange (men ikke
-    alle) open source projekters changelogs.
-
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Hvad med tilbagetrukkede udgivelser?
-
-  %p
-    Tilbagetrukkede udgivelser er versioner, der er blevet trukket
-    tilbage på grund af en seriøs fejl eller sikkerhedsbrist. Ofte
-    vises disse versioner slet ikke i changelogs. Det bør de. Dette
-    er hvordan du bør vise dem:
-
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
-
-  %p
-    Notationen <code>[YANKED]</code>, er højlydt af en årsag: Det er
-    vigtig information for folk. Siden den er pakket ind i klammer, er
-    den nemmere at fortolke og læse systematiseret.
+    %p
+      Selvom det er nemt at mene, at navnet på changelog-filen er
+      irrelevant, hvorfor så gøre det sværere for dine slugbrugere
+     at finde bemærkelsesværdige ændringer?
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Bør man nogensinde omskrive en changelog?
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Hvad med GitHub Releases?
 
-  %p
-    Klart! Der er altid gode grunde til at forbedre en changelog.
-    Jeg åbner jævnligt pull-requests, der tilføjer manglende releases
-    til open source projekter uden en vedligeholdt changelog.
+    %p
+      Det er et godt initiativ. #{link_to "Releases", ghr} kan bruges
+      til at gøre simple git tags (for eksempel, et tag <code>v1.0.0</code>)
+      til fyldige udgivelsesnoter ved manuelt at tilføje noter til disse
+      eller bruge en annoteret git-tag-besked som udgivelsesnoter.
 
-  %p
-    Det er også muligt, at du vil opdage at du har glemt at addressere
-    en ødelæggende rettelse i noterne for en version. Det er selvfølgelig
-    vigtigt at du opdaterer en changelog i disse tilfælde.
+    %p
+      GitHub Releases laver en ikke-flytbar changelog, der kun kan vises
+      til bruger i konteksten af GitHub. Det er muligt at få dem til at
+      ligne Hold en changelog-formatet, men det har en tendens til at
+      være lidt mere kompliceret.
+
+    %p
+      Den nuværende version af GitHub releases er, diskutérbart,
+      ikke særligt synlig for slutbrugere, ikke lig de typiske
+      kapitaliserede filer (<code>README</code>,
+      <code>CONTRIBUTING</code>, osv.). Et andet mindre problem, er
+      at interfacet ikke tilbyder links til commit logs mellem hvert
+      release.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Kan changelogs læses og fortolkes automatisk?
+
+    %p
+      Det er besværligt, fordi folk følger vidt forskellige formater
+      og filnavne.
+
+    %p
+      #{link_to "Vandamme", vandamme} er en Ruby gem lavet af
+      holdet bag Gemnasium, som læser og fortolker mange (men ikke
+      alle) open source projekters changelogs.
+
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Hvad med tilbagetrukkede udgivelser?
+
+    %p
+      Tilbagetrukkede udgivelser er versioner, der er blevet trukket
+      tilbage på grund af en seriøs fejl eller sikkerhedsbrist. Ofte
+      vises disse versioner slet ikke i changelogs. Det bør de. Dette
+      er hvordan du bør vise dem:
+
+    %p <code>## 0.0.5 - 2014-12-13 [YANKED]</code>
+
+    %p
+      Notationen <code>[YANKED]</code>, er højlydt af en årsag: Det er
+      vigtig information for folk. Siden den er pakket ind i klammer, er
+      den nemmere at fortolke og læse systematiseret.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Hvordan kan jeg hjælpe til?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Bør man nogensinde omskrive en changelog?
 
-  %p
-    Dette dokument er ikke <strong>sandheden</strong>; det er min
-    velovervejede mening sammen med information og eksempler jeg har
-    samlet.
+    %p
+      Klart! Der er altid gode grunde til at forbedre en changelog.
+      Jeg åbner jævnligt pull-requests, der tilføjer manglende releases
+      til open source projekter uden en vedligeholdt changelog.
 
-  %p
-    Det er fordi, jeg gerne vil have at vores fællesskab når en konsensus.
-    Jeg mener at diskussionen er lige så vigtig som slutresultatet.
-  %p
-    Så, <strong>#{link_to "vær med!", gh}</strong>
+    %p
+      Det er også muligt, at du vil opdage at du har glemt at addressere
+      en ødelæggende rettelse i noterne for en version. Det er selvfølgelig
+      vigtigt at du opdaterer en changelog i disse tilfælde.
+
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Hvordan kan jeg hjælpe til?
+
+    %p
+      Dette dokument er ikke <strong>sandheden</strong>; det er min
+      velovervejede mening sammen med information og eksempler jeg har
+      samlet.
+
+    %p
+      Det er fordi, jeg gerne vil have at vores fællesskab når en konsensus.
+      Jeg mener at diskussionen er lige så vigtig som slutresultatet.
+    %p
+      Så, <strong>#{link_to "vær med!", gh}</strong>
 
 .press
   %h3 Samtaler

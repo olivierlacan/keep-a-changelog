@@ -170,109 +170,123 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     常见问题
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    是否有一个标准化的更新日志格式？
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        是否有一个标准化的更新日志格式？
 
-  %p
-    并没有。虽然GNU提供了更新日志样式指引，以及那个仅有两段长的GNU NEWS文件“指南”，
-    但两者均远远不够。
+    %p
+      并没有。虽然GNU提供了更新日志样式指引，以及那个仅有两段长的GNU NEWS文件“指南”，
+      但两者均远远不够。
 
-  %p
-    此项目意在提供一个
-    = link_to "更好的更新日志惯例", changelog
-    所有点子都来自于在开源社区中对优秀实例的观察与记录。
+    %p
+      此项目意在提供一个
+      = link_to "更好的更新日志惯例", changelog
+      所有点子都来自于在开源社区中对优秀实例的观察与记录。
 
-  %p
-    对于所有建设性批评、讨论及建议，我们都非常
-    = link_to "欢迎。", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    更新日志文件应被如何命名？
-
-  %p
-    可以叫做<code>CHANGELOG.md</code>。 一些项目也使用
-    <code>HISTORY</code>、<code>NEWS</code>或<code>RELEASES</code>。
-
-  %p
-    当然，你可以认为更新日志的名字并不是什么要紧事，但是为什么要为难那些仅仅是
-    想看到都有哪些重大变更的最终用户呢？
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    对于GitHub发布呢？
-
-  %p
-    这是个非常好的倡议。#{link_to "Releases", ghr}可通过手动添加发布日志或将带
-    有注释的git标签信息抓取后转换的方式，将简单的git标签（如一个叫<code>v1.0.0</code>的标签）
-    转换为信息丰富的发布日志。
-
-  %p
-    GitHub发布会创建一个非便携、仅可在GitHub环境下显示的更新日志。尽管会花费更
-    多时间，但将之处理成更新日志格式是完全可能的。
-
-  %p
-    现行版本的GitHub发布不像哪些典型的大写文件(<code>README</code>,
-    <code>CONTRIBUTING</code>, etc.)，仍可以认为是不利于最终用户探索的。
-    另一个小问题则是界面并不提供不同版本间commit日志的链接。
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    更新日志可以被自动识别吗？
-
-  %p
-    非常困难，因为有各种不同的文件格式和命名。
+    %p
+      对于所有建设性批评、讨论及建议，我们都非常
+      = link_to "欢迎。", issues
 
 
-  %p
-    #{link_to "Vandamme", vandamme} 是一个Ruby程序，由
-    Gemnasium 团队制作，可以解析多种
-    （但绝对不是全部）开源库的更新日志。
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        更新日志文件应被如何命名？
+
+    %p
+      可以叫做<code>CHANGELOG.md</code>。 一些项目也使用
+      <code>HISTORY</code>、<code>NEWS</code>或<code>RELEASES</code>。
+
+    %p
+      当然，你可以认为更新日志的名字并不是什么要紧事，但是为什么要为难那些仅仅是
+      想看到都有哪些重大变更的最终用户呢？
+
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        对于GitHub发布呢？
+
+    %p
+      这是个非常好的倡议。#{link_to "Releases", ghr}可通过手动添加发布日志或将带
+      有注释的git标签信息抓取后转换的方式，将简单的git标签（如一个叫<code>v1.0.0</code>的标签）
+      转换为信息丰富的发布日志。
+
+    %p
+      GitHub发布会创建一个非便携、仅可在GitHub环境下显示的更新日志。尽管会花费更
+      多时间，但将之处理成更新日志格式是完全可能的。
+
+    %p
+      现行版本的GitHub发布不像哪些典型的大写文件(<code>README</code>,
+      <code>CONTRIBUTING</code>, etc.)，仍可以认为是不利于最终用户探索的。
+      另一个小问题则是界面并不提供不同版本间commit日志的链接。
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        更新日志可以被自动识别吗？
+
+    %p
+      非常困难，因为有各种不同的文件格式和命名。
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    那些后来撤下的版本怎么办？
-
-  %p
-    因为各种安全/重大bug原因被撤下的版本被标记'YANKED'。
-    这些版本一般不出现在更新日志里，但建议他们出现。
-    显示方式应该是：
-
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
-
-  %p
-    <code>[YANKED]</code> 的标签应该非常醒目。
-    人们应该非常容易就可以注意到他。
-    并且被方括号所包围也使其更易被程序识别。
+    %p
+      #{link_to "Vandamme", vandamme} 是一个Ruby程序，由
+      Gemnasium 团队制作，可以解析多种
+      （但绝对不是全部）开源库的更新日志。
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    是否可以重写更新日志？
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        那些后来撤下的版本怎么办？
 
-  %p
-    当然可以。总会有多种多样的原因需要我们去改进更新日志。
-    对于那些有着未维护更新日志的开源项目，我会定期打开pull请求以加入缺失的发布信息。
+    %p
+      因为各种安全/重大bug原因被撤下的版本被标记'YANKED'。
+      这些版本一般不出现在更新日志里，但建议他们出现。
+      显示方式应该是：
 
-  %p
-    另外，很有可能你发现自己忘记记录一个重大功能更新。这种情况下显然你应该去重写更新日志。
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      <code>[YANKED]</code> 的标签应该非常醒目。
+      人们应该非常容易就可以注意到他。
+      并且被方括号所包围也使其更易被程序识别。
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    如何贡献？
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        是否可以重写更新日志？
 
-  %p
-    本文档并非<strong>真理</strong>。而是我深思熟虑后的建议，以及我收集的信息与典例。
+    %p
+      当然可以。总会有多种多样的原因需要我们去改进更新日志。
+      对于那些有着未维护更新日志的开源项目，我会定期打开pull请求以加入缺失的发布信息。
 
-  %p
-    我希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。
+    %p
+      另外，很有可能你发现自己忘记记录一个重大功能更新。这种情况下显然你应该去重写更新日志。
 
-  %p
-    所以欢迎<strong>#{link_to "贡献", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        如何贡献？
+
+    %p
+      本文档并非<strong>真理</strong>。而是我深思熟虑后的建议，以及我收集的信息与典例。
+
+    %p
+      我希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。
+
+    %p
+      所以欢迎<strong>#{link_to "贡献", gh}</strong>.
 
 .press
   %h3 访谈

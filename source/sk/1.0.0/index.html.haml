@@ -181,118 +181,132 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Často kladené otázky
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Existuje štandardný formát pre changelog?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Existuje štandardný formát pre changelog?
 
-  %p
-    Nie. Existuje GNU príručka pre štýl changelogu alebo dvojodstavcová
-    GNU "smernica" pre NEWS súbor. Obe sú však nevhodné či nedostatočné.
+    %p
+      Nie. Existuje GNU príručka pre štýl changelogu alebo dvojodstavcová
+      GNU "smernica" pre NEWS súbor. Obe sú však nevhodné či nedostatočné.
 
-  %p
-    Tento projekt sa snaží byť
-    = link_to "lepšou konvenciou pre changelog.", changelog
-    Vychádza z pozorovania a zozbierania osvedčených postupov komunity okolo projektov s otvoreným zdrojovým kódom.
+    %p
+      Tento projekt sa snaží byť
+      = link_to "lepšou konvenciou pre changelog.", changelog
+      Vychádza z pozorovania a zozbierania osvedčených postupov komunity okolo projektov s otvoreným zdrojovým kódom.
 
-  %p
-    Zdravá kritika, diskusia a návrhy na zlepšenie
-    = link_to "sú vítané.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Ako by mal byť súbor changelogu pomenovaný?
-
-  %p
-    Nazvi ho <code>CHANGELOG.md</code>. Niektoré projekty používajú tiež
-    <code>HISTORY</code>, <code>NEWS</code> alebo <code>RELEASES</code>.
-
-  %p
-    Je jednoduché myslieť si, že názov changelogu nie je taký dôležitý.
-    Prečo však sťažovať koncovému používateľovi hľadanie významných zmien?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    A čo GitHub Releases?
-
-  %p
-    Je to skvelá iniciatíva. Služba #{link_to "Releases", ghr} môže byť použitá
-    pre premenu git tagov (napríklad tagu <code>v1.0.0</code>) na bohaté
-    poznámky k vydaniam manuálnym pridávaním týchto poznámok alebo získaním
-    správ z anotovaných git tagov a vytvorením poznámok k vydaniu z nich.
-
-  %p
-    GitHub Releases vytvorí neprenosný changelog, ktorý môže byť zobrazený
-    používateľom v rámci GitHubu. Je možné ich upraviť na veľmi podobný štýl,
-    aký navrhuje projekt Udržuj changelog, tento postup však býva trochu
-    zložitejší.
-
-  %p
-    Súčasná verzia GitHub Releases tiež nie je ľahko objaviteľná koncovým
-    používateľom, na rozdiel od klasického súboru s názvom napísaným veľkými
-    písmenami (<code>README</code>, <code>CONTRIBUTING</code> atď.). Ďalším
-    menším problémom je, že v súčasnosti nepodporuje odkazy na commit logy
-    medzi jednotlivými vydaniami.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Môžu byť changelogy automaticky parsované?
-
-  %p
-    Je to zložité, pretože ľudia používajú rôzne formáty a názvy súborov.
-
-  %p
-    #{link_to "Vandamme", vandamme} je Ruby gem vytvorený tímom
-    Gemnasium, ktorý parsuje mnohé (ale nie všetky)
-    changelogy projektov s otvoreným zdrojovým kódom.
+    %p
+      Zdravá kritika, diskusia a návrhy na zlepšenie
+      = link_to "sú vítané.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    A čo spätne stiahnuté vydania?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Ako by mal byť súbor changelogu pomenovaný?
 
-  %p
-    Stiahnuté vydania sú verzie, ktoré museli byť neskôr spätne odobraté
-    kvôli vážnej chybe alebo bezpečnostným rizikám. Tieto verzie sa často
-    v changelogu ani neobjavia. Ale mali by sa. Zobrazovať by sa mali takto:
+    %p
+      Nazvi ho <code>CHANGELOG.md</code>. Niektoré projekty používajú tiež
+      <code>HISTORY</code>, <code>NEWS</code> alebo <code>RELEASES</code>.
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p
+      Je jednoduché myslieť si, že názov changelogu nie je taký dôležitý.
+      Prečo však sťažovať koncovému používateľovi hľadanie významných zmien?
 
-  %p
-    Tag <code>[YANKED]</code> kričí naschvál. Je dôležité, aby si ho ľudia
-    všimli. Keďže je uzavretý zátvorkami, je tiež jednoduchšie ho programovo
-    parsovať.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        A čo GitHub Releases?
+
+    %p
+      Je to skvelá iniciatíva. Služba #{link_to "Releases", ghr} môže byť použitá
+      pre premenu git tagov (napríklad tagu <code>v1.0.0</code>) na bohaté
+      poznámky k vydaniam manuálnym pridávaním týchto poznámok alebo získaním
+      správ z anotovaných git tagov a vytvorením poznámok k vydaniu z nich.
+
+    %p
+      GitHub Releases vytvorí neprenosný changelog, ktorý môže byť zobrazený
+      používateľom v rámci GitHubu. Je možné ich upraviť na veľmi podobný štýl,
+      aký navrhuje projekt Udržuj changelog, tento postup však býva trochu
+      zložitejší.
+
+    %p
+      Súčasná verzia GitHub Releases tiež nie je ľahko objaviteľná koncovým
+      používateľom, na rozdiel od klasického súboru s názvom napísaným veľkými
+      písmenami (<code>README</code>, <code>CONTRIBUTING</code> atď.). Ďalším
+      menším problémom je, že v súčasnosti nepodporuje odkazy na commit logy
+      medzi jednotlivými vydaniami.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Môžu byť changelogy automaticky parsované?
+
+    %p
+      Je to zložité, pretože ľudia používajú rôzne formáty a názvy súborov.
+
+    %p
+      #{link_to "Vandamme", vandamme} je Ruby gem vytvorený tímom
+      Gemnasium, ktorý parsuje mnohé (ale nie všetky)
+      changelogy projektov s otvoreným zdrojovým kódom.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Mal by sa changelog niekedy prepisovať?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        A čo spätne stiahnuté vydania?
 
-  %p
-    Samozrejme. Vždy sa nájde dobrý dôvod na vylepšenie changelogu. Sám často
-    otváram pull requesty pre pridanie chýbajúceho vydania projektov
-    s otvoreným kódom a neudržiavaným changelogom.
+    %p
+      Stiahnuté vydania sú verzie, ktoré museli byť neskôr spätne odobraté
+      kvôli vážnej chybe alebo bezpečnostným rizikám. Tieto verzie sa často
+      v changelogu ani neobjavia. Ale mali by sa. Zobrazovať by sa mali takto:
 
-  %p
-    Tiež môže nastať situácia, že v poznámkach k vydaniu určitej verzie sa
-    zabudla spomenúť podstatná zmena. V takom prípade je samozrejme dôležité
-    tento changelog aktualizovať.
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      Tag <code>[YANKED]</code> kričí naschvál. Je dôležité, aby si ho ľudia
+      všimli. Keďže je uzavretý zátvorkami, je tiež jednoduchšie ho programovo
+      parsovať.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Ako môžem prispieť?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Mal by sa changelog niekedy prepisovať?
 
-  %p
-    Tento dokument nie je úplná <strong>pravda</strong>; je mojím starostlivo
-    zváženým názorom spolu s informáciami a príkladmi, ktoré som zozbieral.
+    %p
+      Samozrejme. Vždy sa nájde dobrý dôvod na vylepšenie changelogu. Sám často
+      otváram pull requesty pre pridanie chýbajúceho vydania projektov
+      s otvoreným kódom a neudržiavaným changelogom.
 
-  %p
-    Je tomu tak preto, aby komunita dosiahla určitý konsenzus. Verím, že
-    diskusia je rovnako dôležitá ako samotný výsledok.
+    %p
+      Tiež môže nastať situácia, že v poznámkach k vydaniu určitej verzie sa
+      zabudla spomenúť podstatná zmena. V takom prípade je samozrejme dôležité
+      tento changelog aktualizovať.
 
-  %p
-    Takže, prosím, <strong>#{link_to "prilož ruku k dielu", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Ako môžem prispieť?
+
+    %p
+      Tento dokument nie je úplná <strong>pravda</strong>; je mojím starostlivo
+      zváženým názorom spolu s informáciami a príkladmi, ktoré som zozbieral.
+
+    %p
+      Je tomu tak preto, aby komunita dosiahla určitý konsenzus. Verím, že
+      diskusia je rovnako dôležitá ako samotný výsledok.
+
+    %p
+      Takže, prosím, <strong>#{link_to "prilož ruku k dielu", gh}</strong>.
 
 .press
   %h3 Rozhovory

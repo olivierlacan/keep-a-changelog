@@ -178,117 +178,131 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Veel Gestelde Vragen
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is er een standaard changelog template?
-
-  %p
-    Niet echt. Er is de GNU changelog style guide, en het twee paragrafen lange GNU NEWS bestand "richtlijnen".
-    Beiden zijn niet volledig genoeg.
-
-  %p
-    Dit project poogt
-    = link_to "een betere changelog standaard", changelog
-    te creëren. Dit op basis van "good practices" uit de open source wereld.
-
-  %p
-    Opbouwende kritiek, discussie en suggesties voor verbetering
-    = link_to "zijn welkom.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Wat zou de changelog bestandsnaam moeten zijn?
-
-  %p
-    Noem het <code>CHANGELOG.md</code>. Sommige projecten gebruiken
-    <code>HISTORY</code>, <code>NEWS</code> of <code>RELEASES</code>.
-
-  %p
-    Je kan denken dat de bestandsnaam niet heel belangrijk is,
-    maar waarom zou je het de eindgebruikers moeilijker maken om de changelog te vinden?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Wat denk je van GitHub Releases?
-
-  %p
-    Het is een goed initiatief. #{link_to "Releases", ghr} kan gebruikt worden
-    om simpele git tags (bijvoorbeeld een tag met de naam  <code>v1.0.0</code>)
-    te veranderen in uitgebreide release notes door deze handmatig toe te voegen of
-    door geannoteerde git tag berichten te gebruiken om release notes te genereren.
-
-  %p
-    GitHub Releases maken changelog wat alleen getoond kan worden aan gebruikers
-    binnen de context van GitHub. Het is mogelijk om deze dicht bij het format
-    te krijgen wat wij hier promoten, maar er zal iets meer werk voor nodig zijn.
-
-  %p
-    De huidige versie van GitHub releases is naar mijn mening niet
-    echt goed vindbaar voor gebruikers, in tegenstelling tot de typische
-    bestanden die in een naam in hoofdletters hebben
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
-    Een ander knelpunt is dat de interface geen links toestaat naar
-    commit logs van elke release.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Kunnen changelogs automatisch geparsed worden?
-
-  %p
-    Dat is lastig, mensen gebruiken immers veel verschillende formats en bestandsnamen.
-
-  %p
-    #{link_to "Vandamme", vandamme} is een Ruby gem van het
-    Gemnasium team wat de changelogs van veel (maar niet alle)
-    open source projecten kan parsen.
-
-
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Wat doen we met teruggetrokken (yanked) releases?
-
-  %p
-    Teruggetrokken releases zijn versies die teruggetrokken zijn als gevolg
-    van een serieuze bug of beveiligings probleem. Vaak zijn ze niet eens te zien in
-    de changelogs. Dat zou wel moeten. Zo zou je een teruggetrokken release moeten tonen:
-
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
-
-  %p
-    De <code>[YANKED]</code> tag is in hoofdletters voor een reden. Het is belangrijk
-    dat mensen dit zien. Omdat het tussen blokhaken genoteerd is, is het ook makkelijker
-    automatisch te parsen.
-
-
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Mag je een changelog aanpassen/herschrijven?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Is er een standaard changelog template?
 
     %p
-      Natuurlijk. Er zijn goede redenen om een changelog te verbeteren.
-      Ik open regelmatig een pull request om missende releases toe te
-      voegen aan open source projecten met een slecht onderhouden changelog.
+      Niet echt. Er is de GNU changelog style guide, en het twee paragrafen lange GNU NEWS bestand "richtlijnen".
+      Beiden zijn niet volledig genoeg.
 
     %p
-      Het kan ook zo zijn dat je ontdekt dat je een belangrijke aanpassing niet
-      vermeld hebt in je changelog. Het is dan natuurlijk zaak om dit alsnog
-      in je changelog te vermelden.
-
-    %h4#contribute
-      %a.anchor{ href: "#contribute", aria_hidden: "true" }
-      Hoe kan ik bijdragen?
+      Dit project poogt
+      = link_to "een betere changelog standaard", changelog
+      te creëren. Dit op basis van "good practices" uit de open source wereld.
 
     %p
-      Dit document is niet de <strong>waarheid</strong>; het is mijn
-      weloverwogen mening, samen met wat informatie en voorbeelden die ik verzameld heb.
+      Opbouwende kritiek, discussie en suggesties voor verbetering
+      = link_to "zijn welkom.", issues
+
+
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Wat zou de changelog bestandsnaam moeten zijn?
 
     %p
-      Dit heb ik gedaan omdat ik wil dat de programmeer gemeenschap een consensus bereikt.
-      Ik denk dat de discussie net zo belangrijk is als het eindresultaat.
+      Noem het <code>CHANGELOG.md</code>. Sommige projecten gebruiken
+      <code>HISTORY</code>, <code>NEWS</code> of <code>RELEASES</code>.
 
-  %p
-    Dus <strong>#{link_to "alle hulp is welkom", gh}</strong>.
+    %p
+      Je kan denken dat de bestandsnaam niet heel belangrijk is,
+      maar waarom zou je het de eindgebruikers moeilijker maken om de changelog te vinden?
+
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Wat denk je van GitHub Releases?
+
+    %p
+      Het is een goed initiatief. #{link_to "Releases", ghr} kan gebruikt worden
+      om simpele git tags (bijvoorbeeld een tag met de naam  <code>v1.0.0</code>)
+      te veranderen in uitgebreide release notes door deze handmatig toe te voegen of
+      door geannoteerde git tag berichten te gebruiken om release notes te genereren.
+
+    %p
+      GitHub Releases maken changelog wat alleen getoond kan worden aan gebruikers
+      binnen de context van GitHub. Het is mogelijk om deze dicht bij het format
+      te krijgen wat wij hier promoten, maar er zal iets meer werk voor nodig zijn.
+
+    %p
+      De huidige versie van GitHub releases is naar mijn mening niet
+      echt goed vindbaar voor gebruikers, in tegenstelling tot de typische
+      bestanden die in een naam in hoofdletters hebben
+      (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
+      Een ander knelpunt is dat de interface geen links toestaat naar
+      commit logs van elke release.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Kunnen changelogs automatisch geparsed worden?
+
+    %p
+      Dat is lastig, mensen gebruiken immers veel verschillende formats en bestandsnamen.
+
+    %p
+      #{link_to "Vandamme", vandamme} is een Ruby gem van het
+      Gemnasium team wat de changelogs van veel (maar niet alle)
+      open source projecten kan parsen.
+
+
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Wat doen we met teruggetrokken (yanked) releases?
+
+    %p
+      Teruggetrokken releases zijn versies die teruggetrokken zijn als gevolg
+      van een serieuze bug of beveiligings probleem. Vaak zijn ze niet eens te zien in
+      de changelogs. Dat zou wel moeten. Zo zou je een teruggetrokken release moeten tonen:
+
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      De <code>[YANKED]</code> tag is in hoofdletters voor een reden. Het is belangrijk
+      dat mensen dit zien. Omdat het tussen blokhaken genoteerd is, is het ook makkelijker
+      automatisch te parsen.
+
+
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Mag je een changelog aanpassen/herschrijven?
+
+      %p
+        Natuurlijk. Er zijn goede redenen om een changelog te verbeteren.
+        Ik open regelmatig een pull request om missende releases toe te
+        voegen aan open source projecten met een slecht onderhouden changelog.
+
+      %p
+        Het kan ook zo zijn dat je ontdekt dat je een belangrijke aanpassing niet
+        vermeld hebt in je changelog. Het is dan natuurlijk zaak om dit alsnog
+        in je changelog te vermelden.
+
+    %details
+      %summary
+        %h4#contribute
+          %a.anchor{ href: "#contribute", aria_hidden: "true" }
+          Hoe kan ik bijdragen?
+
+      %p
+        Dit document is niet de <strong>waarheid</strong>; het is mijn
+        weloverwogen mening, samen met wat informatie en voorbeelden die ik verzameld heb.
+
+      %p
+        Dit heb ik gedaan omdat ik wil dat de programmeer gemeenschap een consensus bereikt.
+        Ik denk dat de discussie net zo belangrijk is als het eindresultaat.
+
+    %p
+      Dus <strong>#{link_to "alle hulp is welkom", gh}</strong>.
 
 .press
   %h3 Conversaties

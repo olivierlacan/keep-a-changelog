@@ -185,121 +185,135 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Perguntas frequentes
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Existe um padrão para o formato do changelog?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Existe um padrão para o formato do changelog?
 
-  %p
-    Na verdade não. Existe o guia de estilo de changelog do GNU
-    ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados ou
-    insuficientes.
+    %p
+      Na verdade não. Existe o guia de estilo de changelog do GNU
+      ou o "guia" de dois parágrafos do GNU NEWS. Ambos são inadequados ou
+      insuficientes.
 
-  %p
-    Este projeto pretende ser #{link_to "uma convenção de changelog melhor.", changelog}
-    Ele vem de observar e coletar as boas práticas em código aberto da
-    comunidade.
+    %p
+      Este projeto pretende ser #{link_to "uma convenção de changelog melhor.", changelog}
+      Ele vem de observar e coletar as boas práticas em código aberto da
+      comunidade.
 
-  %p
-    Críticas saudáveis, discussões e sugestões de melhorias
-    = link_to "são bem-vindas.", issues
+    %p
+      Críticas saudáveis, discussões e sugestões de melhorias
+      = link_to "são bem-vindas.", issues
 
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Qual nome o arquivo changelog deve ter?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Qual nome o arquivo changelog deve ter?
 
-  %p
-    Chame-o <code>CHANGELOG.md</code>. Alguns projetos usam
-    <code>HISTORY</code>, <code>NEWS</code> ou <code>RELEASES</code>.
+    %p
+      Chame-o <code>CHANGELOG.md</code>. Alguns projetos usam
+      <code>HISTORY</code>, <code>NEWS</code> ou <code>RELEASES</code>.
 
-  %p
-    Embora seja fácil pensar que o nome do seu arquivo changelog
-    não importa muito, por que tornar mais difícil para seus usuários
-    finais encontrarem consistentemente mudanças notáveis?
+    %p
+      Embora seja fácil pensar que o nome do seu arquivo changelog
+      não importa muito, por que tornar mais difícil para seus usuários
+      finais encontrarem consistentemente mudanças notáveis?
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    E sobre o GitHub Releases?
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        E sobre o GitHub Releases?
 
-  %p
-    É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados
-    para converter simples marcadores do git (por exemplo, um
-    marcador chamado <code>v1.0.0</code>) em notas de versão ricas,
-    adicionando manualmente notas de versão ou pode puxar as mensagens
-    anotadas no marcador do git e transformá-las em notas.
+    %p
+      É uma grande iniciativa. #{link_to "Lançamentos", ghr} podem ser usados
+      para converter simples marcadores do git (por exemplo, um
+      marcador chamado <code>v1.0.0</code>) em notas de versão ricas,
+      adicionando manualmente notas de versão ou pode puxar as mensagens
+      anotadas no marcador do git e transformá-las em notas.
 
-  %p
-    GitHub Releases cria um changelog não portátil
-    que só pode ser exibido para usuários no contexto do GitHub.
-    É possível fazê-los parecer muito como o formato
-    Keep a Changelog, mas tende a ser um pouco mais complicado.
+    %p
+      GitHub Releases cria um changelog não portátil
+      que só pode ser exibido para usuários no contexto do GitHub.
+      É possível fazê-los parecer muito como o formato
+      Keep a Changelog, mas tende a ser um pouco mais complicado.
 
-  %p
-    A versão atual do GitHub Releases não é facilmente descoberta
-    por usuários finais, ao contrário dos arquivos maiúsculos típicos
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
-    problema de menor magnitude é que a interface atualmente não oferece
-    links para confirmar alterações entre cada lançamento.
+    %p
+      A versão atual do GitHub Releases não é facilmente descoberta
+      por usuários finais, ao contrário dos arquivos maiúsculos típicos
+      (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Outro
+      problema de menor magnitude é que a interface atualmente não oferece
+      links para confirmar alterações entre cada lançamento.
 
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Os changelogs podem ser criados automaticamente?
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Os changelogs podem ser criados automaticamente?
 
-  %p
-    É difícil, porque as pessoas seguem formatos e nomes de arquivos
-    totalmente diferentes.
+    %p
+      É difícil, porque as pessoas seguem formatos e nomes de arquivos
+      totalmente diferentes.
 
-  %p
-    #{link_to "Vandamme", vandamme} é um gem Ruby criado pelo
-    time Gemnasium e que analisa muitas
-    (mas não todas) alterações de projetos de código aberto.
+    %p
+      #{link_to "Vandamme", vandamme} é um gem Ruby criado pelo
+      time Gemnasium e que analisa muitas
+      (mas não todas) alterações de projetos de código aberto.
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    E o lançamentos removidos?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        E o lançamentos removidos?
 
-  %p
-    Lançamentos removidos são versões que foram retiradas por causa de
-    problemas sérios ou falhas de segurança. Muitas vezes essas versões
-    nem aparecem no histórico de alterações. Eles deviam. É assim que
-    você deve exibi-los:
+    %p
+      Lançamentos removidos são versões que foram retiradas por causa de
+      problemas sérios ou falhas de segurança. Muitas vezes essas versões
+      nem aparecem no histórico de alterações. Eles deviam. É assim que
+      você deve exibi-los:
 
-  %p <code>## 0.0.5 - 2014-12-13 [REMOVIDO]</code>
+    %p <code>## 0.0.5 - 2014-12-13 [REMOVIDO]</code>
 
-  %p
-    O marcador <code>[REMOVIDO]</code> está em caixa alta por uma razão.
-    É importante que as pessoas o percebam. Já que está entre
-    colchetes, também fica mais fácil de ser analisado programaticamente.
+    %p
+      O marcador <code>[REMOVIDO]</code> está em caixa alta por uma razão.
+      É importante que as pessoas o percebam. Já que está entre
+      colchetes, também fica mais fácil de ser analisado programaticamente.
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Você deve reescrever um changelog?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Você deve reescrever um changelog?
 
-  %p
-    Claro. Sempre existe razão para melhorar um changelog.
-    Eu regularmente solicito alterações em projetos de código livre que
-    possuem changelogs não mantidos para adicionar lançamentos
-    que não estão presentes nestes.
+    %p
+      Claro. Sempre existe razão para melhorar um changelog.
+      Eu regularmente solicito alterações em projetos de código livre que
+      possuem changelogs não mantidos para adicionar lançamentos
+      que não estão presentes nestes.
 
-  %p
-    Também é possível que você descubra que você esqueceu de abordar
-    uma mudança abrupta nas notas para uma versão.
-    Obviamente é importante que você atualize seu changelog neste caso.
+    %p
+      Também é possível que você descubra que você esqueceu de abordar
+      uma mudança abrupta nas notas para uma versão.
+      Obviamente é importante que você atualize seu changelog neste caso.
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Como eu posso ajudar?
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Como eu posso ajudar?
 
-  %p
-    Esse documento não é uma <strong>verdade absoluta</strong>; É minha
-    opinião cuidadosamente considerada, juntamente com informações e
-    exemplos que eu reuni.
+    %p
+      Esse documento não é uma <strong>verdade absoluta</strong>; É minha
+      opinião cuidadosamente considerada, juntamente com informações e
+      exemplos que eu reuni.
 
-  %p
-    Isso porque o que eu quero é que nossa comunidade chegue a um consenso.
-    Eu acredito que a discussão é tão importante quanto o resultado final.
+    %p
+      Isso porque o que eu quero é que nossa comunidade chegue a um consenso.
+      Eu acredito que a discussão é tão importante quanto o resultado final.
 
-  %p
-    Então, por favor <strong>#{link_to "contribua", gh}</strong>.
+    %p
+      Então, por favor <strong>#{link_to "contribua", gh}</strong>.
 
 .press
   %h3 Discussões

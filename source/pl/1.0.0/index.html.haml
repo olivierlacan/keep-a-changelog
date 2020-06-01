@@ -183,119 +183,133 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Często zadawane pytania
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Czy istnieje standardowy format changelogu?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Czy istnieje standardowy format changelogu?
 
-  %p
-    Niezupełnie. Jest przewodnik stylu changelogu GNU, czy dwuparagrafowe
-    „wytyczne” GNU NEWS. Oba dokumenty są nieadekwatne lub niewystarczające.
+    %p
+      Niezupełnie. Jest przewodnik stylu changelogu GNU, czy dwuparagrafowe
+      „wytyczne” GNU NEWS. Oba dokumenty są nieadekwatne lub niewystarczające.
 
-  %p
-    Ten projekt pretenduje do bycia
-    = link_to "lepszą konwencją changelogu.", changelog
-    Pochodzi z obserwowania i zebrania dobrych praktyk w społeczności open
-    source.
+    %p
+      Ten projekt pretenduje do bycia
+      = link_to "lepszą konwencją changelogu.", changelog
+      Pochodzi z obserwowania i zebrania dobrych praktyk w społeczności open
+      source.
 
-  %p
-    Zdrowa krytyka, dyskusja i sugestie poprawek
-    = link_to "są mile widziane.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Jak powinien się nazywać plik z changelogiem?
-
-  %p
-    Nazwij go <code>CHANGELOG.md</code>. Niektóre projekty używają
-    <code>HISTORY</code>, <code>NEWS</code> lub <code>RELEASES</code>.
-
-  %p
-    Łatwo jest uznać, że nazwa pliku z changelogiem nie ma większego znaczenia,
-    lecz po co utrudniać swoim użytkownikom końcowym odnajdowanie w sposób
-    konsekwentny istotnych zmian?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Co z GitHub Releases?
-
-  %p
-    To wspaniała inicjatywa. #{link_to "Releases", ghr} mogą być używane do
-    zmiany prostych tagów Gita (na przykład taga nazwanego <code>v1.0.0</code>)
-    w bogate informacje o wydaniach przez ręczne dodanie informacji lub mogą
-    wyciągać oznaczone message tagów i przekształcać je w informacje.
-
-  %p
-    GitHub Releases tworzą nieprzenośny changelog, który może być prezentowany
-    użytkownikom tylko w kontekście GitHuba. Można go bardzo upodobnić do
-    formatu Prowadź changelog, ale będzie to dość skomplikowane.
-
-  %p
-    Bieżąca wersja wydań GitHub jest też prawdopodobnie nienajłatwiejsza do
-    odnalezienia dla użytkowników końcowych, w przeciwieństwie do plików
-    o nazwach z wielkimi literami (<code>README</code>, <code>CONTRIBUTING</code>
-    itp.). Innym mniejszym brakiem jest to, że interfejs obecnie nie posiada
-    linków do logów commitów pomiędzy każdymi wydaniami.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Czy changelogi mogą być parsowane automatycznie?
-
-  %p
-    To trudne, ponieważ ludzie stosują bardzo różne formaty i nazwy plików.
-
-  %p
-    #{link_to "Vandamme", vandamme} jest gemem Ruby stworzonym przez zespół
-    Gemnasium i który parsuje wiele (ale nie wszystkie)
-    changelogów projektów open source.
+    %p
+      Zdrowa krytyka, dyskusja i sugestie poprawek
+      = link_to "są mile widziane.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Co z wycofanymi wydaniami?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Jak powinien się nazywać plik z changelogiem?
 
-  %p
-    Wydania typu yanked to wersje, które musiały zostać usunięte z powodu
-    poważnego błędu lub problemów z bezpieczeństwem. Często te wersje nie
-    pojawiają się w dziennikach zmian. Powinny. Tak powinieneś je wyświetlać:
+    %p
+      Nazwij go <code>CHANGELOG.md</code>. Niektóre projekty używają
+      <code>HISTORY</code>, <code>NEWS</code> lub <code>RELEASES</code>.
 
-  %p <code>## 0.0.5 - 2014-12-13 [WYCOFANA]</code>
+    %p
+      Łatwo jest uznać, że nazwa pliku z changelogiem nie ma większego znaczenia,
+      lecz po co utrudniać swoim użytkownikom końcowym odnajdowanie w sposób
+      konsekwentny istotnych zmian?
 
-  %p
-    Etykieta <code>[WYCOFANA]</code> jest celowo zapisana wielkimi literami.
-    Ważne jest, by zwracano na nią uwagę. Jest otoczona nawiasami, więc jest
-    również prostsza do sparsowania przez skrypt.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Co z GitHub Releases?
+
+    %p
+      To wspaniała inicjatywa. #{link_to "Releases", ghr} mogą być używane do
+      zmiany prostych tagów Gita (na przykład taga nazwanego <code>v1.0.0</code>)
+      w bogate informacje o wydaniach przez ręczne dodanie informacji lub mogą
+      wyciągać oznaczone message tagów i przekształcać je w informacje.
+
+    %p
+      GitHub Releases tworzą nieprzenośny changelog, który może być prezentowany
+      użytkownikom tylko w kontekście GitHuba. Można go bardzo upodobnić do
+      formatu Prowadź changelog, ale będzie to dość skomplikowane.
+
+    %p
+      Bieżąca wersja wydań GitHub jest też prawdopodobnie nienajłatwiejsza do
+      odnalezienia dla użytkowników końcowych, w przeciwieństwie do plików
+      o nazwach z wielkimi literami (<code>README</code>, <code>CONTRIBUTING</code>
+      itp.). Innym mniejszym brakiem jest to, że interfejs obecnie nie posiada
+      linków do logów commitów pomiędzy każdymi wydaniami.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Czy changelogi mogą być parsowane automatycznie?
+
+    %p
+      To trudne, ponieważ ludzie stosują bardzo różne formaty i nazwy plików.
+
+    %p
+      #{link_to "Vandamme", vandamme} jest gemem Ruby stworzonym przez zespół
+      Gemnasium i który parsuje wiele (ale nie wszystkie)
+      changelogów projektów open source.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Czy powinno się kiedykolwiek przerabiać changelog?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Co z wycofanymi wydaniami?
 
-  %p
-    Pewnie. Zawsze istnieją dobre powody, by ulepszyć changelog. Regularnie
-    otwieram pull requesty dodające brakujące wydania do open-source'owych
-    projektów z nieutrzymywanymi changelogami.
+    %p
+      Wydania typu yanked to wersje, które musiały zostać usunięte z powodu
+      poważnego błędu lub problemów z bezpieczeństwem. Często te wersje nie
+      pojawiają się w dziennikach zmian. Powinny. Tak powinieneś je wyświetlać:
 
-  %p
-    Może się również zdarzyć, że odkryjesz, iż zapomniałeś udokumentować zmianę
-    zrywającą zgodność wsteczną w notatkach dla wersji. Oczywiście ważne jest,
-    abyś zaktualizował swój changelog w tym przypadku.
+    %p <code>## 0.0.5 - 2014-12-13 [WYCOFANA]</code>
+
+    %p
+      Etykieta <code>[WYCOFANA]</code> jest celowo zapisana wielkimi literami.
+      Ważne jest, by zwracano na nią uwagę. Jest otoczona nawiasami, więc jest
+      również prostsza do sparsowania przez skrypt.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Jak mogę wnieść swój wkład?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Czy powinno się kiedykolwiek przerabiać changelog?
 
-  %p
-    Ten dokument nie jest obiektywną <strong>prawdą</strong>; jest moją
-    starannie przemyślaną opinią, z informacjami i przykładami, które zebrałem.
+    %p
+      Pewnie. Zawsze istnieją dobre powody, by ulepszyć changelog. Regularnie
+      otwieram pull requesty dodające brakujące wydania do open-source'owych
+      projektów z nieutrzymywanymi changelogami.
 
-  %p
-    To dlatego, że chcę, aby nasza społeczność osiągnęła konsensus. Wierzę, że
-    dyskusja jest tak samo istotna jak efekt końcowy.
+    %p
+      Może się również zdarzyć, że odkryjesz, iż zapomniałeś udokumentować zmianę
+      zrywającą zgodność wsteczną w notatkach dla wersji. Oczywiście ważne jest,
+      abyś zaktualizował swój changelog w tym przypadku.
 
-  %p
-    Więc proszę, <strong>#{link_to "wtrąć się", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Jak mogę wnieść swój wkład?
+
+    %p
+      Ten dokument nie jest obiektywną <strong>prawdą</strong>; jest moją
+      starannie przemyślaną opinią, z informacjami i przykładami, które zebrałem.
+
+    %p
+      To dlatego, że chcę, aby nasza społeczność osiągnęła konsensus. Wierzę, że
+      dyskusja jest tak samo istotna jak efekt końcowy.
+
+    %p
+      Więc proszę, <strong>#{link_to "wtrąć się", gh}</strong>.
 
 .press
   %h3 Rozmowy

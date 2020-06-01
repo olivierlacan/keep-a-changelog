@@ -187,128 +187,142 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Häufig gestellte Fragen
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Gibt es ein standardisiertes Changelog-Format?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Gibt es ein standardisiertes Changelog-Format?
 
-  %p
-    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
-    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
-    unzureichend.
+    %p
+      Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
+      zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
+      unzureichend.
 
-  %p
-    Dieses Projekt versucht
-    = link_to "eine bessere Changelog Konvention zu sein.", changelog
-    Dazu beobachten wir bewährte Praktiken aus der Open Source Community
-    und tragen sie zusammen.
+    %p
+      Dieses Projekt versucht
+      = link_to "eine bessere Changelog Konvention zu sein.", changelog
+      Dazu beobachten wir bewährte Praktiken aus der Open Source Community
+      und tragen sie zusammen.
 
-  %p
-    Gesunde Kritik, Diskussionen und Verbesserungsvorschläge
-    = link_to "sind herzlich willkommen.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Wie sollte die Changelog-Datei benannt sein?
-
-  %p
-    Nenne sie <code>CHANGELOG.md</code>. Manche Projekte verwenden auch
-    <code>HISTORY</code>, <code>NEWS</code> oder <code>RELEASES</code>.
-
-  %p
-    Man könnte zwar meinen, dass der Name der Changelog-Datei keine große
-    Bedeutung hat, aber warum sollte man es den Endnutzern nicht einfach machen,
-    die Änderungen des Projekts zu finden, indem man einen einheitlichen Namen
-    verwendet?
+    %p
+      Gesunde Kritik, Diskussionen und Verbesserungsvorschläge
+      = link_to "sind herzlich willkommen.", issues
 
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Was ist mit GitHub Releases?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Wie sollte die Changelog-Datei benannt sein?
 
-  %p
-    Prinzipiell sind #{link_to "GitHub Releases", ghr} eine gute Sache.
-    Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen
-    Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release
-    auszustatten, indem man sie manuell bearbeitet, oder die Änderungen in eine
-    Git Tag Nachricht schreibt, wo sie durch GitHub automatisch in die
-    Release-Notizen gesetzt werden.
+    %p
+      Nenne sie <code>CHANGELOG.md</code>. Manche Projekte verwenden auch
+      <code>HISTORY</code>, <code>NEWS</code> oder <code>RELEASES</code>.
 
-  %p
-    Leider lassen sich GitHub Releases aber nicht so einfach exportieren
-    und sind nur über GitHub selber zu lesen. Man kann sie auch so gestalten,
-    dass sie dem Keep a Changelog Format sehr ähnlich sehen, aber dazu betreibt
-    man in der Regel einen größeren Aufwand.
-
-  %p
-    Die derzeitige Version der GitHub Releases sind außerdem nicht leicht
-    durch die Endnutzer zu finden, ganz im Gegenteil zu den typischerweise
-    großgeschriebenen Dateien (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
-    Ein weiterer kleiner Nachteil ist, dass das Web Interface zurzeit keinen Link
-    anbietet, um die Commits zwischen einzelnen Releases miteinander zu vergleichen.
+    %p
+      Man könnte zwar meinen, dass der Name der Changelog-Datei keine große
+      Bedeutung hat, aber warum sollte man es den Endnutzern nicht einfach machen,
+      die Änderungen des Projekts zu finden, indem man einen einheitlichen Namen
+      verwendet?
 
 
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Können Changelogs automatisiert ausgelesen werden?
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Was ist mit GitHub Releases?
 
-  %p
-    Es ist schwierig, weil Menschen meist unterschiedliche Formate und
-    Dateinamen verwenden.
+    %p
+      Prinzipiell sind #{link_to "GitHub Releases", ghr} eine gute Sache.
+      Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen
+      Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release
+      auszustatten, indem man sie manuell bearbeitet, oder die Änderungen in eine
+      Git Tag Nachricht schreibt, wo sie durch GitHub automatisch in die
+      Release-Notizen gesetzt werden.
 
-  %p
-    #{link_to "Vandamme", vandamme} ist ein Ruby gem erstellt vom
-    Gemnasium Team, das viele (aber nicht alle)
-    Changelogs von Open-Source-Projekten einlesen kann.
+    %p
+      Leider lassen sich GitHub Releases aber nicht so einfach exportieren
+      und sind nur über GitHub selber zu lesen. Man kann sie auch so gestalten,
+      dass sie dem Keep a Changelog Format sehr ähnlich sehen, aber dazu betreibt
+      man in der Regel einen größeren Aufwand.
 
-
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Wie sieht es mit zurückgezogenen Releases aus?
-
-  %p
-    Sogenannte "Yanked Releases" sind Versionen, welche wegen schwerwiegenden
-    Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen
-    diese im Changelog gar nicht vor, aber das sollten sie. So solltest Du diese
-    Versionen darstellen:
-
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
-
-  %p
-    Der <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,
-    dass sie von Menschen bemerkt werden. Weil er von eckigen Klammern umgeben ist,
-    kann man sie außerdem einfacher automatisiert einlesen.
+    %p
+      Die derzeitige Version der GitHub Releases sind außerdem nicht leicht
+      durch die Endnutzer zu finden, ganz im Gegenteil zu den typischerweise
+      großgeschriebenen Dateien (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
+      Ein weiterer kleiner Nachteil ist, dass das Web Interface zurzeit keinen Link
+      anbietet, um die Commits zwischen einzelnen Releases miteinander zu vergleichen.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Sollte ich ein Changelog je umschreiben?
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Können Changelogs automatisiert ausgelesen werden?
 
-  %p
-    Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne
-    regelmässig Pull Requests, um Open-Source-Projekten mit schlecht gewarteten
-    Changelogs fehlende Releases hinzuzufügen.
+    %p
+      Es ist schwierig, weil Menschen meist unterschiedliche Formate und
+      Dateinamen verwenden.
 
-  %p
-    Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer
-    Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog
-    zu aktualisieren.
+    %p
+      #{link_to "Vandamme", vandamme} ist ein Ruby gem erstellt vom
+      Gemnasium Team, das viele (aber nicht alle)
+      Changelogs von Open-Source-Projekten einlesen kann.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Wie kann ich mithelfen?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Wie sieht es mit zurückgezogenen Releases aus?
 
-  %p
-    Dieses Dokument ist nicht die <strong>Wahrheit</strong>. Es ist meine wohl überlegte Meinung,
-    zusammen mit von mir zusammengetragenen Informationen und Beispielen.
+    %p
+      Sogenannte "Yanked Releases" sind Versionen, welche wegen schwerwiegenden
+      Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen
+      diese im Changelog gar nicht vor, aber das sollten sie. So solltest Du diese
+      Versionen darstellen:
 
-  %p
-    So möchte ich erreichen, dass die Community einen Konsens findet. Ich glaube, dass
-    die Disskussion genauso wichtig ist wie das Endergebnis.
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
-  %p
-    Also bitte <strong>#{link_to "bring dich ein", gh}</strong>.
+    %p
+      Der <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,
+      dass sie von Menschen bemerkt werden. Weil er von eckigen Klammern umgeben ist,
+      kann man sie außerdem einfacher automatisiert einlesen.
+
+
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Sollte ich ein Changelog je umschreiben?
+
+    %p
+      Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne
+      regelmässig Pull Requests, um Open-Source-Projekten mit schlecht gewarteten
+      Changelogs fehlende Releases hinzuzufügen.
+
+    %p
+      Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer
+      Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog
+      zu aktualisieren.
+
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Wie kann ich mithelfen?
+
+    %p
+      Dieses Dokument ist nicht die <strong>Wahrheit</strong>. Es ist meine wohl überlegte Meinung,
+      zusammen mit von mir zusammengetragenen Informationen und Beispielen.
+
+    %p
+      So möchte ich erreichen, dass die Community einen Konsens findet. Ich glaube, dass
+      die Disskussion genauso wichtig ist wie das Endergebnis.
+
+    %p
+      Also bitte <strong>#{link_to "bring dich ein", gh}</strong>.
 
 .press
   %h3 Gespräche

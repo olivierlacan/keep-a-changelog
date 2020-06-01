@@ -203,123 +203,137 @@ version: 1.1.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Frequently Asked Questions
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Is there a standard changelog format?
 
-  %p
-    Not really. There's the #{link_to "GNU changelog style guide", gnustyle},
-    or the #{link_to "two-paragraph-long GNU NEWS file", gnunews}
-    "guideline". Both are inadequate or insufficient.
+    %p
+      Not really. There's the #{link_to "GNU changelog style guide", gnustyle},
+      or the #{link_to "two-paragraph-long GNU NEWS file", gnunews}
+      "guideline". Both are inadequate or insufficient.
 
-  %p
-    This project aims to be
-    = link_to "a better changelog convention.", changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
+    %p
+      This project aims to be
+      = link_to "a better changelog convention.", changelog
+      It comes from observing good practices in the open source
+      community and gathering them.
 
-  %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
-
-  %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
-
-  %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
-
-  %p
-    It's a great initiative. #{link_to "Releases", ghr} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
-
-  %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
-
-  %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
-
-  %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
-
-  %p
-    #{link_to "Vandamme", vandamme} is a Ruby gem created by the
-    Gemnasium team and which parses many (but
-    not all) open source project changelogs.
+    %p
+      Healthy criticism, discussion and suggestions for improvements
+      = link_to "are welcome.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        What should the changelog file be named?
 
-  %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    %p
+      Call it <code>CHANGELOG.md</code>. Some projects use
+      <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p
+      While it's easy to think that the name of your changelog file
+      doesn't matter that much, why make it harder for your end users to
+      consistently find notable changes?
 
-  %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        What about GitHub Releases?
+
+    %p
+      It's a great initiative. #{link_to "Releases", ghr} can be used to
+      turn simple git tags (for example a tag named <code>v1.0.0</code>)
+      into rich release notes by manually adding release notes or it can
+      pull annotated git tag messages and turn them into notes.
+
+    %p
+      GitHub Releases create a non-portable changelog that can only be
+      displayed to users within the context of GitHub. It's possible to
+      make them look very much like the Keep a Changelog format, but it
+      tends to be a bit more involved.
+
+    %p
+      The current version of GitHub releases is also arguably not very
+      discoverable by end-users, unlike the typical uppercase files
+      (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
+      minor issue is that the interface doesn't currently offer links to
+      commit logs between each release.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Can changelogs be automatically parsed?
+
+    %p
+      It’s difficult, because people follow wildly different formats and
+      file names.
+
+    %p
+      #{link_to "Vandamme", vandamme} is a Ruby gem created by the
+      Gemnasium team and which parses many (but
+      not all) open source project changelogs.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        What about yanked releases?
 
-  %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    %p
+      Yanked releases are versions that had to be pulled because of a
+      serious bug or security issue. Often these versions don't even
+      appear in change logs. They should. This is how you should display
+      them:
 
-  %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      The <code>[YANKED]</code> tag is loud for a reason. It's important
+      for people to notice it. Since it's surrounded by brackets it's also
+      easier to parse programmatically.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Should you ever rewrite a changelog?
 
-  %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    %p
+      Sure. There are always good reasons to improve a changelog. I
+      regularly open pull requests to add missing releases to open source
+      projects with unmaintained changelogs.
 
-  %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    %p
+      It's also possible you may discover that you forgot to address a
+      breaking change in the notes for a version. It's obviously important
+      for you to update your changelog in this case.
 
-  %p
-    So please <strong>#{link_to "pitch in", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        How can I contribute?
+
+    %p
+      This document is not the <strong>truth</strong>; it’s my carefully
+      considered opinion, along with information and examples I gathered.
+
+    %p
+      This is because I want our community to reach a consensus. I believe
+      the discussion is as important as the end result.
+
+    %p
+      So please <strong>#{link_to "pitch in", gh}</strong>.
 
 .press
   %h3 Conversations

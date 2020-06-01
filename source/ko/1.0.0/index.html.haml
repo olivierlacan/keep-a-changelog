@@ -174,110 +174,124 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     자주 하는 질문
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    changelog의 표준 포맷이 있나요?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        changelog의 표준 포맷이 있나요?
 
-  %p
-    없습니다. GNU changelog 스타일 가이드나 두 문단정도의 GNU NEWS '가이드라인'이 있습니다.
-    하지만 둘다 부적절하거나 충분하지 않습니다.
+    %p
+      없습니다. GNU changelog 스타일 가이드나 두 문단정도의 GNU NEWS '가이드라인'이 있습니다.
+      하지만 둘다 부적절하거나 충분하지 않습니다.
 
-  %p
-    이 프로젝트의 목표는
-    = link_to "더 나은 changelog 규칙", changelog
-    입니다.
-    이것은 오픈소스 커뮤니티에서 좋은 용례를 관찰하고 모으는데서 나옵니다.
+    %p
+      이 프로젝트의 목표는
+      = link_to "더 나은 changelog 규칙", changelog
+      입니다.
+      이것은 오픈소스 커뮤니티에서 좋은 용례를 관찰하고 모으는데서 나옵니다.
 
-  %p
-    건강한 비판, 토론 및 개선 제안은
-    = link_to "환영합니다.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    changelog 파일의 이름을 무엇으로 지어야 하나요?
-
-  %p
-    <code>CHANGELOG.md</code>라고 만드세요. 어떤 프로젝트는
-    <code>HISTORY</code>, <code>NEWS</code> 또는 <code>RELEASES</code>를 사용합니다.
-
-  %p
-    changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만,
-    왜 굳이 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    깃허브 릴리즈는 어떻게 하나요?
-
-  %p
-    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는
-    직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔
-    간단한 깃 태그(예를 들어 <code>v1.0.0</code> 태그
-    )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
-
-  %p
-    깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다.
-    Keep a Changelog 포맷처럼 보이게 만드는 게 가능하지만, 좀 더 복잡해지는 경향이 있습니다.
-
-  %p
-    전형적인 대문자 파일들과 달리(<code>README</code>, <code>CONTRIBUTING</code>, 등),
-    깃허브 릴리즈의 현재 버전은 최종 사용자가 거의 찾아볼 수 없습니다.
-    다른 사소한 이슈는 인터페이스가 현재 각 릴리즈 사이에 로그를 커밋할 수 있는 링크를 제공하지 않는 것입니다.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Changelog를 자동으로 파싱할 수 있나요?
-
-  %p
-    사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
-
-  %p
-    #{link_to "Vandamme", vandamme}은 Gemnasium 팀에 의해
-    생성된 루비잼이고 많은(전부는 아니고) 오픈소스 프로젝트의 changelog를 파싱합니다.
+    %p
+      건강한 비판, 토론 및 개선 제안은
+      = link_to "환영합니다.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    삭제된 릴리즈(Yanked release)는 어떻게 하나요?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        changelog 파일의 이름을 무엇으로 지어야 하나요?
 
-  %p
-    삭제된(Yanked) 릴리즈는 심각한 버그나 보안 이슈 때문에 소스에서 들어내버린 버전을 말합니다.
-    대게 이런 버전은 changelog에 아예 나오지도 않지만, 나와야 합니다. 이것이 삭제된 릴리즈를
-    표시하는 방법입니다:
+    %p
+      <code>CHANGELOG.md</code>라고 만드세요. 어떤 프로젝트는
+      <code>HISTORY</code>, <code>NEWS</code> 또는 <code>RELEASES</code>를 사용합니다.
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p
+      changelog 파일의 이름이 무슨 상관이냐고 생각하기 쉽겠지만,
+      왜 굳이 여러분의 사용자가 변경사항을 일관적으로 찾기 힘들도록 만드나요?
 
-  %p
-    <code>[YANKED]</code> 태그가 요란한 이유가 있습니다.
-    사람들이 알아차리는 것이 중요합니다. 대괄호 안에 있기 때문에 프로그래밍적으로 파싱하기에도 용이합니다.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        깃허브 릴리즈는 어떻게 하나요?
+
+    %p
+      이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는
+      직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔
+      간단한 깃 태그(예를 들어 <code>v1.0.0</code> 태그
+      )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
+
+    %p
+      깃허브 릴리즈는 이동 불가능한 깃허브 컨텍스트 내에서만 표시되는 changelog를 생성합니다.
+      Keep a Changelog 포맷처럼 보이게 만드는 게 가능하지만, 좀 더 복잡해지는 경향이 있습니다.
+
+    %p
+      전형적인 대문자 파일들과 달리(<code>README</code>, <code>CONTRIBUTING</code>, 등),
+      깃허브 릴리즈의 현재 버전은 최종 사용자가 거의 찾아볼 수 없습니다.
+      다른 사소한 이슈는 인터페이스가 현재 각 릴리즈 사이에 로그를 커밋할 수 있는 링크를 제공하지 않는 것입니다.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Changelog를 자동으로 파싱할 수 있나요?
+
+    %p
+      사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
+
+    %p
+      #{link_to "Vandamme", vandamme}은 Gemnasium 팀에 의해
+      생성된 루비잼이고 많은(전부는 아니고) 오픈소스 프로젝트의 changelog를 파싱합니다.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    changelog를 다시 써야하나요?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        삭제된 릴리즈(Yanked release)는 어떻게 하나요?
 
-  %p
-    물론입니다. changelog를 개선할 좋은 이유는 항상 있습니다. 저는 정기적으로
-    changelog가 관리되지 않는 오픈소스에 빠진 릴리즈를 추가하기 위해 pull request를 오픈합니다.
+    %p
+      삭제된(Yanked) 릴리즈는 심각한 버그나 보안 이슈 때문에 소스에서 들어내버린 버전을 말합니다.
+      대게 이런 버전은 changelog에 아예 나오지도 않지만, 나와야 합니다. 이것이 삭제된 릴리즈를
+      표시하는 방법입니다:
 
-  %p
-    어떤 버전의 급격한 변화에 대해 언급하는 것을 잊은 것을 발견할 수도 있습니다.
-    이 경우엔 changelog를 업데이트하는 것이 당연히 중요합니다.
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      <code>[YANKED]</code> 태그가 요란한 이유가 있습니다.
+      사람들이 알아차리는 것이 중요합니다. 대괄호 안에 있기 때문에 프로그래밍적으로 파싱하기에도 용이합니다.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    어떻게 기여할 수 있나요?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        changelog를 다시 써야하나요?
 
-  %p
-    이 문서가 <strong>진리</strong>는 아닙니다. 이것은 제가 모은 정보와 예제들과 함께
-    신중하게 고려한 의견입니다.
+    %p
+      물론입니다. changelog를 개선할 좋은 이유는 항상 있습니다. 저는 정기적으로
+      changelog가 관리되지 않는 오픈소스에 빠진 릴리즈를 추가하기 위해 pull request를 오픈합니다.
 
-  %p
-    왜냐하면 우리 커뮤니티가 공감대를 형성하기를 원하기 때문입니다. 저는 최종결과 못지않게 토론도 중요하다고 생각합니다.
+    %p
+      어떤 버전의 급격한 변화에 대해 언급하는 것을 잊은 것을 발견할 수도 있습니다.
+      이 경우엔 changelog를 업데이트하는 것이 당연히 중요합니다.
 
-  %p
-    그러니 <strong>#{link_to "참여", gh}</strong>를 부탁합니다.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        어떻게 기여할 수 있나요?
+
+    %p
+      이 문서가 <strong>진리</strong>는 아닙니다. 이것은 제가 모은 정보와 예제들과 함께
+      신중하게 고려한 의견입니다.
+
+    %p
+      왜냐하면 우리 커뮤니티가 공감대를 형성하기를 원하기 때문입니다. 저는 최종결과 못지않게 토론도 중요하다고 생각합니다.
+
+    %p
+      그러니 <strong>#{link_to "참여", gh}</strong>를 부탁합니다.
 
 .press
   %h3 대화

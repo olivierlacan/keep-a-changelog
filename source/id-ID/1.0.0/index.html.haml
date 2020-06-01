@@ -189,123 +189,137 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Pertanyaan yang Sering Ditanyakan
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Apakah ada standar untuk format changelog?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Apakah ada standar untuk format changelog?
 
-  %p
-    Tidak, ada format GNU untuk changelog, atau format 2 paragraf GNU NEWS.
-    Keduanya tidak benar-benar cukup, gunakan format yang disetujui tim masing-masing.
+    %p
+      Tidak, ada format GNU untuk changelog, atau format 2 paragraf GNU NEWS.
+      Keduanya tidak benar-benar cukup, gunakan format yang disetujui tim masing-masing.
 
-  %p
-    Proyek ini ditujukan untuk
-    = link_to "membuat aturan changelog yang lebih baik", changelog
-    berdasarkan observasi beberapa changelog di komunitas open source
-    dan menyatukan mereka.
+    %p
+      Proyek ini ditujukan untuk
+      = link_to "membuat aturan changelog yang lebih baik", changelog
+      berdasarkan observasi beberapa changelog di komunitas open source
+      dan menyatukan mereka.
 
-  %p
-    Kritik yang membangun, diskusi, dan saran untuk perbaikan
-    = link_to "sangat diterima.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Apa nama file yang cocok untuk file changelog?
-
-  %p
-    Gunakan nama <code>CHANGELOG.md</code>, beberapa proyek
-    menggunakan <code>HISTORY</code>, <code>NEWS</code> atau <code>RELEASE</code>.
-
-  %p
-    Sebenarnya tidak terlalu susah untuk menamai file changelog, cukup
-    berikan nama yang mudah dikenali oleh orang-orang
-    supaya mudah untuk dibaca.
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Apa itu GitHub Releases?
-
-  %p
-    #{link_to "Github Release", ghr} adalah salah satu
-    insiatif dari GitHub untuk membuat changelog berdasarkan git tags,
-    contohnya, tag dengan nama <code>v1.0.0</code>. Isi dari changelog
-    bisa ditulis manual atau menggunakan pesan yang ditulis bersamaan dengan
-    tags.
-
-  %p
-    GitHub Releases membuat changelog yang tidak portable dan hanya bisa
-    bekerja dengan baik di lingkup GitHub. Sangat mungkin untuk
-    membuat GitHub Releases terlihat mirip dengan format pencatatan changelog
-    yang dijelaskan di sini, tapi butuh usaha ekstra.
-
-  %p
-    Versi GitHub releases yang sekarang juga tidak terlalu umum
-    untuk orang-orang, dan hanya bisa dibuka melalui sub menu
-    di GitHub, berbeda dengan file-file seperti
-    (<code>README</code>, <code>CONTRIBUTING</code>, dsb.) yang
-    langsung terlihat saat proyek pertama kali dibuka. Keterbatasan lainnya
-    adalah tidak adanya link di GitHub releases.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Apakah Changelog Bisa Diparse Secara Otomatis?
-
-  %p
-    Susah, karena orang-orang menggunakan versi dan format
-    changelog yang berbeda-beda.
-
-  %p
-    #{link_to "Vandamme", vandamme} adalah Ruby Gem yang dibuat oleh tim
-    Gemnasium yang bisa mem-parsing (tetapi tidak semua) changelog proyek open source.
+    %p
+      Kritik yang membangun, diskusi, dan saran untuk perbaikan
+      = link_to "sangat diterima.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Bagaimana dengan Rilis YANKED (rilis yang dibatalkan)?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Apa nama file yang cocok untuk file changelog?
 
-  %p
-    Rilis yang dibatalkan adalah rilis yang dibatalkan, bisa jadi
-    karena ada bug yang fatal dan permasalahan keamanan. Versi
-    ini sering tidak dimasukkan ke changelog, padahal seharusnya ditulis
-    sebagaimana berikut.
+    %p
+      Gunakan nama <code>CHANGELOG.md</code>, beberapa proyek
+      menggunakan <code>HISTORY</code>, <code>NEWS</code> atau <code>RELEASE</code>.
 
-  %p <code>## 0.0.5 - 2014-12-13 [YANKED/DIBATALKAN]</code>
+    %p
+      Sebenarnya tidak terlalu susah untuk menamai file changelog, cukup
+      berikan nama yang mudah dikenali oleh orang-orang
+      supaya mudah untuk dibaca.
 
-  %p
-    Tag <code>[YANKED/DIBATALKAN]</code> ditulis dengan jelas supaya
-    orang memperhatikannya, dan dikurung dengan kurung kotak supaya
-    mudah untuk diparse.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Apa itu GitHub Releases?
+
+    %p
+      #{link_to "Github Release", ghr} adalah salah satu
+      insiatif dari GitHub untuk membuat changelog berdasarkan git tags,
+      contohnya, tag dengan nama <code>v1.0.0</code>. Isi dari changelog
+      bisa ditulis manual atau menggunakan pesan yang ditulis bersamaan dengan
+      tags.
+
+    %p
+      GitHub Releases membuat changelog yang tidak portable dan hanya bisa
+      bekerja dengan baik di lingkup GitHub. Sangat mungkin untuk
+      membuat GitHub Releases terlihat mirip dengan format pencatatan changelog
+      yang dijelaskan di sini, tapi butuh usaha ekstra.
+
+    %p
+      Versi GitHub releases yang sekarang juga tidak terlalu umum
+      untuk orang-orang, dan hanya bisa dibuka melalui sub menu
+      di GitHub, berbeda dengan file-file seperti
+      (<code>README</code>, <code>CONTRIBUTING</code>, dsb.) yang
+      langsung terlihat saat proyek pertama kali dibuka. Keterbatasan lainnya
+      adalah tidak adanya link di GitHub releases.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Apakah Changelog Bisa Diparse Secara Otomatis?
+
+    %p
+      Susah, karena orang-orang menggunakan versi dan format
+      changelog yang berbeda-beda.
+
+    %p
+      #{link_to "Vandamme", vandamme} adalah Ruby Gem yang dibuat oleh tim
+      Gemnasium yang bisa mem-parsing (tetapi tidak semua) changelog proyek open source.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Bolehkah Menulis Ulang Changelog?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Bagaimana dengan Rilis YANKED (rilis yang dibatalkan)?
 
-  %p
-    Tentu saja, ada banyak alasan bagus untuk menulis ulang changelog,
-    salah satunya untuk rilis-rilis yang lupa untuk dituliskan di
-    beberapa proyek.
+    %p
+      Rilis yang dibatalkan adalah rilis yang dibatalkan, bisa jadi
+      karena ada bug yang fatal dan permasalahan keamanan. Versi
+      ini sering tidak dimasukkan ke changelog, padahal seharusnya ditulis
+      sebagaimana berikut.
 
-  %p
-    Juga sangat mungkin saat menulis ulang, kalian ingat tentang perubahan
-    yang bisa membuat sistem tidak bekerja yang belum dituliskan. Dalam hal ini,
-    sangat penting untuk mengubah changelog supaya datanya lebih akurat.
+    %p <code>## 0.0.5 - 2014-12-13 [YANKED/DIBATALKAN]</code>
+
+    %p
+      Tag <code>[YANKED/DIBATALKAN]</code> ditulis dengan jelas supaya
+      orang memperhatikannya, dan dikurung dengan kurung kotak supaya
+      mudah untuk diparse.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Bagaimana Saya Bisa Berkontribusi?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Bolehkah Menulis Ulang Changelog?
 
-  %p
-    Dokumen ini bukan kebenaran absolut, ini hanyalah opini yang dikumpulkan
-    dari beberapa informasi dan contoh yang kami kumpulkan.
+    %p
+      Tentu saja, ada banyak alasan bagus untuk menulis ulang changelog,
+      salah satunya untuk rilis-rilis yang lupa untuk dituliskan di
+      beberapa proyek.
 
-  %p
-    Ini karena kami ingin komunitas terus berdiskusi untuk mencapai konsensus
-    yang terbaik untuk pencatatan changelog.
+    %p
+      Juga sangat mungkin saat menulis ulang, kalian ingat tentang perubahan
+      yang bisa membuat sistem tidak bekerja yang belum dituliskan. Dalam hal ini,
+      sangat penting untuk mengubah changelog supaya datanya lebih akurat.
 
-  %p
-    Jadi silahkan, <strong>#{link_to "kirimkan saran", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Bagaimana Saya Bisa Berkontribusi?
+
+    %p
+      Dokumen ini bukan kebenaran absolut, ini hanyalah opini yang dikumpulkan
+      dari beberapa informasi dan contoh yang kami kumpulkan.
+
+    %p
+      Ini karena kami ingin komunitas terus berdiskusi untuk mencapai konsensus
+      yang terbaik untuk pencatatan changelog.
+
+    %p
+      Jadi silahkan, <strong>#{link_to "kirimkan saran", gh}</strong>.
 
   %h4#about-translation
     %a.anchor{ href: "#about-translation", aria_hidden: "true" }

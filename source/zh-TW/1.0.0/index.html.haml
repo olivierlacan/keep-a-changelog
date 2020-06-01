@@ -165,99 +165,113 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     常見問題
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    有沒有標準格式可以參考呢？
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        有沒有標準格式可以參考呢？
 
-  %p
-    並沒有。雖然有 #{link_to "GNU 更新日誌指南", gnu_changelog_styleguide} 以及只有兩段長的
-    #{link_to "GNU - The NEWS File 指南", gnu_the_news}（括弧笑），但這些並不足以稱為「標準」。
+    %p
+      並沒有。雖然有 #{link_to "GNU 更新日誌指南", gnu_changelog_styleguide} 以及只有兩段長的
+      #{link_to "GNU - The NEWS File 指南", gnu_the_news}（括弧笑），但這些並不足以稱為「標準」。
 
-  %p
-    這項專案的宗旨在於提供一個
-    #{link_to "更好的更新日誌範例", changelog}，源於觀察開源社群中優秀的實際案例，把它們蒐集在一起。
+    %p
+      這項專案的宗旨在於提供一個
+      #{link_to "更好的更新日誌範例", changelog}，源於觀察開源社群中優秀的實際案例，把它們蒐集在一起。
 
-  %p
-    歡迎各位#{link_to "提供", issues}有建設性的建議和批評。
+    %p
+      歡迎各位#{link_to "提供", issues}有建設性的建議和批評。
 
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    更新日誌的檔案名稱應該是？
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        更新日誌的檔案名稱應該是？
 
-  %p
-    通常使用 <code>CHANGELOG.md</code>。也有用
-    <code>HISTORY</code>、<code>NEWS</code>、或是 <code>RELEASES</code> 的例子。
+    %p
+      通常使用 <code>CHANGELOG.md</code>。也有用
+      <code>HISTORY</code>、<code>NEWS</code>、或是 <code>RELEASES</code> 的例子。
 
-  %p
-    或許你認為取什麼名字並不是件多麼重要的事，但為什麼要讓只是想看日誌的使用者不容易找到它呢？
+    %p
+      或許你認為取什麼名字並不是件多麼重要的事，但為什麼要讓只是想看日誌的使用者不容易找到它呢？
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    那麼 GitHub Releases 呢？
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        那麼 GitHub Releases 呢？
 
-  %p
-    這是個好問題。#{link_to "GitHub Releases", ghr}
-    能手動在簡單的 git tag（如
-    <code>v1.0.0</code>） 上附加豐富的版本資訊，也能把附帶的 tag
-    messages 轉換成漂亮的日誌格式。
+    %p
+      這是個好問題。#{link_to "GitHub Releases", ghr}
+      能手動在簡單的 git tag（如
+      <code>v1.0.0</code>） 上附加豐富的版本資訊，也能把附帶的 tag
+      messages 轉換成漂亮的日誌格式。
 
-  %p
-    GitHub Releases 產生的日誌只能在 GitHub 上瀏覽，雖然 GitHub Releases
-    能做出接近本專案範例的日誌格式，但這會增加些許與 GitHub 的相依性。
+    %p
+      GitHub Releases 產生的日誌只能在 GitHub 上瀏覽，雖然 GitHub Releases
+      能做出接近本專案範例的日誌格式，但這會增加些許與 GitHub 的相依性。
 
-  %p
-    現行的 GitHub Releases
-    畢竟不像典型的大寫文件（<code>README</code>、<code>CONTRIBUTING</code>
-    之類的），按理說會增加使用者找到的難度。另外還有個小問題，目前 GitHub
-    Releases 頁面上並沒有提供兩版版本之間 commit logs 的連結。
+    %p
+      現行的 GitHub Releases
+      畢竟不像典型的大寫文件（<code>README</code>、<code>CONTRIBUTING</code>
+      之類的），按理說會增加使用者找到的難度。另外還有個小問題，目前 GitHub
+      Releases 頁面上並沒有提供兩版版本之間 commit logs 的連結。
 
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    更新日誌能被自動生成嗎？
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        更新日誌能被自動生成嗎？
 
-  %p
-    非常困難，各式各樣的提交訊息和檔案名稱難以完全掌握。
+    %p
+      非常困難，各式各樣的提交訊息和檔案名稱難以完全掌握。
 
-  %p
-    另外，有些開源專案使用由 Gemnasium
-    團隊開發的 #{link_to "Vandamme", vandamme}
-    轉換更新日誌，或許可以當作參考。
+    %p
+      另外，有些開源專案使用由 Gemnasium
+      團隊開發的 #{link_to "Vandamme", vandamme}
+      轉換更新日誌，或許可以當作參考。
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    那麼被撤下的版本呢？
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        那麼被撤下的版本呢？
 
-  %p
-    因為重大漏洞或安全性問題而被撤下（unpublished）的版本通常不會出現在日誌裡，但建議仍然記錄下來。你可以這樣記錄它們：
+    %p
+      因為重大漏洞或安全性問題而被撤下（unpublished）的版本通常不會出現在日誌裡，但建議仍然記錄下來。你可以這樣記錄它們：
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
-  %p
-    其中 <code>[YANKED]</code> 標記應該和原因顯眼地標示在一起，讓使用者注意到它是最重要的事。此外，用中括弧能讓轉換用的程式更容易辨認它們。
+    %p
+      其中 <code>[YANKED]</code> 標記應該和原因顯眼地標示在一起，讓使用者注意到它是最重要的事。此外，用中括弧能讓轉換用的程式更容易辨認它們。
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    可以更改過去版本的日誌內容嗎？
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        可以更改過去版本的日誌內容嗎？
 
-  %p
-    當然可以，總是會有好的原因來改善以往寫下的日誌。我也時常發 pull request
-    給更新日誌不齊全的開源專案。
+    %p
+      當然可以，總是會有好的原因來改善以往寫下的日誌。我也時常發 pull request
+      給更新日誌不齊全的開源專案。
 
-  %p
-    偶爾會發現自己遺漏了某項重大更新的紀錄，很明顯你應該補齊它們。
+    %p
+      偶爾會發現自己遺漏了某項重大更新的紀錄，很明顯你應該補齊它們。
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    我能做些什麼嗎？
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        我能做些什麼嗎？
 
-  %p
-    這份文件並不是《真理》，而是我經過深思熟慮、遵循蒐集到的資訊和範例之後提出的建議。
+    %p
+      這份文件並不是《真理》，而是我經過深思熟慮、遵循蒐集到的資訊和範例之後提出的建議。
 
-  %p
-    源於我期望社群能達到共識，我相信討論的過程與結果一樣重要。
+    %p
+      源於我期望社群能達到共識，我相信討論的過程與結果一樣重要。
 
-  %p
-    所以，<strong>#{link_to "加入我們", gh}</strong>吧 ٩(｡・ω・｡)﻿و
+    %p
+      所以，<strong>#{link_to "加入我們", gh}</strong>吧 ٩(｡・ω・｡)﻿و
 
 .press
   %h3 訪談

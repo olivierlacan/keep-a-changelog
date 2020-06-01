@@ -172,112 +172,126 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     よくある質問と回答
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    変更履歴の標準的な書式がありますか？
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        変更履歴の標準的な書式がありますか？
 
-  %p
-    実はありません。 #{link_to "GNU changelog style guide", gnustyle} 、
-    もしくは #{link_to "two-paragraph-long GNU NEWS file", gnunews} "guideline" があります。
-    どちらも不十分であり不適切です。
+    %p
+      実はありません。 #{link_to "GNU changelog style guide", gnustyle} 、
+      もしくは #{link_to "two-paragraph-long GNU NEWS file", gnunews} "guideline" があります。
+      どちらも不十分であり不適切です。
 
-  %p
-    このプロジェクトは
-    = link_to "より良い変更履歴の規約", changelog
-    になることを目指しています。
-    それはオープンソースコミュニティの良い習慣を観察し、それらを集めることから来ます。
+    %p
+      このプロジェクトは
+      = link_to "より良い変更履歴の規約", changelog
+      になることを目指しています。
+      それはオープンソースコミュニティの良い習慣を観察し、それらを集めることから来ます。
 
-  %p
-    健全な批判、議論、そして改善のための提案を
-    = link_to "歓迎しています。", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    変更履歴ファイルにはどのような名前をつけるべきですか？
-
-  %p
-    <code>CHANGELOG.md</code> と呼びます。いくつかのプロジェクトでは
-    <code>HISTORY</code> や <code>NEWS</code> 、 <code>RELEASES</code> が使われています。
-
-  %p
-    あなたの変更履歴ファイルの名前はそれほど重要でないと考えることは容易ですが、
-    なぜエンドユーザーが一貫して注目の変更を見つけることを難しくするのですか？
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    GitHubリリースはどうですか？
-
-  %p
-    素晴らしい主導権です。 #{link_to "Releases", ghr} は手動でリリースノートを追加することによって、
-    単純なGitタグ(例えば <code>v1.0.0</code> という名前のタグ)をリッチなリリースノートに変換するために使用することができます。
-
-  %p
-    Githubリリースは、Githubのコンテキスト内でのみユーザーに表示できる移植性のない変更履歴を作成します。
-    それらをKeep a Changelogの書式のように見せることは可能ですが、もう少し複雑になる傾向があります。
-
-  %p
-    Githubリリースの現在のバージョンも、典型的な大文字のファイル(<code>README</code> や <code>CONTRIBUTING</code>など)
-    とは異なり、おそらくエンドユーザーにはあまり発見できません。
-    もう一つの目立たない問題は、インターフェースが現在各リリース間のコミット履歴へのリンクを提供していないということです。
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    変更履歴を自動的に解析できますか？
-
-  %p
-    人々は大きく異なるフォーマットやファイル名に従うので、難しいです。
-
-  %p
-    #{link_to "Vandamme", vandamme} はGemnasiumチームによって作成されたRuby gemであり、
-    （全てではないが）多くのオープンソースプロジェクトの変更履歴を解析します。
+    %p
+      健全な批判、議論、そして改善のための提案を
+      = link_to "歓迎しています。", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    ヤンクリリースについてはどうですか？
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        変更履歴ファイルにはどのような名前をつけるべきですか？
 
-  %p
-    ヤンクリリースは、深刻なバグやセキュリティの問題のために
-    引っ張られなければならなかったバージョンです。
-    多くの場合、これらのバージョンは変更履歴に表示されません。表示しないべきである。
-    次のように表示すべきである。
+    %p
+      <code>CHANGELOG.md</code> と呼びます。いくつかのプロジェクトでは
+      <code>HISTORY</code> や <code>NEWS</code> 、 <code>RELEASES</code> が使われています。
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p
+      あなたの変更履歴ファイルの名前はそれほど重要でないと考えることは容易ですが、
+      なぜエンドユーザーが一貫して注目の変更を見つけることを難しくするのですか？
 
-  %p
-    <code>[YANKED]</code> は大きな理由です。それに気付くことは人々にとって重要です。
-    大括弧で囲まれているので、プログラムで解析するのも簡単です。
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        GitHubリリースはどうですか？
+
+    %p
+      素晴らしい主導権です。 #{link_to "Releases", ghr} は手動でリリースノートを追加することによって、
+      単純なGitタグ(例えば <code>v1.0.0</code> という名前のタグ)をリッチなリリースノートに変換するために使用することができます。
+
+    %p
+      Githubリリースは、Githubのコンテキスト内でのみユーザーに表示できる移植性のない変更履歴を作成します。
+      それらをKeep a Changelogの書式のように見せることは可能ですが、もう少し複雑になる傾向があります。
+
+    %p
+      Githubリリースの現在のバージョンも、典型的な大文字のファイル(<code>README</code> や <code>CONTRIBUTING</code>など)
+      とは異なり、おそらくエンドユーザーにはあまり発見できません。
+      もう一つの目立たない問題は、インターフェースが現在各リリース間のコミット履歴へのリンクを提供していないということです。
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        変更履歴を自動的に解析できますか？
+
+    %p
+      人々は大きく異なるフォーマットやファイル名に従うので、難しいです。
+
+    %p
+      #{link_to "Vandamme", vandamme} はGemnasiumチームによって作成されたRuby gemであり、
+      （全てではないが）多くのオープンソースプロジェクトの変更履歴を解析します。
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    変更履歴を書き換える必要がありますか？
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        ヤンクリリースについてはどうですか？
 
-  %p
-    もちろんです。変更履歴を改善するためには、常にもっともな理由があります。
-    メンテナンスされていない変更履歴のあるオープンソースプロジェクトに
-    不足しているリリースを追加するためのプルリクエストが常に開かれています。
+    %p
+      ヤンクリリースは、深刻なバグやセキュリティの問題のために
+      引っ張られなければならなかったバージョンです。
+      多くの場合、これらのバージョンは変更履歴に表示されません。表示しないべきである。
+      次のように表示すべきである。
 
-  %p
-    バージョンのノートにある破壊的変更への対応を忘れたことを発見するかもしれません。
-    この場合、変更履歴を更新することは明らかに重要です。
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      <code>[YANKED]</code> は大きな理由です。それに気付くことは人々にとって重要です。
+      大括弧で囲まれているので、プログラムで解析するのも簡単です。
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    どうやって貢献できますか？
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        変更履歴を書き換える必要がありますか？
 
-  %p
-    この文書は <strong>真実</strong> ではありません。
-    私が集めた情報と例と共に、慎重に考えられた私の意見です。
+    %p
+      もちろんです。変更履歴を改善するためには、常にもっともな理由があります。
+      メンテナンスされていない変更履歴のあるオープンソースプロジェクトに
+      不足しているリリースを追加するためのプルリクエストが常に開かれています。
 
-  %p
-    私たちのコミュニティが合意に達することを望んでいるからです。
-    私は議論が最終結果と同じくらい重要であると思います。
+    %p
+      バージョンのノートにある破壊的変更への対応を忘れたことを発見するかもしれません。
+      この場合、変更履歴を更新することは明らかに重要です。
 
-  %p
-    なので <strong>#{link_to "協力", gh}</strong> してください。
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        どうやって貢献できますか？
+
+    %p
+      この文書は <strong>真実</strong> ではありません。
+      私が集めた情報と例と共に、慎重に考えられた私の意見です。
+
+    %p
+      私たちのコミュニティが合意に達することを望んでいるからです。
+      私は議論が最終結果と同じくらい重要であると思います。
+
+    %p
+      なので <strong>#{link_to "協力", gh}</strong> してください。
 
 .press
   %h3 座談

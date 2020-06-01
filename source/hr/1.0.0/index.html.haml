@@ -188,120 +188,134 @@ version: 1.0.0
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
     Česta pitanja
 
-  %h4#standard
-    %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Postoji li standardni changelog format?
+  %details
+    %summary
+      %h4#standard
+        %a.anchor{ href: "#standard", aria_hidden: "true" }
+        Postoji li standardni changelog format?
 
-  %p
-    Zapravo ne. Postoji #{link_to "GNU changelog stilski priručnik", gnustyle},
-    i #{link_to "GNU NEWS file", gnunews}
-    "priručnik od dva odlomka". Nijedan nije adekvatan ni dovoljan.
+    %p
+      Zapravo ne. Postoji #{link_to "GNU changelog stilski priručnik", gnustyle},
+      i #{link_to "GNU NEWS file", gnunews}
+      "priručnik od dva odlomka". Nijedan nije adekvatan ni dovoljan.
 
-  %p
-    Cilj je ovoga projekta
-    = link_to "kvalitetniji changelog standard.", changelog
-    Nastao je prikupljanjem primjera dobra prakse u
-    open source zajednici.
+    %p
+      Cilj je ovoga projekta
+      = link_to "kvalitetniji changelog standard.", changelog
+      Nastao je prikupljanjem primjera dobra prakse u
+      open source zajednici.
 
-  %p
-    Konstruktivna kritika, raprave i prijedlozi za poboljšanje
-    = link_to "su dobrodošli.", issues
-
-
-  %h4#filename
-    %a.anchor{ href: "#filename", aria_hidden: "true" }
-    Kako nazvati changelog datoteku?
-
-  %p
-    Dajemo joj naziv <code>CHANGELOG.md</code>. Neki projekti još koriste
-    <code>HISTORY</code>, <code>NEWS</code> ili <code>RELEASES</code>.
-
-  %p
-    Iako može djelovati da naziv changelog datoteke i nije toliko
-    bitan, čemu otežavati korisnicima da dođu do informacije o promjenama?
-
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    Što s GitHub Releases?
-
-  %p
-    To je ozbiljna inicijativa. #{link_to "Releases", ghr} se mogu koristiti
-    kako bi git oznake (npr. git oznaka <code>v1.0.0</code>) pretvorili
-    u opširnije bilješke o izdanju, upisujući ih ručno ili pak preuzimajući
-    anotirane git oznake i pretvarajući ih u unose.
-
-  %p
-    GitHub Releases stvara statični changelog vidljiv korisnicima
-    unutar GitHub repozitorija. Moguće ih je urediti u format koji
-    bi odgovarao Vodite changelog formatu, no često je nešto opširniji.
-
-  %p
-    Trenutna GitHub releases verzija i nije baš sasvim vidljiva
-    korisnicima, za razliku od uobičajenih datoteka označenih velikim slovima
-    (<code>README</code>, <code>CONTRIBUTING</code>, itd.). Još je jedan
-    manji problem što trenutno sučelje ne nudi poveznice na commit logove
-    između izdanja.
-
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Mogu li changelogovi automatski parsati?
-
-  %p
-    Teže, jer se koriste vrlo različiti formati, kao i nazivi datoteka.
-
-  %p
-    #{link_to "Vandamme", vandamme} je Ruby gem koji je kreirao
-    Gemnasium tim i može parsati mnoge (ali
-    ne sve) changeloge projekata otvorenog koda.
+    %p
+      Konstruktivna kritika, raprave i prijedlozi za poboljšanje
+      = link_to "su dobrodošli.", issues
 
 
-  %h4#yanked
-    %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    Što s povučenim izdanjima?
+  %details
+    %summary
+      %h4#filename
+        %a.anchor{ href: "#filename", aria_hidden: "true" }
+        Kako nazvati changelog datoteku?
 
-  %p
-    Povučena ili 'Yanked' izdanja su verzije koje su uklonjene zbog
-    ozbiljnijeg buga ili sigurnosnog propusta. Takva se izdanja najčešće
-    i ne pojavljuju u changelogu, iako bi trebala. Trebala bi biti navedena
-    na sljedeći način:
+    %p
+      Dajemo joj naziv <code>CHANGELOG.md</code>. Neki projekti još koriste
+      <code>HISTORY</code>, <code>NEWS</code> ili <code>RELEASES</code>.
 
-  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+    %p
+      Iako može djelovati da naziv changelog datoteke i nije toliko
+      bitan, čemu otežavati korisnicima da dođu do informacije o promjenama?
 
-  %p
-    <code>[YANKED]</code> oznaka jasno je istaknuta s razlogom. Bitno je
-    da ju je lako primijetiti. Buduće da je okružena zagradama, također ju
-    je lakše parsati.
+  %details
+    %summary
+      %h4#github-releases
+        %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+        Što s GitHub Releases?
+
+    %p
+      To je ozbiljna inicijativa. #{link_to "Releases", ghr} se mogu koristiti
+      kako bi git oznake (npr. git oznaka <code>v1.0.0</code>) pretvorili
+      u opširnije bilješke o izdanju, upisujući ih ručno ili pak preuzimajući
+      anotirane git oznake i pretvarajući ih u unose.
+
+    %p
+      GitHub Releases stvara statični changelog vidljiv korisnicima
+      unutar GitHub repozitorija. Moguće ih je urediti u format koji
+      bi odgovarao Vodite changelog formatu, no često je nešto opširniji.
+
+    %p
+      Trenutna GitHub releases verzija i nije baš sasvim vidljiva
+      korisnicima, za razliku od uobičajenih datoteka označenih velikim slovima
+      (<code>README</code>, <code>CONTRIBUTING</code>, itd.). Još je jedan
+      manji problem što trenutno sučelje ne nudi poveznice na commit logove
+      između izdanja.
+
+  %details
+    %summary
+      %h4#automatic
+        %a.anchor{ href: "#automatic", aria_hidden: "true" }
+        Mogu li changelogovi automatski parsati?
+
+    %p
+      Teže, jer se koriste vrlo različiti formati, kao i nazivi datoteka.
+
+    %p
+      #{link_to "Vandamme", vandamme} je Ruby gem koji je kreirao
+      Gemnasium tim i može parsati mnoge (ali
+      ne sve) changeloge projekata otvorenog koda.
 
 
-  %h4#rewrite
-    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Je li potrebno prepravljati changelog?
+  %details
+    %summary
+      %h4#yanked
+        %a.anchor{ href: "#yanked", aria_hidden: "true" }
+        Što s povučenim izdanjima?
 
-  %p
-    Naravno. Često postoje dobri razlozi da bismo poboljšali changelog. Ja
-    često otvaram pull requestove kako bih dodao nedostajuća izdanja projektima
-    otvorenog koda, koji ne održavaju changeloge.
+    %p
+      Povučena ili 'Yanked' izdanja su verzije koje su uklonjene zbog
+      ozbiljnijeg buga ili sigurnosnog propusta. Takva se izdanja najčešće
+      i ne pojavljuju u changelogu, iako bi trebala. Trebala bi biti navedena
+      na sljedeći način:
 
-  %p
-    Moguće je, također da otkrijete, kako ste zaboravili navesti promjenu koja
-    bi utjecala na rad (breaking change). U tom je slučaju, očito, vrlo bitno
-    ažurirati changelog.
+    %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+    %p
+      <code>[YANKED]</code> oznaka jasno je istaknuta s razlogom. Bitno je
+      da ju je lako primijetiti. Buduće da je okružena zagradama, također ju
+      je lakše parsati.
 
 
-  %h4#contribute
-    %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    Kako doprinijeti?
+  %details
+    %summary
+      %h4#rewrite
+        %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+        Je li potrebno prepravljati changelog?
 
-  %p
-    Ovaj dokument nije <em>Sveto Pismo</em>; ovo je samo pažljivo
-    razmotreno mišljenje, uz informacije i primjere koje sam skupio.
+    %p
+      Naravno. Često postoje dobri razlozi da bismo poboljšali changelog. Ja
+      često otvaram pull requestove kako bih dodao nedostajuća izdanja projektima
+      otvorenog koda, koji ne održavaju changeloge.
 
-  %p
-    Razlog je tome to što želim da zajednica postigne konsenzus. Vjerujem,
-    također, da je i sama rasprava bitna kao i krajnjni rezultat.
+    %p
+      Moguće je, također da otkrijete, kako ste zaboravili navesti promjenu koja
+      bi utjecala na rad (breaking change). U tom je slučaju, očito, vrlo bitno
+      ažurirati changelog.
 
-  %p
-    Zato, molimo <strong>#{link_to "uskočite", gh}</strong>.
+
+  %details
+    %summary
+      %h4#contribute
+        %a.anchor{ href: "#contribute", aria_hidden: "true" }
+        Kako doprinijeti?
+
+    %p
+      Ovaj dokument nije <em>Sveto Pismo</em>; ovo je samo pažljivo
+      razmotreno mišljenje, uz informacije i primjere koje sam skupio.
+
+    %p
+      Razlog je tome to što želim da zajednica postigne konsenzus. Vjerujem,
+      također, da je i sama rasprava bitna kao i krajnjni rezultat.
+
+    %p
+      Zato, molimo <strong>#{link_to "uskočite", gh}</strong>.
 
 .press
   %h3 Razgovori
