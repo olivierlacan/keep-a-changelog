@@ -37,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Swedish translation from [@magol](https://github.com/magol).
 - Turkish translation from [@karalamalar](https://github.com/karalamalar).
 - French translation from [@zapashcanon](https://github.com/zapashcanon).
-- Brazilian Portugese translation from [@Webysther](https://github.com/Webysther).
+- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
 - Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).
 - Russian translation from [@aishek](https://github.com/aishek).
 - Czech translation from [@h4vry](https://github.com/h4vry).
