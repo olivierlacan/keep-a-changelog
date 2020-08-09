@@ -20,7 +20,7 @@ version: 1.0.0
 .header
   .title
     %h1 如何維護更新日誌
-    %h2 更新日誌絕對不應該只是 git log 的堆砌物
+    %h2 別讓你的更新日誌成為 git log 的雙胞胎
 
   = link_to changelog do
     Version
@@ -34,7 +34,7 @@ version: 1.0.0
     更新日誌是什麼？
 
   %p
-    更新日誌（Changelog）是個記錄專案演進版本間的差異，以時間倒敘、由人工攥寫的列表。
+    更新日誌（Changelog）是說明專案在開發過程中，版本之間的差異紀錄，由開發人員由新而舊撰寫。
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
@@ -48,7 +48,11 @@ version: 1.0.0
     哪些人需要更新日誌？
 
   %p
-    大家都需要更新日誌。無論是使用者還是開發者，軟體最終的用戶都會在意軟體包含了什麼。當軟體更新了，大家會希望知道改了什麼、為什麼要改。
+    大家都需要更新日誌。
+
+  %p
+    無論是開發人員或是使用者，都會在意軟體包含了什麼東西。
+    當軟體更新了，大家都想知道改了些什麼以及為什麼要改。
 
 .good-practices
   %h3#how
@@ -57,21 +61,21 @@ version: 1.0.0
 
   %h4#principles
     %a.anchor{ href: "#principles", aria_hidden: "true" }
-    指導原則
+    撰寫原則
 
   %ul
     %li
-      日誌是寫給「人」看的，不是機器。
+      更新日誌是寫給「人」看的，不是機器。
     %li
       每個版本都應該有獨立的進入點。
     %li
-      相同類型的改動應分組放置。
+      相同類型的改動應該被分類在同一組。
     %li
       版本與章節應「可連結化」。
     %li
-      新版本總是寫在前面。
+      新版本總是寫在最前面。
     %li
-      每個版本都該註記發佈日期。
+      每個版本都應該註記發佈日期。
     %li
       版本命名應遵守#{link_to "語意化版本", semver}格式。
 
@@ -81,28 +85,28 @@ version: 1.0.0
   %ul
     %li
       %code Added
-      當增加了新功能。
+      ：當增加了新功能。
     %li
       %code Changed
-      當更動了既有的功能。
+      ：當更動了既有的功能。
     %li
       %code Deprecated
-      當功能將在近期被移除。
+      ：當功能將在近期被移除。
     %li
       %code Removed
-      當移除了現有的功能。
+      ：當移除了現有的功能。
     %li
       %code Fixed
-      當修復了某些錯誤。
+      ：當修復了某些錯誤。
     %li
       %code Security
-      當增進了安全性漏洞。
+      ：當增進了安全性漏洞。
 
 .effort
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    如何提升維護更新日誌的效率？
+    如何提升維護「更新日誌」的效率？
 
   %p
     在日誌上方使用 <code>Unreleased</code> 區塊記錄即將發佈的更新內容。
@@ -118,41 +122,43 @@ version: 1.0.0
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    難道日誌能寫得很糟嗎？
+    不就只是個日記而已嗎？難道可以把日誌得很糟嗎？
 
-  %p 當然。下面有些糟糕的範例：
+  %p 當然，下面有些糟糕的範例：
 
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
-    🚫 直接使用 git log
+    🚫 直接複製 git log 到更新日誌
 
   %p
-    使用 git log 作為更新日誌絕對不是個好主意：git log 充滿了各種無意義的訊息，像 merge commits
-    、亂七八糟的提交訊息、文件更新等。
+    直接把 git log 複製一份成更新日誌絕對不是個好主意。
+
+  %p  
+    git log 充滿了各種瑣碎的訊息，像 merge commits、亂七八糟的提交訊息或是文件更新等。
 
   %p
-    Commits 的目的應該是記錄原始碼的演化過程。有些項目會清理 commits，有些卻不會。
+    Commits 的目的應該是記錄原始碼演進的過程，有些專案會清理 commits，但有些不會。
 
   %p
-    更新日誌的目的則是記錄那些值得一提的改動，經常涵蓋多個 commits，最終目的仍是讓使用者一目了然。
+    更新日誌的目的則是記錄那些值得一提的改動，經常涵蓋多個 commits，最終目的仍然是讓看的人一目了然。
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     🚫 忽略 Deprecations
 
   %p
-    當使用者升級版本時，他應該要能預先知道哪些環節可能會出問題。理想的情形下，應該讓使用者有空間能預先升級即將被棄用的功能；待替換掉棄用功能之後，再升級至棄用功能被真正移除的版本。
+    當使用者升級版本時，他應該要能預先知道哪些環節可能會出問題，然而，在理想的狀況下，應該讓使用者有空間能預先升級即將被棄用的功能，替換掉棄用功能之後，再升級至棄用功能被真正移除的版本。
 
   %p
-    即使不這麼做，也要在更新日誌中列出棄用的、移除的、或是任何可能導致程式碼失效的重大改動。
+    即使不這麼做，也要在更新日誌中列出棄用的、移除的或是任何可能導致程式碼失效的重大改動。
 
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
-    🚫 易混淆的日期格式
+    🚫 容易混淆的日期格式
 
   %p
     在世界的每個角落，不同區域有著不同的時間格式，找到讓大家都滿意的日期格式不是件簡單的事。使用像
-    <code>2017-07-17</code> 的格式能清楚傳達日期、不易與其他日期格式混淆，同時也遵守
+    <code>2017-07-17</code> 的格式能清楚傳達日期，而且不易與其他日期格式混淆，同時也遵守
     #{link_to "ISO 標準", iso}，因此推薦使用像這樣的日期格式。
 
   %aside
