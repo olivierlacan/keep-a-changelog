@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Suggest [calver](https://calver.org/) or other versioning scheme in addition to [semver](https://semver.org/).
+
 ## [1.1.0] - 2019-02-15
 
 ### Added
