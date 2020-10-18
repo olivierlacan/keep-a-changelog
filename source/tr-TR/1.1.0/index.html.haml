@@ -1,0 +1,325 @@
+---
+description: Değişiklik kaydı tutun
+title: Değişiklik kaydı tutun
+language: tr-TR
+version: 1.1.0
+---
+
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
+- gh = "https://github.com/olivierlacan/keep-a-changelog"
+- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
+- vandamme = "https://github.com/tech-angels/vandamme/"
+- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
+
+.header
+  .title
+    %h1 Değişiklik kayıtları tutun
+    %h2 Arkadaşlarınızın, git mesajlarını değişiklik kayıtlarına yığmasını engelleyin.
+
+  = link_to changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Nedir bu değişiklik kayıtları?
+
+  %p
+    Değişiklik kayıtları bir proje için özel olarak hazırlanmış,
+    tarihsel sıralamayla sıralanmış, önemli değişikliklerin bir bütünüdür.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    Değişikliklerin kayıtlarını tutmanın anlamı ne?
+
+  %p
+    Bir projenin kullanıcılarının ya da katılımcılarının, dağıtımlar
+    (ya da sürümler) arasındaki tam olarak hangi önemli değişikliklerin
+    olduğunu takip edebilmelerini sağlar.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Kim değişiklik kayıtlarına ihtiyaç duyar ki?
+
+  %p
+    İnsanlar. İster tüketici olsun, ister geliştirici, kullanılan yazılımın
+    son kullanıcıları, o yazılımın içinde ne olduğunu önemseyen kişilerdir.
+    Yazılım değiştiğinde, insanlar neden ve nasıl olduğunu bilmek isterler.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Nası iyi değişiklik kayıtları tutarım?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Rehber prensipler
+
+  %ul
+    %li
+      Değişiklik kayıtları <em>insanlar</em> içindir, makineler için değil.
+    %li
+      Her sürüm için bir girdi içermelidir.
+    %li
+      Benzer değişiklikler gruplanmalıdır.
+    %li
+      Sürümler ve bölümlere bağlantı verilebilir olmalıdır.
+    %li
+      En son sürüm ilk başta olmalıdır.
+    %li
+      Her sürümün dağıtım tarihi bulunmalıdır.
+    %li
+      Geliştirirken #{link_to "anlamlı sürümlendirme (Semver)", semver} kullanıp kullanmadığınızı bildirin.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Değişiklik tipleri
+
+  %ul
+    %li
+      %code Eklendi
+      \: Yeni özellikler için.
+    %li
+      %code Değişti
+      \: Var olan becerilerde yapılan değişiklikler için.
+    %li
+      %code Rafa kalktı
+      \: Gelecekte yok olacak beceriler için.
+    %li
+      %code Kaldırıldı
+      \: Kaldırılan beceriler için.
+    %li
+      %code Düzeltildi
+      \: Ayıklanmış hatalar için.
+    %li
+      %code Güvenlik
+      \: Bir güvenlik açığı söz konusuysa.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Gerekli çabayı nasıl en aza indirebilirim?
+
+  %p
+    Her zaman en üstte, değişiklikleri takip ettiğiniz bir <code>Yayımlanmadı</code>
+    bölümü olsun
+
+  %p Bu, iki amaca hizmet eder:
+
+  %ul
+    %li
+      İnsanlar gelecek sürümlerde karşılarına ne gibi değişiklikler çıkacağını görebilirler
+    %li
+      Dağıtım zamanı geldiğinde <code>Yayımlanmadı</code> bölümünü
+      yeni dağıtım sürümü bölümü olarak kullanabilirsiniz.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Değişiklik kütükleri kötü olabilirler mi?
+
+  %p Evet. Buyrun size işe yaramayacak bir kaç örnek;
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Commit kayıtlarının farkları
+
+  %p
+    Değişiklik kayıtları için commit kayıtlarının farklarını kullanmak
+    kötü bir fikirdir: genellikle çok gürültülü olurlar. Commit birleşmeleri,
+    kötü başlıklı commitler, belgeleme değişiklikleri vb.
+
+  %p
+    Bir commit yapılmasının sebebi, kodun bir sonraki aşamaya evrilmesidir.
+    Bazı projeler commitleri temizler, bazıları temizlemez.
+
+  %p
+    Değişiklik kayıtlarına eklenen bir girdi ise, öneme sahip bir değişikliğin
+    belgelenmesi amaçlıdır. Genelde bir çok commit işlemini kapsar ve son
+    kullanıcıyla iletişimi açık tutar.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Rafa kalkanları göz ardı etmek
+
+  %p
+    İnsanlar bir sürümden diğerine yükselttiklerinde, bir şeylerin bozulup
+    bozulmayacağı acı verici derecede açık olmalıdır. Rafa kalkan özelliklerin
+    listelendiği sürüme geçip, bu rafa kaldırılanlara yönelik kendi geliştirmelerini
+    yaparak, en nihayetinde özelliklerin tamamen kaldırıldığı sürüme
+    geçiş yapabilmeliler.
+
+  %p
+    Eğer hiç bir şey yapmasanız bile, rafa kalkanları, kaldırılanları ve
+    önemli değişiklikleri, değişiklik kayıtlarınızda listeleyin.
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Kafa karıştırıcı tarihler
+
+  %p
+    A.B.D.'de insanlar ay kısmını önce kullanırken (2 Haziran 2012 için
+    <code>06-02-2012</code>), dünyanın bir çok bölümünde daha robotik bir
+    kullanım <code>2 Haziran 2012</code> söz konusu. <code>2012-06-02</code>
+    biçimi en küçüğünden en büyüğüne tüm biçimlerle çakışmadan kullanılabiliyor
+    ve aynı zamanda bir #{link_to "ISO standardı", iso}. Bu sebeple değişiklik
+    kayıtları için önerilen tarih biçimidir.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Tutarsız değişiklikler
+
+  %p
+    Sadece bazı değişiklikleri içeren bir değişiklik kütüğü en az hiç 
+    olmaması kadar tehlikelidir. Bir çok değişikliğin kayıt altına alınması
+    gerekmese bile - örneğin tek bir boşluğun kaldırılmasının kayıt altına
+    alınması gerekmeyebilir - her türlü önemli değişiklikten kayıt kütüğünde
+    bahsedilmelidir. Tutarsız bir şekilde değişiklikleri uygulamak,
+    kullanıcıların tek doğrunun sadece değişiklik kütüğünde var olanlar
+    olduğunu sanmasına yol açabilir. Öyle de olmalı. Büyük güç beraberinde
+    büyük sorumluluk getirir - iyi değişiklik kayıtları demek tutarlı bir
+    şekilde güncellenen değişiklik kayıtları demektir.
+
+  %aside
+    Mutlaka dahası da vardır. Benzer durumları toplamam için
+    = link_to "bir çağrı açın", issues
+    ya da bir çekme isteği gönderin.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Sıkça sorulan sorular
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Standart bir değişiklik kayıt biçimi var mı?
+
+  %p
+    Pek sayılmaz. GNU değişiklik kayıtları stil rehberi mevcut ya da
+    iki paragraflık GNU NEWS "rehber" dosyası var. İkisi de uygun
+    değiller ve yetersizler.
+
+  %p
+    Bu proje daha iyi
+    = link_to "bir değişiklik kayıtları düzeni", changelog
+    oluşturmaya çalışıyor. Bunun için de açık kaynaklı topluluklardaki
+    en iyi kullanımları inceleyip, topluyoruz.
+
+  %p
+    Sağlıklı eleştiriler, tartışmalar ve öneriler, projenin gelişmesi
+    için her zaman
+    = link_to "hoş karşılanır.", issues
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Değişiklik kayıtları dosyasının ismi ne olmalı?
+
+  %p
+    İsterseniz <code>CHANGELOG.md</code> olarak isimlendirin. Bazı projeler
+    <code>HISTORY</code>, <code>NEWS</code> ya da <code>RELEASES</code>
+    kullanıyor.
+
+  %p
+    Dosya isminin çok da önemli olmadığını düşünebilirsiniz, fakat
+    neden kullanıcılarınızın değişiklikleri takip edebilmesi için
+    onların işlerini zorlaştırasınız ki?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Peki ya GitHub dağıtımları?
+
+  %p
+    Harika bir girişim. #{link_to "Dağıtımlar", ghr} içine kendiniz
+    değişiklik kayıtları eklerseniz basit git etiketlerini
+    (örneğin <code>v1.0.0</code>) zengin dağıtım notlarına çevirebilir
+    ya da notlar eklenmiş git etiketlerinden oluşturulabilirsiniz.
+
+  %p
+    GtHub dağıtımları sadece GitHub içeriğinde görüntülenebilecek,
+    taşınamaz değişiklik kayıtları oluşturur. Biraz emek harcayarak
+    "Değişiklik kayıtları tutun" biçimine uygun hale getirilebilir.
+
+  %p
+    Ayrıca GitHub dağıtımlarının şu anki hali son kullanıcılar tarafından
+    çok kolay bulunabilir değil. Tipik büyük harfli dosyalar
+    (<code>README</code>, <code>CONTRIBUTING</code>, vb.) daha çok göze
+    çarpıyor. Bir başka konu da, mevcut arayüz her dağıtım arasındaki
+    commit kayıtlarına bağlantı vermeye izin vermiyor..
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Değişiklik kayıtları otomatik olarak toplanabilir mi?
+
+  %p
+    Zor, çünkü insanlar bir çok farklı biçim ve dosya isimleri
+    kullanıyorlar.
+
+  %p
+    #{link_to "Vandamme", vandamme}, Gemnasium
+    ekibi tarafından oluşturulmuş bir Ruby Gem'i ve bir çok (ama hepsi
+    değil) açık kaynak projenin değişiklik kayıtlarını okuyabiliyor.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    Peki ya geri çekilen dağıtımlar?
+
+  %p
+    Geri çekilen dağıtımlar, önemli hatalar ya da güvenlik sebepleri nedeniyle
+    yayından geri çekilen sürümlerdir. Genelde bu sürümler değişiklik kayıtlarında
+    görüntülenmezler. Görünmeliler. Tam da şu şekilde görünmeliler:
+
+  %p <code>## 0.0.5 - 2014-12-13 [GERİ ÇEKİLDİ]</code>
+
+  %p
+    <code>[GERİ ÇEKİLDİ]</code> etiketi belirli bir sebepten büyük harf.
+    İnsanların bunu fark etmeleri çok önemli. Ayrıca köşeli parantezler
+    ile çevrelenmiş olması programatik olarak da ayrıştırılabilmesine
+    olanak sağlıyor.
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Değişiklik kayıtlarınızı tekrar yazmalı mısınız?
+
+  %p
+    Tabii ki. Her zaman değişiklik kayıtlarını geliştirmek için iyi sebepler vardır.
+    Düzenli olarak açık kaynaklı projelerde bakım yapılmayan değişiklik kayıtları
+    için çekme istekleri yapıyorum.
+
+  %p
+    Ayrıca bir sürümdeki notların arasında önemli bir değişiklikten bahsetmeyi
+    unutmuş olduğunuzu fark edebilirsiniz. Değişiklik kayıtlarınızı bu bilgi ışığında
+    güncellemeniz gerektiği gün gibi ortada.
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Nasıl katkıda bulunabilirim?
+
+  %p
+    Bu belge <strong>doğrunun kendisi</strong> değil; benim ince eleyip
+    sık dokuduğum görüşlerimdir. Beraberinde toparlamış olduğum bilgiler
+    ve örnekler bulunur.
+
+  %p
+    Burada yapmaya çalıştığım topluluğun ortak bir paydada buluşmasını sağlamak.
+    İnanıyorum ki tartışmanın kendisi de sonucu kadar önemli.
+
+  %p
+    Yani lütfen, <strong>#{link_to "siz de katılın", gh}</strong>.
+
+.press
+  %h3 Sohbetler
+  %p
+    Geliştiricilerin ve katkıda bulunanların neden değişiklik kayıtlarını
+    dikkate almaları gerekliliğini ve bu projenin arkasındaki motivasyonu
+    anlattığım #{link_to "Değişiklik Kayıtları podcast", thechangelog}'ini
+    inceleyebilirsiniz.
