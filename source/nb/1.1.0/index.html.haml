@@ -1,0 +1,327 @@
+---
+description: Lag en Endringslogg
+title: Lag en Endringslogg
+language: nb
+version: 1.1.0
+---
+
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
+- gh = "https://github.com/olivierlacan/keep-a-changelog"
+- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
+- vandamme = "https://github.com/tech-angels/vandamme/"
+- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+
+.header
+  .title
+    %h1 Lag en Endringslogg
+    %h2 Ikke la vennene dine dumpe git logger i endringslogger.
+
+  = link_to changelog do
+    Versjon
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Hva er en endringslogg?
+
+  %p
+    En endringslogg er en fil som inneholder en organisert, kronologisk
+    satt opp liste over sentrale endringer for hver versjon av et prosjekt.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    Hvorfor lage en endringslogg?
+
+  %p
+    For å gjøre det enklere for brukere og bidragsytere å se nøyaktig hvilke
+    sentrale endringer som har blitt gjort mellom hver utgivelse (eller versjon)
+    av prosjektet.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Hvem trenger en endringslogg?
+
+  %p
+    Folk. Om enn de er konsumenter eller utviklere, sluttbrukerne
+    av programvare er mennesker som bryr seg om hva som er i programvaren.
+    Når programvaren endres, vil folk vite hvorfor og hvordan.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Hvordan lager jeg en god endringslogg?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Veiledende prinsipper
+
+  %ul
+    %li
+      Endringslogger er <em>for mennesker</em>, ikke maskiner.
+    %li
+      Det bør være en oppføring for hver versjon.
+    %li
+      Samme type endringer bør grupperes.
+    %li
+      Versjoner og seksjoner bør kunne lenkes til.
+    %li
+      Den nyeste versjonen bør komme først.
+    %li
+      Utgivelsesdatoen for hver versjon vises.
+    %li
+      Nevn hvorvidt du følger #{link_to "Semantisk Versjonering", semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Type endringer
+
+  %ul
+    %li
+      %code Lagt til
+      for ny funksjonalitet.
+    %li
+      %code Endret
+      for endringer i eksisterende funksjonalitet.
+    %li
+      %code Avviklet
+      for funksjonalitet som snart fjernes.
+    %li
+      %code Fjernet
+      for fjernet funksjonalitet.
+    %li
+      %code Fikset
+      for feilrettinger.
+    %li
+      %code Sikkerhet
+      i tilfelle sårbarheter.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Hvorfor kan jeg redusere innsatsen som må til for å vedlikeholde en endringslogg?
+
+  %p
+    Bruk en <code>Ikke utgitt</code>-seksjon øverst for å spore
+    kommende endringer.
+
+  %p Dette tjener to formål:
+
+  %ul
+    %li
+      Folk kan se hvilke endringer de kan forvente i kommende utgivelser
+    %li
+      Når utgivelsen publiseres kan du flytte <code>Ikke utgitt</code>-seksjonen
+      til en seksjon for en ny versjon.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Kan endringslogger være dårlige?
+
+  %p Ja. Her er noen måter de kan være mindre nyttige.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Handlingslogg med endringer
+
+  %p
+    Å bruke endringer i handlingslogg (<em>commit log diffs</em>)
+    som endringslogg er en dårlig idé: De er full av støy. Ting som
+    sammenslåing av endringer, obskure titler, endringer i dokumentasjon,
+    osv.
+
+  %p
+    Formålet med en handlingslogg er å dokumentere et steg i utviklingen
+    av kildekoden. Noen prosjekter rydder handlingslogger, andre ikke.
+
+  %p
+    Formålet med en oppføring i endringslogg er å dokumentere
+    sentrale endringer, gjerne på tvers av flere handlingslogger,
+    samt å kommunisere disse klart til sluttbrukerne.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Ignorere Avviklinger
+
+  %p
+    Når folk oppgraderer fra en versjon til en annen burde det
+    være smertelig tydelig når noe vil gå i stykker. Det burde være
+    mulig å oppgradere til en versjon som oppgir avviklinger, fjerne
+    det som er avviklet, og deretter oppgradere til en versjon hvor
+    avviklinger blir det som er fjernet.
+
+  %p
+    Om ikke annet, oppgi avviklinger, hva som er fjernet, og annet
+    som gjør at noe går i stykker i endringsloggen.
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Forvirrende Datoer
+
+  %p
+    Regionale datoformater varierer, og det er ofte vanskelig å
+    finne et menneskevennlig datoformat som føles intuitivt for alle.
+    Fordelen med datoformater som <code>2017-07-17</code> er at de
+    følger rekkefølgen med største til minste enhet: År, måned og dato.
+    Dette formatet overlapper heller ikke på tvetydige måter, til
+    forskjell fra noen regionale formater som bytter posisjonen til
+    måneds- og datonumre. Derfor, og fordi dette datoformatet er en
+    #{link_to "ISO-standard", iso}, er det anbefalt datoformat for
+    oppføringer i endringslogger.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Tvetydige Endringer
+
+  %p
+    En endringslogg som bare nevner noen av endringene kan være like
+    farlig som å ikke ha en endringslogg. Selv om mange av endringene
+    ikke er relevante - for eksempel, fjerning av et enkelt mellomrom
+    ikke trenger å registreres i alle tilfeller - bør alle sentrale
+    endringer nevnes i endringsloggen. Ved inkonsistent oppførsel av
+    endringer vil brukerne dine feilaktig tro at endringsloggen er
+    den eneste kilden til sannhet. Den bør være det. Ved stor makt
+    kommer stort ansvar - å ha en god endringslogg betyr å ha en
+    konsistent oppdatert endringslogg.
+
+  %aside
+    Det er mer. Hjelp meg med å samle disse antimønstrene ved å
+    = link_to "åpne en sak", saker eller et endringsforslag.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Ofte Spurte Spørsmål
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Er det et standard format for endringslogger?
+
+  %p
+    Ikke egentlig. Det finnes #{link_to "GNUs stilguide for endringslogger", gnustyle},
+    eller den #{link_to "to avsnitt lange GNU NEWS filen", gnunews}
+    "retningslinjen". Begge er inadekvate eller utilstrekkelige.
+
+  %p
+    Dette prosjektet søker å være 
+    = link_to "en bedre konvensjon for endringslogger", changelog
+    Dette kommer fra observasjon av beste praksis i miljøet
+    for åpen kildekode og innsamling av de.
+
+  %p
+    Sunn kritikk, diskusjon og forslag til forbedringer
+    = link_to "er velkomne.", issues
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Hvordan bør endringsloggfilen navngis?
+
+  %p
+    Kall de <code>CHANGELOG.md</code>. Noen prosjekter bruker
+    <code>HISTORY</code>, <code>NEWS</code> eller <code>RELEASES</code>.
+
+  %p
+    Selv om det er enkelt å tenke at navnet på endringsloggfilen
+    ikke betyr så mye, hvorfor gjøre det vanskeligere for sluttbrukerne
+    å konsekvent finne sentrale endringer?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Hva med utgivelser på GitHub?
+
+  %p
+    Det er et flott initiativ. #{link_to "Utgivelser", ghr} kan brukes
+    for å gjøre enkle taggede versjoner på git (for eksempel <code>v1.0.0</code>)
+    om til fyldige utgivelsesnotater ved å manuelt legge de til, eller
+    å hente annoterte notater fra taggede versjoner å gjøre de om til
+    utgivelsesnotater.
+
+  %p
+    Utgivelser på GitHub lager en ikke-portabel endringslogg som bare
+    kan vises til brukerne innenfor konteksten GitHub. Det er mulig å
+    gjøre de veldig lik formatet til Lag en Endringslogg, men det er
+    vanligvis mer krevende.
+
+  %p
+    Den nåværende versjonen av utgivelser på GitHub er antageligvis
+    ikke veldig gjenfinnbar for sluttbrukere, i motsetning til de
+    typiske filene med store bokstaver (<code>README</code>, 
+    <code>CONTRIBUTING</code>, osv.) Et annet, mindre, problem er at
+    grensesnittet per nå ikke tilbyr lenker til handlingslogger
+    mellom hver utgivelse.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Kan endringslogger automatisk tolkes?
+
+  %p
+    Det er vanskelig, fordi folk følger svært forskjellige formater
+    og filnavn.
+
+  %p
+    #{link_to "Vandamme", vandamme} er en Ruby gem laget av Gemnasium-teamet
+    for å tolke mange (men ikke alle) endringslogger for prosjekter med
+    åpen kildekode.
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    Hva med tilbaketrukne utgivelser?
+
+  %p
+    Tilbaketrukne utgivelser er versjoner som måtte trekkes tilbake
+    på grunn av en alvorlig feil eller et sikkerhetsproblem. Vanligvis
+    fremgår ikke disse versjonene i endringsloggen. Det bør det. Slik
+    bør de vises frem:
+
+  %p <code>## [0.0.5] - 2014-12-13 [TILBAKETRUKKET]</code>
+
+  %p
+    Merkelappen <code>[TILBAKETRUKKET]</code> er bevisst uthevet. Det
+    er for at folk skal legge merke til den. Siden den er omgitt av
+    braketter er den også enklere å tolke programmatisk.
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Bør du noensinne omskrive en endringslogg?
+
+  %p
+    Selvfølgelig. Det er alltid gode grunner til å forbedre en
+    endringslogg. Jeg lager regelmessig endringsforslag for å legge
+    til manglende utgivelser i prosjekter med åpen kildekode som
+    mangler vedlikeholdte endringslogger.
+
+  %p
+    Det er også mulig at du oppdager at du glemte å addressere en
+    sentral endring i notatene til en versjon. Det er selvfølgelig
+    viktig at du oppdaterer endringsloggen i dette tilfellet.
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Hvordan kan jeg bidra?
+
+  %p
+    Dette dokumentet er ikke <strong>sannheten</strong>; det er min
+    nøye vurderte mening, samt informasjon og eksempler jeg har samlet.
+
+  %p
+    Dette fordi jeg vil at vårt miljø skal nå en enighet. Jeg tror
+    at diskusjonen er like viktig som resultatet.
+
+  %p
+    Så vær så snill, <strong>#{link_to "bidra", gh}</strong>.
+
+.press
+  %h3 Samtaler
+  %p
+    Jeg deltok på #{link_to "The Changelog podcast", thechangelog} for
+    å snakke om hvorfor vedlikeholdere og bidragsytere burde bry seg om
+    endringslogger, og også om motivasjonene bak dette prosjektet.
