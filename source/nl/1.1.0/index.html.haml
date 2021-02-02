@@ -2,7 +2,7 @@
 description: Keep a Changelog
 title: Keep a Changelog
 language: nl
-version: 1.0.0
+version: 1.1.0
 ---
 
 - changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md"
@@ -167,6 +167,21 @@ version: 1.0.0
     Het voordeel van de notatie <code>2017-07-17</code> is dat het jaar, maand en dag
     op volgorde van grootte laat zien. Daarom, en het feit dat dit een  #{link_to "ISO standaard", iso}
     is, is dit de aanbevolen datum notatie voor changelog releases.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Inconsistente Aanpassingen
+
+  %p
+    Een changelog waar slechts een aantal van de aanpassingen in vermeld staat
+    lan net zo gevaarlijk zijn als geen changelog hebben.
+    Sommige aanpassingen zullen te irrelevant zijn - bijvoorbeeld, het weghalen
+    van een overbodige spatie hieft niet altijd vermeld te worden - maar alle
+    belanrijke aanpassingen souden in het changelog vermeld moeten worden.
+    Door inconsistent te loggen kunnen gebruikers onterecht denken dat de changelog
+    de de complete bron van waarheid is. Dit zou wel zo moeten zijn.
+    "With great power comes great responsibility". Als je een changelog bij houd,
+    zorg er dan voor dat deze continue bijgehouden word.
 
   %aside
     Dit is niet alles. Help mij antipatterns te verzamelen door
