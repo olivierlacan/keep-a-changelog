@@ -75,19 +75,19 @@
 
         = yield
 
-        %footer.footer.clearfix{ role: "banner" }
-          = image_tag "keep-a-changelog-mark.svg", width: 30, class: "mark"
+        %footer.footer.clearfix{ role: "contentinfo" }
+          = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
 
           %p.about
             This project is
-            = link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"
+            = link_to "MIT Licensed", "https://choosealicense.com/licenses/mit/"
             \ //
             = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
             by
-            = link_to "Olivier Lacan", "http://olivierlacan.com/"
+            = link_to "Olivier Lacan", "https://olivierlacan.com/"
             \ //
             Designed by
-            = link_to "Tyler Fortune", "http://tylerfortune.me/"
+            = link_to "Tyler Fortune", "https://tylerfortune.me/"
 
   - unless config.gauges_id.blank?
     :javascript
