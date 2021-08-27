@@ -7,19 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added 
+
+- Added Dutch translation
+
 ### Changed
 
 - Suggest [calver](https://calver.org/) or other versioning scheme in addition to [semver](https://semver.org/).
+
+### Fixed
+
+- Fixed foldouts in Dutch translation
 
 ## [1.1.0] - 2019-02-15
 
 ### Added
 
 - Danish translation from [@frederikspang](https://github.com/frederikspang).
-- Georgian translation from [@tatocaster ](https://github.com/tatocaster).
+- Georgian translation from [@tatocaster](https://github.com/tatocaster).
 - Changelog inconsistency section in Bad Practices
 
 ### Changed
+
 - Fixed typos in Italian translation from [@lorenzo-arena](https://github.com/lorenzo-arena).
 - Fixed typos in Indonesian translation from [@ekojs](https://github.com/ekojs).
 
@@ -39,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - German translation from [@mpbzh](https://github.com/mpbzh) & [@Art4](https://github.com/Art4).
 - Italian translation from [@azkidenz](https://github.com/azkidenz).
 - Swedish translation from [@magol](https://github.com/magol).
-- Turkish translation from [@karalamalar](https://github.com/karalamalar).
+- Turkish translation from [@emreerkan](https://github.com/emreerkan).
 - French translation from [@zapashcanon](https://github.com/zapashcanon).
 - Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
 - Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).

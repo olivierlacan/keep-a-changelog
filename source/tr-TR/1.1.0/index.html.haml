@@ -2,10 +2,10 @@
 description: Değişiklik kaydı tutun
 title: Değişiklik kaydı tutun
 language: tr-TR
-version: 1.0.0
+version: 1.1.0
 ---
 
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main//CHANGELOG.md"
 - gh = "https://github.com/olivierlacan/keep-a-changelog"
 - issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
 - semver = "https://semver.org/"
@@ -172,6 +172,21 @@ version: 1.0.0
     biçimi en küçüğünden en büyüğüne tüm biçimlerle çakışmadan kullanılabiliyor
     ve aynı zamanda bir #{link_to "ISO standardı", iso}. Bu sebeple değişiklik
     kayıtları için önerilen tarih biçimidir.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Tutarsız değişiklikler
+
+  %p
+    Sadece bazı değişiklikleri içeren bir değişiklik kütüğü en az hiç 
+    olmaması kadar tehlikelidir. Bir çok değişikliğin kayıt altına alınması
+    gerekmese bile - örneğin tek bir boşluğun kaldırılmasının kayıt altına
+    alınması gerekmeyebilir - her türlü önemli değişiklikten kayıt kütüğünde
+    bahsedilmelidir. Tutarsız bir şekilde değişiklikleri uygulamak,
+    kullanıcıların tek doğrunun sadece değişiklik kütüğünde var olanlar
+    olduğunu sanmasına yol açabilir. Öyle de olmalı. Büyük güç beraberinde
+    büyük sorumluluk getirir - iyi değişiklik kayıtları demek tutarlı bir
+    şekilde güncellenen değişiklik kayıtları demektir.
 
   %aside
     Mutlaka dahası da vardır. Benzer durumları toplamam için
