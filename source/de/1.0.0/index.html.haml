@@ -14,6 +14,8 @@ version: 1.0.0
 - vandamme = "https://github.com/tech-angels/vandamme/"
 - iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
 - ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
 
 .header
   .title
@@ -135,7 +137,7 @@ version: 1.0.0
 
   %p
     Commit-Logs in einem Changelog sind eine schlechte Idee: Sie beinhalten lauter
-    überflüssige Dinge, wie Merge-Commit, Commits mit schlechten Bezeichnungen,
+    überflüssige Dinge, wie Merge-Commits, Commits mit schlechten Bezeichnungen,
     Änderungen an der Dokumentation, etc.
 
   %p
@@ -192,8 +194,8 @@ version: 1.0.0
     Gibt es ein standardisiertes Changelog-Format?
 
   %p
-    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
-    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
+    Leider nicht. Es gibt zwar den #{link_to "GNU Changelog Styleguide", gnustyle} oder den
+    #{link_to "zwei Absätze langen GNU NEWS-Datei", gnunews} "Leitfaden". Beide sind aber
     unzureichend.
 
   %p
