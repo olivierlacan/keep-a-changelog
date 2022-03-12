@@ -16,6 +16,7 @@ version: 1.1.0
 - ghr = "https://help.github.com/articles/creating-releases/"
 - gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
 - gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+- gitrelease = "https://github.com/anton-yurchenko/git-release"
 
 .header
   .title
@@ -249,15 +250,9 @@ version: 1.1.0
   %p
     GitHub Releases create a non-portable changelog that can only be
     displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
-
-  %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    make them look very much like the Keep a Changelog format. In fact,
+    there is a GitHub Action called #{link_to "git-release", gitrelease}
+    that can populate the release notes from your changelog file.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
