@@ -73,223 +73,171 @@ version: 1.0.0
     %li
       يتم عرض تاريخ إصدار كل نسخة.
     %li
-      Mention whether you follow #{link_to "Semantic Versioning", semver}.
+      اذكر ما إذا كنت تتبع  #{link_to "الأصدرة الدلالية" , semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
-  %h4#types Types of changes
+  %h4#types أنواع التغييرات
 
   %ul
     %li
       %code Added
-      for new features.
+      للحصول على ميزات جديدة.
     %li
       %code Changed
-      for changes in existing functionality.
+      للتغييرات في الوظائف الحالية.
     %li
       %code Deprecated
-      for soon-to-be removed features.
+      للميزات التي ستتم إزالتها قريبًا.
     %li
       %code Removed
-      for now removed features.
+      للميزات التي تمت إزالتها الآن.
     %li
       %code Fixed
-      for any bug fixes.
+      لأي إصلاحات للأعطال البرمجية.
     %li
       %code Security
-      in case of vulnerabilities.
+      في حالة وجود ثغرات أمنية.
 
 .effort
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    How can I reduce the effort required to maintain a changelog?
+    كيف يمكنني تقليل الجهد المطلوب لصيانة سجل التغيير؟
 
   %p
-    Keep an <code>Unreleased</code> section at the top to track upcoming
-    changes.
+    احتفظ بقسم <code> غير مُصدَر </code> بالأعلى لتتبع التغييرات القادمة.
 
-  %p This serves two purposes:
+  %p يخدم هذا غرضين:
 
   %ul
     %li
-      People can see what changes they might expect in upcoming releases
+      يمكن للأشخاص رؤية التغييرات التي يتطلعون لها في الإصدارات القادمة
+    
     %li
-      At release time, you can move the <code>Unreleased</code> section
-      changes into a new release version section.
+      في وقت الإصدار ، يمكنك نقل تغييرات قسم <code> لم يتم طرحه </code> إلى قسم إصدار النسخة الجديدة.
 
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    Can changelogs be bad?
-  %p Yes. Here are a few ways they can be less than useful.
+    هل يمكن أن تكون سجلات التغيير سيئة؟
+  %p نعم. فيما يلي بعض الأمثلة التي يمكن أن تكون فيها سجلات التغيير عديمة فائدة.
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
-    Commit log diffs
+    تضمين تبديلات السجلات
 
   %p
-    Using commit log diffs as changelogs is a bad idea: they're full of
-    noise. Things like merge commits, commits with obscure titles,
-    documentation changes, etc.
+    استخدام تضمينات Git في سجلات التغيير هو فكرة سيئة: فهي مليئة بالضوضاء. أشياء مثل دمج التضمينات، تضمينات بعناوين غامضة، تغييرات التوثيق وما إلى ذلك.
 
   %p
-    The purpose of a commit is to document a step in the evolution of
-    the source code. Some projects clean up commits, some don't.
+    الغرض من التضمين هو توثيق خطوة في تطوير شفرة المصدر. بعض المشاريع تنظف تضميناتها ، وبعضها الآخر لا يفعل ذلك.
 
   %p
-    The purpose of a changelog entry is to document the noteworthy
-    difference, often across multiple commits, to communicate them
-    clearly to end users.
+    الغرض من فصول سجلات التغيير هو توثيق الاختلافات البارزة بين نسختين ، غالبًا عبر تضمينات عديدة ، لإيصالها بوضوح إلى المستخدمين النهائيين.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignoring Deprecations
+    تجاهل التخريدات
+
+    %p
+عندما تتم الترقية من إصدار إلى آخر ، يجب أن يكون جليا متى ينكسر شيء ما. يجب أن يمكن الترقية إلى إصدار يعد التخريدات ، وإزالة ما تم تخريده ، ثم الترقية إلى الإصدار حيث يصبح التخريد عملية إزالة وظائف.
   %p
-    When people upgrade from one version to another, it should be
-    painfully clear when something will break. It should be possible to
-    upgrade to a version that lists deprecations, remove what's
-    deprecated, then upgrade to the version where the deprecations
-    become removals.
-  %p
-    If you do nothing else, list deprecations, removals, and any
-    breaking changes in your changelog.
+إذا لم تفعل شيئًا آخر ، فقم بعد التخريدات، عمليات الإزالة وأي تغييرات مُعطبة للبرنامج في سجل التغيير الخاص بك.
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
-    Confusing Dates
+    تواريخ مربكة
 
   %p
-    Regional date formats vary throughout the world and it's often
-    difficult to find a human-friendly date format that feels intuitive
-    to everyone. The advantage of dates formatted like
-    <code>2017-07-17</code> is that they follow the order of largest to
-    smallest units: year, month, and day. This format also doesn't
-    overlap in ambiguous ways with other date formats, unlike some
-    regional formats that switch the position of month and day numbers.
-    These reasons, and the fact this date format is an
-    #{link_to "ISO standard", iso}, are why it is the recommended date
-    format for changelog entries.
+    تتنوع تنسيقات التاريخ الإقليمية في جميع أنحاء العالم وغالبًا ما يكون من الصعب العثور على تنسيق تاريخ يُشعر أنه بديهي للجميع. تتمثل ميزة التواريخ المنسقة مثل <code> 2017-07-17 </code> في أنها تتبع ترتيب الوحدات الأكبر إلى الأصغر: السنة والشهر واليوم. لا يتداخل هذا التنسيق بطرق غامضة مع تنسيقات التاريخ الأخرى ، على عكس بعض التنسيقات الإقليمية التي تغير موضع أرقام الشهر واليوم.
+     هذه الأسباب ، وكذلك بما أن تنسيق التاريخ هذا هو #{link_to "standard ISO" , iso} ، تجعله تنسيق التاريخ الموصى به لفصول سجلات التغيير.
 
   %aside
-    There’s more. Help me collect these antipatterns by
-    = link_to "opening an issue", issues
-    or a pull request.
+    هناك المزيد. ساعدني في جمع هذه الأنماط المضادة عن طريق #{link_to "فتح مشكل", "#issues"}  أو طلب السحب.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    أسئلة شائعة
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+    هل هناك تنسيق قياسي لسجلات التغيير؟
 
   %p
-    Not really. There's the #{link_to "GNU changelog style guide", gnustyle},
-    or the #{link_to "two-paragraph-long GNU NEWS file", gnunews}
-    "guideline". Both are inadequate or insufficient.
+    ليس حقا. هناك #{link_to "GNU changelog style guide", gnustyle} ، أو #{link_to "two-paragraph-long GNU NEWS file", gnunews} "إرشادات". كلاهما إما غير كافٍ أو غير مناسب.
   %p
-    This project aims to be
-    = link_to "a better changelog convention.", changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
+    يهدف هذا المشروع إلى أن يكون 
+    = link_to "تحسين الصيغة الاصلاحية لسجلات التغيير.", changelog
+تمت صياغته من مراقبة الممارسات الجيدة في مجتمع المصادر المفتوحة وجمعها.
   %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", issues
+    كل من النقد السليم والمناقشة والاقتراحات للتحسين
+     = link_to "مرحبٌ بها" , issues
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+   كيف يجب تسمية ملف سجلات التغيير؟
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
+    أطلق عليه اسم <code> CHANGELOG.md </code>. تستخدم بعض المشاريع <code> HISTORY </code> أو <code> NEWS </code> أو <code> RELEASES </code>.
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    بما لأن اسم ملف سجل التغيير الخاص بك لا يهم كثيرًا ، فلماذا تجعل من الصعب على المستخدمين النهائيين العثور على التغييرات البارزة؟
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    وماذا عن إصدارات GitHub؟
   %p
-    It's a great initiative. #{link_to "Releases", ghr} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    إنها مبادرة رائعة. يمكن استخدام #{link_to "إصدارات", ghr} لتحويل علامات git البسيطة (على سبيل المثال علامة باسم <code> v1.0.0 </code>) إلى ملاحظات إصدار منسقة عن طريق إضافة ملاحظات الإصدار يدويًا أو يمكنها سحب رسائل علامة git المشروحة وتحويلها إلى ملاحظات.
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    تُنشئ إصدارات GitHub سجل تغيير غير محمول والذي لا يمكن عرضه إلا للمستخدمين في سياق GitHub. من الممكن جعلها تشبه إلى حد كبير تنسيق Keep a Changelog ، لكنها تميل إلى أن تكون أكثر مشاركة قليلاً.
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    يمكن القول أيضًا أن الإصدار الحالي من إصدارات GitHub غير قابل للاكتشاف من قبل المستخدمين النهائيين ، على عكس الملفات النموذجية ذات الأحرف الكبيرة (<code> README </code> ، و <code> CONTRIBUTING </code> ، وما إلى ذلك). هناك مشكلة ثانوية أخرى وهي أن الواجهة لا تقدم حاليًا روابط لتضمين السجلات بين كل إصدار.
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    هل يمكن التحليل النحوي لسجلات التغيير تلقائيًا؟
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    يصعب فعل ذلك لأن الأشخاص يتبعون تنسيقات وأسماء ملفات مختلفة تمامًا.
 
   %p
-    #{link_to "Vandamme", vandamme} is a Ruby gem created by the
-    Gemnasium team and which parses many (but
-    not all) open source project changelogs.
+    #{link_to "Vandamme", vandamme} هو جوهرة Ruby تم إنشاؤها بواسطة فريق Gemnasium والتي تحلل نحويا العديد من (ولكن ليس كل) سجلات تغيير المشروع مفتوحة المصدر.
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    وماذا عن الإصدارات المسحوبة "Yanked"؟
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    الإصدارات المسحوبة هي نسخ حذفت بسبب عطب خطير أو مشكلة أمنية. غالبًا لا تظهر هذه الإصدارات في سجلات التغيير بل ويجب فعل ذلك. هذه هي الطريقة التي يجب أن تعرضهم بها:
 
   %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+    علامة تم تسليط الضوء على<code> [YANKED] </code> لسبب وجيه.إذ من المهم أن يلاحظها الناس. نظرًا لأنها محاطة بأقواس ، فمن السهل أيضًا القيام بالتحليل النحوي لها برمجيًا.
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    هل يجب عليك إعادة كتابة سجل التغيير؟
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    بالتأكيد. هناك دائمًا أسباب وجيهة لتحسين سجلات التغيير. أقوم بفتح طلبات السحب بانتظام لإضافة الإصدارات المفقودة إلى مشاريع مفتوحة المصدر مع سجلات تغيير المتروكة.
 
   %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
+    من الممكن أيضًا أن تكتشف أنك نسيت معالجة تغيير مٌعطب في ملاحظات النسخة. من الواضح أنه مهم بالنسبة لك تحديث سجل التغيير في هذه الحالة.
 
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    كيف يمكنني المساهمة؟
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    هذه الوثيقة ليست <strong> الحقيقة </ strong> ؛ إنه رأيي المدروس بعناية ، إلى جانب المعلومات والأمثلة التي جمعتها.
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    هذا لأنني أريد أن يتوصل مجتمعنا إلى إجماع. أعتقد أن المناقشة لا تقل أهمية عن النتيجة النهائية.
 
   %p
-    So please <strong>#{link_to "pitch in", gh}</strong>.
+    لذا يرجى <strong> #{link_to "المشاركة", gh} </strong>.
 
 .press
   %h3 Conversations
   %p
-    I went on #{link_to "The Changelog podcast", thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    ذهبت على #{link_to "بودكاست سجلات التغيير" , thechangelog} للحديث عن سبب اهتمام المشرفين والمساهمين بسجلات التغيير ، وكذلك عن الدوافع وراء هذا المشروع.
