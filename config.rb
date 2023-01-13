@@ -14,7 +14,10 @@ $previous_version = $versions[$versions.index($last_version) - 1]
 
 # This list of languages populates the language navigation.
 issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
-$languages = {
+$languages = {  
+  "ar" => {
+    name: "العربية"
+  },
   "cs"    => {
     name: "Čeština"
   },
