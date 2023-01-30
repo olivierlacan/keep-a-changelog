@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.1.4.1)
+    activesupport (6.1.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -17,7 +17,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.2.0)
     contracts (0.13.0)
     dotenv (2.7.6)
     em-websocket (0.5.2)
@@ -98,7 +98,7 @@ GEM
     middleman-syntax (3.2.0)
       middleman-core (>= 3.2)
       rouge (~> 3.2)
-    minitest (5.14.4)
+    minitest (5.17.0)
     padrino-helpers (0.15.1)
       i18n (>= 0.6.7, < 2)
       padrino-support (= 0.15.1)
@@ -128,12 +128,12 @@ GEM
     tilt (2.0.10)
     toml (0.3.0)
       parslet (>= 1.8.0, < 3.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     webrick (1.7.0)
-    zeitwerk (2.5.1)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
