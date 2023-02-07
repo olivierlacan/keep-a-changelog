@@ -197,9 +197,9 @@ helpers do
     language_name = language.last[:name]
     language_path = "source/#{language.first}"
 
-    if File.exists?("#{language_path}/#{$last_version}")
+    if File.exist?("#{language_path}/#{$last_version}")
       "#{$last_version} #{language_name}"
-    elsif File.exists?("#{language_path}/#{$previous_version}")
+    elsif File.exist?("#{language_path}/#{$previous_version}")
       "#{$previous_version} #{language_name}"
     else
       nil

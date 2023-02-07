@@ -4,7 +4,7 @@
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
-- newer_version_available = File.exists?("source/#{language_code}/#{$last_version}")
+- newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
 
 !!! 5
 %html
