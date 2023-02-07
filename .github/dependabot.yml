@@ -3,9 +3,9 @@ updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: daily
+    interval: monthly
     time: "04:00"
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 3
   ignore:
   - dependency-name: middleman
     versions:
