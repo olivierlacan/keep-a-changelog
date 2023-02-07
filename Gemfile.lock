@@ -106,7 +106,7 @@ GEM
     padrino-support (0.15.2)
     parallel (1.22.1)
     parslet (2.0.0)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
