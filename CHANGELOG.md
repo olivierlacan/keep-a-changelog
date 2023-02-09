@@ -9,11 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added 
 
-- Added Dutch translation
+- Added Dutch translation.
 
 ### Fixed
 
-- Fixed foldouts in Dutch translation
+- Fixed foldouts in Dutch translation.
+- Added missing periods at the end of each change.
 
 ## [1.1.0] - 2019-02-15
 
@@ -21,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Danish translation from [@frederikspang](https://github.com/frederikspang).
 - Georgian translation from [@tatocaster](https://github.com/tatocaster).
-- Changelog inconsistency section in Bad Practices
+- Changelog inconsistency section in Bad Practices.
 
 ### Changed
 
@@ -67,7 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve "Commit log diffs" sub-section to further argument against
   them.
 - Merge "Why can’t people just use a git log diff?" with "Commit log
-  diffs"
+  diffs".
 - Fix typos in Simplified Chinese and Traditional Chinese translations.
 - Fix typos in Brazilian Portuguese translation.
 - Fix typos in Turkish translation.
@@ -185,10 +186,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - This CHANGELOG file to hopefully serve as an evolving example of a
   standardized open source project CHANGELOG.
-- CNAME file to enable GitHub Pages custom domain
-- README now contains answers to common questions about CHANGELOGs
+- CNAME file to enable GitHub Pages custom domain.
+- README now contains answers to common questions about CHANGELOGs.
 - Good examples and basic guidelines, including proper date formatting.
-- Counter-examples: "What makes unicorns cry?"
+- Counter-examples: "What makes unicorns cry?".
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
