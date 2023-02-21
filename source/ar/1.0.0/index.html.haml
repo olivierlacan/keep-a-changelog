@@ -23,6 +23,7 @@ version: 1.0.0
 body,html,h1,h2,h3,h4,h5,h6,a{font-family:Vazir;direction:rtl;text-align:right} 
 div.frequently-asked-questions h4:after{float:left} 
 pre {direction:ltr;text-align:left} 
+p.yanked {direction:ltr;text-align:right}
 </style> 
 
 .header
@@ -263,7 +264,7 @@ pre {direction:ltr;text-align:left}
   %p
     الإصدارات المسحوبة هي نسخ حذفت بسبب عطب خطير أو مشكلة أمنية. غالبًا لا تظهر هذه الإصدارات في سجلات التغيير ولكن يجب فعل ذلك. هذه هي الطريقة التي يجب أن تعرضهم بها:
 
-  %p  <code>  ## [0.0.5] - 2014-12-13 [YANKED]</code> 
+  %p.yanked  <code>## [0.0.5] - 2014-12-13 [YANKED]</code> 
 
   %p
     تم تسليط الضوء على علامة
