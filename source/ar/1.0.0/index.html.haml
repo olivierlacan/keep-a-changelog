@@ -1,0 +1,304 @@
+---
+description: احتفظ بسجل التغيير
+title: احتفظ بسجل التغيير
+language: ar
+version: 1.0.0
+---
+
+- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
+- gh = "https://github.com/olivierlacan/keep-a-changelog"
+- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
+- semver = "https://semver.org/"
+- shields = "https://shields.io/"
+- thechangelog = "https://changelog.com/podcast/127"
+- vandamme = "https://github.com/tech-angels/vandamme/"
+- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
+- ghr = "https://help.github.com/articles/creating-releases/"
+- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
+- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/font-face.css">
+
+<style> 
+body,html,h1,h2,h3,h4,h5,h6,a{font-family:Vazir;direction:rtl;text-align:right} 
+div.frequently-asked-questions h4:after{float:left} 
+pre {direction:ltr;text-align:left} 
+p.yanked {direction:ltr;text-align:right}
+</style> 
+
+.header
+  .title
+    %h1 احتفظ بسجل التغيير 
+    %h2 لا تدع أصدقائك يخلطون سجلات |
+    git |
+     مع سجلات التغيير |
+    
+  = link_to changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    ما هو سجل التغيير؟
+
+  %p
+    سجل التغيير هو ملف يحتوي على قائمة مرتبة ترتيبًا زمنيًا بالتغييرات البارزة لكل إصدار من المشروع.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    لماذا الاحتفاظ بسجل التغيير؟
+
+  %p
+    لتسهيل الأمر على المستخدمين والمساهمين أن يروا بدقة التغييرات البارزة التي تم إجراؤها بين كل إصدار (أو نسخة) من المشروع.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    من يحتاج إلى سجل التغيير؟
+
+  %p
+    الناس على العموم. سواء أكان المستهلكون أم المطورون ، فإن المستخدمين النهائيين للبرامج هم بشر يهتمون بما يوجود في البرنامج ، وعندما يتغير فإنهم يرغبون في معرفة السبب والكيف.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    كيف أصنع سجل تغيير جيد؟
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    مبادئ إرشادية
+
+  %ul
+    %li
+      سجلات التغيير موجهة <em> للبشر </em> وليس للآلات.
+    %li
+      يجب أن يكون هناك فصل لكل نسخة.
+    %li
+      يجب تجميع كل التغييرات المتشابهة.
+    %li
+      يجب أن تكون النسخ والأقسام قابلة للربط.
+    %li
+      أحدث نسخة تأتي أولا.
+    %li
+      يتم عرض تاريخ إصدار كل نسخة.
+    %li
+      اذكر ما إذا كنت تتبع #{link_to "الأصدرة الدلالية" , semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types أنواع التغييرات
+
+  %ul
+    %li
+      %code Added
+      للحصول على ميزات جديدة.
+    %li
+      %code Changed
+      للتغييرات في الوظائف الحالية.
+    %li
+      %code Deprecated
+      للميزات التي ستتم إزالتها قريبًا.
+    %li
+      %code Removed
+      للميزات التي تمت إزالتها الآن.
+    %li
+      %code Fixed
+      لأي إصلاحات للأعطال البرمجية.
+    %li
+      %code Security
+      في حالة وجود ثغرات أمنية.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    كيف يمكنني تقليل الجهد المطلوب لصيانة سجل التغيير؟
+
+  %p
+    احتفظ بقسم 
+    <code> لم يتم طرحه (Unreleased)</code> 
+    بالأعلى لتتبع التغييرات القادمة.
+
+  %p يخدم هذا غرضين:
+
+  %ul
+    %li
+      يمكن للأشخاص رؤية التغييرات التي يتطلعون لها في الإصدارات القادمة
+
+    %li
+      في وقت الإصدار ، يمكنك نقل تغييرات قسم <code> لم يتم طرحه (Unreleased)</code> إلى قسم إصدار النسخة الجديدة.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    هل يمكن أن تكون سجلات التغيير سيئة؟
+
+  %p نعم. فيما يلي بعض الأمثلة التي يمكن أن تكون فيها سجلات التغيير عديمة فائدة.
+  
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    تضمين  تبديلات السجلات
+
+  %p
+    
+    استخدام تضمينات 
+    Git (commits)
+    كسجلات التغيير هو فكرة سيئة: فهي مليئة بالضوضاء. أشياء مثل دمج التضمينات، تضمينات بعناوين غامضة، تغييرات التوثيق وما إلى ذلك
+    
+
+  %p
+    الغرض من التضمين هو توثيق خطوة في تطوير شفرة المصدر. بعض المشاريع تنظف تضميناتها ، وبعضها الآخر لا يفعل ذلك.
+
+  %p
+    الغرض من فصول سجلات التغيير هو توثيق الاختلافات البارزة بين نسختين ، غالبًا عبر تضمينات عديدة ، لإيصالها بوضوح إلى المستخدمين النهائيين.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    تجاهل التخريدات (Deprecations)
+
+  %p
+    عندما تتم الترقية من إصدار إلى آخر ، يجب أن يكون جليا متى ينكسر شيء ما. يجب أن يمكن الترقية إلى إصدار يعد التخريدات ، وإزالة ما تم تخريده ، ثم الترقية إلى الإصدار حيث يصبح التخريد عملية إزالة وظائف.
+  %p
+    إذا لم تفعل شيئًا آخر ، فقم بعد التخريدات، عمليات الإزالة وأي تغييرات مُعطبة للبرنامج في سجل التغيير الخاص بك.
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    تواريخ مربكة
+
+  %p
+    تتنوع تنسيقات التاريخ الإقليمية في جميع أنحاء العالم وغالبًا ما يكون من الصعب العثور على تنسيق تاريخ يُشعر أنه بديهي للجميع. تتمثل ميزة التواريخ المنسقة مثل 
+    <code> 2017-07-17 </code>
+    في أنها تتبع ترتيب الوحدات الأكبر إلى الأصغر: السنة والشهر واليوم. لا يتداخل هذا التنسيق بطرق غامضة مع تنسيقات التاريخ الأخرى ، على عكس بعض التنسيقات الإقليمية التي تغير موضع أرقام الشهر واليوم.
+    بما أن تنسيق التاريخ هذا هو 
+    #{link_to "standard ISO" , iso}
+    فإنه تنسيق التاريخ الموصى به لفصول سجلات التغيير.
+
+  %aside
+    هناك المزيد. ساعدني في جمع هذه الأنماط المضادة عن طريق #{link_to "فتح مشكل", "#issues"}  أو طلب السحب.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    أسئلة شائعة
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    هل هناك تنسيق قياسي لسجلات التغيير؟
+
+  %p
+    ليس حقا. 
+    هناك إرشادات
+    #{link_to "GNU changelog style guide", gnustyle} أو #{link_to "two-paragraph-long GNU NEWS file", gnunews} . 
+    كلاهما إما غير كافٍ أو غير مناسب.
+  %p
+    يهدف هذا المشروع إلى أن يكون 
+    = link_to "تحسين الصيغة الاصلاحية لسجلات التغيير.", changelog
+    تمت صياغته من مراقبة الممارسات الجيدة في مجتمع المصادر المفتوحة وجمعها.
+  %p
+    كل من النقد السليم والمناقشة والاقتراحات للتحسين
+    = link_to "مرحبٌ بها" , issues
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    كيف يجب تسمية ملف سجلات التغيير؟
+
+  %p
+    أطلق عليه اسم 
+    <code> CHANGELOG.md </code>. 
+    تستخدم بعض المشاريع التسميات التالية 
+    <code> HISTORY </code> أو <code> NEWS </code> أو <code> RELEASES </code>.
+
+  %p
+    بما أن اسم ملف سجل التغيير الخاص بك لا يهم كثيرًا ، فلماذا تجعل من الصعب على المستخدمين النهائيين العثور على التغييرات البارزة؟
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    وماذا عن إصدارات 
+    GitHub؟
+
+  %p
+    إنها مبادرة رائعة.
+    يمكن استخدام #{link_to "الإصدارات", ghr} 
+    لتحويل علامات 
+    git 
+    البسيطة 
+    (  على سبيل المثال علامة باسم <code> v1.0.0 </code> ) 
+    إلى ملاحظات إصدار منسقة عن طريق إضافة ملاحظات الإصدار يدويًا أو يمكنها سحب رسائل علامة 
+    git 
+    المشروحة وتحويلها إلى ملاحظات.
+  %p
+    تُنشئ إصدارات 
+    GitHub
+    سجل تغيير غير محمول والذي لا يمكن عرضه إلا للمستخدمين في سياق 
+    GitHub.
+    من الممكن جعلها تشبه إلى حد كبير تنسيق 
+    Keep a Changelog ، 
+    لكنها تميل إلى أن تكون أكثر مشاركة قليلاً.
+  %p
+    يمكن القول أيضًا أن الإصدار الحالي من إصدارات 
+    GitHub 
+    يصعب استعماله من قبل المستخدمين النهائيين ، على عكس الملفات النموذجية ذات الأحرف الكبيرة 
+    (وما إلى ذلك  <code> README </code> و <code> CONTRIBUTING </code>)
+    هناك مشكلة ثانوية أخرى وهي أن الواجهة لا تقدم حاليًا روابط لتضمين السجلات بين كل إصدار.
+  
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    هل يمكن التحليل النحوي لسجلات التغيير تلقائيًا؟
+
+  %p
+    يصعب فعل ذلك لأن الأشخاص يتبعون تنسيقات وأسماء ملفات مختلفة تمامًا.
+
+  %p
+    #{link_to "Vandamme", vandamme} 
+    هو جوهرة 
+    Ruby 
+    تم إنشاؤها بواسطة فريق 
+    Gemnasium 
+    والتي تحلل نحويا العديد من (ولكن ليس كل) سجلات تغيير المشروع مفتوحة المصدر.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    وماذا عن الإصدارات المسحوبة 
+    "Yanked"؟
+
+  %p
+    الإصدارات المسحوبة هي نسخ حذفت بسبب عطب خطير أو مشكلة أمنية. غالبًا لا تظهر هذه الإصدارات في سجلات التغيير ولكن يجب فعل ذلك. هذه هي الطريقة التي يجب أن تعرضهم بها:
+
+  %p.yanked  <code>## [0.0.5] - 2014-12-13 [YANKED]</code> 
+
+  %p
+    تم تسليط الضوء على علامة
+    <code> [YANKED] </code> 
+    لسبب وجيه.إذ من المهم أن يلاحظها الناس. نظرًا لأنها محاطة بأقواس ، فمن السهل أيضًا القيام بالتحليل النحوي لها برمجيًا.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    هل يجب عليك إعادة كتابة سجل التغيير؟
+
+  %p
+    بالتأكيد. هناك دائمًا أسباب وجيهة لتحسين سجلات التغيير. أقوم بفتح طلبات السحب بانتظام لإضافة الإصدارات المفقودة إلى مشاريع مفتوحة المصدر مع سجلات التغيير المتروكة.
+
+  %p
+    من الممكن أيضًا أن تكتشف أنك نسيت معالجة تغيير مُعطِب في ملاحظات النسخة. من الواضح أنه مهم بالنسبة لك تحديث سجل التغيير في هذه الحالة.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    كيف يمكنني المساهمة؟
+
+  %p
+    هذه الوثيقة ليست 
+    <strong> الحقيقة </strong>
+    ؛ إنه رأيي المدروس بعناية ، إلى جانب المعلومات والأمثلة التي جمعتها.
+
+  %p
+    هذا لأنني أريد أن يتوصل مجتمعنا إلى إجماع. أعتقد أن المناقشة لا تقل أهمية عن النتيجة النهائية.
+
+  %p
+    لذا يرجى <strong>#{link_to "المشاركة", gh}</strong>.
+
+.press
+  %h3 محادثات
+  %p
+    حضرت  #{link_to "بودكاست سجلات التغيير" , thechangelog} للحديث عن سبب اهتمام المشرفين والمساهمين بسجلات التغيير ، وكذلك عن الدوافع وراء هذا المشروع.
