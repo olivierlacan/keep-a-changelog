@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added 
 
 - Arabic translation (#444). 
+- v1.1 French translation.
 - v1.1 Dutch translation (#371).
 - v1.1 Russian translation (#410).
 - v1.1 Japanese translation (#363).
