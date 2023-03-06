@@ -4,25 +4,12 @@ title: Keep a Changelog
 language: ru
 version: 1.1.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 Ведите changelog
     %h2 Не позволяйте своим друзьям сливать логи Git в changelog’и.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -78,7 +65,7 @@ version: 1.1.0
     %li
       Указаны даты выпуска каждой версии.
     %li
-      Уточните, следуете ли вы принципам #{link_to "семантического версионирования", semver}.
+      Уточните, следуете ли вы принципам #{link_to "семантического версионирования", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Типы изменений
@@ -176,7 +163,7 @@ version: 1.1.0
     региональных форматов, в которых изменено положение чисел, обозначающих день
     и месяц, этот формат не пересекается с другим и не вызывает неоднозначных
     толкований. Исходя из этих причин и того факта, что этот формат соответствует
-    #{link_to "стандарту ISO", iso}, именно он рекомендован для записей в логе
+    #{link_to "стандарту ISO", data.links.isodate}, именно он рекомендован для записей в логе
     изменений.
 
   %h4#inconsistent-changes
@@ -208,19 +195,19 @@ version: 1.1.0
     Существует ли стандартный формат для логов изменений?
 
   %p
-    На самом деле, нет. Есть #{link_to "стилистический путеводитель по логам изменений от GNU", gnustyle},
-    есть #{link_to "«руководство» длиной в два абзаца по файлам GNU NEWS", gnunews}.
+    На самом деле, нет. Есть #{link_to "стилистический путеводитель по логам изменений от GNU", data.links.gnustyle},
+    есть #{link_to "«руководство» длиной в два абзаца по файлам GNU NEWS", data.links.gnunews}.
     Оба или неадекватны, или недостаточно полны.
 
   %p
     Этот проект нацелен на то, чтобы стать
-    #{link_to "улучшенной версией соглашения о формате логов изменений", changelog}.
+    #{link_to "улучшенной версией соглашения о формате логов изменений", data.links.changelog}.
     Проект опирается на отслеживание и накопление передового опыта сообщества
     пользователей открытого исходного кода.
 
   %p
     Здоровая критика, дискуссии и предложения по улучшению
-    #{link_to "приветствуются", issues}.
+    #{link_to "приветствуются", data.links.issue}.
 
 
   %h4#filename
@@ -241,7 +228,7 @@ version: 1.1.0
     Что насчёт функции «Релизы» на GitHub’е?
 
   %p
-    Это отличная инициатива. #{link_to "Релизы", ghr} можно использовать
+    Это отличная инициатива. #{link_to "Релизы", data.links.github_releases} можно использовать
     для превращения простых тегов Git (например, тега, названного <code>v1.0.0</code>)
     в подробные примечания к выпускам, вручную добавляя эти примечания, или же
     можно извлечь сообщения из аннотированных тегов Git и превратить их в примечания.
@@ -268,7 +255,7 @@ version: 1.1.0
     и используют разные имена файлов.
 
   %p
-    #{link_to "Vandamme", vandamme} — это gem для Ruby, созданный командой
+    #{link_to "Vandamme", data.links.vandamme} — это gem для Ruby, созданный командой
     Gemnasium и способный парсить логи изменений во многих (но не всех)
     проектах с открытым исходным кодом.
 
@@ -319,11 +306,11 @@ version: 1.1.0
     Я верю, что дискуссия так же важна, как и конечный результат.
 
   %p
-    Так что, пожалуйста, <strong>#{link_to "участвуйте", gh}</strong>.
+    Так что, пожалуйста, <strong>#{link_to "участвуйте", data.links.repo}</strong>.
 
 .press
   %h3 Обсуждения
   %p
-    Я приходил на #{link_to "подкаст The Changelog", thechangelog}, чтобы поговорить о том,
+    Я приходил на #{link_to "подкаст The Changelog", data.links.thechangelog}, чтобы поговорить о том,
     почему maintainer’ам (персоналу сопровождения) и контрибуторам следует озаботиться
     ведением логов изменений, а также о мотивах, стоящих за этим проектом.

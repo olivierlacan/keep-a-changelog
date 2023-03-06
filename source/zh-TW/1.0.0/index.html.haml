@@ -4,25 +4,12 @@ title: 如何維護更新日誌
 language: zh-TW
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/lang/zh-TW/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnu_changelog_styleguide = "https://www.gnu.org/prep/standards/html_node/Change-Logs.html"
-- gnu_the_news = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html"
-
 .header
   .title
     %h1 如何維護更新日誌
     %h2 別讓你的更新日誌成為 git log 的雙胞胎
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -77,7 +64,7 @@ version: 1.0.0
     %li
       每個版本都應該註記發佈日期。
     %li
-      版本命名應遵守#{link_to "語意化版本", semver}格式。
+      版本命名應遵守#{link_to "語意化版本", data.links.semver}格式。
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types 改動類型
@@ -159,11 +146,11 @@ version: 1.0.0
   %p
     在世界的每個角落，不同區域有著不同的時間格式，找到讓大家都滿意的日期格式不是件簡單的事。使用像
     <code>2017-07-17</code> 的格式能清楚傳達日期，而且不易與其他日期格式混淆，同時也遵守
-    #{link_to "ISO 標準", iso}，因此推薦使用像這樣的日期格式。
+    #{link_to "ISO 標準", data.links.isodate}，因此推薦使用像這樣的日期格式。
 
   %aside
     其實還有許多應該避免的。大家可以透過
-    = link_to "Issue", issues
+    = link_to "Issue", data.links.issue
     或是 Pull Request 協助蒐集 ฅ' ω 'ฅ
 
 .frequently-asked-questions
@@ -181,10 +168,10 @@ version: 1.0.0
 
   %p
     這項專案的宗旨在於提供一個
-    #{link_to "更好的更新日誌範例", changelog}，源於觀察開源社群中優秀的實際案例，把它們蒐集在一起。
+    #{link_to "更好的更新日誌範例", data.links.changelog}，源於觀察開源社群中優秀的實際案例，把它們蒐集在一起。
 
   %p
-    歡迎各位#{link_to "提供", issues}有建設性的建議和批評。
+    歡迎各位#{link_to "提供", data.links.issue}有建設性的建議和批評。
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
@@ -202,7 +189,7 @@ version: 1.0.0
     那麼 GitHub Releases 呢？
 
   %p
-    這是個好問題。#{link_to "GitHub Releases", ghr}
+    這是個好問題。#{link_to "GitHub Releases", data.links.github_releases}
     能手動在簡單的 git tag（如
     <code>v1.0.0</code>） 上附加豐富的版本資訊，也能把附帶的 tag
     messages 轉換成漂亮的日誌格式。
@@ -226,7 +213,7 @@ version: 1.0.0
 
   %p
     另外，有些開源專案使用由 Gemnasium
-    團隊開發的 #{link_to "Vandamme", vandamme}
+    團隊開發的 #{link_to "Vandamme", data.links.vandamme}
     轉換更新日誌，或許可以當作參考。
 
   %h4#yanked
@@ -263,9 +250,9 @@ version: 1.0.0
     源於我期望社群能達到共識，我相信討論的過程與結果一樣重要。
 
   %p
-    所以，<strong>#{link_to "加入我們", gh}</strong>吧 ٩(｡・ω・｡)﻿و
+    所以，<strong>#{link_to "加入我們", data.links.repo}</strong>吧 ٩(｡・ω・｡)﻿و
 
 .press
   %h3 訪談
   %p
-    我在 #{link_to "The Changelog podcast", thechangelog} 上講述了為什麼維護者與協作者應該在意更新日誌，以及建立這項專案背後的契機。
+    我在 #{link_to "The Changelog podcast", data.links.thechangelog} 上講述了為什麼維護者與協作者應該在意更新日誌，以及建立這項專案背後的契機。

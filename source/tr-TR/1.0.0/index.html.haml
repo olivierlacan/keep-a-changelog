@@ -4,23 +4,12 @@ title: Değişiklik kaydı tutun
 language: tr-TR
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Değişiklik kayıtları tutun
     %h2 Arkadaşlarınızın, git mesajlarını değişiklik kayıtlarına yığmasını engelleyin.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -76,7 +65,7 @@ version: 1.0.0
     %li
       Her sürümün dağıtım tarihi bulunmalıdır.
     %li
-      Geliştirirken #{link_to "anlamlı sürümlendirme (Semver)", semver} kullanıp kullanmadığınızı bildirin.
+      Geliştirirken #{link_to "anlamlı sürümlendirme (Semver)", data.links.semver} kullanıp kullanmadığınızı bildirin.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Değişiklik tipleri
@@ -170,12 +159,12 @@ version: 1.0.0
     <code>06-02-2012</code>), dünyanın bir çok bölümünde daha robotik bir
     kullanım <code>2 Haziran 2012</code> söz konusu. <code>2012-06-02</code>
     biçimi en küçüğünden en büyüğüne tüm biçimlerle çakışmadan kullanılabiliyor
-    ve aynı zamanda bir #{link_to "ISO standardı", iso}. Bu sebeple değişiklik
+    ve aynı zamanda bir #{link_to "ISO standardı", data.links.isodate}. Bu sebeple değişiklik
     kayıtları için önerilen tarih biçimidir.
 
   %aside
     Mutlaka dahası da vardır. Benzer durumları toplamam için
-    = link_to "bir çağrı açın", issues
+    = link_to "bir çağrı açın", data.links.issue
     ya da bir çekme isteği gönderin.
 
 .frequently-asked-questions
@@ -194,14 +183,14 @@ version: 1.0.0
 
   %p
     Bu proje daha iyi
-    = link_to "bir değişiklik kayıtları düzeni", changelog
+    = link_to "bir değişiklik kayıtları düzeni", data.links.changelog
     oluşturmaya çalışıyor. Bunun için de açık kaynaklı topluluklardaki
     en iyi kullanımları inceleyip, topluyoruz.
 
   %p
     Sağlıklı eleştiriler, tartışmalar ve öneriler, projenin gelişmesi
     için her zaman
-    = link_to "hoş karşılanır.", issues
+    = link_to "hoş karşılanır.", data.links.issue
 
 
   %h4#filename
@@ -223,7 +212,7 @@ version: 1.0.0
     Peki ya GitHub dağıtımları?
 
   %p
-    Harika bir girişim. #{link_to "Dağıtımlar", ghr} içine kendiniz
+    Harika bir girişim. #{link_to "Dağıtımlar", data.links.github_releases} içine kendiniz
     değişiklik kayıtları eklerseniz basit git etiketlerini
     (örneğin <code>v1.0.0</code>) zengin dağıtım notlarına çevirebilir
     ya da notlar eklenmiş git etiketlerinden oluşturulabilirsiniz.
@@ -249,7 +238,7 @@ version: 1.0.0
     kullanıyorlar.
 
   %p
-    #{link_to "Vandamme", vandamme}, Gemnasium
+    #{link_to "Vandamme", data.links.vandamme}, Gemnasium
     ekibi tarafından oluşturulmuş bir Ruby Gem'i ve bir çok (ama hepsi
     değil) açık kaynak projenin değişiklik kayıtlarını okuyabiliyor.
 
@@ -299,12 +288,12 @@ version: 1.0.0
     İnanıyorum ki tartışmanın kendisi de sonucu kadar önemli.
 
   %p
-    Yani lütfen, <strong>#{link_to "siz de katılın", gh}</strong>.
+    Yani lütfen, <strong>#{link_to "siz de katılın", data.links.repo}</strong>.
 
 .press
   %h3 Sohbetler
   %p
     Geliştiricilerin ve katkıda bulunanların neden değişiklik kayıtlarını
     dikkate almaları gerekliliğini ve bu projenin arkasındaki motivasyonu
-    anlattığım #{link_to "Değişiklik Kayıtları podcast", thechangelog}'ini
+    anlattığım #{link_to "Değişiklik Kayıtları podcast", data.links.thechangelog}'ini
     inceleyebilirsiniz.

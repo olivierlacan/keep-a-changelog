@@ -4,23 +4,12 @@ title: Keep a Changelog
 language: ko
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Changelog 관리
     %h2 동료가 git 로그를 changelogs에 덤프하게 내버려 두지 마세요.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -72,7 +61,7 @@ version: 1.0.0
     %li
       각 버전의 릴리즈 날짜를 표시해야 합니다.
     %li
-      #{link_to "시멘틱 버저닝", semver}를 따르는지 언급해 주세요.
+      #{link_to "시멘틱 버저닝", data.links.semver}를 따르는지 언급해 주세요.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types 변경 유형
@@ -160,12 +149,12 @@ version: 1.0.0
     <code>2017-07-17</code> 같은 날짜 포맷(연, 월, 일)의 장점은
     큰 단위부터 작은 단위의 순서를 따른다는 것입니다.
     월과 일의 위치가 뒤바뀐 어떤 포맷과 다르게, 이 포맷은 다른 날짜 포맷과 모호하게 겹치는 부분이 없습니다.
-    이런 이유와 이 포맷이 #{link_to "ISO standard", iso}라는 사실이
+    이런 이유와 이 포맷이 #{link_to "ISO standard", data.links.isodate}라는 사실이
     changelog 기입을 위해 이 날짜 포맷을 추천하는 이유입니다.
 
   %aside
     안티패턴은 더 있습니다.
-    = link_to "이슈 오픈하기", issues
+    = link_to "이슈 오픈하기", data.links.issue
     나 pull 요청을 통해
     안티패턴들을 모으는 것을 도와주세요.
 
@@ -184,13 +173,13 @@ version: 1.0.0
 
   %p
     이 프로젝트의 목표는
-    = link_to "더 나은 changelog 규칙", changelog
+    = link_to "더 나은 changelog 규칙", data.links.changelog
     입니다.
     이것은 오픈소스 커뮤니티에서 좋은 용례를 관찰하고 모으는데서 나옵니다.
 
   %p
     건강한 비판, 토론 및 개선 제안은
-    = link_to "환영합니다.", issues
+    = link_to "환영합니다.", data.links.issue
 
 
   %h4#filename
@@ -210,7 +199,7 @@ version: 1.0.0
     깃허브 릴리즈는 어떻게 하나요?
 
   %p
-    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", ghr}는
+    이것은 훌륭한 이니셔티브입니다. #{link_to "릴리즈", data.links.github_releases}는
     직접 릴리즈 노트를 추가하거나 어노테이션된 깃 태그 메시지를 가져와서 노트로 바꿔
     간단한 깃 태그(예를 들어 <code>v1.0.0</code> 태그
     )를 풍부한 릴리즈 노트로 전환시키는데 사용될 수 있습니다.
@@ -232,7 +221,7 @@ version: 1.0.0
     사람들이 대단히 다양한 포맷과 파일 이름을 따르기 때문에 어렵습니다.
 
   %p
-    #{link_to "Vandamme", vandamme}은 Gemnasium 팀에 의해
+    #{link_to "Vandamme", data.links.vandamme}은 Gemnasium 팀에 의해
     생성된 루비잼이고 많은(전부는 아니고) 오픈소스 프로젝트의 changelog를 파싱합니다.
 
 
@@ -277,10 +266,10 @@ version: 1.0.0
     왜냐하면 우리 커뮤니티가 공감대를 형성하기를 원하기 때문입니다. 저는 최종결과 못지않게 토론도 중요하다고 생각합니다.
 
   %p
-    그러니 <strong>#{link_to "참여", gh}</strong>를 부탁합니다.
+    그러니 <strong>#{link_to "참여", data.links.repo}</strong>를 부탁합니다.
 
 .press
   %h3 대화
   %p
     왜 관리자와 기여자가 changelog를 신경써야하는지, 또한 이 프로젝트를 하게된 동기에 대해 이야기하기 위해
-    #{link_to "The Changelog 팟캐스트", thechangelog}에 다녀왔습니다.
+    #{link_to "The Changelog 팟캐스트", data.links.thechangelog}에 다녀왔습니다.

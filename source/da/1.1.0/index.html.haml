@@ -4,25 +4,12 @@ title: Hold en changelog
 language: da
 version: 1.1.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 Hold en changelog
     %h2 Du skal ikke lade dine venner smide git logs i changelogs.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -79,7 +66,7 @@ version: 1.1.0
     %li
       Udgivelsesdatoen for hver version vises.
     %li
-      Nævn hvorvidt du følger #{link_to "Semantisk Versionering", semver}.
+      Nævn hvorvidt du følger #{link_to "Semantisk Versionering", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Ændringstyper
@@ -177,7 +164,7 @@ version: 1.1.0
     følger rækkefølgen for største til mindste enhed: år, måned og dag.
     Dette format overlapper heller ikke på en tvetydig måde med andre
     datoformater, der ombytter måneden og daten. Af disse årsager, og
-    det faktum at dette datoformat er en #{link_to "ISO standard", iso},
+    det faktum at dette datoformat er en #{link_to "ISO standard", data.links.isodate},
     er dette det anbefalede datoformat for changelog-indlæg.
 
   %h4#inconsistent-changes
@@ -197,7 +184,7 @@ version: 1.1.0
 
   %aside
     Der er mere. Hjælp mig med at samle disse fælder ved at
-    = link_to "åbne et issue", issues
+    = link_to "åbne et issue", data.links.issue
     eller et pull-request.
 
 .frequently-asked-questions
@@ -210,19 +197,19 @@ version: 1.1.0
     Er der et standard changelog-format?
 
   %p
-    Ikke rigtig. Der er #{link_to "GNU changelog style guide", gnustyle},
-    eller #{link_to "two-paragraph-long GNU NEWS file", gnunews}. De
+    Ikke rigtig. Der er #{link_to "GNU changelog style guide", data.links.gnustyle},
+    eller #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews}. De
     er begge utilstrækkelige eller uhensigtsmæssige.
 
   %p
     Dette projekt sigter efter at være
-    = link_to "en bedre changelog konvention.", changelog
+    = link_to "en bedre changelog konvention.", data.links.changelog
     Det kommer af at observere god praksis i opensource-verdenen
     og samle disse.
 
   %p
     Konstruktiv kritik diskussion og forbedringsforslag
-    = link_to "er velkomne.", issues
+    = link_to "er velkomne.", data.links.issue
 
 
   %h4#filename
@@ -244,7 +231,7 @@ version: 1.1.0
     Hvad med GitHub Releases?
 
   %p
-    Det er et godt initiativ. #{link_to "Releases", ghr} kan bruges
+    Det er et godt initiativ. #{link_to "Releases", data.links.github_releases} kan bruges
     til at gøre simple git tags (for eksempel, et tag <code>v1.0.0</code>)
     til fyldige udgivelsesnoter ved manuelt at tilføje noter til disse
     eller bruge en annoteret git-tag-besked som udgivelsesnoter.
@@ -272,7 +259,7 @@ version: 1.1.0
     og filnavne.
 
   %p
-    #{link_to "Vandamme", vandamme} er en Ruby gem lavet af
+    #{link_to "Vandamme", data.links.vandamme} er en Ruby gem lavet af
     holdet bag Gemnasium, som læser og fortolker mange (men ikke
     alle) open source projekters changelogs.
 
@@ -322,11 +309,11 @@ version: 1.1.0
     Det er fordi, jeg gerne vil have at vores fællesskab når en konsensus.
     Jeg mener at diskussionen er lige så vigtig som slutresultatet.
   %p
-    Så, <strong>#{link_to "vær med!", gh}</strong>
+    Så, <strong>#{link_to "vær med!", data.links.repo}</strong>
 
 .press
   %h3 Samtaler
   %p
-    Jeg var med i #{link_to "The Changelog podcast", thechangelog} for
+    Jeg var med i #{link_to "The Changelog podcast", data.links.thechangelog} for
     at snakke om, hvorfor vedligeholdere og bidragsydere bør bekymre sig
     om changelogs og også om motivationen bag dette projekt.

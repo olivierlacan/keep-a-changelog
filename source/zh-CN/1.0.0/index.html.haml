@@ -4,23 +4,12 @@ title: 如何维护更新日志
 language: zh-CN
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 如何维护更新日志
     %h2 更新日志绝对不应该是 git 日志的堆砌物
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -71,7 +60,7 @@ version: 1.0.0
     %li
       应包括每个版本的发布日期。
     %li
-      注明是否遵守#{link_to "语义化版本规范", semver}。
+      注明是否遵守#{link_to "语义化版本规范", data.links.semver}。
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types 变动类型
@@ -150,11 +139,11 @@ version: 1.0.0
   %p
     不同区域有着不同的时间格式，要找到让大家都满意的日期格式不是件容易的事。<code>2012-06-02</code>
     的格式从大到小排列符合逻辑、不容易与其他日期格式混淆，而且还符合
-    #{link_to "ISO 标准", iso}。因此，推荐在更新日志中采用使用此种日期格式。
+    #{link_to "ISO 标准", data.links.isodate}。因此，推荐在更新日志中采用使用此种日期格式。
 
   %aside
     还有更多内容？请通过
-    = link_to "Issues", issues
+    = link_to "Issues", data.links.issue
     或是 Pull Request 协助收集。
 
 .frequently-asked-questions
@@ -171,10 +160,10 @@ version: 1.0.0
 
   %p
     此项目旨在提供一个
-    #{link_to "更好的更新日志范例", changelog}，所有点子都来自于对开源社区中优秀实例的观察与记录。
+    #{link_to "更好的更新日志范例", data.links.changelog}，所有点子都来自于对开源社区中优秀实例的观察与记录。
 
   %p
-    欢迎#{link_to "提供", issues}有建设性的批评、讨论及建议。
+    欢迎#{link_to "提供", data.links.issue}有建设性的批评、讨论及建议。
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
@@ -192,7 +181,7 @@ version: 1.0.0
     GitHub Releases 怎么样？
 
   %p
-    这是个非常好的提议。#{link_to "GitHub Releases", ghr}
+    这是个非常好的提议。#{link_to "GitHub Releases", data.links.github_releases}
     可通过手动添加发布日志或将带有注释的 git 标签信息抓取后转换的方式，将简单的
     git 标签（如一个叫 <code>v1.0.0</code> 的标签）转换为信息丰富的发布日志。
 
@@ -212,7 +201,7 @@ version: 1.0.0
 
 
   %p
-    #{link_to "Vandamme", vandamme} 是一个 Ruby 程序，由
+    #{link_to "Vandamme", data.links.vandamme} 是一个 Ruby 程序，由
     Gemnasium 团队制作，可以解析多种（但绝对不是全部）开源库的更新日志。
 
 
@@ -252,10 +241,10 @@ version: 1.0.0
     希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。
 
   %p
-    所以欢迎<strong>#{link_to "贡献", gh}</strong>。
+    所以欢迎<strong>#{link_to "贡献", data.links.repo}</strong>。
 
 .press
   %h3 访谈
   %p
-    我在 #{link_to "The Changelog podcast", thechangelog}
+    我在 #{link_to "The Changelog podcast", data.links.thechangelog}
     上讲述了为何维护者与贡献者应关心更新日志，以及这个项目背后的动机。

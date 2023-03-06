@@ -4,19 +4,6 @@ title: تاریخچهٔ تغییرات را نگه دارید
 language: fa-IR
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/font-face.css">
 
 <style>
@@ -30,7 +17,7 @@ pre {direction:ltr;text-align:left}
     %h1 تاریخچهٔ تغییرات را نگه دارید
     %h2 نگذارید دوستانتان، خروجی git log را به اسم تاریخچهٔ تغییرات پروژه منتشر کنند.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -81,7 +68,7 @@ pre {direction:ltr;text-align:left}
     %li
       تاریخ انتشار هر نسخه را مشخص کنید.
     %li
-      بگویید که آیا از #{link_to "نسخه‌بندی معنایی", semver} پیروی می‌کنید یا نه.
+      بگویید که آیا از #{link_to "نسخه‌بندی معنایی", data.links.semver} پیروی می‌کنید یا نه.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types انواع تغییرات
@@ -153,7 +140,7 @@ pre {direction:ltr;text-align:left}
     تاریخ‌های گیج‌کننده
 
   %p
-    در هر نقطه‌ای از دنیا شکل نمایش تاریخ متفاوت است؛ بنابراین پیداکردن یک قالب نمایش همه‌فهم برای کل مردم دنیا کار دشواری است. مزیت استفاده از قالب‌هایی مثل <code>2017-07-17</code> این است که در آن ترتیب بزرگترین به کوچکترین واحدها یعنی سال، ماه و روز رعایت شده است. این باعث می‌شود که برخلاف برخی از قالب‌ها که در آن جای ماه و روز عوض شده، درک تاریخ دچار ابهام نشود. با درنظرگرفتن این دلایل واین واقعیت که این فرمت یک #{link_to "استاندارد ایزو", iso} است، این قالب را برای مدخل‌های تاریخچهٔ تغییرات در نظر گرفته‌ایم.
+    در هر نقطه‌ای از دنیا شکل نمایش تاریخ متفاوت است؛ بنابراین پیداکردن یک قالب نمایش همه‌فهم برای کل مردم دنیا کار دشواری است. مزیت استفاده از قالب‌هایی مثل <code>2017-07-17</code> این است که در آن ترتیب بزرگترین به کوچکترین واحدها یعنی سال، ماه و روز رعایت شده است. این باعث می‌شود که برخلاف برخی از قالب‌ها که در آن جای ماه و روز عوض شده، درک تاریخ دچار ابهام نشود. با درنظرگرفتن این دلایل واین واقعیت که این فرمت یک #{link_to "استاندارد ایزو", data.links.isodate} است، این قالب را برای مدخل‌های تاریخچهٔ تغییرات در نظر گرفته‌ایم.
   
   
   %h4#inconsistent-changes
@@ -165,7 +152,7 @@ pre {direction:ltr;text-align:left}
 
   %aside
     اگر فکر می‌کنید جای موارد بیشتری در این لیست خالی است با
-    = link_to "ارسال issue", issues
+    = link_to "ارسال issue", data.links.issue
     یا ارسال Pull request به من کمک کنید.
 
 .frequently-asked-questions
@@ -177,18 +164,18 @@ pre {direction:ltr;text-align:left}
     آیا فرمت استانداردی برای تاریخچهٔ تغییرات وجود دارد؟
 
   %p
-    حقیتاً نه. یک "راهنمای" #{link_to "راهنمای شیوه ثبت تاریخچهٔ تغییرات GNU", gnustyle},
-    و یک #{link_to "فایل دو پاراگرافیِ بلند GNU NEWS", gnunews}
+    حقیتاً نه. یک "راهنمای" #{link_to "راهنمای شیوه ثبت تاریخچهٔ تغییرات GNU", data.links.gnustyle},
+    و یک #{link_to "فایل دو پاراگرافیِ بلند GNU NEWS", data.links.gnunews}
     وجود دارد که متأسفانه هردویشان نارسا و ناکافی هستند.
 
   %p
     این پروژه قصد دارد
-    = link_to "قراردادی بهتر برای ثبت تاریخچهٔ تغییرات باشد", changelog
+    = link_to "قراردادی بهتر برای ثبت تاریخچهٔ تغییرات باشد", data.links.changelog
     که برگرفته از تجربیات جامعهٔ متن‌باز است.
 
   %p
     از نقد سالم، بحث‌وگفتگو و پیشنهادها
-    = link_to "استقبال می‌کنیم.", issues
+    = link_to "استقبال می‌کنیم.", data.links.issue
 
 
   %h4#filename
@@ -206,7 +193,7 @@ pre {direction:ltr;text-align:left}
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
     چرا از ریلیزهای گیت‌هاب استفاده نکنیم؟
   %p
-    ابتکار خوبی است. در هنگام انتشار #{link_to "Release", ghr}ها می‌توانید به جای عرضهٔ یک نسخهٔ ساده (مثلاً یک برچسب خالی با نام <code>v1.0.0</code>)، لیست تغییرات آن نسخه را در قالب یک یادداشت، به آن برچسب ضمیمه کنید.
+    ابتکار خوبی است. در هنگام انتشار #{link_to "Release", data.links.github_releases}ها می‌توانید به جای عرضهٔ یک نسخهٔ ساده (مثلاً یک برچسب خالی با نام <code>v1.0.0</code>)، لیست تغییرات آن نسخه را در قالب یک یادداشت، به آن برچسب ضمیمه کنید.
   
   %p
     اما نکته این است که تاریخچهٔ تغییراتی که در هر ریلیز گیت‌هاب منتشر می‌کنید فقط در خودِ گیت‌هاب قابل استفاده است و به‌راحتی نمی‌توانید آن را به جای دیگری منتقل کنید. شاید بتوانید بسیار شبیهش کنید به نسخهٔ پیشنهادی این سند ولی کار زحمت‌داری است.
@@ -223,7 +210,7 @@ pre {direction:ltr;text-align:left}
     مشکل است؛ چون افراد از فرمت‌ها و نام‌گذاری‌های متعددی برای این فایل استفاده می‌کنند.
 
   %p
-    #{link_to "Vandamme", vandamme} یک روبی gem است که توسط تیم
+    #{link_to "Vandamme", data.links.vandamme} یک روبی gem است که توسط تیم
     Gemnasium ساخته شده است. این ابزار، تاریخچهٔ تغییرات پروژه‌های متن‌باز (البته نه همه) را بررسی می‌کند.
 
 
@@ -261,9 +248,9 @@ pre {direction:ltr;text-align:left}
     این به خاطر آن است که می‌خواهم جامعهٔ ما توسعه‌دهنده‌ها به یک اتفاق‌نظر برسد. من معتقدم بحث‌وگفتگو به‌اندازهٔ نتیجه مهم است.
 
   %p
-    بنابراین شما نیز <strong>#{link_to "دست به کار شوید", gh}</strong>.
+    بنابراین شما نیز <strong>#{link_to "دست به کار شوید", data.links.repo}</strong>.
 
 .press
   %h3 گفتگو
   %p
-    در #{link_to "پادکست Changelog", thechangelog}، گفتگویی داشته‌ام دربارهٔ انگیزهٔ پشت این پروژه و اینکه چرا متصدیان نگهداری و مشارکت‌کنندگان پروژه‌ها باید به تاریخچهٔ تغییرات اهمیت بدهند.
+    در #{link_to "پادکست Changelog", data.links.thechangelog}، گفتگویی داشته‌ام دربارهٔ انگیزهٔ پشت این پروژه و اینکه چرا متصدیان نگهداری و مشارکت‌کنندگان پروژه‌ها باید به تاریخچهٔ تغییرات اهمیت بدهند.

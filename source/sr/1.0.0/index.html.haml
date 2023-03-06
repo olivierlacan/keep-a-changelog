@@ -4,25 +4,12 @@ title: Vodite changelog
 language: sr
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "http://5by5.tv/changelog/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 Vodite Changelog
     %h2 Ne dajte prijateljima da trpaju git logove u changelogove.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Verzija
     %strong= current_page.metadata[:page][:version]
 
@@ -78,7 +65,7 @@ version: 1.0.0
     %li
       Datum izdavanja svake pojedine verzije treba biti vidljiv.
     %li
-      Navesti prati li se #{link_to "Semantičko verzioniranje", semver}.
+      Navesti prati li se #{link_to "Semantičko verzioniranje", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Vrste promena
@@ -175,12 +162,12 @@ version: 1.0.0
     od veće prema manjoj jedinici: godina, mesec, dan. Ovaj je format takođe
     teško zameniti s drugim regionalnim formatima, za razliku od nekih koji,
     primera radi, menjaju poziciju oznake meseca i dana.
-    Iz tog razloga, a i zbog toga što je navedeni format #{link_to "ISO standard", iso},
+    Iz tog razloga, a i zbog toga što je navedeni format #{link_to "ISO standard", data.links.isodate},
     taj se format preporučuje za changelog unose.
 
   %aside
     Ali to nije sve. Pomozite u prikupljanju primera loše prakse
-    = link_to "otvorivši issue", issues
+    = link_to "otvorivši issue", data.links.issue
     ili pull request.
 
 .frequently-asked-questions
@@ -193,19 +180,19 @@ version: 1.0.0
     Postoji li standardni changelog format?
 
   %p
-    Zapravo ne. Postoji #{link_to "GNU changelog stilski priručnik", gnustyle},
-    i #{link_to "GNU NEWS file", gnunews}
+    Zapravo ne. Postoji #{link_to "GNU changelog stilski priručnik", data.links.gnustyle},
+    i #{link_to "GNU NEWS file", data.links.gnunews}
     "priručnik od dva odlomka". Nijedan nije adekvatan ni dovoljan.
 
   %p
     Cilj ovoga projekta
-    = link_to "kvalitetniji changelog standard.", changelog
+    = link_to "kvalitetniji changelog standard.", data.links.changelog
     Nastao je prikupljanjem primera dobra prakse u
     open source zajednici.
 
   %p
     Konstruktivna kritika, raprave i predlozi za poboljšanje
-    = link_to "su dobrodošli.", issues
+    = link_to "su dobrodošli.", data.links.issue
 
 
   %h4#filename
@@ -225,7 +212,7 @@ version: 1.0.0
     Šta s GitHub Releases?
 
   %p
-    To je ozbiljna inicijativa. #{link_to "Releases", ghr} se mogu koristiti
+    To je ozbiljna inicijativa. #{link_to "Releases", data.links.github_releases} se mogu koristiti
     kako bi git oznake (npr. git oznaka <code>v1.0.0</code>) pretvorili
     u opširnije beleške o izdanju, upisujući ih ručno ili pak preuzimajući
     anotirane git oznake i pretvarajući ih u unose.
@@ -250,7 +237,7 @@ version: 1.0.0
     Teže, jer se koriste vrlo različiti formati, kao i nazivi datoteka.
 
   %p
-    #{link_to "Vandamme", vandamme} je Ruby gem koji je kreirao
+    #{link_to "Vandamme", data.links.vandamme} je Ruby gem koji je kreirao
     Gemnasium tim i može parsirati mnoge (ali
     ne sve) changelogove projekata otvorenog koda.
 
@@ -301,11 +288,11 @@ version: 1.0.0
     takođe, da je i sama rasprava bitna kao i krajnji rezultat.
 
   %p
-    Zato, molimo <strong>#{link_to "uskočite", gh}</strong>.
+    Zato, molimo <strong>#{link_to "uskočite", data.links.repo}</strong>.
 
 .press
   %h3 Razgovori
   %p
-    Gostovao sam na #{link_to "The Changelog podcastu", thechangelog}
+    Gostovao sam na #{link_to "The Changelog podcastu", data.links.thechangelog}
     gde sam pokušao objasniti zašto začetnici projekata i saradnici trebaju
     brinuti o changelogovima te motivaciji iza ovog projekta.

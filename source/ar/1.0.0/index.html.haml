@@ -4,19 +4,6 @@ title: احتفظ بسجل التغيير
 language: ar
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/font-face.css">
 
 <style> 
@@ -33,7 +20,7 @@ p.yanked {direction:ltr;text-align:right}
     git |
      مع سجلات التغيير |
     
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -84,7 +71,7 @@ p.yanked {direction:ltr;text-align:right}
     %li
       يتم عرض تاريخ إصدار كل نسخة.
     %li
-      اذكر ما إذا كنت تتبع #{link_to "الأصدرة الدلالية" , semver}.
+      اذكر ما إذا كنت تتبع #{link_to "الأصدرة الدلالية" , data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types أنواع التغييرات
@@ -170,7 +157,7 @@ p.yanked {direction:ltr;text-align:right}
     <code> 2017-07-17 </code>
     في أنها تتبع ترتيب الوحدات الأكبر إلى الأصغر: السنة والشهر واليوم. لا يتداخل هذا التنسيق بطرق غامضة مع تنسيقات التاريخ الأخرى ، على عكس بعض التنسيقات الإقليمية التي تغير موضع أرقام الشهر واليوم.
     بما أن تنسيق التاريخ هذا هو 
-    #{link_to "standard ISO" , iso}
+    #{link_to "standard ISO" , data.links.isodate}
     فإنه تنسيق التاريخ الموصى به لفصول سجلات التغيير.
 
   %aside
@@ -187,15 +174,15 @@ p.yanked {direction:ltr;text-align:right}
   %p
     ليس حقا. 
     هناك إرشادات
-    #{link_to "GNU changelog style guide", gnustyle} أو #{link_to "two-paragraph-long GNU NEWS file", gnunews} . 
+    #{link_to "GNU changelog style guide", data.links.gnustyle} أو #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews} . 
     كلاهما إما غير كافٍ أو غير مناسب.
   %p
     يهدف هذا المشروع إلى أن يكون 
-    = link_to "تحسين الصيغة الاصلاحية لسجلات التغيير.", changelog
+    = link_to "تحسين الصيغة الاصلاحية لسجلات التغيير.", data.links.changelog
     تمت صياغته من مراقبة الممارسات الجيدة في مجتمع المصادر المفتوحة وجمعها.
   %p
     كل من النقد السليم والمناقشة والاقتراحات للتحسين
-    = link_to "مرحبٌ بها" , issues
+    = link_to "مرحبٌ بها" , data.links.issue
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
@@ -217,7 +204,7 @@ p.yanked {direction:ltr;text-align:right}
 
   %p
     إنها مبادرة رائعة.
-    يمكن استخدام #{link_to "الإصدارات", ghr} 
+    يمكن استخدام #{link_to "الإصدارات", data.links.github_releases} 
     لتحويل علامات 
     git 
     البسيطة 
@@ -248,7 +235,7 @@ p.yanked {direction:ltr;text-align:right}
     يصعب فعل ذلك لأن الأشخاص يتبعون تنسيقات وأسماء ملفات مختلفة تمامًا.
 
   %p
-    #{link_to "Vandamme", vandamme} 
+    #{link_to "Vandamme", data.links.vandamme} 
     هو جوهرة 
     Ruby 
     تم إنشاؤها بواسطة فريق 
@@ -296,9 +283,9 @@ p.yanked {direction:ltr;text-align:right}
     هذا لأنني أريد أن يتوصل مجتمعنا إلى إجماع. أعتقد أن المناقشة لا تقل أهمية عن النتيجة النهائية.
 
   %p
-    لذا يرجى <strong>#{link_to "المشاركة", gh}</strong>.
+    لذا يرجى <strong>#{link_to "المشاركة", data.links.repo}</strong>.
 
 .press
   %h3 محادثات
   %p
-    حضرت  #{link_to "بودكاست سجلات التغيير" , thechangelog} للحديث عن سبب اهتمام المشرفين والمساهمين بسجلات التغيير ، وكذلك عن الدوافع وراء هذا المشروع.
+    حضرت  #{link_to "بودكاست سجلات التغيير" , data.links.thechangelog} للحديث عن سبب اهتمام المشرفين والمساهمين بسجلات التغيير ، وكذلك عن الدوافع وراء هذا المشروع.

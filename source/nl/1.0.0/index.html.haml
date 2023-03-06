@@ -4,23 +4,12 @@ title: Keep a Changelog
 language: nl
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Houd een Changelog bij
     %h2 Laat je vrienden geen git logs in changelogs dumpen.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Versie
     %strong= current_page.metadata[:page][:version]
 
@@ -75,7 +64,7 @@ version: 1.0.0
     %li
       De release datum van elke versie word weergegeven.
     %li
-      Geef aan of je #{link_to "Semantic Versioning", semver} gebruikt.
+      Geef aan of je #{link_to "Semantic Versioning", data.links.semver} gebruikt.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Types of changes
@@ -165,12 +154,12 @@ version: 1.0.0
     een notatie te vinden die makkelijk te lezen is en intuïtief is voor iedereen.
 
     Het voordeel van de notatie <code>2017-07-17</code> is dat het jaar, maand en dag
-    op volgorde van grootte laat zien. Daarom, en het feit dat dit een  #{link_to "ISO standaard", iso}
+    op volgorde van grootte laat zien. Daarom, en het feit dat dit een  #{link_to "ISO standaard", data.links.isodate}
     is, is dit de aanbevolen datum notatie voor changelog releases.
 
   %aside
     Dit is niet alles. Help mij antipatterns te verzamelen door
-    = link_to "een issue", issues
+    = link_to "een issue", data.links.issue
     of een pull request aan te maken.
 
 .frequently-asked-questions
@@ -188,12 +177,12 @@ version: 1.0.0
 
   %p
     Dit project poogt
-    = link_to "een betere changelog standaard", changelog
+    = link_to "een betere changelog standaard", data.links.changelog
     te creëren. Dit op basis van "good practices" uit de open source wereld.
 
   %p
     Opbouwende kritiek, discussie en suggesties voor verbetering
-    = link_to "zijn welkom.", issues
+    = link_to "zijn welkom.", data.links.issue
 
 
   %h4#filename
@@ -213,7 +202,7 @@ version: 1.0.0
     Wat denk je van GitHub Releases?
 
   %p
-    Het is een goed initiatief. #{link_to "Releases", ghr} kan gebruikt worden
+    Het is een goed initiatief. #{link_to "Releases", data.links.github_releases} kan gebruikt worden
     om simpele git tags (bijvoorbeeld een tag met de naam  <code>v1.0.0</code>)
     te veranderen in uitgebreide release notes door deze handmatig toe te voegen of
     door geannoteerde git tag berichten te gebruiken om release notes te genereren.
@@ -239,7 +228,7 @@ version: 1.0.0
     Dat is lastig, mensen gebruiken immers veel verschillende formats en bestandsnamen.
 
   %p
-    #{link_to "Vandamme", vandamme} is een Ruby gem van het
+    #{link_to "Vandamme", data.links.vandamme} is een Ruby gem van het
     Gemnasium team wat de changelogs van veel (maar niet alle)
     open source projecten kan parsen.
 
@@ -288,10 +277,10 @@ version: 1.0.0
     Ik denk dat de discussie net zo belangrijk is als het eindresultaat.
 
   %p
-    Dus <strong>#{link_to "alle hulp is welkom", gh}</strong>.
+    Dus <strong>#{link_to "alle hulp is welkom", data.links.repo}</strong>.
 
 .press
   %h3 Conversaties
   %p
-    Ik was te gast bij #{link_to "The Changelog podcast", thechangelog} om te praten over
+    Ik was te gast bij #{link_to "The Changelog podcast", data.links.thechangelog} om te praten over
     waarom een changelog belangrijk is programmeurs, en over mijn motivatie achter dit project.

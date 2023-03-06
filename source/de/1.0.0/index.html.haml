@@ -4,23 +4,12 @@ title: Keep a Changelog
 language: de
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Führe ein CHANGELOG
     %h2 Lass Deine Freunde nicht CHANGELOGs mit git logs füllen.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -77,7 +66,7 @@ version: 1.0.0
     %li
       Das Release-Datum jeder Version muss angegeben sein.
     %li
-      Gib an, ob du dich an die #{link_to "Semantische Versionierung", semver} hältst.
+      Gib an, ob du dich an die #{link_to "Semantische Versionierung", data.links.semver} hältst.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Arten von Änderungen
@@ -174,12 +163,12 @@ version: 1.0.0
     im Rest der Welt ein roboterhaft aussehendes <code>2 June 2012</code>
     schreiben, aber es völlig unterschiedlich aussprechen. <code>2012-06-02</code>
     folgt der Logik vom größten zum kleinsten Wert, kann nicht mit anderen Formaten
-    verwechselt werden und ist ein #{link_to "ISO Standard", iso}. Deshalb
+    verwechselt werden und ist ein #{link_to "ISO Standard", data.links.isodate}. Deshalb
     ist es das empfohlene Datumsformat in Changelogs.
 
   %aside
     Es gibt sicher noch mehr. Hilf mir alle schlechten Tipps zu sammeln, indem du
-    = link_to "ein Issue eröffnest", issues
+    = link_to "ein Issue eröffnest", data.links.issue
     oder einen Pull-Request erstellst.
 
 .frequently-asked-questions
@@ -198,13 +187,13 @@ version: 1.0.0
 
   %p
     Dieses Projekt versucht
-    = link_to "eine bessere Changelog Konvention zu sein.", changelog
+    = link_to "eine bessere Changelog Konvention zu sein.", data.links.changelog
     Dazu beobachten wir bewährte Praktiken aus der Open Source Community
     und tragen sie zusammen.
 
   %p
     Gesunde Kritik, Diskussionen und Verbesserungsvorschläge
-    = link_to "sind herzlich willkommen.", issues
+    = link_to "sind herzlich willkommen.", data.links.issue
 
 
   %h4#filename
@@ -227,7 +216,7 @@ version: 1.0.0
     Was ist mit GitHub Releases?
 
   %p
-    Prinzipiell sind #{link_to "GitHub Releases", ghr} eine gute Sache.
+    Prinzipiell sind #{link_to "GitHub Releases", data.links.github_releases} eine gute Sache.
     Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen
     Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release
     auszustatten, indem man sie manuell bearbeitet, oder die Änderungen in eine
@@ -257,7 +246,7 @@ version: 1.0.0
     Dateinamen verwenden.
 
   %p
-    #{link_to "Vandamme", vandamme} ist ein Ruby gem erstellt vom
+    #{link_to "Vandamme", data.links.vandamme} ist ein Ruby gem erstellt vom
     Gemnasium Team, das viele (aber nicht alle)
     Changelogs von Open-Source-Projekten einlesen kann.
 
@@ -308,11 +297,11 @@ version: 1.0.0
     die Disskussion genauso wichtig ist wie das Endergebnis.
 
   %p
-    Also bitte <strong>#{link_to "bring dich ein", gh}</strong>.
+    Also bitte <strong>#{link_to "bring dich ein", data.links.repo}</strong>.
 
 .press
   %h3 Gespräche
   %p
-    Ich habe im #{link_to "The Changelog podcast", thechangelog} darüber gesprochen,
+    Ich habe im #{link_to "The Changelog podcast", data.links.thechangelog} darüber gesprochen,
     warum sich Entwickler und Mitwirkende eines Projekts um ein Changelog kümmern sollten,
     sowie meine Motivationen hinter diesem Projekt erklärt.

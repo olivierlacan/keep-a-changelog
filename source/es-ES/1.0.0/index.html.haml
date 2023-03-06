@@ -4,24 +4,13 @@ title: Mantenga un changelog
 language: es-ES
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Mantenga un changelog
     %h2
       No dejes que tus amigos usen el registro de git en los changelogs.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Versión
     %strong= current_page.metadata[:page][:version]
 
@@ -79,7 +68,7 @@ version: 1.0.0
     %li
       Debe mostrar la fecha de publicación de cada versión.
     %li
-      Indicar si el proyecto sigue el #{link_to "Versionamiento Semántico", semver}.
+      Indicar si el proyecto sigue el #{link_to "Versionamiento Semántico", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Tipos de cambios
@@ -182,7 +171,7 @@ version: 1.0.0
     formato tampoco coincide de forma ambigua con otros formatos de
     fecha, a diferencia de algunos que intercambian la posición del mes
     y el día. Todo esto, junto al hecho de ser un
-    #{link_to "estándar ISO", iso}, son los motivos por los que es el
+    #{link_to "estándar ISO", data.links.isodate}, son los motivos por los que es el
     formato de fecha recomendado para las entradas del changelog.
 
   %aside
@@ -206,13 +195,13 @@ version: 1.0.0
 
   %p
     Este proyecto apunta a ser
-    = link_to "una mejor convención de changelog.", changelog
+    = link_to "una mejor convención de changelog.", data.links.changelog
     Esto se da observando las buenas prácticas en la comunidad open
     source y recopilando las mismas.
 
   %p
     Críticas saludables, discusión y sugerencias para mejoras
-    = link_to "son bienvenidas.", issues
+    = link_to "son bienvenidas.", data.links.issue
 
 
   %h4#filename
@@ -233,7 +222,7 @@ version: 1.0.0
     ¿Y qué hay de los releases de Github?
 
   %p
-    Es una gran iniciativa. #{link_to "Los releases de Github", ghr}
+    Es una gran iniciativa. #{link_to "Los releases de Github", data.links.github_releases}
     pueden ser utilizados para convertir simples etiquetas de git (por
     ejemplo una etiqueta llamada <code>v1.0.0</code>) en ricas notas de
     lanzamiento ya sea añadiendo estas manualmente o trayendo los
@@ -262,7 +251,7 @@ version: 1.0.0
     muy distintos.
 
   %p
-    #{link_to "Vandamme", vandamme} es una gema de Ruby creada por el
+    #{link_to "Vandamme", data.links.vandamme} es una gema de Ruby creada por el
     equipo de Gemnasium que analiza
     gramaticalmente muchos (pero no todos) los changelogs de proyectos
     open source.
@@ -314,13 +303,13 @@ version: 1.0.0
     que la discusión es tan importante como el resultado final.
 
   %p
-    Así que por favor <strong>#{link_to "comienza a colaborar", gh}
+    Así que por favor <strong>#{link_to "comienza a colaborar", data.links.repo}
     </strong>.
 
 .press
   %h3 Conversaciones
   %p
-    Fui a #{link_to "The Changelog podcast", thechangelog} para hablar
+    Fui a #{link_to "The Changelog podcast", data.links.thechangelog} para hablar
     acerca del porqué los mantenedores y colaboradores deberían
     preocuparse por los changelogs, y también acerca de las motivaciones
     detrás de este proyecto.

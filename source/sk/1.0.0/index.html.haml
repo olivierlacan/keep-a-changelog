@@ -4,23 +4,12 @@ title: Udržuj changelog
 language: sk
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-
 .header
   .title
     %h1 Udržuj changelog
     %h2 Nenechaj kamarátov sypať git logy do changelogov.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Verzia
     %strong= current_page.metadata[:page][:version]
 
@@ -75,7 +64,7 @@ version: 1.0.0
     %li
       Pre každú verziu je uvedený dátum jej vydania.
     %li
-      Uveď tiež, že sa držíš #{link_to "sémantického verziovania", semver}.
+      Uveď tiež, že sa držíš #{link_to "sémantického verziovania", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Typy zmien
@@ -168,12 +157,12 @@ version: 1.0.0
     používateľov. Výhodou dátumu vo formáte <code>2017-07-17</code> je poradie
     od najväčšej jednotky po najmenšiu: rok, mesiac, deň. Tento formát sa tiež
     neprekrýva s inými formátmi, ktoré zamieňajú pozíciu dňa a mesiaca. Kvôli
-    týmto dôvodom spolu s faktom, že ide o #{link_to "ISO štandard", iso},
+    týmto dôvodom spolu s faktom, že ide o #{link_to "ISO štandard", data.links.isodate},
     je tento formát odporučený pre záznamy v changelogu.
 
   %aside
     Je toho však viac. Pomôž mi zozbierať tieto antivzory
-    = link_to "otvorením issue", issues
+    = link_to "otvorením issue", data.links.issue
     alebo pull requestom.
 
 .frequently-asked-questions
@@ -191,12 +180,12 @@ version: 1.0.0
 
   %p
     Tento projekt sa snaží byť
-    = link_to "lepšou konvenciou pre changelog.", changelog
+    = link_to "lepšou konvenciou pre changelog.", data.links.changelog
     Vychádza z pozorovania a zozbierania osvedčených postupov komunity okolo projektov s otvoreným zdrojovým kódom.
 
   %p
     Zdravá kritika, diskusia a návrhy na zlepšenie
-    = link_to "sú vítané.", issues
+    = link_to "sú vítané.", data.links.issue
 
 
   %h4#filename
@@ -216,7 +205,7 @@ version: 1.0.0
     A čo GitHub Releases?
 
   %p
-    Je to skvelá iniciatíva. Služba #{link_to "Releases", ghr} môže byť použitá
+    Je to skvelá iniciatíva. Služba #{link_to "Releases", data.links.github_releases} môže byť použitá
     pre premenu git tagov (napríklad tagu <code>v1.0.0</code>) na bohaté
     poznámky k vydaniam manuálnym pridávaním týchto poznámok alebo získaním
     správ z anotovaných git tagov a vytvorením poznámok k vydaniu z nich.
@@ -242,7 +231,7 @@ version: 1.0.0
     Je to zložité, pretože ľudia používajú rôzne formáty a názvy súborov.
 
   %p
-    #{link_to "Vandamme", vandamme} je Ruby gem vytvorený tímom
+    #{link_to "Vandamme", data.links.vandamme} je Ruby gem vytvorený tímom
     Gemnasium, ktorý parsuje mnohé (ale nie všetky)
     changelogy projektov s otvoreným zdrojovým kódom.
 
@@ -292,11 +281,11 @@ version: 1.0.0
     diskusia je rovnako dôležitá ako samotný výsledok.
 
   %p
-    Takže, prosím, <strong>#{link_to "prilož ruku k dielu", gh}</strong>.
+    Takže, prosím, <strong>#{link_to "prilož ruku k dielu", data.links.repo}</strong>.
 
 .press
   %h3 Rozhovory
   %p
-    Zúčastnil som sa podcastu #{link_to "The Changelog", thechangelog},
+    Zúčastnil som sa podcastu #{link_to "The Changelog", data.links.thechangelog},
     kde sme sa rozprávali o tom, prečo by sa správci projektov a prispievatelia
     mali zaujímať o changelogy a tiež o motivácii za týmto projektom.

@@ -4,25 +4,12 @@ title: Pencatatan Changelog
 language: id-ID
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- aditya = "https://github.com/adityapurwa/"
-- edicyber = "https://github.com/cyberid41"
-
 .header
   .title
     %h1 Pencatatan Changelog
     %h2 Standarisasi pencatatan Changelog untuk kolaborasi yang lebih baik
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Versi
     %strong= current_page.metadata[:page][:version]
 
@@ -78,7 +65,7 @@ version: 1.0.0
     %li
       Tanggal rilis setiap versi harus ditulis.
     %li
-      Berikan informasi jika kalian menggunakan #{link_to "Semantic Versioning", semver}.
+      Berikan informasi jika kalian menggunakan #{link_to "Semantic Versioning", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Jenis-jenis perubahan
@@ -175,12 +162,12 @@ version: 1.0.0
     dan seringkali perbedaan ini susah untuk dipahami dan dimengerti.
     Penggunaan format tanggal <code>2017-07-17</code> lebih mudah untuk dimengerti,
     karena diurutkan berdasarkan unit terbesar: tahun, bulan, dan tanggal.
-    Format ini juga merupakan #{link_to "Standar ISO", iso}, sehingga
+    Format ini juga merupakan #{link_to "Standar ISO", data.links.isodate}, sehingga
     inilah yang dipakai untuk pencatatan changelog.
 
   %aside
     Ada beberapa permasalahan lainnya, bantu kami dengan beberapa antipatterns
-    dengan #{link_to "mengirimkan issue", issues} atau kirimkan pull request.
+    dengan #{link_to "mengirimkan issue", data.links.issue} atau kirimkan pull request.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
@@ -197,13 +184,13 @@ version: 1.0.0
 
   %p
     Proyek ini ditujukan untuk
-    = link_to "membuat aturan changelog yang lebih baik", changelog
+    = link_to "membuat aturan changelog yang lebih baik", data.links.changelog
     berdasarkan observasi beberapa changelog di komunitas open source
     dan menyatukan mereka.
 
   %p
     Kritik yang membangun, diskusi, dan saran untuk perbaikan
-    = link_to "sangat diterima.", issues
+    = link_to "sangat diterima.", data.links.issue
 
 
   %h4#filename
@@ -224,7 +211,7 @@ version: 1.0.0
     Apa itu GitHub Releases?
 
   %p
-    #{link_to "Github Release", ghr} adalah salah satu
+    #{link_to "Github Release", data.links.github_releases} adalah salah satu
     insiatif dari GitHub untuk membuat changelog berdasarkan git tags,
     contohnya, tag dengan nama <code>v1.0.0</code>. Isi dari changelog
     bisa ditulis manual atau menggunakan pesan yang ditulis bersamaan dengan
@@ -253,7 +240,7 @@ version: 1.0.0
     changelog yang berbeda-beda.
 
   %p
-    #{link_to "Vandamme", vandamme} adalah Ruby Gem yang dibuat oleh tim
+    #{link_to "Vandamme", data.links.vandamme} adalah Ruby Gem yang dibuat oleh tim
     Gemnasium yang bisa mem-parsing (tetapi tidak semua) changelog proyek open source.
 
 
@@ -303,7 +290,7 @@ version: 1.0.0
     yang terbaik untuk pencatatan changelog.
 
   %p
-    Jadi silahkan, <strong>#{link_to "kirimkan saran", gh}</strong>.
+    Jadi silahkan, <strong>#{link_to "kirimkan saran", data.links.repo}</strong>.
 
   %h4#about-translation
     %a.anchor{ href: "#about-translation", aria_hidden: "true" }
@@ -317,6 +304,6 @@ version: 1.0.0
 .press
   %h3 Percakapan
   %p
-    Kami mengisi acara di #{link_to "Podcast Changelog", thechangelog}
+    Kami mengisi acara di #{link_to "Podcast Changelog", data.links.thechangelog}
     untuk berbicara tentang kenapa maintainer dan kontributor harus peduli
     dengan changelog, dan motivasi dari proyek ini.

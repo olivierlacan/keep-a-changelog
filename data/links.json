@@ -1,0 +1,13 @@
+{
+  "changelog": "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md",
+  "gh": "https://github.com/olivierlacan/keep-a-changelog",
+  "issues": "https://github.com/olivierlacan/keep-a-changelog/issues",
+  "semver": "https://semver.org/",
+  "shields": "https://shields.io/",
+  "thechangelog": "https://changelog.com/podcast/127",
+  "vandamme": "https://github.com/tech-angels/vandamme/",
+  "isodate": "http://www.iso.org/iso/home/standards/iso8601.htm",
+  "github_releases": "https://help.github.com/articles/creating-releases/",
+  "gnustyle": "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs",
+  "gnunews": "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+}

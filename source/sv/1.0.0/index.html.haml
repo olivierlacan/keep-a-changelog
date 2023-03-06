@@ -4,25 +4,12 @@ title: För en ändringslogg
 language: sv
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 För en ändringslogg
     %h2 Låt inte dina vänner slänga in git-loggar i ändringsloggar.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -77,7 +64,7 @@ version: 1.0.0
     %li
       Datum då respektive version släpptes ska visas.
     %li
-      Notering att du följer #{link_to "Semantisk versionshantering", semver}.
+      Notering att du följer #{link_to "Semantisk versionshantering", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Typer av ändringar
@@ -174,12 +161,12 @@ version: 1.0.0
     på ett tvetydligt sätt med andra datumformat, till skillnad från
     lokala format som kan växla positionen på månad och dag.
     Dessa anledningar tillsammans med det faktum att detta datumformat är en
-    #{link_to "ISO-standard", iso}, gör att detta är rekommenderat
+    #{link_to "ISO-standard", data.links.isodate}, gör att detta är rekommenderat
     format för ändringsloggar.
 
   %aside
     Det finns mer. Hjälp mig att samla dessa antimönster genom att
-    = link_to "skapa ett issue", issues
+    = link_to "skapa ett issue", data.links.issue
     eller en pull requests
 
 .frequently-asked-questions
@@ -192,18 +179,18 @@ version: 1.0.0
     Finns det ett standardformat på ändringsloggar?
 
   %p
-    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", gnustyle} och
-    den #{link_to "två stycke långa GNU NEWS-filen", gnunews} med "riktlinjer" finns.
+    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", data.links.gnustyle} och
+    den #{link_to "två stycke långa GNU NEWS-filen", data.links.gnunews} med "riktlinjer" finns.
     Båda är bristfälliga och otillräckliga.
 
   %p
     Detta projekt har som mål att bli
-    = link_to "en bättre konvention för ändringsloggar.", changelog
+    = link_to "en bättre konvention för ändringsloggar.", data.links.changelog
     Det utgår från uppenbart goda praxis från öppen källkods-världen och sammanför dem.
 
   %p
     Konstruktiv kritik, diskussion och förslag till förbättring
-    = link_to "är välkommen.", issues
+    = link_to "är välkommen.", data.links.issue
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
@@ -223,7 +210,7 @@ version: 1.0.0
     Hur är det med GitHub Releases?
 
   %p
-    Det är ett fantasiskt initiativ. #{link_to "Releases", ghr} kan användas
+    Det är ett fantasiskt initiativ. #{link_to "Releases", data.links.github_releases} kan användas
     för att göra enkla git-taggar (t.ex. en tagg kallad <code>v1.0.0</code>)
     till formaterade versionsanteckningar genom att manuellt lägga till
     versionsanteckningar eller så kan den hämta meddelandena i kommenterade
@@ -249,7 +236,7 @@ version: 1.0.0
     Det är svårt då människor följer vitt olika format och filnamn.
 
   %p
-    #{link_to "Vandamme", vandamme} är en Ruby gem skapad av gruppen
+    #{link_to "Vandamme", data.links.vandamme} är en Ruby gem skapad av gruppen
     Gemnasium som tolkar många (men inte alla)
     ändringsloggar för öppen källkod.
 
@@ -297,11 +284,11 @@ version: 1.0.0
     att diskussionen är lika viktig som slutresultatet.
 
   %p
-    Så tveka inte att <strong>#{link_to "kasta dig in i diskussionen", gh}</strong>.
+    Så tveka inte att <strong>#{link_to "kasta dig in i diskussionen", data.links.repo}</strong>.
 
 .press
   %h3 Samtal
   %p
-    Jag var med i #{link_to "The Changelog podcast", thechangelog}
+    Jag var med i #{link_to "The Changelog podcast", data.links.thechangelog}
     för att prata om varför förvaltare och bidragsgivare bör bry sig om
     ändringsloggar, och motiveringen bakom detta projekt.

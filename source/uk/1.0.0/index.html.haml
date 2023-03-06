@@ -4,25 +4,12 @@ title: Ведіть Changelog
 language: uk
 version: 1.0.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 Ведіть Changelog
     %h2 Не дозволяйте друзям зливати логи гіта у лог змін.
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -77,7 +64,7 @@ version: 1.0.0
     %li
       Кожна версія має мати власну дату.
     %li
-      Вкажіть чи підтримуєте Ви принципи #{link_to "Семантичне версіювання", semver}.
+      Вкажіть чи підтримуєте Ви принципи #{link_to "Семантичне версіювання", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Типи змін
@@ -172,12 +159,12 @@ version: 1.0.0
     найменшого: рік, місяць, день. Мінімізує конфузи у випадку використання
     регіональних форматів, коли день і місяць можуть мати різний порядок.
     Цей формат не пересікається з більшістю інших форматів і є
-    #{link_to "стандартом ISO", iso}. Тому такий формат рекомендується для
+    #{link_to "стандартом ISO", data.links.isodate}. Тому такий формат рекомендується для
     логів змін.
 
   %aside
     Є також інші. Допоможіть зібрати антипатерни,
-    = link_to "створіть тікет", issues
+    = link_to "створіть тікет", data.links.issue
     або пул реквест
 
 .frequently-asked-questions
@@ -190,18 +177,18 @@ version: 1.0.0
     Чи існує стандарт логів змін?
 
   %p
-    Не зовсім. Є   #{link_to "стайлгайд логів змін GNU", gnustyle}
-    або  #{link_to "довгий у два параграфа GNU NEWS file", gnunews}.
+    Не зовсім. Є   #{link_to "стайлгайд логів змін GNU", data.links.gnustyle}
+    або  #{link_to "довгий у два параграфа GNU NEWS file", data.links.gnunews}.
     Обидва неадекватні і неповні.
 
   %p
     Цей проект покликаний бути
-    = link_to "поліпшеною угодою про логи змін.", changelog
+    = link_to "поліпшеною угодою про логи змін.", data.links.changelog
     Це виходить із ліпших практик open source спільноти.
 
   %p
     Здорова критика, дискусія та пропозиції поліпшення
-    = link_to "вітаються.", issues
+    = link_to "вітаються.", data.links.issue
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
@@ -220,7 +207,7 @@ version: 1.0.0
     Як щодо GitHub релізів?
 
   %p
-    Це чудова ініціатива. #{link_to "Релізи", ghr} можуть бути використані для
+    Це чудова ініціатива. #{link_to "Релізи", data.links.github_releases} можуть бути використані для
     перетворення простих тегів у Git (<code>v1.0.0</code> - до прикладу)
     у деталізовані нотатки до релізів шляхом їх редагування вручну або
     за допомогою коментарів до цих тегів.
@@ -246,7 +233,7 @@ version: 1.0.0
     імена файлів.
 
   %p
-    #{link_to "Vandamme", vandamme} - це гем для Ruby, створений
+    #{link_to "Vandamme", data.links.vandamme} - це гем для Ruby, створений
     командою Gemnasium, який парсить багато (але не всі) логи
     змін проектів з відкритим кодом.
 
@@ -294,11 +281,11 @@ version: 1.0.0
     Хотів би, щоб спільнота дійшла згоди. Я вірю у дискусію та результат.
 
   %p
-    Тому <strong>#{link_to "беріть участь", gh}</strong>.
+    Тому <strong>#{link_to "беріть участь", data.links.repo}</strong>.
 
 .press
   %h3 Обговорення
   %p
-    Я приходив на #{link_to "підкаст The Changelog", thechangelog}, щоб обговорити
+    Я приходив на #{link_to "підкаст The Changelog", data.links.thechangelog}, щоб обговорити
     те, чому ментейнери та контриб'ютори повинні вести логи змін, а також
     про мою мотивацію для створення цього проекту.

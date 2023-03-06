@@ -4,25 +4,12 @@ title: 変更履歴を記録する
 language: ja
 version: 1.1.0
 ---
-
-- changelog = "https://github.com/olivierlacan/keep-a-changelog/blob/main//CHANGELOG.md"
-- gh = "https://github.com/olivierlacan/keep-a-changelog"
-- issues = "https://github.com/olivierlacan/keep-a-changelog/issues"
-- semver = "https://semver.org/"
-- shields = "https://shields.io/"
-- thechangelog = "https://changelog.com/podcast/127"
-- vandamme = "https://github.com/tech-angels/vandamme/"
-- iso = "http://www.iso.org/iso/home/standards/iso8601.htm"
-- ghr = "https://help.github.com/articles/creating-releases/"
-- gnustyle = "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs"
-- gnunews = "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
-
 .header
   .title
     %h1 変更履歴を記録する
     %h2 友達がGit記録を変更履歴に丸写しするのを止めさせよう。
 
-  = link_to changelog do
+  = link_to data.links.changelog do
     Version
     %strong= current_page.metadata[:page][:version]
 
@@ -77,7 +64,7 @@ version: 1.1.0
     %li
       各版のリリース日を表示されます。
     %li
-      #{link_to "Semantic Versioning", semver} に従っているかどうか言及してください。
+      #{link_to "Semantic Versioning", data.links.semver} に従っているかどうか言及してください。
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types 変更の種類
@@ -167,7 +154,7 @@ version: 1.1.0
     年、月、日のように最大から最小の単位の順序に従うということです。
     この形式は、月と日の位置を切り替える地域の形式とは異なり、
     他の日付形式とあいまいに重なり合うこともありません。
-    これらの理由、およびこの日付形式が #{link_to "国際標準", iso} であるという事実が、
+    これらの理由、およびこの日付形式が #{link_to "国際標準", data.links.isodate} であるという事実が、
     それが変更履歴項目に推奨される日付形式である理由です。
 
   %h4#inconsistent-changes
@@ -187,7 +174,7 @@ version: 1.1.0
 
   %aside
     これだけではありません。
-    = link_to "Issueを開く", issues
+    = link_to "Issueを開く", data.links.issue
     か、プルリクエストして、こういった反面教師の収集を手伝ってください。
 
 .frequently-asked-questions
@@ -201,20 +188,20 @@ version: 1.1.0
 
   %p
     実はありません。
-    #{link_to "GNU changelog style guide", gnustyle} 、もしくは
-    #{link_to "two-paragraph-long GNU NEWS file", gnunews} という
+    #{link_to "GNU changelog style guide", data.links.gnustyle} 、もしくは
+    #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews} という
     「指針」があります。
     しかしどちらも不十分であり不適切です。
 
   %p
     この事業は
-    = link_to "より良い変更履歴の規約", changelog
+    = link_to "より良い変更履歴の規約", data.links.changelog
     になることを目指しています。
     それはオープンソース団体の良い習慣を観察し、それらを集めることから来ます。
 
   %p
     健全な批判、議論、そして改善のための提案を
-    = link_to "歓迎しています。", issues
+    = link_to "歓迎しています。", data.links.issue
 
 
   %h4#filename
@@ -235,7 +222,7 @@ version: 1.1.0
     GitHubリリースはどうですか？
 
   %p
-    極めて先駆的です。 #{link_to "Releases", ghr} に手動でリリース告知を追加することによって、
+    極めて先駆的です。 #{link_to "Releases", data.links.github_releases} に手動でリリース告知を追加することによって、
     単純なGitタグ（例えば <code>v1.0.0</code> という名前の標識）を素敵なリリース告知に変換するために使用できます。
 
   %p
@@ -257,7 +244,7 @@ version: 1.1.0
     人々によって形式やファイル名は大きく異なるため、難しいです。
 
   %p
-    #{link_to "Vandamme", vandamme} はGemnasiumチームが作成したRuby gemであり、
+    #{link_to "Vandamme", data.links.vandamme} はGemnasiumチームが作成したRuby gemであり、
     （全てではありませんが）多くのオープンソース事業の変更履歴を解析できます。
 
 
@@ -305,11 +292,11 @@ version: 1.1.0
     私は議論が最終結果と同じくらい重要であると思います。
 
   %p
-    なので <strong>#{link_to "協力", gh}</strong> してください。
+    なので <strong>#{link_to "協力", data.links.repo}</strong> してください。
 
 .press
   %h3 座談
   %p
-    私は #{link_to "The Changelog podcast", thechangelog} で、
+    私は #{link_to "The Changelog podcast", data.links.thechangelog} で、
     管理者や貢献者がなぜ変更履歴を気にすべきなのか、
     そしてこの事業の背後にある動機について話しました。
