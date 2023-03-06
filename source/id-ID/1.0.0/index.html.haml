@@ -13,7 +13,7 @@ version: 1.0.0
     Versi
     %strong= current_page.metadata[:page][:version]
 
-  %pre.changelog= File.read("CHANGELOG.md")
+  %pre.changelog{ lang: en }= File.read("CHANGELOG.md")
 
 .answers
   %h3#what
