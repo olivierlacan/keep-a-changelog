@@ -45,7 +45,8 @@
         - if latest_version
           = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
         %nav.locales{ role: "navigation" }
-          %select
+          %label{ for: "language-select"}= "Translations (#{$language_count}):"
+          %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
               - selected = language_code == language.first
               - if available_translation = available_translation_for(language)
