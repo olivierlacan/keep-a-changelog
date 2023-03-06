@@ -9,7 +9,7 @@ $versions = Dir.glob("source/en/*").map{ |e| e.sub("source/en/","") }.sort
 # NOTE: for now, while 1.1.0 is in development let's pin the latest
 # version to 1.0.0 manually.
 # $last_version = $versions.last
-$last_version = "1.0.0"
+$last_version = "1.1.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
 
 # This list of languages populates the language navigation.
