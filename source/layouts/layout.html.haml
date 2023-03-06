@@ -42,7 +42,7 @@
   %body
     %article
       %header{ role: "banner" }
-        - if latest_version
+        - if !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
         %nav.locales{ role: "navigation" }
           %label{ for: "language-select"}= "Translations (#{$language_count}):"
