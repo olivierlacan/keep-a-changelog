@@ -122,6 +122,7 @@ $languages = {
     name: "فارسی"
   }
 }
+$language_count = $languages.size
 
 activate :i18n,
   lang_map: $languages,
