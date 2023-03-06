@@ -1,6 +1,6 @@
 // Variables
 - latest_version = current_page.metadata[:page][:version] == $last_version
-- legacy_version = current_page.metadata[:page][:version] < $last_version
+- legacy_version = current_page.metadata[:page][:version] == "0.3.0"
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
@@ -44,6 +44,27 @@
       %header{ role: "banner" }
         - if !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
+        
+        - if !latest_version
+          - if versions.include?($last_version)
+            .newer
+              - if $languages[language_code][:new]
+                = "#{$languages[language_code][:new]}: "
+              - else
+                There is a newer version available:
+              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
+          - else
+            - if $languages[language_code][:notice]
+              .last-version-notice= $languages[language_code][:notice]
+            - else
+              .last-version-notice
+                The latest version (#{$last_version}) is not yet available in
+                this language but
+                = link_to "you can read it in English", "/en/#{$last_version}"
+                for now and
+                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
+                it.
+
         %nav.locales{ role: "navigation" }
           %label{ for: "language-select"}= "Translations (#{$language_count}):"
           %select{ name: "language", id: "language-select" }
@@ -54,26 +75,6 @@
                   = available_translation
 
       .main{ role: "main" }
-        - if !latest_version && legacy_version
-          - if versions.include?($last_version)
-            %p.newer
-              - if $languages[language_code][:new]
-                = "#{$languages[language_code][:new]}: "
-              - else
-                There is a newer version available:
-              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
-          - else
-            - if $languages[language_code][:notice]
-              %p.last-version-notice= $languages[language_code][:notice]
-            - else
-              %p.last-version-notice
-                The latest version (#{$last_version}) is not yet available in
-                this language but
-                = link_to "you can read it in English", "/en/#{$last_version}"
-                for now and
-                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
-                it.
-
         = yield
 
         %footer.footer.clearfix{ role: "contentinfo" }
