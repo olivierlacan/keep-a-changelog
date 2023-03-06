@@ -7,27 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2023-03-05
+
 ### Added 
 
-- Added Dutch translation.
+- Arabic translation (#444). 
+- v1.1 Dutch translation (#371).
+- v1.1 Russian translation (#410).
+- v1.1 Japanese translation (#363).
+- v1.1 Norwegian Bokmål translation (#383).
+- v1.1 "Inconsistent Changes" Turkish translation (#347).
 
 ### Fixed
 
-- Fixed foldouts in Dutch translation.
-- Added missing periods at the end of each change.
+- Improve French translation (#377).
+- Improve id-ID translation (#416).
+- Improve Persian translation (#457).
+- Improve Russian translation (#408).
+- Improve Swedish title (#419).
+- Improve zh-CN translation (#359).
+- Improve French translation (#357).
+- Improve zh-TW translation (#360, #355).
+- Improve Spanish (es-ES) transltion (#362).
+- Foldout menu in Dutch translation (#371).
+- Missing periods at the end of each change (#451).
+- Fix missing logo in 1.1 pages
+- Various broken links, page versions, and indentations.
+
+### Changed
+
+- Upgrade dependencies: Ruby 3.2.1, Middleman, etc.
 
 ## [1.1.0] - 2019-02-15
 
 ### Added
 
-- Danish translation from [@frederikspang](https://github.com/frederikspang).
-- Georgian translation from [@tatocaster](https://github.com/tatocaster).
+- Danish translation (#297).
+- Georgian translation from (#337).
 - Changelog inconsistency section in Bad Practices.
 
-### Changed
+### Fixed
 
-- Fixed typos in Italian translation from [@lorenzo-arena](https://github.com/lorenzo-arena).
-- Fixed typos in Indonesian translation from [@ekojs](https://github.com/ekojs).
+- Italian translation (#332).
+- Indonesian translation (#336).
 
 ## [1.0.0] - 2017-06-20
 
