@@ -1,4 +1,5 @@
 @import "variables"
+@import "mixins"
 @import "layout"
 @import "anchors"
 @import "sections"
@@ -56,17 +57,45 @@ h1, h2, h3
   margin-top: 0
 
 header
-  .locales, .mark
-    margin-bottom: -2em
-    margin-top: 2em
-    margin-right: 2em
-
   .mark
-    margin-left: 3em
     float: left
+    margin-top: 3em
+    margin-left: 1.5em
+    clear: both
+    width: 80px
+
+    @inclde sm
+      margin-top: 1em
+      margin-left: 1.5em
+      width: 100px
+
+    @include md
+      width: 120px
+      margin-top: 2em 
+      margin-bottom: 2em 
+      margin-left: 3em
+
+    @include lg
+      width: 150px
+      clear: none
+      margin-top: 3em 
+      margin-bottom: 4em 
+
+    @include xl
+      width: 150px
+
+  .locales
+    margin-top: 2em
+    margin-right: 3em
+    margin-left: 1em
+    font-size: 65%
+  
+    @include lg
+      margin-bottom: -2em
+      margin-top: 2em
 
   .newer, .last-version-notice
-    padding: 1rem;
+    padding: 1rem
     background-color: rgba(0, 0, 0, 1)
     color: #efefef
 
@@ -94,7 +123,3 @@ pre, code
   font-family: $source-code-font-family
 code
   white-space: nowrap
-
-@media (min-width: 1077px)
-  h1
-    width: 50%

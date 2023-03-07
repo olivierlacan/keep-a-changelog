@@ -17,9 +17,21 @@ div.header
     color: $color-black
 
   .title
-    width: 80%
+    width: 60%
     margin: 0 auto
     margin-bottom: -2em
+    font-size: 60%
+    margin-left: 9em
+    margin-right: 2em
+
+    @include sm
+      width: 60%
+    @include md
+      font-size: 100%
+      margin-left: 6em
+      margin-right: 2em
+    @include lg
+      margin-left: auto
 
   .changelog
     background-color: $color-white
@@ -176,7 +188,7 @@ div.frequently-asked-questions
     display: table
     clear: both
 
-@media (min-width: 1077px)
+@include xl
   div.answers
     padding-left: 25%
     padding-right: 25%

@@ -42,9 +42,6 @@
   %body
     %article
       %header{ role: "banner" }
-        - if !legacy_version
-          = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
-        
         - if !latest_version
           - if versions.include?($last_version)
             .newer
@@ -66,13 +63,15 @@
                 it.
 
         %nav.locales{ role: "navigation" }
-          %label{ for: "language-select"}= "Translations (#{$language_count}):"
+          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Language: "
           %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
               - selected = language_code == language.first
               - if available_translation = available_translation_for(language)
                 %option{ selected: selected, label: available_translation, value: language.first }
                   = available_translation
+        - if !legacy_version
+          = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
 
       .main{ role: "main" }
         = yield
@@ -87,7 +86,7 @@
             = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
             by
             = link_to "Olivier Lacan", "https://olivierlacan.com/"
-            = link_to "", "https://ruby.social/@olivierlacan", rel: "me"
+            = link_to "", "https://ruby.social/@olivierlacan", rel: "me", "aria-label" => "Link to Olivier Lacan's Mastodon account"
             \ //
             Designed by
             = link_to "Tyler Fortune", "https://tylerfortune.me/"

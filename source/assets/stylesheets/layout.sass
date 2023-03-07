@@ -19,6 +19,8 @@ article
     padding-right: 5%
     padding-bottom: 3em
 
+  div.title
+
     aside
       background-color: lighten(desaturate($color-bark, 5%), 10%)
       margin-bottom: -3em
@@ -46,14 +48,14 @@ article ul
   list-style-type: square
   padding-left: 1em
 
-@media (min-width: 1077px)
+@include xl
   body
     margin: 8px
 
   .main
     margin-bottom: 2em
 
-    div
+    div:not(.header)
       padding-left: 20%
       padding-right: 20%
 
