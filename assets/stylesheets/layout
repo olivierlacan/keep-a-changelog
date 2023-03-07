@@ -1,3 +1,4 @@
+/* === Breakpoints === */
 body {
   margin: 0; }
 
@@ -11,16 +12,16 @@ article {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 3em; }
-    .main div aside {
-      background-color: #594446;
-      margin-bottom: -3em;
-      margin-left: -5%;
-      margin-right: -5%;
-      margin-top: 3em;
-      padding: 2em 5%;
-      text-align: center; }
-    aside .main div {
-      background-position: top; }
+  .main div.title aside {
+    background-color: #594446;
+    margin-bottom: -3em;
+    margin-left: -5%;
+    margin-right: -5%;
+    margin-top: 3em;
+    padding: 2em 5%;
+    text-align: center; }
+  aside .main div.title {
+    background-position: top; }
 
 article p {
   font-size: 1.3em; }
@@ -37,15 +38,15 @@ article ul {
   list-style-type: square;
   padding-left: 1em; }
 
-@media (min-width: 1077px) {
+@media (min-width: 1200px) {
   body {
     margin: 8px; }
   .main {
     margin-bottom: 2em; }
-    .main div {
+    .main div:not(.header) {
       padding-left: 20%;
       padding-right: 20%; }
-      .main div aside {
+      .main div:not(.header) aside {
         margin-left: -35%;
         margin-right: -35%;
         padding: 2em 20%; } }
