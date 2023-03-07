@@ -7,8 +7,8 @@
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
 
 !!! 5
-%html
-  %head{ lang: current_page.data.language }
+%html{ lang: current_page.data.language }
+  %head
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
