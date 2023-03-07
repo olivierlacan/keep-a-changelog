@@ -6,8 +6,8 @@
   "shields": "https://shields.io/",
   "thechangelog": "https://changelog.com/podcast/127",
   "vandamme": "https://github.com/tech-angels/vandamme/",
-  "isodate": "http://www.iso.org/iso/home/standards/iso8601.htm",
-  "github_releases": "https://help.github.com/articles/creating-releases/",
+  "isodate": "https://www.iso.org/iso-8601-date-and-time-format.html)",
+  "github_releases": "https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository",
   "gnustyle": "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs",
   "gnunews": "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
 }
