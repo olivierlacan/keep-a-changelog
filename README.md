@@ -18,11 +18,17 @@ This repository generates https://keepachangelog.com/.
 - `git clone https://github.com/olivierlacan/keep-a-changelog.git`
 - `cd keep-a-changelog`
 - `bundle install`
-- `bundle exec middleman` starts the local development server at http://localhost:4567
+- `bin/rake serve` starts a local development server at http://localhost:4567
+  which will reload with any local file changes
+- `bin/rake build` runs middleman build with `--verbose` flag so build errors are 
+  logged for easier debugging
 
 ### Deployment
 
-- `bundle exec rake publish` builds and pushes to the `gh-pages` branch
+- `bin/rake clean` can clean a corrupted `build/` directory in 
+  case `publish` failed
+- `bin/rake publish` builds and pushes to the `gh-pages` branch on GitHub so 
+  the site is deployed to keepachangelog.com
 
 ### Translations
 
