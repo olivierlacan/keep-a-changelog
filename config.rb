@@ -159,7 +159,7 @@ set :markdown_engine, :redcarpet
 ## Override default Redcarpet renderer in order to define a class
 class CustomMarkdownRenderer < Redcarpet::Render::HTML
   def doc_header
-    %Q[<nav role="navigation" class="toc">#{@header}</nav>]
+    %Q[<nav class="toc">#{@header}</nav>]
   end
 
   def header(text, header_level)
