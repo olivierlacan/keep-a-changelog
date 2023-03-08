@@ -33,7 +33,7 @@
 
     %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
     %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
-    
+
     %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:400,700" }
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700'
     - if legacy_version
@@ -44,7 +44,7 @@
 
   %body
     %article
-      %header{ role: "banner" }
+      %header
         - if !latest_version
           - if versions.include?($last_version)
             .newer
@@ -74,7 +74,7 @@
                 %option{ selected: selected, label: available_translation, value: language.first }
                   = available_translation
         - if !legacy_version
-          = image_tag "keep-a-changelog-mark.svg", width: 100, class: "mark"
+          = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
       .main{ role: "main" }
         = yield
