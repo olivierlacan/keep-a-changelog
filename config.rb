@@ -118,7 +118,7 @@ $languages = {
   "ko" => {
     name: "한국어"
   },
-  "fa-IR" => {
+  "fa" => {
     name: "فارسی"
   }
 }
