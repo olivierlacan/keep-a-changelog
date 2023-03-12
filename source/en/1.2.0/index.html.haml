@@ -260,6 +260,21 @@ version: 1.2.0
     not all) open source project changelogs.
 
 
+  %h4#semver
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    What should be said about Semantic Versioning coverage?
+
+  %p
+    It is valuable to document both what parts of the project are following
+    the rules of #{link_to "Semantic Versioning", data.links.semver}, as
+    well as what parts are not.  A project may provide programming language
+    native APIs, CLIs, RPCs, network protocols, file formats, or even have
+    compatibility concerns around the data transferred through any of those.
+
+  %p
+    Making this clear to users of a project helps them understand how to
+    interpret the versions of the project and the sections of the changelog.
+
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
     What about yanked releases?
