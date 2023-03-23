@@ -97,7 +97,7 @@ $languages = {
   },
   "sv"    => {
     name: "Svenska",
-    notice: "Den senaste versionen (#{$last_version}) är ännu inte tillgänglig på Svenska,
+    notice: "Den senaste versionen (#{$last_version}) är ännu inte tillgänglig på svenska,
     men du kan <a href='/en/'>läsa det på engelska</a> och även <a
     href='#{issues_url}'>hjälpa till att översätta det</a>."
   },
