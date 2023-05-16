@@ -22,9 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - v1.1 Japanese translation (#363).
 - v1.1 Norwegian Bokmål translation (#383).
 - v1.1 "Inconsistent Changes" Turkish translation (#347).
-- Default to most recent versions available for each languages
-- Display count of available translations (26 to date!)
-- Centralize all links into `/data/links.json` so they can be updated easily
+- Default to most recent versions available for each languages.
+- Display count of available translations (26 to date!).
+- Centralize all links into `/data/links.json` so they can be updated easily.
 
 ### Fixed
 
@@ -39,8 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve Spanish (es-ES) transltion (#362).
 - Foldout menu in Dutch translation (#371).
 - Missing periods at the end of each change (#451).
-- Fix missing logo in 1.1 pages
-- Display notice when translation isn't for most recent version
+- Fix missing logo in 1.1 pages.
+- Display notice when translation isn't for most recent version.
 - Various broken links, page versions, and indentations.
 
 ### Changed
@@ -49,9 +49,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- Unused normalize.css file
-- Identical links assigned in each translation file
-- Duplicate index file for the english version
+- Unused normalize.css file.
+- Identical links assigned in each translation file.
+- Duplicate index file for the english version.
 
 ## [1.1.0] - 2019-02-15
 
