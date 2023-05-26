@@ -30,7 +30,8 @@ version: 1.1.0
 
   %p
     Per rendere facile agli utilizzatori e contribuenti vedere con precisione quali modifiche
-    importanti sono state fatte tra ogni release (o versione) del progetto.
+    importanti sono state fatte tra ogni release (o versione)
+    del progetto.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
@@ -106,7 +107,7 @@ version: 1.1.0
       Le persone possono vedere quali modifiche si possono aspettare nelle future release.
     %li
       Ad una nuova release, si deve solo spostare i cambiamenti della sezione
-      `"Unreleased"` in una nuova sezione con il corrispettivo numero di versione.
+      <code>Unreleased</code> in una nuova sezione con il corrispettivo numero di versione.
 
 .bad-practices
   %h3#bad-practices
@@ -130,17 +131,20 @@ version: 1.1.0
 
   %p
     Lo scopo di una voce changelog è quello di documentare le differenze rilevanti,
-    spesso attraverso commit multipli, per comunicarli in modo chiaro agli utenti finali.
+    spesso attraverso commit multipli,
+    per comunicarli in modo chiaro agli utenti finali.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
     Ignorare le deprecazioni
+
   %p
     Quando le persone aggiornano da una versione ad un'altra,
     dovrebbe essere dolorosamente chiaro che qualcosa si romperà.
     Dovrebbe essere possibile eseguire l'aggiornamento a una versione
     che elenca le deprecazioni, rimuovere ciò che è deprecato, quindi
     aggiornare alla versione in cui le deprecazioni diventano rimozioni.
+
   %p
     Se non fai nient'altro elenca le deprecazioni, le rimozioni e
     qualsiasi altro cambiamento nel tuo changelog.
@@ -167,7 +171,7 @@ version: 1.1.0
 
   %p
     Un changelog che menziona solo alcune delle modifiche può essere pericoloso
-    tanto quanto non avere un chengelog. Nonostante molte delle modifiche possano
+    tanto quanto non avere un changelog. Nonostante molte delle modifiche possano
     essere irrilevanti - per esempio, nella maggior parte dei casi rimuovere
     un singolo spazio non necessita di essere documentato - ogni modifica importante
     deve essere menzionata nel changelog. Applicando in maniera incoerente le modifiche,
@@ -196,7 +200,7 @@ version: 1.1.0
 
   %p
     Questo progetto vuole essere
-    = link_to "una migliore convenzione  per i file changelog.", data.links.changelog
+    = link_to "una migliore convenzione per i file changelog.", data.links.changelog
     Per questo motivo osserviamo le migliori pratiche della comunità open source
     e le portiamo avanti.
 
@@ -224,11 +228,9 @@ version: 1.1.0
 
   %p
     È una bella iniziativa. #{link_to "Releases", data.links.github_releases} può essere usato
-    per rendere semplice i git tags (per esempio il nome del tag
-    <code>v1.0.0</code>) All'interno di note di rilascio ben dettagliate
-    si possono aggiungere le note manualmente oppure è possibile
-    utilizzare i messaggi dei git tag inserendoli dentro le
-    note di rilascio.
+    per rendere semplice i git tags (per esempio il nome del tag <code>v1.0.0</code>)
+    all'interno di note di rilascio ben dettagliate mediante l'aggiunta manuale delle note di rilascio
+    oppure è possibile estrarre i messaggi annotati dei git tag e trasformarli in note.
 
   %p
     GitHub Releases crea un changelog non-portable che può essere solo
