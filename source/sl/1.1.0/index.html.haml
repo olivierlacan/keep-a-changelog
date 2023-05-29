@@ -1,0 +1,315 @@
+---
+description: Vzdržujte dnevnik sprememb
+title: Vzdržujte dnevnik sprememb
+language: sl
+version: 1.0.0
+---
+.header
+  .title
+    %h1 Vzdržujte dnevnik sprememb (Changelog)
+    %h2 Ne dopustite, da vaši prijatelji odlagajo dnevnike Git v dnevnike sprememb.
+
+  = link_to data.links.changelog do
+    Različica
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Kaj je dnevnik sprememb?
+
+  %p
+    Dnevnik sprememb (angl. changelog) je datoteka, ki vsebuje kuriran, kronološko
+    urejen seznam opaznih sprememb za vsako različico projekta.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    Zakaj vzdrževati dnevnik sprememb?
+
+  %p
+    Za poenostavitev, da uporabniki in sodelavci natančno vidijo, katere
+    opazne spremembe so bile narejene med vsako izdajo (ali različico)
+    projekta.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Kdo potrebuje dnevnik sprememb?
+
+  %p
+    Ljudje to potrebujejo. Ne glede na to, ali so potrošniki ali razvijalci, so končni uporabniki
+    programske opreme ljudje, ki jim je mar, kaj je v programski opremi. Ko se
+    programska oprema spremeni, ljudje želijo vedeti, zakaj in kako.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Kako naredim dober dnevnik sprememb?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Smernice
+
+  %ul
+    %li
+      Dnevniki sprememb so <em>za ljudi</em>, ne za stroje.
+    %li
+      Obstajati mora vnos za vsako posamezno različico.
+    %li
+      Enake vrste sprememb je treba združiti.
+    %li
+      Različice in razdelki morajo biti povezljivi.
+    %li
+      Najnovejša različica je na prvem mestu.
+    %li
+      Prikaže se datum izdaje vsake različice.
+    %li
+      Navedite, ali sledite #{link_to "Semantičnim različicam", data.links.semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Vrste sprememb
+
+  %ul
+    %li
+      %code Dodano (angl. Added)
+      za nove lastnosti.
+    %li
+      %code Spremenjeno (angl. Changed)
+      za spremembe obstoječe funkcionalnosti.
+    %li
+      %code Opuščeno (angl. Deprecated)
+      za lastnosti, ki bodo kmalu odstranjene.
+    %li
+      %code Odstranjeno (angl. Removed)
+      za zdaj odstranjene lastnosti.
+    %li
+      %code Popravljeno (angl. Fixed)
+      za morebitne popravke napak.
+    %li
+      %code Varnost (angl. Security)
+      v primeru ranljivosti.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Kako lahko zmanjšam trud, potreben za vzdrževanje dnevnika sprememb?
+
+  %p
+    Na vrhu imejte razdelek <code>Neobjavljeno</code>, če želite slediti prihajajočim
+    spremembam.
+
+  %p To ima dva namena:
+
+  %ul
+    %li
+      Ljudje lahko vidijo, kakšne spremembe lahko pričakujejo v prihajajočih izdajah
+    %li
+      Ob izdaji lahko premaknete razdelek sprememb <code>Neobjavljeno</code>
+      v nov razdelek različice izdaje.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Ali so lahko dnevniki sprememb slabi?
+
+  %p Da. Tukaj je nekaj načinov, kako so lahko manj koristni.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Razlike dnevnika potrditev (angl. diffs)
+
+  %p
+    Uporaba razlik dnevnika potrditev kot dnevnikov sprememb je slaba ideja: polni so
+    navlake. Stvari, kot so potrditve združitev, potrditve z nejasnimi naslovi,
+    spremembe dokumentacije itd.
+
+  %p
+    Namen potrditve je dokumentirati korak v razvoju
+    izvorne kode. Nekateri projekti imajo potrditve čiste, nekateri ne.
+
+  %p
+    Namen vnosa v dnevnik sprememb je dokumentirati razlike, ki so vredne omembe,
+    pogosto v več potrditvah, da jih sporočite
+    na jasen način končnim uporabnikom.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Ignoriranje opustitve
+
+  %p
+    Ko ljudje nadgradijo z ene različice na drugo, bi moralo biti
+    boleče jasno, kdaj se bo kaj zalomilo. Moralo bi biti mogoče
+    nadgraditi na različico, ki navaja opustitve, odstraniti, kar je
+    zastarelo, in nato nadgraditi na različico, kjer opustitve
+    postanejo odstranitve.
+
+  %p
+    Če ne naredite nič drugega, v vašem dnevniku sprememb navedite opustitve,
+    odstranitve in katere koli prelomne spremembe.
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Zavajujoči datumi
+
+  %p
+    Območni formati datumov se po svetu razlikujejo in pogosto je
+    težko najti človeku prijazen format datuma, ki se zdi intuitiven
+    vsem. Prednost datumov, oblikovanih kot
+    <code>2017-07-17</code> je, da sledijo vrstnemu redu od največje do
+    najmanjše enote: leto, mesec in dan. Ta oblika se tudi ne
+    prekriva na dvoumne načine z drugimi formati datumov, za razliko od nekaterih
+    območnih formatov, ki zamenjajo položaj številk meseca in dneva.
+    Ti razlogi in dejstvo, da je ta oblika datuma
+    #{link_to "standardni ISO", data.links.isodate}, so to, kar naredijo to priporočeni
+    format datuma za vnose v dnevnik sprememb.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Nedosledne spremembe
+
+  %p
+    Dnevnik sprememb, ki omenja samo nekatere spremembe, je lahko enako nevaren,
+    kot če nimate dnevnika sprememb. Čeprav mnoge spremembe morda niso
+    pomembne - na primer, odstranitve enega samega presledka morda ne bo treba
+    zabeležiti v vseh primerih - je pa treba vse pomembne spremembe
+    omeniti v dnevniku sprememb. Z nedoslednim uveljavljanjem sprememb
+    lahko vaši uporabniki zmotno mislijo, da je dnevnik sprememb edini vir
+    resnice. Moral bi biti. Z veliko močjo prihaja tudi velika odgovornost -
+    imeti dober dnevnik sprememb pomeni imeti dosledno posodobljen dnevnik sprememb.
+
+  %aside
+    Obstaja še več. Pomagajte nam zbrati te antivzorce, tako da
+    = link_to "odprete težavo", data.links.issue
+    ali zahtevek potega.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Pogosto zastavljena vprašanja
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Ali obstaja standardna oblika dnevnika sprememb?
+
+  %p
+    Niti ne. Obstaja #{link_to "stilski vodnik dnevnika sprememb GNU", data.links.gnustyle},
+    ali pa "smernice" #{link_to "v dveh odstavkih dolgi datoteki GNU NEWS", data.links.gnunews}
+    Oboje je neustrezno ali nezadostno.
+
+  %p
+    Ta projekt cilja biti
+    = link_to "boljša konvencija dnevnika sprememb.", data.links.changelog
+    Izhaja iz opazovanja dobrih praks v odprtokodni
+    skupnosti in njihovega zbiranja.
+
+  %p
+    Zdrava kritika, razprava in predlogi za izboljšave
+    = link_to "so dobrodošli.", data.links.issue
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Kako naj se imenuje datoteka dnevnika sprememb?
+
+  %p
+    Poimenujte jo <code>CHANGELOG.md</code>. Nekateri projekti uporabljajo
+    <code>HISTORY</code>, <code>NEWS</code>, ali <code>RELEASES</code>.
+
+  %p
+    Čeprav je enostavno misliti, da ime vaše datoteke dnevnika sprememb
+    ni tako pomembno, zakaj bi končnim uporabnikom otežili
+    dosledno iskanje pomembnih sprememb?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Kaj pa GitHub Releases?
+
+  %p
+    To je odlična pobuda. #{link_to "Releases", data.links.github_releases} je mogoče uporabiti za 
+    pretvorbo preprostih oznak Git (na primer oznaka z imenom <code>v1.0.0</code>)
+    v bogate opombe ob izdaji z ročnim dodajanjem opomb izdaje ali pa lahko
+    potegne sporočila anotiranih oznak Git in jih pretvori v opombe.
+
+  %p
+    GitHub Releases ustvarijo neprenosljiv dnevnik sprememb, ki ga je mogoče
+    prikazati le uporabnikom v kontekstu GitHuba. Mogoče jih je
+    narediti zelo podobne formatu Keep a Changelog, vendar
+    je ponavadi potrebno nekoliko več vpletenosti.
+
+  %p
+    Trenutna različica izdaj GitHub tudi verjetno ni preveč
+    odprta, da jo končni uporabniki odkrijejo, za razliko od tipičnih datotek z velikimi črkami
+    (<code>README</code>, <code>CONTRIBUTING</code> itd.). Druga
+    manjša težava je, da vmesnik trenutno ne ponuja povezav
+    na dnevnike potrditev med vsako izdajo.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Ali je mogoče dnevnike sprememb samodejno razčleniti?
+
+  %p
+    Težko je, ker ljudje sledijo zelo različnim formatom in
+    imenom datotek.
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} je Rubyjev gem, ustvarjen pri
+    ekipi Gemnasium in razčlenjuje mnoge (vendar
+    ne vse) dnevnike sprememb odprtokodnih projektov.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    Kaj pa izvlečene (angl. yanked) izdaje?
+
+  %p
+    Izvlečene izdaje so različice, ki jih je bilo treba umakniti zaradi
+    resne napake ali varnostne težave. Pogosto se te različice sploh ne
+    pojavijo v dnevnikih sprememb. Morale pa bi se. Prikazati bi jih morali
+    tako:
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    Značka <code>[YANKED]</code> je v velikih črkah z razlogom. Pomembno
+    je, da jo ljudje opazijo. Ker je obdana z oglatimi oklepaji, jo je tudi
+    mogoče enostavneje programsko razčleniti.
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Bi morali kdaj prepisati dnevnik sprememb?
+
+  %p
+    Seveda. Vedno obstajajo dobri razlogi za izboljšanje dnevnika sprememb.
+    Redno odpiram zahteve potegov, da dodam manjkajoče izdaje odprtokodnim
+    projektom z nevzdrževanimi dnevniki sprememb.
+
+  %p
+    Možno je tudi, da odkrijete, da ste pozabili obravnavati
+    kritično spremembo v opombah za različico. Očitno je pomembno,
+    da v tem primeru posodobite dnevnik sprememb.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Kako lahko prispevam?
+
+  %p
+    Ta dokument ni <strong>resnica</strong>; to je moje skrbno
+    pretehtano mnenje, skupaj z informacijami in primeri, ki sem jih zbral.
+
+  %p
+    To je zato, ker želim, da naša skupnost doseže soglasje. Menim,
+    da je razprava enako pomembna kot končni rezultat.
+
+  %p
+    Zato vas prosim, da <strong>#{link_to "se oglasite", data.links.repo}</strong>.
+
+.press
+  %h3 Pogovori
+  %p
+    Odšel sem na #{link_to "podcast The Changelog", data.links.thechangelog},
+    da bi govoril o tem, zakaj bi morali vzdrževalci in sodelavci skrbeti za dnevnike sprememb,
+    in tudi o motivacijah za tem projektom.
