@@ -1,0 +1,331 @@
+---
+description: Mantenga un changelog
+title: Mantenga un changelog
+language: es-ES
+version: 1.0.0
+---
+.header
+  .title
+    %h1 Mantenga un changelog
+    %h2
+      No dejes que tus amigos usen el registro de git en los changelogs.
+
+  = link_to data.links.changelog do
+    Versión
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    ¿Qué es un registro de cambios (changelog)?
+
+  %p
+    Un registro de cambios, «changelog» de ahora en adelante, es un
+    archivo que contiene una lista cronológicamente ordenada de los
+    cambios más destacables para cada versión de un proyecto.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    ¿Por qué mantener un changelog?
+
+  %p
+    Para facilitar a los usuarios y colaboradores ver exactamente qué
+    cambios reseñables se han realizado entre cada versión del
+    proyecto.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    ¿Quién necesita un changelog?
+
+  %p
+    Las personas. Ya sean consumidores o desarrolladores, los usuarios
+    finales del software son seres humanos a los que le importa lo que
+    hay en el software. Cuando el software cambia, la gente quiere saber
+    el porqué y el cómo.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    ¿Cómo hago un buen changelog?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Directrices
+
+  %ul
+    %li
+      Están hechos <em>para los seres humanos</em>, no para las máquinas.
+    %li
+      Debe haber una entrada para cada versión.
+    %li
+      Los mismos tipos de cambios deben ser agrupados.
+    %li
+      Versiones y secciones deben ser enlazables.
+    %li
+      La última versión va primero.
+    %li
+      Debe mostrar la fecha de publicación de cada versión.
+    %li
+      Indicar si el proyecto sigue el #{link_to "Versionamiento Semántico", data.links.semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Tipos de cambios
+
+  %ul
+    %li
+      %code Added
+      para funcionalidades nuevas.
+    %li
+      %code Changed
+      para los cambios en las funcionalidades existentes.
+    %li
+      %code Deprecated
+      para indicar que una característica o funcionalidad está obsoleta
+      y que se eliminará en las próximas versiones.
+    %li
+      %code Removed
+      para las características en desuso que se eliminaron en esta
+      versión.
+    %li
+      %code Fixed
+      para corrección de errores.
+    %li
+      %code Security
+      en caso de vulnerabilidades.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    ¿Cómo puedo minimizar el esfuerzo requerido para mantener el
+    changelog?
+
+  %p
+    Mantén una sección con el nombre <code>Unreleased</code> para hacer
+    un seguimiento sobre los próximos cambios.
+
+  %p Esto nos puede servir para dos cosas:
+
+  %ul
+    %li
+      La gente puede ver qué cambios podrían esperar en los próximos
+      lanzamientos.
+    %li
+      Al lanzar una nueva versión, tan sólo habría que mover el
+      contenido de <code>Unreleased</code> a una sección para la nueva
+      versión.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    ¿Pueden los changelogs ser malos?
+
+  %p
+    Sí. A continuación algunas formas en las que pueden ser muy poco
+    útiles.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Usar un diff de los logs de los commits
+
+  %p
+    Usar un diff de los logs de los commits es una mala idea: están
+    llenos de ruido. Cosas como hacer <em>merge</em> de los commits,
+    commits con títulos poco claros, cambios de documentación, etc.
+
+  %p
+    El propósito de un commit es documentar un paso en la evolución del
+    código fuente. Algunos proyectos limpian los commits, otros no.
+
+  %p
+    El propósito de una entrada en el changelog es documentar cambios
+    notables, usualmente entre múltiples commits, para comunicarlos
+    claramente a los usuarios finales.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Ignorar <em>funcionalidades sin soporte</em>
+
+  %p
+    Cuando la gente actualiza de una version a otra, debería estar
+    bastante claro cuándo algo se va a romper. Debería ser posible
+    actualizar a una versión que detalle funcionalidades sin soporte,
+    eliminar lo que está obsoleto y actualizar a la versión donde esas
+    funcionalidades han sido eliminadas.
+  %p
+    Si no haces nada más, enumera lo que queda obsoleto, lo eliminado y
+    cualquier otro cambio sin compatibilidad hacia atrás en tu
+    changelog.
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Fechas confusas
+
+  %p
+    Los formatos de fecha regionales varían en todo el mundo y con
+    frecuencia es difícil encontrar un formato intuitivo para todos. La
+    ventaja de las fechas con el formato <code>2017-07-17</code> es que
+    siguen un orden de unidades de mayor a menor: año, mes y día. Este
+    formato tampoco coincide de forma ambigua con otros formatos de
+    fecha, a diferencia de algunos que intercambian la posición del mes
+    y el día. Todo esto, junto al hecho de ser un
+    #{link_to "estándar ISO", data.links.isodate}, son los motivos por los que es el
+    formato de fecha recomendado para las entradas del changelog.
+    
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Cambios inconsistentes
+
+  %p
+    Un changelog que solo menciona algunos de los cambios, puede ser 
+    tan peligroso como no tener un changelog. Mientras muchos de los 
+    cambios pueden ser no relevantes - por ejemplo, eliminar un único 
+    espacio en blanco podría no necesitar ser registrado en todas las 
+    instancias - cualquier cambio importante debería ser mencionado en 
+    el changelog. Al inconsistentemente aplicar cambios, sus usuarios 
+    podrían erróneamente pensar que el changelog es la única fuente de 
+    la verdad. Debería serlo. Un gran poder conlleva una gran 
+    responsabilidad - tener un buen changelog significa tener un 
+    changelog consistentemente actualizado.
+
+  %aside
+    Hay más. Ayúdame a recoger estos anti-patrones
+    = link_to "abriendo un issue", data.links.issue
+    o una <em>pull request</em>.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Preguntas frecuentes
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    ¿Hay un formato estándar para el changelog?
+
+  %p
+    No. Hay una guía de estilo del GNU o los dos parrafos del archivo
+    <code>guideline</code> del <em>GNU NEWS</em>. Ambos son inadecuados
+    o insuficientes.
+
+  %p
+    Este proyecto apunta a ser
+    = link_to "una mejor convención de changelog.", data.links.changelog
+    Esto se da observando las buenas prácticas en la comunidad open
+    source y recopilando las mismas.
+
+  %p
+    Críticas saludables, discusión y sugerencias para mejoras
+    = link_to "son bienvenidas.", data.links.issue
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    ¿Cómo debería llamarse el archivo de changelog?
+
+  %p
+    Llámalo <code>CHANGELOG.md</code>. Algunos proyectos utilizan
+    <code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
+
+  %p
+    Si bien es fácil pensar que el nombre de tu archivo de changelog no
+    importa tanto, ¿Por qué hacer difícil para los usuarios finales
+    conseguir de manera consistente los cambios notables?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    ¿Y qué hay de los releases de Github?
+
+  %p
+    Es una gran iniciativa. #{link_to "Los releases de Github", data.links.github_releases}
+    pueden ser utilizados para convertir simples etiquetas de git (por
+    ejemplo una etiqueta llamada <code>v1.0.0</code>) en ricas notas de
+    lanzamiento ya sea añadiendo estas manualmente o trayendo los
+    mensajes anotados de las etiquetas de git y convertirlas en notas.
+
+  %p
+    Los releases de Github crean un changelog no portable que sólo
+    pueden ser mostrados a usuarios dentro del contexto de Github. Es
+    posible hacer que luzcan muy parecidas al formato de <em>Mantenga un
+    changelog</em>, pero tiende a ser un poco más complicado.
+
+  %p
+    La versión actual de los releases de Github es también
+    discutiblemente no muy detectable por los usuarios finales,
+    diferente a los típicos archivos en mayúsculas (<code>README</code>,
+    <code>CONTRIBUTING</code>, etc.). Otro problema menor es que la
+    interfaz actualmente no ofrece enlaces a los registros de los
+    commits entre cada lanzamiento.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    ¿Se pueden analizar gramaticalmente los changelogs?
+
+  %p
+    Es difícil, porque las personas usan formatos y nombres de archivos
+    muy distintos.
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} es una gema de Ruby creada por el
+    equipo de Gemnasium que analiza
+    gramaticalmente muchos (pero no todos) los changelogs de proyectos
+    open source.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    ¿Qué hay sobre las versiones retiradas?
+
+  %p
+    «Yanked releases» son versiones que tuvieron que ser retiradas por
+    un error grave o problema de seguridad. Con frecuencia estas
+    versiones ni siquiera aparecen en los changelogs. Deberían. Así es
+    como deberían mostrarse:
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    La etiqueta <code>[YANKED]</code> está destacada por una razón: es
+    importante que destaque. El hecho de estar entre corchetes la hace
+    también más fácil de localizar programáticamente.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    ¿Deberías volver a escribir un changelog?
+
+  %p
+    Por supuesto. Siempre hay buenas razones para mejorar el changelog.
+    A veces abro «pull requests» para añadir registros faltantes en el
+    changelog de proyectos open source.
+
+  %p
+    También es posible que puedas descubrir que olvidaste señalar un
+    cambio sin compatibilidad hacia atrás en las notas para una versión.
+    En este caso es importante para ti actualizar el changelog.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    ¿Cómo puedo contribuir?
+
+  %p
+    Este documento no es la <strong>verdad absoluta</strong>; es mi
+    cuidadosa opinión, junto con información y ejemplos que recopilé.
+
+  %p
+    Esto es porque quiero que la comunidad llegue a un consenso. Creo
+    que la discusión es tan importante como el resultado final.
+
+  %p
+    Así que por favor <strong>#{link_to "comienza a colaborar", data.links.repo}
+    </strong>.
+
+.press
+  %h3 Conversaciones
+  %p
+    Fui a #{link_to "The Changelog podcast", data.links.thechangelog} para hablar
+    acerca del porqué los mantenedores y colaboradores deberían
+    preocuparse por los changelogs, y también acerca de las motivaciones
+    detrás de este proyecto.
