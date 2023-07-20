@@ -65,6 +65,13 @@ $languages = {
   "ja" => {
     name: "日本語"
   },
+  "nb" => {
+    name: "Norsk (Bokmål)",
+    notice: "Den siste versjonen (#{$last_version}) er ikke tilgjengelig på norsk,
+    men du kan <a href='/en/'>lese den på engelsk</a> og <a
+    href='#{issues_url}'>hjelpe med å oversette den</a>.",
+    new: "En ny versjon er tilgjengelig"
+  },
   "nl" => {
     name: "Nederlands"
   },
