@@ -1,47 +1,49 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
-language: es
+description: Mantenga un changelog
+title: Mantenga un changelog
+language: es-ES
 version: 1.1.0
 ---
 .header
   .title
-    %h1 Mantén un changelog
-    %h2 No dejes que el registro de logs acabe en el changelog.
+    %h1 Mantenga un changelog
+    %h2
+      No dejes que tus amigos usen el registro de git en los changelogs.
 
   = link_to data.links.changelog do
     Versión
     %strong= current_page.metadata[:page][:version]
 
-  %pre.changelog{ lang: "es" }= File.read("CHANGELOG.md")
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
 
 .answers
   %h3#what
     %a.anchor{ href: "#what", aria_hidden: "true" }
-    ¿Qué es un changelog?
+    ¿Qué es un registro de cambios (changelog)?
 
   %p
-    Un changelog es un archivo que contiene una lista completa,
-    cronológicamente ordenada de los cambios de cada versión de un
-    proyecto.
+    Un registro de cambios, «changelog» de ahora en adelante, es un
+    archivo que contiene una lista cronológicamente ordenada de los
+    cambios más destacables para cada versión de un proyecto.
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
-    ¿Por qué mantener un chagelog?
+    ¿Por qué mantener un changelog?
 
   %p
-    Para que los usuarios y contribuidores puedan conocer sencillamente
-    qué cambios se han hecho entre diferentes versiones de un proyecto.¡
+    Para facilitar a los usuarios y colaboradores ver exactamente qué
+    cambios reseñables se han realizado entre cada versión del
+    proyecto.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
-    ¿Quien necesita un changelog?
+    ¿Quién necesita un changelog?
 
   %p
-    Cualquiera. Ya sean consumidores o desarrolladores, los usuatios
-    finales del software son seres humanos que se preocupan sobre qué
-    hace un software. Cuando el software cambia, la gente quiere saber
-    por qué y cómo.
+    Las personas. Ya sean consumidores o desarrolladores, los usuarios
+    finales del software son seres humanos a los que le importa lo que
+    hay en el software. Cuando el software cambia, la gente quiere saber
+    el porqué y el cómo.
 
 .good-practices
   %h3#how
@@ -50,23 +52,23 @@ version: 1.1.0
 
   %h4#principles
     %a.anchor{ href: "#principles", aria_hidden: "true" }
-    Principios
+    Directrices
 
   %ul
     %li
-      Los changelos son <em>para los humanos</em>, no para las máquinas.
+      Están hechos <em>para los seres humanos</em>, no para las máquinas.
     %li
       Debe haber una entrada para cada versión.
     %li
-      Los cambios del mismo tipo deben ir agrupados.
+      Los mismos tipos de cambios deben ser agrupados.
     %li
-      Versiones y secciones deben ser accesibles mediante enlaces.
+      Versiones y secciones deben ser enlazables.
     %li
-      La última versión es la primera que aparece.
+      La última versión va primero.
     %li
-      Se muestra la fecha de cada versión
+      Debe mostrar la fecha de publicación de cada versión.
     %li
-      Indicar si el proyecto sigue el #{link_to "Versionado Semántico", data.links.semver}.
+      Indicar si el proyecto sigue el #{link_to "Versionamiento Semántico", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Tipos de cambios
@@ -77,16 +79,18 @@ version: 1.1.0
       para funcionalidades nuevas.
     %li
       %code Changed
-      para cambios en una funcionalidad existente.
+      para los cambios en las funcionalidades existentes.
     %li
       %code Deprecated
-      para funcionalides obsoletas y que se eliminarán en una futura versión.
+      para indicar que una característica o funcionalidad está obsoleta
+      y que se eliminará en las próximas versiones.
     %li
       %code Removed
-      para funcionalidades eliminadas.
+      para las características en desuso que se eliminaron en esta
+      versión.
     %li
       %code Fixed
-      para corrección de erroes.
+      para corrección de errores.
     %li
       %code Security
       en caso de vulnerabilidades.
@@ -95,224 +99,231 @@ version: 1.1.0
 
   %h3#effort
     %a.anchor{ href: "#effort", aria_hidden: "true" }
-    ¿Cómo puedo reducir el esfuerzo para mantener un changelog?
+    ¿Cómo puedo minimizar el esfuerzo requerido para mantener el
+    changelog?
 
   %p
-    Mantén una sección <code>Unreleased</code> al inicio para hacer un
-    seguimiento sobre los próximos cambios.
+    Mantén una sección con el nombre <code>Unreleased</code> para hacer
+    un seguimiento sobre los próximos cambios.
 
-  %p Esto nos sirve para dos cosas:
+  %p Esto nos puede servir para dos cosas:
 
   %ul
     %li
-      La gente puede ver qué cambios deberían esperar en las próximas
-      versiones
+      La gente puede ver qué cambios podrían esperar en los próximos
+      lanzamientos.
     %li
-      Al lanzar una nueva versión, puedes mover los cambios de la sección
-      <code>Unreleased</code> a una sección para la nueva versión.
+      Al lanzar una nueva versión, tan sólo habría que mover el
+      contenido de <code>Unreleased</code> a una sección para la nueva
+      versión.
 
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    ¿Pueden los changelogs afectar negativamente?
+    ¿Pueden los changelogs ser malos?
 
-  %p Sí, aquí hay algunos casos en los cuales pueden ser menos útiles.
+  %p
+    Sí. A continuación algunas formas en las que pueden ser muy poco
+    útiles.
 
   %h4#log-diffs
     %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
     Usar un diff de los logs de los commits
 
   %p
-    Using commit log diffs as changelogs is a bad idea: they're full of
-    noise. Things like merge commits, commits with obscure titles,
-    documentation changes, etc.
+    Usar un diff de los logs de los commits es una mala idea: están
+    llenos de ruido. Cosas como hacer <em>merge</em> de los commits,
+    commits con títulos poco claros, cambios de documentación, etc.
 
   %p
-    The purpose of a commit is to document a step in the evolution of
-    the source code. Some projects clean up commits, some don't.
+    El propósito de un commit es documentar un paso en la evolución del
+    código fuente. Algunos proyectos limpian los commits, otros no.
 
   %p
-    The purpose of a changelog entry is to document the noteworthy
-    difference, often across multiple commits, to communicate them
-    clearly to end users.
+    El propósito de una entrada en el changelog es documentar cambios
+    notables, usualmente entre múltiples commits, para comunicarlos
+    claramente a los usuarios finales.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignoring Deprecations
+    Ignorar <em>funcionalidades sin soporte</em>
 
   %p
-    When people upgrade from one version to another, it should be
-    painfully clear when something will break. It should be possible to
-    upgrade to a version that lists deprecations, remove what's
-    deprecated, then upgrade to the version where the deprecations
-    become removals.
-
+    Cuando la gente actualiza de una version a otra, debería estar
+    bastante claro cuándo algo se va a romper. Debería ser posible
+    actualizar a una versión que detalle funcionalidades sin soporte,
+    eliminar lo que está obsoleto y actualizar a la versión donde esas
+    funcionalidades han sido eliminadas.
   %p
-    If you do nothing else, list deprecations, removals, and any
-    breaking changes in your changelog.
-
+    Si no haces nada más, enumera lo que queda obsoleto, lo eliminado y
+    cualquier otro cambio sin compatibilidad hacia atrás en tu
+    changelog.
 
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
-    Confusing Dates
+    Fechas confusas
 
   %p
-    Regional date formats vary throughout the world and it's often
-    difficult to find a human-friendly date format that feels intuitive
-    to everyone. The advantage of dates formatted like
-    <code>2017-07-17</code> is that they follow the order of largest to
-    smallest units: year, month, and day. This format also doesn't
-    overlap in ambiguous ways with other date formats, unlike some
-    regional formats that switch the position of month and day numbers.
-    These reasons, and the fact this date format is an
-    #{link_to "ISO standard", data.links.isodate}, are why it is the recommended date
-    format for changelog entries.
+    Los formatos de fecha regionales varían en todo el mundo y con
+    frecuencia es difícil encontrar un formato intuitivo para todos. La
+    ventaja de las fechas con el formato <code>2017-07-17</code> es que
+    siguen un orden de unidades de mayor a menor: año, mes y día. Este
+    formato tampoco coincide de forma ambigua con otros formatos de
+    fecha, a diferencia de algunos que intercambian la posición del mes
+    y el día. Todo esto, junto al hecho de ser un
+    #{link_to "estándar ISO", data.links.isodate}, son los motivos por los que es el
+    formato de fecha recomendado para las entradas del changelog.
 
   %h4#inconsistent-changes
     %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
-    Inconsistent Changes
+    Cambios inconsistentes
 
   %p
-    A changelog which only mentions some of the changes can be as dangerous
-    as not having a changelog. While many of the changes may not be
-    relevant - for instance, removing a single whitespace may not need
-    to be recorded in all instances - any important changes should be
-    mentioned in the changelog. By inconsistently applying changes,
-    your users may mistakenly think that the changelog is the single source
-    of truth. It ought to be. With great power comes great responsibility -
-    having a good changelog means having a consistently updated changelog.
+    Un changelog que solo menciona algunos de los cambios puede ser tan
+    peligroso como no tener un changelog. Mientras muchos de los cambios
+    puede no ser relavantes - por ejemplo, eliminar un simple espacio en
+    blanco - cualquier cambio importante debe ser mencionado. Al aplicar
+    cambios incoherentes, tus usuarios pueden pensar que el changelog es
+    la única fuente de verdad. Y debería serlo. Un gran poder conlleva una
+    gran responsabilidad - tener un buen changelog significa mantenerlo
+    actualizado.
 
   %aside
-    There’s more. Help me collect these antipatterns by
-    = link_to "opening an issue", data.links.issue
-    or a pull request.
+    Hay más. Ayúdame a recoger estos anti-patrones
+    = link_to "abriendo un issue", data.links.issue
+    o una <em>pull request</em>.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    Preguntas frecuentes
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+    ¿Hay un formato estándar para el changelog?
 
   %p
-    Not really. There's the #{link_to "GNU changelog style guide", data.links.gnustyle},
-    or the #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews}
-    "guideline". Both are inadequate or insufficient.
+    No. Hay una guía de estilo del GNU o los dos parrafos del archivo
+    <code>guideline</code> del <em>GNU NEWS</em>. Ambos son inadecuados
+    o insuficientes.
 
   %p
-    This project aims to be
-    = link_to "a better changelog convention.", data.links.changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
+    Este proyecto apunta a ser
+    = link_to "una mejor convención de changelog.", data.links.changelog
+    Esto se da observando las buenas prácticas en la comunidad open
+    source y recopilando las mismas.
 
   %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", data.links.issue
+    Críticas saludables, discusión y sugerencias para mejoras
+    = link_to "son bienvenidas.", data.links.issue
 
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+    ¿Cómo debería llamarse el archivo de changelog?
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
-    <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
+    Llámalo <code>CHANGELOG.md</code>. Algunos proyectos utilizan
+    <code>HISTORY</code>, <code>NEWS</code> o <code>RELEASES</code>.
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    Si bien es fácil pensar que el nombre de tu archivo de changelog no
+    importa tanto, ¿Por qué hacer difícil para los usuarios finales
+    conseguir de manera consistente los cambios notables?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    ¿Y qué hay de los releases de Github?
 
   %p
-    It's a great initiative. #{link_to "Releases", data.links.github_releases} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    Es una gran iniciativa. #{link_to "Los releases de Github", data.links.github_releases}
+    pueden ser utilizados para convertir simples etiquetas de git (por
+    ejemplo una etiqueta llamada <code>v1.0.0</code>) en ricas notas de
+    lanzamiento ya sea añadiendo estas manualmente o trayendo los
+    mensajes anotados de las etiquetas de git y convertirlas en notas.
 
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    Los releases de Github crean un changelog no portable que sólo
+    pueden ser mostrados a usuarios dentro del contexto de Github. Es
+    posible hacer que luzcan muy parecidas al formato de <em>Mantenga un
+    changelog</em>, pero tiende a ser un poco más complicado.
 
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    La versión actual de los releases de Github es también
+    discutiblemente no muy detectable por los usuarios finales,
+    diferente a los típicos archivos en mayúsculas (<code>README</code>,
+    <code>CONTRIBUTING</code>, etc.). Otro problema menor es que la
+    interfaz actualmente no ofrece enlaces a los registros de los
+    commits entre cada lanzamiento.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    ¿Se pueden analizar gramaticalmente los changelogs?
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    Es difícil, porque las personas usan formatos y nombres de archivos
+    muy distintos.
 
   %p
-    #{link_to "Vandamme", data.links.vandamme} is a Ruby gem created by the
-    Gemnasium team and which parses many (but
-    not all) open source project changelogs.
+    #{link_to "Vandamme", data.links.vandamme} es una gema de Ruby creada por el
+    equipo de Gemnasium que analiza
+    gramaticalmente muchos (pero no todos) los changelogs de proyectos
+    open source.
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    ¿Qué hay sobre las versiones retiradas?
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    «Yanked releases» son versiones que tuvieron que ser retiradas por
+    un error grave o problema de seguridad. Con frecuencia estas
+    versiones ni siquiera aparecen en los changelogs. Deberían. Así es
+    como deberían mostrarse:
 
   %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+    La etiqueta <code>[YANKED]</code> está destacada por una razón: es
+    importante que destaque. El hecho de estar entre corchetes la hace
+    también más fácil de localizar programáticamente.
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    ¿Deberías volver a escribir un changelog?
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
+    Por supuesto. Siempre hay buenas razones para mejorar el changelog.
+    A veces abro «pull requests» para añadir registros faltantes en el
+    changelog de proyectos open source.
 
   %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
+    También es posible que puedas descubrir que olvidaste señalar un
+    cambio sin compatibilidad hacia atrás en las notas para una versión.
+    En este caso es importante para ti actualizar el changelog.
 
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    ¿Cómo puedo contribuir?
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    Este documento no es la <strong>verdad absoluta</strong>; es mi
+    cuidadosa opinión, junto con información y ejemplos que recopilé.
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    Esto es porque quiero que la comunidad llegue a un consenso. Creo
+    que la discusión es tan importante como el resultado final.
 
   %p
-    So please <strong>#{link_to "pitch in", data.links.repo}</strong>.
+    Así que por favor <strong>#{link_to "comienza a colaborar", data.links.repo}
+    </strong>.
 
 .press
-  %h3 Conversations
+  %h3 Conversaciones
   %p
-    I went on #{link_to "The Changelog podcast", data.links.thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    Fui a #{link_to "The Changelog podcast", data.links.thechangelog} para hablar
+    acerca del porqué los mantenedores y colaboradores deberían
+    preocuparse por los changelogs, y también acerca de las motivaciones
+    detrás de este proyecto.
