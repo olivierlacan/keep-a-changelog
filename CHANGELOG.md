@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- v1.1 Ukrainian translation.
 - Renamed broken name of link to issues to proper one
 - v1.1 Spanish translation.
 - v1.1 Italian translation.
@@ -39,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve zh-CN translation (#359).
 - Improve French translation (#357).
 - Improve zh-TW translation (#360, #355).
-- Improve Spanish (es-ES) transltion (#362).
+- Improve Spanish (es-ES) translation (#362).
 - Foldout menu in Dutch translation (#371).
 - Missing periods at the end of each change (#451).
 - Fix missing logo in 1.1 pages
@@ -54,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unused normalize.css file
 - Identical links assigned in each translation file
-- Duplicate index file for the english version
+- Duplicate index file for the English version
 
 ## [1.1.0] - 2019-02-15
 
