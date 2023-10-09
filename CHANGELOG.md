@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Renamed broken name of link to issues to proper one
 - v1.1 Spanish translation.
 - v1.1 Italian translation.
 - v1.1 Polish translation.
