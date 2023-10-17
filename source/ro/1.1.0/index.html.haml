@@ -1,0 +1,325 @@
+---
+description: Ține un jurnal de modificări
+title: Ține un jurnal de modificări
+language: ro
+version: 1.1.0
+---
+.header
+  .title
+    %h1 Ține un jurnal de modificări
+    %h2 Nu-ți lăsa prietenii să arunce jurnalele git în jurnalul de modificări.
+
+  = link_to data.links.changelog do
+    Versiune
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Ce este un jurnal de modificări?
+
+  %p
+    Un jurnal de modificări este un fișier care conține o listă
+    organizată, ordonată cronologic de modificări notabile pentru
+    fiecare versiune a unui proiect.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    De ce să ții un jurnal de modificări?
+
+  %p
+    Pentru ca utilizatorii și colaboratorii să vadă exact ce
+    modificări notabile au fost făcute între fiecare lansare (sau
+    versiune) a proiectului.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Cine are nevoie de un jurnal de modificări?
+
+  %p
+    Oamenii. Indiferent dacă sunt consumatori sau dezvoltatori,
+    utilizatorii finali ai software-ului sunt ființe umane cărora le pasă
+    de ceea ce este în software. Când software-ul se schimbă, oamenii vor
+    să știe de ce și cum.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Cum fac un jurnal de modificări bun?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Principii îndrumătoare
+
+  %ul
+    %li
+      Jurnalele de modificări sunt <em>pentru oameni</em>, nu mașini.
+    %li
+      Ar trebui să existe o intrare pentru fiecare versiune.
+    %li
+      Aceleași tipuri de modificări ar trebui grupate.
+    %li
+      Versiunile și secțiunile ar trebui să poată fi legate.
+    %li
+      Cea mai recentă versiune este pe primul loc.
+    %li
+      Este afișată data de lansare a fiecărei versiuni.
+    %li
+      Menționează dacă urmărești #{link_to "Numerotarea Semantică", data.links.semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Tipuri de modificări
+
+  %ul
+    %li
+      %code Added
+      pentru funcționalități noi.
+    %li
+      %code Changed
+      pentru modificări în funcționalitatea existentă.
+    %li
+      %code Deprecated
+      pentru funcționalități ce urmează să fie eliminate în curând.
+    %li
+      %code Removed
+      pentru funcționalități eliminate acum.
+    %li
+      %code Fixed
+      pentru orice erori remediate.
+    %li
+      %code Security
+      în caz de vulnerabilități.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Cum pot reduce efortul necesar pentru a menține un jurnal de modificări?
+
+  %p
+    Ține o secțiune <code>Unreleased</code> în partea de sus pentru a
+    urmări modificările viitoare.
+
+  %p Aceasta servește la două scopuri:
+
+  %ul
+    %li
+      Oamenii pot vedea la ce schimbări s-ar putea aștepta în lansările viitoare
+    %li
+      În momentul lansării, poți muta modificările din secțiunea
+      <code>Unreleased</code> într-o nouă secțiune a versiunii de
+      lansare.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Jurnalele de modificări pot fi precare?
+
+  %p Da. Iată câteva moduri în care pot fi mai puțin decât utile.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Comitere jurnal de diferențe
+
+  %p
+    Utilizarea jurnalului de diferențe din comiteri ca jurnal de
+    modificări este o idee proastă: sunt pline de zgomot. Lucruri
+    precum comiterile de îmbinare, comiterile cu titluri obscure,
+    modificările documentației, etc.
+
+  %p
+    Scopul unei comiteri este de a documenta un pas în evoluția
+    codului sursă. Unele proiecte curăță comiterile, altele nu.
+
+  %p
+    Scopul unei intrări din jurnalul de modificări este de a
+    documenta diferența demnă de remarcat, adesea din mai multe
+    comiteri, pentru a le comunica în mod clar utilizatorilor
+    finali.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Ignorarea deprecierilor
+
+  %p
+    Când oamenii fac actualizare de la o versiune la alta, ar
+    trebui să fie foarte clar când ceva nu va funcționa. Ar trebui să
+    fie posibil să actualizezi la o versiune care listează
+    deprecierile, să elimini ceea ce este depreciat, apoi să
+    actualizezi la versiunea în care deprecierile devin eliminări.
+
+  %p
+    Dacă nu faci nimic altceva, enumeră deprecierile, eliminările și
+    orice modificări nerespective în jurnalul tău de modificări.
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Date confuze
+
+  %p
+    Formatele regionale de date variază în întreaga lume și este adesea dificil să
+    găsești un format de dată prietenos pentru oameni, care să pară intuitiv pentru
+    toată lumea. Avantajul datelor formatate ca <code>2017-07-17</code> este că
+    urmează ordinea de la unitățile mai mari la cele mai mici: an, lună și zi. De
+    asemenea, acest format nu se suprapune în moduri ambigue cu alte formate de dată,
+    spre deosebire de unele formate regionale care schimbă poziția numerelor lunii și
+    zilei.
+    Aceste motive și faptul că acest format de dată este un
+    #{link_to "standard ISO", data.links.isodate}, este motivul pentru care este
+    formatul de dată recomandat pentru intrările din jurnalul de modificări.
+
+  %h4#inconsistent-changes
+    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
+    Modificări inconsecvente
+
+  %p
+    Un jurnal de modificări care menționează doar unele dintre modificări poate
+    fi la fel de periculos ca și lipsa unui jurnal de modificări. Deși multe
+    dintre modificări pot să nu fie relevante - de exemplu, eliminarea unui
+    singur spațiu alb poate să nu fie nevoie să fie înregistrată în toate
+    cazurile - orice modificări importante ar trebui menționate în jurnalul
+    de modificări. Prin aplicarea inconsecventă a modificărilor, utilizatorii
+    tăi pot crede în mod eronat că jurnalul de modificări este singura sursă
+    de adevăr. Așa ar trebui să fie. Cu o mare putere vine o mare responsabilitate -
+    a avea un jurnal de modificări bun înseamnă a avea un jurnal de modificări
+    actualizat constant.
+
+  %aside
+    Mai sunt. Ajută-mă să colectez aceste antimodele
+    = link_to "deschizând o problemă", data.links.issue
+    sau o cerere de extragere.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Întrebări frecvente
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Există un format standard de jurnal de modificări?
+
+  %p
+    Nu chiar. Există #{link_to "Ghidul de stil pentru jurnalul de modificări GNU", data.links.gnustyle},
+    sau „ghidul” #{link_to "GNU NEWS de două paragrafe", data.links.gnunews}
+    Ambele sunt inadecvate sau insuficiente.
+
+  %p
+    Acest proiect își propune să fie
+    = link_to "o convenție mai bună pentru jurnalul de modificări.", data.links.changelog
+    El vine din observarea bunelor practici în comunitatea open source și adunarea lor.
+
+  %p
+    = link_to "Sunt binevenite", data.links.issue
+    criticile sănătoase, discuțiile și sugestiile de îmbunătățire.
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Cum ar trebui să fie numit fișierul jurnal de modificări?
+
+  %p
+    Numește-l <code>CHANGELOG.md</code>. Unele proiecte folosesc
+    <code>HISTORY</code>, <code>NEWS</code> sau <code>RELEASES</code>.
+
+  %p
+    Deși este ușor de crezut că numele fișierului jurnal de modificări
+    nu contează atât de mult, de ce este mai greu pentru utilizatorii
+    finali să găsească în mod constant modificări notabile?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Ce zici despre Lansările GitHub?
+
+  %p
+    Este o inițiativă grozavă. #{link_to "Lansări", data.links.github_releases} poate fi
+    folosit pentru a transforma etichetele git simple (de exemplu, o etichetă numită
+    <code>v1.0.0</code>) în note de lansare bine detaliate, adăugând manual note de
+    lansare sau putând trage mesaje adnotate din etichetele git și transofmându-le în note.
+
+  %p
+    Lansările GitHub creează un jurnal de modificări non-portabil care
+    poate fi afișat numai utilizatorilor în contextul GitHub. Este
+    posibil să le faci să semene foarte mult cu formatul Ține un
+    jurnal de modificări, dar tinde să fie puțin mai implicat.
+
+  %p
+    De asemenea, versiunea actuală a Lansărilor GitHub este probabil
+    puțin descoperită de utilizatorii finali, spre deosebire de
+    fișierele tipice cu majuscule (<code>README</code>,
+    <code>CONTRIBUTING</code>, etc.). O altă problemă minoră este că
+    interfața nu oferă momentan legături pentru a comite jurnale între
+    fiecare lansare.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Jurnalele de modificări pot fi interpretate automat?
+
+  %p
+    Este dificil, pentru că oamenii urmează formate și nume de fișiere
+    extrem de diferite.
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} este un gem Ruby creat
+    de echipa Gemnasium și care interpretează multe (dar nu toate)
+    jurnalele de modificări ale proiectelor open source.
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    Ce zici despre lansările smulse („yanked”)?
+
+  %p
+    Lansările smulse (de tip „yanked”) sunt versiuni care au trebuit să
+    fie eliminate din cauza unei erori grave sau a unei probleme de
+    securitate. Adesea, aceste versiuni nici măcar nu apar în jurnalele
+    de modificări. Ar trebui. Iată cum ar trebui să le afișezi:
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    Eticheta <code>[YANKED]</code> este puternică dintr-un motiv. Este
+    important pentru oameni să o observe. Deoarece este înconjurată de
+    paranteze, este, de asemenea, mai ușor de interpretat programatic.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Ar trebui să rescrii vreodată un jurnal de modificări?
+
+  %p
+    Sigur. Există întotdeauna motive bune pentru a îmbunătăți un jurnal
+    de modificări. Eu deschid în mod regulat solicitări de extragere
+    pentru a adăuga versiunile lipsă proiectelor open source cu jurnalele
+    de modificări neîntreținute.
+
+  %p
+    De asemenea, este posibil să descoperi că ai uitat să abordezi o
+    modificare care afectează funcționalitatea în notele pentru o
+    versiune. În mod evident, este important să actualizezi jurnalul de
+    modificări în acest caz.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Cum pot contribui?
+
+  %p
+    Acest document nu este <strong>adevărul</strong>; este opinia mea
+    atent analizată, împreună cu informațiile și exemplele pe care
+    le-am adunat.
+
+  %p
+    Asta pentru că vreau ca comunitatea noastră să ajungă la un consens.
+    Cred că discuția este la fel de importantă ca și rezultatul final.
+
+  %p
+    Așa că te rog <strong>#{link_to "să te prezinți", data.links.repo}</strong>.
+
+.press
+  %h3 Conversații
+  %p
+    Am mers la #{link_to "podcastul The Changelog", data.links.thechangelog}
+    pentru a vorbi despre motivul pentru care întreținătorilor și colaboratorilor ar
+    trebui să le pese de jurnalele de modificări și, de asemenea, despre motivațiile
+    din spatele acestui proiect.
