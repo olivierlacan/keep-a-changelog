@@ -1,0 +1,8 @@
+How to Add Custom Bot:
+Step1: Request new bot by going to telegram application and accessing following bot @BotFather
+
+You will be provided with bot token something like 6238297555:AAEC0ZvoVndgdOw3UVg0ogZ9WnOicFm2ASs.......
+Step2:
+Copy bot token to SMStoTelegram App in Settings => Bot Token
+
+That's it...!
