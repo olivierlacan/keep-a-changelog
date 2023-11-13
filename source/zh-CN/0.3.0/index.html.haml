@@ -13,23 +13,22 @@ version: 0.3.0
   Version **#{current_page.metadata[:page][:version]}**
 
   ### 更新日志是什么？
-  更新日志（Change Log）是一个由人工编辑，以时间为倒叙的列表。
+  更新日志（Change Log）是一个由人工编辑，以时间为倒序的列表。
   这个列表记录所有版本的重大变动。
 
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### 为何要提供更新日志？
   为了让用户和开发人员更好知道每一个版本有哪些区别。
 
   ### 为何我要在乎呢？
-  因为归根结底软件是为人提供的。既然你不关心人，哪么为何写软件呢？
+  因为归根结底软件是为人提供的。既然你不关心人，那么为何写软件呢？
   多少你还是要关心你的受众。
 
   本文档原作者和另外两个人的一个[播客][thechangelog]向大家介绍了，
   为何代码的管理者和开发者应该在乎更新日志。如果你有一小时时间和很好的英文听力本领，
-  不放听听。
+  不妨听听。
 
   ### 怎么定义好的更新日志
   好问题！
@@ -41,7 +40,7 @@ version: 0.3.0
   - 一个版本对应一个章节。
   - 最新的版本在上，最老的在下面。
   - 所有日期采用'YYYY-MM-DD'这种规范。（例如北京奥运会的2008年8月8日是2008-08-08）这个是国际通用，任何语言
-  都能理解的，并且还被[xkcd](http://xkcd.com/1179/)推荐呢！
+  都能理解的，并且还被[xkcd](https://xkcd.com/1179/)推荐呢！
   - 标出来是否遵守[语义化版本格式][semver]
   - 每一个软件的版本必须：
     - 标明日期（要用上面说过的规范）
@@ -56,7 +55,7 @@ version: 0.3.0
 
   ### 怎么尽可能减少耗费的精力？
   永远在文档最上方提供一个'Unreleased' 未发布区域，来记录当前的变化。
-  这佯作有两大意义。
+  这样作有两大意义。
 
   - 大家可以看到接下来会有什么变化
   - 在发布时，只要把'Unreleased'改为当前版本号，然后再添加一个新的'Unreleased'就行了
@@ -74,7 +73,7 @@ version: 0.3.0
 
   ### 世界上不是有标准的更新日志格式吗？
   貌似GNU或者GNU NEWS还是提过些规范的，事实是它们太过简陋了。
-  开发有那么多中情况，采用那样的规范，确实是不太合适的。
+  开发有那么多种情况，采用那样的规范，确实是不太合适的。
 
   这个项目提供的[规范][CHANGELOG]是作者本人希望能够成为世界规范的。
   作者不认为当前的标准足够好，而且作为一个社区，我们是有能力提供更棒的规范。
@@ -92,15 +91,15 @@ version: 0.3.0
 
   ### 为何不直接记录`git log`?
 
-  因为git日志一定是乱糟糟的。哪怕一个最理想的由完美的程序员开发的提交的，哪怕一个
-  从不忘记每次提交全部文件，不写错别字，不忘记重构每一个部分——也无法保证git日志完美无瑕。
+  因为git日志一定是乱糟糟的。哪怕一个最理想的由完美的程序员开发和提交的，哪怕一个
+  从不忘记每次提交全部文件，不写错别字，不忘记重构每一个部分，也无法保证git日志完美无瑕。
   况且git日志的核心在于记录代码的演化，而更新日志则是记录最重要的变更。
 
   就像注释之于代码，更新日志之于git日志。前者解释*为什么*，而后者说明*发生了什么*。
 
 
   ### 更新日志能机器识别吗？
-  非常困难，因为有各种不同的文件格式和其他规范。
+  非常困难，因为有各种不同的文件格式和其它规范。
 
   [Vandamme][vandamme]是一个Ruby程序（由[Gemnasium][gemnasium]团队制作），可以解析
   好多种（但绝对不是全部）开源库的更新日志。
@@ -116,7 +115,7 @@ version: 0.3.0
   因为各种安全/重大bug原因被撤下的版本被标记'YANKED'。这些版本一般不出现在更新日志里，但作者建议他们出现。
   显示方式应该是：
 
-  `## 0.0.5 - 2014-12-13 [YANKED]`
+  `## [0.0.5] - 2014-12-13 [YANKED]`
 
   `[YANKED]`采用大写更加显著，因为这个信息很重要。而采用方括号则容易被程序解析。
 
@@ -135,14 +134,14 @@ version: 0.3.0
   所以[欢迎贡献][gh]。
 
 
-  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
-  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
-  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
-  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md
   [gemnasium]: https://gemnasium.com/
   [gh]: https://github.com/olivierlacan/keep-a-changelog
   [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-  [semver]: http://semver.org/lang/zh-CN/
-  [shields]: http://shields.io/
-  [thechangelog]: http://5by5.tv/changelog/127
+  [semver]: https://semver.org/lang/zh-CN/
+  [shields]: https://shields.io/
+  [thechangelog]: https://changelog.com/podcast/127
   [vandamme]: https://github.com/tech-angels/vandamme/

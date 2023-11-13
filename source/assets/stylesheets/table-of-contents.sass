@@ -1,0 +1,31 @@
+@import "variables"
+
+.toc
+  position: fixed
+  z-index: 9999
+  top: 10%
+  left: 0
+
+  ul
+    list-style-position: inside
+    list-style-type: decimal-leading-zero
+    padding: 0 0 0 1em
+    li
+      padding-left: 1em
+      line-height: 2
+      a
+        padding: 0 1em
+        line-height: 2
+        display: none
+
+        span
+          display: none
+
+    li:hover
+      color: $color-sand
+      background: $color-black
+    li:hover a
+      color: $color-sand
+      font-weight: bold
+      background-color: $color-black
+      display: inline-block

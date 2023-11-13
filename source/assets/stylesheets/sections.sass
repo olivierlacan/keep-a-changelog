@@ -1,0 +1,218 @@
+@import "variables"
+@import "mixins"
+
+div.header
+  padding-top: 5em
+  padding-bottom: 0.1em
+  background-color: $color-ocre
+  background-image: image-url("bg-hero@2x.png")
+  background-size: cover
+
+  h1
+    color: $color-sand
+
+  h2
+    font-weight: normal
+
+  a
+    color: $color-black
+
+  .title
+    width: 60%
+    margin: 0 auto
+    margin-bottom: -2em
+    font-size: 60%
+    margin-left: 9em
+    margin-right: 2em
+
+    @include sm
+      width: 60%
+    @include md
+      font-size: 100%
+      margin-left: 6em
+      margin-right: 2em
+    @include lg
+      margin-left: auto
+
+  .changelog
+    background-color: $color-white
+    box-shadow: 0px 4px 12px 0px hsla(0, 0%, 0%, 0.2)
+    font-size: 0.8em
+    height: 20em
+    margin-bottom: -14em
+    margin-left: 0.5em
+    margin-right: 0.5em
+    margin-top: 1em
+    overflow-x: auto
+    padding: 1em
+
+div.answers
+  margin-top: 12em
+  padding-left: 5%
+  padding-right: 5%
+  background-color: $color-white
+
+  h3
+    font-size: 1.7em
+    color: $color-ocre
+
+  a
+    color: $color-gold
+
+  p
+    font-size: 1em
+
+.good-practices
+  background-color: $color-gold
+  background-image: image-url("bg-img1@2x.png")
+  background-position: bottom left
+  background-repeat: no-repeat
+  background-size: 100%
+  padding-top: 2em
+
+  a.anchor
+    color: $color-black
+
+  h3
+    font-size: 1.6em
+    font-weight: bold
+
+  ul
+    font-size: 1em
+
+  p
+    a
+      color: $color-white
+      text-decoration: underline
+
+div.bad-practices
+  color: $color-white
+  background-color: $color-bark
+  background-image: image-url("bg-img2@2x.png")
+  background-position: bottom left
+  background-repeat: no-repeat
+  background-size: 100%
+  padding-top: 3em
+
+  code
+    color: $color-black
+    background-color: desaturate(lighten($color-bark, 50%), 10%)
+    border: none
+
+  p, aside
+    a
+      color: $color-gold
+      text-decoration: underline
+
+  aside
+    a
+      text-decoration: none
+
+  h3
+    font-size: 1.7em
+    color: $color-gold
+    float: left
+
+
+  p
+    clear: left
+    font-size: 1em
+
+div.effort
+  padding-top: 2em
+  padding-left: 5%
+  padding-right: 5%
+  background-color: $color-white
+
+  h3
+    font-size: 1.6em
+    font-weight: bold
+    color: $color-ocre
+
+div.frequently-asked-questions
+  padding-top: 2em
+  padding-left: 5%
+  padding-right: 5%
+  background-color: $color-white
+
+  h2
+    color: $color-ocre
+
+  h3
+    color: $color-ocre
+    margin-bottom: 1.5em
+    font-size: 1.7em
+
+  h4
+    cursor: pointer
+    border-bottom: 1px solid transparentize($color-bark, 0.8)
+    padding: 0 1.1em 1.3em 0
+
+    &:after
+      content: "⌄"
+      text-align: right
+      float: right
+      font-size: 2.8em
+      line-height: 0.4
+      margin-right: -0.3em
+      width: 1em
+      text-align: center
+
+
+    &.is-visible:after
+      content: "-"
+
+  h4 ~ p
+    display: none
+    font-size: 0.9em
+
+  h4 ~ p.is-visible
+    display: inherit
+
+.footer
+  font-size: .6em
+  font-weight: normal
+  border-top: 1px solid #e9e6e1
+  padding-top: 1em
+  padding-left: 2em
+  padding-right: 2em
+
+  background-color: $color-ocre
+  color: $color-sand
+
+  a
+    color: $color-white
+    text-decoration: underline
+
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+@include xl
+  div.answers
+    padding-left: 25%
+    padding-right: 25%
+
+  div.effort
+    padding-left: 25%
+    padding-right: 25%
+
+  div.frequently-asked-questions
+    padding-left: 25%
+    padding-right: 25%
+
+  .good-practices
+    h3
+      width: 50%
+    h4
+      padding-left: 15em
+    ul
+      padding-left: 16em
+
+  .bad-practices
+    h3
+      width: 35%
+
+    h4, p
+      padding-left: 12em

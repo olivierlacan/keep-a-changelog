@@ -1,0 +1,250 @@
+---
+description: 如何维护更新日志
+title: 如何维护更新日志
+language: zh-CN
+version: 1.0.0
+---
+.header
+  .title
+    %h1 如何维护更新日志
+    %h2 更新日志绝对不应该是 git 日志的堆砌物
+
+  = link_to data.links.changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    更新日志是什么？
+
+  %p
+    更新日志（Change Log）是一个由人工编辑、以时间为倒序的列表，用于记录项目中每个版本的显著变动。
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    为何要提供更新日志？
+
+  %p
+    为了让用户和开发人员更简单清晰地知晓项目的不同版本之间有哪些显著变动。
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    哪些人需要更新日志？
+
+  %p
+    人人需要更新日志。无论是用户还是开发者。当软件有变动时，大家希望知道改动是为何、以及如何进行的。
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    怎样制作高质量的更新日志？
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    指导原则
+
+  %ul
+    %li
+      记住日志是写给<em>人</em>而非机器的。
+    %li
+      每个版本都应该有独立的入口。
+    %li
+      同类改动应该分组放置。
+    %li
+      不同版本应分别设置链接。
+    %li
+      新版本在前，旧版本在后。
+    %li
+      应包括每个版本的发布日期。
+    %li
+      注明是否遵守#{link_to "语义化版本规范", data.links.semver}。
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types 变动类型
+
+  %ul
+    %li
+      %code Added
+      新添加的功能。
+    %li
+      %code Changed
+      对现有功能的变更。
+    %li
+      %code Deprecated
+      已经不建议使用，即将移除的功能。
+    %li
+      %code Removed
+      已经移除的功能。
+    %li
+      %code Fixed
+      对 bug 的修复。
+    %li
+      %code Security
+      对安全性的改进。
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    如何减少维护更新日志的精力？
+
+  %p
+    在文档最上方提供 <code>Unreleased</code> 区块以记录即将发布的更新内容。
+
+  %p 这样做有两个好处：
+
+  %ul
+    %li
+      大家可以知道在未来版本中可能会有哪些变更。
+    %li
+      在发布新版本时，直接将 <code>Unreleased</code> 区块中的内容移动至新发布版本的描述区块就可以了。
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    有很糟糕的更新日志吗？
+
+  %p 当然有，下面就是一些糟糕的方式。
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    使用 git 日志
+
+  %p
+    使用 git 日志作为更新日志是个非常糟糕的方式：git 日志充满各种无意义的信息，如合并提交、语焉不详的提交标题、文档更新等。
+
+  %p
+    提交的目的是记录源码的演化。一些项目会清理提交记录，一些则不会。
+
+  %p
+    更新日志的目的则是记录重要的变更以供受众阅读，记录范围通常涵盖多次提交。
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    无视即将弃用的功能
+
+  %p
+    当从一个版本升级至另一个时，人们应清楚（尽管痛苦）地知道哪些部分将不再被支持。应该允许先升级至一个列出哪些功能将会被弃用的版本，待去掉那些不再支持的部分后，再升级至把那些弃用功能真正移除的版本。
+
+  %p
+    即使其他什么都不做，也至少要在更新日志中列出 deprecations，removals 以及其他重大变动。
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    易混淆的日期格式
+
+  %p
+    不同区域有着不同的时间格式，要找到让大家都满意的日期格式不是件容易的事。<code>2012-06-02</code>
+    的格式从大到小排列符合逻辑、不容易与其他日期格式混淆，而且还符合
+    #{link_to "ISO 标准", data.links.isodate}。因此，推荐在更新日志中采用使用此种日期格式。
+
+  %aside
+    还有更多内容？请通过
+    = link_to "Issues", data.links.issue
+    或是 Pull Request 协助收集。
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    常见问题
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    是否有一个标准化的更新日志格式？
+
+  %p
+    并没有。虽然 GNU 提供了更新日志样式指引，以及那个仅有两段长的 GNU NEWS 文件“指南”，但两者均远远不够。
+
+  %p
+    此项目旨在提供一个
+    #{link_to "更好的更新日志范例", data.links.changelog}，所有点子都来自于对开源社区中优秀实例的观察与记录。
+
+  %p
+    欢迎#{link_to "提供", data.links.issue}有建设性的批评、讨论及建议。
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    更新日志文件应被如何命名？
+
+  %p
+    通常使用 <code>CHANGELOG.md</code>。有些项目将其命名为
+    <code>HISTORY</code>、<code>NEWS</code> 或是 <code>RELEASES</code>。
+
+  %p
+    当然，你可能认为更新日志的命名并不那么重要，但为什么要为难那些仅仅是想看到都有哪些重大变更的用户呢？
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    GitHub Releases 怎么样？
+
+  %p
+    这是个非常好的提议。#{link_to "GitHub Releases", data.links.github_releases}
+    可通过手动添加发布日志或将带有注释的 git 标签信息抓取后转换的方式，将简单的
+    git 标签（如一个叫 <code>v1.0.0</code> 的标签）转换为信息丰富的发布日志。
+
+  %p
+    GitHub Releases 会创建一个非便携、仅可在 GitHub 环境下显示的更新日志。尽管会花费更多时间，但将之处理成更新日志格式是完全可能的。
+
+  %p
+    现行版本的 GitHub Releases 不像那些典型的大写文件（<code>README</code>，<code>CONTRIBUTING</code>
+    等），仍可以认为是不利于用户探索的。另一个小问题则是目前的 GitHub Releases 界面并没有提供不同版本间的 commit 日志链接。
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    更新日志可以被自动识别吗？
+
+  %p
+    非常困难，因为有各种不同的文件格式和命名。
+
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} 是一个 Ruby 程序，由
+    Gemnasium 团队制作，可以解析多种（但绝对不是全部）开源库的更新日志。
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    那些后来撤下的版本怎么办？
+
+  %p
+    因重大 bug 或安全性原因而被撤下的版本通常不会出现在更新日志中，但仍然建议记录下来。你可以这样作出记录：
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    因为这类更改十分重要，所以 <code>[YANKED]</code> 标签应该非常醒目。此外，用方括号包围可使其更易被程序识别。
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    是否可以重写更新日志？
+
+  %p
+    当然可以。总会有合适的原因去改进更新日志。我也时常提
+    Pull Request 来为那些未维护更新日志的开源项目加入缺失的发布信息。
+
+  %p
+    另外，你很有可能发现自己忘记记录一个重大功能更新。这种情况下显然应该重写更新日志。
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    如何贡献？
+
+  %p
+    本文档并非<strong>真理</strong>。而是我深思熟虑后的建议，以及我收集的信息与样例。
+
+  %p
+    希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。
+
+  %p
+    所以欢迎<strong>#{link_to "贡献", data.links.repo}</strong>。
+
+.press
+  %h3 访谈
+  %p
+    我在 #{link_to "The Changelog podcast", data.links.thechangelog}
+    上讲述了为何维护者与贡献者应关心更新日志，以及这个项目背后的动机。

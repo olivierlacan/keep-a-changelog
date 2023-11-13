@@ -16,9 +16,8 @@ version: 0.3.0
 
   Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Cuál es el propósito del change log?
 
   Para que les sea más fácil a los usuarios y contribuyentes, ver exactamente los cambios notables que se han hecho entre cada versión (o versiones) del proyecto.
@@ -40,7 +39,7 @@ version: 0.3.0
   - Fácil de conectar a cualquier sección (de ahí a que se use Markdown sobre texto plano).
   - Una sub-sección por versión.
   - Lista los releases en un orden inversamente-cronológico (el más reciente en la parte superior).
-  - Escribe todas las fechas en formato `AAAA-MM-DD`. (Ejemplo: `2012-06-02` en vez de `2 JUN 2012`.) Es internacional, [sensible](http://xkcd.com/1179/), e independientemente del lenguaje que usemos.
+  - Escribe todas las fechas en formato `AAAA-MM-DD`. (Ejemplo: `2012-06-02` en vez de `2 JUN 2012`.) Es internacional, [sensible](https://xkcd.com/1179/), e independientemente del lenguaje que usemos.
   - Se menciona explícitamente si el proyecto sigue la convención del [Versionamiento Semántico][semver].
   - Cada versión debería:
     - Indicar su fecha de lanzamiento en el formato anterior.
@@ -112,7 +111,7 @@ version: 0.3.0
 
   Las yanked releases son versiones que tuvieron que ser retiradas a causa de un grave error o problema de seguridad. A menudo, estas versiones ni siquiera aparecen en los change logs, y tendrían que aparecer. Así es como se muestran:
 
-  `## 0.0.5 - 2014-12-13 [YANKED]`
+  `## [0.0.5] - 2014-12-13 [YANKED]`
 
   La sección `[YANKED]` va entre corchetes por una razón, es importante que destaque, y el echo de estar rodeado por corchetes lo hace más fácil de localizar programáticamente.
 
@@ -128,14 +127,14 @@ version: 0.3.0
 
   [**Contribuye**][gh].
 
-  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
-  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
-  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
-  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md
   [gemnasium]: https://gemnasium.com/
   [gh]: https://github.com/olivierlacan/keep-a-changelog
   [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-  [semver]: http://semver.org/
-  [shields]: http://shields.io/
-  [thechangelog]: http://5by5.tv/changelog/127
+  [semver]: https://semver.org/
+  [shields]: https://shields.io/
+  [thechangelog]: https://changelog.com/podcast/127
   [vandamme]: https://github.com/tech-angels/vandamme/

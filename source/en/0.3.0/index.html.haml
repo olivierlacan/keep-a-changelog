@@ -16,9 +16,8 @@ version: 0.3.0
   A change log is a file which contains a curated, chronologically ordered
   list of notable changes for each version of a project.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### What’s the point of a change log?
   To make it easier for users and contributors to see precisely what
   notable changes have been made between each release (or version) of the project.
@@ -42,7 +41,7 @@ version: 0.3.0
   - Easy to link to any section (hence Markdown over plain text).
   - One sub-section per version.
   - List releases in reverse-chronological order (newest on top).
-  - Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](http://xkcd.com/1179/), and language-independent.
+  - Write all dates in `YYYY-MM-DD` format. (Example: `2012-06-02` for `June 2nd, 2012`.) It’s international, [sensible](https://xkcd.com/1179/), and language-independent.
   - Explicitly mention whether the project follows [Semantic Versioning][semver].
   - Each version should:
     - List its release date in the above format.
@@ -143,7 +142,7 @@ version: 0.3.0
   bug or security issue. Often these versions don't even appear in change
   logs. They should. This is how you should display them:
 
-  `## 0.0.5 - 2014-12-13 [YANKED]`
+  `## [0.0.5] - 2014-12-13 [YANKED]`
 
   The `[YANKED]` tag is loud for a reason. It's important for people to
   notice it. Since it's surrounded by brackets it's also easier to parse
@@ -170,14 +169,14 @@ version: 0.3.0
 
   So please [**pitch in**][gh].
 
-  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
-  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
-  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
-  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md
   [gemnasium]: https://gemnasium.com/
   [gh]: https://github.com/olivierlacan/keep-a-changelog
   [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-  [semver]: http://semver.org/
-  [shields]: http://shields.io/
-  [thechangelog]: http://5by5.tv/changelog/127
+  [semver]: https://semver.org/
+  [shields]: https://shields.io/
+  [thechangelog]: https://changelog.com/podcast/127
   [vandamme]: https://github.com/tech-angels/vandamme/

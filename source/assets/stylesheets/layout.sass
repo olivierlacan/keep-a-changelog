@@ -1,0 +1,66 @@
+@import "variables"
+@import "mixins"
+
+$break-small: em(480px)
+$break-medium: em(800px)
+$break-large: em(1024px)
+
+body
+  margin: 0
+
+article
+  margin: 0 auto
+  max-width: 65em
+
+.main
+  background-color: $color-white
+
+  div
+    padding-left: 5%
+    padding-right: 5%
+    padding-bottom: 3em
+
+  div.title
+
+    aside
+      background-color: lighten(desaturate($color-bark, 5%), 10%)
+      margin-bottom: -3em
+      margin-left: -5%
+      margin-right: -5%
+      margin-top: 3em
+      padding: 2em 5%
+      text-align: center
+
+    aside &
+      background-position: top
+
+article p
+  font-size: 1.3em
+
+article code
+  border-radius: 0.315em
+  border: 1px solid #ccc
+  padding: 0 0.3em 0.040em
+  font-size: 0.9em
+
+article ul
+  font-size: 1.1em
+  line-height: 1.5
+  list-style-type: square
+  padding-left: 1em
+
+@include xl
+  body
+    margin: 8px
+
+  .main
+    margin-bottom: 2em
+
+    div:not(.header)
+      padding-left: 20%
+      padding-right: 20%
+
+      aside
+        margin-left: -35%
+        margin-right: -35%
+        padding: 2em 20%

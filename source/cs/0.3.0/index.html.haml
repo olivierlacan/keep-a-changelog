@@ -1,0 +1,176 @@
+---
+description: Udržuj Changelog
+title: Udržuj Changelog
+language: cs
+version: 0.3.0
+---
+
+:markdown
+  # Udržuj CHANGELOG
+
+  ## Nenech své kamarády házet do CHANGELOGů™ git logy.
+
+  Version **#{current_page.metadata[:page][:version]}**
+
+  ### Co je to changelog?
+  Changelog je soubor, který obsahuje organizovaný, chronologicky seřazený
+  seznam podstatných změn pro každou verzi daného projektu.
+
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+
+  ### Co je smyslem changelogu?
+  Usnadnit uživatelům a přispěvatelům přesné zobrazení podstatných změn, které
+  byly provedeny mezi jednotlivými vydáními (verzemi) daného projektu.
+
+  ### Proč by mi na tom mělo záležet?
+  Protože softwarové nástroje jsou pro lidi. Pokud ti na tom nezáleží, tak proč
+  přispíváš do open source projektů? Určitě musí být v tvém úžasném malém mozku
+  alespoň jádro (haha!) ochoty.
+
+  [Bavil jsem se s Adamem Stacoviakem a Jerodem Santem na podcastu The Changelog][thechangelog]
+  (název sedí, co?) o tom proč by na tom mělo vedoucím a přispěvatelům projektů
+  záležet a o tom jaká motivace je za tímto projektem. Jestli máš chvilku času
+  (1:06), stojí to za poslech.
+
+  ### Co dělá changelog dobrým?
+  Výborná otázka, díky za ni.
+
+  Dobrý changelog se drří těchto principů:
+
+  - Je psaný pro lidi, ne pro stroje, takže čitelnost je zásadní.
+  - Dá se v něm jednoduše odkázat na libovolnou sekci (proto raději Markdown než plain text).
+  - Jedna pod-sekce za verzi.
+  - Seznam vydání ve zpětně-chronologickém pořadí (nejnovější navrchu).
+  - Psaní všech dat ve formátu `RRRR-MM-DD`. (Příklad: `2012-06-02` pro `2. červen 2012`.) Je to mezinárodní, [rozumné](https://xkcd.com/1179/) a nezávislé na jazyce.
+  - Explicitní uvedení toho, zda projekt dodržuje [Semantické Verzování][semver].
+  - Každá verze by měla:
+    - Uvádět datum vydání ve výše uvedeném formátu.
+    - Seskupovat změny tak, aby popisovaly dopad na projekt, a to následovně:
+      - `Added` pro nové funkce.
+      - `Changed` pro změny v aktuálním fungování.
+      - `Deprecated` pro dříve stabilní funkce, které budou odstraněny v novějších vydáních a nejsou podporovány.
+      - `Removed` pro funkce odstraněné v daném vydání.
+      - `Fixed` pro opravené chyby.
+      - `Security` pro navržení aktualizace uživatelům v případě bezpečnostních problémů.
+
+
+  ### Jak mohu vyžadovanou snahu snížit na minimum?
+  Vždycky měj nahoře sekci `"Unreleased"`, ve které budou schromažďovány všechny
+  změny.
+
+  To plní hned dva účely:
+
+  - Lidé uvidí, jaké změny mohou očekávat v následujících vydáních
+  - V momentu vydání stačí změnit `"Unreleased"` na číslo verze a přidat nový nadpis `"Unreleased"` na vrch dokumentu.
+
+  ### Co zaručeně rozbrečí jednorožce?
+  Dobrá… Tak si to povíme.
+
+  - **Zkopírování diffu commit logů.** To prostě nedělej, nikomu to nepomůže.
+  - **Nezdůraznění dále nepodporovaných funcí.** Když lidé aktualizují na novou verzi, mělo by jim být bolestivě jasné, že se něco rozbije.
+  - **Data v regionálních formátech.** V USA píšou lidé nejdříve měsíc ("06-02-2012" pro 2. června 2012, což nedává *vůbec žádný* smysl), zatímco mnoho lidí ve zbytku světa píše roboticky vypadající verzi "2 June 2012", ale vyslovují to jinak. "2012-06-02" je logicky napsané od největšího po nejmenší celek, nepřekrývá se nesrozumitelně s jinými fomáty data a je to [ISO standard](http://www.iso.org/iso/home/standards/iso8601.htm). Proto je to doporučovaný formát dat pro changelogy.
+
+  To ale není všechno. Pomoz mi sbírat jednorožčí slzy tím že
+  [otevřeš issue][issues] nebo pull request.
+
+  ### Existuje pro formát changelogů nějaký standard?
+  Bohužel ne. Klid. Vím, že se zuřivě snažíš najít ten odkaz na GNU návod jakým
+  stylem psát changelog, nebo onen dvouodstavcový GNU NEWS soubor, který si říká
+  "směrnice". Zmíněný GNU návod je sice hezký začátek, ale je smutně naivní. Být
+  naivní není nic špatného, ale když lidé potřebují radu, málokdy to někomu
+  pomůže. Obzvlášť, když existuje tolik situací a okrajových případů, se kterými
+  se musí člověk nějak poprat.
+
+  Tento projekt
+  [obsahuje něco, co se doufám jednou stane lepší konvencí pro CHANGELOGy][CHANGELOG].
+  Nemyslím si, že je momentální stav dostatečně dobrý, a jsem toho názoru, že
+  jsme jako komunita schopni vymyslet lepší konvence, pokud se budeme snažit
+  vybrat ty nejlepší praktiky z doopravdových softwarových projektů.
+  Porozhlédněte se a mějte na paměti, že
+  [diskuse a návrhy na zlepšení jsou vítány][issues]!
+
+  ### Jak by se měl changelog jmenovat?
+  Inu, pokud jste to už nepoznali z příkladu výše, `CHANGELOG.md` je zatím ta
+  nejlepší konvence.
+
+  Některé projekty používají `HISTORY.txt`, `HISTORY.md`, `History.md`,
+  `NEWS.txt`, `NEWS.md`, `News.txt`, `RELEASES.txt`, `RELEASE.md`,
+  `releases.md`, apod.
+
+  Je v tom binec. Všecha tato jména jen komplikují život lidem, kteří se ten
+  dokument snaží najít.
+
+  ### Proč lidé jednoduše nepoužívají `git log` diff?
+  Protože diffy logů jsou plné šumu — přirozeně. Nebyly by vyhovujícím
+  changelogem ani v hypotetickém projektu vedeném dokonalými lidmi, kteří nikdy
+  nedělají překlepy, nikdy nezapomínají commitnout nové soubory a nikdy jim
+  neunikne ani ta nejmenší část refactoringu. Cílem commitu je dokumentovat
+  jeden miniaturní krok při procesu, ve kterém se kód vyvíjí z jedné podoby do
+  druhé. Cílem changelogu je dokumentovat podstatné změny mezi těmito podobami.
+
+  Stějně jako je rozdíl mezi dobrými komentáři a samotným kódem, je také rozdíl
+  mezi changelogem a commitlogem: jeden říká *proč* a druhý jak.
+
+  ### Mohou být changelogy automaticky parsované?
+  Je to složité, jelikož se lidé uchylují k nejrůznějším formátům a názvům
+  souborů.
+
+  [Vandamme][vandamme] je Ruby gem vytvořený týmem [Gemnasium][gemnasium], který
+  parsuje mnoho (ale ne všechny) changelogů open source projektů.
+
+  ### Proč používáš jednou "CHANGELOG" a jindy "changelog"?
+  "CHANGELOG" je název samotného souboru. Je to třichu křiklavé, ale to už je
+  historická konvence, kterou se řídí mnoho open source projektů. Příklady
+  podobných souborů mohou být [`README`][README], [`LICENSE`][LICENSE] a
+  [`CONTRIBUTING`][CONTRIBUTING].
+
+  Název psaný kapitálkami (díky kterému se ve starých operačních systémech
+  soubory držely na nejvyšších pozicích) je používán za účelem upoutání
+  pozornosti. Vzhledem k tomu, že se jedná o důležitá metadata o projektu a
+  mohla by být užitečná pro kohokoliv, kdo ho chce používat nebo do něho
+  přispívat, podobně [open source projektovým odznakům][shields].
+
+  Když mluvím o "changelogu", myslím tím funkci tohoto souboru: logování změn.
+
+  ### Jak potom vypadají ta vydání, která byla zpětně stažena?
+  Zpětně stažená vydání jsou verze, které musely být zpětně odebrány kvůli vážné
+  chybě nebo bezpečnostním rizikům. Tyto verze se často v changelogu ani
+  neobjevují, ale měly by. Zobrazovat by se měli takto:
+
+  `## [0.0.5] - 2014-12-13 [YANKED]`
+
+  Tag `[YANKED]` je naschvál křiklavý. Je důležité, aby si ho lidé všimli. Díky
+  tomu, že je v hranatých závorkách je take jednoduší ho parsovat programem.
+
+  ### Měl by se někdy changelog přepisovat?
+  Jasně. Vždy se najde dobrý důvod pro zlepšení changelogu. Sám často otevírám
+  pull requesty pro přidání chybějících vydání v open source projektech s
+  neudržovanými changelogy.
+
+  Je také možné, že zjistíš, že v poznámkách k verzi ve tvém projektu není
+  zmíněna změna, která něco mohla rozbít. V tom případě jě samozřejmě důležité,
+  aby byl changelog aktualizován.
+
+  ### Jak mohu přidat ruku k dílu?
+  Tento dokument není čistá **pravda**; je to můj názor, nad kterým jsem opatrně
+  uvažoval, v kombinaci s informacemi a příklady, které se mi podařilo získat.
+  I přesto, že uvádím vlastní [CHANGELOG][] v [repozitáři na GitHubu][gh],
+  naschvál jsem nevytvořil náležité *vydání* nebo jasný seznam pravidel, kterými
+  se někdo má řídit (jako to například udělali na [SemVer.org][semver]).
+
+  Je tomu tak proto, že chci aby komunita došla ke společné shodě. Já sám jsem
+  toho názoru, že diskuse je důležitou součástí finálního výsledku.
+
+  Takže prosím [**přispějte**][gh] svou trochou do mlýna.
+
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md
+  [gemnasium]: https://gemnasium.com/
+  [gh]: https://github.com/olivierlacan/keep-a-changelog
+  [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
+  [semver]: https://semver.org/
+  [shields]: https://shields.io/
+  [thechangelog]: https://changelog.com/podcast/127
+  [vandamme]: https://github.com/tech-angels/vandamme/

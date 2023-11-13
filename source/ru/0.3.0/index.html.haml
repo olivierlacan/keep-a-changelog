@@ -18,9 +18,8 @@ version: 0.3.0
   хронологическом порядке список значимых изменений для каждой версии проекта с
   открытым исходным кодом.
 
-%pre.changelog= File.read("CHANGELOG.md")
+  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-:markdown
   ### Для чего нужен лог изменений?
 
   Чтобы пользователи и контрибьюторы могли с меньшими усилиями точно
@@ -52,7 +51,7 @@ version: 0.3.0
   - Релизы перечислены в обратном хронологическом порядке (самые новые –
     сверху).
   - Пишите все даты в формате `YYYY-MM-DD`. (Например: `2012-06-02` для даты `2
-    июня 2012`.) Он международный, [рациональный](http://xkcd.com/1179/), и
+    июня 2012`.) Он международный, [рациональный](https://xkcd.com/1179/), и
     независим от языка.
   - Ясно указывает, использует ли проект [Семантическое
     Версионирование][semver].
@@ -171,7 +170,7 @@ version: 0.3.0
   бага или проблемы безопасности в них. Часто такие версии даже не упоминаются
   в логах изменений. А должны. И вот как вам следует их упоминать:
 
-  `## 0.0.5 - 2014-12-13 [YANKED]`
+  `## [0.0.5] - 2014-12-13 [YANKED]`
 
   Тег `[YANKED]` такой «громкий» не просто так. Очень важно, чтобы люди его
   заметили. А из-за того, что он окружён скобками, его легче определить
@@ -200,14 +199,14 @@ version: 0.3.0
 
   Так что, пожалуйста, [**участвуйте**][gh].
 
-  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
-  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/master/CONTRIBUTING.md
-  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/master/LICENSE
-  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/master/README.md
+  [CHANGELOG]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+  [CONTRIBUTING]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md
+  [LICENSE]: https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE
+  [README]: https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md
   [gemnasium]: https://gemnasium.com/
   [gh]: https://github.com/olivierlacan/keep-a-changelog
   [issues]: https://github.com/olivierlacan/keep-a-changelog/issues
-  [semver]: http://semver.org/
-  [shields]: http://shields.io/
-  [thechangelog]: http://5by5.tv/changelog/127
+  [semver]: https://semver.org/
+  [shields]: https://shields.io/
+  [thechangelog]: https://changelog.com/podcast/127
   [vandamme]: https://github.com/tech-angels/vandamme/

@@ -1,0 +1,291 @@
+---
+description: Udržuj changelog
+title: Udržuj changelog
+language: sk
+version: 1.0.0
+---
+.header
+  .title
+    %h1 Udržuj changelog
+    %h2 Nenechaj kamarátov sypať git logy do changelogov.
+
+  = link_to data.links.changelog do
+    Verzia
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Čo je to changelog?
+
+  %p
+    Changelog je súbor obsahujúci organizovaný, chronologicky usporiadaný
+    zoznam významných zmien pre každú verziu daného projektu.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    Prečo udržiavať changelog?
+
+  %p
+    Aby používatelia a prispievatelia presne vedeli, aké podstatné zmeny
+    sa udiali medzi jednotlivými vydaniami (alebo verziami) projektu.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Kto potrebuje changelog?
+
+  %p
+    Ľudia. Či už konzumenti, alebo vývojári, koncoví používatelia softvéru
+    sú ľudské bytosti, ktorým záleží na tom, čo softvér obsahuje. Keď sa
+    softvér zmení, ľudia chcú vedieť prečo a ako.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Ako vytvorím dobrý changelog?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Hlavné princípy
+
+  %ul
+    %li
+      Changelogy sú <em>pre ľudí</em>, nie stroje.
+    %li
+      Changelog by mal obsahovať záznam pre každú jednu verziu.
+    %li
+      Rovnaké typy zmien by mali byť zoskupené.
+    %li
+      Mala by existovať možnosť odkazovať na jednotlivé verzie a sekcie.
+    %li
+      Posledná verzia je uvedená na prvom mieste.
+    %li
+      Pre každú verziu je uvedený dátum jej vydania.
+    %li
+      Uveď tiež, že sa držíš #{link_to "sémantického verziovania", data.links.semver}.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Typy zmien
+
+  %ul
+    %li
+      %code Added
+      pre nové funkcie.
+    %li
+      %code Changed
+      pre zmeny existujúcej funkcie.
+    %li
+      %code Deprecated
+      pre funkcie, ktoré budú čoskoro odstránené.
+    %li
+      %code Removed
+      pre odstránené funkcie.
+    %li
+      %code Fixed
+      pre opravy chýb.
+    %li
+      %code Security
+      v prípade bezpečnostných zraniteľností.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Ako minimalizovať úsilie vynaložené na udržiavanie changelogu?
+
+  %p
+    Udržuj <code>Unreleased</code> sekciu na začiatku changelogu
+    pre nadchádzajúce zmeny.
+
+  %p Má to dva dôvody:
+
+  %ul
+    %li
+      Ľudia môžu vidieť, aké zmeny môžu očakávať v ďalších vydaniach
+    %li
+      V čase vydávania novej verzie môžeš presunúť zmeny z
+      <code>Unreleased</code> sekcie do sekcie novej verzie
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Môžu byť changelogy zlé?
+
+  %p Áno. Tu je hneď niekoľko spôsobov, ako môžu byť neužitočné.
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Diffy z commit logu
+
+  %p
+    Použitie diffov z commit logu ako changelog nie je dobrý nápad:
+    sú plné balastu. Veci ako merge commity, commity s nejasnými názvami,
+    zmeny dokumentácie a pod.
+
+  %p
+    Účel commitu je dokumentovanie kroku v evolúcii zdrojového kódu.
+    Niektoré projekty commity prečisťujú, iné nie.
+
+  %p
+    Účelom changelogu je dokumentovanie významných zmien, často naprieč
+    viacerými commitmi, a jasne ich komunikovať koncovému používateľovi.
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Ignorovanie oznámenia zastaralých funkcií
+
+  %p
+    Keď používatelia prechádzajú na novšiu verziu, musí byť jasné, čo sa
+    rozbije. Mala by pre nich existovať možnosť prejsť na verziu so zoznamom
+    zastaralých funkcií, tieto funkcie odstrániť a následne prejsť na verziu,
+    kde sú tieto zastaralé funkcie už odstránené.
+
+  %p
+    Ak už nič iné, tak aspoň uveď zastaralé, odstránené funkcie a všetky zmeny,
+    ktoré môžu niečo rozbiť, do changelogu.
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Mätúce dátumy
+
+  %p
+    Regionálne formáty dátumov sa líšia naprieč svetom a často je zložité
+    nájsť formát dátumu, ktorý by bol prívetivý a intuitívny pre všetkých
+    používateľov. Výhodou dátumu vo formáte <code>2017-07-17</code> je poradie
+    od najväčšej jednotky po najmenšiu: rok, mesiac, deň. Tento formát sa tiež
+    neprekrýva s inými formátmi, ktoré zamieňajú pozíciu dňa a mesiaca. Kvôli
+    týmto dôvodom spolu s faktom, že ide o #{link_to "ISO štandard", data.links.isodate},
+    je tento formát odporučený pre záznamy v changelogu.
+
+  %aside
+    Je toho však viac. Pomôž mi zozbierať tieto antivzory
+    = link_to "otvorením issue", data.links.issue
+    alebo pull requestom.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Často kladené otázky
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Existuje štandardný formát pre changelog?
+
+  %p
+    Nie. Existuje GNU príručka pre štýl changelogu alebo dvojodstavcová
+    GNU "smernica" pre NEWS súbor. Obe sú však nevhodné či nedostatočné.
+
+  %p
+    Tento projekt sa snaží byť
+    = link_to "lepšou konvenciou pre changelog.", data.links.changelog
+    Vychádza z pozorovania a zozbierania osvedčených postupov komunity okolo projektov s otvoreným zdrojovým kódom.
+
+  %p
+    Zdravá kritika, diskusia a návrhy na zlepšenie
+    = link_to "sú vítané.", data.links.issue
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Ako by mal byť súbor changelogu pomenovaný?
+
+  %p
+    Nazvi ho <code>CHANGELOG.md</code>. Niektoré projekty používajú tiež
+    <code>HISTORY</code>, <code>NEWS</code> alebo <code>RELEASES</code>.
+
+  %p
+    Je jednoduché myslieť si, že názov changelogu nie je taký dôležitý.
+    Prečo však sťažovať koncovému používateľovi hľadanie významných zmien?
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    A čo GitHub Releases?
+
+  %p
+    Je to skvelá iniciatíva. Služba #{link_to "Releases", data.links.github_releases} môže byť použitá
+    pre premenu git tagov (napríklad tagu <code>v1.0.0</code>) na bohaté
+    poznámky k vydaniam manuálnym pridávaním týchto poznámok alebo získaním
+    správ z anotovaných git tagov a vytvorením poznámok k vydaniu z nich.
+
+  %p
+    GitHub Releases vytvorí neprenosný changelog, ktorý môže byť zobrazený
+    používateľom v rámci GitHubu. Je možné ich upraviť na veľmi podobný štýl,
+    aký navrhuje projekt Udržuj changelog, tento postup však býva trochu
+    zložitejší.
+
+  %p
+    Súčasná verzia GitHub Releases tiež nie je ľahko objaviteľná koncovým
+    používateľom, na rozdiel od klasického súboru s názvom napísaným veľkými
+    písmenami (<code>README</code>, <code>CONTRIBUTING</code> atď.). Ďalším
+    menším problémom je, že v súčasnosti nepodporuje odkazy na commit logy
+    medzi jednotlivými vydaniami.
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Môžu byť changelogy automaticky parsované?
+
+  %p
+    Je to zložité, pretože ľudia používajú rôzne formáty a názvy súborov.
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} je Ruby gem vytvorený tímom
+    Gemnasium, ktorý parsuje mnohé (ale nie všetky)
+    changelogy projektov s otvoreným zdrojovým kódom.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    A čo spätne stiahnuté vydania?
+
+  %p
+    Stiahnuté vydania sú verzie, ktoré museli byť neskôr spätne odobraté
+    kvôli vážnej chybe alebo bezpečnostným rizikám. Tieto verzie sa často
+    v changelogu ani neobjavia. Ale mali by sa. Zobrazovať by sa mali takto:
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    Tag <code>[YANKED]</code> kričí naschvál. Je dôležité, aby si ho ľudia
+    všimli. Keďže je uzavretý zátvorkami, je tiež jednoduchšie ho programovo
+    parsovať.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Mal by sa changelog niekedy prepisovať?
+
+  %p
+    Samozrejme. Vždy sa nájde dobrý dôvod na vylepšenie changelogu. Sám často
+    otváram pull requesty pre pridanie chýbajúceho vydania projektov
+    s otvoreným kódom a neudržiavaným changelogom.
+
+  %p
+    Tiež môže nastať situácia, že v poznámkach k vydaniu určitej verzie sa
+    zabudla spomenúť podstatná zmena. V takom prípade je samozrejme dôležité
+    tento changelog aktualizovať.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Ako môžem prispieť?
+
+  %p
+    Tento dokument nie je úplná <strong>pravda</strong>; je mojím starostlivo
+    zváženým názorom spolu s informáciami a príkladmi, ktoré som zozbieral.
+
+  %p
+    Je tomu tak preto, aby komunita dosiahla určitý konsenzus. Verím, že
+    diskusia je rovnako dôležitá ako samotný výsledok.
+
+  %p
+    Takže, prosím, <strong>#{link_to "prilož ruku k dielu", data.links.repo}</strong>.
+
+.press
+  %h3 Rozhovory
+  %p
+    Zúčastnil som sa podcastu #{link_to "The Changelog", data.links.thechangelog},
+    kde sme sa rozprávali o tom, prečo by sa správci projektov a prispievatelia
+    mali zaujímať o changelogy a tiež o motivácii za týmto projektom.

@@ -1,122 +1,125 @@
-$base-font-family: "Carrois Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif
-$source-code-font-family: "Source Code Pro", monospace
+@import "variables"
+@import "mixins"
+@import "layout"
+@import "anchors"
+@import "sections"
 
 html
-  font: 14px/1.4 $base-font-family
-  color: #333
+  font: 16px/1.4 $base-font-family
+  color: #342828
+  background-color: $color-sand
 
 a
-  color: #E10FCE
-  font-weight: bold
+  color: $color-ocre
   text-decoration: none
 
 a:hover
   text-decoration: underline
 
 h1
-  color: #C647BF
-  font-size: 3.8em
+  color: $color-ocre
+  font-size: 3.2em
   font-weight: bold
-  font-family: $source-code-font-family
+  font-family: $base-font-family
   margin-bottom: 0
   line-height: 1
+  text-transform: lowercase
 
 h2
-  margin-top: 0
+  font-size: 1.2em
+  margin-top: 0.2em
   margin-bottom: 2em
 
 h1, h2
-  text-align: center
+  text-align: left
 
 h3
   font-size: 1.3em
-  font-family: $source-code-font-family
-  margin-bottom: 0
+  font-family: $base-font-family
+  margin-bottom: 1em
   position: relative
   padding-left: .1em
 
 h3:hover .anchor, h3:focus .anchor
   display: block
 
-.anchor
-  display: none
-  font-style: normal
-  font-weight: normal
-  position: absolute
-  right: 100%
-  top: 0
-
-.anchor::before
-  content: '¶'
-
-.anchor:hover
-  text-decoration: none
-
 h3 ~ p
   margin-top: 0
 
-article
-  margin: 0 auto
-  width: 640px
-
-article p
-  font-size: 1.3em
-
-article code
-  border-radius: 0.315em
-  border: 1px solid #ccc
-  padding: 0 0.3em 0.040em
-  font-size: 0.9em
-
-article img
-  margin: 0 auto
-  max-width: 100%
-  text-align: center
-  display: block
-  box-shadow: rgba(0, 0, 0, 0.37) 0px 0px 6px
-  border-radius: 7px
-  padding: 0.4em 0.9em
-
-article > ul
-  font-size: 1.2em
-  padding-left: 0
-
-article > ul ul
-  padding-left: 1em
-
-article ul
-  line-height: 1.5
-  list-style-position: inside
-  list-style-type: square
-
-footer
-  font-size: .7em
-  border-top: 1px solid #e9e6e1
-  margin-top: 1em
-  margin-bottom: 2em
+h1, h2, h3
+  margin-top: 0
   padding-top: 1em
 
-.license
-  float: left
+.about
+  text-align: center
 
 .about
-  float: right
-
-.about, .license
   margin-top: 0
 
-.changelog
-  border: 1px solid #aaa
-  margin: 0 0.5em
-  padding: 1em
-  overflow-x: auto
-  height: 20em
+header
+  .mark
+    float: left
+    margin-top: 3em
+    margin-left: 1.5em
+    clear: both
+    width: 80px
+
+    @inclde sm
+      margin-top: 1em
+      margin-left: 1.5em
+      width: 100px
+
+    @include md
+      width: 120px
+      margin-top: 2em 
+      margin-bottom: 2em 
+      margin-left: 3em
+
+    @include lg
+      width: 150px
+      clear: none
+      margin-top: 3em 
+      margin-bottom: 4em 
+
+    @include xl
+      width: 150px
+
+  .locales
+    margin-top: 2em
+    margin-right: 3em
+    margin-left: 1em
+    font-size: 65%
+  
+    @include lg
+      margin-bottom: -2em
+      margin-top: 2em
+
+  .newer, .last-version-notice
+    padding: 1rem
+    background-color: rgba(0, 0, 0, 1)
+    color: #efefef
+
+.footer
+  line-height: 2.2
+
+  .mark
+    float: left
+
+.locales
+  float: right
+  background-color: rgba(255, 255, 255, .5)
+  border-radius: .5rem
+  padding: .7rem 1rem
 
 .locales li
+  float: right
+  font-size: 0.7em
   display: inline
   list-style-type: none
-  padding-right: 20px
   white-space: nowrap
 
 pre, code
+  background-color: $color-light-sand
   font-family: $source-code-font-family
+code
+  white-space: nowrap

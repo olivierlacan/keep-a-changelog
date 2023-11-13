@@ -1,0 +1,19 @@
+@import "variables"
+
+.anchor
+  display: none
+  font-style: normal
+  font-weight: normal
+  position: absolute
+  right: 100%
+  top: 0
+
+.anchor::before
+  line-height: 3.2
+  content: "∞"
+  color: $color-ocre
+  padding-right: 0.1em
+
+.anchor:hover
+  a
+    text-decoration: none

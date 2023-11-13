@@ -1,0 +1,273 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: ja
+version: 1.0.0
+---
+.header
+  .title
+    %h1 変更履歴を記録する
+    %h2 友達にGitログを変更履歴に移させないでください。
+
+  = link_to data.links.changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    変更履歴とは何ですか？
+
+  %p
+    変更履歴とは、プロジェクトの各バージョンに対する注目に値する変更点の時系列順に並べられたリストを含むファイルです。
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    なぜ変更履歴を記録するのですか？
+
+  %p
+    プロジェクトの各リリース（またはバージョン）の間で、どのような注目すべき変更が行われたのかをユーザーおよびコントリビューターが正確に把握しやすくするためです。
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    誰が変更履歴を必要としますか？
+
+  %p
+    人々です。消費者であろうと開発者であろうと、ソフトウェアのエンドユーザーはソフトウェアの内容を気にする人間です。ソフトウェアに変更があるとき、人々は変更の理由や方法を知りたいのです。
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    良い変更履歴を作るには？
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    基本理念
+
+  %ul
+    %li
+      変更履歴は機械のためではなく<em>人間のため</em>にあります。
+    %li
+      バージョンごとに作成する必要があります。
+    %li
+      同じ種類の変更をグループ化する必要があります。
+    %li
+      バージョンとセクションはリンク可能である必要があります。
+    %li
+      最新バージョンは先頭にきます。
+    %li
+      各バージョンのリリース日を表示されます。
+    %li
+      #{link_to "Semantic Versioning", data.links.semver} に従っているかどうか言及してください。
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types 変更の種類
+
+  %ul
+    %li
+      %code Added
+      新機能について。
+    %li
+      %code Changed
+      既存機能の変更について。
+    %li
+      %code Deprecated
+      間もなく削除される機能について。
+    %li
+      %code Removed
+      今回で削除された機能について。
+    %li
+      %code Fixed
+      バグ修正について。
+    %li
+      %code Security
+      脆弱性に関する場合。
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    変更履歴のメンテナンスに必要な労力を減らすにはどうすればよいですか？
+
+  %p
+    今後の変更を追跡するには <code>Unreleased</code> セクションを上部に配置します。
+
+  %p これには2つの目的があります。
+
+  %ul
+    %li
+      人々は、今後のリリースでどのような変更が予想されるのかを確認することができます。
+    %li
+      リリース時には、 <code>Unreleased</code> セクションにある変更を
+      新しいリリースバージョンのセクションに移動することができます。
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    変更履歴は悪くなる可能性がありますか？
+
+  %p はい。いくつかの方法があります。
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    コミットログの差分
+
+  %p
+    変更履歴としてコミットログの差分を使用することはよくない考えです。それはノイズに満ちています。
+    マージコミット、あいまいな表題のコミット、ドキュメントの変更などがあります。
+
+  %p
+    コミットの目的はソースコードの進化における一歩を文書化することです。
+    コミットをクリーンアップするプロジェクトもあれば、そうでないプロジェクトもあります。
+
+  %p
+    変更履歴エントリの目的は、しばしば複数のコミットにまたがって注目すべき違いを文書化し、
+    それらをエンドユーザーに明確に伝えることです。
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    非推奨の無視
+
+  %p
+    人々があるバージョンから別のバージョンにアップグレードするとき、いつ何かが壊れるのは痛いほど明らかです。
+    廃止予定をリストアップしたバージョンにアップグレードし、廃止予定のものを削除してから、
+    廃止予定が削除されるバージョンにアップグレードすることが可能です。
+
+  %p
+    あなたが他に何もしないのであれば、変更履歴に非推奨、削除、破壊的変更を列挙してください。
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    分かりにくい日付
+
+  %p
+    地域の日付形式は世界中で異なり、誰にとっても直感的でヒューマンフレンドリーな日付形式を見つけるのは困難です。
+    <code>2017-07-17</code> のように形式化された日付の利点は、年、月、日のように最大から最小の単位の順序に従うということです。
+    この形式は、月と日の位置を切り替える地域の形式とは異なり、他の日付形式とあいまいに重なり合うこともありません。
+    これらの理由、およびこの日付形式が #{link_to "ISO standard", data.links.isodate} であるという事実が、それが変更履歴エントリに推奨される日付形式である理由です。
+
+  %aside
+    これだけではありません。
+    = link_to "Issueを開く", data.links.issue
+    か、プルリクエストにてこれらのアンチパターンの収集を手伝ってください。
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    よくある質問と回答
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    変更履歴の標準的な書式がありますか？
+
+  %p
+    実はありません。 #{link_to "GNU changelog style guide", data.links.gnustyle} 、
+    もしくは #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews} "guideline" があります。
+    どちらも不十分であり不適切です。
+
+  %p
+    このプロジェクトは
+    = link_to "より良い変更履歴の規約", data.links.changelog
+    になることを目指しています。
+    それはオープンソースコミュニティの良い習慣を観察し、それらを集めることから来ます。
+
+  %p
+    健全な批判、議論、そして改善のための提案を
+    = link_to "歓迎しています。", data.links.issue
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    変更履歴ファイルにはどのような名前をつけるべきですか？
+
+  %p
+    <code>CHANGELOG.md</code> と呼びます。いくつかのプロジェクトでは
+    <code>HISTORY</code> や <code>NEWS</code> 、 <code>RELEASES</code> が使われています。
+
+  %p
+    あなたの変更履歴ファイルの名前はそれほど重要でないと考えることは容易ですが、
+    なぜエンドユーザーが一貫して注目の変更を見つけることを難しくするのですか？
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    GitHubリリースはどうですか？
+
+  %p
+    素晴らしい主導権です。 #{link_to "Releases", data.links.github_releases} は手動でリリースノートを追加することによって、
+    単純なGitタグ(例えば <code>v1.0.0</code> という名前のタグ)をリッチなリリースノートに変換するために使用することができます。
+
+  %p
+    Githubリリースは、Githubのコンテキスト内でのみユーザーに表示できる移植性のない変更履歴を作成します。
+    それらをKeep a Changelogの書式のように見せることは可能ですが、もう少し複雑になる傾向があります。
+
+  %p
+    Githubリリースの現在のバージョンも、典型的な大文字のファイル(<code>README</code> や <code>CONTRIBUTING</code>など)
+    とは異なり、おそらくエンドユーザーにはあまり発見できません。
+    もう一つの目立たない問題は、インターフェースが現在各リリース間のコミット履歴へのリンクを提供していないということです。
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    変更履歴を自動的に解析できますか？
+
+  %p
+    人々は大きく異なるフォーマットやファイル名に従うので、難しいです。
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} はGemnasiumチームによって作成されたRuby gemであり、
+    （全てではないが）多くのオープンソースプロジェクトの変更履歴を解析します。
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    ヤンクリリースについてはどうですか？
+
+  %p
+    ヤンクリリースは、深刻なバグやセキュリティの問題のために
+    引っ張られなければならなかったバージョンです。
+    多くの場合、これらのバージョンは変更履歴に表示されません。表示しないべきである。
+    次のように表示すべきである。
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    <code>[YANKED]</code> は大きな理由です。それに気付くことは人々にとって重要です。
+    大括弧で囲まれているので、プログラムで解析するのも簡単です。
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    変更履歴を書き換える必要がありますか？
+
+  %p
+    もちろんです。変更履歴を改善するためには、常にもっともな理由があります。
+    メンテナンスされていない変更履歴のあるオープンソースプロジェクトに
+    不足しているリリースを追加するためのプルリクエストが常に開かれています。
+
+  %p
+    バージョンのノートにある破壊的変更への対応を忘れたことを発見するかもしれません。
+    この場合、変更履歴を更新することは明らかに重要です。
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    どうやって貢献できますか？
+
+  %p
+    この文書は <strong>真実</strong> ではありません。
+    私が集めた情報と例と共に、慎重に考えられた私の意見です。
+
+  %p
+    私たちのコミュニティが合意に達することを望んでいるからです。
+    私は議論が最終結果と同じくらい重要であると思います。
+
+  %p
+    なので <strong>#{link_to "協力", data.links.repo}</strong> してください。
+
+.press
+  %h3 座談
+  %p
+    私は #{link_to "The Changelog podcast", data.links.thechangelog} で、メンテナーやコントリビューターがなぜ変更履歴を気にすべきなのか、
+    そしてこのプロジェクトの背後にある動機について話しました。

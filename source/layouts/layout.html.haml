@@ -1,51 +1,97 @@
+// Variables
+- latest_version = current_page.metadata[:page][:version] == $last_version
+- legacy_version = current_page.metadata[:page][:version] == "0.3.0"
+- language_code = current_page.metadata[:page][:language]
+- versions = Dir.entries("source/#{language_code}") - %w[. ..]
+- current_version = current_page.metadata[:page][:version]
+- newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
+
 !!! 5
-%html
-  %head{lang: current_page.data.language}
-    %meta{charset: 'utf-8'}
-    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    %meta{name: 'description', content: current_page.data.description}
+%html{ lang: current_page.data.language }
+  %head
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ name: 'description', content: current_page.data.description }
 
     -# Open Graph
 
-    %meta{property: 'og:article:publisher', content: config.publisher_url}
-    %meta{property: 'og:title', content: current_page.data.title}
-    %meta{property: 'og:type', content: 'article'}
-    %meta{property: 'og:url', content: path_to_url(current_page.url)}
-    %meta{property: 'og:description', content: current_page.data.description}
+    %meta{ property: 'og:article:publisher', content: config.publisher_url }
+    %meta{ property: 'og:title', content: current_page.data.title }
+    %meta{ property: 'og:type', content: 'article' }
+    %meta{ property: 'og:url', content: path_to_url(current_page.url) }
+    %meta{ property: 'og:description', content: current_page.data.description }
+    %meta{ property: 'og:image', content: image_path("logo.png") }
     = yield_content :og
 
     -# Icons
 
-    %link{rel: 'canonical', href: path_to_url(current_page.url)}
+    %link{ rel: "shortcut icon", type: "image/x-icon", href: image_path("favicon.ico") }
+    %link{ rel: 'canonical', href: path_to_url(current_page.url) }
 
     %title= current_page.data.title
-    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Carrois+Gothic|Source+Code+Pro:400,700'
-    = stylesheet_link_tag 'application'
 
-    :javascript
-      try{Typekit.load();}catch(e){}
+    %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
+    %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
+
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Muli:400,700&display=swap"
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap"
+    - if legacy_version
+      = stylesheet_link_tag 'legacy'
+    - else
+      = stylesheet_link_tag 'application'
+    = javascript_include_tag 'all', defer: true
 
   %body
     %article
-      %header{role: "banner"}
-        %nav.locales{role: "navigation"}
-          %ul
+      %header
+        - if !latest_version
+          - if versions.include?($last_version)
+            .newer
+              - if $languages[language_code][:new]
+                = "#{$languages[language_code][:new]}: "
+              - else
+                There is a newer version available:
+              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
+          - else
+            - if $languages[language_code][:notice]
+              .last-version-notice= $languages[language_code][:notice]
+            - else
+              .last-version-notice
+                The latest version (#{$last_version}) is not yet available in
+                this language but
+                = link_to "you can read it in English", "/en/#{$last_version}"
+                for now and
+                = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
+                it.
+
+        %nav.locales{ role: "navigation" }
+          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Language: "
+          %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
-              %li= link_to "#{language.last} [#{language.first}]", "/#{language.first}/",
-              { rel: "alternate", lang: "#{language}", hreflang: "#{language}" }
+              - selected = language_code == language.first
+              - if available_translation = available_translation_for(language)
+                %option{ selected: selected, label: available_translation, value: language.first }
+                  = available_translation
+        - if !legacy_version
+          = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
-      .main{role: "main"}= yield
+      .main{ role: "main" }
+        = yield
 
-      %footer.clearfix{role: "banner"}
-        %p.license
-          This project is
-          #{link_to "MIT Licensed", "http://choosealicense.com/licenses/mit/"}.
-        %p.about
-          #{link_to "Typed", "https://github.com/olivierlacan/keep-a-changelog/"}
-          with trepidation by
-          #{link_to "Olivier Lacan", "http://olivierlacan.com/"} from
-          #{link_to "Code School", "https://www.codeschool.com/"}.
+        %footer.footer.clearfix{ role: "contentinfo" }
+          = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
+
+          %p.about
+            This project is
+            = link_to "MIT Licensed", "https://choosealicense.com/licenses/mit/"
+            \ //
+            = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
+            by
+            = link_to "Olivier Lacan", "https://olivierlacan.com/"
+            = link_to "", "https://ruby.social/@olivierlacan", rel: "me", "aria-label" => "Link to Olivier Lacan's Mastodon account"
+            \ //
+            Designed by Tyler Fortune
 
   - unless config.gauges_id.blank?
     :javascript

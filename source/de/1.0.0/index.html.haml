@@ -1,0 +1,307 @@
+---
+description: Keep a Changelog
+title: Keep a Changelog
+language: de
+version: 1.0.0
+---
+.header
+  .title
+    %h1 Führe ein CHANGELOG
+    %h2 Lass Deine Freunde nicht CHANGELOGs mit git logs füllen.
+
+  = link_to data.links.changelog do
+    Version
+    %strong= current_page.metadata[:page][:version]
+
+  %pre.changelog{ lang: "en" }= File.read("CHANGELOG.md")
+
+.answers
+  %h3#what
+    %a.anchor{ href: "#what", aria_hidden: "true" }
+    Was ist ein Changelog?
+
+  %p
+    Ein Changelog ist eine Datei, die eine handgepflegte, chronologisch sortierte
+    Liste aller erheblichen Änderungen enthält, die zwischen einzelnen Veröffentlichungen
+    (oder Versionen) des Projekts umgesetzt wurden.
+
+  %h3#why
+    %a.anchor{ href: "#why", aria_hidden: "true" }
+    Was ist der Zweck eines Changelogs?
+
+  %p
+    Ein Changelog soll es  Benutzern und Entwicklern einfacher machen, gerade die
+    beachtenswerten Änderungen, die zwischen Veröffentlichungen (oder Versionen)
+    des Projekts gemacht wurden, zu sehen.
+
+  %h3#who
+    %a.anchor{ href: "#who", aria_hidden: "true" }
+    Wer braucht schon ein Changelog?
+
+  %p
+    Menschen brauchen es. Seien es Konsumenten oder Entwickler, die Endnutzer der Software
+    sind Menschen, die es interessiert, was in der Software passiert. Wenn sich die Software ändert,
+    dann wollen diese Menschen wissen, wie und warum sie sich ändert.
+
+.good-practices
+  %h3#how
+    %a.anchor{ href: "#how", aria_hidden: "true" }
+    Wie erstelle ich einen guten Changelog?
+
+  %h4#principles
+    %a.anchor{ href: "#principles", aria_hidden: "true" }
+    Grundlegende Prinzipien
+
+  %ul
+    %li
+      Changelogs werden <em>für Menschen</em> geschrieben, nicht für Maschinen.
+    %li
+      Für jede einzelne Version sollte es einen Eintrag geben.
+    %li
+      Änderungen der selben Art sollten in Bereiche gruppiert werden.
+    %li
+      Versionen und Bereiche sollten verlinkt werden können.
+    %li
+      Die neuste Version kommt als erstes.
+    %li
+      Das Release-Datum jeder Version muss angegeben sein.
+    %li
+      Gib an, ob du dich an die #{link_to "Semantische Versionierung", data.links.semver} hältst.
+
+  %a.anchor{ href: "#types", aria_hidden: "true" }
+  %h4#types Arten von Änderungen
+
+  %ul
+    %li
+      %code Added
+      für neue Features.
+    %li
+      %code Changed
+      für Änderungen an der bestehenden Funktionalität.
+    %li
+      %code Deprecated
+      für Features, die in zukünftigen Versionen entfernt werden.
+    %li
+      %code Removed
+      für Deprecated-Features, die in dieser Version entfernt wurden.
+    %li
+      %code Fixed
+      für alle Bug-Fixes.
+    %li
+      %code Security
+      um Benutzer im Fall von geschlossenen Sicherheitslücken zu einer Aktualisierung aufzufordern.
+
+.effort
+
+  %h3#effort
+    %a.anchor{ href: "#effort", aria_hidden: "true" }
+    Wie kann ich den Aufwand der Changelog-Pflege so klein wie möglich halten?
+
+  %p
+    Habe immer einen <code>Unreleased</code>-Abschnitt über der neusten Version,
+    um zukünftige Änderungen im Auge zu behalten.
+
+  %p Dies hat zwei Vorteile:
+
+  %ul
+    %li
+      Menschen können sehen, welche Änderungen sie mit dem nächsten Release zu erwarten haben.
+    %li
+      Wenn der Zeitpunkt für den Release gekommen ist, kannst du den Inhalt des
+      <code>Unreleased</code>-Abschnitts in den neuen Release-Abschnitt verschieben.
+
+.bad-practices
+  %h3#bad-practices
+    %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
+    Kann man beim Changelog etwas falsch machen?
+
+  %p Ja. Hier sind einige Dinge, die eher unbrauchbar sind.
+
+
+  %h4#log-diffs
+    %a.anchor{ href: "#log-diffs", aria_hidden: "true" }
+    Einen Diff von Commit-Logs ausgeben
+
+  %p
+    Commit-Logs in einem Changelog sind eine schlechte Idee: Sie beinhalten lauter
+    überflüssige Dinge, wie Merge-Commit, Commits mit schlechten Bezeichnungen,
+    Änderungen an der Dokumentation, etc.
+
+  %p
+    Der Sinn eines Commits ist die Entwicklung des Source Code zu dokumentieren.
+    Manche Projekte haben saubere Commits, andere nicht.
+
+  %p
+    Der Sinn eines Changelog-Eintrags ist die Dokumentation der merkbaren
+    Unterschiede, die meist über mehrere Commits hinweg entstanden sind, dem
+    Endnutzer klar und deutlich zu kommunizieren.
+
+
+  %h4#ignoring-deprecations
+    %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
+    Features ohne Deprecation-Warnung entfernen
+
+  %p
+    Wenn der Endnutzer auf eine neue Version upgradet, sollte ihm unmissverständlich
+    klar gemacht werden, wenn etwas kaputt gehen wird. Es sollte immer möglich sein,
+    zu einer Version zu upgraden, die die zu entfernenden Features auflistet, um so
+    in seinem Source Code auf diese Features zu verzichten. Anschließend sollte man
+    auf eine Version upgraden können, in der die Features entfernt wurden.
+
+  %p
+    Auch wenn du sonst nichts geändert hast, liste trotzdem alle veralteten und
+    entfernten Features, sowie jede funktionsgefährdende Änderung in deinem Changelog auf.
+
+
+  %h4#confusing-dates
+    %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
+    Verwirrende Datumsformate
+
+  %p
+    In den USA setzen die Menschen den Monat an den Anfang eines Datums
+    (<code>06-02-2012</code> für den 2. Juni 2012), wohingegen viele Menschen
+    im Rest der Welt ein roboterhaft aussehendes <code>2 June 2012</code>
+    schreiben, aber es völlig unterschiedlich aussprechen. <code>2012-06-02</code>
+    folgt der Logik vom größten zum kleinsten Wert, kann nicht mit anderen Formaten
+    verwechselt werden und ist ein #{link_to "ISO Standard", data.links.isodate}. Deshalb
+    ist es das empfohlene Datumsformat in Changelogs.
+
+  %aside
+    Es gibt sicher noch mehr. Hilf mir alle schlechten Tipps zu sammeln, indem du
+    = link_to "ein Issue eröffnest", data.links.issue
+    oder einen Pull-Request erstellst.
+
+.frequently-asked-questions
+  %h3#frequently-asked-questions
+    %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
+    Häufig gestellte Fragen
+
+  %h4#standard
+    %a.anchor{ href: "#standard", aria_hidden: "true" }
+    Gibt es ein standardisiertes Changelog-Format?
+
+  %p
+    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
+    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
+    unzureichend.
+
+  %p
+    Dieses Projekt versucht
+    = link_to "eine bessere Changelog Konvention zu sein.", data.links.changelog
+    Dazu beobachten wir bewährte Praktiken aus der Open Source Community
+    und tragen sie zusammen.
+
+  %p
+    Gesunde Kritik, Diskussionen und Verbesserungsvorschläge
+    = link_to "sind herzlich willkommen.", data.links.issue
+
+
+  %h4#filename
+    %a.anchor{ href: "#filename", aria_hidden: "true" }
+    Wie sollte die Changelog-Datei benannt sein?
+
+  %p
+    Nenne sie <code>CHANGELOG.md</code>. Manche Projekte verwenden auch
+    <code>HISTORY</code>, <code>NEWS</code> oder <code>RELEASES</code>.
+
+  %p
+    Man könnte zwar meinen, dass der Name der Changelog-Datei keine große
+    Bedeutung hat, aber warum sollte man es den Endnutzern nicht einfach machen,
+    die Änderungen des Projekts zu finden, indem man einen einheitlichen Namen
+    verwendet?
+
+
+  %h4#github-releases
+    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
+    Was ist mit GitHub Releases?
+
+  %p
+    Prinzipiell sind #{link_to "GitHub Releases", data.links.github_releases} eine gute Sache.
+    Sie können dazu benutzt werden, um einfache Git Tags (zum Beispiel einen
+    Tag namens <code>v1.0.0</code>) mit vielen Hinweisen zum Release
+    auszustatten, indem man sie manuell bearbeitet, oder die Änderungen in eine
+    Git Tag Nachricht schreibt, wo sie durch GitHub automatisch in die
+    Release-Notizen gesetzt werden.
+
+  %p
+    Leider lassen sich GitHub Releases aber nicht so einfach exportieren
+    und sind nur über GitHub selber zu lesen. Man kann sie auch so gestalten,
+    dass sie dem Keep a Changelog Format sehr ähnlich sehen, aber dazu betreibt
+    man in der Regel einen größeren Aufwand.
+
+  %p
+    Die derzeitige Version der GitHub Releases sind außerdem nicht leicht
+    durch die Endnutzer zu finden, ganz im Gegenteil zu den typischerweise
+    großgeschriebenen Dateien (<code>README</code>, <code>CONTRIBUTING</code>, etc.).
+    Ein weiterer kleiner Nachteil ist, dass das Web Interface zurzeit keinen Link
+    anbietet, um die Commits zwischen einzelnen Releases miteinander zu vergleichen.
+
+
+  %h4#automatic
+    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+    Können Changelogs automatisiert ausgelesen werden?
+
+  %p
+    Es ist schwierig, weil Menschen meist unterschiedliche Formate und
+    Dateinamen verwenden.
+
+  %p
+    #{link_to "Vandamme", data.links.vandamme} ist ein Ruby gem erstellt vom
+    Gemnasium Team, das viele (aber nicht alle)
+    Changelogs von Open-Source-Projekten einlesen kann.
+
+
+  %h4#yanked
+    %a.anchor{ href: "#yanked", aria_hidden: "true" }
+    Wie sieht es mit zurückgezogenen Releases aus?
+
+  %p
+    Sogenannte "Yanked Releases" sind Versionen, welche wegen schwerwiegenden
+    Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen
+    diese im Changelog gar nicht vor, aber das sollten sie. So solltest Du diese
+    Versionen darstellen:
+
+  %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
+
+  %p
+    Der <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,
+    dass sie von Menschen bemerkt werden. Weil er von eckigen Klammern umgeben ist,
+    kann man sie außerdem einfacher automatisiert einlesen.
+
+
+  %h4#rewrite
+    %a.anchor{ href: "#rewrite", aria_hidden: "true" }
+    Sollte ich ein Changelog je umschreiben?
+
+  %p
+    Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne
+    regelmässig Pull Requests, um Open-Source-Projekten mit schlecht gewarteten
+    Changelogs fehlende Releases hinzuzufügen.
+
+  %p
+    Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer
+    Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog
+    zu aktualisieren.
+
+
+  %h4#contribute
+    %a.anchor{ href: "#contribute", aria_hidden: "true" }
+    Wie kann ich mithelfen?
+
+  %p
+    Dieses Dokument ist nicht die <strong>Wahrheit</strong>. Es ist meine wohl überlegte Meinung,
+    zusammen mit von mir zusammengetragenen Informationen und Beispielen.
+
+  %p
+    So möchte ich erreichen, dass die Community einen Konsens findet. Ich glaube, dass
+    die Disskussion genauso wichtig ist wie das Endergebnis.
+
+  %p
+    Also bitte <strong>#{link_to "bring dich ein", data.links.repo}</strong>.
+
+.press
+  %h3 Gespräche
+  %p
+    Ich habe im #{link_to "The Changelog podcast", data.links.thechangelog} darüber gesprochen,
+    warum sich Entwickler und Mitwirkende eines Projekts um ein Changelog kümmern sollten,
+    sowie meine Motivationen hinter diesem Projekt erklärt.
