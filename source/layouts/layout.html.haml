@@ -30,6 +30,8 @@
     %link{ rel: "shortcut icon", type: "image/x-icon", href: image_path("favicon.ico") }
     %link{ rel: 'canonical', href: path_to_url(current_page.url) }
 
+    %link{ rel: "me", href: "https://ruby.social/@olivierlacan" }
+
     %title= current_page.data.title
 
     %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
@@ -90,7 +92,6 @@
             = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
             by
             = link_to "Olivier Lacan", "https://olivierlacan.com/"
-            = link_to "", "https://ruby.social/@olivierlacan", rel: "me", "aria-label" => "Link to Olivier Lacan's Mastodon account"
             \ //
             Designed by Tyler Fortune
 
