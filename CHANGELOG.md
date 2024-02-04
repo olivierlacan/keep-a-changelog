@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- v1.1 German Translation
 - v1.1 Spanish translation.
 - v1.1 Italian translation.
 - v1.1 Polish translation.

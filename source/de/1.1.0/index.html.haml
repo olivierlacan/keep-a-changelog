@@ -132,7 +132,7 @@ version: 1.1.0
     Manche Projekte haben saubere Commits, andere nicht.
 
   %p
-    Der Sinn eines Changelog-Eintrags ist die Dokumentation der merkbaren
+    Der Sinn eines Changelog-Eintrags ist die Dokumentation der erwähnenswerten
     Unterschiede, die meist über mehrere Commits hinweg entstanden sind, dem
     Endnutzer klar und deutlich zu kommunizieren.
 
@@ -158,13 +158,15 @@ version: 1.1.0
     Verwirrende Datumsformate
 
   %p
-    In den USA setzen die Menschen den Monat an den Anfang eines Datums
-    (<code>06-02-2012</code> für den 2. Juni 2012), wohingegen viele Menschen
-    im Rest der Welt ein roboterhaft aussehendes <code>2 June 2012</code>
-    schreiben, aber es völlig unterschiedlich aussprechen. <code>2012-06-02</code>
-    folgt der Logik vom größten zum kleinsten Wert, kann nicht mit anderen Formaten
-    verwechselt werden und ist ein #{link_to "ISO Standard", data.links.isodate}. Deshalb
-    ist es das empfohlene Datumsformat in Changelogs.
+    Regionale Datumsformate variieren über den Erdball und es ist oft schwer
+    ein menschenlesbares Datumsformat zu finden, das sich für jeden intuitiv anfühlt.
+    Der Vorteil von Datumsformaten wie <code>2017-07-17</code> ist, dass sie von der
+    größten zur kleinsten Zeiteinheit sortiert dargestellt werden: Jahre, Monate und Tage.
+    Dieses Format überschneidet sich auch nicht uneindeutig mit anderen Datumsformaten,
+    wie manche andere, regionale Formate die Stelle der Monate und Tage vertauschen.
+    Diese Gründe, und der Umstand, dass dieses Datumsformat
+    ein #{link_to "ISO Standard", data.links.isodate} ist, sind Argumente wieso dieses
+    Format für Changelog-Einträge empfohlen ist.
 
   %h4#inconsistent-changes
     %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
@@ -180,7 +182,7 @@ version: 1.1.0
     besitzen heißt, ihn konsistent zu aktualisieren.
 
   %aside
-    Es gibt sicher noch mehr. Hilf mir alle schlechten Tipps zu sammeln, indem du
+    Es gibt sicher noch mehr. Hilf mir alle schlechten Angewohnheiten zu sammeln, indem du
     = link_to "ein Issue eröffnest", data.links.issue
     oder einen Pull-Request erstellst.
 
@@ -194,8 +196,8 @@ version: 1.1.0
     Gibt es ein standardisiertes Changelog-Format?
 
   %p
-    Leider nicht. Es gibt zwar den GNU Changelog Styleguide oder den
-    zwei Absätze langen GNU NEWS-Datei "Leitfaden". Beide sind aber
+    Leider nicht. Es gibt zwar den #{link_to "GNU Changelog Styleguide", data.links.gnustyle} oder den
+    #{link_to "zwei Absätze langen GNU NEWS-Datei "Leitfaden"", data.links.gnunews}. Beide sind aber
     unzureichend.
 
   %p
@@ -277,8 +279,8 @@ version: 1.1.0
   %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
-    Der <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,
-    dass sie von Menschen bemerkt werden. Weil er von eckigen Klammern umgeben ist,
+    Die Kennzeichnung <code>[YANKED]</code> ist nicht ohne Grund großgeschrieben. Es ist wichtig,
+    dass sie von Menschen bemerkt wird. Weil sie von eckigen Klammern umgeben ist,
     kann man sie außerdem einfacher automatisiert einlesen.
 
 
