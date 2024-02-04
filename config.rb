@@ -84,6 +84,10 @@ $languages = {
     Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
   },
+  "ro" => {
+    name: 'română',
+    new: "O nouă versiune este disponibilă"
+  }
   "ru"    => {
     name: "Pyccкий",
     notice: "Самая последняя версия (#{$last_version}) ещё пока не переведена на
