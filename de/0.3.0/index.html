@@ -1,4 +1,267 @@
-<!DOCTYPE html> <html lang='de'> <head> <meta charset='utf-8'> <meta content='IE=edge' http-equiv='X-UA-Compatible'> <meta content='width=device-width, initial-scale=1.0' name='viewport'> <meta content='Keep a Changelog' name='description'> <meta content='https://www.facebook.com/olivier.lacan.5' property='og:article:publisher'> <meta content='Keep a Changelog' property='og:title'> <meta content='article' property='og:type'> <meta content='https://keepachangelog.com/de/0.3.0/' property='og:url'> <meta content='Keep a Changelog' property='og:description'> <meta content='/assets/images/keep-a-changelog-opengraph-851f2d20.png' property='og:image'> <link href='/assets/images/favicon.ico' rel='shortcut icon' type='image/x-icon'> <link href='https://keepachangelog.com/de/0.3.0/' rel='canonical'> <title>Keep a Changelog</title> <link href='https://fonts.googleapis.com' rel='preconnect'> <link crossorigin='true' href='https://fonts.gstatic.com' rel='preconnect'> <link href="//fonts.googleapis.com/css?family=Muli:400,700&amp;display=swap" rel="stylesheet"/> <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&amp;display=swap" rel="stylesheet"/> <link href="/assets/stylesheets/legacy-8d0d490e.css" rel="stylesheet"/> <script src="/assets/javascripts/all-466c2b8a.js" defer="defer"></script> </head> <body> <article> <header> <div class='newer'> There is a newer version available: <a href="/de/1.1.0">Deutsch 1.1.0</a> </div> <nav class='locales' role='navigation'> <label for='language-select' title='Pick one of the 28 translations'>Languages (28):</label> <select id='language-select' name='language'> <option label='1.0.0 العربية' value='ar'> 1.0.0 العربية </option> <option label='1.1.0 Čeština' value='cs'> 1.1.0 Čeština </option> <option label='1.1.0 Dansk' value='da'> 1.1.0 Dansk </option> <option label='1.1.0 Deutsch' selected value='de'> 1.1.0 Deutsch </option> <option label='1.1.0 English' value='en'> 1.1.0 English </option> <option label='1.1.0 Español' value='es-ES'> 1.1.0 Español </option> <option label='1.1.0 Français' value='fr'> 1.1.0 Français </option> <option label='1.0.0 Hrvatski' value='hr'> 1.0.0 Hrvatski </option> <option label='1.0.0 Indonesia' value='id-ID'> 1.0.0 Indonesia </option> <option label='1.1.0 Italiano' value='it-IT'> 1.1.0 Italiano </option> <option label='1.1.0 日本語' value='ja'> 1.1.0 日本語 </option> <option label='1.1.0 Norsk (Bokmål)' value='nb'> 1.1.0 Norsk (Bokmål) </option> <option label='1.1.0 Nederlands' value='nl'> 1.1.0 Nederlands </option> <option label='1.1.0 polski' value='pl'> 1.1.0 polski </option> <option label='1.1.0 Português do Brasil' value='pt-BR'> 1.1.0 Português do Brasil </option> <option label='1.1.0 română' value='ro'> 1.1.0 română </option> <option label='1.1.0 Pyccкий' value='ru'> 1.1.0 Pyccкий </option> <option label='1.0.0 Slovenčina' value='sk'> 1.0.0 Slovenčina </option> <option label='1.0.0 ქართული' value='ka'> 1.0.0 ქართული </option> <option label='1.1.0 Slovenščina' value='sl'> 1.1.0 Slovenščina </option> <option label='1.0.0 Srpski' value='sr'> 1.0.0 Srpski </option> <option label='1.1.0 Svenska' value='sv'> 1.1.0 Svenska </option> <option label='1.1.0 Türkçe' value='tr-TR'> 1.1.0 Türkçe </option> <option label='1.1.0 Українська' value='uk'> 1.1.0 Українська </option> <option label='1.1.0 简体中文' value='zh-CN'> 1.1.0 简体中文 </option> <option label='1.1.0 正體中文' value='zh-TW'> 1.1.0 正體中文 </option> <option label='1.0.0 한국어' value='ko'> 1.0.0 한국어 </option> <option label='1.1.0 فارسی' value='fa'> 1.1.0 فارسی </option> </select> </nav> </header> <div class='main' role='main'> <h1>Führe ein CHANGELOG</h1> <h2>Lass Deine Freunde nicht CHANGELOGs mit git logs füllen™</h2> <p>Version <strong>#{current_page.metadata[:page][:version]}</strong></p> <h3>Was ist ein Changelog?</h3> <p>Ein Changelog ist eine Datei, welche eine handgepflegte, chronologisch sortierte Liste aller erheblichen Änderungen enthält, die zwischen Veröffentlichungen (oder Versionen) des Projekts umgesetzt wurden.</p> <pre class="changelog">#{File.read("CHANGELOG.md")}</pre> <h3>Was ist der Zweck eines Changelogs?</h3> <p>Es Benutzern und Entwicklern einfacher zu machen, gerade die beachtenswerten Änderungen, welche zwischen Veröffentlichungen (oder Versionen) des Projekts gemacht wurden, zu sehen.</p> <h3>Warum sollte mich das kümmern?</h3> <p>Weil Software-Werkzeuge für Menschen gemacht sind. Wenn es Dich nicht kümmert, warum trägst Du dann zu Open Source bei? Wenn Du tief in Dich gehst, findest Du bestimmt einen kleinen Teil, dem das wichtig ist.</p> <p>Ich <a href="https://changelog.com/podcast/127">habe mit Adam Stacoviak and Jerod Santo im The Changelog-Podcast</a> (passt, oder?) darüber gesprochen (Englisch), weshalb sich Entwickler darum kümmern sollten und über die Beweggründe hinter diesem Projekt. Falls Du die Zeit hast (1:06), es lohnt sich, reinzuhören.</p> <h3>Was macht ein gutes Changelog aus?</h3> <p>Schön, dass Du fragst.</p> <p>Ein gutes Changelog hält sich an die folgenden Prinzipien:</p> <ul> <li>Es ist für Menschen, nicht Maschinen, gemacht, deshalb ist Lesbarkeit entscheidend.</li> <li>Es ist einfach, jeden Bereich zu verlinken (also besser Markdown als einfacher Text).</li> <li>Ein Unterkapitel pro Version.</li> <li>Liste die Releases in umgekehrt chronologischer Reihenfolge auf (neuestes zuoberst).</li> <li>Schreib alle Daten im Format <code>JJJJ-MM-TT</code>. (Beispiel: <code>2012-06-02</code> für den <code>2. Juni 2012</code>.) Es ist international, <a href="https://xkcd.com/1179/">vernünftig</a>, und sprachunabhängig.</li> <li>Erwähne explizit, ob das Projekt nach <a href="https://semver.org/">Semantic Versioning</a> geführt wird.</li> <li>Jede Version sollte: <ul> <li>Das Release-Datum im oben genannten Format auflisten.</li> <li>Änderungen wie folgt gruppieren, um ihren Einfluss auf das Projekt zu beschreiben:</li> <li><code>Added</code> für neue Features.</li> <li><code>Changed</code> für Änderungen an bestehender Funktionalität.</li> <li><code>Deprecated</code> für einst stabile Features, welche in zukünftigen Versionen entfernt werden.</li> <li><code>Removed</code> für Deprecated-Features, welche in dieser Version entfernt wurden.</li> <li><code>Fixed</code> für Bug-Fixes.</li> <li><code>Security</code> um Benutzer im Fall von Sicherheitsrisiken zu einer Aktualisierung aufzufordern.</li> </ul></li> </ul> <h3>Wie kann ich den Aufwand so klein wie möglich halten?</h3> <p>Hab immer einen <code>&quot;Unreleased&quot;</code>-Abschnitt zuoberst, um Änderungen im Auge zu behalten.</p> <p>Dies verfolgt zwei Ziele:</p> <ul> <li>Man kann sehen, welche Änderungen in den nächsten Releases zu erwarten sind</li> <li>Wenn es Zeit für den Release ist, kannst Du einfach <code>&quot;Unreleased&quot;</code> auf die Versionsnummer ändern und einen neuen <code>&quot;Unreleased&quot;</code>-Titel oben einfügen.</li> </ul> <h3>Was bringt Einhörner zum weinen?</h3> <p>Also… Schauen wir uns das an.</p> <ul> <li><strong>Einen Diff von Commit-Logs ausgeben.</strong> Mach das nicht, das hilft niemandem.</li> <li><strong>Nicht mehr unterstützte Funktionen nicht hervorzuheben.</strong> Wenn man von einer auf eine andere Version aktualisiert, sollte schmerzhaft klar sein, wenn dadurch etwas nicht mehr funktioniert.</li> <li><strong>Datum in regionalen Formaten.</strong> In den USA schreibt man den Monat zuerst (&quot;06-02-2012&quot; für den 2. Juni 2012, was <em>keinen</em> Sinn macht), während im Rest der Welt häufig ein roboterhaft aussehendes &quot;2 June 2012&quot; geschrieben, jedoch völlig anders ausgesprochen wird. &quot;2012-06-02&quot; funktioniert logisch vom grössten zum kleinsten Wert, überlagert sich nicht auf mehrdeutige Art mit anderen Datumsformaten und ist ein <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO-Standard</a>. Deshalb ist es das empfohlene Datumsformat für Changelogs</li> </ul> <p>Das war noch nicht alles. Hilf mir, diese Einhorn-Tränen zu sammeln und <a href="https://github.com/olivierlacan/keep-a-changelog/issues">eröffne ein Issue</a> oder einen Pull-Request.</p> <h3>Gibt es ein standardisiertes Changelog-Format?</h3> <p>Leider nicht. Beruhige Dich. Ich weiss, dass Du wie wild nach dem Link für den GNU Changelog Styleguide oder den zwei Absätze langen GNU NEWS-Datei &quot;Leitfaden&quot; suchst. Der GNU Styleguide ist ein guter Anfang, aber er ist leider sehr naiv. Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens ist es nicht wirklich hilfreich. Vor allem nicht, wenn es viele Spezialfälle zu beachten gibt.</p> <p>Dieses Projekt <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention</a> wird. Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community eine bessere Konvention entwickeln können, wenn wir Bewährtes aus echten Software-Projekten entnehmen. Schau Dich um und denk daran, dass <a href="https://github.com/olivierlacan/keep-a-changelog/issues">Diskussionen und Verbesserungsvorschläge sehr willkommen sind</a>!</p> <h3>Wie soll ich meine Changelog-Datei nennen?</h3> <p>Nun, falls Du es noch nicht am Beispiel oben gesehen hast, <code>CHANGELOG.md</code> ist bisher die beste Konvention.</p> <p>Einige Projekte nutzen auch <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>, <code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, etc.</p> <p>Es ist ein Chaos. Alle diese Namen machen es nur schwerer, die Datei zu finden.</p> <h3>Wieso sollte man nicht einfach ein <code>git log</code> Diff verwenden?</h3> <p>Weil log Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien zu comitten und nie einen Teil eines Refactorings übersehen. Der Zweck eines Commits ist es, einen atomaren Schritt eines Prozesses zu dokumentieren, welcher den Code von einem Zustand in den nächsten bringt. Der Zweck eines Changelogs ist es, die nennenswerten Veränderungen zwischen diesen Zuständen zu dokumentieren.</p> <p>Der Unterschied zwischen dem Changelog und dem Commit-Log ist wie der Unterschied zwischen guten Kommentaren und dem Code selbst: Das eine beschreibt das <em>wieso</em>, das andere das <em>wie</em>.</p> <h3>Kann man Changelogs automatisiert parsen?</h3> <p>Es ist nicht einfach, weil äusserst unterschiedliche Formate und Dateinamen verwendet werden.</p> <p><a href="https://github.com/tech-angels/vandamme/">Vandamme</a> ist ein Ruby gem vom <a href="https://gemnasium.com/">Gemnasium</a>-Team, welches viele (aber nicht alle) Changelogs von Open-Source-Projekten parsen kann.</p> <h3>Wieso schreibst Du mal &quot;CHANGELOG&quot; und mal &quot;Changelog&quot;?</h3> <p>&quot;CHANGELOG&quot; ist der Name der Datei selbst. Es ist ein bisschen laut, aber es ist eine historische Konvention, welche von vielen Open-Source-Projekten angewendet wird. Andere Beispiele von ähnlichen Dateien sind <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md"><code>README</code></a>, <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE"><code>LICENSE</code></a> und <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p> <p>Die Grossschreibung (welche in alten Betriebssystemen dafür gesorgt hat, dass die Dateien zuerst aufgelistet wurden) wird verwendet, um die Aufmerksamkeit auf diese Dateien zu lenken. Da sie wichtige Metadaten über das Projekt enthalten, können sie wichtig für jeden sein, der das Projekt gerne benutzen oder mitentwickeln möchte, ähnlich wie <a href="https://shields.io/">Open-Source-Projekt-Badges</a>.</p> <p>Wenn ich über ein &quot;Changelog&quot; spreche, dann meine ich die Funktion der Datei: das Festhalten von Änderungen.</p> <h3>Wie sieht es mit zurückgezogenen Releases aus?</h3> <p>Sogenannte &quot;Yanked Releases&quot; sind Versionen, welche wegen schwerwiegenden Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen diese im Changelog gar nicht vor. Das sollten sie aber. So solltest Du diese darstellen:</p> <p><code>## [0.0.5] - 2014-12-13 [YANKED]</code></p> <p>Das <code>[YANKED]</code>-Tag ist aus einem guten Grund laut. Es ist wichtig, dass es wahrgenommen wird. Dass es von Klammern umfasst ist, vereinfacht auch das automatisierte Parsen.</p> <h3>Sollte ich ein Changelog je umschreiben?</h3> <p>Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne regelmässig Pull Requests um Open-Source-Projekten mit schlecht gewarteten Changelogs fehlende Releases hinzuzufügen.</p> <p>Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog zu aktualisieren.</p> <h3>Wie kann ich mithelfen?</h3> <p>Dieses Dokument ist nicht die <strong>Wahrheit</strong>; Es ist meine wohl überlegte Meinung, zusammen mit von mir zusammengetragenen Informationen und Beispielen. Obwohl ich im <a href="https://github.com/olivierlacan/keep-a-changelog">GitHub-Repository</a> ein <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">CHANGELOG</a> führe, habe ich keine echten <em>Releases</em> oder klare zu befolgenden Regeln geschrieben (wie dies zum Beispiel <a href="https://semver.org/">SemVer.org</a> tut).</p> <p>Das ist so, weil ich möchte, dass die Community sich einig wird. Ich glaube, dass die Diskussion genau so wichtig wie das Endresultat ist.</p> <p>Deshalb <a href="https://github.com/olivierlacan/keep-a-changelog"><strong>pack bitte mit an</strong></a>.</p> <footer class='footer clearfix' role='contentinfo'> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="30" height="30" class="mark" alt=""/> <p class='about'> This project is <a href="https://choosealicense.com/licenses/mit/">MIT Licensed</a> // <a href="https://github.com/olivierlacan/keep-a-changelog/">Created & maintained</a> by <a href="https://olivierlacan.com/">Olivier Lacan</a> <a href="https://ruby.social/@olivierlacan" rel="me" aria-label="Link to Olivier Lacan's Mastodon account"></a> // Designed by Tyler Fortune </p> </footer> </div> </article> </body> <script>
+<!DOCTYPE html> <html lang='de'> <head> <meta charset='utf-8'> <meta content='IE=edge' http-equiv='X-UA-Compatible'> <meta content='width=device-width, initial-scale=1.0' name='viewport'> <meta content='Lass Deine Freunde nicht CHANGELOGs mit git logs füllen' name='description'> <meta content='https://www.facebook.com/olivier.lacan.5' property='og:article:publisher'> <meta content='Führe ein CHANGELOG' property='og:title'> <meta content='article' property='og:type'> <meta content='https://keepachangelog.com/de/0.3.0/' property='og:url'> <meta content='Lass Deine Freunde nicht CHANGELOGs mit git logs füllen' property='og:description'> <meta content='https://keepachangelog.com/assets/images/keep-a-changelog-opengraph-851f2d20.png' property='og:image'> <link href='/assets/images/favicon.ico' rel='shortcut icon' type='image/x-icon'> <link href='https://keepachangelog.com/de/0.3.0/' rel='canonical'> <title>Führe ein CHANGELOG</title> <link href='https://fonts.googleapis.com' rel='preconnect'> <link crossorigin='true' href='https://fonts.gstatic.com' rel='preconnect'> <link href="//fonts.googleapis.com/css?family=Muli:400,700&amp;display=swap" rel="stylesheet"/> <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&amp;display=swap" rel="stylesheet"/> <link href="/assets/stylesheets/legacy-8d0d490e.css" rel="stylesheet"/> <script src="/assets/javascripts/all-466c2b8a.js" defer="defer"></script> </head> <body> <article> <header> <div class='newer'> There is a newer version available: <a href="/de/1.1.0">Deutsch 1.1.0</a> </div> <nav class='locales' role='navigation'> <label for='language-select' title='Pick one of the 28 translations'>Languages (28):</label> <select id='language-select' name='language'> <option label='1.0.0 العربية' value='ar'> 1.0.0 العربية </option> <option label='1.1.0 Čeština' value='cs'> 1.1.0 Čeština </option> <option label='1.1.0 Dansk' value='da'> 1.1.0 Dansk </option> <option label='1.1.0 Deutsch' selected value='de'> 1.1.0 Deutsch </option> <option label='1.1.0 English' value='en'> 1.1.0 English </option> <option label='1.1.0 Español' value='es-ES'> 1.1.0 Español </option> <option label='1.1.0 Français' value='fr'> 1.1.0 Français </option> <option label='1.0.0 Hrvatski' value='hr'> 1.0.0 Hrvatski </option> <option label='1.0.0 Indonesia' value='id-ID'> 1.0.0 Indonesia </option> <option label='1.1.0 Italiano' value='it-IT'> 1.1.0 Italiano </option> <option label='1.1.0 日本語' value='ja'> 1.1.0 日本語 </option> <option label='1.1.0 Norsk (Bokmål)' value='nb'> 1.1.0 Norsk (Bokmål) </option> <option label='1.1.0 Nederlands' value='nl'> 1.1.0 Nederlands </option> <option label='1.1.0 polski' value='pl'> 1.1.0 polski </option> <option label='1.1.0 Português do Brasil' value='pt-BR'> 1.1.0 Português do Brasil </option> <option label='1.1.0 română' value='ro'> 1.1.0 română </option> <option label='1.1.0 Pyccкий' value='ru'> 1.1.0 Pyccкий </option> <option label='1.0.0 Slovenčina' value='sk'> 1.0.0 Slovenčina </option> <option label='1.0.0 ქართული' value='ka'> 1.0.0 ქართული </option> <option label='1.1.0 Slovenščina' value='sl'> 1.1.0 Slovenščina </option> <option label='1.0.0 Srpski' value='sr'> 1.0.0 Srpski </option> <option label='1.1.0 Svenska' value='sv'> 1.1.0 Svenska </option> <option label='1.1.0 Türkçe' value='tr-TR'> 1.1.0 Türkçe </option> <option label='1.1.0 Українська' value='uk'> 1.1.0 Українська </option> <option label='1.1.0 简体中文' value='zh-CN'> 1.1.0 简体中文 </option> <option label='1.1.0 正體中文' value='zh-TW'> 1.1.0 正體中文 </option> <option label='1.0.0 한국어' value='ko'> 1.0.0 한국어 </option> <option label='1.1.0 فارسی' value='fa'> 1.1.0 فارسی </option> </select> </nav> </header> <div class='main' role='main'> <h1>Führe ein CHANGELOG</h1> <h2>Lass Deine Freunde nicht CHANGELOGs mit git logs füllen</h2> Version <strong>0.3.0</strong> <h3>Was ist ein Changelog?</h3> <p>Ein Changelog ist eine Datei, welche eine handgepflegte, chronologisch sortierte Liste aller erheblichen Änderungen enthält, die zwischen Veröffentlichungen (oder Versionen) des Projekts umgesetzt wurden.</p> <pre class="changelog"># Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- v1.1 Brazilian Portuguese translation.
+- v1.1 German Translation
+- v1.1 Spanish translation.
+- v1.1 Italian translation.
+- v1.1 Polish translation.
+- v1.1 Ukrainian translation.
+
+### Changed
+
+- Use frontmatter title &amp; description in each language version template
+- Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
+  image that will render properly (although in English for all languages)
+- Fix OpenGraph title &amp; description for all languages so the title and 
+description when links are shared are language-appropriate
+
+### Removed
+
+- Trademark sign previously shown after the project description in version 
+0.3.0
+
+## [1.1.1] - 2023-03-05
+
+### Added
+
+- Arabic translation (#444).
+- v1.1 French translation.
+- v1.1 Dutch translation (#371).
+- v1.1 Russian translation (#410).
+- v1.1 Japanese translation (#363).
+- v1.1 Norwegian Bokmål translation (#383).
+- v1.1 &quot;Inconsistent Changes&quot; Turkish translation (#347).
+- Default to most recent versions available for each languages.
+- Display count of available translations (26 to date!).
+- Centralize all links into `/data/links.json` so they can be updated easily.
+
+### Fixed
+
+- Improve French translation (#377).
+- Improve id-ID translation (#416).
+- Improve Persian translation (#457).
+- Improve Russian translation (#408).
+- Improve Swedish title (#419).
+- Improve zh-CN translation (#359).
+- Improve French translation (#357).
+- Improve zh-TW translation (#360, #355).
+- Improve Spanish (es-ES) transltion (#362).
+- Foldout menu in Dutch translation (#371).
+- Missing periods at the end of each change (#451).
+- Fix missing logo in 1.1 pages.
+- Display notice when translation isn&#39;t for most recent version.
+- Various broken links, page versions, and indentations.
+
+### Changed
+
+- Upgrade dependencies: Ruby 3.2.1, Middleman, etc.
+
+### Removed
+
+- Unused normalize.css file.
+- Identical links assigned in each translation file.
+- Duplicate index file for the english version.
+
+## [1.1.0] - 2019-02-15
+
+### Added
+
+- Danish translation (#297).
+- Georgian translation from (#337).
+- Changelog inconsistency section in Bad Practices.
+
+### Fixed
+
+- Italian translation (#332).
+- Indonesian translation (#336).
+
+## [1.0.0] - 2017-06-20
+
+### Added
+
+- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
+- Version navigation.
+- Links to latest released version in previous versions.
+- &quot;Why keep a changelog?&quot; section.
+- &quot;Who needs a changelog?&quot; section.
+- &quot;How do I make a changelog?&quot; section.
+- &quot;Frequently Asked Questions&quot; section.
+- New &quot;Guiding Principles&quot; sub-section to &quot;How do I make a changelog?&quot;.
+- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).
+- German translation from [@mpbzh](https://github.com/mpbzh) &amp; [@Art4](https://github.com/Art4).
+- Italian translation from [@azkidenz](https://github.com/azkidenz).
+- Swedish translation from [@magol](https://github.com/magol).
+- Turkish translation from [@emreerkan](https://github.com/emreerkan).
+- French translation from [@zapashcanon](https://github.com/zapashcanon).
+- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
+- Polish translation from [@amielucha](https://github.com/amielucha) &amp; [@m-aciek](https://github.com/m-aciek).
+- Russian translation from [@aishek](https://github.com/aishek).
+- Czech translation from [@h4vry](https://github.com/h4vry).
+- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
+- Korean translation from [@pierceh89](https://github.com/pierceh89).
+- Croatian translation from [@porx](https://github.com/porx).
+- Persian translation from [@Hameds](https://github.com/Hameds).
+- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
+
+### Changed
+
+- Start using &quot;changelog&quot; over &quot;change log&quot; since it&#39;s the common usage.
+- Start versioning based on the current English version at 0.3.0 to help
+  translation authors keep things up-to-date.
+- Rewrite &quot;What makes unicorns cry?&quot; section.
+- Rewrite &quot;Ignoring Deprecations&quot; sub-section to clarify the ideal
+  scenario.
+- Improve &quot;Commit log diffs&quot; sub-section to further argument against
+  them.
+- Merge &quot;Why can’t people just use a git log diff?&quot; with &quot;Commit log
+  diffs&quot;.
+- Fix typos in Simplified Chinese and Traditional Chinese translations.
+- Fix typos in Brazilian Portuguese translation.
+- Fix typos in Turkish translation.
+- Fix typos in Czech translation.
+- Fix typos in Swedish translation.
+- Improve phrasing in French translation.
+- Fix phrasing and spelling in German translation.
+
+### Removed
+
+- Section about &quot;changelog&quot; vs &quot;CHANGELOG&quot;.
+
+## [0.3.0] - 2015-12-03
+
+### Added
+
+- RU translation from [@aishek](https://github.com/aishek).
+- pt-BR translation from [@tallesl](https://github.com/tallesl).
+- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).
+
+## [0.2.0] - 2015-10-06
+
+### Changed
+
+- Remove exclusionary mentions of &quot;open source&quot; since this project can
+  benefit both &quot;open&quot; and &quot;closed&quot; source projects equally.
+
+## [0.1.0] - 2015-10-06
+
+### Added
+
+- Answer &quot;Should you ever rewrite a change log?&quot;.
+
+### Changed
+
+- Improve argument against commit logs.
+- Start following [SemVer](https://semver.org) properly.
+
+## [0.0.8] - 2015-02-17
+
+### Changed
+
+- Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world
+  writes dates in a strange way.
+
+### Fixed
+
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
+
+## [0.0.7] - 2015-02-16
+
+### Added
+
+- Link, and make it obvious that date format is ISO 8601.
+
+### Changed
+
+- Clarified the section on &quot;Is there a standard change log format?&quot;.
+
+### Fixed
+
+- Fix Markdown links to tag comparison URL with footnote-style links.
+
+## [0.0.6] - 2014-12-12
+
+### Added
+
+- README section on &quot;yanked&quot; releases.
+
+## [0.0.5] - 2014-08-09
+
+### Added
+
+- Markdown links to version tags on release headings.
+- Unreleased section to gather unreleased changes and encourage note
+  keeping prior to releases.
+
+## [0.0.4] - 2014-08-09
+
+### Added
+
+- Better explanation of the difference between the file (&quot;CHANGELOG&quot;)
+  and its function &quot;the change log&quot;.
+
+### Changed
+
+- Refer to a &quot;change log&quot; instead of a &quot;CHANGELOG&quot; throughout the site
+  to differentiate between the file and the purpose of the file — the
+  logging of changes.
+
+### Removed
+
+- Remove empty sections from CHANGELOG, they occupy too much space and
+  create too much noise in the file. People will have to assume that the
+  missing sections were intentionally left out because they contained no
+  notable changes.
+
+## [0.0.3] - 2014-08-09
+
+### Added
+
+- &quot;Why should I care?&quot; section mentioning The Changelog podcast.
+
+## [0.0.2] - 2014-07-10
+
+### Added
+
+- Explanation of the recommended reverse chronological release ordering.
+
+## [0.0.1] - 2014-05-31
+
+### Added
+
+- This CHANGELOG file to hopefully serve as an evolving example of a
+  standardized open source project CHANGELOG.
+- CNAME file to enable GitHub Pages custom domain.
+- README now contains answers to common questions about CHANGELOGs.
+- Good examples and basic guidelines, including proper date formatting.
+- Counter-examples: &quot;What makes unicorns cry?&quot;.
+
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
+[0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
+[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
+[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
+[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+</pre> <h3>Was ist der Zweck eines Changelogs?</h3> <p>Es Benutzern und Entwicklern einfacher zu machen, gerade die beachtenswerten Änderungen, welche zwischen Veröffentlichungen (oder Versionen) des Projekts gemacht wurden, zu sehen.</p> <h3>Warum sollte mich das kümmern?</h3> <p>Weil Software-Werkzeuge für Menschen gemacht sind. Wenn es Dich nicht kümmert, warum trägst Du dann zu Open Source bei? Wenn Du tief in Dich gehst, findest Du bestimmt einen kleinen Teil, dem das wichtig ist.</p> <p>Ich <a href="https://changelog.com/podcast/127">habe mit Adam Stacoviak and Jerod Santo im The Changelog-Podcast</a> (passt, oder?) darüber gesprochen (Englisch), weshalb sich Entwickler darum kümmern sollten und über die Beweggründe hinter diesem Projekt. Falls Du die Zeit hast (1:06), es lohnt sich, reinzuhören.</p> <h3>Was macht ein gutes Changelog aus?</h3> <p>Schön, dass Du fragst.</p> <p>Ein gutes Changelog hält sich an die folgenden Prinzipien:</p> <ul> <li>Es ist für Menschen, nicht Maschinen, gemacht, deshalb ist Lesbarkeit entscheidend.</li> <li>Es ist einfach, jeden Bereich zu verlinken (also besser Markdown als einfacher Text).</li> <li>Ein Unterkapitel pro Version.</li> <li>Liste die Releases in umgekehrt chronologischer Reihenfolge auf (neuestes zuoberst).</li> <li>Schreib alle Daten im Format <code>JJJJ-MM-TT</code>. (Beispiel: <code>2012-06-02</code> für den <code>2. Juni 2012</code>.) Es ist international, <a href="https://xkcd.com/1179/">vernünftig</a>, und sprachunabhängig.</li> <li>Erwähne explizit, ob das Projekt nach <a href="https://semver.org/">Semantic Versioning</a> geführt wird.</li> <li>Jede Version sollte: <ul> <li>Das Release-Datum im oben genannten Format auflisten.</li> <li>Änderungen wie folgt gruppieren, um ihren Einfluss auf das Projekt zu beschreiben:</li> <li><code>Added</code> für neue Features.</li> <li><code>Changed</code> für Änderungen an bestehender Funktionalität.</li> <li><code>Deprecated</code> für einst stabile Features, welche in zukünftigen Versionen entfernt werden.</li> <li><code>Removed</code> für Deprecated-Features, welche in dieser Version entfernt wurden.</li> <li><code>Fixed</code> für Bug-Fixes.</li> <li><code>Security</code> um Benutzer im Fall von Sicherheitsrisiken zu einer Aktualisierung aufzufordern.</li> </ul></li> </ul> <h3>Wie kann ich den Aufwand so klein wie möglich halten?</h3> <p>Hab immer einen <code>&quot;Unreleased&quot;</code>-Abschnitt zuoberst, um Änderungen im Auge zu behalten.</p> <p>Dies verfolgt zwei Ziele:</p> <ul> <li>Man kann sehen, welche Änderungen in den nächsten Releases zu erwarten sind</li> <li>Wenn es Zeit für den Release ist, kannst Du einfach <code>&quot;Unreleased&quot;</code> auf die Versionsnummer ändern und einen neuen <code>&quot;Unreleased&quot;</code>-Titel oben einfügen.</li> </ul> <h3>Was bringt Einhörner zum weinen?</h3> <p>Also… Schauen wir uns das an.</p> <ul> <li><strong>Einen Diff von Commit-Logs ausgeben.</strong> Mach das nicht, das hilft niemandem.</li> <li><strong>Nicht mehr unterstützte Funktionen nicht hervorzuheben.</strong> Wenn man von einer auf eine andere Version aktualisiert, sollte schmerzhaft klar sein, wenn dadurch etwas nicht mehr funktioniert.</li> <li><strong>Datum in regionalen Formaten.</strong> In den USA schreibt man den Monat zuerst (&quot;06-02-2012&quot; für den 2. Juni 2012, was <em>keinen</em> Sinn macht), während im Rest der Welt häufig ein roboterhaft aussehendes &quot;2 June 2012&quot; geschrieben, jedoch völlig anders ausgesprochen wird. &quot;2012-06-02&quot; funktioniert logisch vom grössten zum kleinsten Wert, überlagert sich nicht auf mehrdeutige Art mit anderen Datumsformaten und ist ein <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO-Standard</a>. Deshalb ist es das empfohlene Datumsformat für Changelogs</li> </ul> <p>Das war noch nicht alles. Hilf mir, diese Einhorn-Tränen zu sammeln und <a href="https://github.com/olivierlacan/keep-a-changelog/issues">eröffne ein Issue</a> oder einen Pull-Request.</p> <h3>Gibt es ein standardisiertes Changelog-Format?</h3> <p>Leider nicht. Beruhige Dich. Ich weiss, dass Du wie wild nach dem Link für den GNU Changelog Styleguide oder den zwei Absätze langen GNU NEWS-Datei &quot;Leitfaden&quot; suchst. Der GNU Styleguide ist ein guter Anfang, aber er ist leider sehr naiv. Es ist sicher nichts falsch daran, naiv zu zu sein, aber beim Verfassen eines Leitfadens ist es nicht wirklich hilfreich. Vor allem nicht, wenn es viele Spezialfälle zu beachten gibt.</p> <p>Dieses Projekt <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">enthält das, wovon ich hoffe, dass es zu einer besseren CHANGELOG-Datei-Konvention</a> wird. Ich glaube nicht, dass der status quo gut genug ist, und ich denke, dass wir als Community eine bessere Konvention entwickeln können, wenn wir Bewährtes aus echten Software-Projekten entnehmen. Schau Dich um und denk daran, dass <a href="https://github.com/olivierlacan/keep-a-changelog/issues">Diskussionen und Verbesserungsvorschläge sehr willkommen sind</a>!</p> <h3>Wie soll ich meine Changelog-Datei nennen?</h3> <p>Nun, falls Du es noch nicht am Beispiel oben gesehen hast, <code>CHANGELOG.md</code> ist bisher die beste Konvention.</p> <p>Einige Projekte nutzen auch <code>HISTORY.txt</code>, <code>HISTORY.md</code>, <code>History.md</code>, <code>NEWS.txt</code>, <code>NEWS.md</code>, <code>News.txt</code>, <code>RELEASES.txt</code>, <code>RELEASE.md</code>, <code>releases.md</code>, etc.</p> <p>Es ist ein Chaos. Alle diese Namen machen es nur schwerer, die Datei zu finden.</p> <h3>Wieso sollte man nicht einfach ein <code>git log</code> Diff verwenden?</h3> <p>Weil log Diffs voller unnötiger Information sind - von Natur aus. Sie wären nicht einmal ein geeignetes Changelog in einem hypothetischen Projekt, welches von perfekten Menschen geführt wird, welche sich niemals vertippen, niemals vergessen, neue Dateien zu comitten und nie einen Teil eines Refactorings übersehen. Der Zweck eines Commits ist es, einen atomaren Schritt eines Prozesses zu dokumentieren, welcher den Code von einem Zustand in den nächsten bringt. Der Zweck eines Changelogs ist es, die nennenswerten Veränderungen zwischen diesen Zuständen zu dokumentieren.</p> <p>Der Unterschied zwischen dem Changelog und dem Commit-Log ist wie der Unterschied zwischen guten Kommentaren und dem Code selbst: Das eine beschreibt das <em>wieso</em>, das andere das <em>wie</em>.</p> <h3>Kann man Changelogs automatisiert parsen?</h3> <p>Es ist nicht einfach, weil äusserst unterschiedliche Formate und Dateinamen verwendet werden.</p> <p><a href="https://github.com/tech-angels/vandamme/">Vandamme</a> ist ein Ruby gem vom <a href="https://gemnasium.com/">Gemnasium</a>-Team, welches viele (aber nicht alle) Changelogs von Open-Source-Projekten parsen kann.</p> <h3>Wieso schreibst Du mal &quot;CHANGELOG&quot; und mal &quot;Changelog&quot;?</h3> <p>&quot;CHANGELOG&quot; ist der Name der Datei selbst. Es ist ein bisschen laut, aber es ist eine historische Konvention, welche von vielen Open-Source-Projekten angewendet wird. Andere Beispiele von ähnlichen Dateien sind <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/README.md"><code>README</code></a>, <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/LICENSE"><code>LICENSE</code></a> und <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md"><code>CONTRIBUTING</code></a>.</p> <p>Die Grossschreibung (welche in alten Betriebssystemen dafür gesorgt hat, dass die Dateien zuerst aufgelistet wurden) wird verwendet, um die Aufmerksamkeit auf diese Dateien zu lenken. Da sie wichtige Metadaten über das Projekt enthalten, können sie wichtig für jeden sein, der das Projekt gerne benutzen oder mitentwickeln möchte, ähnlich wie <a href="https://shields.io/">Open-Source-Projekt-Badges</a>.</p> <p>Wenn ich über ein &quot;Changelog&quot; spreche, dann meine ich die Funktion der Datei: das Festhalten von Änderungen.</p> <h3>Wie sieht es mit zurückgezogenen Releases aus?</h3> <p>Sogenannte &quot;Yanked Releases&quot; sind Versionen, welche wegen schwerwiegenden Bugs oder Sicherheitsproblemen zurückgezogen werden mussten. Häufig kommen diese im Changelog gar nicht vor. Das sollten sie aber. So solltest Du diese darstellen:</p> <p><code>## [0.0.5] - 2014-12-13 [YANKED]</code></p> <p>Das <code>[YANKED]</code>-Tag ist aus einem guten Grund laut. Es ist wichtig, dass es wahrgenommen wird. Dass es von Klammern umfasst ist, vereinfacht auch das automatisierte Parsen.</p> <h3>Sollte ich ein Changelog je umschreiben?</h3> <p>Klar. Es gibt immer gute Gründe, ein Changelog zu verbessern. Ich öffne regelmässig Pull Requests um Open-Source-Projekten mit schlecht gewarteten Changelogs fehlende Releases hinzuzufügen.</p> <p>Es ist auch möglich, dass Du eine wichtige Änderung vergessen hast, in einer Version zu erwähnen. Natürlich ist es in diesem Fall wichtig, das Changelog zu aktualisieren.</p> <h3>Wie kann ich mithelfen?</h3> <p>Dieses Dokument ist nicht die <strong>Wahrheit</strong>; Es ist meine wohl überlegte Meinung, zusammen mit von mir zusammengetragenen Informationen und Beispielen. Obwohl ich im <a href="https://github.com/olivierlacan/keep-a-changelog">GitHub-Repository</a> ein <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">CHANGELOG</a> führe, habe ich keine echten <em>Releases</em> oder klare zu befolgenden Regeln geschrieben (wie dies zum Beispiel <a href="https://semver.org/">SemVer.org</a> tut).</p> <p>Das ist so, weil ich möchte, dass die Community sich einig wird. Ich glaube, dass die Diskussion genau so wichtig wie das Endresultat ist.</p> <p>Deshalb <a href="https://github.com/olivierlacan/keep-a-changelog"><strong>pack bitte mit an</strong></a>.</p> <footer class='footer clearfix' role='contentinfo'> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="30" height="30" class="mark" alt=""/> <p class='about'> This project is <a href="https://choosealicense.com/licenses/mit/">MIT Licensed</a> // <a href="https://github.com/olivierlacan/keep-a-changelog/">Created & maintained</a> by <a href="https://olivierlacan.com/">Olivier Lacan</a> <a href="https://ruby.social/@olivierlacan" rel="me" aria-label="Link to Olivier Lacan's Mastodon account"></a> // Designed by Tyler Fortune </p> </footer> </div> </article> </body> <script>
   var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
