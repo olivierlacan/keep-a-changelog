@@ -1,7 +1,7 @@
 {
   "changelog": "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md",
   "repo": "https://github.com/olivierlacan/keep-a-changelog",
-  "issues": "https://github.com/olivierlacan/keep-a-changelog/issues",
+  "issue": "https://github.com/olivierlacan/keep-a-changelog/issues",
   "semver": "https://semver.org/",
   "shields": "https://shields.io/",
   "thechangelog": "https://changelog.com/podcast/127",
