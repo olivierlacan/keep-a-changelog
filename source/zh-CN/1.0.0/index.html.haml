@@ -1,13 +1,13 @@
 ---
-description: 如何维护更新日志
 title: 如何维护更新日志
+description: 更新日志绝对不应该是 git 日志的堆砌物
 language: zh-CN
 version: 1.0.0
 ---
 .header
   .title
-    %h1 如何维护更新日志
-    %h2 更新日志绝对不应该是 git 日志的堆砌物
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

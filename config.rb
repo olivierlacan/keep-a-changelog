@@ -264,23 +264,3 @@ activate :autoprefixer do |config|
   config.browsers = ["last 2 versions", "Explorer >= 10"]
   config.cascade = false
 end
-
-# Haml doesn't pick up on Markdown configuration so we have to remove the
-# default Markdown Haml filter and reconfigure one that follows our
-# global configuration.
-
-# module Haml::Filters
-#   remove_filter("Markdown") #remove the existing Markdown filter
-
-#   module Markdown
-#     include Haml::Filters::Base
-
-#     def renderer
-#       $markdown_config[:renderer]
-#     end
-
-#     def render(text)
-#       Redcarpet::Markdown.new(renderer.new($markdown_config)).render(text)
-#     end
-#   end
-# end

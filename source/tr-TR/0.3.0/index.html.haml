@@ -1,21 +1,23 @@
 ---
-description: Değişiklik kaydı tutun
+description: Arkadaşlarınızın, git kayıtlarını CHANGELOG dosyalarına yığmasını engelleyin
 title: Değişiklik kaydı tutun
 language: tr-TR
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # CHANGELOG dosyası kullanın
-
-  ## Arkadaşlarınızın, git kayıtlarını CHANGELOG dosyalarına yığmasını engelleyin™
-
   ### Nedir bu değişiklik kayıtları?
   Değişiklik kayıtları bir proje için özel olarak hazırlanmış, tarihsel sıralamayla
   sıralanmış, önemli değişikliklerin bir bütünüdür.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Değişikliklerin kayıtlarını tutmanın anlamı ne?
   Bir projenin kullanıcılarının ya da katılımcılarının, dağıtımlar (ya da sürümler)
   arasındaki tam olarak hangi önemli değişikliklerin olduğunu takip edebilmelerini sağlar.

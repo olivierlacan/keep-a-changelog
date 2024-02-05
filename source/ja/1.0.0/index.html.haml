@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
+title: 変更履歴を記録する
+description: 友達にGitログを変更履歴に移させないでください。
 language: ja
 version: 1.0.0
 ---
 .header
   .title
-    %h1 変更履歴を記録する
-    %h2 友達にGitログを変更履歴に移させないでください。
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

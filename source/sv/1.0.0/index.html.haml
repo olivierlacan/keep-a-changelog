@@ -1,13 +1,13 @@
 ---
-description: För en ändringslogg
 title: För en ändringslogg
+description: Låt inte dina vänner slänga in git-loggar i ändringsloggar.
 language: sv
 version: 1.0.0
 ---
 .header
   .title
-    %h1 För en ändringslogg
-    %h2 Låt inte dina vänner slänga in git-loggar i ändringsloggar.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

@@ -1,23 +1,24 @@
 ---
-description: Udržuj Changelog
 title: Udržuj Changelog
+description: Nenech své kamarády házet do CHANGELOGů™ git logy.
 language: cs
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Udržuj CHANGELOG
-
-  ## Nenech své kamarády házet do CHANGELOGů™ git logy.
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### Co je to changelog?
   Changelog je soubor, který obsahuje organizovaný, chronologicky seřazený
   seznam podstatných změn pro každou verzi daného projektu.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Co je smyslem changelogu?
   Usnadnit uživatelům a přispěvatelům přesné zobrazení podstatných změn, které
   byly provedeny mezi jednotlivými vydáními (verzemi) daného projektu.

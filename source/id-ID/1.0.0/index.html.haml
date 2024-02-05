@@ -1,13 +1,13 @@
 ---
-description: Pencatatan Changelog
 title: Pencatatan Changelog
+description: Standarisasi pencatatan Changelog untuk kolaborasi yang lebih baik
 language: id-ID
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Pencatatan Changelog
-    %h2 Standarisasi pencatatan Changelog untuk kolaborasi yang lebih baik
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Versi

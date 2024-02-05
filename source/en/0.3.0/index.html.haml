@@ -1,23 +1,23 @@
 ---
-description: Keep a Changelog
 title: Keep a Changelog
+description: Don’t let your friends dump git logs into changelogs.
 language: en
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Keep a CHANGELOG
-
-  ## Don’t let your friends dump git logs into CHANGELOGs™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### What’s a change log?
   A change log is a file which contains a curated, chronologically ordered
   list of notable changes for each version of a project.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### What’s the point of a change log?
   To make it easier for users and contributors to see precisely what
   notable changes have been made between each release (or version) of the project.

@@ -1,25 +1,25 @@
 ---
-description: Ведите Changelog
 title: Ведите Changelog
+description: Не позволяйте друзьям сливать логи гита в CHANGELOG
 language: ru
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Ведите CHANGELOG
-
-  ## Не позволяйте друзьям сливать логи гита в CHANGELOG™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### Что такое лог изменений?
 
   Лог изменений – это файл, который содержит поддерживаемый, упорядоченный в
   хронологическом порядке список значимых изменений для каждой версии проекта с
   открытым исходным кодом.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Для чего нужен лог изменений?
 
   Чтобы пользователи и контрибьюторы могли с меньшими усилиями точно

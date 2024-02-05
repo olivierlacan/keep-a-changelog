@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
+title: Tenere un Changelog
+description: Non lasciare che i tuoi amici facciano copia incolla dei git logs nei changelog.
 language: it-IT
 version: 1.1.0
 ---
 .header
   .title
-    %h1 Tenere un Changelog
-    %h2 Non lasciare che i tuoi amici facciano copia incolla dei git logs nei changelog.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Versione

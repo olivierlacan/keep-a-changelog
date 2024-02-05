@@ -1,13 +1,13 @@
 ---
-description: Udržuj changelog
 title: Udržuj changelog
+description: Nenechaj kamarátov sypať git logy do changelogov.
 language: sk
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Udržuj changelog
-    %h2 Nenechaj kamarátov sypať git logy do changelogov.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Verzia

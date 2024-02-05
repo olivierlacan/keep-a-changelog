@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
 title: Keep a Changelog
+description: Don’t let your friends dump git logs into changelogs.
 language: en
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Keep a Changelog
-    %h2 Don’t let your friends dump git logs into changelogs.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

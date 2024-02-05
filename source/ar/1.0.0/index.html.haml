@@ -1,5 +1,5 @@
 ---
-description: احتفظ بسجل التغيير
+description: لا تدع أصدقائك يخلطون سجلات git مع سجلات التغيير
 title: احتفظ بسجل التغيير
 language: ar
 version: 1.0.0
@@ -15,10 +15,8 @@ p.yanked {direction:ltr;text-align:right}
 
 .header
   .title
-    %h1 احتفظ بسجل التغيير 
-    %h2 لا تدع أصدقائك يخلطون سجلات |
-    git |
-     مع سجلات التغيير |
+    %h1= current_page.data.title
+    %h2= current_page.data.description
     
   = link_to data.links.changelog do
     Version

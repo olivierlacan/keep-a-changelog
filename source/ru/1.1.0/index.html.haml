@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
+title: Ведите changelog
+description: Не позволяйте своим друзьям сливать логи Git в changelog’и.
 language: ru
 version: 1.1.0
 ---
 .header
   .title
-    %h1 Ведите changelog
-    %h2 Не позволяйте своим друзьям сливать логи Git в changelog’и.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

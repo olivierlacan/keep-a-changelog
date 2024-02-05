@@ -1,13 +1,13 @@
 ---
-description: Tenez un Changelog
 title: Tenez un Changelog
+description: Ne laissez pas vos amis utiliser les logs git comme changelogs
 language: fr
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Tenez un Changelog
-    %h2 Ne laissez pas vos amis utiliser les logs git comme changelogs
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

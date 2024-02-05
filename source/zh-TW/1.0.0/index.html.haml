@@ -1,13 +1,13 @@
 ---
-description: 如何維護更新日誌
 title: 如何維護更新日誌
+description: 別讓你的更新日誌成為 git log 的雙胞胎
 language: zh-TW
 version: 1.0.0
 ---
 .header
   .title
-    %h1 如何維護更新日誌
-    %h2 別讓你的更新日誌成為 git log 的雙胞胎
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

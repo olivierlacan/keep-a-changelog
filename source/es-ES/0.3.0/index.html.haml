@@ -1,23 +1,23 @@
 ---
-description: Mantenga un Changelog
 title: Mantenga un Changelog
+description: No dejes que tus amigos copien y peguen git logs en los CHANGELOGs
 language: es-ES
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Mantener un CHANGELOG
-
-  ## No dejes que tus amigos copien y peguen git logs en los CHANGELOGs™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### Qué es un registro de cambios (change log)?
 
   Un registro de cambios o “change log” de ahora en adelante, es un archivo que contiene una lista en orden cronológico sobre los cambios que vamos haciendo en cada reléase (o versión) de nuestro proyecto.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Cuál es el propósito del change log?
 
   Para que les sea más fácil a los usuarios y contribuyentes, ver exactamente los cambios notables que se han hecho entre cada versión (o versiones) del proyecto.

@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
+title: Führe ein CHANGELOG
+description: Lass Deine Freunde nicht CHANGELOGs mit git logs füllen.
 language: de
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Führe ein CHANGELOG
-    %h2 Lass Deine Freunde nicht CHANGELOGs mit git logs füllen.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

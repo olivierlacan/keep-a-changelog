@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
+description: Laat je vrienden geen git logs in changelogs dumpen.
 title: Keep a Changelog
 language: nl
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Houd een Changelog bij
-    %h2 Laat je vrienden geen git logs in changelogs dumpen.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Versie

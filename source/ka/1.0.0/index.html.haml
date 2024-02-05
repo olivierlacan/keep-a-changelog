@@ -1,13 +1,13 @@
 ---
-description: შეინარჩუნე ცვლილებების ჟურნალი
 title: შეინარჩუნე ცვლილებების ჟურნალი
+description: არ მისცე უფლება მეგობრებს git ჩანაწერები ჩაწერონ ცვლილებების ჟურნალში
 language: en
 version: 1.0.0
 ---
 .header
   .title
-    %h1 შეინარჩუნე ცვლილებების ჟურნალი
-    %h2 არ მისცე უფლება მეგობრებს git ჩანაწერები ჩაწერონ ცვლილებების ჟურნალში
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

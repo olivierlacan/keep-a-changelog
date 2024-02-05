@@ -1,24 +1,23 @@
 ---
-description: 如何维护更新日志
 title: 如何维护更新日志
+description: 更新日志绝对不应该是git日志的堆砌物
 language: zh-CN
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # 如何维护更新日志
-
-  ## 更新日志绝对不应该是git日志的堆砌物
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### 更新日志是什么？
   更新日志（Change Log）是一个由人工编辑，以时间为倒序的列表。
   这个列表记录所有版本的重大变动。
 
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
-
+:markdown
   ### 为何要提供更新日志？
   为了让用户和开发人员更好知道每一个版本有哪些区别。
 

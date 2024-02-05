@@ -1,22 +1,22 @@
 ---
-description: Prowadź Changelog
 title: Prowadź Changelog
+description: Nie pozwól, by twoi znajomi wklejali logi gita do CHANGELOGów
 language: pl
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Prowadź CHANGELOG
-
-  ## Nie pozwól, by twoi znajomi wklejali logi gita do CHANGELOGów™
-
-  Wersja **#{current_page.metadata[:page][:version]}**
-
   ### Czym jest changelog?
   Changelog, inaczej rejestr zmian lub historia zmian, to plik zawierający chronologicznie uporządkowaną listę istotnych zmian dla każdej wersji projektu.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Co jest celem prowadzenia changelogu?
   Changelog pomaga użytkownikom zrozumieć, jakie znaczące zmiany zostały wprowadzone w każdej wersji projektu.
 

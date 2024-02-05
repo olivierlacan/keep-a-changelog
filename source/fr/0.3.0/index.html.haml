@@ -1,24 +1,24 @@
 ---
-description: Tenez un Changelog
 title: Tenez un Changelog
+description: Ne laissez pas vos amis utiliser les logs git comme CHANGELOGs
 language: fr
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Tenez un CHANGELOG
-
-  ## Ne laissez pas vos amis utiliser les logs git comme CHANGELOGs™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### Qu’est-ce qu’un journal des modifications (change log) ?
   Un journal des modifications (ou change log) est un fichier qui contient
   une liste triée chronologiquement des changements notables pour chaque
   version d’un projet
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Quel est l’intérêt d’un change log ?
   Il permet aux utilisateurs et aux contributeurs de voir plus simplement
   les changements notables qui ont été réalisés entre chaque publication

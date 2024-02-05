@@ -1,24 +1,23 @@
 ---
-description: Mantenha um CHANGELOG
 title: Mantenha um CHANGELOG
+description: Não deixe seus amigos despejarem logs de commits em CHANGELOGs
 language: pt-BR
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Mantenha um CHANGELOG
-
-  ## Não deixe seus amigos despejarem logs de commits em CHANGELOGs™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### O que é um *changelog*?
 
   Um *changelog* é um arquivo que contém uma lista selecionada, ordenada
   cronologicamente, de mudanças significativas para cada versão de um projeto
   *open source*.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
 :markdown
   ### Para que serve um *changelog*?

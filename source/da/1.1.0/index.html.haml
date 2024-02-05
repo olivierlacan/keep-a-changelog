@@ -1,13 +1,13 @@
 ---
-description: Hold en changelog
 title: Hold en changelog
+description: Du skal ikke lade dine venner smide git logs i changelogs.
 language: da
 version: 1.1.0
 ---
 .header
   .title
-    %h1 Hold en changelog
-    %h2 Du skal ikke lade dine venner smide git logs i changelogs.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

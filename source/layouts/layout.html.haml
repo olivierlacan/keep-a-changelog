@@ -5,6 +5,7 @@
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
+- description = current_page.data.description || "bullshit" 
 
 !!! 5
 %html{ lang: current_page.data.language }
@@ -20,8 +21,8 @@
     %meta{ property: 'og:title', content: current_page.data.title }
     %meta{ property: 'og:type', content: 'article' }
     %meta{ property: 'og:url', content: path_to_url(current_page.url) }
-    %meta{ property: 'og:description', content: current_page.data.description }
-    %meta{ property: 'og:image', content: image_url("keep-a-changelog-opengraph.png") }
+    %meta{ property: 'og:description', content: description }
+    %meta{ property: 'og:image', content: path_to_url(image_path("keep-a-changelog-opengraph.png")) }
     = yield_content :og
 
     -# Icons

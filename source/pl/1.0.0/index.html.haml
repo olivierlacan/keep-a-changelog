@@ -1,13 +1,13 @@
 ---
-description: Prowadź Changelog
 title: Prowadź Changelog
+description: Nie pozwól swoim znajomym wklejać logów Gita do changelogów.
 language: pl
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Prowadź Changelog
-    %h2 Nie pozwól swoim znajomym wklejać logów Gita do changelogów.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Wersja

@@ -1,24 +1,24 @@
 ---
-description: Keep a Changelog
-title: Keep a Changelog
+title: Führe ein CHANGELOG
+description: Lass Deine Freunde nicht CHANGELOGs mit git logs füllen
 language: de
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Führe ein CHANGELOG
-
-  ## Lass Deine Freunde nicht CHANGELOGs mit git logs füllen™
-
-  Version **#{current_page.metadata[:page][:version]}**
-
   ### Was ist ein Changelog?
   Ein Changelog ist eine Datei, welche eine handgepflegte, chronologisch sortierte
   Liste aller erheblichen Änderungen enthält, die zwischen Veröffentlichungen (oder Versionen)
   des Projekts umgesetzt wurden.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Was ist der Zweck eines Changelogs?
   Es Benutzern und Entwicklern einfacher zu machen, gerade die beachtenswerten Änderungen, welche
   zwischen Veröffentlichungen (oder Versionen) des Projekts gemacht wurden, zu sehen.

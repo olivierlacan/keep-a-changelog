@@ -1,13 +1,13 @@
 ---
-description: Keep a Changelog
 title: Keep a Changelog
+description: 동료가 git 로그를 changelogs에 덤프하게 내버려 두지 마세요.
 language: ko
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Changelog 관리
-    %h2 동료가 git 로그를 changelogs에 덤프하게 내버려 두지 마세요.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

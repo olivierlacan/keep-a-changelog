@@ -1,13 +1,13 @@
 ---
-description: Vodite changelog
 title: Vodite changelog
+description: Ne dajte prijateljima da trpaju git logove u changelogove.
 language: hr
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Vodite Changelog
-    %h2 Ne dajte prijateljima da trpaju git logove u changelogove.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Verzija

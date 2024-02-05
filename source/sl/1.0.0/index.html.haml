@@ -1,13 +1,13 @@
 ---
-description: Vzdržujte dnevnik sprememb
 title: Vzdržujte dnevnik sprememb
+description: Ne dopustite, da vaši prijatelji odlagajo dnevnike Git v dnevnike sprememb.
 language: sl
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Vzdržujte dnevnik sprememb (Changelog)
-    %h2 Ne dopustite, da vaši prijatelji odlagajo dnevnike Git v dnevnike sprememb.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Različica

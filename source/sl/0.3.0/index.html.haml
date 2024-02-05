@@ -1,23 +1,23 @@
 ---
-description: Keep a Changelog
 title: Keep a Changelog
+description: Ne dopustite, da vaši prijatelji odlagajo git dnevnike v CHANGELOG™
 language: sl
 version: 0.3.0
 ---
 
+%h1= current_page.data.title
+%h2= current_page.data.description
+
+Version <strong>#{current_page.metadata[:page][:version]}</strong>
+
 :markdown
-  # Vzdržujte dnevnik sprememb oz. CHANGELOG
-
-  ## Ne dopustite, da vaši prijatelji odlagajo git dnevnike v CHANGELOG™
-
-  Verzija **#{current_page.metadata[:page][:version]}**
-
   ### Kaj je dnevnik sprememb?
   Dnevnik sprememb je datoteka, ki vsebuje kuriran, kronološko urejen
   seznam opaznih sprememb za vsako verzijo projekta.
 
-  <pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
+<pre class="changelog">#{File.read("CHANGELOG.md")}</pre>
 
+:markdown
   ### Kaj je smisel dnevnika sprememb?
   Za poenostavitev, da uporabniki in prispevajoči sodelavci natančno vidijo, katere
   opazne spremembe so bile narejene med vsako izdajo (ali verzijo) projekta.

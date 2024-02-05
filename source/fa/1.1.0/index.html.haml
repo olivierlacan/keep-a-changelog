@@ -1,6 +1,6 @@
 ---
-description: تاریخچهٔ تغییرات را نگه دارید
 title: تاریخچهٔ تغییرات را نگه دارید
+description: خروجی git log را به اسم تاریخچهٔ تغییرات پروژه منتشر نکنید
 language: fa
 version: 1.1.0
 ---
@@ -14,8 +14,8 @@ pre {direction:ltr;text-align:left}
 
 .header
   .title
-    %h1 تاریخچهٔ تغییرات را نگه دارید
-    %h2 خروجی git log را به اسم تاریخچهٔ تغییرات پروژه منتشر نکنید.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version

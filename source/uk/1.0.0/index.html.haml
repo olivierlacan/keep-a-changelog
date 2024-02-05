@@ -1,13 +1,13 @@
 ---
-description: Ведіть Changelog
 title: Ведіть Changelog
+description: Не дозволяйте друзям зливати логи гіта у лог змін.
 language: uk
 version: 1.0.0
 ---
 .header
   .title
-    %h1 Ведіть Changelog
-    %h2 Не дозволяйте друзям зливати логи гіта у лог змін.
+    %h1= current_page.data.title
+    %h2= current_page.data.description
 
   = link_to data.links.changelog do
     Version
