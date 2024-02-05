@@ -59,8 +59,8 @@ h1, h2, h3
 header
   .mark
     float: left
-    margin-top: 3em
-    margin-left: 1.5em
+    margin-top: 2em
+    margin-left: 2em
     clear: both
     width: 80px
 
@@ -71,7 +71,7 @@ header
 
     @include md
       width: 120px
-      margin-top: 2em 
+      margin-top: 3em 
       margin-bottom: 2em 
       margin-left: 3em
 
@@ -88,9 +88,13 @@ header
     margin-top: 2em
     margin-right: 3em
     margin-left: 1em
-    font-size: 65%
+    font-size: 75%
+
+    @include md
+      font-size: 85%
   
     @include lg
+      font-size: 100%
       margin-bottom: -2em
       margin-top: 2em
 
