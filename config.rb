@@ -87,7 +87,7 @@ $languages = {
   "ro" => {
     name: 'română',
     new: "O nouă versiune este disponibilă"
-  }
+  },
   "ru"    => {
     name: "Pyccкий",
     notice: "Самая последняя версия (#{$last_version}) ещё пока не переведена на
