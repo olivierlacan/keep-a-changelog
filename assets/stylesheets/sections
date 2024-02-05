@@ -16,7 +16,7 @@ div.header {
     margin: 0 auto;
     margin-bottom: -2em;
     font-size: 60%;
-    margin-left: 9em;
+    margin-left: 10em;
     margin-right: 2em; }
     @media (min-width: 576px) {
       div.header .title {
@@ -24,7 +24,7 @@ div.header {
     @media (min-width: 768px) {
       div.header .title {
         font-size: 100%;
-        margin-left: 6em;
+        margin-left: 7em;
         margin-right: 2em; } }
     @media (min-width: 992px) {
       div.header .title {
@@ -43,8 +43,6 @@ div.header {
 
 div.answers {
   margin-top: 12em;
-  padding-left: 5%;
-  padding-right: 5%;
   background-color: #FFFFFF; }
   div.answers h3 {
     font-size: 1.7em;
@@ -99,8 +97,6 @@ div.bad-practices {
 
 div.effort {
   padding-top: 2em;
-  padding-left: 5%;
-  padding-right: 5%;
   background-color: #FFFFFF; }
   div.effort h3 {
     font-size: 1.6em;
@@ -109,8 +105,6 @@ div.effort {
 
 div.frequently-asked-questions {
   padding-top: 2em;
-  padding-left: 5%;
-  padding-right: 5%;
   background-color: #FFFFFF; }
   div.frequently-asked-questions h2 {
     color: #E05735; }

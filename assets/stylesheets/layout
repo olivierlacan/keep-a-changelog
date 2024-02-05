@@ -9,8 +9,8 @@ article {
 .main {
   background-color: #FFFFFF; }
   .main div {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 8%;
+    padding-right: 8%;
     padding-bottom: 3em; }
   .main div.title aside {
     background-color: #594446;
