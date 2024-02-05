@@ -6,16 +6,16 @@ task :serve do
   system("bundle exec middleman serve")
 end
 
-desc "Build and publish to GitHub Pages"
+desc "Clean, build and publish to GitHub Pages"
 task deploy: [:clean, :publish]
 
-desc "Clean build directory"
+desc "Build middleman static site"
 task :build do
   puts "Build site into build/ directory, print any errors"
   system("bundle exec middleman build --verbose")
 end
 
-desc "Detele the build directory"
+desc "Delete build directory"
 task :clean do
   puts "Cleaning build/ directory"
   system("rm -rf build/")

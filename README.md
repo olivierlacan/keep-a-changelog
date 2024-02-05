@@ -27,7 +27,7 @@ This repository generates https://keepachangelog.com/.
 
 - `bin/rake clean` can clean a corrupted `build/` directory in 
   case `publish` failed
-- `bin/rake publish` builds and pushes to the `gh-pages` branch on GitHub so 
+- `bin/rake deploy` cleans, builds and pushes to the `gh-pages` branch on GitHub so 
   the site is deployed to keepachangelog.com
 
 ### Translations
