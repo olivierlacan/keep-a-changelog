@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* === Breakpoints === */
 div.header {
   padding-top: 5em;
@@ -123,22 +122,9 @@ div.frequently-asked-questions {
     cursor: pointer;
     border-bottom: 1px solid rgba(63, 43, 45, 0.2);
     padding: 0 1.1em 1.3em 0; }
-    div.frequently-asked-questions h4:after {
-      content: "⌄";
-      text-align: right;
-      float: right;
-      font-size: 2.8em;
-      line-height: 0.4;
-      margin-right: -0.3em;
-      width: 1em;
-      text-align: center; }
-    div.frequently-asked-questions h4.is-visible:after {
-      content: "-"; }
   div.frequently-asked-questions h4 ~ p {
-    display: none;
-    font-size: 0.9em; }
-  div.frequently-asked-questions h4 ~ p.is-visible {
-    display: inherit; }
+    font-size: 1em;
+    margin-left: 1em; }
 
 .footer {
   font-size: .6em;

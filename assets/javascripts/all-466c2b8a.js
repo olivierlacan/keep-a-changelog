@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){document.querySelector(".locales select").addEventListener("change",function(e){origin=window.location.origin,languageCode=e.currentTarget.selectedOptions[0].value,window.location.replace(origin+"/"+languageCode)})});
