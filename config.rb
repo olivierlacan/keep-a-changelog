@@ -5,7 +5,7 @@
 # ----- Site ----- #
 # Last version should be the latest English version since the manifesto is first
 # written in English, then translated into other languages later.
-$versions = Dir.glob("source/en/*").map{ |e| e.sub("source/en/","") }.sort
+$versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # NOTE: for now, while 1.1.0 is in development let's pin the latest
 # version to 1.0.0 manually.
 # $last_version = $versions.last
@@ -13,25 +13,25 @@ $last_version = "1.1.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
 
 # This list of languages populates the language navigation.
-issues_url = 'https://github.com/olivierlacan/keep-a-changelog/issues'
-$languages = {  
+issues_url = "https://github.com/olivierlacan/keep-a-changelog/issues"
+$languages = {
   "ar" => {
     name: "العربية"
   },
-  "cs"    => {
+  "cs" => {
     name: "Čeština"
   },
-  "da"    => {
+  "da" => {
     name: "Dansk",
     new: "En ny version er tilgængelig"
   },
-  "de"    => {
+  "de" => {
     name: "Deutsch",
     notice: "Die neuste version (#{$last_version}) ist noch nicht auf Deutsch
     verfügbar, aber du kannst sie dir <a href='/en/'>auf Englisch durchlesen</a>
     und <a href='#{issues_url}'>bei der Übersetzung mithelfen</a>."
   },
-  "en"    => {
+  "en" => {
     default: true,
     name: "English",
     new: "A new version is available"
@@ -42,7 +42,7 @@ $languages = {
     Español, por ahora puedes <a href='/en/'>leerla en Inglés</a> y
     <a href='#{issues_url}'>ayudar a traducirla</a>."
   },
-  "fr"    => {
+  "fr" => {
     name: "Français",
     notice: "La dernière version (#{$last_version}) n'est pas encore disponible
     en français, mais vous pouvez la <a href='/en/'>lire en anglais</a> pour
@@ -85,28 +85,28 @@ $languages = {
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
   },
   "ro" => {
-    name: 'română',
+    name: "română",
     new: "O nouă versiune este disponibilă"
   },
-  "ru"    => {
+  "ru" => {
     name: "Pyccкий",
     notice: "Самая последняя версия (#{$last_version}) ещё пока не переведена на
     русский, но вы можете <a href='/en/'>прочитать её на английском</a> и <a
     href='#{issues_url}'>помочь с переводом</a>."
   },
-  "sk"    => {
+  "sk" => {
     name: "Slovenčina"
   },
-  "ka"    => {
+  "ka" => {
     name: "ქართული"
   },
-  "sl"    => {
+  "sl" => {
     name: "Slovenščina"
   },
   "sr" => {
     name: "Srpski"
   },
-  "sv"    => {
+  "sv" => {
     name: "Svenska",
     notice: "Den senaste versionen (#{$last_version}) är ännu inte tillgänglig på svenska,
     men du kan <a href='/en/'>läsa det på engelska</a> och även <a
@@ -139,9 +139,9 @@ activate :i18n,
   lang_map: $languages,
   mount_at_root: :en
 
-set :gauges_id, ''
-set :publisher_url, 'https://www.facebook.com/olivier.lacan.5'
-set :site_url, 'https://keepachangelog.com'
+set :gauges_id, ""
+set :publisher_url, "https://www.facebook.com/olivier.lacan.5"
+set :site_url, "https://keepachangelog.com"
 
 redirect "index.html", to: "en/#{$last_version}/index.html"
 
@@ -153,10 +153,10 @@ end
 
 # ----- Assets ----- #
 
-set :css_dir, 'assets/stylesheets'
-set :js_dir, 'assets/javascripts'
-set :images_dir, 'assets/images'
-set :fonts_dir, 'assets/fonts'
+set :css_dir, "assets/stylesheets"
+set :js_dir, "assets/javascripts"
+set :images_dir, "assets/images"
+set :fonts_dir, "assets/fonts"
 
 # ----- Images ----- #
 
@@ -170,7 +170,7 @@ set :markdown_engine, :redcarpet
 ## Override default Redcarpet renderer in order to define a class
 class CustomMarkdownRenderer < Redcarpet::Render::HTML
   def doc_header
-    %Q[<nav class="toc">#{@header}</nav>]
+    %(<nav class="toc">#{@header}</nav>)
   end
 
   def header(text, header_level)
@@ -216,8 +216,6 @@ helpers do
       "#{$last_version} #{language_name}"
     elsif File.exist?("#{language_path}/#{$previous_version}")
       "#{$previous_version} #{language_name}"
-    else
-      nil
     end
   end
 end
@@ -263,26 +261,26 @@ end
 # ----- Prefixing ----- #
 
 activate :autoprefixer do |config|
-  config.browsers = ['last 2 versions', 'Explorer >= 10']
-  config.cascade  = false
+  config.browsers = ["last 2 versions", "Explorer >= 10"]
+  config.cascade = false
 end
 
 # Haml doesn't pick up on Markdown configuration so we have to remove the
 # default Markdown Haml filter and reconfigure one that follows our
 # global configuration.
 
-module Haml::Filters
-  remove_filter("Markdown") #remove the existing Markdown filter
+# module Haml::Filters
+#   remove_filter("Markdown") #remove the existing Markdown filter
 
-  module Markdown
-    include Haml::Filters::Base
+#   module Markdown
+#     include Haml::Filters::Base
 
-    def renderer
-      $markdown_config[:renderer]
-    end
+#     def renderer
+#       $markdown_config[:renderer]
+#     end
 
-    def render(text)
-      Redcarpet::Markdown.new(renderer.new($markdown_config)).render(text)
-    end
-  end
-end
+#     def render(text)
+#       Redcarpet::Markdown.new(renderer.new($markdown_config)).render(text)
+#     end
+#   end
+# end
