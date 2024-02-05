@@ -1,4 +1,254 @@
-<!DOCTYPE html> <html lang="zh-CN"> <head> <meta charset="utf-8"> <meta content="IE=edge" http-equiv="X-UA-Compatible"> <meta content="width=device-width, initial-scale=1.0" name="viewport"> <meta content="如何维护更新日志" name="description"> <meta content="https://www.facebook.com/olivier.lacan.5" property="og:article:publisher"> <meta content="如何维护更新日志" property="og:title"> <meta content="article" property="og:type"> <meta content="https://keepachangelog.com/zh-CN/1.0.0/" property="og:url"> <meta content="如何维护更新日志" property="og:description"> <meta content="/assets/images/logo-fe0986a5.png" property="og:image"> <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon"> <link href="https://keepachangelog.com/zh-CN/1.0.0/" rel="canonical"> <title>如何维护更新日志</title> <link href="https://fonts.googleapis.com" rel="preconnect"> <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"> <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet"> <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet"/> <link href="/assets/stylesheets/application-0fa5937b.css" rel="stylesheet"/> <script src="/assets/javascripts/all-08023a74.js" defer="defer"></script> </head> <body> <article> <header role="banner"> <div class="last-version-notice">最新版 (1.1.0) 暂时还没有翻译到简体中文，您可以阅读最新的英语版，并且帮助翻译，不胜感激。</div> <nav class="locales" role="navigation"> <label for="language-select" title="Pick one of the 26 translations">Language: </label> <select id="language-select" name="language"> <option label="1.0.0 العربية" value="ar"> 1.0.0 العربية </option> <option label="1.0.0 Čeština" value="cs"> 1.0.0 Čeština </option> <option label="1.1.0 Dansk" value="da"> 1.1.0 Dansk </option> <option label="1.0.0 Deutsch" value="de"> 1.0.0 Deutsch </option> <option label="1.1.0 English" value="en"> 1.1.0 English </option> <option label="1.0.0 Español" value="es-ES"> 1.0.0 Español </option> <option label="1.1.0 Français" value="fr"> 1.1.0 Français </option> <option label="1.0.0 Hrvatski" value="hr"> 1.0.0 Hrvatski </option> <option label="1.0.0 Indonesia" value="id-ID"> 1.0.0 Indonesia </option> <option label="1.0.0 Italiano" value="it-IT"> 1.0.0 Italiano </option> <option label="1.1.0 日本語" value="ja"> 1.1.0 日本語 </option> <option label="1.1.0 Nederlands" value="nl"> 1.1.0 Nederlands </option> <option label="1.0.0 polski" value="pl"> 1.0.0 polski </option> <option label="1.0.0 Português do Brasil" value="pt-BR"> 1.0.0 Português do Brasil </option> <option label="1.1.0 Pyccкий" value="ru"> 1.1.0 Pyccкий </option> <option label="1.0.0 Slovenčina" value="sk"> 1.0.0 Slovenčina </option> <option label="1.0.0 ქართული" value="ka"> 1.0.0 ქართული </option> <option label="1.0.0 Srpski" value="sr"> 1.0.0 Srpski </option> <option label="1.0.0 Svenska" value="sv"> 1.0.0 Svenska </option> <option label="1.1.0 Türkçe" value="tr-TR"> 1.1.0 Türkçe </option> <option label="1.0.0 Українська" value="uk"> 1.0.0 Українська </option> <option label="1.0.0 简体中文" selected value="zh-CN"> 1.0.0 简体中文 </option> <option label="1.0.0 正體中文" value="zh-TW"> 1.0.0 正體中文 </option> <option label="1.0.0 한국어" value="ko"> 1.0.0 한국어 </option> <option label="1.0.0 فارسی" value="fa-IR"> 1.0.0 فارسی </option> </select> </nav> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="100" class="mark" alt=""/> </header> <div class="main" role="main"> <div class="header"> <div class="title"> <h1>如何维护更新日志</h1> <h2>更新日志绝对不应该是 git 日志的堆砌物</h2> </div> <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">Version <strong>1.0.0</strong> </a><pre class="changelog" lang="en"># Changelog&#x000A;&#x000A;All notable changes to this project will be documented in this file.&#x000A;&#x000A;The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),&#x000A;and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).&#x000A;&#x000A;## [Unreleased]&#x000A;&#x000A;## [1.1.1] - 2023-03-05&#x000A;&#x000A;### Added&#x000A;&#x000A;- Arabic translation (#444).&#x000A;- v1.1 French translation.&#x000A;- v1.1 Dutch translation (#371).&#x000A;- v1.1 Russian translation (#410).&#x000A;- v1.1 Japanese translation (#363).&#x000A;- v1.1 Norwegian Bokmål translation (#383).&#x000A;- v1.1 "Inconsistent Changes" Turkish translation (#347).&#x000A;- Default to most recent versions available for each languages&#x000A;- Display count of available translations (26 to date!)&#x000A;- Centralize all links into `/data/links.json` so they can be updated easily&#x000A;&#x000A;### Fixed&#x000A;&#x000A;- Improve French translation (#377).&#x000A;- Improve id-ID translation (#416).&#x000A;- Improve Persian translation (#457).&#x000A;- Improve Russian translation (#408).&#x000A;- Improve Swedish title (#419).&#x000A;- Improve zh-CN translation (#359).&#x000A;- Improve French translation (#357).&#x000A;- Improve zh-TW translation (#360, #355).&#x000A;- Improve Spanish (es-ES) transltion (#362).&#x000A;- Foldout menu in Dutch translation (#371).&#x000A;- Missing periods at the end of each change (#451).&#x000A;- Fix missing logo in 1.1 pages&#x000A;- Display notice when translation isn't for most recent version&#x000A;- Various broken links, page versions, and indentations.&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Upgrade dependencies: Ruby 3.2.1, Middleman, etc.&#x000A;&#x000A;### Removed&#x000A;&#x000A;- Unused normalize.css file&#x000A;- Identical links assigned in each translation file&#x000A;- Duplicate index file for the english version&#x000A;&#x000A;## [1.1.0] - 2019-02-15&#x000A;&#x000A;### Added&#x000A;&#x000A;- Danish translation (#297).&#x000A;- Georgian translation from (#337).&#x000A;- Changelog inconsistency section in Bad Practices.&#x000A;&#x000A;### Fixed&#x000A;&#x000A;- Italian translation (#332).&#x000A;- Indonesian translation (#336).&#x000A;&#x000A;## [1.0.0] - 2017-06-20&#x000A;&#x000A;### Added&#x000A;&#x000A;- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).&#x000A;- Version navigation.&#x000A;- Links to latest released version in previous versions.&#x000A;- "Why keep a changelog?" section.&#x000A;- "Who needs a changelog?" section.&#x000A;- "How do I make a changelog?" section.&#x000A;- "Frequently Asked Questions" section.&#x000A;- New "Guiding Principles" sub-section to "How do I make a changelog?".&#x000A;- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).&#x000A;- German translation from [@mpbzh](https://github.com/mpbzh) & [@Art4](https://github.com/Art4).&#x000A;- Italian translation from [@azkidenz](https://github.com/azkidenz).&#x000A;- Swedish translation from [@magol](https://github.com/magol).&#x000A;- Turkish translation from [@emreerkan](https://github.com/emreerkan).&#x000A;- French translation from [@zapashcanon](https://github.com/zapashcanon).&#x000A;- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).&#x000A;- Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).&#x000A;- Russian translation from [@aishek](https://github.com/aishek).&#x000A;- Czech translation from [@h4vry](https://github.com/h4vry).&#x000A;- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).&#x000A;- Korean translation from [@pierceh89](https://github.com/pierceh89).&#x000A;- Croatian translation from [@porx](https://github.com/porx).&#x000A;- Persian translation from [@Hameds](https://github.com/Hameds).&#x000A;- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Start using "changelog" over "change log" since it's the common usage.&#x000A;- Start versioning based on the current English version at 0.3.0 to help&#x000A;  translation authors keep things up-to-date.&#x000A;- Rewrite "What makes unicorns cry?" section.&#x000A;- Rewrite "Ignoring Deprecations" sub-section to clarify the ideal&#x000A;  scenario.&#x000A;- Improve "Commit log diffs" sub-section to further argument against&#x000A;  them.&#x000A;- Merge "Why can’t people just use a git log diff?" with "Commit log&#x000A;  diffs".&#x000A;- Fix typos in Simplified Chinese and Traditional Chinese translations.&#x000A;- Fix typos in Brazilian Portuguese translation.&#x000A;- Fix typos in Turkish translation.&#x000A;- Fix typos in Czech translation.&#x000A;- Fix typos in Swedish translation.&#x000A;- Improve phrasing in French translation.&#x000A;- Fix phrasing and spelling in German translation.&#x000A;&#x000A;### Removed&#x000A;&#x000A;- Section about "changelog" vs "CHANGELOG".&#x000A;&#x000A;## [0.3.0] - 2015-12-03&#x000A;&#x000A;### Added&#x000A;&#x000A;- RU translation from [@aishek](https://github.com/aishek).&#x000A;- pt-BR translation from [@tallesl](https://github.com/tallesl).&#x000A;- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).&#x000A;&#x000A;## [0.2.0] - 2015-10-06&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Remove exclusionary mentions of "open source" since this project can&#x000A;  benefit both "open" and "closed" source projects equally.&#x000A;&#x000A;## [0.1.0] - 2015-10-06&#x000A;&#x000A;### Added&#x000A;&#x000A;- Answer "Should you ever rewrite a change log?".&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Improve argument against commit logs.&#x000A;- Start following [SemVer](https://semver.org) properly.&#x000A;&#x000A;## [0.0.8] - 2015-02-17&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Update year to match in every README example.&#x000A;- Reluctantly stop making fun of Brits only, since most of the world&#x000A;  writes dates in a strange way.&#x000A;&#x000A;### Fixed&#x000A;&#x000A;- Fix typos in recent README changes.&#x000A;- Update outdated unreleased diff link.&#x000A;&#x000A;## [0.0.7] - 2015-02-16&#x000A;&#x000A;### Added&#x000A;&#x000A;- Link, and make it obvious that date format is ISO 8601.&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Clarified the section on "Is there a standard change log format?".&#x000A;&#x000A;### Fixed&#x000A;&#x000A;- Fix Markdown links to tag comparison URL with footnote-style links.&#x000A;&#x000A;## [0.0.6] - 2014-12-12&#x000A;&#x000A;### Added&#x000A;&#x000A;- README section on "yanked" releases.&#x000A;&#x000A;## [0.0.5] - 2014-08-09&#x000A;&#x000A;### Added&#x000A;&#x000A;- Markdown links to version tags on release headings.&#x000A;- Unreleased section to gather unreleased changes and encourage note&#x000A;  keeping prior to releases.&#x000A;&#x000A;## [0.0.4] - 2014-08-09&#x000A;&#x000A;### Added&#x000A;&#x000A;- Better explanation of the difference between the file ("CHANGELOG")&#x000A;  and its function "the change log".&#x000A;&#x000A;### Changed&#x000A;&#x000A;- Refer to a "change log" instead of a "CHANGELOG" throughout the site&#x000A;  to differentiate between the file and the purpose of the file — the&#x000A;  logging of changes.&#x000A;&#x000A;### Removed&#x000A;&#x000A;- Remove empty sections from CHANGELOG, they occupy too much space and&#x000A;  create too much noise in the file. People will have to assume that the&#x000A;  missing sections were intentionally left out because they contained no&#x000A;  notable changes.&#x000A;&#x000A;## [0.0.3] - 2014-08-09&#x000A;&#x000A;### Added&#x000A;&#x000A;- "Why should I care?" section mentioning The Changelog podcast.&#x000A;&#x000A;## [0.0.2] - 2014-07-10&#x000A;&#x000A;### Added&#x000A;&#x000A;- Explanation of the recommended reverse chronological release ordering.&#x000A;&#x000A;## [0.0.1] - 2014-05-31&#x000A;&#x000A;### Added&#x000A;&#x000A;- This CHANGELOG file to hopefully serve as an evolving example of a&#x000A;  standardized open source project CHANGELOG.&#x000A;- CNAME file to enable GitHub Pages custom domain.&#x000A;- README now contains answers to common questions about CHANGELOGs.&#x000A;- Good examples and basic guidelines, including proper date formatting.&#x000A;- Counter-examples: "What makes unicorns cry?".&#x000A;&#x000A;[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD&#x000A;[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1&#x000A;[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0&#x000A;[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0&#x000A;[0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0&#x000A;[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0&#x000A;[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0&#x000A;[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8&#x000A;[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7&#x000A;[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6&#x000A;[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5&#x000A;[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4&#x000A;[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3&#x000A;[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2&#x000A;[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1</pre> </div> <div class="answers"> <h3 id="what"> <a aria_hidden="true" class="anchor" href="#what"></a> 更新日志是什么？ </h3> <p> 更新日志（Change Log）是一个由人工编辑、以时间为倒序的列表，用于记录项目中每个版本的显著变动。 </p> <h3 id="why"> <a aria_hidden="true" class="anchor" href="#why"></a> 为何要提供更新日志？ </h3> <p> 为了让用户和开发人员更简单清晰地知晓项目的不同版本之间有哪些显著变动。 </p> <h3 id="who"> <a aria_hidden="true" class="anchor" href="#who"></a> 哪些人需要更新日志？ </h3> <p> 人人需要更新日志。无论是用户还是开发者。当软件有变动时，大家希望知道改动是为何、以及如何进行的。 </p> </div> <div class="good-practices"> <h3 id="how"> <a aria_hidden="true" class="anchor" href="#how"></a> 怎样制作高质量的更新日志？ </h3> <h4 id="principles"> <a aria_hidden="true" class="anchor" href="#principles"></a> 指导原则 </h4> <ul> <li> 记住日志是写给<em>人</em>而非机器的。 </li> <li> 每个版本都应该有独立的入口。 </li> <li> 同类改动应该分组放置。 </li> <li> 不同版本应分别设置链接。 </li> <li> 新版本在前，旧版本在后。 </li> <li> 应包括每个版本的发布日期。 </li> <li> 注明是否遵守<a href="https://semver.org/">语义化版本规范</a>。 </li> </ul> <a aria_hidden="true" class="anchor" href="#types"></a> <h4 id="types">变动类型</h4> <ul> <li> <code>Added</code> 新添加的功能。 </li> <li> <code>Changed</code> 对现有功能的变更。 </li> <li> <code>Deprecated</code> 已经不建议使用，即将移除的功能。 </li> <li> <code>Removed</code> 已经移除的功能。 </li> <li> <code>Fixed</code> 对 bug 的修复。 </li> <li> <code>Security</code> 对安全性的改进。 </li> </ul> </div> <div class="effort"> <h3 id="effort"> <a aria_hidden="true" class="anchor" href="#effort"></a> 如何减少维护更新日志的精力？ </h3> <p> 在文档最上方提供 <code>Unreleased</code> 区块以记录即将发布的更新内容。 </p> <p>这样做有两个好处：</p> <ul> <li> 大家可以知道在未来版本中可能会有哪些变更。 </li> <li> 在发布新版本时，直接将 <code>Unreleased</code> 区块中的内容移动至新发布版本的描述区块就可以了。 </li> </ul> </div> <div class="bad-practices"> <h3 id="bad-practices"> <a aria_hidden="true" class="anchor" href="#bad-practices"></a> 有很糟糕的更新日志吗？ </h3> <p>当然有，下面就是一些糟糕的方式。</p> <h4 id="log-diffs"> <a aria_hidden="true" class="anchor" href="#log-diffs"></a> 使用 git 日志 </h4> <p> 使用 git 日志作为更新日志是个非常糟糕的方式：git 日志充满各种无意义的信息，如合并提交、语焉不详的提交标题、文档更新等。 </p> <p> 提交的目的是记录源码的演化。一些项目会清理提交记录，一些则不会。 </p> <p> 更新日志的目的则是记录重要的变更以供受众阅读，记录范围通常涵盖多次提交。 </p> <h4 id="ignoring-deprecations"> <a aria_hidden="true" class="anchor" href="#ignoring-deprecations"></a> 无视即将弃用的功能 </h4> <p> 当从一个版本升级至另一个时，人们应清楚（尽管痛苦）地知道哪些部分将不再被支持。应该允许先升级至一个列出哪些功能将会被弃用的版本，待去掉那些不再支持的部分后，再升级至把那些弃用功能真正移除的版本。 </p> <p> 即使其他什么都不做，也至少要在更新日志中列出 deprecations，removals 以及其他重大变动。 </p> <h4 id="confusing-dates"> <a aria_hidden="true" class="anchor" href="#confusing-dates"></a> 易混淆的日期格式 </h4> <p> 不同区域有着不同的时间格式，要找到让大家都满意的日期格式不是件容易的事。<code>2012-06-02</code> 的格式从大到小排列符合逻辑、不容易与其他日期格式混淆，而且还符合 <a href="https://www.iso.org/iso-8601-date-and-time-format.html)">ISO 标准</a>。因此，推荐在更新日志中采用使用此种日期格式。 </p> <aside> 还有更多内容？请通过 <a href="#">Issues</a> 或是 Pull Request 协助收集。 </aside> </div> <div class="frequently-asked-questions"> <h3 id="frequently-asked-questions"> <a aria_hidden="true" class="anchor" href="#frequently-asked-questions"></a> 常见问题 </h3> <h4 id="standard"> <a aria_hidden="true" class="anchor" href="#standard"></a> 是否有一个标准化的更新日志格式？ </h4> <p> 并没有。虽然 GNU 提供了更新日志样式指引，以及那个仅有两段长的 GNU NEWS 文件“指南”，但两者均远远不够。 </p> <p> 此项目旨在提供一个 <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">更好的更新日志范例</a>，所有点子都来自于对开源社区中优秀实例的观察与记录。 </p> <p> 欢迎<a href="#">提供</a>有建设性的批评、讨论及建议。 </p> <h4 id="filename"> <a aria_hidden="true" class="anchor" href="#filename"></a> 更新日志文件应被如何命名？ </h4> <p> 通常使用 <code>CHANGELOG.md</code>。有些项目将其命名为 <code>HISTORY</code>、<code>NEWS</code> 或是 <code>RELEASES</code>。 </p> <p> 当然，你可能认为更新日志的命名并不那么重要，但为什么要为难那些仅仅是想看到都有哪些重大变更的用户呢？ </p> <h4 id="github-releases"> <a aria_hidden="true" class="anchor" href="#github-releases"></a> GitHub Releases 怎么样？ </h4> <p> 这是个非常好的提议。<a href="https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository">GitHub Releases</a> 可通过手动添加发布日志或将带有注释的 git 标签信息抓取后转换的方式，将简单的 git 标签（如一个叫 <code>v1.0.0</code> 的标签）转换为信息丰富的发布日志。 </p> <p> GitHub Releases 会创建一个非便携、仅可在 GitHub 环境下显示的更新日志。尽管会花费更多时间，但将之处理成更新日志格式是完全可能的。 </p> <p> 现行版本的 GitHub Releases 不像那些典型的大写文件（<code>README</code>，<code>CONTRIBUTING</code> 等），仍可以认为是不利于用户探索的。另一个小问题则是目前的 GitHub Releases 界面并没有提供不同版本间的 commit 日志链接。 </p> <h4 id="automatic"> <a aria_hidden="true" class="anchor" href="#automatic"></a> 更新日志可以被自动识别吗？ </h4> <p> 非常困难，因为有各种不同的文件格式和命名。 </p> <p> <a href="https://github.com/tech-angels/vandamme/">Vandamme</a> 是一个 Ruby 程序，由 Gemnasium 团队制作，可以解析多种（但绝对不是全部）开源库的更新日志。 </p> <h4 id="yanked"> <a aria_hidden="true" class="anchor" href="#yanked"></a> 那些后来撤下的版本怎么办？ </h4> <p> 因重大 bug 或安全性原因而被撤下的版本通常不会出现在更新日志中，但仍然建议记录下来。你可以这样作出记录： </p> <p><code>## [0.0.5] - 2014-12-13 [YANKED]</code></p> <p> 因为这类更改十分重要，所以 <code>[YANKED]</code> 标签应该非常醒目。此外，用方括号包围可使其更易被程序识别。 </p> <h4 id="rewrite"> <a aria_hidden="true" class="anchor" href="#rewrite"></a> 是否可以重写更新日志？ </h4> <p> 当然可以。总会有合适的原因去改进更新日志。我也时常提 Pull Request 来为那些未维护更新日志的开源项目加入缺失的发布信息。 </p> <p> 另外，你很有可能发现自己忘记记录一个重大功能更新。这种情况下显然应该重写更新日志。 </p> <h4 id="contribute"> <a aria_hidden="true" class="anchor" href="#contribute"></a> 如何贡献？ </h4> <p> 本文档并非<strong>真理</strong>。而是我深思熟虑后的建议，以及我收集的信息与样例。 </p> <p> 希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。 </p> <p> 所以欢迎<strong><a href="#">贡献</a></strong>。 </p> </div> <div class="press"> <h3>访谈</h3> <p> 我在 <a href="https://changelog.com/podcast/127">The Changelog podcast</a> 上讲述了为何维护者与贡献者应关心更新日志，以及这个项目背后的动机。 </p> </div> <footer class="footer clearfix" role="contentinfo"> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="30" height="30" class="mark" alt=""/> <p class="about"> This project is <a href="https://choosealicense.com/licenses/mit/">MIT Licensed</a> // <a href="https://github.com/olivierlacan/keep-a-changelog/">Created & maintained</a> by <a href="https://olivierlacan.com/">Olivier Lacan</a> <a href="https://ruby.social/@olivierlacan" rel="me" aria-label="Link to Olivier Lacan's Mastodon account"></a> // Designed by Tyler Fortune </p> </footer> </div> </article> </body> <script>
+<!DOCTYPE html> <html lang='zh-CN'> <head> <meta charset='utf-8'> <meta content='IE=edge' http-equiv='X-UA-Compatible'> <meta content='width=device-width, initial-scale=1.0' name='viewport'> <meta content='如何维护更新日志' name='description'> <meta content='https://www.facebook.com/olivier.lacan.5' property='og:article:publisher'> <meta content='如何维护更新日志' property='og:title'> <meta content='article' property='og:type'> <meta content='https://keepachangelog.com/zh-CN/1.0.0/' property='og:url'> <meta content='如何维护更新日志' property='og:description'> <meta content='/assets/images/logo-fe0986a5.png' property='og:image'> <link href='/assets/images/favicon.ico' rel='shortcut icon' type='image/x-icon'> <link href='https://keepachangelog.com/zh-CN/1.0.0/' rel='canonical'> <title>如何维护更新日志</title> <link href='https://fonts.googleapis.com' rel='preconnect'> <link crossorigin='true' href='https://fonts.gstatic.com' rel='preconnect'> <link href="//fonts.googleapis.com/css?family=Muli:400,700&amp;display=swap" rel="stylesheet"/> <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&amp;display=swap" rel="stylesheet"/> <link href="/assets/stylesheets/application-0fa5937b.css" rel="stylesheet"/> <script src="/assets/javascripts/all-08023a74.js" defer="defer"></script> </head> <body> <article> <header> <div class='newer'> There is a newer version available: <a href="/zh-CN/1.1.0">简体中文 1.1.0</a> </div> <nav class='locales' role='navigation'> <label for='language-select' title='Pick one of the 28 translations'>Language: </label> <select id='language-select' name='language'> <option label='1.0.0 العربية' value='ar'> 1.0.0 العربية </option> <option label='1.1.0 Čeština' value='cs'> 1.1.0 Čeština </option> <option label='1.1.0 Dansk' value='da'> 1.1.0 Dansk </option> <option label='1.1.0 Deutsch' value='de'> 1.1.0 Deutsch </option> <option label='1.1.0 English' value='en'> 1.1.0 English </option> <option label='1.1.0 Español' value='es-ES'> 1.1.0 Español </option> <option label='1.1.0 Français' value='fr'> 1.1.0 Français </option> <option label='1.0.0 Hrvatski' value='hr'> 1.0.0 Hrvatski </option> <option label='1.0.0 Indonesia' value='id-ID'> 1.0.0 Indonesia </option> <option label='1.1.0 Italiano' value='it-IT'> 1.1.0 Italiano </option> <option label='1.1.0 日本語' value='ja'> 1.1.0 日本語 </option> <option label='1.1.0 Norsk (Bokmål)' value='nb'> 1.1.0 Norsk (Bokmål) </option> <option label='1.1.0 Nederlands' value='nl'> 1.1.0 Nederlands </option> <option label='1.1.0 polski' value='pl'> 1.1.0 polski </option> <option label='1.1.0 Português do Brasil' value='pt-BR'> 1.1.0 Português do Brasil </option> <option label='1.1.0 română' value='ro'> 1.1.0 română </option> <option label='1.1.0 Pyccкий' value='ru'> 1.1.0 Pyccкий </option> <option label='1.0.0 Slovenčina' value='sk'> 1.0.0 Slovenčina </option> <option label='1.0.0 ქართული' value='ka'> 1.0.0 ქართული </option> <option label='1.1.0 Slovenščina' value='sl'> 1.1.0 Slovenščina </option> <option label='1.0.0 Srpski' value='sr'> 1.0.0 Srpski </option> <option label='1.1.0 Svenska' value='sv'> 1.1.0 Svenska </option> <option label='1.1.0 Türkçe' value='tr-TR'> 1.1.0 Türkçe </option> <option label='1.1.0 Українська' value='uk'> 1.1.0 Українська </option> <option label='1.1.0 简体中文' selected value='zh-CN'> 1.1.0 简体中文 </option> <option label='1.1.0 正體中文' value='zh-TW'> 1.1.0 正體中文 </option> <option label='1.0.0 한국어' value='ko'> 1.0.0 한국어 </option> <option label='1.1.0 فارسی' value='fa'> 1.1.0 فارسی </option> </select> </nav> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="130" height="100" class="mark" alt=""/> </header> <div class='main' role='main'> <div class='header'> <div class='title'> <h1>如何维护更新日志</h1> <h2>更新日志绝对不应该是 git 日志的堆砌物</h2> </div> <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">Version <strong>1.0.0</strong> </a><pre class='changelog' lang='en'># Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- v1.1 Brazilian Portuguese translation.
+- v1.1 German Translation
+- v1.1 Spanish translation.
+- v1.1 Italian translation.
+- v1.1 Polish translation.
+- v1.1 Ukrainian translation.
+
+## [1.1.1] - 2023-03-05
+
+### Added
+
+- Arabic translation (#444).
+- v1.1 French translation.
+- v1.1 Dutch translation (#371).
+- v1.1 Russian translation (#410).
+- v1.1 Japanese translation (#363).
+- v1.1 Norwegian Bokmål translation (#383).
+- v1.1 &quot;Inconsistent Changes&quot; Turkish translation (#347).
+- Default to most recent versions available for each languages
+- Display count of available translations (26 to date!)
+- Centralize all links into `/data/links.json` so they can be updated easily
+
+### Fixed
+
+- Improve French translation (#377).
+- Improve id-ID translation (#416).
+- Improve Persian translation (#457).
+- Improve Russian translation (#408).
+- Improve Swedish title (#419).
+- Improve zh-CN translation (#359).
+- Improve French translation (#357).
+- Improve zh-TW translation (#360, #355).
+- Improve Spanish (es-ES) transltion (#362).
+- Foldout menu in Dutch translation (#371).
+- Missing periods at the end of each change (#451).
+- Fix missing logo in 1.1 pages
+- Display notice when translation isn&#39;t for most recent version
+- Various broken links, page versions, and indentations.
+
+### Changed
+
+- Upgrade dependencies: Ruby 3.2.1, Middleman, etc.
+
+### Removed
+
+- Unused normalize.css file
+- Identical links assigned in each translation file
+- Duplicate index file for the english version
+
+## [1.1.0] - 2019-02-15
+
+### Added
+
+- Danish translation (#297).
+- Georgian translation from (#337).
+- Changelog inconsistency section in Bad Practices.
+
+### Fixed
+
+- Italian translation (#332).
+- Indonesian translation (#336).
+
+## [1.0.0] - 2017-06-20
+
+### Added
+
+- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
+- Version navigation.
+- Links to latest released version in previous versions.
+- &quot;Why keep a changelog?&quot; section.
+- &quot;Who needs a changelog?&quot; section.
+- &quot;How do I make a changelog?&quot; section.
+- &quot;Frequently Asked Questions&quot; section.
+- New &quot;Guiding Principles&quot; sub-section to &quot;How do I make a changelog?&quot;.
+- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).
+- German translation from [@mpbzh](https://github.com/mpbzh) &amp; [@Art4](https://github.com/Art4).
+- Italian translation from [@azkidenz](https://github.com/azkidenz).
+- Swedish translation from [@magol](https://github.com/magol).
+- Turkish translation from [@emreerkan](https://github.com/emreerkan).
+- French translation from [@zapashcanon](https://github.com/zapashcanon).
+- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
+- Polish translation from [@amielucha](https://github.com/amielucha) &amp; [@m-aciek](https://github.com/m-aciek).
+- Russian translation from [@aishek](https://github.com/aishek).
+- Czech translation from [@h4vry](https://github.com/h4vry).
+- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
+- Korean translation from [@pierceh89](https://github.com/pierceh89).
+- Croatian translation from [@porx](https://github.com/porx).
+- Persian translation from [@Hameds](https://github.com/Hameds).
+- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
+
+### Changed
+
+- Start using &quot;changelog&quot; over &quot;change log&quot; since it&#39;s the common usage.
+- Start versioning based on the current English version at 0.3.0 to help
+  translation authors keep things up-to-date.
+- Rewrite &quot;What makes unicorns cry?&quot; section.
+- Rewrite &quot;Ignoring Deprecations&quot; sub-section to clarify the ideal
+  scenario.
+- Improve &quot;Commit log diffs&quot; sub-section to further argument against
+  them.
+- Merge &quot;Why can’t people just use a git log diff?&quot; with &quot;Commit log
+  diffs&quot;.
+- Fix typos in Simplified Chinese and Traditional Chinese translations.
+- Fix typos in Brazilian Portuguese translation.
+- Fix typos in Turkish translation.
+- Fix typos in Czech translation.
+- Fix typos in Swedish translation.
+- Improve phrasing in French translation.
+- Fix phrasing and spelling in German translation.
+
+### Removed
+
+- Section about &quot;changelog&quot; vs &quot;CHANGELOG&quot;.
+
+## [0.3.0] - 2015-12-03
+
+### Added
+
+- RU translation from [@aishek](https://github.com/aishek).
+- pt-BR translation from [@tallesl](https://github.com/tallesl).
+- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).
+
+## [0.2.0] - 2015-10-06
+
+### Changed
+
+- Remove exclusionary mentions of &quot;open source&quot; since this project can
+  benefit both &quot;open&quot; and &quot;closed&quot; source projects equally.
+
+## [0.1.0] - 2015-10-06
+
+### Added
+
+- Answer &quot;Should you ever rewrite a change log?&quot;.
+
+### Changed
+
+- Improve argument against commit logs.
+- Start following [SemVer](https://semver.org) properly.
+
+## [0.0.8] - 2015-02-17
+
+### Changed
+
+- Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world
+  writes dates in a strange way.
+
+### Fixed
+
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
+
+## [0.0.7] - 2015-02-16
+
+### Added
+
+- Link, and make it obvious that date format is ISO 8601.
+
+### Changed
+
+- Clarified the section on &quot;Is there a standard change log format?&quot;.
+
+### Fixed
+
+- Fix Markdown links to tag comparison URL with footnote-style links.
+
+## [0.0.6] - 2014-12-12
+
+### Added
+
+- README section on &quot;yanked&quot; releases.
+
+## [0.0.5] - 2014-08-09
+
+### Added
+
+- Markdown links to version tags on release headings.
+- Unreleased section to gather unreleased changes and encourage note
+  keeping prior to releases.
+
+## [0.0.4] - 2014-08-09
+
+### Added
+
+- Better explanation of the difference between the file (&quot;CHANGELOG&quot;)
+  and its function &quot;the change log&quot;.
+
+### Changed
+
+- Refer to a &quot;change log&quot; instead of a &quot;CHANGELOG&quot; throughout the site
+  to differentiate between the file and the purpose of the file — the
+  logging of changes.
+
+### Removed
+
+- Remove empty sections from CHANGELOG, they occupy too much space and
+  create too much noise in the file. People will have to assume that the
+  missing sections were intentionally left out because they contained no
+  notable changes.
+
+## [0.0.3] - 2014-08-09
+
+### Added
+
+- &quot;Why should I care?&quot; section mentioning The Changelog podcast.
+
+## [0.0.2] - 2014-07-10
+
+### Added
+
+- Explanation of the recommended reverse chronological release ordering.
+
+## [0.0.1] - 2014-05-31
+
+### Added
+
+- This CHANGELOG file to hopefully serve as an evolving example of a
+  standardized open source project CHANGELOG.
+- CNAME file to enable GitHub Pages custom domain.
+- README now contains answers to common questions about CHANGELOGs.
+- Good examples and basic guidelines, including proper date formatting.
+- Counter-examples: &quot;What makes unicorns cry?&quot;.
+
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
+[0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
+[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
+[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
+[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+</pre> </div> <div class='answers'> <h3 id='what'> <a aria_hidden='true' class='anchor' href='#what'></a> 更新日志是什么？ </h3> <p> 更新日志（Change Log）是一个由人工编辑、以时间为倒序的列表，用于记录项目中每个版本的显著变动。 </p> <h3 id='why'> <a aria_hidden='true' class='anchor' href='#why'></a> 为何要提供更新日志？ </h3> <p> 为了让用户和开发人员更简单清晰地知晓项目的不同版本之间有哪些显著变动。 </p> <h3 id='who'> <a aria_hidden='true' class='anchor' href='#who'></a> 哪些人需要更新日志？ </h3> <p> 人人需要更新日志。无论是用户还是开发者。当软件有变动时，大家希望知道改动是为何、以及如何进行的。 </p> </div> <div class='good-practices'> <h3 id='how'> <a aria_hidden='true' class='anchor' href='#how'></a> 怎样制作高质量的更新日志？ </h3> <h4 id='principles'> <a aria_hidden='true' class='anchor' href='#principles'></a> 指导原则 </h4> <ul> <li> 记住日志是写给<em>人</em>而非机器的。 </li> <li> 每个版本都应该有独立的入口。 </li> <li> 同类改动应该分组放置。 </li> <li> 不同版本应分别设置链接。 </li> <li> 新版本在前，旧版本在后。 </li> <li> 应包括每个版本的发布日期。 </li> <li> 注明是否遵守<a href="https://semver.org/">语义化版本规范</a>。 </li> </ul> <a aria_hidden='true' class='anchor' href='#types'></a> <h4 id='types'>变动类型</h4> <ul> <li> <code>Added</code> 新添加的功能。 </li> <li> <code>Changed</code> 对现有功能的变更。 </li> <li> <code>Deprecated</code> 已经不建议使用，即将移除的功能。 </li> <li> <code>Removed</code> 已经移除的功能。 </li> <li> <code>Fixed</code> 对 bug 的修复。 </li> <li> <code>Security</code> 对安全性的改进。 </li> </ul> </div> <div class='effort'> <h3 id='effort'> <a aria_hidden='true' class='anchor' href='#effort'></a> 如何减少维护更新日志的精力？ </h3> <p> 在文档最上方提供 <code>Unreleased</code> 区块以记录即将发布的更新内容。 </p> <p>这样做有两个好处：</p> <ul> <li> 大家可以知道在未来版本中可能会有哪些变更。 </li> <li> 在发布新版本时，直接将 <code>Unreleased</code> 区块中的内容移动至新发布版本的描述区块就可以了。 </li> </ul> </div> <div class='bad-practices'> <h3 id='bad-practices'> <a aria_hidden='true' class='anchor' href='#bad-practices'></a> 有很糟糕的更新日志吗？ </h3> <p>当然有，下面就是一些糟糕的方式。</p> <h4 id='log-diffs'> <a aria_hidden='true' class='anchor' href='#log-diffs'></a> 使用 git 日志 </h4> <p> 使用 git 日志作为更新日志是个非常糟糕的方式：git 日志充满各种无意义的信息，如合并提交、语焉不详的提交标题、文档更新等。 </p> <p> 提交的目的是记录源码的演化。一些项目会清理提交记录，一些则不会。 </p> <p> 更新日志的目的则是记录重要的变更以供受众阅读，记录范围通常涵盖多次提交。 </p> <h4 id='ignoring-deprecations'> <a aria_hidden='true' class='anchor' href='#ignoring-deprecations'></a> 无视即将弃用的功能 </h4> <p> 当从一个版本升级至另一个时，人们应清楚（尽管痛苦）地知道哪些部分将不再被支持。应该允许先升级至一个列出哪些功能将会被弃用的版本，待去掉那些不再支持的部分后，再升级至把那些弃用功能真正移除的版本。 </p> <p> 即使其他什么都不做，也至少要在更新日志中列出 deprecations，removals 以及其他重大变动。 </p> <h4 id='confusing-dates'> <a aria_hidden='true' class='anchor' href='#confusing-dates'></a> 易混淆的日期格式 </h4> <p> 不同区域有着不同的时间格式，要找到让大家都满意的日期格式不是件容易的事。<code>2012-06-02</code> 的格式从大到小排列符合逻辑、不容易与其他日期格式混淆，而且还符合 <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 标准</a>。因此，推荐在更新日志中采用使用此种日期格式。 </p> <aside> 还有更多内容？请通过 <a href="#">Issues</a> 或是 Pull Request 协助收集。 </aside> </div> <div class='frequently-asked-questions'> <h3 id='frequently-asked-questions'> <a aria_hidden='true' class='anchor' href='#frequently-asked-questions'></a> 常见问题 </h3> <h4 id='standard'> <a aria_hidden='true' class='anchor' href='#standard'></a> 是否有一个标准化的更新日志格式？ </h4> <p> 并没有。虽然 GNU 提供了更新日志样式指引，以及那个仅有两段长的 GNU NEWS 文件“指南”，但两者均远远不够。 </p> <p> 此项目旨在提供一个 <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">更好的更新日志范例</a>，所有点子都来自于对开源社区中优秀实例的观察与记录。 </p> <p> 欢迎<a href="#">提供</a>有建设性的批评、讨论及建议。 </p> <h4 id='filename'> <a aria_hidden='true' class='anchor' href='#filename'></a> 更新日志文件应被如何命名？ </h4> <p> 通常使用 <code>CHANGELOG.md</code>。有些项目将其命名为 <code>HISTORY</code>、<code>NEWS</code> 或是 <code>RELEASES</code>。 </p> <p> 当然，你可能认为更新日志的命名并不那么重要，但为什么要为难那些仅仅是想看到都有哪些重大变更的用户呢？ </p> <h4 id='github-releases'> <a aria_hidden='true' class='anchor' href='#github-releases'></a> GitHub Releases 怎么样？ </h4> <p> 这是个非常好的提议。<a href="https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository">GitHub Releases</a> 可通过手动添加发布日志或将带有注释的 git 标签信息抓取后转换的方式，将简单的 git 标签（如一个叫 <code>v1.0.0</code> 的标签）转换为信息丰富的发布日志。 </p> <p> GitHub Releases 会创建一个非便携、仅可在 GitHub 环境下显示的更新日志。尽管会花费更多时间，但将之处理成更新日志格式是完全可能的。 </p> <p> 现行版本的 GitHub Releases 不像那些典型的大写文件（<code>README</code>，<code>CONTRIBUTING</code> 等），仍可以认为是不利于用户探索的。另一个小问题则是目前的 GitHub Releases 界面并没有提供不同版本间的 commit 日志链接。 </p> <h4 id='automatic'> <a aria_hidden='true' class='anchor' href='#automatic'></a> 更新日志可以被自动识别吗？ </h4> <p> 非常困难，因为有各种不同的文件格式和命名。 </p> <p> <a href="https://github.com/tech-angels/vandamme/">Vandamme</a> 是一个 Ruby 程序，由 Gemnasium 团队制作，可以解析多种（但绝对不是全部）开源库的更新日志。 </p> <h4 id='yanked'> <a aria_hidden='true' class='anchor' href='#yanked'></a> 那些后来撤下的版本怎么办？ </h4> <p> 因重大 bug 或安全性原因而被撤下的版本通常不会出现在更新日志中，但仍然建议记录下来。你可以这样作出记录： </p> <p><code>## [0.0.5] - 2014-12-13 [YANKED]</code></p> <p> 因为这类更改十分重要，所以 <code>[YANKED]</code> 标签应该非常醒目。此外，用方括号包围可使其更易被程序识别。 </p> <h4 id='rewrite'> <a aria_hidden='true' class='anchor' href='#rewrite'></a> 是否可以重写更新日志？ </h4> <p> 当然可以。总会有合适的原因去改进更新日志。我也时常提 Pull Request 来为那些未维护更新日志的开源项目加入缺失的发布信息。 </p> <p> 另外，你很有可能发现自己忘记记录一个重大功能更新。这种情况下显然应该重写更新日志。 </p> <h4 id='contribute'> <a aria_hidden='true' class='anchor' href='#contribute'></a> 如何贡献？ </h4> <p> 本文档并非<strong>真理</strong>。而是我深思熟虑后的建议，以及我收集的信息与样例。 </p> <p> 希望我们的社区可以对此达成一致。我相信讨论的过程与最终结果一样重要。 </p> <p> 所以欢迎<strong><a href="https://github.com/olivierlacan/keep-a-changelog">贡献</a></strong>。 </p> </div> <div class='press'> <h3>访谈</h3> <p> 我在 <a href="https://changelog.com/podcast/127">The Changelog podcast</a> 上讲述了为何维护者与贡献者应关心更新日志，以及这个项目背后的动机。 </p> </div> <footer class='footer clearfix' role='contentinfo'> <img src="/assets/images/keep-a-changelog-mark-f8b06a42.svg" width="30" height="30" class="mark" alt=""/> <p class='about'> This project is <a href="https://choosealicense.com/licenses/mit/">MIT Licensed</a> // <a href="https://github.com/olivierlacan/keep-a-changelog/">Created & maintained</a> by <a href="https://olivierlacan.com/">Olivier Lacan</a> <a href="https://ruby.social/@olivierlacan" rel="me" aria-label="Link to Olivier Lacan's Mastodon account"></a> // Designed by Tyler Fortune </p> </footer> </div> </article> </body> <script>
   var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
