@@ -7,7 +7,7 @@ task :serve do
 end
 
 desc "Build and publish to GitHub Pages"
-task :deploy => :publish
+task deploy: [:clean, :publish]
 
 desc "Clean build directory"
 task :build do
