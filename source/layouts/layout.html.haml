@@ -66,7 +66,7 @@
                 it.
 
         %nav.locales{ role: "navigation" }
-          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Language: "
+          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Languages (#{$languages.count}):"
           %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
               - selected = language_code == language.first
