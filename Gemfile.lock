@@ -111,6 +111,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
+    prism (0.24.0)
     public_suffix (5.0.4)
     racc (1.7.3)
     rack (2.2.8)
@@ -125,19 +126,20 @@ GEM
     regexp_parser (2.9.0)
     rexml (3.2.6)
     rouge (3.30.0)
-    rubocop (1.59.0)
+    rubocop (1.61.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
-      parser (>= 3.2.2.4)
+      parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
       rubocop-ast (>= 1.30.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.30.0)
-      parser (>= 3.2.1.0)
+    rubocop-ast (1.31.0)
+      parser (>= 3.3.0.4)
+      prism (>= 0.24.0)
     rubocop-performance (1.20.2)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
@@ -145,10 +147,10 @@ GEM
     sassc (2.4.0)
       ffi (~> 1.9)
     servolux (0.13.0)
-    standard (1.33.0)
+    standard (1.34.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.59.0)
+      rubocop (~> 1.60)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.3)
     standard-custom (1.0.2)
@@ -182,7 +184,7 @@ DEPENDENCIES
   middleman-minify-html
   middleman-syntax
   redcarpet
-  standard (~> 1.33)
+  standard (~> 1.34)
 
 BUNDLED WITH
    2.5.5
