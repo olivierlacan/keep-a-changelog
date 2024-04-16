@@ -155,56 +155,47 @@ version: 1.1.0
 .frequently-asked-questions
   %h3#frequently-asked-questions
     %a.anchor{ href: "#frequently-asked-questions", aria_hidden: "true" }
-    Frequently Asked Questions
+    Pertanyaan yang Sering Diajukan
 
   %h4#standard
     %a.anchor{ href: "#standard", aria_hidden: "true" }
-    Is there a standard changelog format?
+    Apakah ada format standar untuk sebuah changelog?
 
   %p
-    Not really. There's the #{link_to "GNU changelog style guide", data.links.gnustyle},
-    or the #{link_to "two-paragraph-long GNU NEWS file", data.links.gnunews}
-    "guideline". Both are inadequate or insufficient.
+    Tidak, sih. Ada #{link_to "Panduan Ragam Penulisan Changelog GNU", data.links.gnustyle},
+    atau "panduan" #{link_to "dua paragraf untuk GNU NEWS file", data.links.gnunews}. Tapi keduanya antara tidak mumpuni atau tidak lengkap.
 
   %p
-    This project aims to be
-    = link_to "a better changelog convention.", data.links.changelog
-    It comes from observing good practices in the open source
-    community and gathering them.
-
+    Proyek ini ingin menghasilkan
+    = link_to "konvensi changelog yang lebih baik.", data.links.changelog
+    Hal-hal yang diutarakan merupakan sekumpulan pengamatan berbagai disiplin baik yang telah diadopsi oleh komunitas open source lain. 
+    
   %p
-    Healthy criticism, discussion and suggestions for improvements
-    = link_to "are welcome.", data.links.issue
+    Kritik sehat, saran, dan diskusi untuk meningkatkan proyek ini  
+    = link_to "dipersilakan.", data.links.issue
 
 
   %h4#filename
     %a.anchor{ href: "#filename", aria_hidden: "true" }
-    What should the changelog file be named?
+    Sebaiknya file changelog diberi nama apa?
 
   %p
-    Call it <code>CHANGELOG.md</code>. Some projects use
+    Sebut saja <code>CHANGELOG.md</code>. Beberapa proyek menyebutnya
     <code>HISTORY</code>, <code>NEWS</code> or <code>RELEASES</code>.
 
   %p
-    While it's easy to think that the name of your changelog file
-    doesn't matter that much, why make it harder for your end users to
-    consistently find notable changes?
+    Walau perihal nama ini sepertinya sepele, kenapa pengguna perangkat lunak anda yang mencari perubahan penting harus dibuat sulit?
 
   %h4#github-releases
     %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+    Bagaimana dengan GitHub Releases?
 
   %p
-    It's a great initiative. #{link_to "Releases", data.links.github_releases} can be used to
-    turn simple git tags (for example a tag named <code>v1.0.0</code>)
-    into rich release notes by manually adding release notes or it can
-    pull annotated git tag messages and turn them into notes.
+    Github Releases merupakan upaya yang baik. #{link_to "Releases", data.links.github_releases} dapat merubah git tag (contohnya sebuah tag dengan judul <code>v1.0.0</code>)
+    menjadi catatan rilis yang informatif dengan menambahkan catatan secara manual atau dengan memanfaatkan pesan-pesan git tag dan merubahnya menjadi catatan.
 
   %p
-    GitHub Releases create a non-portable changelog that can only be
-    displayed to users within the context of GitHub. It's possible to
-    make them look very much like the Keep a Changelog format, but it
-    tends to be a bit more involved.
+    Changelog yang dihasilkan oleh GitHub Releases bermanfaat hanya dalam konteks pengguna GitHub. Hasil catatannya dapat dibuat menyerupai format Pencatatan Changelog namun akan rumit.
 
   %p
     The current version of GitHub releases is also arguably not very
