@@ -122,14 +122,10 @@ version: 1.1.0
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignoring Deprecations
+    Mengabaikan Deprecations (fitur yang akan dihilangkan)
 
   %p
-    When people upgrade from one version to another, it should be
-    painfully clear when something will break. It should be possible to
-    upgrade to a version that lists deprecations, remove what's
-    deprecated, then upgrade to the version where the deprecations
-    become removals.
+    Jika ada perubahan yang tidak kompatibel dari satu versi ke versi lainnya, perubahan ini seharusnya teramat jelas bagi orang-orang. Saat kita menggunakan sebuah versi perangkat lunak yang di dalamnya terdapat fitur yang akan dihilangkan (Deprecated), seharusnya kita dapat menghilangkan fitur tersebut lalu melakukan upgrade ke versi dimana fitur tersebut sudah dihilangkan (Removed). 
 
   %p
     If you do nothing else, list deprecations, removals, and any
@@ -138,38 +134,23 @@ version: 1.1.0
 
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
-    Confusing Dates
+    Perbedaan Format Tanggal
 
   %p
-    Regional date formats vary throughout the world and it's often
-    difficult to find a human-friendly date format that feels intuitive
-    to everyone. The advantage of dates formatted like
-    <code>2017-07-17</code> is that they follow the order of largest to
-    smallest units: year, month, and day. This format also doesn't
-    overlap in ambiguous ways with other date formats, unlike some
-    regional formats that switch the position of month and day numbers.
-    These reasons, and the fact this date format is an
-    #{link_to "ISO standard", data.links.isodate}, are why it is the recommended date
-    format for changelog entries.
+    Mencari pola tanggal yang intuitif dan mudah dipahami oleh semua orang adalah masalah yang sulit. Hal ini karena pola tanggal di satu belahan bumi akan berbeda dengan belahan bumi lainnya. Tanggal yang disusun dalam pola <code>2017-07-17</code> memiliki keuntungan dimana pola tersebut dimulai dari unit terbesar: tahun, bulan, lalu hari. Format ini juga tidak tumpang tindih dengan format tanggal lainnya. Berbeda dengan format tanggal regional yang terkadang menukar posisi angka bulan dan tanggal.
+    Format tanggal ini direkomendasikan dalam catatan changelog bukan hanya karena alasan yang telah disebut, tetapi juga karena pola ini mengikuti #{link_to "ISO standard", data.links.isodate} untuk penulisan tanggal.  
 
   %h4#inconsistent-changes
     %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
-    Inconsistent Changes
+    Pencatatan yang tidak konsisten
 
   %p
-    A changelog which only mentions some of the changes can be as dangerous
-    as not having a changelog. While many of the changes may not be
-    relevant - for instance, removing a single whitespace may not need
-    to be recorded in all instances - any important changes should be
-    mentioned in the changelog. By inconsistently applying changes,
-    your users may mistakenly think that the changelog is the single source
-    of truth. It ought to be. With great power comes great responsibility -
-    having a good changelog means having a consistently updated changelog.
+    Mencatat sebuah changelog yang tidak lengkap dengan tidak mencatatnya sama sekali adalah sama-sama berbahaya. Walau perubahan kecil - menghapus sebuah spasi misalnya - mungkin tidak perlu dicatat, semua perubahan penting yang patut diperhatikan harus disebut dan tercatat di changelog. Jika dilakukan setengah-setengah konsumen perangkat lunak anda akan berpikir mereka sedang membaca changelog yang benar, padahal kenyataannya adalah sebaliknya. Changelog seharusnya selalu benar. Changelog yang baik adalah changelog yang selalu diperbarui. Jika anda ingin memiliki changelog yang baik, inilah tanggung jawab anda.
 
   %aside
-    There’s more. Help me collect these antipatterns by
-    = link_to "opening an issue", data.links.issue
-    or a pull request.
+    Masih banyak contoh lainnya. Bantu saya mengumpulkannya dengan 
+    = link_to "membuka sebuah issue", data.links.issue
+    atau pull request.
 
 .frequently-asked-questions
   %h3#frequently-asked-questions
