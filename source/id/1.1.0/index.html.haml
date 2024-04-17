@@ -198,77 +198,56 @@ version: 1.1.0
     Changelog yang dihasilkan oleh GitHub Releases bermanfaat hanya dalam konteks pengguna GitHub. Hasil catatannya dapat dibuat menyerupai format Pencatatan Changelog namun akan rumit.
 
   %p
-    The current version of GitHub releases is also arguably not very
-    discoverable by end-users, unlike the typical uppercase files
-    (<code>README</code>, <code>CONTRIBUTING</code>, etc.). Another
-    minor issue is that the interface doesn't currently offer links to
-    commit logs between each release.
+    GitHub releases yang sekarang tidak begitu mudah ditemukan oleh pengguna, berbeda dengan file-file (<code>README</code>, <code>CONTRIBUTING</code>, dll.). Tautan menuju commit log antar versi rilis juga tidak ditampilkan di antarmuka pengguna. 
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
-    Can changelogs be automatically parsed?
+    Apakah changelog dapat diuraikan secara otomatis?
 
   %p
-    It’s difficult, because people follow wildly different formats and
-    file names.
+    Sulit, karena orang-orang mengikuti panduan format dan nama file yang berbeda-beda.
 
   %p
-    #{link_to "Vandamme", data.links.vandamme} is a Ruby gem created by the
-    Gemnasium team and which parses many (but
-    not all) open source project changelogs.
+    #{link_to "Vandamme", data.links.vandamme} adalah sebuah Ruby gem yang diciptakan oleh tim Gemnasium dan mampu menguraikan changelog proyek-proyek open source (tapi tidak semua).
 
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
-    What about yanked releases?
+    Bagaimana dengan rilis yang dibatalkan (YANKED)?
 
   %p
-    Yanked releases are versions that had to be pulled because of a
-    serious bug or security issue. Often these versions don't even
-    appear in change logs. They should. This is how you should display
-    them:
+    Rilis bertanda Yanked artinya versi tersebut ditarik karena adanya bug atau masalah kerentanan yang serius. Versi-versi ini harusnya dicatat. Tetapi seringkali tidak. Berikut cara mencatatnya:
 
   %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
-    The <code>[YANKED]</code> tag is loud for a reason. It's important
-    for people to notice it. Since it's surrounded by brackets it's also
-    easier to parse programmatically.
+    Tag <code>[YANKED]</code> ditulis sedemikian rupa. Hal ini karena orang-orang harus melihatnya. Selain huruf kapital, dengan menulisnya di dalam kurung siku akan mempermudah penguraian catatan ini secara programatis.
 
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
-    Should you ever rewrite a changelog?
+    Bolehkah anda menulis ulang sebuah changelog?
+  %p
+    Boleh saja. sebuah changelog merupakan ide yang baik. Saya rutin membuat pull request to menambahkan versi-versi yang tidak tercatat dalam changelog proyek open source yang tidak dirapikan.
 
   %p
-    Sure. There are always good reasons to improve a changelog. I
-    regularly open pull requests to add missing releases to open source
-    projects with unmaintained changelogs.
-
-  %p
-    It's also possible you may discover that you forgot to address a
-    breaking change in the notes for a version. It's obviously important
-    for you to update your changelog in this case.
+    Memperbarui dan mencermati changelog itu penting. Apalagi jika anda lupa untuk mencatat perubahan yang tidak kompatibel pada versi tertentu. 
 
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
-    How can I contribute?
+    Bagaimana saya dapat berkontribusi?
 
   %p
-    This document is not the <strong>truth</strong>; it’s my carefully
-    considered opinion, along with information and examples I gathered.
+    Dokumen ini bukanlah sesuatu yang <strong>mutlak</strong>; melainkan sebuah opini yang terbentuk setelah saya mempertimbangkan banyak hal, meliputi informasi dan contoh-contoh yang saya kumpulkan.
 
   %p
-    This is because I want our community to reach a consensus. I believe
-    the discussion is as important as the end result.
+    Saya ingin komunitas ini mencapai sebuah mufakat. Saya yakin diskusi ini penting untuk alasan tersebut.
 
   %p
-    So please <strong>#{link_to "pitch in", data.links.repo}</strong>.
+    Jadi, silahkan kirim <strong>#{link_to "saran", data.links.repo}</strong>.
 
 .press
-  %h3 Conversations
+  %h3 Percakapan
   %p
-    I went on #{link_to "The Changelog podcast", data.links.thechangelog}
-    to talk about why maintainers and contributors should care about changelogs,
-    and also about the motivations behind this project.
+    Saya berbicara tentang mengapa kontributor dan maintainer seharusnya mencermati changelog di #{link_to "The Changelog podcast", data.links.thechangelog}, disana saya juga berbicara tentang motivasi di belakang proyek ini.
