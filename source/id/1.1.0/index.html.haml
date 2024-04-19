@@ -63,7 +63,7 @@ version: 1.1.0
       Sebutkan apakah anda mengikuti #{link_to "Semantic Versioning", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
-  %h4#types Types of changes
+  %h4#types Jenis Perubahan
 
   %ul
     %li
@@ -104,7 +104,7 @@ version: 1.1.0
 .bad-practices
   %h3#bad-practices
     %a.anchor{ href: "#bad-practices", aria_hidden: "true" }
-    Apakah changelog bisa menjadi tidak bermanfaat?
+    Apakah bisa changelog menjadi tidak bermanfaat?
 
   %p Bisa. Berikut sedikit contoh bagaimana keberadaan changelog menjadi tidak membantu:
 
@@ -125,11 +125,10 @@ version: 1.1.0
     Mengabaikan Deprecations (fitur yang akan dihilangkan)
 
   %p
-    Jika ada perubahan yang tidak kompatibel dari satu versi ke versi lainnya, perubahan ini seharusnya teramat jelas bagi orang-orang. Saat kita menggunakan sebuah versi perangkat lunak yang di dalamnya terdapat fitur yang akan dihilangkan (Deprecated), seharusnya kita dapat menghilangkan fitur tersebut lalu melakukan upgrade ke versi dimana fitur tersebut sudah dihilangkan (Removed). 
+    Jika ada perubahan yang tidak kompatibel dari satu versi ke versi lainnya, perubahan ini seharusnya teramat jelas bagi orang-orang. Saat kita menggunakan sebuah versi perangkat lunak yang di dalamnya terdapat fitur yang akan dihilangkan (Deprecated), seharusnya kita dapat menghapus fitur tersebut lalu melakukan upgrade ke versi dimana fitur tersebut sudah dihilangkan (Removed). 
 
   %p
-    If you do nothing else, list deprecations, removals, and any
-    breaking changes in your changelog.
+    Catat fitur yang akan dihapus, telah dihapus, dan perubahan tidak kompatibel pada changelog anda jika anda tidak mencoba hal tersebut.  
 
 
   %h4#confusing-dates
@@ -145,7 +144,7 @@ version: 1.1.0
     Pencatatan yang tidak konsisten
 
   %p
-    Mencatat sebuah changelog yang tidak lengkap dengan tidak mencatatnya sama sekali adalah sama-sama berbahaya. Walau perubahan kecil - menghapus sebuah spasi misalnya - mungkin tidak perlu dicatat, semua perubahan penting yang patut diperhatikan harus disebut dan tercatat di changelog. Jika dilakukan setengah-setengah konsumen perangkat lunak anda akan berpikir mereka sedang membaca changelog yang benar, padahal kenyataannya adalah sebaliknya. Changelog seharusnya selalu benar. Changelog yang baik adalah changelog yang selalu diperbarui. Jika anda ingin memiliki changelog yang baik, inilah tanggung jawab anda.
+    Catatan changelog yang tidak lengkap sama bahayanya dengan tidak mencatatnya sama sekali. Walau perubahan kecil - menghapus sebuah spasi misalnya - mungkin tidak perlu dicatat, semua perubahan penting yang patut diperhatikan harus disebut dan tercatat di changelog. Jika dilakukan setengah-setengah konsumen perangkat lunak anda akan berpikir mereka sedang membaca changelog yang benar, padahal kenyataannya salah. Changelog seharusnya selalu benar. Changelog yang baik adalah changelog yang selalu diperbarui. Jika anda ingin memiliki changelog yang baik, inilah tanggung jawab anda.
 
   %aside
     Masih banyak contoh lainnya. Bantu saya mengumpulkannya dengan 
@@ -228,7 +227,7 @@ version: 1.1.0
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
     Bolehkah anda menulis ulang sebuah changelog?
   %p
-    Boleh saja. sebuah changelog merupakan ide yang baik. Saya rutin membuat pull request to menambahkan versi-versi yang tidak tercatat dalam changelog proyek open source yang tidak dirapikan.
+    Boleh saja. Memperbarui sebuah changelog merupakan ide yang baik. Saya rutin membuat pull request untuk menambahkan versi-versi yang tidak tercatat dalam changelog proyek open source yang tidak dirapikan.
 
   %p
     Memperbarui dan mencermati changelog itu penting. Apalagi jika anda lupa untuk mencatat perubahan yang tidak kompatibel pada versi tertentu. 
@@ -242,7 +241,7 @@ version: 1.1.0
     Dokumen ini bukanlah sesuatu yang <strong>mutlak</strong>; melainkan sebuah opini yang terbentuk setelah saya mempertimbangkan banyak hal, meliputi informasi dan contoh-contoh yang saya kumpulkan.
 
   %p
-    Saya ingin komunitas ini mencapai sebuah mufakat. Saya yakin diskusi ini penting untuk alasan tersebut.
+    Saya ingin komunitas ini mencapai sebuah mufakat. Saya yakin diskusi yang muncul untuk menghasilkan sebuah keputusan adalah sama pentingnya dengan keputusan tersebut.
 
   %p
     Jadi, silahkan kirim <strong>#{link_to "saran", data.links.repo}</strong>.
