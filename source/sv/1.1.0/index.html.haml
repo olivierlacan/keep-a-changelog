@@ -1,6 +1,6 @@
 ---
 title: För en ändringslogg
-description: Låt inte dina vänner slänga in git-loggar i ändringsloggar.
+description: Låt inte vänner dumpa git-loggar i ändringsloggar.
 language: sv
 version: 1.1.0
 ---
@@ -26,25 +26,25 @@ version: 1.1.0
 
   %h3#why
     %a.anchor{ href: "#why", aria_hidden: "true" }
-    Vad är meningen med en ändringslogg?
+    Varför föra en ändringslogg?
 
   %p
     För att göra det enklare för användare och medarbetare att se exakt vilka
-    viktiga ändringar som har gjorts mellan varje utgåva (eller version) av projektet.
+    viktiga ändringar som har skett mellan varje utgåva (eller version) av projektet.
 
   %h3#who
     %a.anchor{ href: "#who", aria_hidden: "true" }
     Vem behöver en ändringslogg?
 
   %p
-    Alla behöver det. Oavsett om det är användare eller utvecklare, är
-    alla slutanvändare av mjukvaran människor som bryr sig vad som finns
-    i mjukvaran. När mjukvaran förändras vill folk veta varför och hur.
+    Folk i allmänhet. Oavsett om de är användare eller utvecklare, är
+    alla slutanvändare av mjukvaran människor som bryr sig om vad som finns
+    i den. När mjukvaran förändras vill de veta varför och hur.
 
 .good-practices
   %h3#how
     %a.anchor{ href: "#how", aria_hidden: "true" }
-    Hur gör jag en bra ändringslogg?
+    Hur skapar jag en bra ändringslogg?
 
   %h4#principles
     %a.anchor{ href: "#principles", aria_hidden: "true" }
@@ -52,7 +52,7 @@ version: 1.1.0
 
   %ul
     %li
-      Ändringsloggar är <em>för människor</em>, inte maskiner.
+      Ändringsloggar är till <em>för människor</em>, inte maskiner.
     %li
       Det bör finnas en post för varje enskild version.
     %li
@@ -64,10 +64,10 @@ version: 1.1.0
     %li
       Datum då respektive version släpptes ska visas.
     %li
-      Notering att du följer #{link_to "Semantisk versionshantering", data.links.semver}.
+      Nämn huruvida du använder #{link_to "Semantisk versionshantering", data.links.semver}.
 
   %a.anchor{ href: "#types", aria_hidden: "true" }
-  %h4#types Typer av ändringar
+  %h4#types Ändringstyper
 
   %ul
     %li
@@ -75,16 +75,16 @@ version: 1.1.0
       för nya funktioner.
     %li
       %code Changed
-      för ändringar på existerande funktionalitet.
+      för ändringar i existerande funktionalitet.
     %li
       %code Deprecated
       för funktionalitet som snart tas bort.
     %li
       %code Removed
-      för nu borttagen funktionalitet.
+      för borttagen funktionalitet.
     %li
       %code Fixed
-      för alla buggfixar
+      för felrättningar
     %li
       %code Security
       i fall av sårbarheter.
@@ -121,7 +121,7 @@ version: 1.1.0
 
   %p
     Det är en dålig idé att använda incheckningsloggen som ändringslogg:
-    de är fulla av brus. Saker så som merge-incheckningar, incheckningar med
+    de är fulla av brus; merge-incheckningar, incheckningar med
     otydliga titlar, dokumentationsförändringar etc.
 
   %p
@@ -129,23 +129,23 @@ version: 1.1.0
     källkoden. Vissa projekt städar upp bland incheckningarna, andra inte.
 
   %p
-    Syftet med en post i en ändringslogg är att dokumentera den noterbara
+    Syftet med en post i en ändringslogg är att dokumentera den märkbara
     skillnaden, oftast över flera incheckningar, för att kommunicera dessa
     tydligt till slutanvändaren.
 
   %h4#ignoring-deprecations
     %a.anchor{ href: "#ignoring-deprecations", aria_hidden: "true" }
-    Ignorera föråldrad funktionalitet (deprecations)
+    Ignorera föråldrad funktionalitet
 
   %p
     När användare uppgraderar från en version till en annan, ska det vara
-    smärtsamt uppenbart när något förväntas gå sönder. Den bör vara möjligt
+    smärtsamt uppenbart när något förväntas gå sönder. Det bör vara möjligt
     att uppgradera till en version som listar föråldrad funktionalitet, ta
     bort dessa beroenden i sitt program, och sedan uppgradera till en version
     där den föråldrade funktionaliteten är borttagen.
 
   %p
-    Om du inte gör något annat, lista åtminstone föråldrad och borttagen
+    Även om du inte gör något annat, så lista åtminstone föråldrad och borttagen
     funktionalitet samt förstörande förändringar i din ändringslogg.
 
   %h4#confusing-dates
@@ -179,8 +179,8 @@ version: 1.1.0
     innebär att ha en konsekvent uppdaterad ändringslogg.
 
   %aside
-    Det finns mer. Hjälp mig att samla dessa antimönster genom att
-    = link_to "skapa ett issue", data.links.issue
+    Det var inte allt. Hjälp mig att samla dessa antimönster genom att
+    = link_to "skapa en issue", data.links.issue
     eller en pull requests
 
 .frequently-asked-questions
@@ -193,8 +193,8 @@ version: 1.1.0
     Finns det ett standardformat på ändringsloggar?
 
   %p
-    Inte riktigt. #{link_to "GNU:s stilguide för ändringsloggar", data.links.gnustyle} och
-    den #{link_to "två stycke långa GNU NEWS-filen", data.links.gnunews} med "riktlinjer" finns.
+    Inte riktigt. Det finns #{link_to "GNU:s stilguide för ändringsloggar", data.links.gnustyle} och
+    den #{link_to "två stycken-långa GNU NEWS-filen", data.links.gnunews} med "riktlinjer".
     Båda är bristfälliga och otillräckliga.
 
   %p
@@ -233,7 +233,7 @@ version: 1.1.0
   %p
     GitHub Releases skapar en icke porterbar ändringslogg som enbart kan visas
     för användare på GitHub. Det är möjligt att formatera det ungefär som på
-    För en ändringslogg-formatet, men det tendera att bli lite mer invecklat.
+    För en ändringslogg-formatet, men det tenderar att bli lite mer invecklat.
 
   %p
     Nuvarande version av GitHub releases är möjligtvis också lite svår att
@@ -247,7 +247,7 @@ version: 1.1.0
     Kan ändringsloggar bli automatiskt tolkade?
 
   %p
-    Det är svårt då människor följer vitt olika format och filnamn.
+    Det är svårt då människor använder vitt olika format och filnamn.
 
   %p
     #{link_to "Vandamme", data.links.vandamme} är en Ruby gem skapad av gruppen
@@ -260,16 +260,16 @@ version: 1.1.0
 
   %p
     Återtagna utgåvor är versioner som måste tas tillbaka på grund av
-    allvarliga buggar eller säkerhetsproblem. Oftast brukar dessa versioner
+    allvarliga programfel eller säkerhetsproblem. Oftast brukar dessa versioner
     inte ens finnas med i ändringsloggarna. De borde det. Så här borde du
     visa dem:
 
   %p <code>## [0.0.5] - 2014-12-13 [YANKED]</code>
 
   %p
-    Taggen <code>[YANKED]</code> står ut av en anledning, det är viktigt
-    att folk se det. Då den är omsluten med hakparenteser är det också lättare
-    för ett program att tolka det.
+    Taggen <code>[YANKED]</code> står ut av en anledning; det är viktigt
+    att den syns. Då den är omsluten med hakparenteser är det också lättare
+    för ett program att tolka den.
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
@@ -306,3 +306,4 @@ version: 1.1.0
     Jag var med i #{link_to "The Changelog podcast", data.links.thechangelog}
     för att prata om varför förvaltare och bidragsgivare bör bry sig om
     ändringsloggar, och motiveringen bakom detta projekt.
+

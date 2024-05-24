@@ -184,7 +184,7 @@ DEPENDENCIES
   middleman-minify-html
   middleman-syntax
   redcarpet
-  standard (~> 1.33)
+  standard (~> 1.35)
 
 BUNDLED WITH
    2.5.5
