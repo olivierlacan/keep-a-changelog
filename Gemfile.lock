@@ -183,6 +183,7 @@ DEPENDENCIES
   middleman-livereload
   middleman-minify-html
   middleman-syntax
+  minitest
   redcarpet
   standard (~> 1.35)
 

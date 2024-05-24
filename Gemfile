@@ -10,3 +10,7 @@ gem "middleman-syntax"
 gem "middleman-gh-pages"
 gem "redcarpet"
 gem "standard", "~> 1.35"
+
+group :development, :test do 
+  gem "minitest"
+end
