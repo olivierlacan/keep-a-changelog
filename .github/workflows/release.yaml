@@ -1,0 +1,22 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract release notes
+        uses: ffurrer2/extract-release-notes@v2
+        with:
+          release_notes_file: RELEASE_NOTES.md
+      - name: Create release
+        run: gh release create ${{ github.ref_name }} --notes-file RELEASE_NOTES.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
