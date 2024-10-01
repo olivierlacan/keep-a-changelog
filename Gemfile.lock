@@ -100,7 +100,7 @@ GEM
     middleman-syntax (3.4.0)
       middleman-core (>= 3.2)
       rouge (~> 3.2)
-    minitest (5.24.1)
+    minitest (5.25.1)
     padrino-helpers (0.15.3)
       i18n (>= 0.6.7, < 2)
       padrino-support (= 0.15.3)
