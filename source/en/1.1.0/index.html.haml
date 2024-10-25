@@ -246,8 +246,8 @@ version: 1.1.0
     minor issue is that the interface doesn't currently offer links to
     commit logs between each release.
 
-  %h4#automatic
-    %a.anchor{ href: "#automatic", aria_hidden: "true" }
+  %h4#automatic-parse
+    %a.anchor{ href: "#automatic-parse", aria_hidden: "true" }
     Can changelogs be automatically parsed?
 
   %p
@@ -258,6 +258,13 @@ version: 1.1.0
     #{link_to "Vandamme", data.links.vandamme} is a Ruby gem created by the
     Gemnasium team and which parses many (but
     not all) open source project changelogs.
+
+  %h4#automatic-version-update
+    %a.anchor{ href: "#automatic-version-update", aria_hidden: "true" }
+    Can changelog version numbers be automatically updated?
+
+  %p
+    There are some tools that will automate parts of this workflow, like [release-it](https://github.com/release-it/release-it/) which has a [Keep a Changelog plugin](https://github.com/release-it/keep-a-changelog)
 
 
   %h4#yanked
