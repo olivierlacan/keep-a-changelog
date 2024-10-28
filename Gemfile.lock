@@ -123,8 +123,7 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.0)
     regexp_parser (2.9.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.9)
     rouge (3.30.0)
     rubocop (1.65.1)
       json (~> 2.3)
@@ -158,7 +157,6 @@ GEM
     standard-performance (1.4.0)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.21.0)
-    strscan (3.1.0)
     temple (0.10.3)
     thor (1.2.2)
     tilt (2.0.11)
