@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+***Added***
 
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
@@ -17,22 +17,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - v1.1 Ukrainian translation.
 - v1.1 Swedish translation (#590).
 
-### Changed
+***Changed***
 
+- Using bold instead of third level headings (#650)
 - Use frontmatter title & description in each language version template
 - Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
   image that will render properly (although in English for all languages)
 - Fix OpenGraph title & description for all languages so the title and 
 description when links are shared are language-appropriate
 
-### Removed
+***Removed**
 
 - Trademark sign previously shown after the project description in version 
 0.3.0
 
 ## [1.1.1] - 2023-03-05
 
-### Added
+***Added***
 
 - v1.1 Arabic translation (#444).
 - v1.1 French translation.
@@ -45,7 +46,7 @@ description when links are shared are language-appropriate
 - Display count of available translations (26 to date!).
 - Centralize all links into `/data/links.json` so they can be updated easily.
 
-### Fixed
+***Fixed**
 
 - Improve French translation (#377).
 - Improve id-ID translation (#416).
@@ -62,11 +63,11 @@ description when links are shared are language-appropriate
 - Display notice when translation isn't for most recent version.
 - Various broken links, page versions, and indentations.
 
-### Changed
+***Changed***
 
 - Upgrade dependencies: Ruby 3.2.1, Middleman, etc.
 
-### Removed
+***Removed**
 
 - Unused normalize.css file.
 - Identical links assigned in each translation file.
@@ -74,20 +75,20 @@ description when links are shared are language-appropriate
 
 ## [1.1.0] - 2019-02-15
 
-### Added
+***Added***
 
 - Danish translation (#297).
 - Georgian translation from (#337).
 - Changelog inconsistency section in Bad Practices.
 
-### Fixed
+***Fixed**
 
 - Italian translation (#332).
 - Indonesian translation (#336).
 
 ## [1.0.0] - 2017-06-20
 
-### Added
+***Added***
 
 - New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
 - Version navigation.
@@ -113,7 +114,7 @@ description when links are shared are language-appropriate
 - Persian translation from [@Hameds](https://github.com/Hameds).
 - Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
 
-### Changed
+***Changed***
 
 - Start using "changelog" over "change log" since it's the common usage.
 - Start versioning based on the current English version at 0.3.0 to help
@@ -133,13 +134,13 @@ description when links are shared are language-appropriate
 - Improve phrasing in French translation.
 - Fix phrasing and spelling in German translation.
 
-### Removed
+***Removed**
 
 - Section about "changelog" vs "CHANGELOG".
 
 ## [0.3.0] - 2015-12-03
 
-### Added
+***Added***
 
 - RU translation from [@aishek](https://github.com/aishek).
 - pt-BR translation from [@tallesl](https://github.com/tallesl).
@@ -147,58 +148,58 @@ description when links are shared are language-appropriate
 
 ## [0.2.0] - 2015-10-06
 
-### Changed
+***Changed***
 
 - Remove exclusionary mentions of "open source" since this project can
   benefit both "open" and "closed" source projects equally.
 
 ## [0.1.0] - 2015-10-06
 
-### Added
+***Added***
 
 - Answer "Should you ever rewrite a change log?".
 
-### Changed
+***Changed***
 
 - Improve argument against commit logs.
 - Start following [SemVer](https://semver.org) properly.
 
 ## [0.0.8] - 2015-02-17
 
-### Changed
+***Changed***
 
 - Update year to match in every README example.
 - Reluctantly stop making fun of Brits only, since most of the world
   writes dates in a strange way.
 
-### Fixed
+***Fixed**
 
 - Fix typos in recent README changes.
 - Update outdated unreleased diff link.
 
 ## [0.0.7] - 2015-02-16
 
-### Added
+***Added***
 
 - Link, and make it obvious that date format is ISO 8601.
 
-### Changed
+***Changed***
 
 - Clarified the section on "Is there a standard change log format?".
 
-### Fixed
+***Fixed**
 
 - Fix Markdown links to tag comparison URL with footnote-style links.
 
 ## [0.0.6] - 2014-12-12
 
-### Added
+***Added***
 
 - README section on "yanked" releases.
 
 ## [0.0.5] - 2014-08-09
 
-### Added
+***Added***
 
 - Markdown links to version tags on release headings.
 - Unreleased section to gather unreleased changes and encourage note
@@ -206,18 +207,18 @@ description when links are shared are language-appropriate
 
 ## [0.0.4] - 2014-08-09
 
-### Added
+***Added***
 
 - Better explanation of the difference between the file ("CHANGELOG")
   and its function "the change log".
 
-### Changed
+***Changed***
 
 - Refer to a "change log" instead of a "CHANGELOG" throughout the site
   to differentiate between the file and the purpose of the file — the
   logging of changes.
 
-### Removed
+***Removed**
 
 - Remove empty sections from CHANGELOG, they occupy too much space and
   create too much noise in the file. People will have to assume that the
@@ -226,19 +227,19 @@ description when links are shared are language-appropriate
 
 ## [0.0.3] - 2014-08-09
 
-### Added
+***Added***
 
 - "Why should I care?" section mentioning The Changelog podcast.
 
 ## [0.0.2] - 2014-07-10
 
-### Added
+***Added***
 
 - Explanation of the recommended reverse chronological release ordering.
 
 ## [0.0.1] - 2014-05-31
 
-### Added
+***Added***
 
 - This CHANGELOG file to hopefully serve as an evolving example of a
   standardized open source project CHANGELOG.
