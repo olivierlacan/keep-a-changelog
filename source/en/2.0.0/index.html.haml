@@ -258,23 +258,26 @@ version: 1.1.0
     export. Rather than be pedantic about the common usage of the word 
     "changelog", it seems more fruitful to work toward improving them.   
 
-  %h4#github-releases
-    %a.anchor{ href: "#github-releases", aria_hidden: "true" }
-    What about GitHub Releases?
+  %h4#releases
+    %a.anchor{ href: "#releases", aria_hidden: "true" }
+    What about Releases?
 
   %p.updated
-    It has come a long way. When #{link_to "Releases", data.links.github_releases} 
-    first came out, it was quite limited. It's now a much more prominent feature 
-    that supports converting git tags (for example <code>v1.0.0</code>)
-    into rich release notes by either retrieving the git tag message or typing 
-    specific release notes that will only be displayed on GitHub.
+    Code hosting platform offer ways to publish release posts. Nowadays 
+    many projects communicate about version releases using these posts. Posts 
+    can be created from with version-specific git tags.
 
   %p.updated
-    An important caveat of GitHub Releases is that it can easily entice 
-    maintainers to create non-portable information about project changes. 
-    While release notes written for GitHub will be shown to users there, they're 
-    not kept inside the git history like a changelog file stored within the repo 
-    would be.
+    The value of these release posts is limited. They often encourage 
+    maintainers to create information about project changes that is not portable
+    across code hosting platforms. When release notes are published exclusively 
+    in these posts, they're not kept in version history unlike like a changelog 
+    text file stored in the repository.
+  
+  %p.update
+    It's best to focus on changelog text files first and either derive these 
+    individual release posts manually or use tools to create release posts 
+    when a new version is added to the changelog.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
