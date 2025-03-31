@@ -2,6 +2,7 @@
   "changelog": "https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md",
   "repo": "https://github.com/olivierlacan/keep-a-changelog",
   "issue": "https://github.com/olivierlacan/keep-a-changelog/issues",
+  "discussions": "https://github.com/olivierlacan/keep-a-changelog/discussions",
   "semver": "https://semver.org/",
   "shields": "https://shields.io/",
   "thechangelog": "https://changelog.com/podcast/127",
@@ -9,5 +10,8 @@
   "isodate": "https://www.iso.org/iso-8601-date-and-time-format.html",
   "github_releases": "https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository",
   "gnustyle": "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs",
-  "gnunews": "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File"
+  "gnunews": "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File",
+  "schemes": "https://en.wikipedia.org/wiki/Software_versioning#Schemes",
+  "git": "https://en.wikipedia.org/wiki/Git",
+  "dvcs": "https://en.wikipedia.org/wiki/Distributed_version_control"
 }
