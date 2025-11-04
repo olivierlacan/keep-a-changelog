@@ -29,7 +29,7 @@ This repository generates https://keepachangelog.com/.
   case `publish` failed
 - `bin/rake deploy` cleans, builds and pushes to the `gh-pages` branch on GitHub so 
   the site is deployed to keepachangelog.com
-
+ 
 ### Translations
 
 Create a new directory in [`source/`][source] named after the ISO 639-1 code
