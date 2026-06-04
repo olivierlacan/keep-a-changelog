@@ -12,3 +12,7 @@
 
 __pycache__/
 *.pyc
+/tools/.venv
+/tools/.models
+/tools/requirements.lock.txt
+segments.jsonl

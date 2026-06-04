@@ -63,6 +63,7 @@ class TranslationCoverageAnalyzer
     @consistency = options[:consistency]
     @segments = options[:segments]
     @lint = options[:lint]
+    @strict_types = options[:strict_types]
   end
 
   def analyze
@@ -735,8 +736,13 @@ class TranslationCoverageAnalyzer
         found << finding(lang, id, 'missing-term', "English term #{term.inspect} not present") if src.include?(term) && !tgt.include?(term)
       end
 
-      CHANGE_TYPE_TERMS.each do |term|
-        found << finding(lang, id, 'localized-type', "change-type #{term.inspect} not kept verbatim") if src.include?(term) && !tgt.include?(term)
+      # Localizing the canonical change types is an accepted per-language choice
+      # by default; --strict-types opts into flagging it for projects that want
+      # the English headers kept verbatim everywhere.
+      if @strict_types
+        CHANGE_TYPE_TERMS.each do |term|
+          found << finding(lang, id, 'localized-type', "change-type #{term.inspect} not kept verbatim") if src.include?(term) && !tgt.include?(term)
+        end
       end
 
       LITERAL_PATTERNS.each do |re|
@@ -792,34 +798,40 @@ class TranslationCoverageAnalyzer
       return
     end
 
-    by_kind = findings.group_by { |f| f[:kind] }
+    kinds  = lint_kinds
+    labels = { 'untranslated' => 'untrans', 'localized-type' => 'loc-type',
+               'missing-term' => 'term', 'missing-literal' => 'lit', 'link-count' => 'links' }
+    legend = { 'untranslated'    => "section text is ~identical to English (≥ #{UNTRANSLATED_SIMILARITY} similarity)",
+               'localized-type'  => "a canonical change type (Added/Changed/…) was not kept verbatim",
+               'missing-term'    => "[YANKED]/Unreleased/CHANGELOG present in English but absent",
+               'missing-literal' => "a date or version present in English is absent",
+               'link-count'      => "the number of links differs from English" }
 
     puts "=" * 80
     puts "TRANSLATION LINT  (en/#{version} vs each translation)"
     puts "Deterministic, rule-based checks — every flag below is mechanical and exact."
     puts "=" * 80
-    puts "  untranslated   section text is ~identical to English (≥ #{UNTRANSLATED_SIMILARITY} similarity)"
-    puts "  localized-type a canonical change type (Added/Changed/…) was not kept verbatim"
-    puts "  missing-term   [YANKED]/Unreleased/CHANGELOG present in English but absent"
-    puts "  missing-lit    a date or version present in English is absent"
-    puts "  link-count     the number of links differs from English"
+    kinds.each { |k| printf "  %-14s %s\n", k, legend[k] }
     puts
-    printf "%-12s %8s %9s %8s %8s %8s\n", "Language", "untrans", "loc-type", "term", "lit", "links"
+
+    printf "%-12s", "Language"
+    kinds.each { |k| printf " %9s", labels[k] }
+    puts
     puts "-" * 80
     langs.sort.each do |lang|
       lf = findings.select { |f| f[:language] == lang }
       next if lf.empty?
 
-      printf "%-12s %8d %9d %8d %8d %8d\n", lang,
-             lf.count { |f| f[:kind] == 'untranslated' },
-             lf.count { |f| f[:kind] == 'localized-type' },
-             lf.count { |f| f[:kind] == 'missing-term' },
-             lf.count { |f| f[:kind] == 'missing-literal' },
-             lf.count { |f| f[:kind] == 'link-count' }
+      printf "%-12s", lang
+      kinds.each { |k| printf " %9d", lf.count { |f| f[:kind] == k } }
+      puts
     end
     puts "-" * 80
     puts
+
+    by_kind = findings.group_by { |f| f[:kind] }
     puts "Totals by kind: " + (by_kind.empty? ? "(none)" : by_kind.map { |k, v| "#{k}=#{v.size}" }.join(", "))
+    puts "(change-type localization is accepted by policy; run --strict-types to flag it.)" unless @strict_types
     puts
 
     if @show_details
@@ -829,6 +841,12 @@ class TranslationCoverageAnalyzer
         puts
       end
     end
+  end
+
+  def lint_kinds
+    kinds = ['untranslated']
+    kinds << 'localized-type' if @strict_types
+    kinds + ['missing-term', 'missing-literal', 'link-count']
   end
 
   def print_text_report(results)
@@ -991,6 +1009,11 @@ if __FILE__ == $PROGRAM_NAME
     opts.on("--lint", "Deterministic, rule-based QA: untranslated text, dropped",
             "  terms/dates/versions, link-count mismatches") do
       options[:lint] = true
+    end
+
+    opts.on("--strict-types", "With --lint, also flag change-type headers",
+            "  (Added/Changed/…) that were localized instead of kept verbatim") do
+      options[:strict_types] = true
     end
 
     opts.on("--segments", "Export aligned en<->translation segments for external QA",

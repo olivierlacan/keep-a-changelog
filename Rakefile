@@ -21,6 +21,27 @@ task :clean do
   system("rm -rf build/")
 end
 
+namespace :translations do
+  desc "One-time setup: Python venv + LaBSE model for translation QA"
+  task :setup do
+    sh "tools/setup.sh"
+  end
+
+  desc "Deterministic, rule-based translation lint"
+  task :lint do
+    sh "ruby translation_coverage.rb --lint"
+  end
+
+  desc "Semantic triage: export segments and score them with LaBSE"
+  task :qa do
+    unless File.exist?("tools/.venv/bin/python")
+      abort "Run `bin/rake translations:setup` first to install the model."
+    end
+    sh "ruby translation_coverage.rb --segments --format jsonl | " \
+       "tools/.venv/bin/python tools/labse_triage.py - --max-similarity 0.7"
+  end
+end
+
 require "minitest/test_task"
 
 Minitest::TestTask.create(:test) do |t|

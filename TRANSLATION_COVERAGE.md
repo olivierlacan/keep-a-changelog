@@ -222,34 +222,59 @@ ruby translation_coverage.rb --lint --details  # every finding with its reason
 - **untranslated** — section text is ~identical to English (≥ 0.95 similarity);
   non-Latin scripts score near zero against English, so this only fires on text
   genuinely left in English.
-- **localized-type** — a canonical change type (`Added`/`Changed`/`Deprecated`/
-  `Removed`/`Fixed`/`Security`) was not kept verbatim. Per the spec these are the
-  literal section headers users write, so localizing them is worth a policy
-  decision (some projects do it deliberately).
 - **missing-term** — `[YANKED]` / `Unreleased` / `CHANGELOG` present in English
   but absent from the translation.
 - **missing-lit** — a release date or semver version present in English is gone.
 - **link-count** — the translation has a different number of links than English
   (a dropped or added link).
 
+By policy, **localizing the canonical change types** (`Added`/`Changed`/…) into
+each language is **allowed** and is *not* flagged by default. Projects that want
+those headers kept verbatim everywhere can opt in:
+
+```bash
+ruby translation_coverage.rb --lint --strict-types   # adds a loc-type column
+```
+
 Output also as `--format json` / `--format csv`.
 
 ### Layer 2 — Semantic triage with an external model
 
 For meaning errors that rule-based checks can't see, export aligned segments and
-score them with a pinned, open-source model — *not* this assistant:
+score them with a pinned, open-source model — *not* this assistant.
+
+**One-time setup** (creates `tools/.venv`, installs pinned deps, downloads the
+model). The model is **LaBSE**, pulled from Hugging Face
+(`sentence-transformers/LaBSE`, ~1.8 GB) into your standard Hugging Face cache
+(`~/.cache/huggingface`) — the conventional location, shared across projects, so
+it downloads only once:
 
 ```bash
-# 1. Emit aligned en<->translation pairs (one per section). JSONL is the default;
-#    `po` and `csv` are also supported for pofilter / Weblate / spreadsheets.
-ruby translation_coverage.rb --segments --format jsonl > segments.jsonl
-
-# 2. Score each pair with LaBSE cross-lingual similarity. Low = candidate
-#    mistranslation for a human to review. The model is pinned and the run
-#    prints the exact model + library versions, so it's reproducible.
-pip install "sentence-transformers>=2.2,<4" numpy
-python3 tools/labse_triage.py segments.jsonl --max-similarity 0.7
+bin/rake translations:setup      # or: tools/setup.sh
 ```
+
+To keep the model project-local instead of the shared cache, set `HF_HOME`:
+
+```bash
+HF_HOME="$PWD/tools/.models" tools/setup.sh
+```
+
+**Run the triage** (export segments → score with LaBSE, low similarity first):
+
+```bash
+bin/rake translations:qa         # the whole pipeline in one command
+```
+
+or step by step:
+
+```bash
+# JSONL is the default; `po` and `csv` also work (pofilter / Weblate / sheets).
+ruby translation_coverage.rb --segments --format jsonl > segments.jsonl
+tools/.venv/bin/python tools/labse_triage.py segments.jsonl --max-similarity 0.7
+```
+
+The run prints the exact model + library versions, and `tools/setup.sh` writes
+`tools/requirements.lock.txt` (a `pip freeze`), so every run is reproducible.
 
 `segments.jsonl` can equally be fed to other auditable tools — `pofilter`
 (Translate Toolkit), LanguageTool, Weblate's checks, or COMET-Kiwi. The export is
@@ -355,6 +380,7 @@ This shows French translation status across all versions, helping identify if a 
 | `--migration` | `-m` | Show 2.0 migration workload (add / revise / carry per language) |
 | `--consistency` | `-c` | Audit translation change patterns vs English (stale / drift / miss / kept) |
 | `--lint` | | Deterministic QA: untranslated text, dropped terms/dates/versions, link mismatches |
+| `--strict-types` | | With `--lint`, also flag change types (`Added`/…) that were localized |
 | `--segments` | | Export aligned en↔translation segments (`--format jsonl`/`csv`/`po`) for external QA |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
