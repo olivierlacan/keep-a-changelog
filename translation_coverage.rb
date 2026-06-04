@@ -35,6 +35,24 @@ class TranslationCoverageAnalyzer
   # re-translation) rather than a minor word-level tweak.
   MAJOR_DRIFT = 0.9
 
+  # At or above this cross-text similarity to English, a translated section looks
+  # like it was left untranslated (English pasted in). Non-Latin scripts score
+  # near 0 against English, so this only fires on genuinely English-like target text.
+  UNTRANSLATED_SIMILARITY = 0.95
+
+  # Identifier-like tokens that should appear verbatim in every translation (they
+  # are the literal section names users put in their own changelogs, not prose).
+  # Flagged for review when present in the English section but missing from the
+  # translation.
+  GLOSSARY_TERMS = ['[YANKED]', 'Unreleased', 'CHANGELOG'].freeze
+
+  # The six canonical change types — also identifier-like, checked separately so a
+  # language that localizes them in prose is easy to spot.
+  CHANGE_TYPE_TERMS = %w[Added Changed Deprecated Removed Fixed Security].freeze
+
+  # Literal strings (release dates, semver versions) that must survive translation.
+  LITERAL_PATTERNS = [/\b\d{4}-\d{2}-\d{2}\b/, /\bv?\d+\.\d+\.\d+\b/].freeze
+
   def initialize(options = {})
     @options = options
     @version_filter = options[:version]
@@ -43,6 +61,8 @@ class TranslationCoverageAnalyzer
     @show_details = options[:details]
     @migration = options[:migration]
     @consistency = options[:consistency]
+    @segments = options[:segments]
+    @lint = options[:lint]
   end
 
   def analyze
@@ -61,6 +81,8 @@ class TranslationCoverageAnalyzer
   def report
     return migration_report if @migration
     return consistency_report if @consistency
+    return export_segments if @segments
+    return lint_report if @lint
 
     results = analyze
 
@@ -613,6 +635,202 @@ class TranslationCoverageAnalyzer
     i[:stale].size + i[:drift].size + i[:missing_new].size + i[:kept_removed].size
   end
 
+  # --- Parallel segment export -------------------------------------------------
+  # Emit aligned English<->translation pairs (one per section) so any external,
+  # auditable QA tool (pofilter, LanguageTool, Weblate, COMET-Kiwi, LaBSE...) can
+  # consume them. Alignment is by stable section ID, so it's deterministic.
+
+  def segments_for(version)
+    en = extract_section_texts('en', version)
+    langs = available_languages(version).reject { |l| l == 'en' }
+    langs.select! { |l| l == @language_filter } if @language_filter
+
+    langs.flat_map do |lang|
+      target = extract_section_texts(lang, version)
+      en.keys.select { |id| target.key?(id) }.map do |id|
+        { language: lang, version: version, section: id, source: en[id], target: target[id] }
+      end
+    end
+  end
+
+  def export_segments
+    version = @version_filter || PREVIOUS_VERSION
+    segs = segments_for(version)
+
+    case @format
+    when 'po'  then print_segments_po(segs)
+    when 'csv' then print_segments_csv(segs)
+    else            print_segments_jsonl(segs) # default: one JSON object per line
+    end
+  end
+
+  def print_segments_jsonl(segs)
+    segs.each { |s| puts JSON.generate(s) }
+  end
+
+  def print_segments_csv(segs)
+    puts "language,version,section,source,target"
+    segs.each do |s|
+      puts [s[:language], s[:version], s[:section],
+            %("#{s[:source].gsub('"', '""')}"), %("#{s[:target].gsub('"', '""')}")].join(',')
+    end
+  end
+
+  def print_segments_po(segs)
+    puts '# Keep a Changelog — parallel segments for translation QA.'
+    puts '# msgid = English source, msgstr = translation, one entry per section.'
+    puts 'msgid ""'
+    puts 'msgstr ""'
+    puts '"Content-Type: text/plain; charset=UTF-8\n"'
+    puts
+    segs.each do |s|
+      puts "#: #{s[:language]}/#{s[:version]}##{s[:section]}"
+      puts "msgctxt #{po_quote("#{s[:language]}:#{s[:section]}")}"
+      puts "msgid #{po_quote(s[:source])}"
+      puts "msgstr #{po_quote(s[:target])}"
+      puts
+    end
+  end
+
+  def po_quote(str)
+    escaped = str.gsub('\\', '\\\\\\\\').gsub('"', '\\"')
+    %("#{escaped}")
+  end
+
+  # --- Deterministic lint ------------------------------------------------------
+  # Rule-based, fully explainable checks comparing each translated section to its
+  # English source. Catches mechanical defects (no model, no judgement calls):
+  # untranslated text, dropped identifier-like terms, missing dates/versions, and
+  # link-count mismatches.
+
+  def lint_report
+    version  = @version_filter || PREVIOUS_VERSION
+    en       = extract_section_texts('en', version)
+    en_links = section_link_counts('en', version)
+
+    langs = available_languages(version).reject { |l| l == 'en' }
+    langs.select! { |l| l == @language_filter } if @language_filter
+
+    findings = langs.flat_map do |lang|
+      target   = extract_section_texts(lang, version)
+      t_links  = section_link_counts(lang, version)
+      lint_language(lang, en, target, en_links, t_links)
+    end
+
+    print_lint_report(version, langs, findings)
+  end
+
+  def lint_language(lang, en, target, en_links, t_links)
+    found = []
+    en.each do |id, src|
+      tgt = target[id]
+      next unless tgt # absent sections are a coverage concern, not a lint concern
+
+      sim = text_similarity(src, tgt)
+      if sim >= UNTRANSLATED_SIMILARITY
+        found << finding(lang, id, 'untranslated', "similarity to English #{sim.round(2)} ≥ #{UNTRANSLATED_SIMILARITY}")
+      end
+
+      GLOSSARY_TERMS.each do |term|
+        found << finding(lang, id, 'missing-term', "English term #{term.inspect} not present") if src.include?(term) && !tgt.include?(term)
+      end
+
+      CHANGE_TYPE_TERMS.each do |term|
+        found << finding(lang, id, 'localized-type', "change-type #{term.inspect} not kept verbatim") if src.include?(term) && !tgt.include?(term)
+      end
+
+      LITERAL_PATTERNS.each do |re|
+        src.scan(re).uniq.each do |lit|
+          found << finding(lang, id, 'missing-literal', "#{lit.inspect} not present") unless tgt.include?(lit)
+        end
+      end
+
+      ec = en_links[id] || 0
+      tc = t_links[id] || 0
+      found << finding(lang, id, 'link-count', "English has #{ec} link(s), translation has #{tc}") if ec != tc
+    end
+    found
+  end
+
+  def finding(lang, section, kind, detail)
+    { language: lang, section: section, kind: kind, detail: detail }
+  end
+
+  # Count `link_to` helpers per section in a HAML file.
+  def section_link_counts(language, version)
+    path = File.join(SOURCE_DIR, language, version, 'index.html.haml')
+    return {} unless File.exist?(path)
+
+    counts = Hash.new(0)
+    current = nil
+    File.foreach(path, encoding: 'UTF-8') do |line|
+      if (m = line.match(/^\s*%h[34]#([\w-]+)/))
+        current = m[1]
+        counts[current] += 0
+        next
+      end
+      if line.match?(/^\.[\w-]/)
+        current = nil
+        next
+      end
+      next unless current
+
+      counts[current] += line.scan(/link_to/).size
+    end
+    counts
+  end
+
+  def print_lint_report(version, langs, findings)
+    if @format == 'json'
+      puts JSON.pretty_generate(version: version, findings: findings)
+      return
+    end
+
+    if @format == 'csv'
+      puts "language,section,kind,detail"
+      findings.each { |f| puts [f[:language], f[:section], f[:kind], %("#{f[:detail].gsub('"', '""')}")].join(',') }
+      return
+    end
+
+    by_kind = findings.group_by { |f| f[:kind] }
+
+    puts "=" * 80
+    puts "TRANSLATION LINT  (en/#{version} vs each translation)"
+    puts "Deterministic, rule-based checks — every flag below is mechanical and exact."
+    puts "=" * 80
+    puts "  untranslated   section text is ~identical to English (≥ #{UNTRANSLATED_SIMILARITY} similarity)"
+    puts "  localized-type a canonical change type (Added/Changed/…) was not kept verbatim"
+    puts "  missing-term   [YANKED]/Unreleased/CHANGELOG present in English but absent"
+    puts "  missing-lit    a date or version present in English is absent"
+    puts "  link-count     the number of links differs from English"
+    puts
+    printf "%-12s %8s %9s %8s %8s %8s\n", "Language", "untrans", "loc-type", "term", "lit", "links"
+    puts "-" * 80
+    langs.sort.each do |lang|
+      lf = findings.select { |f| f[:language] == lang }
+      next if lf.empty?
+
+      printf "%-12s %8d %9d %8d %8d %8d\n", lang,
+             lf.count { |f| f[:kind] == 'untranslated' },
+             lf.count { |f| f[:kind] == 'localized-type' },
+             lf.count { |f| f[:kind] == 'missing-term' },
+             lf.count { |f| f[:kind] == 'missing-literal' },
+             lf.count { |f| f[:kind] == 'link-count' }
+    end
+    puts "-" * 80
+    puts
+    puts "Totals by kind: " + (by_kind.empty? ? "(none)" : by_kind.map { |k, v| "#{k}=#{v.size}" }.join(", "))
+    puts
+
+    if @show_details
+      findings.group_by { |f| f[:language] }.sort.each do |lang, fs|
+        puts "#{lang}:"
+        fs.each { |f| puts "  [#{f[:kind]}] #{f[:section]}: #{f[:detail]}" }
+        puts
+      end
+    end
+  end
+
   def print_text_report(results)
     puts "=" * 80
     puts "TRANSLATION COVERAGE REPORT"
@@ -768,6 +986,16 @@ if __FILE__ == $PROGRAM_NAME
     opts.on("-c", "--consistency", "Audit each translation's change pattern against",
             "  English's between reference versions (stale / drift / miss / kept)") do
       options[:consistency] = true
+    end
+
+    opts.on("--lint", "Deterministic, rule-based QA: untranslated text, dropped",
+            "  terms/dates/versions, link-count mismatches") do
+      options[:lint] = true
+    end
+
+    opts.on("--segments", "Export aligned en<->translation segments for external QA",
+            "  tools (use --format jsonl [default], csv, or po)") do
+      options[:segments] = true
     end
 
     opts.on("-f", "--format FORMAT", "Output format: text (default), json, or csv") do |f|

@@ -203,6 +203,63 @@ first), `--language LANG` to focus, or `--format json`.
 > that a translation has fallen out of step. Comparisons need stable section IDs, so
 > `0.3.0` (translated markdown headings) is excluded.
 
+## Mistranslation QA: deterministic checks + external triage
+
+The modes above audit *structure* and *change patterns*. Catching actual
+**mistranslations** is split into two auditable layers — the tool never makes a
+judgement call itself.
+
+### Layer 1 — Deterministic lint (`--lint`)
+
+Rule-based, fully explainable checks comparing each translated section to its
+English source. Every flag is mechanical and exact (no model, reproducible):
+
+```bash
+ruby translation_coverage.rb --lint            # summary table
+ruby translation_coverage.rb --lint --details  # every finding with its reason
+```
+
+- **untranslated** — section text is ~identical to English (≥ 0.95 similarity);
+  non-Latin scripts score near zero against English, so this only fires on text
+  genuinely left in English.
+- **localized-type** — a canonical change type (`Added`/`Changed`/`Deprecated`/
+  `Removed`/`Fixed`/`Security`) was not kept verbatim. Per the spec these are the
+  literal section headers users write, so localizing them is worth a policy
+  decision (some projects do it deliberately).
+- **missing-term** — `[YANKED]` / `Unreleased` / `CHANGELOG` present in English
+  but absent from the translation.
+- **missing-lit** — a release date or semver version present in English is gone.
+- **link-count** — the translation has a different number of links than English
+  (a dropped or added link).
+
+Output also as `--format json` / `--format csv`.
+
+### Layer 2 — Semantic triage with an external model
+
+For meaning errors that rule-based checks can't see, export aligned segments and
+score them with a pinned, open-source model — *not* this assistant:
+
+```bash
+# 1. Emit aligned en<->translation pairs (one per section). JSONL is the default;
+#    `po` and `csv` are also supported for pofilter / Weblate / spreadsheets.
+ruby translation_coverage.rb --segments --format jsonl > segments.jsonl
+
+# 2. Score each pair with LaBSE cross-lingual similarity. Low = candidate
+#    mistranslation for a human to review. The model is pinned and the run
+#    prints the exact model + library versions, so it's reproducible.
+pip install "sentence-transformers>=2.2,<4" numpy
+python3 tools/labse_triage.py segments.jsonl --max-similarity 0.7
+```
+
+`segments.jsonl` can equally be fed to other auditable tools — `pofilter`
+(Translate Toolkit), LanguageTool, Weblate's checks, or COMET-Kiwi. The export is
+deterministic (aligned by stable section ID), so whichever tool you choose, the
+inputs are reproducible.
+
+> Both layers **flag candidates**; a human makes the final call. Layer 1 is
+> rule-explainable; Layer 2 is reproducible via a pinned model but not
+> rule-explainable. Neither relies on a black-box judgement from an LLM.
+
 ## Understanding the Output
 
 ### Version 1.1.0 and 1.0.0
@@ -297,6 +354,8 @@ This shows French translation status across all versions, helping identify if a 
 | `--format FORMAT` | `-f` | Output format: text (default), json, or csv |
 | `--migration` | `-m` | Show 2.0 migration workload (add / revise / carry per language) |
 | `--consistency` | `-c` | Audit translation change patterns vs English (stale / drift / miss / kept) |
+| `--lint` | | Deterministic QA: untranslated text, dropped terms/dates/versions, link mismatches |
+| `--segments` | | Export aligned en↔translation segments (`--format jsonl`/`csv`/`po`) for external QA |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
 
