@@ -4,6 +4,7 @@
 require 'yaml'
 require 'json'
 require 'optparse'
+require 'set'
 
 # Translation Coverage Analyzer for Keep a Changelog
 # This utility analyzes which sections are translated in each language version
@@ -25,6 +26,15 @@ class TranslationCoverageAnalyzer
   # Sections renamed between PREVIOUS_VERSION and LATEST_VERSION (latest => previous).
   SECTION_RENAMES = { 'releases' => 'github-releases' }.freeze
 
+  # HAML versions (newest first) used to find a version's predecessor for the
+  # consistency audit. 0.3.0 is excluded: it uses translated markdown headings,
+  # not stable section IDs, so it can't be diffed section-for-section.
+  CONSISTENCY_VERSIONS = ['2.0.0', '1.1.0', '1.0.0'].freeze
+
+  # Below this section-text similarity, a drift is "major" (likely a wholesale
+  # re-translation) rather than a minor word-level tweak.
+  MAJOR_DRIFT = 0.9
+
   def initialize(options = {})
     @options = options
     @version_filter = options[:version]
@@ -32,6 +42,7 @@ class TranslationCoverageAnalyzer
     @format = options[:format] || 'text'
     @show_details = options[:details]
     @migration = options[:migration]
+    @consistency = options[:consistency]
   end
 
   def analyze
@@ -49,6 +60,7 @@ class TranslationCoverageAnalyzer
 
   def report
     return migration_report if @migration
+    return consistency_report if @consistency
 
     results = analyze
 
@@ -266,13 +278,40 @@ class TranslationCoverageAnalyzer
   # Reduce a HAML line to its human-visible words.
   def normalize_fragment(line)
     s = line.dup
-    s = s.sub(/^\s*%\w+(?:[#.][\w-]+)*/, '')          # leading %tag with #id/.class
-    s = s.sub(/^\s*[.#][\w-]+(?:[#.][\w-]+)*/, '')    # or a leading .class/#id div
-    s = s.gsub(/link_to\s+(["'])(.*?)\1[^}\n]*/m) { Regexp.last_match(2) } # keep link text
-    s = s.tr('{}', '  ').delete('#')                  # drop interpolation punctuation
-    s = s.sub(/^\s*=\s*/, ' ')                         # leading ruby eval marker
-    s = s.gsub(/<[^>]+>/, '')                          # inline HTML tags, keep inner text
-    s.gsub(/\s+/, ' ').strip
+    s = s.sub(/^\s*%\w+(?:[#.][\w-]+)*/, "")          # leading %tag with #id/.class
+    s = s.sub(/^\s*[.#][\w-]+(?:[#.][\w-]+)*/, "")    # or a leading .class/#id div
+    # keep the visible text of link_to "..." / '...' helpers (escaped quotes and
+    # all), drop the trailing route/path arguments
+    s = s.gsub(/link_to\s+"((?:\\.|[^"\\])*)"[^}\n]*/) { unescape(Regexp.last_match(1)) }
+    s = s.gsub(/link_to\s+'((?:\\.|[^'\\])*)'[^}\n]*/) { unescape(Regexp.last_match(1)) }
+    s = s.tr("{}", "  ").delete("#")                  # drop interpolation punctuation
+    s = s.sub(/^\s*=\s*/, " ")                         # leading ruby eval marker
+    s = s.gsub(/<[^>]+>/, "")                          # inline HTML tags, keep inner text
+    s = s.gsub(/\s+([.,;:!?])/, '\1')                  # don't let markup leave a gap before punctuation
+    s.gsub(/\s+/, " ").strip
+  end
+
+  def unescape(str)
+    str.gsub(/\\(.)/, '\1')
+  end
+
+  # Language-agnostic similarity in [0.0, 1.0] via character-bigram Jaccard.
+  # Robust for CJK and Latin text alike, and cheap (no edit-distance blowup), so
+  # tiny normalization artifacts score ~1.0 while real rewrites score low.
+  def text_similarity(a, b)
+    return 1.0 if a == b
+    return 0.0 if a.empty? || b.empty?
+
+    ba = char_bigrams(a)
+    bb = char_bigrams(b)
+    return 0.0 if ba.empty? || bb.empty?
+
+    (ba & bb).size.to_f / (ba | bb).size
+  end
+
+  def char_bigrams(str)
+    chars = str.gsub(/\s+/, "").chars
+    chars.each_cons(2).map(&:join).to_set
   end
 
   # Compute, by diffing English text, how each target-version section changed
@@ -427,6 +466,153 @@ class TranslationCoverageAnalyzer
     puts
   end
 
+  # The HAML version immediately preceding `version`, or nil if none.
+  def predecessor(version)
+    i = CONSISTENCY_VERSIONS.index(version)
+    return nil if i.nil? || i + 1 >= CONSISTENCY_VERSIONS.size
+
+    CONSISTENCY_VERSIONS[i + 1]
+  end
+
+  # Audit each translation's *change pattern* against English's. Between two
+  # reference English versions we know exactly which sections were added,
+  # reworded, etc. A translation that has both versions should mirror that
+  # pattern; where it doesn't, an inconsistency likely crept in:
+  #   stale         English reworded a section, the translation did not follow
+  #   drift         translation changed a section English left unchanged
+  #   missing_new   English added a section the translation never added
+  #   kept_removed  English removed a section the translation still carries
+  def consistency_report
+    target = @version_filter || PREVIOUS_VERSION
+    prev   = predecessor(target)
+    abort("No HAML predecessor to compare #{target} against") if prev.nil?
+
+    eng = english_delta(prev, target)
+
+    langs = (available_languages(prev) & available_languages(target)) - ['en']
+    langs.select! { |l| l == @language_filter } if @language_filter
+
+    rows = langs.map { |l| language_consistency(l, prev, target, eng) }
+    print_consistency_report(target, prev, eng, rows)
+  end
+
+  # English section delta over the union of both versions' sections.
+  def english_delta(prev, target)
+    pt = extract_section_texts('en', prev)
+    tt = extract_section_texts('en', target)
+
+    (tt.keys | pt.keys).each_with_object({}) do |id, delta|
+      prev_id = SECTION_RENAMES[id] || id
+      in_prev = pt.key?(prev_id)
+      in_tgt  = tt.key?(id)
+
+      delta[id] =
+        if in_prev && !in_tgt then :removed
+        elsif in_tgt && !in_prev then :added
+        elsif pt[prev_id] != tt[id] then :reworded
+        else :unchanged
+        end
+    end
+  end
+
+  def language_consistency(lang, prev, target, eng)
+    pt = extract_section_texts(lang, prev)
+    tt = extract_section_texts(lang, target)
+    issues = { stale: [], drift: [], missing_new: [], kept_removed: [] }
+
+    eng.each do |id, estatus|
+      prev_id = SECTION_RENAMES[id] || id
+      lp = pt[prev_id]
+      lt = tt[id]
+
+      case estatus
+      when :added
+        issues[:missing_new] << id unless lt
+      when :removed
+        issues[:kept_removed] << id if lt
+      when :reworded
+        issues[:stale] << id if lp && lt && lp == lt
+      when :unchanged
+        issues[:drift] << { section: id, similarity: text_similarity(lp, lt) } if lp && lt && lp != lt
+      end
+    end
+
+    { lang: lang, issues: issues }
+  end
+
+  def print_consistency_report(target, prev, eng, rows)
+    changed = eng.reject { |_, v| v == :unchanged }
+
+    if @format == 'json'
+      puts JSON.pretty_generate(
+        target: target,
+        previous: prev,
+        english_delta: changed,
+        languages: rows.map do |r|
+          { language: r[:lang],
+            stale: r[:issues][:stale],
+            drift: r[:issues][:drift].sort_by { |x| x[:similarity] },
+            missing_new: r[:issues][:missing_new],
+            kept_removed: r[:issues][:kept_removed] }
+        end
+      )
+      return
+    end
+
+    puts "=" * 80
+    puts "TRANSLATION CONSISTENCY  (#{prev} → #{target})"
+    puts "Flags where a translation's change pattern diverges from English's."
+    puts "=" * 80
+    puts "English delta: " + (changed.empty? ? '(no sections changed)' : changed.map { |k, v| "#{k}=#{v}" }.join(', '))
+    puts
+    puts "  stale = English reworded the section, but the translation did not follow"
+    puts "  drift = translation changed a section English left unchanged"
+    puts "          (major = similarity < #{MAJOR_DRIFT}, likely a re-translation)"
+    puts "  miss  = English added a section the translation never added"
+    puts "  kept  = English removed a section the translation still carries"
+    puts
+    printf "%-15s %6s %14s %6s %6s\n", 'Language', 'Stale', 'Drift maj/min', 'Miss', 'Kept'
+    puts "-" * 80
+    ordered = rows.sort_by { |r| -consistency_weight(r) }
+    ordered.each do |r|
+      d = r[:issues][:drift]
+      maj = d.count { |x| x[:similarity] < MAJOR_DRIFT }
+      printf "%-15s %6d %14s %6d %6d\n",
+             r[:lang], r[:issues][:stale].size, "#{maj}/#{d.size - maj}",
+             r[:issues][:missing_new].size, r[:issues][:kept_removed].size
+    end
+    puts "-" * 80
+    puts
+
+    if @show_details
+      ordered.each do |r|
+        i = r[:issues]
+        next if i.values.all?(&:empty?)
+
+        puts "#{r[:lang]}:"
+        puts "  stale:        #{i[:stale].join(', ')}" unless i[:stale].empty?
+        puts "  missing-new:  #{i[:missing_new].join(', ')}" unless i[:missing_new].empty?
+        puts "  kept-removed: #{i[:kept_removed].join(', ')}" unless i[:kept_removed].empty?
+        unless i[:drift].empty?
+          puts "  drift (similarity — lower means more changed):"
+          i[:drift].sort_by { |x| x[:similarity] }.each do |x|
+            printf "    %.2f  %s\n", x[:similarity], x[:section]
+          end
+        end
+        puts
+      end
+    end
+
+    total = rows.sum { |r| consistency_weight(r) }
+    puts "#{total} potential inconsistencies across #{rows.size} languages."
+    puts "Drift is often legitimate polishing — review by magnitude (run with --details)."
+  end
+
+  def consistency_weight(row)
+    i = row[:issues]
+    i[:stale].size + i[:drift].size + i[:missing_new].size + i[:kept_removed].size
+  end
+
   def print_text_report(results)
     puts "=" * 80
     puts "TRANSLATION COVERAGE REPORT"
@@ -577,6 +763,11 @@ if __FILE__ == $PROGRAM_NAME
     opts.on("-m", "--migration", "Show 2.0 migration workload: which sections each",
             "  language must add, revise (reworded upstream), or carry over") do
       options[:migration] = true
+    end
+
+    opts.on("-c", "--consistency", "Audit each translation's change pattern against",
+            "  English's between reference versions (stale / drift / miss / kept)") do
+      options[:consistency] = true
     end
 
     opts.on("-f", "--format FORMAT", "Output format: text (default), json, or csv") do |f|

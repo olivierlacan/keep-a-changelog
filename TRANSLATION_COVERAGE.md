@@ -161,6 +161,48 @@ marked (or was marked but the text is identical), it appears under
 > version pair being diffed. Pass `--version` to target a different version whose
 > English source exists.
 
+## Consistency Mode: auditing translations against the English change pattern
+
+Migration mode asks *"what work does the next version create?"* Consistency mode
+asks a different question about versions that already exist: *"did each
+translation change in step with English, or did inconsistencies creep in?"*
+
+Between two reference English versions (e.g. `1.0.0` → `1.1.0`) we know exactly
+which sections were added, reworded, etc. A translation that has **both** of those
+versions should mirror that pattern. Where it doesn't, the tool flags it:
+
+```bash
+ruby translation_coverage.rb --consistency
+```
+
+- **stale** — English reworded a section, but the translation's text is identical
+  across its own two versions: the update was never propagated.
+- **drift** — the translation changed a section English left unchanged. Split into
+  **major** (similarity `< 0.9`, likely a wholesale re-translation) and **minor**
+  (a word or two). Each drift carries a character-bigram similarity score
+  (language-agnostic, works for CJK and Latin alike).
+- **miss** — English added a section the translation never added.
+- **kept** — English removed a section the translation still carries.
+
+```
+TRANSLATION CONSISTENCY  (1.0.0 → 1.1.0)
+English delta: confusing-dates=reworded, inconsistent-changes=added
+
+Language         Stale  Drift maj/min   Miss   Kept
+ko                   0           16/0      0      0   ← re-translated wholesale
+de                   0            0/2      0      0   ← two minor word changes
+fr                   0            0/0      0      0   ← changed only where English did
+```
+
+Use `--details` for the per-section drift list (sorted by similarity, most-changed
+first), `--language LANG` to focus, or `--format json`.
+
+> Drift is frequently *legitimate* — a translator polishing their wording, or a new
+> maintainer redoing a translation. It isn't necessarily an error; it's a divergence
+> worth reviewing. **stale**, **miss**, and **kept** are the higher-signal flags
+> that a translation has fallen out of step. Comparisons need stable section IDs, so
+> `0.3.0` (translated markdown headings) is excluded.
+
 ## Understanding the Output
 
 ### Version 1.1.0 and 1.0.0
@@ -254,6 +296,7 @@ This shows French translation status across all versions, helping identify if a 
 | `--language LANG` | `-l` | Filter by specific language code (e.g., es-ES, fr, de) |
 | `--format FORMAT` | `-f` | Output format: text (default), json, or csv |
 | `--migration` | `-m` | Show 2.0 migration workload (add / revise / carry per language) |
+| `--consistency` | `-c` | Audit translation change patterns vs English (stale / drift / miss / kept) |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
 
