@@ -99,6 +99,68 @@ Human-readable report with statistics:
 ruby translation_coverage.rb --format text
 ```
 
+## Migration Mode: tracking reworded sections
+
+Plain coverage only answers *"which sections is a translation missing?"* It can't
+see that an existing section was **reworded** in a newer version — the section ID
+is still present, so it looks complete even though the text is now out of date.
+
+Migration mode closes that gap. It **diffs the English text** of every section
+between the previous version (`1.1.0`) and the target (`2.0.0`) and classifies
+each as **new**, **reworded**, or **unchanged**. The text is normalized first —
+HAML element tokens, anchors, interpolation and inline HTML are stripped while
+`link_to "..."` text is kept, and whitespace is collapsed — so reflowing or
+re-indenting a paragraph does *not* register as a change; only the words do.
+
+The English `2.0.0` source also marks changed paragraphs with `new` / `updated`
+CSS classes (see PR #600). Those markers are **not** the source of truth here —
+instead the tool **audits** them against the computed diff and reports any section
+where the annotation and the actual text disagree (see "Annotation check" below),
+which helps keep the markup honest as the draft evolves.
+
+```bash
+ruby translation_coverage.rb --migration
+```
+
+For each language it then reports the work needed to bring its `1.1.0` translation
+up to `2.0.0`:
+
+- **Add** — a brand-new section (e.g. `git`), or a changed section the language
+  never translated.
+- **Revise** — a section that was reworded upstream and already has a prior
+  translation to update.
+- **Carry** — an unchanged section; the existing translation can be reused as-is.
+
+```
+2.0 TRANSLATION MIGRATION  (1.1.0 → 2.0.0)
+Changes detected by diffing English section text (markers used only to audit).
+English 2.0.0 has 21 sections: 1 new, 11 reworded, 9 unchanged.
+  NEW (translate fresh):     git
+  REWORDED (revise):         what, why, principles, effort, ...
+
+Language           Add   Revise   Carry    Work
+fr                   1       11       9      12
+
+ANNOTATION CHECK (authored markers vs computed diff):
+  ✓ markers agree with the text diff for every section
+```
+
+Add `--details` to list the exact section IDs per language, `--language LANG` to
+focus on one, or `--format json` / `--format csv` to export. Renamed sections
+(e.g. `github-releases` → `releases`) are mapped to their previous IDs so they
+count as **revise**, not a spurious add/remove.
+
+### Annotation check
+
+Because the diff is computed from text, it can verify the hand-applied
+`new` / `updated` CSS markers. If a section's text changed but it was never
+marked (or was marked but the text is identical), it appears under
+`ANNOTATION CHECK` so you can fix the markup. A clean run prints a single ✓.
+
+> Note: the report is meaningful for the `1.1.0 → 2.0.0` upgrade, since that's the
+> version pair being diffed. Pass `--version` to target a different version whose
+> English source exists.
+
 ## Understanding the Output
 
 ### Version 1.1.0 and 1.0.0
@@ -188,9 +250,10 @@ This shows French translation status across all versions, helping identify if a 
 
 | Option | Short | Description |
 |--------|-------|-------------|
-| `--version VERSION` | `-v` | Filter by specific version (1.1.0, 1.0.0, or 0.3.0) |
+| `--version VERSION` | `-v` | Filter by specific version (2.0.0, 1.1.0, 1.0.0, or 0.3.0) |
 | `--language LANG` | `-l` | Filter by specific language code (e.g., es-ES, fr, de) |
 | `--format FORMAT` | `-f` | Output format: text (default), json, or csv |
+| `--migration` | `-m` | Show 2.0 migration workload (add / revise / carry per language) |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
 
