@@ -472,4 +472,15 @@
       margin-inline: 0;
     }
   }
+
+  /* Second breakpoint: once there's ample room beside the sidebar, widen the
+     TOC (titles wrap less) and let the triptych break out again. The breakout
+     centers on the viewport, clearing the left-anchored TOC at this width. */
+  @media (min-width: 104rem) {
+    .article-body > .toc { inline-size: 19rem; }
+    .content .intro-grid {
+      inline-size: var(--bleed);
+      margin-inline: var(--bleed-margin);
+    }
+  }
 }
