@@ -8,7 +8,7 @@
 - description = current_page.data.description || "bullshit" 
 
 !!! 5
-%html{ lang: current_page.data.language, dir: (%w[ar fa].include?(current_page.data.language) ? "rtl" : "ltr") }
+%html{ lang: current_page.data.language, dir: ((%w[ar fa].include?(current_page.data.language) && Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new("2.0.0")) ? "rtl" : "ltr") }
   %head
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
