@@ -82,7 +82,10 @@
                 %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
                   = label
         - if !legacy_version
-          = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
+          - if v2_plus
+            %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
+          - else
+            = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
       .main{ role: "main" }
         - if v2_plus
@@ -99,7 +102,10 @@
           = yield
 
         %footer.footer.clearfix{ role: "contentinfo" }
-          = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
+          - if v2_plus
+            %span.mark{ "aria-hidden": "true" }
+          - else
+            = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
 
           %p.about
             This project is

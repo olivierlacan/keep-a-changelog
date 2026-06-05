@@ -32,6 +32,8 @@
     --hero-text: var(--sand);
     --accent: var(--ocre);
     --focus: oklch(0.55 0.18 33);
+    /* Brand mark: ocre reads on the white header/footer in light mode. */
+    --mark: var(--ocre);
 
     /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
     --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
@@ -71,6 +73,8 @@
       --hero-text: var(--sand);
       --accent: var(--gold);
       --focus: var(--gold);
+      /* On the dark header/footer the original cream mark reads best. */
+      --mark: var(--sand);
     }
   }
 
@@ -144,7 +148,15 @@
     background: var(--surface);
     border-block-end: 1px solid var(--rule);
   }
-  article > header .mark { inline-size: 40px; block-size: auto; }
+  /* Brand mark as a masked silhouette so its color follows the theme
+     (the source SVG is a single flat fill; only its shape is used here). */
+  .mark {
+    display: inline-block;
+    background-color: var(--mark);
+    -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+    mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+  }
+  article > header .mark { inline-size: 40px; block-size: 40px; }
 
   .locales {
     display: flex;
@@ -172,7 +184,7 @@
     font-size: var(--step--1);
   }
   .footer a { color: var(--link); }
-  .footer .mark { display: inline-block; inline-size: 24px; vertical-align: middle; margin-inline-end: 0.5em; }
+  .footer .mark { inline-size: 24px; block-size: 24px; vertical-align: middle; margin-inline-end: 0.5em; }
 }
 
 /* ----------------------------------------------------------------- content */
