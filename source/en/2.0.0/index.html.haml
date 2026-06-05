@@ -321,6 +321,25 @@ version: 2.0.0
     Open #{link_to "discussions", data.links.discussions} and
     #{link_to "suggestions for improvements", data.links.issue} are welcome.
 
+  %h4#git.new
+    %a.anchor{ href: "#git", aria_hidden: "true" }
+    What's a "git log"?
+
+  %p.new
+    A git log is a command used by the #{link_to "git", data.links.git}
+    distributed #{link_to "version control system", data.links.dvcs} to display
+    all changes recorded in a given source code repository.
+
+  %p.new
+    Git is a tool used by a large and growing share of software projects around
+    the world. Keep a Changelog is mainly focused on communication about
+    software evolution which is why our tag line references "git log" in a
+    slightly caustic way. This is because open source maintainers have long had
+    the problematic habit of converting "git log" command output into release notes
+    for their projects, with little regard for the actual human beings who had
+    to try and digest these so-called "changelogs" made up of hundreds of
+    individual changes, often written hastily.
+
   %h4#versioning.new
     %a.anchor{ href: "#versioning", aria_hidden: "true" }
     Do I have to use Semantic Versioning?
@@ -499,10 +518,8 @@ version: 2.0.0
     generator and have it emit something close to this format.
 
   %p.new
-    Just remember that a generated changelog is a <em>draft</em>. Commits are written
-    for the people building the software; a changelog is written for the people using
-    it. Deciding what's notable and rewriting it for the reader is precisely the work a
-    generator can't do — and it's what makes a changelog worth keeping.
+    As with an LLM draft, the result is a starting point, not a finished changelog —
+    it still needs a human to decide what's notable and write it for the reader.
 
   %h4#ci.new
     %a.anchor{ href: "#ci", aria_hidden: "true" }
@@ -683,25 +700,6 @@ version: 2.0.0
   %p.updated
     So please #{link_to "contribute", data.links.repo} to Keep a Changelog or 
     start a #{link_to "conversation", data.links.discussions} if you need more help.
-
-  %h4#git.new
-    %a.anchor{ href: "#git", aria_hidden: "true" }
-    What's a "git log"?
-
-  %p.new
-    A git log is a command used by the #{link_to "git", data.links.git}
-    distributed #{link_to "version control system", data.links.dvcs} to display
-    all changes recorded in a given source code repository.
-
-  %p.new
-    Git is a tool used by a large and growing share of software projects around 
-    the world. Keep a Changelog is mainly focused on communication about 
-    software evolution which is why our tag line references "git log" in a
-    slightly caustic way. This is because open source maintainers have long had
-    the problematic habit of converting "git log" command output into release notes
-    for their projects, with little regard for the actual human beings who had
-    to try and digest these so-called "changelogs" made up of hundreds of
-    individual changes, often written hastily.
 
 .press
   %h3 Conversations
