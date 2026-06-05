@@ -89,6 +89,66 @@ version: 1.1.0
       %code Security
       in case of vulnerabilities.
 
+  %h4#which-type.new
+    %a.anchor{ href: "#which-type", aria_hidden: "true" }
+    Should it go under Changed, Fixed, or Security?
+
+  %p.new
+    These three overlap often enough to be worth a rule of thumb:
+
+  %ul.new
+    %li
+      <strong>Fixed</strong> — behavior that was <em>wrong</em> (it didn't match
+      what you documented or intended) now works correctly.
+    %li
+      <strong>Changed</strong> — behavior that was <em>working as intended</em> now
+      works differently; existing users may need to adjust even though nothing was
+      broken.
+    %li
+      <strong>Security</strong> — a fix or change that addresses a
+      <em>vulnerability</em>. It could fit under Fixed or Changed, but its audience
+      and urgency differ enough to call out on its own.
+
+  %p.new
+    When in doubt, ask whether the old behavior was a bug. If it was, it's
+    <code>Fixed</code>; if it was intentional and you're changing it, it's
+    <code>Changed</code>.
+
+  %h4#more-types.new
+    %a.anchor{ href: "#more-types", aria_hidden: "true" }
+    Why aren't there more types of changes?
+
+  %p.new
+    The six types answer one question: what <em>kind</em> of change is this? That's
+    deliberately a small, stable vocabulary — people write these as headings in
+    their own changelogs, so fewer and clearer is better.
+
+  %p.new
+    Requests for more types usually describe a <em>reason</em>, not a kind. A change
+    might be an improvement, an optimization, a refactor, a performance win, or a
+    dependency bump — but those belong in the wording of the entry, not in a new
+    heading. "Rewrote the JSON parser; about three times faster on large files" says
+    more under <code>Changed</code> than a bare <code>Performance</code> heading
+    ever could.
+
+  %p.new
+    Two common requests deserve a direct answer:
+
+  %ul.new
+    %li
+      <strong>Dependencies</strong> aren't a kind of change on their own — a bump
+      can be harmless, a fix, or breaking. If it's notable to the people using your
+      software, describe its <em>effect</em> under the relevant type; if it isn't, it
+      doesn't belong here.
+    %li
+      <strong>Known issues</strong> are discovered, not changed. Note them on the
+      affected release or track them in your issue tracker; when one is resolved, it
+      lands under <code>Fixed</code>.
+
+  %p.new
+    Add a type for every nuance and you're back to categorizing every commit — the
+    exact tedium a changelog exists to spare your readers.
+
   %h4#breaking.new
     %a.anchor{ href: "#breaking", aria_hidden: "true" }
     How do I mark breaking changes?
@@ -294,8 +354,8 @@ version: 1.1.0
     consistently find notable changes?
 
   %p.new
-    Some may argue that a `CHANGELOG` file should... log all changes that 
-    occured. This is absurd on its face given all modern version control tools 
+    Some may argue that a `CHANGELOG` file should... log all changes that
+    occurred. This is absurd on its face given all modern version control tools
     and code hosting platforms offer this output without the need for a static 
     export. Rather than be pedantic about the common usage of the word 
     "changelog", it seems more fruitful to work toward improving them.   
@@ -305,18 +365,18 @@ version: 1.1.0
     What about Releases?
 
   %p.updated
-    Code hosting platform offer ways to publish release posts. Nowadays 
-    many projects communicate about version releases using these posts. Posts 
-    can be created from with version-specific git tags.
+    Code hosting platforms offer ways to publish release posts. Nowadays
+    many projects communicate about version releases using these posts. Posts
+    can be created from version-specific git tags.
 
   %p.updated
-    The value of these release posts is limited. They often encourage 
+    The value of these release posts is limited. They often encourage
     maintainers to create information about project changes that is not portable
-    across code hosting platforms. When release notes are published exclusively 
-    in these posts, they're not kept in version history unlike like a changelog 
+    across code hosting platforms. When release notes are published exclusively
+    in these posts, they're not kept in version history, unlike a changelog
     text file stored in the repository.
-  
-  %p.update
+
+  %p.updated
     It's best to focus on changelog text files first and either derive these
     individual release posts manually or use tools to create release posts
     when a new version is added to the changelog.
@@ -381,6 +441,32 @@ version: 1.1.0
     it. Deciding what's notable and rewriting it for the reader is precisely the work a
     generator can't do — and it's what makes a changelog worth keeping.
 
+  %h4#ai.new
+    %a.anchor{ href: "#ai", aria_hidden: "true" }
+    What about AI-generated changelogs?
+
+  %p.new
+    An AI assistant can draft a changelog from a diff in seconds, and as a starting
+    point that's genuinely useful. The same ease is the risk: it's now trivial to
+    publish a fluent, plausible-looking changelog that no human ever read. The old
+    failure mode was a missing changelog; increasingly it's a confident one that
+    buries the two changes that mattered under forty that didn't.
+
+  %p.new
+    So the principle this project started with matters more, not less, in an
+    AI-assisted world: <strong>machines can draft, but humans curate</strong>. A
+    diff or a pile of commits is raw material; a changelog is the considered,
+    human-facing summary of what's worth knowing. Judging what's notable, saying it
+    plainly, and leaving out the rest is exactly the part a model can't do for you,
+    because it depends on who your readers are and what they care about.
+
+  %p.new
+    If you do hand the first draft to a tool, give it the same brief you'd give a
+    contributor: summarize the notable, outward-facing changes; never paste a git
+    log; sort each into one of the six types; put the <em>why</em> in the wording;
+    flag anything breaking; and drop the churn no reader will care about. Then read
+    what it wrote before anyone else does.
+
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
     What about yanked releases?
@@ -405,12 +491,12 @@ version: 1.1.0
 
   %p.updated
     There can be good reasons to improve a changelog after a version has been 
-    released. For example some projects may forget to add a changelog entry for 
-    a version, which would have to be retroactively addede to the changelog.
+    released. For example some projects may forget to add a changelog entry for
+    a version, which would have to be retroactively added to the changelog.
 
   %p.updated
-    It's also possible maintainers may discover they forgot address a
-    breaking change in the notes for a released version. Updating the changelog 
+    It's also possible maintainers may discover they forgot to address a
+    breaking change in the notes for a released version. Updating the changelog
     would be sensible in these cases. However it might be a good idea to denote 
     the date at which the changelog was updated for a given version. This may 
     help people reading the changelog notice the change.
@@ -427,7 +513,7 @@ version: 1.1.0
     release communication process, but it's just as much of a work in progress.
 
   %p.updated
-    In the decade since Keep a Changelog was release itself, release communication 
+    In the decade since Keep a Changelog itself was released, release communication
     has improved dramatically, at least in the open source world. This project 
     played a small part but each evolution was the result of discussion and 
     input from the community.
@@ -441,19 +527,19 @@ version: 1.1.0
     What's a "git log"?
 
   %p.new
-    A git log is a command used by the #{link_to "git", data.links.git} 
-    distributed {link_to "version control system", data.links.dvsc} to display 
-    all changes recorded in a given source code repository. 
+    A git log is a command used by the #{link_to "git", data.links.git}
+    distributed #{link_to "version control system", data.links.dvcs} to display
+    all changes recorded in a given source code repository.
 
   %p.new
     Git is a tool used by a large and growing share of software projects around 
     the world. Keep a Changelog is mainly focused on communication about 
-    software evolution which is why our tag line references "git log" in an 
-    slightly caustic way. This is because open source maintainers have long had 
-    the problematic habit to convert "git log" command output into release notes 
-    for their projects, with little regard for the actual human beings who had 
-    to try and digest these so-called "changelogs" made up for hundreds of 
-    individual changes, often written hastily.  
+    software evolution which is why our tag line references "git log" in a
+    slightly caustic way. This is because open source maintainers have long had
+    the problematic habit of converting "git log" command output into release notes
+    for their projects, with little regard for the actual human beings who had
+    to try and digest these so-called "changelogs" made up of hundreds of
+    individual changes, often written hastily.
 
 .press
   %h3 Conversations
