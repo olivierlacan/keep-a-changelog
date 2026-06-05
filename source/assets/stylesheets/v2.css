@@ -267,6 +267,9 @@
   @media (min-width: 48rem) {
     .hero .changelog-example > summary { display: none; }
     .hero .changelog-example > .changelog { display: block; }
+    /* A closed <details> hides its content via content-visibility on the
+       ::details-content box; override it so the example paints on wide. */
+    .hero .changelog-example::details-content { content-visibility: visible; }
   }
 
   /* Reading column: the Markdown body, centered to a comfortable measure. */
