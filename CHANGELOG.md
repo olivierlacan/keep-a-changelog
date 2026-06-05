@@ -7,8 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+The next release, 2.0.0, is the first major revision of the Keep a Changelog
+manifesto. It answers the questions the community has raised most often over the
+years — marking breaking changes, versioning beyond SemVer, monorepos, the
+boundary between Changed, Fixed, and Security, and more — and adds guidance for an
+era in which an LLM can draft a changelog from a diff in seconds. It also batches
+in a round of wording refinements that were never worth re-translating the
+manifesto over on their own; a major version is the right moment to make them.
+
 ### Added
 
+- New manifesto guidance answering long-standing community questions: marking
+  breaking changes; choosing between Changed, Fixed, and Security; why the six
+  change types don't grow; versioning schemes beyond SemVer; changelogs versus
+  release notes; optional per-release summaries; LLM-generated changelogs;
+  Conventional Commits; linking to issues and pull requests; very large
+  changelogs; and monorepos.
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
 - v1.1 Spanish translation.
@@ -19,6 +33,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Reworded and modernized several existing manifesto sections (what and why a
+  changelog exists, the guiding principles, reducing maintenance effort, GitHub
+  Releases, automatic parsing, rewriting, and contributing). These clarifications
+  weren't significant enough to justify re-translating the manifesto for a minor
+  release, so they were held back and batched into this major version instead.
 - Use frontmatter title & description in each language version template
 - Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
   image that will render properly (although in English for all languages)
