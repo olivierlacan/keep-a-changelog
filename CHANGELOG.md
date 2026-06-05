@@ -20,9 +20,10 @@ manifesto over on their own; a major version is the right moment to make them.
 - New manifesto guidance answering long-standing community questions: marking
   breaking changes; choosing between Changed, Fixed, and Security; why the six
   change types don't grow; versioning schemes beyond SemVer; changelogs versus
-  release notes; optional per-release summaries; LLM-generated changelogs;
-  Conventional Commits; linking to issues and pull requests; very large
-  changelogs; and monorepos.
+  release notes; optional per-release summaries; LLM-generated changelogs and a
+  brief you can drop into an `AGENTS.md`; Conventional Commits; fitting a changelog
+  into CI/CD; linking to issues and pull requests; very large changelogs;
+  monorepos; and a statement of what Keep a Changelog deliberately won't do.
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
 - v1.1 Spanish translation.
@@ -34,10 +35,12 @@ manifesto over on their own; a major version is the right moment to make them.
 ### Changed
 
 - Reworded and modernized several existing manifesto sections (what and why a
-  changelog exists, the guiding principles, reducing maintenance effort, GitHub
-  Releases, automatic parsing, rewriting, and contributing). These clarifications
-  weren't significant enough to justify re-translating the manifesto for a minor
-  release, so they were held back and batched into this major version instead.
+  changelog exists, the guiding principles, reducing maintenance effort, automatic
+  parsing, rewriting, and contributing). These clarifications weren't significant
+  enough to justify re-translating the manifesto for a minor release, so they were
+  held back and batched into this major version instead.
+- Renamed and broadened the "GitHub Releases" answer to "Releases", covering
+  release posts on any code hosting platform rather than GitHub specifically.
 - Use frontmatter title & description in each language version template
 - Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
   image that will render properly (although in English for all languages)
@@ -46,6 +49,9 @@ description when links are shared are language-appropriate
 
 ### Removed
 
+- Outdated specifics from two manifesto answers — the Vandamme gem reference (in
+  "can changelogs be automatically parsed?") and a GitHub-Releases discoverability
+  note — in favor of more general guidance.
 - Trademark sign previously shown after the project description in version 
 0.3.0
 
