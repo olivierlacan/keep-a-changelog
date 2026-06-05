@@ -304,7 +304,16 @@
     margin-block-start: var(--space-l);
   }
   @media (min-width: 48rem) {
-    .content .intro-grid { grid-template-columns: repeat(3, 1fr); }
+    .content .intro-grid {
+      grid-template-columns: repeat(3, 1fr);
+      /* Break out wider than the reading measure so the cards aren't cramped,
+         staying centered on the viewport. The width math lives in custom
+         properties so the Sass-based CSS minifier passes it through untouched. */
+      --bleed: min(60rem, 100vw - 2 * var(--space-m));
+      --bleed-margin: calc(50% - var(--bleed) / 2);
+      inline-size: var(--bleed);
+      margin-inline: var(--bleed-margin);
+    }
   }
   .content .intro-card {
     background: var(--surface);
@@ -312,6 +321,7 @@
     border-block-start: 3px solid var(--accent);
     border-radius: var(--radius);
     padding: var(--space-m);
+    font-size: var(--step--1);
   }
   .content .intro-card > * + * { margin-block-start: var(--space-xs); }
   /* Card headings drop the section-separator treatment and sit tighter. */
