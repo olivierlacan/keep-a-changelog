@@ -222,6 +222,15 @@
     padding: var(--space-2xl) var(--space-m) var(--space-xl);
     text-align: center;
   }
+  .hero-mark {
+    display: block;
+    inline-size: clamp(76px, 9vw, 124px);
+    block-size: clamp(76px, 9vw, 124px);
+    margin: 0 auto var(--space-s);
+    background-color: var(--hero-text);
+    -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+    mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+  }
   .hero h1 { font-size: var(--step-3); color: var(--hero-text); }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }

@@ -102,6 +102,7 @@
       .main{ role: "main" }
         - if v2_plus
           %header.hero
+            %span.hero-mark{ "aria-hidden": "true" }
             %h1= current_page.data.title
             %p.tagline= current_page.data.description
             = link_to data.links.changelog do
