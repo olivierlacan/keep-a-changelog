@@ -262,7 +262,7 @@
   .hero .changelog-example[open] > .changelog { display: block; }
 
   .hero .changelog {
-    max-inline-size: var(--measure);
+    inline-size: 100%;
     max-block-size: 22rem;
     overflow: auto;
     text-align: start;
