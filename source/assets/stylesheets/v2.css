@@ -26,8 +26,10 @@
     --rule: oklch(0.88 0.015 70);
     --code-bg: oklch(0.955 0.02 75);
     --code-text: var(--bark);
-    /* Deeper ocre for the hero so light text clears 4.5:1. */
+    /* Deeper ocre for the hero so light text clears 4.5:1. The veil darkens the
+       bright topographic background image to the same accessible tone. */
     --hero-bg: oklch(0.50 0.17 33);
+    --hero-veil: oklch(0.50 0.17 33 / 0.72);
     --hero-text: var(--sand);
     --accent: var(--ocre);
     --focus: oklch(0.55 0.18 33);
@@ -67,6 +69,7 @@
       --code-bg: oklch(0.27 0.02 30);
       --code-text: var(--sand);
       --hero-bg: oklch(0.46 0.13 33);
+      --hero-veil: oklch(0.40 0.12 33 / 0.80);
       --hero-text: var(--sand);
       --accent: var(--gold);
       --focus: var(--gold);
@@ -178,7 +181,10 @@
 @layer content {
   /* Hero band — the brand identity lives here. */
   .hero {
-    background: var(--hero-bg);
+    background-color: var(--hero-bg);
+    background-image: linear-gradient(var(--hero-veil), var(--hero-veil)), url("../images/bg-hero@2x.png");
+    background-size: cover;
+    background-position: center;
     color: var(--hero-text);
     padding: var(--space-2xl) var(--space-m) var(--space-xl);
     text-align: center;
