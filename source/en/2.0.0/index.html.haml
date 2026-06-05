@@ -400,6 +400,28 @@ version: 1.1.0
     outward-facing changes in the changelog, then generate whatever narrower view an
     audience needs.
 
+  %h4#summary.new
+    %a.anchor{ href: "#summary", aria_hidden: "true" }
+    Can a release start with a summary?
+
+  %p.new
+    Yes. It's perfectly fine to open a version with a short, high-level note —
+    placed right under the version heading, before the first <code>### Added</code>
+    or <code>### Changed</code> section. A sentence or two is enough to summarize the
+    theme of a release, tease a headline feature, or explain the thinking behind a
+    significant change.
+
+  %p.new
+    Larger, popular projects do this often, and it can make a release much easier to
+    take in at a glance. Keep it brief and let the typed sections carry the detail —
+    the summary sets context, it doesn't replace the itemized list of notable
+    changes.
+
+  %p.new
+    It's entirely optional, though. Most releases don't need one, and you shouldn't
+    feel obliged to write a summary just to fill space. Reach for one when a release
+    has a story worth telling, and skip it when the sections speak for themselves.
+
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
     Can changelogs be automatically parsed?
