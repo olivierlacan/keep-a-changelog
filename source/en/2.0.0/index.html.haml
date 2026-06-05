@@ -506,6 +506,26 @@ version: 1.1.0
     for people to notice it. Since it's surrounded by brackets it's also
     easier to parse programmatically.
 
+  %h4#linking.new
+    %a.anchor{ href: "#linking", aria_hidden: "true" }
+    Should I link to issues or pull requests?
+
+  %p.new
+    That's up to you, and it's a reasonable thing to do — a link to the issue or
+    pull request behind a change can save a curious reader a lot of digging.
+
+  %p.new
+    Just go in with eyes open. Links rot: if a project moves to a new host or
+    organization, its issue and pull request URLs can start returning 404s. And
+    pull or merge request numbers belong to a particular forge, not to your code —
+    they don't travel if you migrate. Git tags and commit references, by contrast,
+    are canonical to the repository itself and move with it wherever it goes.
+
+  %p.new
+    So link when it genuinely helps, prefer prose over a wall of bare
+    <code>(#1234)</code> references, and lean on what's portable — a version tag, a
+    commit — when you want a pointer that will still resolve years from now.
+
 
   %h4#rewrite
     %a.anchor{ href: "#rewrite", aria_hidden: "true" }
@@ -520,8 +540,32 @@ version: 1.1.0
     It's also possible maintainers may discover they forgot to address a
     breaking change in the notes for a released version. Updating the changelog
     would be sensible in these cases. However it might be a good idea to denote 
-    the date at which the changelog was updated for a given version. This may 
+    the date at which the changelog was updated for a given version. This may
     help people reading the changelog notice the change.
+
+  %h4#large-changelog.new
+    %a.anchor{ href: "#large-changelog", aria_hidden: "true" }
+    What if my changelog gets too big?
+
+  %p.new
+    A single file is usually fine, even a very long one. A changelog you can open
+    and search in one place is easy to navigate, and plenty of large, long-lived
+    projects keep decades of history in one <code>CHANGELOG.md</code> without
+    trouble.
+
+  %p.new
+    If a changelog spanning thousands of releases does become unwieldy, it's
+    reasonable to split older history into separate files. The risk is
+    accessibility: a reader — or a tool — that only finds the main file may never
+    discover the archived entries. So if you split, link clearly from the main
+    changelog to the archived ones, and back, so nothing becomes a dead end.
+
+  %p.new
+    Split along a line that won't move. Archive versions old enough that they're
+    unlikely to ever need editing again, and keep the active, recent history in the
+    main file. If your archived files still need updating, you've created a
+    maintenance hurdle instead of removing one. And resist pruning old entries
+    outright — someone, someday, is upgrading from that ancient version.
 
 
   %h4#contribute
