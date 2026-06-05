@@ -178,28 +178,6 @@ activate :automatic_image_sizes
 activate :syntax
 set :markdown_engine, :kramdown
 
-## Override default Redcarpet renderer in order to define a class
-class CustomMarkdownRenderer < Redcarpet::Render::HTML
-  def doc_header
-    %(<nav class="toc">#{@header}</nav>)
-  end
-
-  def header(text, header_level)
-    slug = text.parameterize
-    tag_name = "h#{header_level}"
-    anchor_link = "<a id='#{slug}' class='anchor' href='##{slug}' aria-hidden='true'></a>"
-    header_tag_open = "<#{tag_name} id='#{slug}'>"
-
-    output = ""
-    output << header_tag_open
-    output << anchor_link
-    output << text
-    output << "</#{tag_name}>"
-
-    output
-  end
-end
-
 set :markdown, auto_ids: true, smart_quotes: %w[lsquo rsquo ldquo rdquo]
 
 # --------------------------------------
