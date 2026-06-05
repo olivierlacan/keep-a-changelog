@@ -89,6 +89,30 @@ version: 1.1.0
       %code Security
       in case of vulnerabilities.
 
+  %h4#breaking.new
+    %a.anchor{ href: "#breaking", aria_hidden: "true" }
+    How do I mark breaking changes?
+
+  %p.new
+    If you follow a #{link_to "versioning scheme", data.links.schemes}, the version
+    number already hints at this: under #{link_to "Semantic Versioning", data.links.semver}
+    a major release like <code>2.0.0</code> is where breaking changes belong. But the
+    number alone is easy to overlook, so call them out in the entry itself.
+
+  %p.new
+    Breaking changes almost always live under <code>Changed</code> or
+    <code>Removed</code>. Rather than adding a separate section for them, prepend a
+    short <code>**Breaking:**</code> marker so they stand out while skimming and stay
+    grouped with the kind of change they are:
+
+  %p.new <code>- **Breaking:** parse() now returns a result object instead of raising.</code>
+
+  %p.new
+    Above all, be explicit about <em>what</em> breaks. "Breaking" only means something
+    once readers know which interface you treat as stable — a command line, a library
+    API, a wire protocol, a file format, a configuration schema. State which surface
+    your versioning scheme covers, and a breaking change becomes unambiguous.
+
 .effort
 
   %h3#effort
@@ -234,8 +258,26 @@ version: 1.1.0
     changes that require outward-facing communication.
 
   %p.updated
-    Open #{link_to "discussions", data.links.discussions} and 
+    Open #{link_to "discussions", data.links.discussions} and
     #{link_to "suggestions for improvements", data.links.issue} are welcome.
+
+  %h4#versioning.new
+    %a.anchor{ href: "#versioning", aria_hidden: "true" }
+    Do I have to use Semantic Versioning?
+
+  %p.new
+    No. #{link_to "Semantic Versioning", data.links.semver} is popular and useful,
+    especially for libraries, but it isn't the only
+    #{link_to "versioning scheme", data.links.schemes}. Many projects use
+    #{link_to "calendar versioning", data.links.calver} like <code>2024.06</code>, a
+    plain incrementing number, or a date. What matters for a changelog is that you note
+    which scheme you use, so readers know how to read your version numbers.
+
+  %p.new
+    Some projects don't ship discrete, numbered versions at all — a continuously
+    deployed web service, for instance. A changelog still helps: keep an
+    <code>Unreleased</code> section for upcoming changes, and record what shipped under
+    dated entries even when there's no version number to attach them to.
 
 
   %h4#filename
@@ -275,9 +317,28 @@ version: 1.1.0
     text file stored in the repository.
   
   %p.update
-    It's best to focus on changelog text files first and either derive these 
-    individual release posts manually or use tools to create release posts 
+    It's best to focus on changelog text files first and either derive these
+    individual release posts manually or use tools to create release posts
     when a new version is added to the changelog.
+
+  %h4#release-notes.new
+    %a.anchor{ href: "#release-notes", aria_hidden: "true" }
+    Is a changelog the same as release notes?
+
+  %p.new
+    They overlap, but they serve different audiences and live in different places. A
+    changelog lives in the repository next to the code and records precisely what
+    changed between versions, for anyone who needs to know — contributors and users
+    alike. Release notes are usually a curated announcement for a single release:
+    highlights, upgrade steps, and a bit of marketing.
+
+  %p.new
+    A good changelog is an excellent <em>source</em> for release notes. Derive the
+    notes from it — keep the notable entries, drop the ones only contributors care
+    about, add narrative — instead of maintaining two records by hand. This is also the
+    cleaner answer to separating "internal" from "public" changes: curate notable,
+    outward-facing changes in the changelog, then generate whatever narrower view an
+    audience needs.
 
   %h4#automatic
     %a.anchor{ href: "#automatic", aria_hidden: "true" }
@@ -293,9 +354,32 @@ version: 1.1.0
     version is released. By the time they're able to, there may be multiple 
     versions to consider. 
     
-  %p.new 
-    An automatically parsed changelog can help people see a filtered list of 
-    changes between specific versions, making their upgrade process much easier.  
+  %p.new
+    An automatically parsed changelog can help people see a filtered list of
+    changes between specific versions, making their upgrade process much easier.
+
+  %h4#conventional-commits.new
+    %a.anchor{ href: "#conventional-commits", aria_hidden: "true" }
+    How does this relate to Conventional Commits?
+
+  %p.new
+    They address different halves of the same problem.
+    #{link_to "Conventional Commits", data.links.conventionalcommits} is a convention
+    for writing structured <em>commit messages</em>. Tools like
+    #{link_to "semantic-release", data.links.semanticrelease}, release-please,
+    Changesets, and git-cliff can read those commits to generate a changelog and pick
+    the next version automatically.
+
+  %p.new
+    Keep a Changelog describes the other end: the human-facing record those tools are
+    trying to produce. They're complementary — you can feed Conventional Commits into a
+    generator and have it emit something close to this format.
+
+  %p.new
+    Just remember that a generated changelog is a <em>draft</em>. Commits are written
+    for the people building the software; a changelog is written for the people using
+    it. Deciding what's notable and rewriting it for the reader is precisely the work a
+    generator can't do — and it's what makes a changelog worth keeping.
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }

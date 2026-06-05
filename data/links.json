@@ -12,6 +12,9 @@
   "gnustyle": "https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs",
   "gnunews": "https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File",
   "schemes": "https://en.wikipedia.org/wiki/Software_versioning#Schemes",
+  "calver": "https://calver.org/",
+  "conventionalcommits": "https://www.conventionalcommits.org/",
+  "semanticrelease": "https://github.com/semantic-release/semantic-release",
   "git": "https://en.wikipedia.org/wiki/Git",
   "dvcs": "https://en.wikipedia.org/wiki/Distributed_version_control"
 }
