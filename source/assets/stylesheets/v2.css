@@ -210,9 +210,43 @@
   .hero h1 { font-size: var(--step-3); color: var(--hero-text); }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
+  /* Example changelog. On wide screens it's the always-visible centerpiece; on
+     narrow screens it collapses into a tap-to-open disclosure to save space. */
+  .hero .changelog-example {
+    margin-block-start: var(--space-l);
+    margin-inline: auto;
+    max-inline-size: var(--measure);
+  }
+  .hero .changelog-example > summary {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid color-mix(in srgb, var(--hero-text) 55%, transparent);
+    border-radius: var(--radius);
+    color: var(--hero-text);
+    font-size: var(--step--1);
+    list-style: none;
+  }
+  .hero .changelog-example > summary::-webkit-details-marker { display: none; }
+  .hero .changelog-example > summary::after {
+    content: "";
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .hero .changelog-example[open] > summary { margin-block-end: var(--space-s); }
+  .hero .changelog-example[open] > summary::after { transform: rotate(-135deg); }
+
+  /* Collapsed by default (narrow screens); the disclosure reveals it on tap. */
+  .hero .changelog-example > .changelog { display: none; }
+  .hero .changelog-example[open] > .changelog { display: block; }
+
   .hero .changelog {
-    display: block;
-    margin: var(--space-l) auto 0;
     max-inline-size: var(--measure);
     max-block-size: 22rem;
     overflow: auto;
@@ -226,6 +260,13 @@
     padding: var(--space-m);
     box-shadow: 0 10px 30px oklch(0 0 0 / 0.25);
     white-space: pre-wrap;
+  }
+
+  /* Wide screens: drop the toggle UI and show the example outright, regardless of
+     the underlying <details> state (so the mobile disclosure still works). */
+  @media (min-width: 48rem) {
+    .hero .changelog-example > summary { display: none; }
+    .hero .changelog-example > .changelog { display: block; }
   }
 
   /* Reading column: the Markdown body, centered to a comfortable measure. */
