@@ -43,15 +43,14 @@ namespace :translations do
 end
 
 namespace :snapshots do
-  desc "Capture baseline visual snapshots from the current build (run before migrating)"
+  desc "Build, then record cross-browser baseline screenshots (run before migrating)"
   task baseline: :build do
-    sh "bin/snapshot capture test/visual/baseline"
+    sh "npm run snapshot:baseline"
   end
 
-  desc "Rebuild, snapshot, and diff against the baseline (run after migrating)"
+  desc "Rebuild, then diff cross-browser screenshots against the baseline (run after migrating)"
   task check: :build do
-    sh "bin/snapshot capture test/visual/current"
-    sh "bin/snapshot compare test/visual/baseline test/visual/current"
+    sh "npm run snapshot:check"
   end
 end
 

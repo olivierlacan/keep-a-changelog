@@ -17,4 +17,7 @@ __pycache__/
 /tools/requirements.lock.txt
 segments.jsonl
 
-/test/visual
+/node_modules
+/test-results
+/playwright-report
+/test/visual/__screenshots__
