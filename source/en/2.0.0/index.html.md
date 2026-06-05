@@ -1,6 +1,6 @@
 ---
 title: Keep a Changelog
-description: Don’t let your friends dump git logs into changelogs.
+description: Clearly document the evolution of your projects.
 language: en
 version: 2.0.0
 ---
