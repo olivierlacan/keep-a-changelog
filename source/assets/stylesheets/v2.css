@@ -1,0 +1,234 @@
+/* Keep a Changelog 2.0 — native CSS, no framework, no preprocessor.
+   Modern baseline (2026): @layer, custom properties, nesting, logical
+   properties (RTL-ready), fluid type, oklch color, prefers-color-scheme. */
+
+@layer reset, tokens, base, chrome, content;
+
+/* ----------------------------------------------------------------- tokens */
+@layer tokens {
+  :root {
+    /* Brand palette, tuned from the classic hex into oklch.
+       ocre #E05735 · gold #faa930 · bark #3F2B2D · sand #FEECD3 · ink #342828 */
+    --ocre: oklch(0.645 0.19 33);
+    --gold: oklch(0.79 0.155 67);
+    --bark: oklch(0.30 0.025 18);
+    --sand: oklch(0.95 0.03 80);
+    --ink: oklch(0.30 0.02 25);
+
+    /* Semantic colors (light) */
+    --bg: oklch(0.985 0.008 80);
+    --surface: oklch(1 0 0);
+    --text: var(--ink);
+    --muted: oklch(0.48 0.02 30);
+    --link: var(--ocre);
+    --rule: oklch(0.88 0.015 70);
+    --code-bg: oklch(0.955 0.02 75);
+    --code-text: var(--bark);
+    --hero-bg: var(--ocre);
+    --hero-text: var(--sand);
+    --accent: var(--ocre);
+    --focus: var(--ocre);
+
+    /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
+    --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
+    --step-0: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    --step-1: clamp(1.3rem, 1.2rem + 0.5vw, 1.6rem);
+    --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+    --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+
+    /* Spacing scale */
+    --space-2xs: 0.4rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.6rem;
+    --space-l: 2.6rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
+    --measure: 66ch;
+    --radius: 6px;
+
+    --font-sans: "Muli", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --leading: 1.65;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: oklch(0.20 0.015 25);
+      --surface: oklch(0.24 0.018 25);
+      --text: oklch(0.92 0.02 80);
+      --muted: oklch(0.72 0.02 70);
+      --link: var(--gold);
+      --rule: oklch(0.36 0.02 30);
+      --code-bg: oklch(0.27 0.02 30);
+      --code-text: var(--sand);
+      --hero-bg: oklch(0.46 0.13 33);
+      --hero-text: var(--sand);
+      --accent: var(--gold);
+      --focus: var(--gold);
+    }
+  }
+
+  /* Script-aware fonts and rhythm (the lang attribute is set on <html>). */
+  :lang(ja) { --font-sans: "Hiragino Sans", "Yu Gothic", Meiryo, system-ui, sans-serif; --leading: 1.8; }
+  :lang(ko) { --font-sans: "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; --leading: 1.8; }
+  :lang(zh) { --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif; --leading: 1.8; }
+  :lang(ar), :lang(fa) { --font-sans: "Vazirmatn", "Geeza Pro", "Noto Sans Arabic", system-ui, sans-serif; --leading: 1.9; }
+}
+
+/* ------------------------------------------------------------------ reset */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100svh; line-height: var(--leading); -webkit-font-smoothing: antialiased; }
+  img, picture, svg { display: block; max-inline-size: 100%; block-size: auto; }
+  h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  a { color: inherit; }
+  ul { padding: 0; list-style-position: inside; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+/* ------------------------------------------------------------------- base */
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+  a {
+    color: var(--link);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  a:hover { text-decoration-thickness: 2px; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+
+  h2 { font-size: var(--step-2); color: var(--accent); }
+  h3 { font-size: var(--step-1); color: var(--text); }
+}
+
+/* ------------------------------------------------------- chrome (layout) */
+@layer chrome {
+  article > header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-s) var(--space-m);
+    background: var(--surface);
+    border-block-end: 1px solid var(--rule);
+  }
+  article > header .mark { inline-size: 40px; block-size: auto; }
+
+  .locales {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  #language-select {
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 0.4em 0.6em;
+    max-inline-size: 16rem;
+  }
+
+  .footer {
+    margin-block-start: var(--space-2xl);
+    padding: var(--space-l) var(--space-m);
+    border-block-start: 1px solid var(--rule);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .footer a { color: var(--link); }
+  .footer .mark { display: inline-block; inline-size: 24px; vertical-align: middle; margin-inline-end: 0.5em; }
+}
+
+/* ----------------------------------------------------------------- content */
+@layer content {
+  /* Hero band — the brand identity lives here. */
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-text);
+    padding: var(--space-2xl) var(--space-m) var(--space-xl);
+    text-align: center;
+  }
+  .hero h1 { font-size: var(--step-3); color: var(--hero-text); }
+  .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
+  .hero a { color: var(--hero-text); }
+  .hero .changelog {
+    display: block;
+    margin: var(--space-l) auto 0;
+    max-inline-size: var(--measure);
+    max-block-size: 22rem;
+    overflow: auto;
+    text-align: start;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: var(--space-m);
+    box-shadow: 0 10px 30px oklch(0 0 0 / 0.25);
+    white-space: pre-wrap;
+  }
+
+  /* Reading column: every content section is centered to a comfortable measure. */
+  section {
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-m);
+  }
+  section > * { max-inline-size: var(--measure); margin-inline: auto; }
+  section + section { border-block-start: 1px solid var(--rule); }
+
+  h2, h3 { margin-block-start: var(--space-l); }
+  section > h2:first-of-type { margin-block-start: 0; }
+  p, ul { margin-block-start: var(--space-s); }
+  li + li { margin-block-start: var(--space-2xs); }
+
+  .anchor { text-decoration: none; }
+  .anchor::before { content: "#"; color: var(--accent); opacity: 0; margin-inline-end: 0.25em; }
+  :is(h2, h3):hover .anchor::before { opacity: 0.6; }
+
+  .example code { display: block; padding: var(--space-xs) var(--space-s); }
+
+  aside {
+    margin-block-start: var(--space-m);
+    padding: var(--space-s) var(--space-m);
+    border-inline-start: 3px solid var(--accent);
+    background: var(--code-bg);
+    color: var(--muted);
+    font-size: var(--step--1);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .references { color: var(--muted); }
+}

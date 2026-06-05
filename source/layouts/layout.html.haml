@@ -8,7 +8,7 @@
 - description = current_page.data.description || "bullshit" 
 
 !!! 5
-%html{ lang: current_page.data.language }
+%html{ lang: current_page.data.language, dir: (%w[ar fa].include?(current_page.data.language) ? "rtl" : "ltr") }
   %head
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
@@ -41,6 +41,8 @@
     = stylesheet_link_tag "//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap"
     - if legacy_version
       = stylesheet_link_tag 'legacy'
+    - elsif Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
+      = stylesheet_link_tag 'v2'
     - else
       = stylesheet_link_tag 'application'
     = javascript_include_tag 'all', defer: true
