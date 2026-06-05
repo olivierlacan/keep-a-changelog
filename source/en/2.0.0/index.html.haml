@@ -440,6 +440,14 @@ version: 1.1.0
     An automatically parsed changelog can help people see a filtered list of
     changes between specific versions, making their upgrade process much easier.
 
+  %p.new
+    There's no separate machine format to learn, and there won't be one. This page
+    is the whole of it: a changelog that follows a consistent, predictable shape is
+    readable by a parser and by an LLM alike — precisely because it was written for
+    people first. Keep a Changelog has spread for over a decade without a formal
+    grammar, a schema, or a required file format, and bolting one on now would trade
+    the simplicity that made it useful for rigor almost nobody asked for.
+
   %h4#llms.new
     %a.anchor{ href: "#llms", aria_hidden: "true" }
     What about LLM-generated changelogs?
@@ -466,6 +474,13 @@ version: 1.1.0
     flag anything breaking; and drop the churn no reader will care about. Then read
     what it wrote before anyone else does.
 
+  %p.new
+    If your project leans on coding agents, that brief is worth writing down where
+    they'll read it — an <code>AGENTS.md</code>, a <code>CLAUDE.md</code>, or
+    whatever instructions file your tools pick up. A link to this page and those few
+    rules are all an agent needs to keep your changelog the way you would; there's no
+    schema to wire up, because the instructions are the interface.
+
   %h4#conventional-commits.new
     %a.anchor{ href: "#conventional-commits", aria_hidden: "true" }
     How does this relate to Conventional Commits?
@@ -488,6 +503,30 @@ version: 1.1.0
     for the people building the software; a changelog is written for the people using
     it. Deciding what's notable and rewriting it for the reader is precisely the work a
     generator can't do — and it's what makes a changelog worth keeping.
+
+  %h4#ci.new
+    %a.anchor{ href: "#ci", aria_hidden: "true" }
+    How does a changelog fit into CI/CD?
+
+  %p.new
+    Continuous integration can take some of the chore out of keeping a changelog, as
+    long as it doesn't become the chore. The safe, useful jobs are mechanical: at
+    release time, move the <code>Unreleased</code> section into a new dated version;
+    check that the file is well-formed; and, if you like, leave a gentle reminder on
+    a pull request that a notable change might deserve an entry.
+
+  %p.new
+    What CI can't do is judge the part that matters. No pipeline can tell whether an
+    entry is notable, written for humans, or worth reading at all — that's the
+    curation a changelog exists for, and it stays a human call. So resist turning the
+    changelog into a hard gate that blocks every pull request until someone edits it.
+    That just trains contributors to paste in a line to make the check pass, which is
+    how you end up with a changelog full of noise — the very thing this is meant to
+    prevent.
+
+  %p.new
+    Keep CI in a supporting role: let it handle the boring mechanics and the
+    reminders, and leave the judgment to the people writing for other people.
 
   %h4#yanked
     %a.anchor{ href: "#yanked", aria_hidden: "true" }
