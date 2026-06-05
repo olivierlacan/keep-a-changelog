@@ -1,0 +1,118 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Visual snapshot harness for verifying that build-tool changes (e.g. the
+# Middleman -> Bridgetown migration) don't change what readers see.
+#
+# Uses only what's already installed: headless Google Chrome to screenshot each
+# built page, and ImageMagick `compare` to diff against a baseline. No framework,
+# no extra gems, no browser download.
+#
+#   bin/snapshot capture <dir>            # screenshot pages from build/ into <dir>
+#   bin/snapshot compare <baseline> <new> # diff <new> against <baseline>, report
+#
+# Driven by Rake: `rake snapshots:baseline` then, after migrating, `rake snapshots:check`.
+
+require "fileutils"
+require "shellwords"
+require "socket"
+
+BUILD_DIR = File.expand_path("../build", __dir__)
+PORT = 8731
+
+CHROME = [
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/Applications/Chromium.app/Contents/MacOS/Chromium",
+  "google-chrome", "chromium", "chromium-browser"
+].find { |c| File.exist?(c) || system("command -v #{Shellwords.escape(c)} >/dev/null 2>&1") }
+
+# A representative set across versions, scripts, and viewports — enough to catch a
+# layout regression without snapshotting all 92 pages.
+PAGES = [
+  {path: "/en/0.3.0/", label: "en-0.3.0",   w: 1280, h: 9000}, # legacy.css, markdown
+  {path: "/en/1.0.0/", label: "en-1.0.0",   w: 1280, h: 9000},
+  {path: "/en/1.1.0/", label: "en-1.1.0",   w: 1280, h: 9000}, # application.css
+  {path: "/en/2.0.0/", label: "en-2.0.0",   w: 1280, h: 9000}, # v2.css
+  {path: "/de/1.1.0/", label: "de-1.1.0",   w: 1280, h: 9000}, # Latin, other lang
+  {path: "/ru/1.1.0/", label: "ru-1.1.0",   w: 1280, h: 9000}, # Cyrillic
+  {path: "/ja/1.1.0/", label: "ja-1.1.0",   w: 1280, h: 9000}, # CJK
+  {path: "/ar/1.0.0/", label: "ar-1.0.0",   w: 1280, h: 9000}, # RTL script
+  {path: "/en/1.1.0/", label: "en-1.1.0-m", w:  390, h: 12000}, # mobile
+  {path: "/en/2.0.0/", label: "en-2.0.0-m", w:  390, h: 12000}, # mobile
+]
+
+# Pixels (after fuzz) above which a page counts as a regression.
+THRESHOLD = 200
+
+def abort_unless_tools
+  abort "error: no Chrome/Chromium found" unless CHROME
+  abort "error: ImageMagick `compare` not found" unless system("command -v compare >/dev/null 2>&1")
+  abort "error: no build/ directory — run `rake build` first" unless Dir.exist?(BUILD_DIR)
+end
+
+def with_server
+  pid = Process.spawn("ruby", "-run", "-e", "httpd", BUILD_DIR, "-p", PORT.to_s,
+                      out: File::NULL, err: File::NULL)
+  60.times do
+    TCPSocket.new("127.0.0.1", PORT).close
+    break
+  rescue Errno::ECONNREFUSED
+    sleep 0.25
+  end
+  yield
+ensure
+  Process.kill("TERM", pid) if pid
+  Process.wait(pid) if pid
+end
+
+def shoot(page, out_png)
+  system(CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",
+         "--force-device-scale-factor=1",
+         "--run-all-compositor-stages-before-draw", "--virtual-time-budget=6000",
+         "--window-size=#{page[:w]},#{page[:h]}",
+         "--screenshot=#{out_png}", "http://127.0.0.1:#{PORT}#{page[:path]}",
+         out: File::NULL, err: File::NULL)
+end
+
+def capture(dir)
+  abort_unless_tools
+  FileUtils.mkdir_p(dir)
+  with_server do
+    PAGES.each do |page|
+      shoot(page, File.join(dir, "#{page[:label]}.png"))
+      puts "  captured #{page[:label]}"
+    end
+  end
+  puts "Saved #{PAGES.size} snapshots to #{dir}"
+end
+
+def compare(baseline, current)
+  abort "error: no baseline at #{baseline} — run `rake snapshots:baseline` first" unless Dir.exist?(baseline)
+  FileUtils.mkdir_p(File.join(current, "diff"))
+  regressions = []
+  PAGES.each do |page|
+    name = "#{page[:label]}.png"
+    base = File.join(baseline, name)
+    cur  = File.join(current, name)
+    next puts "  ?? #{name} missing" unless File.exist?(base) && File.exist?(cur)
+
+    diff = File.join(current, "diff", name)
+    out = `compare -metric AE -fuzz 2% #{Shellwords.escape(base)} #{Shellwords.escape(cur)} #{Shellwords.escape(diff)} 2>&1`
+    px = out.strip.split.first.to_i
+    status = px > THRESHOLD ? "FAIL" : "ok"
+    regressions << name if px > THRESHOLD
+    puts format("  %-4s %-16s %d differing px", status, name, px)
+  end
+  if regressions.empty?
+    puts "All #{PAGES.size} pages match the baseline."
+  else
+    puts "#{regressions.size} regression(s): #{regressions.join(", ")} (diff images in #{current}/diff)"
+    exit 1
+  end
+end
+
+case ARGV[0]
+when "capture" then capture(ARGV[1] || abort("usage: bin/snapshot capture <dir>"))
+when "compare" then compare(ARGV[1] || abort("usage: bin/snapshot compare <baseline> <new>"), ARGV[2] || abort("usage: bin/snapshot compare <baseline> <new>"))
+else abort "usage: bin/snapshot capture <dir> | compare <baseline> <new>"
+end

@@ -16,3 +16,5 @@ __pycache__/
 /tools/.models
 /tools/requirements.lock.txt
 segments.jsonl
+
+/test/visual

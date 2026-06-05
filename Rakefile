@@ -42,6 +42,19 @@ namespace :translations do
   end
 end
 
+namespace :snapshots do
+  desc "Capture baseline visual snapshots from the current build (run before migrating)"
+  task baseline: :build do
+    sh "bin/snapshot capture test/visual/baseline"
+  end
+
+  desc "Rebuild, snapshot, and diff against the baseline (run after migrating)"
+  task check: :build do
+    sh "bin/snapshot capture test/visual/current"
+    sh "bin/snapshot compare test/visual/baseline test/visual/current"
+  end
+end
+
 require "minitest/test_task"
 
 Minitest::TestTask.create(:test) do |t|
