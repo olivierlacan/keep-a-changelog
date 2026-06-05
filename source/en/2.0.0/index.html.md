@@ -80,7 +80,9 @@ You do not have to use Semantic Versioning. [Calendar versioning](https://calver
 
 Keeping a changelog is partly an act of restraint. A changelog records *notable* changes, which means some changes are not notable and do not belong in it. Deciding which is which is the work, and it is work for a person.
 
+<aside markdown="1">
 Making changes and communicating about changes are two different tasks. "Don't let your friends dump git logs into changelogs" does not mean "sort every commit into a type as you make it" — that is tedious and beside the point. Write the changelog as a summary for your readers, not as a record of your commits.
+</aside>
 
 ## What makes a changelog worse? {#bad-practices}
 
@@ -106,7 +108,9 @@ A changelog that follows a consistent shape can be read by tools and by language
 
 Machines can also help write a changelog. A language model can draft one from a diff in seconds, which is useful as a starting point. But it is now easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**. A model cannot decide what is notable for your readers, or say it plainly for them. If you use a tool for the first draft, give it the brief you would give a contributor: summarize notable, user-facing changes; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; and remove anything not worth reading. Then read the result before anyone else does.
 
+<aside markdown="1">
 If your project uses coding agents, record that brief where they read it — for example an `AGENTS.md` or `CLAUDE.md` file. There is no format to configure; the instructions are the interface.
+</aside>
 
 The same applies to changelogs generated from commit messages. Conventions such as [Conventional Commits](https://www.conventionalcommits.org/), and tools such as [semantic-release](https://github.com/semantic-release/semantic-release), release-please, Changesets, and git-cliff, read structured commits to generate a changelog and choose the next version. They are complementary to this convention: commits are the input, and the changelog is the human-facing output. The result is still a draft. It needs a person to decide what is notable and write it for the reader.
 
