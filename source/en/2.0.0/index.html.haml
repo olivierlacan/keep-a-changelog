@@ -567,6 +567,35 @@ version: 1.1.0
     maintenance hurdle instead of removing one. And resist pruning old entries
     outright — someone, someday, is upgrading from that ancient version.
 
+  %h4#monorepos.new
+    %a.anchor{ href: "#monorepos", aria_hidden: "true" }
+    What about monorepos?
+
+  %p.new
+    It depends on what the repository actually is. The question to ask is whether it
+    holds one product or many.
+
+  %p.new
+    If the monorepo houses several unrelated projects that merely share a
+    repository, treat them as what they are: each gets its own independent
+    changelog, versioned and maintained on its own terms. There's nothing to unify.
+
+  %p.new
+    If instead the monorepo is a single system that people know by one name — Ruby
+    on Rails is the classic example — per-component changelogs are genuinely useful,
+    and projects like it have kept them for years. But on their own they aren't
+    enough. It isn't realistic to ask someone to traipse through dozens of component
+    changelogs to work out what a unified <code>3.0</code> means for them. Even when
+    some components aren't used by everyone, there should be a central changelog
+    that synthesizes the notable changes at the scope of the whole project, not just
+    scattered across its parts.
+
+  %p.new
+    Think of the per-component changelogs as the detailed record and the central one
+    as the human-facing summary of what a release means for the project as a whole.
+    It's the same principle as everywhere else: write for the person trying to
+    understand what changed, not for the structure of your codebase.
+
 
   %h4#contribute
     %a.anchor{ href: "#contribute", aria_hidden: "true" }
