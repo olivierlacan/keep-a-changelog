@@ -5,17 +5,27 @@ language: en
 version: 2.0.0
 ---
 
+<div class="intro-grid" markdown="1">
+
+<section class="intro-card" markdown="1">
 ## What is a changelog? {#what}
 
 A changelog is a curated, chronologically ordered list of the notable changes for each version of a project.
+</section>
 
+<section class="intro-card" markdown="1">
 ## Why keep a changelog? {#why}
 
 To make it easy for users and contributors to see the notable changes between each version.
+</section>
 
+<section class="intro-card" markdown="1">
 ## Who needs a changelog? {#who}
 
 People do. Whether they are users or developers, the people who use software care about what it does. When it changes, they want to know what changed and why.
+</section>
+
+</div>
 
 ## How do I keep a good changelog? {#how}
 

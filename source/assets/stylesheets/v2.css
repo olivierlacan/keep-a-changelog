@@ -296,6 +296,32 @@
   .content > * + * { margin-block-start: var(--space-s); }
   .content li + li { margin-block-start: var(--space-2xs); }
 
+  /* Intro triptych: What / Why / Who as a row of blocks on wide screens,
+     stacked on narrow ones. */
+  .content .intro-grid {
+    display: grid;
+    gap: var(--space-m);
+    margin-block-start: var(--space-l);
+  }
+  @media (min-width: 48rem) {
+    .content .intro-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .content .intro-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-block-start: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: var(--space-m);
+  }
+  .content .intro-card > * + * { margin-block-start: var(--space-xs); }
+  /* Card headings drop the section-separator treatment and sit tighter. */
+  .content .intro-card h2 {
+    margin-block-start: 0;
+    padding-block-start: 0;
+    border-block-start: 0;
+    font-size: var(--step-1);
+  }
+
   /* Top-level headings (##) separate sections; sub-headings (###) just breathe. */
   .content h2 {
     margin-block-start: var(--space-2xl);
