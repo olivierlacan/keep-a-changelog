@@ -52,4 +52,64 @@ document.addEventListener("DOMContentLoaded", function(){
     if (wide.addEventListener) { wide.addEventListener('change', syncExample); }
     else if (wide.addListener) { wide.addListener(syncExample); }
   }
+
+  // Table of contents: built from the article's headings. A sticky sidebar on
+  // wide screens, a "Contents" disclosure on narrow ones. Generated in JS so it
+  // stays in sync with the headings and degrades gracefully without scripting.
+  var tocHost = document.getElementById('toc');
+  var article = document.querySelector('.article-body .content');
+  if (tocHost && article) {
+    var headings = article.querySelectorAll('h2[id], h3[id]');
+    if (headings.length) {
+      var details = document.createElement('details');
+      details.className = 'toc-disclosure';
+      var summary = document.createElement('summary');
+      summary.textContent = 'On this page';
+      details.appendChild(summary);
+
+      var nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Table of contents');
+      var title = document.createElement('p');
+      title.className = 'toc-title';
+      title.setAttribute('aria-hidden', 'true');
+      title.textContent = 'On this page';
+      nav.appendChild(title);
+
+      var list = document.createElement('ul');
+      list.className = 'toc-list';
+      var linkFor = {};
+      headings.forEach(function(h){
+        var li = document.createElement('li');
+        li.className = h.tagName === 'H3' ? 'toc-item toc-sub' : 'toc-item';
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        list.appendChild(li);
+        linkFor[h.id] = a;
+      });
+      nav.appendChild(list);
+      details.appendChild(nav);
+      tocHost.appendChild(details);
+
+      // Open as a sidebar on wide screens (collapsible disclosure on narrow).
+      var wideToc = window.matchMedia('(min-width: 72rem)');
+      var syncToc = function(){ if (wideToc.matches) { details.open = true; } };
+      syncToc();
+      if (wideToc.addEventListener) { wideToc.addEventListener('change', syncToc); }
+      else if (wideToc.addListener) { wideToc.addListener(syncToc); }
+
+      // Scroll-spy: mark the heading nearest the top of the viewport as current.
+      if ('IntersectionObserver' in window) {
+        var setCurrent = function(id){
+          Object.keys(linkFor).forEach(function(key){ linkFor[key].removeAttribute('aria-current'); });
+          if (linkFor[id]) { linkFor[id].setAttribute('aria-current', 'true'); }
+        };
+        var spy = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) { setCurrent(e.target.id); } });
+        }, { rootMargin: '0px 0px -80% 0px', threshold: 0 });
+        headings.forEach(function(h){ spy.observe(h); });
+      }
+    }
+  }
 });

@@ -380,4 +380,81 @@
     font-style: italic;
   }
   .content blockquote > * + * { margin-block-start: var(--space-xs); }
+
+  /* ---- Table of contents: disclosure on narrow, sticky sidebar on wide ---- */
+  .toc { font-size: var(--step--1); }
+  .toc-disclosure > summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-block-start: var(--space-m);
+    padding: 0.45em 0.9em;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .toc-disclosure > summary::-webkit-details-marker { display: none; }
+  .toc-disclosure > summary::after {
+    content: "";
+    inline-size: 0.45em;
+    block-size: 0.45em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .toc-disclosure[open] > summary::after { transform: rotate(-135deg); }
+
+  .toc-title {
+    display: none;
+    margin: 0 0 var(--space-xs);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; }
+  .toc-list a {
+    display: block;
+    padding: 0.3em 0.75em;
+    line-height: 1.35;
+    color: var(--muted);
+    text-decoration: none;
+    border-inline-start: 2px solid var(--rule);
+  }
+  .toc-list a:hover { color: var(--text); border-inline-start-color: var(--muted); }
+  .toc-list a[aria-current="true"] {
+    color: var(--accent);
+    border-inline-start-color: var(--accent);
+    font-weight: 600;
+  }
+  .toc-list .toc-sub a { padding-inline-start: 1.6em; font-size: 0.95em; }
+
+  @media (min-width: 72rem) {
+    .article-body {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, var(--measure)) 1fr;
+      column-gap: var(--space-l);
+    }
+    .article-body > .content { grid-column: 2; }
+    .article-body > .toc {
+      grid-column: 1;
+      justify-self: end;
+      align-self: start;
+      inline-size: 15rem;
+      padding-inline: var(--space-m);
+      position: sticky;
+      top: var(--space-m);
+      max-block-size: calc(100vh - 4rem);
+      overflow: auto;
+      margin-block-start: var(--space-2xl);
+    }
+    .toc-disclosure > summary { display: none; }
+    .toc-title { display: block; }
+    .toc-list { margin-block-start: 0; }
+  }
 }

@@ -110,8 +110,10 @@
             %details.changelog-example
               %summary Example changelog
               %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Example changelog" }= File.read("CHANGELOG.md")
-          .content
-            = yield
+          .article-body
+            %aside#toc.toc{ "aria-label": "Table of contents" }
+            .content
+              = yield
         - else
           = yield
 
