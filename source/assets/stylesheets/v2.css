@@ -15,25 +15,28 @@
     --sand: oklch(0.95 0.03 80);
     --ink: oklch(0.30 0.02 25);
 
-    /* Semantic colors (light) */
-    --bg: oklch(0.985 0.008 80);
-    --surface: oklch(1 0 0);
-    --text: var(--ink);
-    --muted: oklch(0.44 0.02 30);
+    /* Semantic colors via light-dark(): first value is light, second is dark.
+       color-scheme (below) decides which resolves — following the system by
+       default, or forced by the theme switch via :root[data-theme]. */
+    color-scheme: light dark;
+    --bg: light-dark(oklch(0.985 0.008 80), oklch(0.20 0.015 25));
+    --surface: light-dark(oklch(1 0 0), oklch(0.24 0.018 25));
+    --text: light-dark(var(--ink), oklch(0.92 0.02 80));
+    --muted: light-dark(oklch(0.44 0.02 30), oklch(0.72 0.02 70));
     /* A darker ocre for text/links so it clears 4.5:1 on white (the bright --ocre
-       is mid-luminance and only passes as large text or as decoration). */
-    --link: oklch(0.55 0.18 33);
-    --rule: oklch(0.88 0.015 70);
-    --code-bg: oklch(0.955 0.02 75);
-    --code-text: var(--bark);
+       is mid-luminance and only passes as large text or as decoration); gold in dark. */
+    --link: light-dark(oklch(0.55 0.18 33), var(--gold));
+    --rule: light-dark(oklch(0.88 0.015 70), oklch(0.36 0.02 30));
+    --code-bg: light-dark(oklch(0.955 0.02 75), oklch(0.27 0.02 30));
+    --code-text: light-dark(var(--bark), var(--sand));
     /* Deeper ocre for the hero so light text clears 4.5:1. Light topographic
        contour lines sit over it; a scrim keeps the title legible. */
-    --hero-bg: oklch(0.50 0.17 33);
+    --hero-bg: light-dark(oklch(0.50 0.17 33), oklch(0.46 0.13 33));
     --hero-text: var(--sand);
-    --accent: var(--ocre);
-    --focus: oklch(0.55 0.18 33);
-    /* Brand mark: ocre reads on the white header/footer in light mode. */
-    --mark: var(--ocre);
+    --accent: light-dark(var(--ocre), var(--gold));
+    --focus: light-dark(oklch(0.55 0.18 33), var(--gold));
+    /* Brand mark: ocre on the white header/footer in light, cream on dark. */
+    --mark: light-dark(var(--ocre), var(--sand));
 
     /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
     --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
@@ -59,24 +62,10 @@
     --leading: 1.65;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: oklch(0.20 0.015 25);
-      --surface: oklch(0.24 0.018 25);
-      --text: oklch(0.92 0.02 80);
-      --muted: oklch(0.72 0.02 70);
-      --link: var(--gold);
-      --rule: oklch(0.36 0.02 30);
-      --code-bg: oklch(0.27 0.02 30);
-      --code-text: var(--sand);
-      --hero-bg: oklch(0.46 0.13 33);
-      --hero-text: var(--sand);
-      --accent: var(--gold);
-      --focus: var(--gold);
-      /* On the dark header/footer the original cream mark reads best. */
-      --mark: var(--sand);
-    }
-  }
+  /* Manual theme override from the header switch. Absent attribute = follow
+     the system (the default color-scheme: light dark above). */
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"] { color-scheme: dark; }
 
   /* Script-aware fonts and rhythm (the lang attribute is set on <html>). */
   :lang(ja) { --font-sans: "Hiragino Sans", "Yu Gothic", Meiryo, system-ui, sans-serif; --leading: 1.8; }
@@ -157,6 +146,32 @@
     mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
   }
   article > header .mark { inline-size: 40px; block-size: 40px; }
+
+  /* Right-hand header cluster: theme switch, then the brand mark. */
+  .header-tools { display: inline-flex; align-items: center; gap: var(--space-s); }
+  .theme-switch { display: inline-flex; gap: 2px; }
+  .theme-btn {
+    display: grid;
+    place-items: center;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--muted);
+    /* Rest quietly; the resting opacity still clears 3:1 for non-text. */
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .theme-btn svg { inline-size: 1rem; block-size: 1rem; display: block; }
+  .theme-btn:hover { color: var(--text); opacity: 1; }
+  .theme-btn[aria-pressed="true"] {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    opacity: 1;
+  }
 
   .locales {
     display: flex;

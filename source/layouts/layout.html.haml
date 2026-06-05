@@ -16,6 +16,11 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ name: 'description', content: current_page.data.description }
 
+    - if v2_plus
+      -# Apply a saved theme before first paint to avoid a flash of the wrong one.
+      :javascript
+        (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+
     -# Open Graph
 
     %meta{ property: 'og:article:publisher', content: config.publisher_url }
@@ -81,11 +86,18 @@
                 - label = "#{version} #{language.last[:name]}"
                 %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
                   = label
-        - if !legacy_version
-          - if v2_plus
+        - if v2_plus
+          .header-tools
+            %div.theme-switch{ role: "group", "aria-label": "Color theme" }
+              %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
+              %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
-          - else
-            = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
+        - elsif !legacy_version
+          = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
       .main{ role: "main" }
         - if v2_plus
