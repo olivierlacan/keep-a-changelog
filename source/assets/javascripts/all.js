@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
   var tocHost = document.getElementById('toc');
   var article = document.querySelector('.article-body .content');
   if (tocHost && article) {
-    var headings = article.querySelectorAll('h2[id], h3[id]');
+    var headings = article.querySelectorAll('h2[id]');
     if (headings.length) {
       var details = document.createElement('details');
       details.className = 'toc-disclosure';
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function(){
       var linkFor = {};
       headings.forEach(function(h){
         var li = document.createElement('li');
-        li.className = h.tagName === 'H3' ? 'toc-item toc-sub' : 'toc-item';
+        li.className = 'toc-item';
         var a = document.createElement('a');
         a.href = '#' + h.id;
         a.textContent = h.textContent;

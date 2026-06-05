@@ -410,7 +410,7 @@
   .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; }
   .toc-list a {
     display: block;
-    padding: 0.3em 0.75em;
+    padding: 0.4em 0.75em;
     line-height: 1.35;
     color: var(--muted);
     text-decoration: none;
@@ -422,7 +422,28 @@
     border-inline-start-color: var(--accent);
     font-weight: 600;
   }
-  .toc-list .toc-sub a { padding-inline-start: 1.6em; font-size: 0.95em; }
+
+  /* Narrow screens: the open list reads as a contained menu under the toggle,
+     with roomier tap targets and a tinted (not spined) current item. */
+  @media (max-width: 77.99rem) {
+    .toc-disclosure[open] > nav {
+      margin-block-start: var(--space-2xs);
+      padding: var(--space-2xs);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+    }
+    .toc-list { margin-block: 0; }
+    .toc-list a {
+      padding: 0.6em 0.75em;
+      border-inline-start: 0;
+      border-radius: calc(var(--radius) - 2px);
+    }
+    .toc-list a:hover { background: var(--code-bg); }
+    .toc-list a[aria-current="true"] {
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+  }
 
   @media (min-width: 78rem) {
     /* Centered reading column with the TOC anchored in the left gutter. */
