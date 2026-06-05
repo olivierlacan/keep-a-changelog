@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 The next release, 2.0.0, is the first major revision of the Keep a Changelog
-manifesto. It answers the questions the community has raised most often over the
+manifesto. The format itself does not change — the six change types, the
+`YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
+so nothing you have already written becomes invalid. What changes is the guidance
+around it: 2.0.0 answers the questions the community has raised most often over the
 years — marking breaking changes, versioning beyond SemVer, monorepos, the
-boundary between Changed, Fixed, and Security, and more — and adds guidance for an
-era in which an LLM can draft a changelog from a diff in seconds. It also batches
-in a round of wording refinements that were never worth re-translating the
-manifesto over on their own; a major version is the right moment to make them.
+boundary between Changed, Fixed, and Security — and adds guidance for an era in
+which an LLM can draft a changelog from a diff in seconds. Along the way the
+manifesto is restructured from a flat FAQ into integrated guidance, given a new
+tagline and a redesigned, accessible site, and gathers a round of wording
+refinements that were never worth re-translating over on their own.
 
 ### Added
 
@@ -24,6 +28,11 @@ manifesto over on their own; a major version is the right moment to make them.
   brief you can drop into an `AGENTS.md`; Conventional Commits; fitting a changelog
   into CI/CD; linking to issues and pull requests; very large changelogs;
   monorepos; and a statement of what Keep a Changelog deliberately won't do.
+- A redesigned site: a refreshed look with light and dark themes, a more legible
+  reading layout, and an accessibility pass to WCAG 2.1 AA. The English 2.0.0
+  manifesto is now authored in Markdown.
+- A note in the References section on the convention's reach — now translated into
+  dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
 - v1.1 Spanish translation.
@@ -34,6 +43,14 @@ manifesto over on their own; a major version is the right moment to make them.
 
 ### Changed
 
+- New tagline: "Clearly document the evolution of your projects." It replaces
+  "Don't let your friends dump git logs into changelogs." — active, idiom-free, and
+  easier to translate. Earlier versions keep the original line.
+- Restructured the manifesto from a flat list of FAQs into integrated guidance:
+  a how-to section (principles, types, breaking changes, structuring a release,
+  curation), a section on what makes a changelog worse, a section on automation and
+  LLMs, and shorter Miscellaneous, About, and References sections. The voice is
+  plainer and less first-person, with translators in mind.
 - Reworded and modernized several existing manifesto sections (what and why a
   changelog exists, the guiding principles, reducing maintenance effort, automatic
   parsing, rewriting, and contributing). These clarifications weren't significant
@@ -52,6 +69,8 @@ description when links are shared are language-appropriate
 - Outdated specifics from two manifesto answers — the Vandamme gem reference (in
   "can changelogs be automatically parsed?") and a GitHub-Releases discoverability
   note — in favor of more general guidance.
+- The FAQ scaffolding and most of the first-person framing, in favor of plainer
+  prose; the personal podcast note now lives in a synthesized References section.
 - Trademark sign previously shown after the project description in version 
 0.3.0
 
