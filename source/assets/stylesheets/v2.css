@@ -301,7 +301,6 @@
   .content .intro-grid {
     display: grid;
     gap: var(--space-m);
-    margin-block-start: var(--space-l);
   }
   @media (min-width: 48rem) {
     .content .intro-grid {
@@ -408,15 +407,6 @@
   }
   .toc-disclosure[open] > summary::after { transform: rotate(-135deg); }
 
-  .toc-title {
-    display: none;
-    margin: 0 0 var(--space-xs);
-    font-size: var(--step--1);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
   .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; }
   .toc-list a {
     display: block;
@@ -434,7 +424,8 @@
   }
   .toc-list .toc-sub a { padding-inline-start: 1.6em; font-size: 0.95em; }
 
-  @media (min-width: 72rem) {
+  @media (min-width: 78rem) {
+    /* Centered reading column with the TOC anchored in the left gutter. */
     .article-body {
       display: grid;
       grid-template-columns: 1fr minmax(0, var(--measure)) 1fr;
@@ -443,7 +434,7 @@
     .article-body > .content { grid-column: 2; }
     .article-body > .toc {
       grid-column: 1;
-      justify-self: end;
+      justify-self: start;
       align-self: start;
       inline-size: 15rem;
       padding-inline: var(--space-m);
@@ -453,8 +444,11 @@
       overflow: auto;
       margin-block-start: var(--space-2xl);
     }
-    .toc-disclosure > summary { display: none; }
-    .toc-title { display: block; }
-    .toc-list { margin-block-start: 0; }
+    /* Keep the triptych within the reading column so it never reaches the
+       sidebar; the breakout is only for the no-sidebar widths below. */
+    .content .intro-grid {
+      inline-size: auto;
+      margin-inline: 0;
+    }
   }
 }

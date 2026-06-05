@@ -69,11 +69,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
       var nav = document.createElement('nav');
       nav.setAttribute('aria-label', 'Table of contents');
-      var title = document.createElement('p');
-      title.className = 'toc-title';
-      title.setAttribute('aria-hidden', 'true');
-      title.textContent = 'On this page';
-      nav.appendChild(title);
 
       var list = document.createElement('ul');
       list.className = 'toc-list';
@@ -92,10 +87,13 @@ document.addEventListener("DOMContentLoaded", function(){
       details.appendChild(nav);
       tocHost.appendChild(details);
 
-      // Open as a sidebar on wide screens (collapsible disclosure on narrow).
-      var wideToc = window.matchMedia('(min-width: 72rem)');
-      var syncToc = function(){ if (wideToc.matches) { details.open = true; } };
-      syncToc();
+      // Collapsible at every width: open by default on wide screens (room for a
+      // sidebar), collapsed on narrow ones. Only set the default when crossing
+      // the breakpoint, so a deliberate toggle isn't overridden until the layout
+      // actually changes.
+      var wideToc = window.matchMedia('(min-width: 78rem)');
+      details.open = wideToc.matches;
+      var syncToc = function(e){ details.open = e.matches; };
       if (wideToc.addEventListener) { wideToc.addEventListener('change', syncToc); }
       else if (wideToc.addListener) { wideToc.addListener(syncToc); }
 
