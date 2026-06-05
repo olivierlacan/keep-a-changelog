@@ -178,3 +178,5 @@ Keep a Changelog is one carefully considered opinion, with examples — not the 
 ## References {#references}
 
 Keep a Changelog grew from good practices observed in open source, gathered into a [better changelog convention](https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md). Olivier Lacan discussed the motivation behind it on [The Changelog podcast](https://changelog.com/podcast/127).
+
+Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects](https://github.com/search?q=%22based+on+%5BKeep+a+Changelog%5D%28https%3A%2F%2Fkeepachangelog.com%22&type=code) whose changelogs note that their format is based on it.
