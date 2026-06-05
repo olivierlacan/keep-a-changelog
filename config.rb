@@ -10,6 +10,20 @@ $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 $last_version = "1.1.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
 
+# Expose in-progress version drafts (e.g. a 2.0.0 still being written) only when
+# serving locally — never in a production build. This lets the version/language
+# selector preview and link to newer English versions before they're published,
+# while production stays pinned to $last_version.
+# Newest version available for a language that is at or below the published
+# $last_version. Used for the default per-language redirect so production never
+# routes to an unpublished draft. (Local-dev preview of newer drafts is handled at
+# render time by the build?-aware exposed_version_for helper below.)
+$published_version_for = lambda do |code|
+  $versions.select { |v|
+    File.directory?("source/#{code}/#{v}") && Gem::Version.new(v) <= Gem::Version.new($last_version)
+  }.max_by { |v| Gem::Version.new(v) }
+end
+
 # This list of languages populates the language navigation.
 issues_url = "https://github.com/olivierlacan/keep-a-changelog/issues"
 $languages = {
@@ -145,8 +159,7 @@ redirect "index.html", to: "en/#{$last_version}/index.html"
 
 $languages.each do |language|
   code = language.first
-  versions = Dir.entries("source/#{code}").sort - %w[. ..]
-  redirect "#{code}/index.html", to: "#{code}/#{versions.last}/index.html"
+  redirect "#{code}/index.html", to: "#{code}/#{$published_version_for.call(code)}/index.html"
 end
 
 # ----- Assets ----- #
@@ -206,15 +219,18 @@ helpers do
     Addressable::URI.join(config.site_url, path).normalize.to_s
   end
 
-  def available_translation_for(language)
-    language_name = language.last[:name]
-    language_path = "source/#{language.first}"
+  # Newest version available for a language. In a production build we cap at the
+  # published $last_version; when serving locally we expose newer drafts (e.g. an
+  # in-progress 2.0.0) so they can be previewed and picked from the selector.
+  def exposed_version_for(code)
+    installed = $versions.select { |v| File.directory?("source/#{code}/#{v}") }
+    installed = installed.select { |v| Gem::Version.new(v) <= Gem::Version.new($last_version) } if build?
+    installed.max_by { |v| Gem::Version.new(v) }
+  end
 
-    if File.exist?("#{language_path}/#{$last_version}")
-      "#{$last_version} #{language_name}"
-    elsif File.exist?("#{language_path}/#{$previous_version}")
-      "#{$previous_version} #{language_name}"
-    end
+  def available_translation_for(language)
+    version = exposed_version_for(language.first)
+    "#{version} #{language.last[:name]}" if version
   end
 end
 

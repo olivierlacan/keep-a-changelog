@@ -1,5 +1,5 @@
 // Variables
-- latest_version = current_page.metadata[:page][:version] == $last_version
+- latest_version = Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new($last_version)
 - legacy_version = current_page.metadata[:page][:version] == "0.3.0"
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
@@ -72,10 +72,12 @@
           %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Languages (#{$languages.count}):"
           %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
-              - selected = language_code == language.first
-              - if available_translation = available_translation_for(language)
-                %option{ selected: selected, label: available_translation, value: language.first }
-                  = available_translation
+              - version = exposed_version_for(language.first)
+              - if version
+                - selected = language_code == language.first
+                - label = "#{version} #{language.last[:name]}"
+                %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
+                  = label
         - if !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
