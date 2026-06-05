@@ -84,11 +84,51 @@ def score(segments):
     return sentence_transformers.__version__
 
 
+def annotate(segments):
+    """Attach each section's peer median and a per-segment delta from it.
+
+    LaBSE similarity has a strong per-section baseline: short sections (e.g. a
+    heading) score low for *every* language, so an absolute cutoff mostly surfaces
+    hard sections, not mistranslations. The delta from the section's median across
+    languages controls for that -- a language that is a low outlier vs its peers on
+    the same section is the real signal.
+    """
+    from statistics import median
+
+    by_section = {}
+    for s in segments:
+        by_section.setdefault(s["section"], []).append(s["similarity"])
+    medians = {sec: median(vals) for sec, vals in by_section.items()}
+
+    for s in segments:
+        s["section_median"] = round(medians[s["section"]], 4)
+        s["delta"] = round(s["similarity"] - s["section_median"], 4)
+    return segments
+
+
+def select(segments, args):
+    """Filter + sort. Relative mode ranks by how far below section peers a segment
+    is (real per-language divergence); absolute mode ranks by raw similarity."""
+    if args.relative:
+        flagged = [s for s in segments if s["delta"] <= args.max_delta]
+        flagged.sort(key=lambda s: s["delta"])
+    else:
+        flagged = [s for s in segments if s["similarity"] <= args.max_similarity]
+        flagged.sort(key=lambda s: s["similarity"])
+    return flagged
+
+
 def main():
     parser = argparse.ArgumentParser(description="LaBSE translation-quality triage.")
     parser.add_argument("input", help="segments JSONL file, or - for stdin")
     parser.add_argument("--max-similarity", type=float, default=1.0,
-                        help="only show pairs at or below this similarity (default: all)")
+                        help="absolute mode: show pairs at or below this similarity")
+    parser.add_argument("--relative", action="store_true",
+                        help="rank by how far BELOW a section's peer median a "
+                             "translation scores (recommended: cancels section length bias)")
+    parser.add_argument("--max-delta", type=float, default=-0.08,
+                        help="relative mode: show pairs at least this far below "
+                             "their section median (default: -0.08)")
     parser.add_argument("--format", choices=["text", "csv", "json"], default="text")
     args = parser.parse_args()
 
@@ -97,30 +137,35 @@ def main():
         sys.exit("error: no segments read")
 
     lib_version = score(segments)
-    segments.sort(key=lambda s: s["similarity"])
-    flagged = [s for s in segments if s["similarity"] <= args.max_similarity]
+    annotate(segments)
+    flagged = select(segments, args)
 
     if args.format == "json":
         json.dump({"model": MODEL_NAME, "library_version": lib_version,
+                   "mode": "relative" if args.relative else "absolute",
                    "segments": flagged}, sys.stdout, ensure_ascii=False, indent=2)
         print()
         return
 
     if args.format == "csv":
-        print("similarity,language,version,section")
+        print("similarity,section_median,delta,language,version,section")
         for s in flagged:
-            print(f'{s["similarity"]},{s["language"]},{s["version"]},{s["section"]}')
+            print(f'{s["similarity"]},{s["section_median"]},{s["delta"]},'
+                  f'{s["language"]},{s["version"]},{s["section"]}')
         return
 
+    mode = "below-peer-median" if args.relative else "absolute similarity"
+    cutoff = args.max_delta if args.relative else args.max_similarity
     print(f"# model: {MODEL_NAME}  (sentence-transformers {lib_version})")
-    print(f"# {len(flagged)} of {len(segments)} segments at or below "
-          f"similarity {args.max_similarity}, most suspect first")
-    print(f"{'sim':>6}  {'lang':<7} {'section':<22} source -> target")
-    print("-" * 100)
+    print(f"# {len(flagged)} of {len(segments)} segments flagged ({mode}, cutoff {cutoff}), most suspect first")
+    print(f"# 'med' = this section's median similarity across all languages; 'd' = sim - med")
+    print(f"{'sim':>6} {'med':>6} {'d':>7}  {'lang':<7} {'section':<22} source -> target")
+    print("-" * 104)
     for s in flagged:
-        src = s["source"][:38].replace("\n", " ")
-        tgt = s["target"][:38].replace("\n", " ")
-        print(f'{s["similarity"]:>6.3f}  {s["language"]:<7} {s["section"]:<22} {src} -> {tgt}')
+        src = s["source"][:36].replace("\n", " ")
+        tgt = s["target"][:36].replace("\n", " ")
+        print(f'{s["similarity"]:>6.3f} {s["section_median"]:>6.3f} {s["delta"]:>+7.3f}  '
+              f'{s["language"]:<7} {s["section"]:<22} {src} -> {tgt}')
 
 
 if __name__ == "__main__":

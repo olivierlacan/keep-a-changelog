@@ -276,6 +276,26 @@ tools/.venv/bin/python tools/labse_triage.py segments.jsonl --max-similarity 0.7
 The run prints the exact model + library versions, and `tools/setup.sh` writes
 `tools/requirements.lock.txt` (a `pip freeze`), so every run is reproducible.
 
+**Relative vs absolute scoring.** LaBSE similarity has a strong per-section
+baseline: short sections (a heading, a one-line answer) score low for *every*
+language, so an absolute cutoff (`--max-similarity 0.7`) mostly surfaces hard
+sections, not mistranslations. **`--relative`** (used by `translations:qa`)
+instead ranks each translation by how far it falls *below its section's median
+across all languages* — isolating genuine per-language divergences. In practice
+this is the difference between a noisy list dominated by short sections and a
+short list of real outliers (e.g. it pinpoints a `confusing-dates` translation
+still using an old US-centric date example the English long since replaced —
+a stale-meaning case the deterministic `--consistency` check cannot see).
+
+```bash
+python3 tools/labse_triage.py segments.jsonl --relative              # default cutoff -0.08
+python3 tools/labse_triage.py segments.jsonl --max-similarity 0.6    # absolute, if preferred
+```
+
+The `med` and `d` columns show each section's cross-language median and the
+segment's delta from it, so you can always see whether a low score is the section
+being hard or the translation being an outlier.
+
 `segments.jsonl` can equally be fed to other auditable tools — `pofilter`
 (Translate Toolkit), LanguageTool, Weblate's checks, or COMET-Kiwi. The export is
 deterministic (aligned by stable section ID), so whichever tool you choose, the

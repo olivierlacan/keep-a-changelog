@@ -38,7 +38,7 @@ namespace :translations do
       abort "Run `bin/rake translations:setup` first to install the model."
     end
     sh "ruby translation_coverage.rb --segments --format jsonl | " \
-       "tools/.venv/bin/python tools/labse_triage.py - --max-similarity 0.7"
+       "tools/.venv/bin/python tools/labse_triage.py - --relative"
   end
 end
 
