@@ -26,10 +26,9 @@
     --rule: oklch(0.88 0.015 70);
     --code-bg: oklch(0.955 0.02 75);
     --code-text: var(--bark);
-    /* Deeper ocre for the hero so light text clears 4.5:1. The veil darkens the
-       bright topographic background image to the same accessible tone. */
+    /* Deeper ocre for the hero so light text clears 4.5:1. Light topographic
+       contour lines sit over it; a scrim keeps the title legible. */
     --hero-bg: oklch(0.50 0.17 33);
-    --hero-veil: oklch(0.50 0.17 33 / 0.72);
     --hero-text: var(--sand);
     --accent: var(--ocre);
     --focus: oklch(0.55 0.18 33);
@@ -69,7 +68,6 @@
       --code-bg: oklch(0.27 0.02 30);
       --code-text: var(--sand);
       --hero-bg: oklch(0.46 0.13 33);
-      --hero-veil: oklch(0.40 0.12 33 / 0.80);
       --hero-text: var(--sand);
       --accent: var(--gold);
       --focus: var(--gold);
@@ -179,10 +177,18 @@
 
 /* ----------------------------------------------------------------- content */
 @layer content {
-  /* Hero band — the brand identity lives here. */
+  /* Hero band — the brand identity lives here. Light topographic contour lines
+     over the deep ocre base; a top scrim (solid → transparent) keeps the title
+     and tagline legible while the pattern shows around and below them. */
   .hero {
     background-color: var(--hero-bg);
-    background-image: linear-gradient(var(--hero-veil), var(--hero-veil)), url("../images/bg-hero@2x.png");
+    background-image:
+      linear-gradient(to bottom,
+        var(--hero-bg) 0,
+        var(--hero-bg) 34%,
+        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+      url("../images/hero-topo@2x.png");
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     color: var(--hero-text);
