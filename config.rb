@@ -176,7 +176,7 @@ activate :automatic_image_sizes
 # ----- Markdown ----- #
 
 activate :syntax
-set :markdown_engine, :redcarpet
+set :markdown_engine, :kramdown
 
 ## Override default Redcarpet renderer in order to define a class
 class CustomMarkdownRenderer < Redcarpet::Render::HTML
@@ -200,15 +200,7 @@ class CustomMarkdownRenderer < Redcarpet::Render::HTML
   end
 end
 
-$markdown_config = {
-  fenced_code_blocks: true,
-  footnotes: true,
-  smartypants: true,
-  tables: true,
-  with_toc_data: true,
-  renderer: CustomMarkdownRenderer
-}
-set :markdown, $markdown_config
+set :markdown, auto_ids: true, smart_quotes: %w[lsquo rsquo ldquo rdquo]
 
 # --------------------------------------
 #   Helpers

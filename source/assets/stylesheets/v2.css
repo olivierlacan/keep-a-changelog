@@ -19,15 +19,18 @@
     --bg: oklch(0.985 0.008 80);
     --surface: oklch(1 0 0);
     --text: var(--ink);
-    --muted: oklch(0.48 0.02 30);
-    --link: var(--ocre);
+    --muted: oklch(0.44 0.02 30);
+    /* A darker ocre for text/links so it clears 4.5:1 on white (the bright --ocre
+       is mid-luminance and only passes as large text or as decoration). */
+    --link: oklch(0.55 0.18 33);
     --rule: oklch(0.88 0.015 70);
     --code-bg: oklch(0.955 0.02 75);
     --code-text: var(--bark);
-    --hero-bg: var(--ocre);
+    /* Deeper ocre for the hero so light text clears 4.5:1. */
+    --hero-bg: oklch(0.50 0.17 33);
     --hero-text: var(--sand);
     --accent: var(--ocre);
-    --focus: var(--ocre);
+    --focus: oklch(0.55 0.18 33);
 
     /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
     --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
@@ -201,34 +204,61 @@
     white-space: pre-wrap;
   }
 
-  /* Reading column: every content section is centered to a comfortable measure. */
-  section {
-    padding-block: var(--space-xl);
-    padding-inline: var(--space-m);
+  /* Reading column: the Markdown body, centered to a comfortable measure. */
+  .content {
+    max-inline-size: var(--measure);
+    margin-inline: auto;
+    padding: var(--space-l) var(--space-m) var(--space-2xl);
   }
-  section > * { max-inline-size: var(--measure); margin-inline: auto; }
-  section + section { border-block-start: 1px solid var(--rule); }
+  .content > * + * { margin-block-start: var(--space-s); }
+  .content li + li { margin-block-start: var(--space-2xs); }
 
-  h2, h3 { margin-block-start: var(--space-l); }
-  section > h2:first-of-type { margin-block-start: 0; }
-  p, ul { margin-block-start: var(--space-s); }
-  li + li { margin-block-start: var(--space-2xs); }
+  /* Top-level headings (##) separate sections; sub-headings (###) just breathe. */
+  .content h2 {
+    margin-block-start: var(--space-2xl);
+    padding-block-start: var(--space-l);
+    border-block-start: 1px solid var(--rule);
+  }
+  .content > h2:first-child {
+    margin-block-start: var(--space-s);
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+  .content h3 { margin-block-start: var(--space-l); }
 
-  .anchor { text-decoration: none; }
-  .anchor::before { content: "#"; color: var(--accent); opacity: 0; margin-inline-end: 0.25em; }
-  :is(h2, h3):hover .anchor::before { opacity: 0.6; }
-
-  .example code { display: block; padding: var(--space-xs) var(--space-s); }
-
-  aside {
-    margin-block-start: var(--space-m);
+  /* Code examples (fenced blocks). */
+  .content pre,
+  .content .highlight {
+    overflow-x: auto;
+    font-size: var(--step--1);
+    line-height: 1.6;
+    background: var(--code-bg);
+    border-radius: var(--radius);
     padding: var(--space-s) var(--space-m);
-    border-inline-start: 3px solid var(--accent);
+  }
+  .content pre code,
+  .content .highlight code { background: none; padding: 0; color: var(--code-text); }
+
+  /* Aside notes — clarifying sidebars set apart from the main flow:
+     a filled callout with an ocre rule. */
+  .content aside {
+    padding: var(--space-s) var(--space-m);
+    border-inline-start: 4px solid var(--ocre);
     background: var(--code-bg);
     color: var(--muted);
     font-size: var(--step--1);
     border-radius: 0 var(--radius) var(--radius) 0;
   }
+  .content aside > * + * { margin-block-start: var(--space-xs); }
 
-  .references { color: var(--muted); }
+  /* Blockquotes — definitions and citations. Visually distinct from asides:
+     no fill, italic, a gold rule. */
+  .content blockquote {
+    margin-inline: 0;
+    padding-inline-start: var(--space-m);
+    border-inline-start: 4px solid var(--gold);
+    color: var(--text);
+    font-style: italic;
+  }
+  .content blockquote > * + * { margin-block-start: var(--space-xs); }
 }

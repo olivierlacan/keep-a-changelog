@@ -4,6 +4,7 @@
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
+- v2_plus = Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
 - description = current_page.data.description || "bullshit" 
 
@@ -84,7 +85,18 @@
           = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
       .main{ role: "main" }
-        = yield
+        - if v2_plus
+          %header.hero
+            %h1= current_page.data.title
+            %p.tagline= current_page.data.description
+            = link_to data.links.changelog do
+              Version
+              %strong= current_page.metadata[:page][:version]
+            %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Example changelog" }= File.read("CHANGELOG.md")
+          .content
+            = yield
+        - else
+          = yield
 
         %footer.footer.clearfix{ role: "contentinfo" }
           = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
