@@ -38,4 +38,18 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   syncPressed();
+
+  // Example changelog: collapsed disclosure on narrow screens, always shown on
+  // wide ones. Genuinely opening the <details> on wide renders its content
+  // natively, independent of how a given browser hides closed-details content
+  // (some hide it via content-visibility on ::details-content, which CSS can't
+  // always override). The markup stays closed so narrow screens start collapsed.
+  var example = document.querySelector('.changelog-example');
+  if (example) {
+    var wide = window.matchMedia('(min-width: 48rem)');
+    var syncExample = function(){ if (wide.matches) { example.open = true; } };
+    syncExample();
+    if (wide.addEventListener) { wide.addEventListener('change', syncExample); }
+    else if (wide.addListener) { wide.addListener(syncExample); }
+  }
 });
