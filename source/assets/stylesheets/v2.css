@@ -147,9 +147,9 @@
   }
   article > header .mark { inline-size: 40px; block-size: 40px; }
 
-  /* Right-hand header cluster: theme switch, then the brand mark. */
-  .header-tools { display: inline-flex; align-items: center; gap: var(--space-s); }
-  .theme-switch { display: inline-flex; gap: 2px; }
+  /* Header order: brand mark and language picker grouped on the left, the theme
+     switch pushed to the far right. */
+  .theme-switch { display: inline-flex; gap: 2px; margin-inline-start: auto; }
   .theme-btn {
     display: grid;
     place-items: center;
