@@ -84,7 +84,9 @@
               - version = exposed_version_for(language.first)
               - if version
                 - selected = language_code == language.first
-                - label = "#{version} #{language.last[:name]}"
+                -# Show only major.minor (we don't ship patch releases); the URL keeps the full version.
+                - display_version = version.split(".").first(2).join(".")
+                - label = "#{display_version} #{language.last[:name]}"
                 %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
                   = label
         - if v2_plus
