@@ -353,6 +353,22 @@
   }
   .content h3 { margin-block-start: var(--space-l); }
 
+  /* Heading anchors — a "#" link revealed on hover/focus to grab a section link. */
+  .content .heading-anchor {
+    margin-inline-start: 0.35em;
+    color: var(--accent);
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+  }
+  .content :is(h2, h3):hover > .heading-anchor,
+  .content .heading-anchor:focus-visible { opacity: 1; }
+  @media (hover: none) {
+    /* No hover on touch devices — keep the anchors quietly visible. */
+    .content .heading-anchor { opacity: 0.4; }
+  }
+
   /* Code examples (fenced blocks). */
   .content pre,
   .content .highlight {

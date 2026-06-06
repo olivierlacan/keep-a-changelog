@@ -110,4 +110,19 @@ document.addEventListener("DOMContentLoaded", function(){
       }
     }
   }
+
+  // Heading anchors: reveal a "#" link on hover/focus to grab a link to each
+  // section (the triptych cards are skipped). kramdown only emits ids, so the
+  // anchors are added here.
+  if (article) {
+    article.querySelectorAll('h2[id], h3[id]').forEach(function(h){
+      if (h.closest('.intro-card')) { return; }
+      var a = document.createElement('a');
+      a.className = 'heading-anchor';
+      a.href = '#' + h.id;
+      a.setAttribute('aria-label', 'Link to “' + h.textContent.trim() + '”');
+      a.textContent = '#';
+      h.appendChild(a);
+    });
+  }
 });
