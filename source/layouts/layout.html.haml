@@ -77,7 +77,8 @@
                 it.
 
         %nav.locales{ role: "navigation" }
-          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Languages (#{$languages.count}):"
+          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }
+            %span.locales-text= "Languages (#{$languages.count}):"
           %select{ name: "language", id: "language-select" }
             - $languages.each do |language|
               - version = exposed_version_for(language.first)
