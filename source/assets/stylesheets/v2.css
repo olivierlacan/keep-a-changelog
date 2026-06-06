@@ -189,31 +189,27 @@
     padding: 0.4em 0.6em;
     max-inline-size: 16rem;
   }
-  .locales-text { white-space: nowrap; }
-
-  /* Very narrow screens: replace the "Languages (N):" text with a globe icon
-     to save a whole row. The text stays in the DOM for screen readers. */
-  @media (max-width: 30rem) {
-    .locales-text {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
-    .locales label::before {
-      content: "";
-      display: inline-block;
-      inline-size: 1.3em;
-      block-size: 1.3em;
-      vertical-align: -0.3em;
-      background-color: var(--muted);
-      -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
-      mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
-    }
+  /* Show a compact globe icon in place of the "Languages (N):" text at every
+     width; the text stays in the DOM (and the label's title) for screen readers. */
+  .locales-text {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .locales label::before {
+    content: "";
+    display: inline-block;
+    inline-size: 1.3em;
+    block-size: 1.3em;
+    vertical-align: -0.3em;
+    background-color: var(--muted);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
   }
 
   .footer {
