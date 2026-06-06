@@ -28,9 +28,12 @@ refinements that were never worth re-translating over on their own.
   brief you can drop into an `AGENTS.md`; Conventional Commits; fitting a changelog
   into CI/CD; linking to issues and pull requests; very large changelogs;
   monorepos; and a statement of what Keep a Changelog deliberately won't do.
-- A redesigned site: a refreshed look with light and dark themes, a more legible
-  reading layout, and an accessibility pass to WCAG 2.1 AA. The English 2.0.0
-  manifesto is now authored in Markdown.
+- A redesigned site for the 2.0 manifesto: light and dark themes with a header
+  switch (system, light, or dark); a sticky table-of-contents sidebar that
+  collapses to a menu on small screens; the What/Why/Who intro shown as cards;
+  heading anchor links; and the topographic hero pattern and tree-ring mark
+  restored — all meeting WCAG 2.1 AA. The English 2.0.0 manifesto is now authored
+  in Markdown.
 - A note in the References section on the convention's reach — now translated into
   dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
