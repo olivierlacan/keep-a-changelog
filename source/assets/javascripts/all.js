@@ -8,6 +8,36 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
+  // On very narrow viewports the language picker collapses behind a globe
+  // button (see the max-width query in v2.css). Toggle it open; the select is
+  // hidden via CSS until .locales carries data-open. At wider widths the button
+  // is display:none and the select shows inline, so this is a no-op there.
+  var locales = document.querySelector('.locales');
+  var localesToggle = locales && locales.querySelector('.locales-toggle');
+  if (locales && localesToggle) {
+    var setLocalesOpen = function(open){
+      if (open) { locales.setAttribute('data-open', ''); }
+      else { locales.removeAttribute('data-open'); }
+      localesToggle.setAttribute('aria-expanded', String(open));
+    };
+    localesToggle.addEventListener('click', function(){
+      var open = !locales.hasAttribute('data-open');
+      setLocalesOpen(open);
+      if (open && select) { select.focus(); }
+    });
+    document.addEventListener('keydown', function(event){
+      if (event.key === 'Escape' && locales.hasAttribute('data-open')) {
+        setLocalesOpen(false);
+        localesToggle.focus();
+      }
+    });
+    document.addEventListener('click', function(event){
+      if (locales.hasAttribute('data-open') && !locales.contains(event.target)) {
+        setLocalesOpen(false);
+      }
+    });
+  }
+
   // Theme switch: system (follow OS) / light / dark, persisted in localStorage.
   // The chosen theme is applied as data-theme on <html>; the CSS maps it to a
   // forced color-scheme, while "system" simply removes the attribute.

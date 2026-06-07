@@ -57,6 +57,10 @@
     --measure: 66ch;
     --radius: 6px;
 
+    /* Globe icon shared by the language label (wide) and the collapse button
+       (narrow). Kept as a custom property so both reference one source. */
+    --globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
+
     --font-sans: "Muli", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
     --leading: 1.65;
@@ -208,9 +212,35 @@
     block-size: 1.3em;
     vertical-align: -0.3em;
     background-color: var(--muted);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
+    -webkit-mask: var(--globe-mask);
+    mask: var(--globe-mask);
   }
+
+  /* Globe button that collapses the language picker on very narrow viewports.
+     Hidden by default; the narrow media query below reveals it and hides the
+     select until it is toggled open. */
+  .locales-toggle {
+    display: none;
+    place-items: center;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .locales-toggle::before {
+    content: "";
+    inline-size: 1.3em;
+    block-size: 1.3em;
+    background-color: currentColor;
+    -webkit-mask: var(--globe-mask);
+    mask: var(--globe-mask);
+  }
+  .locales-toggle:hover { color: var(--text); }
+  .locales-toggle[aria-expanded="true"] { color: var(--accent); }
 
   .footer {
     margin-block-start: var(--space-2xl);
@@ -228,6 +258,15 @@
     margin-block-end: var(--space-s);
   }
   .footer .about { margin: 0; text-wrap: pretty; }
+
+  /* Very narrow: collapse the language picker behind the globe so the header
+     stays on one row. Tapping the globe reveals the select (JS sets data-open). */
+  @media (max-width: 30rem) {
+    .locales-toggle { display: inline-grid; }
+    .locales label { display: none; }
+    #language-select { display: none; }
+    .locales[data-open] #language-select { display: inline-block; }
+  }
 }
 
 /* ----------------------------------------------------------------- content */

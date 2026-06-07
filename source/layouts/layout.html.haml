@@ -79,9 +79,10 @@
         - if v2_plus
           %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
         %nav.locales{ role: "navigation" }
+          %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
           %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }
             %span.locales-text= "Languages (#{$languages.count}):"
-          %select{ name: "language", id: "language-select" }
+          %select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
             - $languages.each do |language|
               - version = exposed_version_for(language.first)
               - if version
