@@ -175,16 +175,16 @@ You can, and it is sometimes helpful. Keep two things in mind: links break when 
 
 Not a formal one. There were older conventions, such as the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news], but they were limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
 
-### What it won't do {#scope}
+### What does it deliberately leave out? {#scope}
 
 A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:
 
-- It will not add more change types. Six are enough; the reason for a change goes in its wording.
-- It will not define a machine format, a schema, or a required file layout. This page is the format, in plain language.
-- It will not become a tool or a service you install. It is a convention; following it should cost only attention.
-- It will not depend on any one host or vendor. A changelog is a plain file in your repository.
+- It will not add more change types. Six are enough; the reason goes in the wording.
+- It will not define a machine format, schema, or required layout. This page is the format.
+- It will not become a tool or service to install. A convention should cost only attention.
+- It will not depend on any host or vendor. A changelog is a plain file in your repository.
 
-None of this is fixed; it is a considered opinion, open to discussion. But anything added to a widely used convention should be weighed carefully.
+None of this is fixed; it is open to discussion. But additions to a widely used convention deserve care.
 
 ### How can I contribute? {#contribute}
 
