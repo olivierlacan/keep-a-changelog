@@ -88,10 +88,12 @@ A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`
 The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:
 
 ```
+[Unreleased]: https://github.com/your/project/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/your/project/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
 ```
 
-Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a platform's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+`[Unreleased]` compares the latest tag to `HEAD`, so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a platform's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
