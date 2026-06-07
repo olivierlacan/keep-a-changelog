@@ -60,6 +60,12 @@ Usually the right type is clear. Three of them cause the most questions:
 
 When you are unsure, ask whether the old behavior was a bug. If it was, use `Fixed`. If it was intentional and you are changing it, use `Changed`.
 
+When a `Security` entry has a CVE identifier, lead with it so readers and security tools can match the entry to the advisory:
+
+```
+- CVE-2024-12345: out-of-bounds read when parsing malformed input.
+```
+
 <aside markdown="1">
 There are only six types on purpose. The type says what kind of change it is. The reason (an improvement, an optimization, a refactor, a performance gain, a dependency update) belongs in the wording of the entry, not in a new type. "Rewrote the JSON parser; about three times faster on large files" says more under `Changed` than a `Performance` heading would.
 </aside>
