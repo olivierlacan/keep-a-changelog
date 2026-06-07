@@ -135,19 +135,12 @@
 
         %footer.footer.clearfix{ role: "contentinfo" }
           - if v2_plus
-            %span.mark{ "aria-hidden": "true" }
+            = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"
           - else
             = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
 
           %p.about
-            This project is
-            = link_to "MIT Licensed", "https://choosealicense.com/licenses/mit/"
-            \ //
-            = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
-            by
-            = link_to "Olivier Lacan", "https://olivierlacan.com/"
-            \ //
-            Designed by Tyler Fortune
+            != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
 
   - unless config.gauges_id.blank?
     :javascript
