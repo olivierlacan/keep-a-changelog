@@ -97,6 +97,16 @@ Keeping a changelog is partly an act of restraint. A changelog records _notable_
 Making changes and communicating about changes are two different tasks. Curating a changelog does not mean sorting every commit into a type as you make it. That is tedious, and it is not the goal: write the changelog as a summary for your readers, not as a record of your commits.
 </aside>
 
+### What should the file be named? {#filename}
+
+Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`, but a predictable name makes it easy to find. A changelog does not need to list every change. Version control already does that. It lists the notable ones.
+
+### Is a changelog the same as release notes? {#release-notes}
+
+No. A changelog lives in the repository and records what changed between versions, for anyone. Release notes are a curated announcement for one release: highlights, upgrade steps, and some marketing. Derive release notes from the changelog rather than keeping two records.
+
+Code hosting platforms also let you publish release posts from version tags. These are fine, but they live on one platform and are not part of your repository history. Keep the changelog file as the source, and generate posts from it.
+
 ## What makes a changelog worse? {#bad-practices}
 
 A few habits make a changelog less useful.
@@ -131,17 +141,7 @@ A commit message records a step for the people working on the code, so the chang
 
 Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change. That teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
 
-## Miscellaneous {#miscellaneous}
-
-### What should the file be named? {#filename}
-
-Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`, but a predictable name makes it easy to find. A changelog does not need to list every change. Version control already does that. It lists the notable ones.
-
-### Is a changelog the same as release notes? {#release-notes}
-
-No. A changelog lives in the repository and records what changed between versions, for anyone. Release notes are a curated announcement for one release: highlights, upgrade steps, and some marketing. Derive release notes from the changelog rather than keeping two records.
-
-Code hosting platforms also let you publish release posts from version tags. These are fine, but they live on one platform and are not part of your repository history. Keep the changelog file as the source, and generate posts from it.
+## Less common questions {#less-common}
 
 ### What about yanked releases? {#yanked}
 
