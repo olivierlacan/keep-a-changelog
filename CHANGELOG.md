@@ -32,10 +32,11 @@ refinements that were never worth re-translating over on their own.
   monorepos; and a statement of what Keep a Changelog deliberately won't do.
 - A redesigned site for 2.0: light and dark themes with a header
   switch (system, light, or dark); a sticky table-of-contents sidebar that
-  collapses to a menu on small screens; the What/Why/Who intro shown as cards;
-  heading anchor links; and the topographic hero pattern and tree-ring mark
-  restored — all meeting WCAG 2.1 AA. The English 2.0.0 page is now authored
-  in Markdown.
+  collapses to a menu on small screens; a responsive header whose language
+  picker collapses behind a globe icon on narrow screens; the What/Why/Who intro
+  shown as cards; heading anchor links; and the topographic hero pattern and
+  tree-ring mark restored — all meeting WCAG 2.1 AA. The English 2.0.0 page is
+  now authored in Markdown, with reference-style links.
 - A note in the References section on the convention's reach — now translated into
   dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
