@@ -7,7 +7,15 @@
 # first written in English, then translated into other languages later.
 $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # $last_version = $versions.last
-$last_version = "1.1.0"
+
+# Published "latest" version. 2.0.0 is written and built on every run, but stays
+# unpublished — 1.1.0 remains latest — until release. Set the KAC_PREVIEW_V2 flag
+# to promote 2.0.0 to latest for a preview: it flips the "/" and per-language
+# redirects, the default selector version, and the "newer version available"
+# notices to 2.0.0, without changing the default production build. For example:
+#   KAC_PREVIEW_V2=1 bundle exec middleman serve
+# To go live, drop the flag and set $last_version = "2.0.0" outright.
+$last_version = ENV["KAC_PREVIEW_V2"] ? "2.0.0" : "1.1.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
 
 # Expose in-progress version drafts (e.g. a 2.0.0 still being written) only when

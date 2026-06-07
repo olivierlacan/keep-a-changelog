@@ -57,16 +57,19 @@
     %article
       %header
         - if !latest_version
+          -# language_code can be an unregistered directory (e.g. the stray "id"
+          -# duplicate of "id-ID"); fall back to {} so the notice still renders.
+          - lang_meta = $languages[language_code] || {}
           - if versions.include?($last_version)
             .newer
-              - if $languages[language_code][:new]
-                = "#{$languages[language_code][:new]}: "
+              - if lang_meta[:new]
+                = "#{lang_meta[:new]}: "
               - else
                 There is a newer version available:
-              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
+              = link_to "#{lang_meta[:name] || language_code} #{$last_version}", "/#{language_code}/#{$last_version}"
           - else
-            - if $languages[language_code][:notice]
-              .last-version-notice= $languages[language_code][:notice]
+            - if lang_meta[:notice]
+              .last-version-notice= lang_meta[:notice]
             - else
               .last-version-notice
                 The latest version (#{$last_version}) is not yet available in
