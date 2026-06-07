@@ -430,16 +430,18 @@
   .content > * + * { margin-block-start: var(--space-s); }
   .content li + li { margin-block-start: var(--space-2xs); }
 
-  /* Version + release date at the top of the content section. */
-  .content .version-marker {
-    margin-block-end: var(--space-l);
+  /* Version + release date. It shares a centered, wrapping row with the
+     "On this page" toggle on narrow/medium widths (the toggle drops below the
+     version when there's no room); on wide widths it sits atop the reading
+     column with the TOC in the gutter (grid rules further below). */
+  .version-marker {
     text-align: center;
     color: var(--muted);
     font-size: var(--step--1);
   }
-  .content .version-marker a { color: var(--link); font-weight: 600; text-decoration: none; }
-  .content .version-marker a:hover { text-decoration: underline; }
-  .content .version-date::before { content: " · "; color: var(--muted); }
+  .version-marker a { color: var(--link); font-weight: 600; text-decoration: none; }
+  .version-marker a:hover { text-decoration: underline; }
+  .version-date::before { content: " · "; color: var(--muted); }
 
   /* Intro triptych: What / Why / Who as a row of blocks on wide screens,
      stacked on narrow ones. */
@@ -542,12 +544,12 @@
   .content blockquote > * + * { margin-block-start: var(--space-xs); }
 
   /* ---- Table of contents: disclosure on narrow, sticky sidebar on wide ---- */
-  /* On narrow/medium widths the TOC aligns with the centered reading column
-     (the sidebar rules below override this at wide widths). */
+  /* On narrow/medium widths the TOC is a flex item beside the version marker,
+     sizing to its toggle (the sidebar rules below override this at wide widths). */
   .toc {
+    flex: 0 1 auto;
     max-inline-size: var(--measure);
-    margin-inline: auto;
-    padding-inline: var(--space-m);
+    min-inline-size: 0;
   }
   .toc-disclosure > summary {
     cursor: pointer;
@@ -594,6 +596,22 @@
   /* Narrow screens: the open list reads as a contained menu under the toggle,
      with roomier tap targets and a tinted (not spined) current item. */
   @media (max-width: 77.99rem) {
+    /* Version marker and the "On this page" toggle share a centered row that
+       wraps (version on top) when there isn't room; the content fills the line
+       below. */
+    .article-body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      column-gap: var(--space-m);
+      row-gap: var(--space-s);
+    }
+    .article-body > .content {
+      flex-basis: 100%;
+      min-inline-size: 0;
+      margin-block-start: var(--space-m);
+    }
     .toc-disclosure[open] > nav {
       margin-block-start: var(--space-2xs);
       padding: var(--space-2xs);
@@ -620,9 +638,11 @@
       grid-template-columns: 1fr minmax(0, var(--measure)) 1fr;
       column-gap: var(--space-l);
     }
+    .article-body > .version-marker { grid-column: 2; margin-block-end: var(--space-l); }
     .article-body > .content { grid-column: 2; }
     .article-body > .toc {
       grid-column: 1;
+      grid-row: 1 / span 2;
       justify-self: start;
       align-self: start;
       inline-size: 15rem;
