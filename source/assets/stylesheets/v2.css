@@ -549,12 +549,12 @@
   .content blockquote > * + * { margin-block-start: var(--space-xs); }
 
   /* ---- Table of contents: disclosure on narrow, sticky sidebar on wide ---- */
-  /* On narrow/medium widths the TOC is a flex item beside the version marker,
-     sizing to its toggle (the sidebar rules below override this at wide widths). */
+  /* On narrow/medium widths the TOC is a centered block under the version marker,
+     with its toggle centered (the sidebar rules below override this at wide). */
   .toc {
-    flex: 0 1 auto;
     max-inline-size: var(--measure);
-    min-inline-size: 0;
+    margin-inline: auto;
+    text-align: center;
   }
   .toc-disclosure > summary {
     cursor: pointer;
@@ -601,24 +601,16 @@
   /* Narrow screens: the open list reads as a contained menu under the toggle,
      with roomier tap targets and a tinted (not spined) current item. */
   @media (max-width: 77.99rem) {
-    /* Version marker and the "On this page" toggle share a centered row that
-       wraps (version on top) when there isn't room; the content fills the line
-       below. */
-    .article-body {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: baseline;
-      column-gap: var(--space-m);
-      row-gap: var(--space-s);
-    }
-    .article-body > .content {
-      flex-basis: 100%;
-      min-inline-size: 0;
-      margin-block-start: var(--space-m);
-    }
+    /* Stacked and centered with plain block flow: the version marker, then the
+       "On this page" toggle, then the content — each on its own line, each
+       centered, so nothing pairs onto another item's row. */
+    .article-body > .version-marker { margin-block: var(--space-l) var(--space-m); }
+    .article-body > .toc { margin-block-end: var(--space-m); }
     .toc-disclosure[open] > nav {
       margin-block-start: var(--space-2xs);
+      margin-inline: auto;
+      max-inline-size: 22rem;
+      text-align: start;
       padding: var(--space-2xs);
       background: var(--surface);
       border: 1px solid var(--rule);
@@ -650,6 +642,7 @@
       grid-row: 1 / span 2;
       justify-self: start;
       align-self: start;
+      text-align: start;
       inline-size: 15rem;
       max-inline-size: none;
       margin-inline: 0;
