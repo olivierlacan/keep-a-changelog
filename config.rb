@@ -203,6 +203,14 @@ helpers do
     "#{version} #{language.last[:name]}" if version
   end
 
+  # The release date for a version, read from CHANGELOG.md (e.g. the line
+  # "## [2.0.0] - 2026-06-07"). Returns the ISO date string, or nil if the
+  # version has no dated entry yet.
+  def changelog_date_for(version)
+    match = File.read("CHANGELOG.md").match(/^##\s*\[#{Regexp.escape(version)}\]\s*-\s*(\d{4}-\d{2}-\d{2})/)
+    match && match[1]
+  end
+
   # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
   # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
   # them: join hard-wrapped lines within paragraphs and list items while keeping

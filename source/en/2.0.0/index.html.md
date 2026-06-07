@@ -3,7 +3,6 @@ title: Keep a Changelog
 description: Clearly document the evolution of your projects.
 language: en
 version: 2.0.0
-date: "2026-06-06"
 ---
 
 <div class="intro-grid" markdown="1">

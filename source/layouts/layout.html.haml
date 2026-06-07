@@ -122,8 +122,9 @@
                 = link_to data.links.changelog do
                   Version
                   %strong= current_page.metadata[:page][:version]
-                - if current_page.data.date
-                  %time.version-date{ datetime: current_page.data.date }= current_page.data.date
+                - release_date = changelog_date_for(current_page.metadata[:page][:version])
+                - if release_date
+                  %time.version-date{ datetime: release_date }= release_date
               = yield
         - else
           = yield

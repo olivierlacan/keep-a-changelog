@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-The next release, 2.0.0, is the first major revision of the Keep a Changelog
+## [2.0.0] - 2026-06-07
+
+2.0.0 is the first major revision of the Keep a Changelog
 manifesto. The format itself does not change — the six change types, the
 `YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
 so nothing you have already written becomes invalid. What changes is the guidance
@@ -294,7 +296,8 @@ description when links are shared are language-appropriate
 - Good examples and basic guidelines, including proper date formatting.
 - Counter-examples: "What makes unicorns cry?".
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
