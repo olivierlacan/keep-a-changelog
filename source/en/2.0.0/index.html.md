@@ -105,7 +105,9 @@ Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`, but 
 
 No. A changelog lives in the repository and records what changed between versions, for anyone. Release notes are a curated announcement for one release: highlights, upgrade steps, and some marketing. Derive release notes from the changelog rather than keeping two records.
 
-Code hosting platforms also let you publish release posts from version tags. These are fine, but they live on one platform and are not part of your repository history. Keep the changelog file as the source, and generate posts from it.
+Many projects use a host's release system for this instead, such as GitHub Releases or GitLab Releases. These are convenient: they attach notes to a tag, show them on the project page, notify watchers, and collect built files. But the notes live in one platform's database, not in your repository. They do not travel with a `git clone`, and they do not follow you to another host: your history moves, your release notes do not. If the platform changes, or you leave it, that record is stranded.
+
+A changelog avoids this because it is a plain file you own. It can carry the same information these systems present (dated versions, grouped changes, a release summary, links to issues or commits), and it stays in the repository where anyone can read it offline. Keep `CHANGELOG.md` as the canonical record and generate the host's release pages from it. You still get the platform's reach (notifications, a visible page, attached downloads) without depending on it to hold your history.
 
 ## What makes a changelog worse? {#bad-practices}
 
