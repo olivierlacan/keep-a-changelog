@@ -175,7 +175,7 @@ You can, and it is sometimes helpful. Keep two things in mind: links break when 
 
 Not a formal one. There were older conventions, such as the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news], but they were limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
 
-### What won't Keep a Changelog do? {#scope}
+### What it won't do {#scope}
 
 A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:
 
