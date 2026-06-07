@@ -309,7 +309,8 @@ class TranslationCoverageAnalyzer
     s = s.gsub(/link_to\s+'((?:\\.|[^'\\])*)'[^}\n]*/) { unescape(Regexp.last_match(1)) }
     s = s.tr("{}", "  ").delete("#")                  # drop interpolation punctuation
     s = s.sub(/^\s*=\s*/, " ")                         # leading ruby eval marker
-    s = s.gsub(/<[^>]+>/, "")                          # inline HTML tags, keep inner text
+    s = s.gsub(/<[^>]+>/, "") while s.match?(/<[^>]+>/) # inline HTML tags, keep inner text (loop defeats nesting)
+    s = s.delete("<>")                                 # drop any stray angle brackets
     s = s.gsub(/\s+([.,;:!?])/, '\1')                  # don't let markup leave a gap before punctuation
     s.gsub(/\s+/, " ").strip
   end
@@ -694,7 +695,11 @@ class TranslationCoverageAnalyzer
   end
 
   def po_quote(str)
-    escaped = str.gsub('\\', '\\\\\\\\').gsub('"', '\\"')
+    # Escape everything in one pass (a hash replacement is literal, so there's no
+    # order dependency between escaping backslashes and the characters that need a
+    # backslash added). Covers the PO-relevant control characters too.
+    escaped = str.to_s.gsub(/[\\"\t\n\r]/,
+      "\\" => "\\\\", "\"" => "\\\"", "\t" => "\\t", "\n" => "\\n", "\r" => "\\r")
     %("#{escaped}")
   end
 
