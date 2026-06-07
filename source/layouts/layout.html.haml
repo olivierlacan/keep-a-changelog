@@ -109,9 +109,6 @@
               %span.hero-mark{ "aria-hidden": "true" }
               %h1= current_page.data.title
             %p.tagline= current_page.data.description
-            = link_to data.links.changelog do
-              Version
-              %strong= current_page.metadata[:page][:version]
             %figure.changelog-figure
               %figcaption.changelog-caption
                 This is Keep a Changelog's own changelog, written in the format this page describes.
@@ -121,6 +118,12 @@
           .article-body
             %aside#toc.toc{ "aria-label": "Table of contents" }
             .content
+              %p.version-marker
+                = link_to data.links.changelog do
+                  Version
+                  %strong= current_page.metadata[:page][:version]
+                - if current_page.data.date
+                  %time.version-date{ datetime: current_page.data.date }= current_page.data.date
               = yield
         - else
           = yield

@@ -356,6 +356,17 @@
   .content > * + * { margin-block-start: var(--space-s); }
   .content li + li { margin-block-start: var(--space-2xs); }
 
+  /* Version + release date at the top of the content section. */
+  .content .version-marker {
+    margin-block-end: var(--space-l);
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .content .version-marker a { color: var(--link); font-weight: 600; text-decoration: none; }
+  .content .version-marker a:hover { text-decoration: underline; }
+  .content .version-date::before { content: " · "; color: var(--muted); }
+
   /* Intro triptych: What / Why / Who as a row of blocks on wide screens,
      stacked on narrow ones. */
   .content .intro-grid {
