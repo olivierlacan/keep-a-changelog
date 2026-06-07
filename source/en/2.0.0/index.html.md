@@ -37,7 +37,7 @@ People do. Whether they are users or developers, the people who use software car
 - Make versions and sections linkable.
 - List the latest version first.
 - Show the release date of each version.
-- Note which [versioning scheme](https://en.wikipedia.org/wiki/Software_versioning#Schemes) you use.
+- Note which [versioning scheme][versioning-schemes] you use.
 - Write plainly. Many of your readers are not native English speakers, so favor clear, concise wording.
 
 ### Types of changes {#types}
@@ -68,7 +68,7 @@ Two requests are common:
 
 ### Breaking changes {#breaking}
 
-Mark breaking changes clearly. The version number already signals them — under [Semantic Versioning](https://semver.org/), a major release is where they belong — but the number is easy to miss, so highlight them in the entry. Breaking changes usually go under `Changed` or `Removed`. Add a short `**Breaking:**` marker so they stand out, and keep them with the type of change they are:
+Mark breaking changes clearly. The version number already signals them — under [Semantic Versioning][semver], a major release is where they belong — but the number is easy to miss, so highlight them in the entry. Breaking changes usually go under `Changed` or `Removed`. Add a short `**Breaking:**` marker so they stand out, and keep them with the type of change they are:
 
 ```
 - **Breaking:** parse() now returns a result object instead of raising.
@@ -80,11 +80,11 @@ Be specific about what breaks. "Breaking" only means something once readers know
 
 Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version.
 
-A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard](https://www.iso.org/iso-8601-date-and-time-format.html).
+A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
 
 A version may open with a short summary before the typed sections — a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
-You do not have to use Semantic Versioning. [Calendar versioning](https://calver.org/), a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects release continuously and have no version numbers. A changelog still helps: keep dated entries under `Unreleased`.
+You do not have to use Semantic Versioning. [Calendar versioning][calver], a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects release continuously and have no version numbers. A changelog still helps: keep dated entries under `Unreleased`.
 
 ### Curate, don't accumulate {#curation}
 
@@ -102,7 +102,7 @@ A few habits make a changelog less useful.
 
 Do not use a list of commits as a changelog. It is full of noise: merge commits, unclear messages, internal changes. A commit records a step in the source code. A changelog entry records a notable difference, often across several commits, written for the people who use the software.
 
-> A "git log" is the list of commits in a [git](https://en.wikipedia.org/wiki/Git) repository. We mention git because it is the most common [version control system](https://en.wikipedia.org/wiki/Distributed_version_control), but this applies to any of them: a raw commit history is not a changelog.
+> A "git log" is the list of commits in a [git][git] repository. We mention git because it is the most common [version control system][vcs], but this applies to any of them: a raw commit history is not a changelog.
 
 ### Ignoring deprecations {#ignoring-deprecations}
 
@@ -122,7 +122,7 @@ Machines can also help write a changelog. A language model can draft one from a 
 If your project uses coding agents, record that brief where they read it — for example an `AGENTS.md` or `CLAUDE.md` file. There is no format to configure; the instructions are the interface.
 </aside>
 
-The same caution applies to changelogs generated from commit messages. A convention such as [Conventional Commits](https://www.conventionalcommits.org/), with tools such as [semantic-release](https://github.com/semantic-release/semantic-release), release-please, Changesets, and git-cliff, reads structured commits to choose the next version and draft a changelog. That can give you a starting point, but a commit and a changelog entry are written for different people, and one does not convert cleanly into the other.
+The same caution applies to changelogs generated from commit messages. A convention such as [Conventional Commits][conventional-commits], with tools such as [semantic-release][semantic-release], release-please, Changesets, and git-cliff, reads structured commits to choose the next version and draft a changelog. That can give you a starting point, but a commit and a changelog entry are written for different people, and one does not convert cleanly into the other.
 
 A commit message records a step for the people working on the code, so the change can be understood later. A changelog entry tells the people who use the software what a release means for them. Generating the entry from the commit assumes that every commit belongs in the changelog, and that the right entry is a reworded commit message. Usually it is neither: many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is raw material at best — a person still has to choose what is notable, group it, and write it for the reader.
 
@@ -170,7 +170,7 @@ You can, and it is sometimes helpful. Keep two things in mind: links break when 
 
 ### Is there a standard changelog format? {#standard}
 
-Not a formal one. There were older conventions — the [GNU changelog style guide](https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs) and the [GNU NEWS file](https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File) — but they were limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
+Not a formal one. There were older conventions — the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news] — but they were limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
 
 ### What won't Keep a Changelog do? {#scope}
 
@@ -185,10 +185,28 @@ None of this is fixed; it is a considered opinion, open to discussion. But anyth
 
 ### How can I contribute? {#contribute}
 
-Keep a Changelog is one carefully considered opinion, with examples — not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute](https://github.com/olivierlacan/keep-a-changelog) or start a [conversation](https://github.com/olivierlacan/keep-a-changelog/discussions) if you need help.
+Keep a Changelog is one carefully considered opinion, with examples — not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you need help.
 
 ## References {#references}
 
-Keep a Changelog grew from good practices observed in open source, gathered into a [better changelog convention](https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md). Olivier Lacan discussed the motivation behind it on [The Changelog podcast](https://changelog.com/podcast/127).
+Keep a Changelog grew from good practices observed in open source, gathered into a [better changelog convention][kac-changelog]. Olivier Lacan discussed the motivation behind it on [The Changelog podcast][changelog-podcast].
 
-Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects](https://github.com/search?q=%22based+on+%5BKeep+a+Changelog%5D%28https%3A%2F%2Fkeepachangelog.com%22&type=code) whose changelogs note that their format is based on it.
+Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects][adoption-search] whose changelogs note that their format is based on it.
+
+<!-- Link references, ordered by first appearance above. -->
+
+[versioning-schemes]: https://en.wikipedia.org/wiki/Software_versioning#Schemes
+[semver]: https://semver.org/
+[iso-8601]: https://www.iso.org/iso-8601-date-and-time-format.html
+[calver]: https://calver.org/
+[git]: https://en.wikipedia.org/wiki/Git
+[vcs]: https://en.wikipedia.org/wiki/Distributed_version_control
+[conventional-commits]: https://www.conventionalcommits.org/
+[semantic-release]: https://github.com/semantic-release/semantic-release
+[gnu-changelog]: https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs
+[gnu-news]: https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File
+[contribute]: https://github.com/olivierlacan/keep-a-changelog
+[discussions]: https://github.com/olivierlacan/keep-a-changelog/discussions
+[kac-changelog]: https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md
+[changelog-podcast]: https://changelog.com/podcast/127
+[adoption-search]: https://github.com/search?q=%22based+on+%5BKeep+a+Changelog%5D%28https%3A%2F%2Fkeepachangelog.com%22&type=code
