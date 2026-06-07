@@ -9,32 +9,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2026-06-07
 
-2.0.0 is the first major revision of the Keep a Changelog
-manifesto. The format itself does not change — the six change types, the
+2.0.0 is the first major revision of Keep a Changelog. The format itself
+does not change — the six change types, the
 `YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
 so nothing you have already written becomes invalid. What changes is the guidance
 around it: 2.0.0 answers the questions the community has raised most often over the
 years — marking breaking changes, versioning beyond SemVer, monorepos, the
 boundary between Changed, Fixed, and Security — and adds guidance for an era in
 which an LLM can draft a changelog from a diff in seconds. Along the way the
-manifesto is restructured from a flat FAQ into integrated guidance, given a new
+page is restructured from a flat FAQ into integrated guidance, given a new
 tagline and a redesigned, accessible site, and gathers a round of wording
 refinements that were never worth re-translating over on their own.
 
 ### Added
 
-- New manifesto guidance answering long-standing community questions: marking
+- New guidance answering long-standing community questions: marking
   breaking changes; choosing between Changed, Fixed, and Security; why the six
   change types don't grow; versioning schemes beyond SemVer; changelogs versus
   release notes; optional per-release summaries; LLM-generated changelogs and a
   brief you can drop into an `AGENTS.md`; Conventional Commits; fitting a changelog
   into CI/CD; linking to issues and pull requests; very large changelogs;
   monorepos; and a statement of what Keep a Changelog deliberately won't do.
-- A redesigned site for the 2.0 manifesto: light and dark themes with a header
+- A redesigned site for 2.0: light and dark themes with a header
   switch (system, light, or dark); a sticky table-of-contents sidebar that
   collapses to a menu on small screens; the What/Why/Who intro shown as cards;
   heading anchor links; and the topographic hero pattern and tree-ring mark
-  restored — all meeting WCAG 2.1 AA. The English 2.0.0 manifesto is now authored
+  restored — all meeting WCAG 2.1 AA. The English 2.0.0 page is now authored
   in Markdown.
 - A note in the References section on the convention's reach — now translated into
   dozens of languages and used by tens of thousands of open-source projects.
@@ -51,15 +51,15 @@ refinements that were never worth re-translating over on their own.
 - New tagline: "Clearly document the evolution of your projects." It replaces
   "Don't let your friends dump git logs into changelogs." — active, idiom-free, and
   easier to translate. Earlier versions keep the original line.
-- Restructured the manifesto from a flat list of FAQs into integrated guidance:
+- Restructured the page from a flat list of FAQs into integrated guidance:
   a how-to section (principles, types, breaking changes, structuring a release,
   curation), a section on what makes a changelog worse, a section on automation and
   LLMs, and shorter Miscellaneous, About, and References sections. The voice is
   plainer and less first-person, with translators in mind.
-- Reworded and modernized several existing manifesto sections (what and why a
+- Reworded and modernized several existing sections (what and why a
   changelog exists, the guiding principles, reducing maintenance effort, automatic
   parsing, rewriting, and contributing). These clarifications weren't significant
-  enough to justify re-translating the manifesto for a minor release, so they were
+  enough to justify re-translating the page for a minor release, so they were
   held back and batched into this major version instead.
 - Renamed and broadened the "GitHub Releases" answer to "Releases", covering
   release posts on any code hosting platform rather than GitHub specifically.
@@ -71,7 +71,7 @@ description when links are shared are language-appropriate
 
 ### Removed
 
-- Outdated specifics from two manifesto answers — the Vandamme gem reference (in
+- Outdated specifics from two answers — the Vandamme gem reference (in
   "can changelogs be automatically parsed?") and a GitHub-Releases discoverability
   note — in favor of more general guidance.
 - The FAQ scaffolding and most of the first-person framing, in favor of plainer

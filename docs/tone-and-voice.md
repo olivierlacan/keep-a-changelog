@@ -1,6 +1,6 @@
 # Keep a Changelog — tone & voice guide
 
-How we write the manifesto, and the standard the 2.0 rewrite is held to. Many
+How we write Keep a Changelog, and the standard the 2.0 rewrite is held to. Many
 readers — and every translator — are not native English speakers. Write for them.
 
 ## Principles
@@ -40,7 +40,7 @@ If any answer is bad, rewrite it.
 
 ## Pass it on to maintainers
 
-The manifesto should give maintainers the same advice: many of *their* changelog
+Keep a Changelog should give maintainers the same advice: many of *their* changelog
 readers are not native English speakers either. Recommend plain, concise prose —
 clarity over flourish — so a changelog is easy to read and easy to translate. (To
 be added to the guidelines as part of the 2.0 restructure.)
