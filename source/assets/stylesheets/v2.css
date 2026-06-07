@@ -254,24 +254,29 @@
     padding-inline: var(--space-m);
     text-align: center;
   }
-  /* Logo + name on one line (a compact lockup) instead of mark-above-title. */
+  /* Logo + name on one line (a compact lockup). The lockup's font size is the
+     title size, so the mark and gap (in em) scale proportionally with it. The
+     title left-aligns so it reads cleanly if it has to wrap on very narrow
+     screens. */
   .hero-lockup {
-    --hero-gap: clamp(0.5rem, 2vw, var(--space-s));
+    --hero-h1: clamp(1.6rem, 0.8rem + 4vw, 3.4rem);
+    font-size: var(--hero-h1);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--hero-gap);
+    gap: 0.4em;
+    text-align: start;
   }
   .hero-mark {
     flex: none;
-    inline-size: clamp(36px, 5vw, 72px);
-    block-size: clamp(36px, 5vw, 72px);
+    inline-size: 1.5em;
+    block-size: 1.5em;
     background-color: var(--hero-text);
     -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
     mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
   }
   /* Slightly smaller on phones so the name fits beside the mark on one line. */
-  .hero h1 { --hero-h1: clamp(1.7rem, 1rem + 4vw, 3.4rem); font-size: var(--hero-h1); color: var(--hero-text); margin: 0; }
+  .hero h1 { font-size: 1em; color: var(--hero-text); margin: 0; text-wrap: balance; }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
   /* Example changelog. On wide screens it's the always-visible centerpiece; on
