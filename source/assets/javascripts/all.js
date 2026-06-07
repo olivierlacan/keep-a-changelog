@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(){
+  // 2.0 preview flag: ?preview=v2 sets it, ?preview=off clears it (persisted in
+  // localStorage). The landing pages (/ and /en/) read this to decide whether to
+  // route to 2.0.0. Syncing it here lets the param stick from any page, e.g. a
+  // shared /en/2.0.0/?preview=v2 link.
+  try {
+    var previewParam = new URLSearchParams(window.location.search).get('preview');
+    if (previewParam === 'v2') { localStorage.setItem('kac-preview', 'v2'); }
+    else if (previewParam === 'off' || previewParam === '0') { localStorage.removeItem('kac-preview'); }
+  } catch (e) {}
+
   var select = document.querySelector('.locales select');
   if (select) {
     select.addEventListener('change', function(event){

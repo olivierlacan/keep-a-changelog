@@ -163,10 +163,14 @@ set :gauges_id, ""
 set :publisher_url, "https://www.facebook.com/olivier.lacan.5"
 set :site_url, "https://keepachangelog.com"
 
-redirect "index.html", to: "en/#{$last_version}/index.html"
-
+# The root and /en/ landing pages are JS templates (source/index.html.erb and
+# source/en/index.html.erb) rather than plain static redirects, so a ?preview=v2
+# query param can route visitors to the unreleased 2.0 draft (persisted in
+# localStorage; ?preview=off clears it). Without JS they fall through to the
+# published $last_version. Every other language keeps a plain static redirect.
 $languages.each do |language|
   code = language.first
+  next if code == "en"
   redirect "#{code}/index.html", to: "#{code}/#{$published_version_for.call(code)}/index.html"
 end
 
