@@ -219,9 +219,15 @@
     background: var(--surface);
     color: var(--muted);
     font-size: var(--step--1);
+    text-align: center;
   }
   .footer a { color: var(--link); }
-  .footer .mark { inline-size: 24px; block-size: 24px; vertical-align: middle; margin-inline-end: 0.5em; }
+  .footer .mark {
+    inline-size: 28px;
+    block-size: 28px;
+    margin-block-end: var(--space-s);
+  }
+  .footer .about { margin: 0; text-wrap: pretty; }
 }
 
 /* ----------------------------------------------------------------- content */
@@ -428,10 +434,17 @@
   .content blockquote > * + * { margin-block-start: var(--space-xs); }
 
   /* ---- Table of contents: disclosure on narrow, sticky sidebar on wide ---- */
-  .toc { font-size: var(--step--1); }
+  /* On narrow/medium widths the TOC aligns with the centered reading column
+     (the sidebar rules below override this at wide widths). */
+  .toc {
+    max-inline-size: var(--measure);
+    margin-inline: auto;
+    padding-inline: var(--space-m);
+  }
   .toc-disclosure > summary {
     cursor: pointer;
     list-style: none;
+    font-size: var(--step--1);
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
@@ -454,7 +467,7 @@
   }
   .toc-disclosure[open] > summary::after { transform: rotate(-135deg); }
 
-  .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; }
+  .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; font-size: var(--step--1); }
   .toc-list a {
     display: block;
     padding: 0.4em 0.75em;
@@ -505,6 +518,8 @@
       justify-self: start;
       align-self: start;
       inline-size: 15rem;
+      max-inline-size: none;
+      margin-inline: 0;
       padding-inline: var(--space-m);
       position: sticky;
       top: var(--space-m);
