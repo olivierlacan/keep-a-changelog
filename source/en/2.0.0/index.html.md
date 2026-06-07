@@ -109,6 +109,21 @@ Making changes and communicating about changes are two different tasks. Curating
 
 Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`, but a predictable name makes it easy to find. A changelog does not need to list every change. Version control already does that. It lists the notable ones.
 
+### What goes at the top of the file? {#header}
+
+Open with a `# Changelog` heading and a short, fixed preamble that says what the file is and which conventions it follows:
+
+```
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+```
+
+Stating the conventions you follow tells readers, and tools, what to expect. The first link declares the format; the second names your versioning scheme (Semantic Versioning here, but reference whichever you use). Pin the Keep a Changelog link to the version you follow, so it stays accurate as this page changes.
+
 ### Is a changelog the same as release notes? {#release-notes}
 
 No. A changelog lives in the repository and records what changed between versions, for anyone. Release notes are a curated announcement for one release: highlights, upgrade steps, and some marketing. Derive release notes from the changelog rather than keeping two records.
