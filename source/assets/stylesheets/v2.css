@@ -598,23 +598,34 @@
     font-weight: 600;
   }
 
-  /* Narrow screens: the open list reads as a contained menu under the toggle,
-     with roomier tap targets and a tinted (not spined) current item. */
+  /* Version marker and the "On this page" toggle share one line: a symmetric
+     1fr/auto/1fr grid keeps the version centered (the toggle sits in the right
+     gutter and can't drag it off-center), with the content full width below. */
   @media (max-width: 77.99rem) {
-    /* Stacked and centered with plain block flow: the version marker, then the
-       "On this page" toggle, then the content — each on its own line, each
-       centered, so nothing pairs onto another item's row. */
-    .article-body > .version-marker { margin-block: var(--space-l) var(--space-m); }
-    .article-body > .toc { margin-block-end: var(--space-m); }
+    .article-body {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: baseline;
+      column-gap: var(--space-s);
+    }
+    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-l) var(--space-m); }
+    .article-body > .toc { grid-column: 3; justify-self: start; margin-inline: 0; position: relative; }
+    .article-body > .content { grid-column: 1 / -1; align-self: start; }
+    /* The open list drops as a popover anchored to the toggle, so the narrow
+       gutter can't clip it. */
     .toc-disclosure[open] > nav {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-end: 0;
+      z-index: 20;
       margin-block-start: var(--space-2xs);
-      margin-inline: auto;
       max-inline-size: 22rem;
       text-align: start;
       padding: var(--space-2xs);
       background: var(--surface);
       border: 1px solid var(--rule);
       border-radius: var(--radius);
+      box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
     }
     .toc-list { margin-block: 0; }
     .toc-list a {
@@ -625,6 +636,22 @@
     .toc-list a:hover { background: var(--code-bg); }
     .toc-list a[aria-current="true"] {
       background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+  }
+
+  /* Very narrow: stack the toggle below the centered version (no room for one
+     line), each centered, with the open list back in normal flow. */
+  @media (max-width: 31.99rem) {
+    .article-body { grid-template-columns: 1fr; justify-items: center; }
+    .article-body > .version-marker,
+    .article-body > .toc,
+    .article-body > .content { grid-column: 1; }
+    .article-body > .toc { justify-self: center; }
+    .article-body > .content { justify-self: stretch; }
+    .toc-disclosure[open] > nav {
+      position: static;
+      margin-inline: auto;
+      box-shadow: none;
     }
   }
 
