@@ -105,15 +105,19 @@
       .main{ role: "main" }
         - if v2_plus
           %header.hero
-            %span.hero-mark{ "aria-hidden": "true" }
-            %h1= current_page.data.title
+            .hero-lockup
+              %span.hero-mark{ "aria-hidden": "true" }
+              %h1= current_page.data.title
             %p.tagline= current_page.data.description
             = link_to data.links.changelog do
               Version
               %strong= current_page.metadata[:page][:version]
-            %details.changelog-example
-              %summary Example changelog
-              %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Example changelog" }= File.read("CHANGELOG.md")
+            %figure.changelog-figure
+              %figcaption.changelog-caption
+                This is Keep a Changelog's own changelog, written in the format this page describes.
+              %details.changelog-example
+                %summary Example changelog
+                %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Keep a Changelog's own changelog" }= changelog_preview
           .article-body
             %aside#toc.toc{ "aria-label": "Table of contents" }
             .content

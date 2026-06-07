@@ -202,6 +202,33 @@ helpers do
     version = exposed_version_for(language.first)
     "#{version} #{language.last[:name]}" if version
   end
+
+  # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
+  # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
+  # them: join hard-wrapped lines within paragraphs and list items while keeping
+  # blank lines, headings, list boundaries, and code blocks intact.
+  def changelog_preview
+    in_code = false
+    out = []
+    File.read("CHANGELOG.md").each_line do |raw|
+      line = raw.chomp
+      if line =~ /\A\s*```/
+        in_code = !in_code
+        out << line
+        next
+      end
+      if in_code || line.strip.empty? ||
+         line =~ /\A\s*(#|[-*+]\s|\d+\.\s|>|\|)/ || # heading / list / quote / table
+         line =~ /\A\s{4,}\S/ ||                    # indented code
+         out.empty? || out.last.strip.empty? ||
+         out.last =~ /\A\s*(#|```)/                 # previous line was a heading/fence
+        out << line
+      else
+        out[-1] = "#{out.last} #{line.strip}"
+      end
+    end
+    out.join("\n")
+  end
 end
 
 # --------------------------------------

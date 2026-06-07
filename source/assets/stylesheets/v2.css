@@ -247,28 +247,46 @@
     background-size: cover;
     background-position: center;
     color: var(--hero-text);
-    padding: var(--space-2xl) var(--space-m) var(--space-xl);
+    /* Fluid top padding: roomy on wide screens, tight on phones. (The clamp lives
+       in a custom property so the Sass-based minifier doesn't try to evaluate it.) */
+    --hero-pad-top: clamp(var(--space-m), 5vw, var(--space-2xl));
+    padding-block: var(--hero-pad-top) var(--space-xl);
+    padding-inline: var(--space-m);
     text-align: center;
   }
+  /* Logo + name on one line (a compact lockup) instead of mark-above-title. */
+  .hero-lockup {
+    --hero-gap: clamp(0.5rem, 2vw, var(--space-s));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--hero-gap);
+  }
   .hero-mark {
-    display: block;
-    inline-size: clamp(76px, 9vw, 124px);
-    block-size: clamp(76px, 9vw, 124px);
-    margin: 0 auto var(--space-s);
+    flex: none;
+    inline-size: clamp(36px, 5vw, 72px);
+    block-size: clamp(36px, 5vw, 72px);
     background-color: var(--hero-text);
     -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
     mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
   }
-  .hero h1 { font-size: var(--step-3); color: var(--hero-text); }
+  /* Slightly smaller on phones so the name fits beside the mark on one line. */
+  .hero h1 { --hero-h1: clamp(1.7rem, 1rem + 4vw, 3.4rem); font-size: var(--hero-h1); color: var(--hero-text); margin: 0; }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
   /* Example changelog. On wide screens it's the always-visible centerpiece; on
      narrow screens it collapses into a tap-to-open disclosure to save space. */
-  .hero .changelog-example {
-    margin-block-start: var(--space-l);
-    margin-inline: auto;
+  .hero .changelog-figure {
+    margin: var(--space-l) auto 0;
     max-inline-size: var(--measure);
   }
+  .hero .changelog-caption {
+    margin-block-end: var(--space-s);
+    color: var(--hero-text);
+    font-size: var(--step--1);
+    text-wrap: balance;
+  }
+  .hero .changelog-example { margin-inline: auto; }
   .hero .changelog-example > summary {
     cursor: pointer;
     display: inline-flex;
