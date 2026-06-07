@@ -196,6 +196,8 @@ Keep a Changelog grew from good practices observed in open source, gathered into
 
 Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects][adoption-search] whose changelogs note that their format is based on it.
 
+Among them are companies such as Microsoft, Google, and Cloudflare; public institutions such as NASA and the UK's National Archives; and the Wikimedia Foundation. Some recommend it in their own contributor guides and engineering handbooks.
+
 <!-- Link references, ordered by first appearance above. -->
 
 [versioning-schemes]: https://en.wikipedia.org/wiki/Software_versioning#Schemes
