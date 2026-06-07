@@ -161,7 +161,8 @@ document.addEventListener("DOMContentLoaded", function(){
       a.className = 'heading-anchor';
       a.href = '#' + h.id;
       a.setAttribute('aria-label', 'Link to “' + h.textContent.trim() + '”');
-      a.textContent = '#';
+      // The visible "#" comes from CSS (.heading-anchor::before), so it stays
+      // out of copied text and the accessibility tree.
       h.appendChild(a);
     });
   }

@@ -498,8 +498,13 @@
     font-weight: 400;
     text-decoration: none;
     opacity: 0;
+    user-select: none;
     transition: opacity 0.12s ease;
   }
+  /* The "#" is presentational: render it as generated content so it never lands
+     in copied heading text or the accessibility tree (the link's aria-label
+     already names it). */
+  .content .heading-anchor::before { content: "#"; }
   .content :is(h2, h3):hover > .heading-anchor,
   .content .heading-anchor:focus-visible { opacity: 1; }
   @media (hover: none) {
