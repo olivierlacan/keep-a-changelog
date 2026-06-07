@@ -388,8 +388,8 @@
 
   /* Top-level headings (##) separate sections; sub-headings (###) just breathe. */
   .content h2 {
-    margin-block-start: var(--space-2xl);
-    padding-block-start: var(--space-l);
+    margin-block-start: var(--space-l);
+    padding-block-start: var(--space-m);
     border-block-start: 1px solid var(--rule);
   }
   .content > h2:first-child {
@@ -397,7 +397,7 @@
     padding-block-start: 0;
     border-block-start: 0;
   }
-  .content h3 { margin-block-start: var(--space-l); }
+  .content h3 { margin-block-start: var(--space-m); }
 
   /* Heading anchors — a "#" link revealed on hover/focus to grab a section link. */
   .content .heading-anchor {
