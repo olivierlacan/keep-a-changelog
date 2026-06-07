@@ -85,6 +85,14 @@ Keep an `Unreleased` section at the top to collect upcoming changes. It shows re
 
 A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
 
+The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:
+
+```
+[1.1.0]: https://github.com/your/project/compare/v1.0.0...v1.1.0
+```
+
+Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a platform's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
 You do not have to use Semantic Versioning. [Calendar versioning][calver], a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects release continuously and have no version numbers. A changelog still helps: keep dated entries under `Unreleased`.
@@ -169,7 +177,7 @@ It depends on whether the repository holds one product or many. Unrelated projec
 
 ### Should I link to issues or pull requests? {#linking}
 
-You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one platform, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later.
+You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one platform, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
 
 ## About Keep a Changelog {#about}
 
