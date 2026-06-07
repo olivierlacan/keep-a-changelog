@@ -85,6 +85,8 @@ Mark breaking changes clearly. The version number already signals them (under [S
 
 Be specific about what breaks. "Breaking" only means something once readers know which interface you keep stable: a command line, a library API, a network protocol, a file format, a configuration schema. State which one your versioning scheme covers.
 
+A short upgrade note can sit in the entry itself, such as "rename the `color` option to `theme`." When the steps are substantial, link to them (a migration guide or the release notes) rather than spelling them out here. A long procedure buries what changed and turns a scannable record into a how-to: a different kind of document, for a narrower audience. Keep the `**Breaking:**` marker on the entry itself, within its type, rather than collecting breaks into a separate section, so anyone scanning `Changed` or `Removed` sees them in place.
+
 ### Structuring a release {#releasing}
 
 Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version.
