@@ -198,6 +198,8 @@ Since then it has been translated into dozens of languages and adopted by [tens 
 
 Among them are companies such as Microsoft, Google, Cloudflare, and Unity; public institutions such as NASA and the UK's National Archives; and the Wikimedia Foundation. Some recommend it in their own contributor guides and engineering handbooks.
 
+Its reach extends past software, too. Peer-reviewed research on software versioning and breaking changes cites it, and research-data guidelines such as The Turing Way and the Helmholtz Metadata Collaboration recommend it for tracking changes to scientific datasets.
+
 <!-- Link references, ordered by first appearance above. -->
 
 [versioning-schemes]: https://en.wikipedia.org/wiki/Software_versioning#Schemes
