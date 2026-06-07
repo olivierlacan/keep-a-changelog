@@ -49,7 +49,7 @@ People do. Whether they are users or developers, the people who use software car
 - `Fixed` for bug fixes.
 - `Security` for vulnerabilities.
 
-Most of the time the right type is obvious. Three of them cause the most questions:
+Usually the right type is clear. Three of them cause the most questions:
 
 - `Fixed` — the behavior was wrong, and is now correct.
 - `Changed` — the behavior worked as intended, and now works differently.
@@ -61,14 +61,14 @@ When you are unsure, ask whether the old behavior was a bug. If it was, use `Fix
 There are only six types on purpose. The type says what kind of change it is. The reason — an improvement, an optimization, a refactor, a performance gain, a dependency update — belongs in the wording of the entry, not in a new type. "Rewrote the JSON parser; about three times faster on large files" says more under `Changed` than a `Performance` heading would.
 </aside>
 
-Two requests come up often:
+Two requests are common:
 
 - **Dependencies** are not a type of change. A dependency update can be harmless, a fix, or breaking. If it matters to your users, describe its effect under the right type. If it does not, leave it out.
 - **Known issues** are discovered, not changed. Note them on the affected version or in your issue tracker. When one is fixed, it goes under `Fixed`.
 
 ### Breaking changes {#breaking}
 
-Mark breaking changes clearly. The version number already signals them — under [Semantic Versioning](https://semver.org/), a major release is where they belong — but the number is easy to miss, so call them out in the entry. Breaking changes usually go under `Changed` or `Removed`. Add a short `**Breaking:**` marker so they stand out, and keep them with the type of change they are:
+Mark breaking changes clearly. The version number already signals them — under [Semantic Versioning](https://semver.org/), a major release is where they belong — but the number is easy to miss, so highlight them in the entry. Breaking changes usually go under `Changed` or `Removed`. Add a short `**Breaking:**` marker so they stand out, and keep them with the type of change they are:
 
 ```
 - **Breaking:** parse() now returns a result object instead of raising.
@@ -84,14 +84,14 @@ A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`
 
 A version may open with a short summary before the typed sections — a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
-You do not have to use Semantic Versioning. [Calendar versioning](https://calver.org/), a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects ship continuously and have no version numbers. A changelog still helps: keep dated entries under `Unreleased`.
+You do not have to use Semantic Versioning. [Calendar versioning](https://calver.org/), a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects release continuously and have no version numbers. A changelog still helps: keep dated entries under `Unreleased`.
 
-### Curate, don't dump {#curation}
+### Curate, don't accumulate {#curation}
 
-Keeping a changelog is partly an act of restraint. A changelog records *notable* changes, which means some changes are not notable and do not belong in it. Deciding which is which is the work, and it is work for a person.
+Keeping a changelog is partly an act of restraint. A changelog records *notable* changes, which means some changes are not notable and do not belong in it. Deciding which is which takes judgment, and that judgment is human.
 
 <aside markdown="1">
-Making changes and communicating about changes are two different tasks. "Don't let your friends dump git logs into changelogs" does not mean "sort every commit into a type as you make it" — that is tedious and beside the point. Write the changelog as a summary for your readers, not as a record of your commits.
+Making changes and communicating about changes are two different tasks. Curating a changelog does not mean sorting every commit into a type as you make it. That is tedious, and it is not the goal: write the changelog as a summary for your readers, not as a record of your commits.
 </aside>
 
 ## What makes a changelog worse? {#bad-practices}
@@ -124,7 +124,7 @@ If your project uses coding agents, record that brief where they read it — for
 
 The same applies to changelogs generated from commit messages. Conventions such as [Conventional Commits](https://www.conventionalcommits.org/), and tools such as [semantic-release](https://github.com/semantic-release/semantic-release), release-please, Changesets, and git-cliff, read structured commits to generate a changelog and choose the next version. They are complementary to this convention: commits are the input, and the changelog is the human-facing output. The result is still a draft. It needs a person to decide what is notable and write it for the reader.
 
-Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is well-formed, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change — that teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
+Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change — that teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
 
 ## Miscellaneous {#miscellaneous}
 
@@ -179,7 +179,7 @@ A convention is also defined by what it leaves out. Some common requests are del
 - It will not become a tool or a service you install. It is a convention; following it should cost only attention.
 - It will not depend on any one host or vendor. A changelog is a plain file in your repository.
 
-None of this is fixed; it is a considered opinion, open to discussion. But the bar for adding to a widely used convention is high.
+None of this is fixed; it is a considered opinion, open to discussion. But anything added to a widely used convention should be weighed carefully.
 
 ### How can I contribute? {#contribute}
 
