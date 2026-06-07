@@ -3,8 +3,8 @@
 # --------------------------------------
 
 # ----- Site ----- #
-# Last version should be the latest English version since the manifesto is first
-# written in English, then translated into other languages later.
+# Last version should be the latest English version since Keep a Changelog is
+# first written in English, then translated into other languages later.
 $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # $last_version = $versions.last
 $last_version = "1.1.0"
