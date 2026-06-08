@@ -23,20 +23,25 @@ refinements that were never worth re-translating over on their own.
 
 ### Added
 
-- New guidance answering long-standing community questions: marking
-  breaking changes; choosing between Changed, Fixed, and Security; why the six
-  change types don't grow; versioning schemes beyond SemVer; changelogs versus
-  release notes; optional per-release summaries; LLM-generated changelogs and a
-  brief you can drop into an `AGENTS.md`; Conventional Commits; fitting a changelog
-  into CI/CD; linking to issues and pull requests; very large changelogs;
-  monorepos; and a statement of what Keep a Changelog deliberately won't do.
+- New guidance answering long-standing community questions: the `# Changelog`
+  header preamble; marking breaking changes and where upgrade steps belong;
+  choosing between Changed, Fixed, and Security; leading a Security entry with its
+  CVE; why the six change types don't grow; versioning schemes beyond SemVer;
+  linking each version to a `compare` diff with reference links; changelogs versus
+  release notes, how to derive one from the other without duplicate work, and why
+  a host's generated release notes are vendor lock-in; optional per-release
+  summaries; LLM-generated changelogs and a brief you can drop into an `AGENTS.md`;
+  Conventional Commits; fitting a changelog into CI/CD; linking to issues and pull
+  requests; crediting contributors; very large changelogs; monorepos; and a
+  statement of what Keep a Changelog deliberately won't do.
 - A redesigned site for 2.0: light and dark themes with a header
   switch (system, light, or dark); a sticky table-of-contents sidebar that
   collapses to a menu on small screens; a responsive header whose language
   picker collapses behind a globe icon on narrow screens; the What/Why/Who intro
-  shown as cards; heading anchor links; and the topographic hero pattern and
-  tree-ring mark restored — all meeting WCAG 2.1 AA. The English 2.0.0 page is
-  now authored in Markdown, with reference-style links.
+  shown as cards; heading anchor links; the topographic hero pattern and
+  tree-ring mark restored; and Tyler Fortune's badge added to the footer — all
+  meeting WCAG 2.1 AA. The English 2.0.0 page is now authored in Markdown, with
+  reference-style links.
 - A note in the References section on the convention's reach — now translated into
   dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
@@ -45,7 +50,7 @@ refinements that were never worth re-translating over on their own.
 - v1.1 Italian translation.
 - v1.1 Polish translation.
 - v1.1 Ukrainian translation.
-- v1.1 Swedish translation (#590).
+- v1.1 Swedish translation.
 
 ### Changed
 
@@ -54,16 +59,18 @@ refinements that were never worth re-translating over on their own.
   easier to translate. Earlier versions keep the original line.
 - Restructured the page from a flat list of FAQs into integrated guidance:
   a how-to section (principles, types, breaking changes, structuring a release,
-  curation), a section on what makes a changelog worse, a section on automation and
-  LLMs, and shorter Miscellaneous, About, and References sections. The voice is
+  curation, file naming, the header preamble, and release notes), a section on
+  what makes a changelog worse, a section on automation and LLMs, a "Less common
+  questions" section, and leaner About and References sections. The voice is
   plainer and less first-person, with translators in mind.
 - Reworded and modernized several existing sections (what and why a
   changelog exists, the guiding principles, reducing maintenance effort, automatic
   parsing, rewriting, and contributing). These clarifications weren't significant
   enough to justify re-translating the page for a minor release, so they were
   held back and batched into this major version instead.
-- Renamed and broadened the "GitHub Releases" answer to "Releases", covering
-  release posts on any code hosting platform rather than GitHub specifically.
+- Reframed the old "GitHub Releases" answer as "Is a changelog the same as
+  release notes?", broadened beyond GitHub to any host's release system, with the
+  case for keeping the canonical, portable record in your repository.
 - Use frontmatter title & description in each language version template
 - Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
   image that will render properly (although in English for all languages)
@@ -84,30 +91,30 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- v1.1 Arabic translation (#444).
+- v1.1 Arabic translation.
 - v1.1 French translation.
-- v1.1 Dutch translation (#371).
-- v1.1 Russian translation (#410).
-- v1.1 Japanese translation (#363).
-- v1.1 Norwegian Bokmål translation (#383).
-- v1.1 "Inconsistent Changes" Turkish translation (#347).
+- v1.1 Dutch translation.
+- v1.1 Russian translation.
+- v1.1 Japanese translation.
+- v1.1 Norwegian Bokmål translation.
+- v1.1 "Inconsistent Changes" Turkish translation.
 - Default to most recent versions available for each languages.
 - Display count of available translations (26 to date!).
 - Centralize all links into `/data/links.json` so they can be updated easily.
 
 ### Fixed
 
-- Improve French translation (#377).
-- Improve id-ID translation (#416).
-- Improve Persian translation (#457).
-- Improve Russian translation (#408).
-- Improve Swedish title (#419).
-- Improve zh-CN translation (#359).
-- Improve French translation (#357).
-- Improve zh-TW translation (#360, #355).
-- Improve Spanish (es-ES) transltion (#362).
-- Foldout menu in Dutch translation (#371).
-- Missing periods at the end of each change (#451).
+- Improve French translation.
+- Improve id-ID translation.
+- Improve Persian translation.
+- Improve Russian translation.
+- Improve Swedish title.
+- Improve zh-CN translation.
+- Improve French translation.
+- Improve zh-TW translation.
+- Improve Spanish (es-ES) transltion.
+- Foldout menu in Dutch translation.
+- Missing periods at the end of each change.
 - Fix missing logo in 1.1 pages.
 - Display notice when translation isn't for most recent version.
 - Various broken links, page versions, and indentations.
@@ -126,14 +133,14 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- Danish translation (#297).
-- Georgian translation from (#337).
+- Danish translation.
+- Georgian translation from.
 - Changelog inconsistency section in Bad Practices.
 
 ### Fixed
 
-- Italian translation (#332).
-- Indonesian translation (#336).
+- Italian translation.
+- Indonesian translation.
 
 ## [1.0.0] - 2017-06-20
 
