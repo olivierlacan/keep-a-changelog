@@ -667,7 +667,7 @@
       grid-template-columns: minmax(15rem, 1fr) minmax(0, var(--measure)) minmax(15rem, 1fr);
       column-gap: var(--space-l);
     }
-    .article-body > .version-marker { grid-column: 2; margin-block-end: var(--space-l); }
+    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-l); }
     .article-body > .content { grid-column: 2; }
     .article-body > .toc {
       grid-column: 1;
