@@ -685,22 +685,29 @@
       overflow: auto;
       margin-block-start: var(--space-2xl);
     }
-    /* Keep the triptych within the reading column so it never reaches the
-       sidebar; the breakout is only for the no-sidebar widths below. */
+    /* Keep the triptych in the reading column only at the low end of the sidebar
+       regime (78-90rem), where a viewport-centered breakout would overlap the
+       TOC. It breaks out again at 90rem (below). */
     .content .intro-grid {
       inline-size: auto;
       margin-inline: 0;
     }
   }
 
-  /* Second breakpoint: once there's ample room beside the sidebar, widen the
-     TOC (titles wrap less) and let the triptych break out again. The breakout
-     centers on the viewport, clearing the left-anchored TOC at this width. */
-  @media (min-width: 104rem) {
-    .article-body > .toc { inline-size: 19rem; }
+  /* Second breakpoint: once the viewport is wide enough that a centered breakout
+     clears the left TOC (a 60rem breakout needs ~90rem to leave a 15rem gutter),
+     let the triptych break out again even with the sidebar present. This lifts
+     the common 1440-1600px widths, which otherwise waste ~40% of their width. */
+  @media (min-width: 90rem) {
     .content .intro-grid {
       inline-size: var(--bleed);
       margin-inline: var(--bleed-margin);
     }
+  }
+
+  /* Third breakpoint: ample room, so widen the TOC (titles wrap less). The
+     triptych already broke out at 90rem above. */
+  @media (min-width: 104rem) {
+    .article-body > .toc { inline-size: 19rem; }
   }
 }
