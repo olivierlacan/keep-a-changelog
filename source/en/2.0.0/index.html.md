@@ -136,7 +136,9 @@ Stating the conventions you follow tells readers, and tools, what to expect. The
 
 ### Is a changelog the same as release notes? {#release-notes}
 
-No. A changelog lives in the repository and records what changed between versions, for anyone. Release notes are a curated announcement for one release: highlights, upgrade steps, and some marketing. Derive release notes from the changelog rather than keeping two records.
+No, though they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published when that version ships. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.
+
+This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable `## [x.y.z]` heading, a small script can extract that section and create the release without anyone retyping it. Hosts can generate release notes on their own, but from merged pull requests or commit history, not from your curated changelog, which puts the unedited history in front of readers instead of the entries you wrote for them.
 
 Many projects use a host's release system for this instead, such as GitHub Releases or GitLab Releases. These are convenient: they attach notes to a tag, show them on the project page, notify watchers, and collect built files. But the notes live in one platform's database, not in your repository. They do not travel with a `git clone`, and they do not follow you to another host: your history moves, your release notes do not. If the platform changes, or you leave it, that record is stranded.
 
@@ -203,6 +205,10 @@ It depends on whether the repository holds one product or many. Unrelated projec
 ### Should I link to issues or pull requests? {#linking}
 
 You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one platform, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
+
+### Should you credit contributors? {#credits}
+
+The commit history already records who did what, so a changelog does not need to credit anyone. But naming contributors, especially in a notable release, is a common and generous way to recognize their work and encourage more of it. If you do, keep it brief, and remember that a `@handle` belongs to one platform, so a name or a link to a profile travels better. For fuller credits, a `CONTRIBUTORS` or `AUTHORS` file keeps them in the repository without crowding the record of what changed.
 
 ## About Keep a Changelog {#about}
 
