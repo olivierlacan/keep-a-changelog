@@ -223,6 +223,16 @@ helpers do
     match && match[1]
   end
 
+  # Human-friendly date with an ordinal day: "2026-06-07" -> "June 7th, 2026".
+  # The ISO string stays available for the <time datetime> attribute and title.
+  def human_date(iso)
+    require "date"
+    d = Date.parse(iso)
+    n = d.day
+    suffix = (11..13).include?(n % 100) ? "th" : { 1 => "st", 2 => "nd", 3 => "rd" }.fetch(n % 10, "th")
+    "#{d.strftime("%B")} #{n}#{suffix}, #{d.year}"
+  end
+
   # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
   # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
   # them: join hard-wrapped lines within paragraphs and list items while keeping

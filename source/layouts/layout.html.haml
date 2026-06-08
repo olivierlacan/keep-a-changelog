@@ -126,7 +126,7 @@
                 %strong= current_page.metadata[:page][:version]
               - release_date = changelog_date_for(current_page.metadata[:page][:version])
               - if release_date
-                %time.version-date{ datetime: release_date }= release_date
+                %time.version-date{ datetime: release_date, title: release_date }= "Published on #{human_date(release_date)}"
             %aside#toc.toc{ "aria-label": "Table of contents" }
             .content
               = yield
