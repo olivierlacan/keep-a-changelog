@@ -662,7 +662,9 @@
     /* Centered reading column with the TOC anchored in the left gutter. */
     .article-body {
       display: grid;
-      grid-template-columns: 1fr minmax(0, var(--measure)) 1fr;
+      /* Side gutters never shrink below the TOC's width, so it can't overflow
+         its column and shove the centered reading column off-center. */
+      grid-template-columns: minmax(15rem, 1fr) minmax(0, var(--measure)) minmax(15rem, 1fr);
       column-gap: var(--space-l);
     }
     .article-body > .version-marker { grid-column: 2; margin-block-end: var(--space-l); }
