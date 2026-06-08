@@ -619,6 +619,9 @@
       inset-inline-end: 0;
       z-index: 20;
       margin-block-start: var(--space-2xs);
+      /* Size to the longest item rather than shrink-wrapping to the toggle's
+         narrow box; capped so it stays on screen. */
+      inline-size: max-content;
       max-inline-size: 22rem;
       text-align: start;
       padding: var(--space-2xs);
