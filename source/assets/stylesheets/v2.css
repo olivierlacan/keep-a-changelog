@@ -443,6 +443,9 @@
   .version-marker a:hover { text-decoration: underline; }
   .version-date::before { content: " · "; color: var(--muted); }
 
+  /* "Changelog basics" titles the triptych, centered above it. */
+  .content #basics { text-align: center; }
+
   /* Intro triptych: What / Why / Who as a row of blocks on wide screens,
      stacked on narrow ones. */
   .content .intro-grid {

@@ -5,12 +5,12 @@ language: en
 version: 2.0.0
 ---
 
-## The basics {#basics}
+## Changelog basics {#basics}
 
 <div class="intro-grid" markdown="1">
 
 <section class="intro-card" markdown="1">
-### What's a changelog? {#what}
+### What is it? {#what}
 
 It's a curated, chronologically ordered list of the notable changes for each version of a project.
 
