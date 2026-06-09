@@ -99,7 +99,13 @@ document.addEventListener("DOMContentLoaded", function(){
   var tocHost = document.getElementById('toc');
   var article = document.querySelector('.article-body .content');
   if (tocHost && article) {
-    var headings = article.querySelectorAll('h2[id]');
+    // Skip the What/Why/Who intro cards: they are the page's introduction, not
+    // navigable sections, and jumping to one lands inside the triptych rather
+    // than at a section start. (The heading-anchor code skips them the same way.)
+    var headings = Array.prototype.filter.call(
+      article.querySelectorAll('h2[id]'),
+      function(h){ return !h.closest('.intro-card'); }
+    );
     if (headings.length) {
       var details = document.createElement('details');
       details.className = 'toc-disclosure';
