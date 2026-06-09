@@ -471,7 +471,7 @@
   }
   .content .intro-card > * + * { margin-block-start: var(--space-xs); }
   /* Card headings drop the section-separator treatment and sit tighter. */
-  .content .intro-card h2 {
+  .content .intro-card :is(h2, h3) {
     margin-block-start: 0;
     padding-block-start: 0;
     border-block-start: 0;

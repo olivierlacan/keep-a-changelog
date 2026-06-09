@@ -5,24 +5,26 @@ language: en
 version: 2.0.0
 ---
 
+## The basics {#basics}
+
 <div class="intro-grid" markdown="1">
 
 <section class="intro-card" markdown="1">
-## What's a changelog? {#what}
+### What's a changelog? {#what}
 
 It's a curated, chronologically ordered list of the notable changes for each version of a project.
 
 </section>
 
 <section class="intro-card" markdown="1">
-## Why keep one? {#why}
+### Why keep one? {#why}
 
 To make it easy for users and contributors to see the notable changes between each version.
 
 </section>
 
 <section class="intro-card" markdown="1">
-## Who needs this? {#who}
+### Who needs this? {#who}
 
 People do. Anyone who uses or builds software wants to know what changed, and why.
 
