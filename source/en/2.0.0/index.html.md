@@ -89,7 +89,7 @@ A short upgrade note can sit in the entry itself, such as "rename the `color` op
 
 ### Structuring a release {#releasing}
 
-Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? You do not have to reconstruct the past. Begin here, recording notable changes from now on.
+Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
 
 A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
 
