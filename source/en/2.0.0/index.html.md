@@ -83,13 +83,13 @@ Mark breaking changes clearly. The version number already signals them (under [S
 - **Breaking:** parse() now returns a result object instead of raising.
 ```
 
-Be specific about what breaks. "Breaking" only means something once readers know which interface you keep stable: a command line, a library API, a network protocol, a file format, a configuration schema. State which one your versioning scheme covers.
+Say what breaks. The word means little until readers know which interface you keep stable: a command line, a library API, a network protocol, a file format, or a configuration schema. State which one your versioning scheme covers.
 
 A short upgrade note can sit in the entry itself, such as "rename the `color` option to `theme`." When the steps are substantial, link to them (a migration guide or the release notes) rather than spelling them out here. A long procedure buries what changed and turns a scannable record into a how-to: a different kind of document, for a narrower audience. Keep the `**Breaking:**` marker on the entry itself, within its type, rather than collecting breaks into a separate section, so anyone scanning `Changed` or `Removed` sees them in place.
 
 ### Structuring a release {#releasing}
 
-Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version.
+Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? You do not have to reconstruct the past. Begin here, recording notable changes from now on.
 
 A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
 
@@ -101,7 +101,9 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 [1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
 ```
 
-`[Unreleased]` compares the latest tag to `HEAD`, so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a platform's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+
+When you cut a release, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
@@ -128,7 +130,7 @@ Open with a `# Changelog` heading and a short, fixed preamble that says what the
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ```
 
@@ -140,11 +142,9 @@ No, though they draw from the same material. A changelog is the complete, ongoin
 
 This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable `## [x.y.z]` heading, a small script can extract that section and create the release without anyone retyping it.
 
-Hosts will also offer to generate the notes for you: GitHub from merged pull requests, GitLab from commit messages. See that offer for what it is. It produces the raw history, written for the people working on the code rather than the people using it, and it keeps your release communication inside the platform, made by its tooling. The convenience is the hook. Your changelog goes where your code goes; what a host generates and keeps for you does not, and you lose it the day you leave. Treat a generated draft as a starting point if you like, but curate it and keep the record in your own repository.
+A host will offer to do this for you. See that offer for what it is. Its release system (GitHub Releases, GitLab Releases) attaches notes to a tag, notifies watchers, and collects built files; it will even generate the notes, from merged pull requests or commit messages. But everything it makes and stores lives in the host's database, not your repository: the raw history, written for the people working on the code rather than the people using it, and it does not travel with a `git clone` (a copy of the repository) or follow you to another host. The convenience is the hook. Your changelog goes where your code goes; what a host generates and keeps for you does not, and you lose it the day you leave.
 
-Many projects use a host's release system for this instead, such as GitHub Releases or GitLab Releases. These are convenient: they attach notes to a tag, show them on the project page, notify watchers, and collect built files. But the notes live in one platform's database, not in your repository. They do not travel with a `git clone`, and they do not follow you to another host: your history moves, your release notes do not. If the platform changes, or you leave it, that record is stranded.
-
-A changelog avoids this because it is a plain file you own. It can carry the same information these systems present (dated versions, grouped changes, a release summary, links to issues or commits), and it stays in the repository where anyone can read it offline. Keep `CHANGELOG.md` as the canonical record and generate the host's release pages from it. You still get the platform's reach (notifications, a visible page, attached downloads) without depending on it to hold your history.
+So treat a generated draft as a starting point if you like, but keep `CHANGELOG.md` as the canonical record and generate the host's release pages from it. It carries the same information these systems present (dated versions, grouped changes, a release summary, links to issues or commits), it reads offline, and it gives you the host's reach (notifications, a visible page, attached downloads) without depending on it to hold your history.
 
 ## What makes a changelog worse? {#bad-practices}
 
@@ -158,7 +158,7 @@ Do not use a list of commits as a changelog. It is full of noise: merge commits,
 
 ### Ignoring deprecations {#ignoring-deprecations}
 
-When someone upgrades, it should be clear what will break. Make it possible to upgrade to a version that lists deprecations, remove what is deprecated, then upgrade to the version that removes them. If you do nothing else, list deprecations, removals, and breaking changes.
+When someone upgrades, it should be clear what will break. Announce a deprecation before you act on it: mark it `Deprecated` in one release, and only `Removed` in a later one, so anyone upgrading meets the warning before the change. Say which version will remove it, so they can plan. If you do nothing else, always record deprecations, removals, and breaking changes.
 
 ### Inconsistent changes {#inconsistent-changes}
 
@@ -176,7 +176,7 @@ If your project uses coding agents, record that brief where they read it, for ex
 
 The same caution applies to changelogs generated from commit messages. A convention such as [Conventional Commits][conventional-commits], with tools such as [semantic-release][semantic-release], release-please, Changesets, and git-cliff, reads structured commits to choose the next version and draft a changelog. That can give you a starting point, but a commit and a changelog entry are written for different people, and one does not convert cleanly into the other.
 
-A commit message records a step for the people working on the code, so the change can be understood later. A changelog entry tells the people who use the software what a release means for them. Generating the entry from the commit assumes that every commit belongs in the changelog, and that the right entry is a reworded commit message. Usually it is neither: many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is raw material at best: a person still has to choose what is notable, group it, and write it for the reader.
+Generating the entry from the commit assumes that every commit belongs in the changelog, and that the right entry is a reworded commit message. Usually it is neither: many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is raw material at best: a person still has to choose what is notable, group it, and write it for the reader.
 
 Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change. That teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
 
@@ -206,11 +206,11 @@ It depends on whether the repository holds one product or many. Unrelated projec
 
 ### Should I link to issues or pull requests? {#linking}
 
-You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one platform, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
+You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one host, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
 
 ### Should you credit contributors? {#credits}
 
-The commit history already records who did what, so a changelog does not need to credit anyone. But naming contributors, especially in a notable release, is a common and generous way to recognize their work and encourage more of it. If you do, keep it brief, and remember that a `@handle` belongs to one platform, so a name or a link to a profile travels better. For fuller credits, a `CONTRIBUTORS` or `AUTHORS` file keeps them in the repository without crowding the record of what changed.
+The commit history already records who did what, so a changelog does not need to credit anyone. But naming contributors, especially in a notable release, is a common and generous way to recognize their work and encourage more of it. If you do, keep it brief, and remember that a `@handle` belongs to one host, so a name or a link to a profile travels better. For fuller credits, a `CONTRIBUTORS` or `AUTHORS` file keeps them in the repository without crowding the record of what changed.
 
 ## About Keep a Changelog {#about}
 
@@ -235,11 +235,11 @@ Keep a Changelog is one carefully considered opinion with examples, not the only
 
 ## References {#references}
 
-Keep a Changelog grew from good practices observed in open source, gathered into a [better changelog convention][kac-changelog]. Olivier Lacan discussed the motivation behind it on [The Changelog podcast][changelog-podcast].
+Keep a Changelog grew from good practices observed in open source, gathered into the convention this page describes, and demonstrated in [its own changelog][kac-changelog]. Olivier Lacan discussed the motivation behind it on [The Changelog podcast][changelog-podcast].
 
 Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects][adoption-search] whose changelogs note that their format is based on it.
 
-Among them are companies such as Microsoft, Google, Cloudflare, and Unity; public institutions such as NASA and the UK's National Archives; and the Wikimedia Foundation. Some recommend it in their own contributor guides and engineering handbooks.
+Among the adopters are NASA and the UK's National Archives, the Wikimedia Foundation, and companies such as Cloudflare and Unity, several of which recommend it in their own contributor guides and engineering handbooks.
 
 Its reach extends past software, too. Peer-reviewed research on software versioning and breaking changes cites it, and research-data guidelines such as The Turing Way and the Helmholtz Metadata Collaboration recommend it for tracking changes to scientific datasets.
 
