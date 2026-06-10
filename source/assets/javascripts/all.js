@@ -143,6 +143,13 @@ document.addEventListener("DOMContentLoaded", function(){
       if (wideToc.addEventListener) { wideToc.addEventListener('change', syncToc); }
       else if (wideToc.addListener) { wideToc.addListener(syncToc); }
 
+      // In overlay mode (narrow screens) the open list is a popover, so dismiss
+      // it once a section is chosen. In sidebar mode (wide screens) it's a
+      // standing rail, so leave it open.
+      list.addEventListener('click', function(e){
+        if (e.target.closest('a') && !wideToc.matches) { details.open = false; }
+      });
+
       // Scroll-spy: mark the heading nearest the top of the viewport as current.
       if ('IntersectionObserver' in window) {
         var setCurrent = function(id){
