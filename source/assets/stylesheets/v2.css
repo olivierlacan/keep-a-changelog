@@ -491,6 +491,10 @@
     margin-block-start: var(--space-s);
     padding-block-start: 0;
     border-block-start: 0;
+    /* It has no top padding/border to sit behind, so a TOC jump would land it
+       flush against the top. Match the breathing room other headings get from
+       their padding when jumped to, without adding space in normal flow. */
+    scroll-margin-top: var(--space-m);
   }
   .content h3 { margin-block-start: var(--space-m); }
 
