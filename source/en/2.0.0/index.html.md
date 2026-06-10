@@ -12,7 +12,7 @@ version: 2.0.0
 <section class="intro-card" markdown="1">
 ### What is it? {#what}
 
-It's a curated, chronologically ordered list of the notable changes for each version of a project.
+A changelog is a curated, chronologically ordered list of the notable changes for each version of a project.
 
 </section>
 
