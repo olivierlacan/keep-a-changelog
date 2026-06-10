@@ -190,7 +190,11 @@ activate :automatic_image_sizes
 activate :syntax
 set :markdown_engine, :kramdown
 
-set :markdown, auto_ids: true, smart_quotes: %w[lsquo rsquo ldquo rdquo]
+# input: "GFM" so ```backtick``` fenced code blocks render as <pre><code>
+# (kramdown's default parser only fences with ~~~). hard_wrap: false keeps soft
+# line wraps from becoming <br>, matching the prior default behavior.
+set :markdown, auto_ids: true, smart_quotes: %w[lsquo rsquo ldquo rdquo],
+  input: "GFM", hard_wrap: false
 
 # --------------------------------------
 #   Helpers
