@@ -519,9 +519,12 @@
     .content .heading-anchor { opacity: 0.4; }
   }
 
-  /* Code examples (fenced blocks). */
-  .content pre,
-  .content .highlight {
+  /* Code examples (fenced blocks). Rouge wraps each block as
+     <div class="highlight"><pre class="highlight">...</pre></div>, so style the
+     <pre> alone; styling both doubled the padding and stacked two backgrounds.
+     The wrapper div stays a plain passthrough and gets its spacing from the
+     .content > * + * flow rule above. */
+  .content pre {
     overflow-x: auto;
     font-size: var(--step--1);
     line-height: 1.6;
@@ -529,8 +532,7 @@
     border-radius: var(--radius);
     padding: var(--space-s) var(--space-m);
   }
-  .content pre code,
-  .content .highlight code { background: none; padding: 0; color: var(--code-text); }
+  .content pre code { background: none; padding: 0; color: var(--code-text); }
 
   /* Aside notes — clarifying sidebars set apart from the main flow:
      a filled callout with an ocre rule. */
