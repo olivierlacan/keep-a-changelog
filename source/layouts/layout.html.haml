@@ -79,8 +79,6 @@
                 = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
                 it.
 
-        - if v2_plus
-          %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
         %nav.locales{ role: "navigation" }
           %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
           %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }

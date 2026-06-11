@@ -123,6 +123,9 @@
     color: var(--code-text);
     padding: 0.1em 0.35em;
     border-radius: 4px;
+    /* A hairline keeps inline code legible on any surface, including asides
+       (which share the code background). */
+    border: 1px solid var(--rule);
   }
 
   h2 { font-size: var(--step-2); color: var(--accent); }
@@ -301,6 +304,9 @@
       max-inline-size: var(--locale-popover-max);
       box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
     }
+    /* Grow the white header while the picker is open so the revealed select
+       rests on the header surface instead of hanging over the orange hero. */
+    article > header:has(.locales[data-open]) { padding-block-end: 3.25rem; }
   }
 }
 
@@ -319,7 +325,9 @@
       url("../images/hero-topo@2x.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    /* Anchor at the top so revealing the example changelog (which grows the hero)
+       extends the pattern downward instead of re-centering and shifting it. */
+    background-position: center top;
     color: var(--hero-text);
     /* Fluid top padding: roomy on wide screens, tight on phones. (The clamp lives
        in a custom property so the Sass-based minifier doesn't try to evaluate it.) */
@@ -353,6 +361,12 @@
   .hero h1 { font-size: 1em; color: var(--hero-text); margin: 0; text-wrap: balance; }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
+  /* On phones, stack the mark above the title so the name keeps the full width
+     and stays on one line, centered like the tagline below it. */
+  @media (max-width: 30rem) {
+    .hero-lockup { flex-direction: column; gap: 0.15em; }
+    .hero h1 { text-align: center; }
+  }
   /* Example changelog. On wide screens it's the always-visible centerpiece; on
      narrow screens it collapses into a tap-to-open disclosure to save space. */
   .hero .changelog-figure {
@@ -423,7 +437,14 @@
 
   /* Reading column: the Markdown body, centered to a comfortable measure. */
   .content {
+    /* Fill the grid track (up to the reading measure) and center. Without an
+       explicit inline-size, margin-inline:auto sizes a grid item to its
+       max-content, so a long code line grew .content past the viewport on mobile.
+       inline-size:100% + min-inline-size:0 keeps it within the track and lets the
+       overflow-x:auto code blocks scroll instead of stretching the page. */
+    inline-size: 100%;
     max-inline-size: var(--measure);
+    min-inline-size: 0;
     margin-inline: auto;
     padding: var(--space-l) var(--space-m) var(--space-2xl);
   }
@@ -532,7 +553,7 @@
     border-radius: var(--radius);
     padding: var(--space-s) var(--space-m);
   }
-  .content pre code { background: none; padding: 0; color: var(--code-text); }
+  .content pre code { background: none; padding: 0; border: 0; color: var(--code-text); }
 
   /* Aside notes — clarifying sidebars set apart from the main flow:
      a filled callout with an ocre rule. */
@@ -545,6 +566,9 @@
     border-radius: 0 var(--radius) var(--radius) 0;
   }
   .content aside > * + * { margin-block-start: var(--space-xs); }
+  /* The aside fill is the code background, so give inline code a surface fill
+     here to keep it distinct from the callout behind it. */
+  .content aside code { background: var(--surface); }
 
   /* Blockquotes — definitions and citations. Visually distinct from asides:
      no fill, italic, a gold rule. */
@@ -617,7 +641,7 @@
       align-items: baseline;
       column-gap: var(--space-s);
     }
-    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-l) var(--space-m); }
+    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-m) var(--space-2xs); }
     .article-body > .toc { grid-column: 3; justify-self: start; margin-inline: 0; position: relative; }
     .article-body > .content { grid-column: 1 / -1; align-self: start; }
     /* The open list drops as a popover anchored to the toggle, so the narrow
@@ -660,6 +684,10 @@
     .article-body > .content { grid-column: 1; }
     .article-body > .toc { justify-self: center; }
     .article-body > .content { justify-self: stretch; }
+    /* Tighten the stack: the toggle sits close under the version, and the
+       content starts soon after, instead of floating in large gaps. */
+    .toc-disclosure > summary { margin-block-start: var(--space-2xs); }
+    .article-body > .content { padding-block-start: var(--space-s); }
     .toc-disclosure[open] > nav {
       position: static;
       margin-inline: auto;
