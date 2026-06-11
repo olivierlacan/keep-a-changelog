@@ -274,6 +274,15 @@ end
 activate :directory_indexes
 page "/404.html", directory_index: false
 
+# ----- Development ----- #
+
+# Live-reload CSS, JS, and templates during `middleman serve` so changes show
+# without a manual refresh. The gem ships in the Gemfile but must be activated
+# explicitly; without this, edits (especially CSS) don't reload on their own.
+configure :development do
+  activate :livereload
+end
+
 # --------------------------------------
 #   Production
 # --------------------------------------
