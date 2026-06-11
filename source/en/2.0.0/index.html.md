@@ -69,8 +69,10 @@ When a `Security` entry has a CVE identifier, lead with it so readers and securi
 ```
 
 <aside markdown="1">
-There are only six types on purpose. The type says what kind of change it is. The reason (an improvement, an optimization, a refactor, a performance gain, a dependency update) belongs in the wording of the entry, not in a new type. "Rewrote the JSON parser; about three times faster on large files" says more under `Changed` than a `Performance` heading would. You can add a category if you genuinely need one, but you rarely will: `Improved` and `New` are usually `Changed` and `Added` with the reason in the wording, and `Internal` or `Housekeeping` changes are rarely notable enough to list at all. Keeping to the six leaves every changelog readable the same way, and parseable by the same tools.
+There are only six types on purpose. What kind of change it is goes in the type; why it matters goes in the wording of the entry, not in a new type.
 </aside>
+
+An entry like "Rewrote JSON parser; 3x faster on large files" fits better under `Changed` than `Performance`. You can add a category if you genuinely need one, but you rarely will: `Improved` and `New` are often the same as `Changed` and `Added`, and `Internal` or `Housekeeping` changes are rarely notable enough to list at all. Keeping to the six leaves every changelog readable the same way, and parseable by the same tools.
 
 Two requests are common:
 
