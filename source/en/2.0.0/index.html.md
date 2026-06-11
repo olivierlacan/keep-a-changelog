@@ -43,7 +43,7 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 - List the latest version first.
 - Show the release date of each version.
 - Note which [versioning scheme][versioning-schemes] you use.
-- Write plainly. Many of your readers are not native English speakers, so favor clear, concise wording.
+- Write plainly. Many of your readers are not native speakers, so favor clear, concise wording.
 
 ### Types of changes {#types}
 
