@@ -10,12 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2026-06-07
 
 2.0.0 is the first major revision of Keep a Changelog. The format itself
-does not change — the six change types, the
+does not change: the six change types, the
 `YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
 so nothing you have already written becomes invalid. What changes is the guidance
-around it: 2.0.0 answers the questions the community has raised most often over the
-years — marking breaking changes, versioning beyond SemVer, monorepos, the
-boundary between Changed, Fixed, and Security — and adds guidance for an era in
+around it. 2.0.0 answers the questions the community has raised most often over the
+years (marking breaking changes, versioning beyond SemVer, monorepos, the
+boundary between Changed, Fixed, and Security) and adds guidance for an era in
 which an LLM can draft a changelog from a diff in seconds. Along the way the
 page is restructured from a flat FAQ into integrated guidance, given a new
 tagline and a redesigned, accessible site, and gathers a round of wording
@@ -37,12 +37,12 @@ refinements that were never worth re-translating over on their own.
 - A redesigned site for 2.0: light and dark themes with a header
   switch (system, light, or dark); a sticky table-of-contents sidebar that
   collapses to a menu on small screens; a responsive header whose language
-  picker collapses behind a globe icon on narrow screens; the What/Why/Who intro
-  shown as cards; heading anchor links; the topographic hero pattern and
-  tree-ring mark restored; and Tyler Fortune's badge added to the footer — all
-  meeting WCAG 2.1 AA. The English 2.0.0 page is now authored in Markdown, with
-  reference-style links.
-- A note in the References section on the convention's reach — now translated into
+  picker collapses behind a globe icon on narrow screens; a "Changelog basics"
+  intro shown as What/Why/Who cards; heading anchor links; the topographic hero
+  pattern and tree-ring mark restored; and Tyler Fortune's badge added to the
+  footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is now authored in
+  Markdown, with reference-style links and fenced code examples.
+- A note in the References section on the convention's reach: now translated into
   dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
@@ -55,8 +55,8 @@ refinements that were never worth re-translating over on their own.
 ### Changed
 
 - New tagline: "Clearly document the evolution of your projects." It replaces
-  "Don't let your friends dump git logs into changelogs." — active, idiom-free, and
-  easier to translate. Earlier versions keep the original line.
+  "Don't let your friends dump git logs into changelogs." The new line is active,
+  idiom-free, and easier to translate. Earlier versions keep the original line.
 - Restructured the page from a flat list of FAQs into integrated guidance:
   a how-to section (principles, types, breaking changes, structuring a release,
   curation, file naming, the header preamble, and release notes), a section on
@@ -79,9 +79,9 @@ description when links are shared are language-appropriate
 
 ### Removed
 
-- Outdated specifics from two answers — the Vandamme gem reference (in
-  "can changelogs be automatically parsed?") and a GitHub-Releases discoverability
-  note — in favor of more general guidance.
+- Outdated specifics from two answers (the Vandamme gem reference, in
+  "can changelogs be automatically parsed?", and a GitHub-Releases discoverability
+  note) in favor of more general guidance.
 - The FAQ scaffolding and most of the first-person framing, in favor of plainer
   prose; the personal podcast note now lives in a synthesized References section.
 - Trademark sign previously shown after the project description in version 
