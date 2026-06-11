@@ -74,7 +74,7 @@ There are only six types on purpose. What kind of change it is goes in the type;
 
 An entry like "Rewrote JSON parser; 3x faster on large files" fits better under `Changed` than `Performance`. You can add a category if you genuinely need one, but you rarely will: `Improved` and `New` are often the same as `Changed` and `Added`, and `Internal` or `Housekeeping` changes are rarely notable enough to list at all. Keeping to the six leaves every changelog readable the same way, and parseable by the same tools.
 
-Two requests are common:
+Two other type requests are common:
 
 - **Dependencies** are not a type of change. A dependency update can be harmless, a fix, or breaking. If it matters to your users, describe its effect under the right type. If it does not, leave it out.
 - **Known issues** are discovered, not changed. Note them on the affected version or in your issue tracker. When one is fixed, it goes under `Fixed`.
