@@ -609,6 +609,9 @@
     border-radius: var(--radius);
     background: var(--surface);
     color: var(--text);
+    /* Never wrap "On this page": in the narrow gutter it was shrinking to
+       min-content and breaking across lines. */
+    white-space: nowrap;
   }
   .toc-disclosure > summary::-webkit-details-marker { display: none; }
   .toc-disclosure > summary::after {
@@ -682,9 +685,11 @@
     }
   }
 
-  /* Very narrow: stack the toggle below the centered version (no room for one
-     line), each centered, with the open list back in normal flow. */
-  @media (max-width: 31.99rem) {
+  /* Narrow: stack the toggle below the centered version, each centered, with the
+     open list back in normal flow. The long "Version … Published on …" line plus
+     the toggle don't sit comfortably side by side until ~600px, so stack below
+     that rather than cramming the toggle into a thin gutter. */
+  @media (max-width: 37.49rem) {
     .article-body { grid-template-columns: 1fr; justify-items: center; }
     .article-body > .version-marker,
     .article-body > .toc,
