@@ -35,13 +35,15 @@ refinements that were never worth re-translating over on their own.
   requests; crediting contributors; very large changelogs; monorepos; and a
   statement of what Keep a Changelog deliberately won't do.
 - A redesigned site for 2.0: light and dark themes with a header
-  switch (system, light, or dark); a sticky table-of-contents sidebar that
-  collapses to a menu on small screens; a responsive header whose language
-  picker collapses behind a globe icon on narrow screens; a "Changelog basics"
-  intro shown as What/Why/Who cards; heading anchor links; the topographic hero
-  pattern and tree-ring mark restored; and Tyler Fortune's badge added to the
-  footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is now authored in
-  Markdown, with reference-style links and fenced code examples.
+  switch (system, light, or dark); a header that pins below the hero as you
+  scroll, keeping the language and theme controls and the brand wordmark within
+  reach while reading; a sticky table-of-contents sidebar that collapses to a
+  menu on small screens; a responsive header whose language picker collapses
+  behind a globe icon on narrow screens; a "Changelog basics" intro shown as
+  What/Why/Who cards; heading anchor links; indented lists; the topographic hero
+  pattern and tree-ring mark (in the brand accent) restored; and Tyler Fortune's
+  badge added to the footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is
+  now authored in Markdown, with reference-style links and fenced code examples.
 - A note in the References section on the convention's reach: now translated into
   dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
