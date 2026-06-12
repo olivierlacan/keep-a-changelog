@@ -152,7 +152,10 @@
     -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
     mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
   }
-  article > header .mark { inline-size: 40px; block-size: 40px; }
+  /* Hidden by default: the hero carries the brand mark. Revealed only on very
+     narrow screens (below), where the hero mark is hidden so it doesn't crowd
+     the title. */
+  article > header .mark { display: none; inline-size: 36px; block-size: 36px; }
 
   /* Header order: brand mark and language picker grouped on the left, the theme
      switch pushed to the far right. */
@@ -287,6 +290,10 @@
   /* Very narrow: collapse the language picker behind the globe so the header
      stays on one row. Tapping the globe reveals the select (JS sets data-open). */
   @media (max-width: 30rem) {
+    /* Show the brand mark in the header (before the picker) at this width, and
+       hide it in the hero (rule in the content layer) so it doesn't crowd the
+       title. */
+    article > header .mark { display: inline-block; }
     .locales-toggle { display: inline-grid; }
     .locales label { display: none; }
     #language-select { display: none; }
@@ -361,10 +368,10 @@
   .hero h1 { font-size: 1em; color: var(--hero-text); margin: 0; text-wrap: balance; }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
-  /* On phones, stack the mark above the title so the name keeps the full width
-     and stays on one line, centered like the tagline below it. */
+  /* On phones the brand mark moves up into the header, so drop it from the hero
+     and let the title use the full width, centered like the tagline below it. */
   @media (max-width: 30rem) {
-    .hero-lockup { flex-direction: column; gap: 0.15em; }
+    .hero-mark { display: none; }
     .hero h1 { text-align: center; }
   }
   /* Example changelog. On wide screens it's the always-visible centerpiece; on
