@@ -55,7 +55,7 @@
 
   %body
     %article
-      %header
+      %header{ role: "banner" }
         - if !latest_version
           -# language_code can be an unregistered directory (e.g. the stray "id"
           -# duplicate of "id-ID"); fall back to {} so the notice still renders.
@@ -132,20 +132,22 @@
               - release_date = changelog_date_for(current_page.metadata[:page][:version])
               - if release_date
                 %time.version-date{ datetime: release_date, title: release_date }= "Published on #{human_date(release_date)}"
-            %aside#toc.toc{ "aria-label": "Table of contents" }
+            -# A plain container: the table-of-contents navigation landmark and its
+            -# label live on the JS-built <nav> inside, so the wrapper needs no role.
+            %div#toc.toc
             .content
               = yield
         - else
           = yield
 
-        %footer.footer.clearfix{ role: "contentinfo" }
-          - if v2_plus
-            = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"
-          - else
-            = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
+      %footer.footer.clearfix{ role: "contentinfo" }
+        - if v2_plus
+          = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"
+        - else
+          = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
 
-          %p.about
-            != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
+        %p.about
+          != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
 
   - unless config.gauges_id.blank?
     :javascript

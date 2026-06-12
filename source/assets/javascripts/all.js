@@ -184,6 +184,12 @@ document.addEventListener("DOMContentLoaded", function(){
     article.querySelectorAll('pre').forEach(function(pre){
       pre.setAttribute('tabindex', '0');
     });
+
+    // The callout asides are notes within the main content, not page-level
+    // complementary landmarks; role="note" keeps them out of the landmark map.
+    article.querySelectorAll('aside').forEach(function(aside){
+      aside.setAttribute('role', 'note');
+    });
   }
 
   // Sticky header: once the hero scrolls out of view, pin the header (CSS reacts
