@@ -179,4 +179,15 @@ document.addEventListener("DOMContentLoaded", function(){
       h.appendChild(a);
     });
   }
+
+  // Sticky header: once the hero scrolls out of view, pin the header (CSS reacts
+  // to .header-stuck on <html>) so the language and theme controls, and the brand
+  // mark, stay reachable while reading the sections.
+  var hero = document.querySelector('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    var stickObserver = new IntersectionObserver(function(entries){
+      document.documentElement.classList.toggle('header-stuck', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    stickObserver.observe(hero);
+  }
 });
