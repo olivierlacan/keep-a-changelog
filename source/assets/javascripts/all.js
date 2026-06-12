@@ -178,6 +178,12 @@ document.addEventListener("DOMContentLoaded", function(){
       // out of copied text and the accessibility tree.
       h.appendChild(a);
     });
+
+    // Fenced code blocks scroll horizontally when a line is too long; make them
+    // keyboard-focusable so they can be scrolled without a mouse (WCAG 2.1.1).
+    article.querySelectorAll('pre').forEach(function(pre){
+      pre.setAttribute('tabindex', '0');
+    });
   }
 
   // Sticky header: once the hero scrolls out of view, pin the header (CSS reacts

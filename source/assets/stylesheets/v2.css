@@ -664,7 +664,9 @@
   }
   .toc-list a:hover { color: var(--text); border-inline-start-color: var(--muted); }
   .toc-list a[aria-current="true"] {
-    color: var(--accent);
+    /* --link is the contrast-safe ocre/gold (clears 4.5:1); the bright --accent
+       is reserved for the non-text border marker. */
+    color: var(--link);
     border-inline-start-color: var(--accent);
     font-weight: 600;
   }
