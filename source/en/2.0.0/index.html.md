@@ -220,22 +220,22 @@ The commit history already records who did what, so a changelog does not need to
 
 ### Is there a standard changelog format? {#standard}
 
-Not a formal one. There were older conventions, such as the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news], but they were limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
+Not a formal one. There are older conventions, such as the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news], but they are limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
 
 ### What does it deliberately leave out? {#scope}
 
 A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:
 
-- It will not add more change types. Six are enough; the reason goes in the wording.
-- It will not define a machine format, schema, or required layout. This page is the format.
-- It will not become a tool or service to install. A convention should cost only attention.
-- It will not depend on any host or vendor. A changelog is a plain file in your repository.
+- No new change types. Six are enough; the reason goes in the wording.
+- No machine format, schema, or required layout. This page is the format.
+- No tool or service to install. A convention should cost only attention.
+- No dependence on a host or vendor. A changelog is a plain file in your repository.
 
 None of this is fixed; it is open to discussion. But additions to a widely used convention deserve care.
 
 ### How can I contribute? {#contribute}
 
-Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you need help.
+Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you have ideas or need help.
 
 ## References {#references}
 
