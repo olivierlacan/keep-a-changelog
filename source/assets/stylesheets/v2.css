@@ -172,7 +172,7 @@
        geometric axis, but text reads high because its visible caps sit in the
        upper half. This drops the wordmark so it looks centered against the mark. */
     line-height: 1;
-    transform: translateY(0.06em);
+    transform: translateY(0.02em);
     color: var(--text);
     white-space: nowrap;
   }
