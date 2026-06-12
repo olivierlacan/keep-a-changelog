@@ -146,7 +146,7 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
+- New visual identity by [@tylerfortune8].
 - Version navigation.
 - Links to latest released version in previous versions.
 - "Why keep a changelog?" section.
@@ -154,21 +154,21 @@ description when links are shared are language-appropriate
 - "How do I make a changelog?" section.
 - "Frequently Asked Questions" section.
 - New "Guiding Principles" sub-section to "How do I make a changelog?".
-- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).
-- German translation from [@mpbzh](https://github.com/mpbzh) & [@Art4](https://github.com/Art4).
-- Italian translation from [@azkidenz](https://github.com/azkidenz).
-- Swedish translation from [@magol](https://github.com/magol).
-- Turkish translation from [@emreerkan](https://github.com/emreerkan).
-- French translation from [@zapashcanon](https://github.com/zapashcanon).
-- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
-- Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).
-- Russian translation from [@aishek](https://github.com/aishek).
-- Czech translation from [@h4vry](https://github.com/h4vry).
-- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
-- Korean translation from [@pierceh89](https://github.com/pierceh89).
-- Croatian translation from [@porx](https://github.com/porx).
-- Persian translation from [@Hameds](https://github.com/Hameds).
-- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
+- Simplified and Traditional Chinese translations from [@tianshuo].
+- German translation from [@mpbzh] & [@Art4].
+- Italian translation from [@azkidenz].
+- Swedish translation from [@magol].
+- Turkish translation from [@emreerkan].
+- French translation from [@zapashcanon].
+- Brazilian Portuguese translation from [@Webysther].
+- Polish translation from [@amielucha] & [@m-aciek].
+- Russian translation from [@aishek].
+- Czech translation from [@h4vry].
+- Slovak translation from [@jkostolansky].
+- Korean translation from [@pierceh89].
+- Croatian translation from [@porx].
+- Persian translation from [@Hameds].
+- Ukrainian translation from [@osadchyi-s].
 
 ### Changed
 
@@ -198,9 +198,9 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- RU translation from [@aishek](https://github.com/aishek).
-- pt-BR translation from [@tallesl](https://github.com/tallesl).
-- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).
+- RU translation from [@aishek].
+- pt-BR translation from [@tallesl].
+- es-ES translation from [@ZeliosAriex].
 
 ## [0.2.0] - 2015-10-06
 
@@ -218,7 +218,7 @@ description when links are shared are language-appropriate
 ### Changed
 
 - Improve argument against commit logs.
-- Start following [SemVer](https://semver.org) properly.
+- Start following [SemVer] properly.
 
 ## [0.0.8] - 2015-02-17
 
@@ -320,3 +320,24 @@ description when links are shared are language-appropriate
 [0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+[SemVer]: https://semver.org
+[@tylerfortune8]: https://github.com/tylerfortune8
+[@tianshuo]: https://github.com/tianshuo
+[@mpbzh]: https://github.com/mpbzh
+[@Art4]: https://github.com/Art4
+[@azkidenz]: https://github.com/azkidenz
+[@magol]: https://github.com/magol
+[@emreerkan]: https://github.com/emreerkan
+[@zapashcanon]: https://github.com/zapashcanon
+[@Webysther]: https://github.com/Webysther
+[@amielucha]: https://github.com/amielucha
+[@m-aciek]: https://github.com/m-aciek
+[@aishek]: https://github.com/aishek
+[@h4vry]: https://github.com/h4vry
+[@jkostolansky]: https://github.com/jkostolansky
+[@pierceh89]: https://github.com/pierceh89
+[@porx]: https://github.com/porx
+[@Hameds]: https://github.com/Hameds
+[@osadchyi-s]: https://github.com/osadchyi-s
+[@tallesl]: https://github.com/tallesl
+[@ZeliosAriex]: https://github.com/ZeliosAriex
