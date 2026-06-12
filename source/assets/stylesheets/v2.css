@@ -168,6 +168,9 @@
     margin-inline-start: calc(var(--space-s) * -0.5);
     font-weight: 700;
     font-size: var(--step-0);
+    /* Tight line box so the glyphs center on the header's axis instead of riding
+       high in an oversized line height. */
+    line-height: 1;
     color: var(--text);
     white-space: nowrap;
   }
@@ -227,12 +230,14 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
+  /* Flex-center the globe so it sits on the header axis without depending on
+     baseline/vertical-align nudges. */
+  .locales label { display: inline-flex; align-items: center; }
   .locales label::before {
     content: "";
-    display: inline-block;
+    display: block;
     inline-size: 1.3em;
     block-size: 1.3em;
-    vertical-align: -0.3em;
     background-color: var(--muted);
     -webkit-mask: var(--globe-mask);
     mask: var(--globe-mask);
