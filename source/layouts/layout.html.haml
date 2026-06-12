@@ -81,9 +81,11 @@
 
         -# Brand mark in the header is hidden by default (the hero carries it) and
         -# revealed only on very narrow screens, where the hero mark is hidden so
-        -# it doesn't crowd the title. CSS handles the swap.
+        -# it doesn't crowd the title. CSS handles the swap. The wordmark beside it
+        -# shows only in the pinned (stuck) header on wider viewports.
         - if v2_plus
           %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
+          %span.header-title{ "aria-hidden": "true" } Keep a Changelog
         %nav.locales{ role: "navigation" }
           %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
           %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }

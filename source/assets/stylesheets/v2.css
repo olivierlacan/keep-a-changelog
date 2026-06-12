@@ -35,8 +35,9 @@
     --hero-text: var(--sand);
     --accent: light-dark(var(--ocre), var(--gold));
     --focus: light-dark(oklch(0.55 0.18 33), var(--gold));
-    /* Brand mark: ocre on the white header/footer in light, cream on dark. */
-    --mark: light-dark(var(--ocre), var(--sand));
+    /* Brand mark follows the accent: ocre on the white header in light, gold on
+       the dark surface in dark (a branded palette color rather than plain cream). */
+    --mark: var(--accent);
 
     /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
     --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
@@ -159,6 +160,17 @@
      narrow screens (below), where the hero mark is hidden so it doesn't crowd
      the title. */
   article > header .mark { display: none; inline-size: 36px; block-size: 36px; }
+  /* Wordmark beside the header logo: hidden by default, shown only in the pinned
+     header on wider viewports (rule in the content layer). The negative margin
+     pulls it tight to the mark instead of using the header's full item gap. */
+  .header-title {
+    display: none;
+    margin-inline-start: calc(var(--space-s) * -0.5);
+    font-weight: 700;
+    font-size: var(--step-0);
+    color: var(--text);
+    white-space: nowrap;
+  }
 
   /* Header order: brand mark and language picker grouped on the left, the theme
      switch pushed to the far right. */
@@ -460,6 +472,9 @@
   }
   .content > * + * { margin-block-start: var(--space-s); }
   .content li + li { margin-block-start: var(--space-2xs); }
+  /* Indent lists so they stand apart from the surrounding prose, with markers
+     hanging in the indent. */
+  .content :is(ul, ol) { padding-inline-start: var(--space-l); list-style-position: outside; }
 
   /* Version + release date. It shares a centered, wrapping row with the
      "On this page" toggle on narrow/medium widths (the toggle drops below the
@@ -785,6 +800,10 @@
     :root.header-stuck article > header .mark { display: inline-block; }
     /* Push the sticky TOC rail below the pinned header so its top isn't covered. */
     :root.header-stuck .article-body > .toc { inset-block-start: calc(var(--header-h) + var(--space-s)); }
+  }
+  /* On wider viewports, show the wordmark beside the logo in the pinned header. */
+  @media (min-width: 48rem) {
+    :root.header-stuck .header-title { display: inline-block; }
   }
   @keyframes kac-header-drop {
     from { transform: translateY(-100%); }
