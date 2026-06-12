@@ -379,12 +379,23 @@
      and tagline legible while the pattern shows around and below them. */
   .hero {
     background-color: var(--hero-bg);
+    /* PNG fallback first, then WebP via image-set where supported (about half the
+       bytes). Two full declarations so browsers without image-set still get the
+       gradient scrim and the pattern. */
     background-image:
       linear-gradient(to bottom,
         var(--hero-bg) 0,
         var(--hero-bg) 34%,
         color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
       url("../images/hero-topo@2x.png");
+    background-image:
+      linear-gradient(to bottom,
+        var(--hero-bg) 0,
+        var(--hero-bg) 34%,
+        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+      image-set(
+        url("../images/hero-topo@2x.webp") type("image/webp"),
+        url("../images/hero-topo@2x.png") type("image/png"));
     background-repeat: no-repeat;
     background-size: cover;
     /* Anchor at the top so revealing the example changelog (which grows the hero)
