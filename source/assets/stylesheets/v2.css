@@ -168,9 +168,11 @@
     margin-inline-start: calc(var(--space-s) * -0.5);
     font-weight: 700;
     font-size: var(--step-0);
-    /* Tight line box so the glyphs center on the header's axis instead of riding
-       high in an oversized line height. */
+    /* Tight line box, plus a small optical nudge down: icons center on the
+       geometric axis, but text reads high because its visible caps sit in the
+       upper half. This drops the wordmark so it looks centered against the mark. */
     line-height: 1;
+    transform: translateY(0.06em);
     color: var(--text);
     white-space: nowrap;
   }
