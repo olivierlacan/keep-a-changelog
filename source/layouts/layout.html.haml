@@ -54,6 +54,8 @@
     = javascript_include_tag 'all', defer: true
 
   %body
+    - if v2_plus
+      %a.skip-link{ href: "#main" } Skip to content
     %article
       %header{ role: "banner" }
         - if !latest_version
@@ -111,7 +113,7 @@
         - elsif !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
-      .main{ role: "main" }
+      .main#main{ role: "main", tabindex: "-1" }
         - if v2_plus
           %header.hero
             .hero-lockup

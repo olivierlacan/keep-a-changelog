@@ -138,6 +138,26 @@
 
 /* ------------------------------------------------------- chrome (layout) */
 @layer chrome {
+  /* Skip link: off-screen until focused, then slides in above everything so
+     keyboard users can jump past the header to the main content. */
+  .skip-link {
+    position: fixed;
+    inset-block-start: var(--space-s);
+    inset-inline-start: var(--space-s);
+    z-index: 100;
+    padding: 0.5em 1em;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-150%);
+    transition: transform 0.15s ease;
+  }
+  .skip-link:focus { transform: translateY(0); }
+  /* The skip target is focused programmatically; no outline around all of main. */
+  .main:focus { outline: none; }
+
   article > header {
     display: flex;
     flex-wrap: wrap;
