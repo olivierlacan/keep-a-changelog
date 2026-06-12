@@ -172,7 +172,9 @@ A changelog that records only some changes can mislead as much as no changelog. 
 
 A changelog that follows a consistent shape can be read by tools and by language models, because it was written for people first. There is no separate machine format, and there will not be one: this page is the format. A consistent changelog is easy to parse, a benefit of writing clearly, not a reason to write for machines.
 
-Machines can also help write a changelog. A language model can draft one from a diff in seconds, which is useful as a starting point. But it is now easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**. A model cannot decide what is notable for your readers, or say it plainly for them. If you use a tool for the first draft, give it the brief you would give a contributor: summarize notable, user-facing changes; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; and remove anything not worth reading. Then read the result before anyone else does.
+Machines can also help write a changelog. A language model can draft one from a diff in seconds, which is useful as a starting point. But it is now easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**.
+
+A model can't decide what's notable for your readers, or say it plainly for them. If you use a tool for the first draft, give it the brief you would give a contributor: summarize notable, user-facing changes; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; and remove anything not worth reading. Then read the result before anyone else does.
 
 <aside markdown="1">
 If your project uses coding agents, record that brief where they read it, for example an `AGENTS.md` or `CLAUDE.md` file. There is no format to configure; the instructions are the interface.
@@ -226,10 +228,10 @@ Not a formal one. There are older conventions, such as the [GNU changelog style 
 
 A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:
 
-- No new change types. Six are enough; the reason goes in the wording.
-- No machine format, schema, or required layout. This page is the format.
-- No tool or service to install. A convention should cost only attention.
-- No dependence on a host or vendor. A changelog is a plain file in your repository.
+- No new change types: six are enough.
+- No machine format, schema, or strict layout: this is the format.
+- No tool or service to install: a convention should cost only attention.
+- No dependence on a vendor: a changelog is a plain file in your repository.
 
 None of this is fixed; it is open to discussion. But additions to a widely used convention deserve care.
 
