@@ -160,6 +160,19 @@
      narrow screens (below), where the hero mark is hidden so it doesn't crowd
      the title. */
   article > header .mark { display: none; inline-size: 36px; block-size: 36px; }
+
+  /* Forced colors / Windows High Contrast: the mask-based icons (brand mark,
+     globe) draw with background-color, which the OS forces to a system color and
+     can erase them on the matching background. Pin them to CanvasText so they
+     stay visible. The theme-switch SVGs use currentColor and already adapt. */
+  @media (forced-colors: active) {
+    .mark,
+    .hero-mark,
+    .locales label::before,
+    .locales-toggle::before {
+      background-color: CanvasText;
+    }
+  }
   /* Wordmark beside the header logo: hidden by default, shown only in the pinned
      header on wider viewports (rule in the content layer). The negative margin
      pulls it tight to the mark instead of using the header's full item gap. */
