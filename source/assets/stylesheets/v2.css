@@ -1,0 +1,889 @@
+/* Keep a Changelog 2.0 — native CSS, no framework, no preprocessor.
+   Modern baseline (2026): @layer, custom properties, nesting, logical
+   properties (RTL-ready), fluid type, oklch color, prefers-color-scheme. */
+
+@layer reset, tokens, base, chrome, content;
+
+/* ----------------------------------------------------------------- tokens */
+@layer tokens {
+  :root {
+    /* Brand palette from the Keep a Changelog Brand Guide:
+       Fire Orange #F15D30 · Flame Yellow #FBA92F · Dark Earth #3F2B2D ·
+       Clay #F4E0C2 · Light Clay #FFEED5. (The earlier ocre #E05735 read too red;
+       this is the brand's truer orange, hue ~40 rather than ~33.) */
+    --ocre: #F15D30;
+    --gold: #FBA92F;
+    --bark: oklch(0.30 0.025 18);
+    --sand: oklch(0.95 0.03 80);
+    --ink: oklch(0.30 0.02 25);
+
+    /* Semantic colors via light-dark(): first value is light, second is dark.
+       color-scheme (below) decides which resolves — following the system by
+       default, or forced by the theme switch via :root[data-theme]. */
+    color-scheme: light dark;
+    --bg: light-dark(oklch(0.985 0.008 80), oklch(0.20 0.015 25));
+    --surface: light-dark(oklch(1 0 0), oklch(0.24 0.018 25));
+    --text: light-dark(var(--ink), oklch(0.92 0.02 80));
+    --muted: light-dark(oklch(0.44 0.02 30), oklch(0.72 0.02 70));
+    /* A darker ocre for text/links so it clears 4.5:1 on white (the bright --ocre
+       is mid-luminance and only passes as large text or as decoration); gold in dark. */
+    --link: light-dark(oklch(0.55 0.18 41), var(--gold));
+    --rule: light-dark(oklch(0.88 0.015 70), oklch(0.36 0.02 30));
+    --code-bg: light-dark(oklch(0.955 0.02 75), oklch(0.27 0.02 30));
+    --code-text: light-dark(var(--bark), var(--sand));
+    /* Deeper ocre for the hero so light text clears 4.5:1. Light topographic
+       contour lines sit over it; a scrim keeps the title legible. */
+    /* A darkened orange (not the bright Fire Orange, which fails contrast under
+       cream text). Hue ~42 keeps it orange instead of the brick red the old
+       hue-33 darkening produced. Cream text clears 4.5:1 (light) / 5.8:1 (dark). */
+    --hero-bg: light-dark(oklch(0.53 0.19 42), oklch(0.49 0.18 42));
+    --hero-text: var(--sand);
+    --accent: light-dark(var(--ocre), var(--gold));
+    --focus: light-dark(oklch(0.55 0.18 41), var(--gold));
+    /* Brand mark follows the accent: ocre on the white header in light, gold on
+       the dark surface in dark (a branded palette color rather than plain cream). */
+    --mark: var(--accent);
+
+    /* Fluid type scale (min .. max across 20rem .. 80rem viewports) */
+    --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
+    --step-0: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    --step-1: clamp(1.3rem, 1.2rem + 0.5vw, 1.6rem);
+    --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+    --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+
+    /* Spacing scale */
+    --space-2xs: 0.4rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.6rem;
+    --space-l: 2.6rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
+    --measure: 66ch;
+    --radius: 6px;
+    /* Header height, used to offset the page when the header is pinned after the
+       hero (see the sticky-header rules in the content layer). */
+    --header-h: 4.3rem;
+
+    /* Globe icon shared by the language label (wide) and the collapse button
+       (narrow). Kept as a custom property so both reference one source. */
+    --globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
+
+    --font-sans: "Muli", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --leading: 1.65;
+  }
+
+  /* Manual theme override from the header switch. Absent attribute = follow
+     the system (the default color-scheme: light dark above). */
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"] { color-scheme: dark; }
+
+  /* Script-aware fonts and rhythm (the lang attribute is set on <html>). */
+  :lang(ja) { --font-sans: "Hiragino Sans", "Yu Gothic", Meiryo, system-ui, sans-serif; --leading: 1.8; }
+  :lang(ko) { --font-sans: "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; --leading: 1.8; }
+  :lang(zh) { --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif; --leading: 1.8; }
+  :lang(ar), :lang(fa) { --font-sans: "Vazirmatn", "Geeza Pro", "Noto Sans Arabic", system-ui, sans-serif; --leading: 1.9; }
+}
+
+/* ------------------------------------------------------------------ reset */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100svh; line-height: var(--leading); -webkit-font-smoothing: antialiased; }
+  img, picture, svg { display: block; max-inline-size: 100%; block-size: auto; }
+  h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  a { color: inherit; }
+  ul { padding: 0; list-style-position: inside; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+/* ------------------------------------------------------------------- base */
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+  a {
+    color: var(--link);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  a:hover { text-decoration-thickness: 2px; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    /* A hairline keeps inline code legible on any surface, including asides
+       (which share the code background). */
+    border: 1px solid var(--rule);
+  }
+
+  h2 { font-size: var(--step-2); color: var(--accent); }
+  h3 { font-size: var(--step-1); color: var(--text); }
+}
+
+/* ------------------------------------------------------- chrome (layout) */
+@layer chrome {
+  /* Skip link: off-screen until focused, then slides in above everything so
+     keyboard users can jump past the header to the main content. */
+  .skip-link {
+    position: fixed;
+    inset-block-start: var(--space-s);
+    inset-inline-start: var(--space-s);
+    z-index: 100;
+    padding: 0.5em 1em;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-150%);
+    transition: transform 0.15s ease;
+  }
+  .skip-link:focus { transform: translateY(0); }
+  /* The skip target is focused programmatically; no outline around all of main. */
+  .main:focus { outline: none; }
+
+  article > header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-s) var(--space-m);
+    background: var(--surface);
+    border-block-end: 1px solid var(--rule);
+  }
+  /* Brand mark as a masked silhouette so its color follows the theme
+     (the source SVG is a single flat fill; only its shape is used here). */
+  .mark {
+    display: inline-block;
+    background-color: var(--mark);
+    -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+    mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+  }
+  /* Hidden by default: the hero carries the brand mark. Revealed only on very
+     narrow screens (below), where the hero mark is hidden so it doesn't crowd
+     the title. */
+  article > header .mark { display: none; inline-size: 36px; block-size: 36px; }
+
+  /* Forced colors / Windows High Contrast: the mask-based icons (brand mark,
+     globe) draw with background-color, which the OS forces to a system color and
+     can erase them on the matching background. Pin them to CanvasText so they
+     stay visible. The theme-switch SVGs use currentColor and already adapt. */
+  @media (forced-colors: active) {
+    .mark,
+    .hero-mark,
+    .locales label::before,
+    .locales-toggle::before {
+      background-color: CanvasText;
+    }
+  }
+  /* Wordmark beside the header logo: hidden by default, shown only in the pinned
+     header on wider viewports (rule in the content layer). The negative margin
+     pulls it tight to the mark instead of using the header's full item gap. */
+  .header-title {
+    display: none;
+    margin-inline-start: calc(var(--space-s) * -0.5);
+    font-weight: 700;
+    font-size: var(--step-0);
+    /* Tight line box, plus a small optical nudge down: icons center on the
+       geometric axis, but text reads high because its visible caps sit in the
+       upper half. This drops the wordmark so it looks centered against the mark. */
+    line-height: 1;
+    transform: translateY(0.02em);
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* Header order: brand mark and language picker grouped on the left, the theme
+     switch pushed to the far right. */
+  .theme-switch { display: inline-flex; gap: 2px; margin-inline-start: auto; }
+  .theme-btn {
+    display: grid;
+    place-items: center;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--muted);
+    /* Rest quietly; the resting opacity still clears 3:1 for non-text. */
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .theme-btn svg { inline-size: 1rem; block-size: 1rem; display: block; }
+  .theme-btn:hover { color: var(--text); opacity: 1; }
+  .theme-btn[aria-pressed="true"] {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    opacity: 1;
+  }
+
+  .locales {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  /* A subtle vertical hairline separating the brand (mark + wordmark) from the
+     language picker, so the globe doesn't read as part of the logo. Shown only
+     when the header carries the mark (revealed in the conditions below). */
+  .locales::before {
+    content: "";
+    display: none;
+    inline-size: 1px;
+    block-size: 1.5em;
+    /* The header's --space-s gap sits on the title side of the rule; add this on
+       the picker side so the rule is equidistant: --space-xs (the .locales gap)
+       + 0.25rem = --space-s on both sides. */
+    margin-inline-end: 0.25rem;
+    background: var(--rule);
+  }
+  #language-select {
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 0.4em 0.6em;
+    max-inline-size: 16rem;
+  }
+  /* Show a compact globe icon in place of the "Languages (N):" text at every
+     width; the text stays in the DOM (and the label's title) for screen readers. */
+  .locales-text {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* Flex-center the globe so it sits on the header axis without depending on
+     baseline/vertical-align nudges. */
+  .locales label { display: inline-flex; align-items: center; }
+  .locales label::before {
+    content: "";
+    display: block;
+    inline-size: 1.3em;
+    block-size: 1.3em;
+    background-color: var(--muted);
+    -webkit-mask: var(--globe-mask);
+    mask: var(--globe-mask);
+  }
+
+  /* Globe button that collapses the language picker on very narrow viewports.
+     Hidden by default; the narrow media query below reveals it and hides the
+     select until it is toggled open. */
+  .locales-toggle {
+    display: none;
+    place-items: center;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .locales-toggle::before {
+    content: "";
+    inline-size: 1.3em;
+    block-size: 1.3em;
+    background-color: currentColor;
+    -webkit-mask: var(--globe-mask);
+    mask: var(--globe-mask);
+  }
+  .locales-toggle:hover { color: var(--text); }
+  /* Pressed/active look while open, so it reads as a toggle you can tap to close. */
+  .locales-toggle[aria-expanded="true"] {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+
+  .footer {
+    margin-block-start: var(--space-2xl);
+    padding: var(--space-l) var(--space-m);
+    border-block-start: 1px solid var(--rule);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: var(--step--1);
+    text-align: center;
+  }
+  .footer a { color: var(--link); }
+  .footer .mark {
+    inline-size: 28px;
+    block-size: 28px;
+    margin-block-end: var(--space-s);
+  }
+  /* Tyler Fortune's badge — self-contained on its own bark disc, so it reads on
+     both themes without recoloring. Reset makes images display:block, so center
+     it explicitly rather than relying on the footer's text-align. */
+  .footer .badge {
+    /* clamp lives in a custom property so the Sass minifier passes the mixed
+       rem/vw units through untouched. */
+    --badge-size: clamp(7.5rem, 6rem + 6vw, 9rem);
+    display: block;
+    inline-size: var(--badge-size);
+    block-size: auto;
+    margin: 0 auto var(--space-m);
+  }
+  .footer .about {
+    margin-block: 0;
+    margin-inline: auto;
+    max-inline-size: 34rem;
+    text-wrap: pretty;
+  }
+
+  /* Very narrow: collapse the language picker behind the globe so the header
+     stays on one row. Tapping the globe reveals the select (JS sets data-open). */
+  @media (max-width: 30rem) {
+    /* Show the brand mark in the header (before the picker) at this width, and
+       hide it in the hero (rule in the content layer) so it doesn't crowd the
+       title. */
+    article > header .mark { display: inline-block; }
+    .locales::before { display: block; }
+    .locales-toggle { display: inline-grid; }
+    .locales label { display: none; }
+    #language-select { display: none; }
+    /* Open as a popover anchored under the globe so it doesn't reflow the nav.
+       The width cap lives in a custom property so the Sass minifier passes the
+       min()/calc through untouched. */
+    .locales[data-open] #language-select {
+      --locale-popover-max: min(16rem, calc(100vw - 2 * var(--space-m)));
+      display: inline-block;
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-start: 0;
+      margin-block-start: var(--space-2xs);
+      z-index: 20;
+      max-inline-size: var(--locale-popover-max);
+      box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
+    }
+    /* Grow the white header while the picker is open so the revealed select
+       rests on the header surface instead of hanging over the orange hero. */
+    article > header:has(.locales[data-open]) { padding-block-end: 3.25rem; }
+  }
+}
+
+/* ----------------------------------------------------------------- content */
+@layer content {
+  /* Hero band — the brand identity lives here. Light topographic contour lines
+     over the deep ocre base; a top scrim (solid → transparent) keeps the title
+     and tagline legible while the pattern shows around and below them. */
+  .hero {
+    background-color: var(--hero-bg);
+    /* PNG fallback first, then WebP via image-set where supported (about half the
+       bytes). Two full declarations so browsers without image-set still get the
+       gradient scrim and the pattern. */
+    background-image:
+      linear-gradient(to bottom,
+        var(--hero-bg) 0,
+        var(--hero-bg) 34%,
+        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+      url("../images/hero-topo@2x.png");
+    background-image:
+      linear-gradient(to bottom,
+        var(--hero-bg) 0,
+        var(--hero-bg) 34%,
+        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+      image-set(
+        url("../images/hero-topo@2x.webp") type("image/webp"),
+        url("../images/hero-topo@2x.png") type("image/png"));
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Anchor at the top so revealing the example changelog (which grows the hero)
+       extends the pattern downward instead of re-centering and shifting it. */
+    background-position: center top;
+    color: var(--hero-text);
+    /* Fluid top padding: roomy on wide screens, tight on phones. (The clamp lives
+       in a custom property so the Sass-based minifier doesn't try to evaluate it.) */
+    --hero-pad-top: clamp(var(--space-m), 5vw, var(--space-2xl));
+    padding-block: var(--hero-pad-top) var(--space-xl);
+    padding-inline: var(--space-m);
+    text-align: center;
+  }
+  /* Logo + name on one line (a compact lockup). The lockup's font size is the
+     title size, so the mark and gap (in em) scale proportionally with it. The
+     title left-aligns so it reads cleanly if it has to wrap on very narrow
+     screens. */
+  .hero-lockup {
+    --hero-h1: clamp(1.6rem, 0.8rem + 4vw, 3.4rem);
+    font-size: var(--hero-h1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    text-align: start;
+  }
+  .hero-mark {
+    flex: none;
+    inline-size: 1.5em;
+    block-size: 1.5em;
+    background-color: var(--hero-text);
+    -webkit-mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+    mask: url("../images/keep-a-changelog-mark.svg") center / contain no-repeat;
+  }
+  /* Slightly smaller on phones so the name fits beside the mark on one line. */
+  .hero h1 { font-size: 1em; color: var(--hero-text); margin: 0; text-wrap: balance; }
+  .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
+  .hero a { color: var(--hero-text); }
+  /* On phones the brand mark moves up into the header, so drop it from the hero
+     and let the title use the full width, centered like the tagline below it. */
+  @media (max-width: 30rem) {
+    .hero-mark { display: none; }
+    .hero h1 { text-align: center; }
+  }
+  /* Example changelog. On wide screens it's the always-visible centerpiece; on
+     narrow screens it collapses into a tap-to-open disclosure to save space. */
+  .hero .changelog-figure {
+    margin: var(--space-l) auto 0;
+    max-inline-size: var(--measure);
+  }
+  .hero .changelog-caption {
+    margin-block-end: var(--space-s);
+    color: var(--hero-text);
+    font-size: var(--step--1);
+    text-wrap: balance;
+  }
+  .hero .changelog-example { margin-inline: auto; }
+  .hero .changelog-example > summary {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid color-mix(in srgb, var(--hero-text) 55%, transparent);
+    border-radius: var(--radius);
+    color: var(--hero-text);
+    font-size: var(--step--1);
+    list-style: none;
+  }
+  .hero .changelog-example > summary::-webkit-details-marker { display: none; }
+  .hero .changelog-example > summary::after {
+    content: "";
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .hero .changelog-example[open] > summary { margin-block-end: var(--space-s); }
+  .hero .changelog-example[open] > summary::after { transform: rotate(-135deg); }
+
+  /* Collapsed by default (narrow screens); the disclosure reveals it on tap. */
+  .hero .changelog-example > .changelog { display: none; }
+  .hero .changelog-example[open] > .changelog { display: block; }
+
+  .hero .changelog {
+    inline-size: 100%;
+    max-block-size: 22rem;
+    overflow: auto;
+    text-align: start;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: var(--space-m);
+    box-shadow: 0 10px 30px oklch(0 0 0 / 0.25);
+    white-space: pre-wrap;
+  }
+
+  /* Wide screens: drop the toggle UI and show the example outright, regardless of
+     the underlying <details> state (so the mobile disclosure still works). */
+  @media (min-width: 48rem) {
+    .hero .changelog-example > summary { display: none; }
+    .hero .changelog-example > .changelog { display: block; }
+    /* A closed <details> hides its content via content-visibility on the
+       ::details-content box; override it so the example paints on wide. */
+    .hero .changelog-example::details-content { content-visibility: visible; }
+  }
+
+  /* Reading column: the Markdown body, centered to a comfortable measure. */
+  .content {
+    /* Fill the grid track (up to the reading measure) and center. Without an
+       explicit inline-size, margin-inline:auto sizes a grid item to its
+       max-content, so a long code line grew .content past the viewport on mobile.
+       inline-size:100% + min-inline-size:0 keeps it within the track and lets the
+       overflow-x:auto code blocks scroll instead of stretching the page. */
+    inline-size: 100%;
+    max-inline-size: var(--measure);
+    min-inline-size: 0;
+    margin-inline: auto;
+    /* Small top padding: the version marker above already separates the content
+       from the hero, so a large top padding here only widened the gap before the
+       first heading. */
+    padding: var(--space-s) var(--space-m) var(--space-2xl);
+  }
+  .content > * + * { margin-block-start: var(--space-s); }
+  .content li + li { margin-block-start: var(--space-2xs); }
+  /* Indent lists so they stand apart from the surrounding prose, with markers
+     hanging in the indent. */
+  .content :is(ul, ol) { padding-inline-start: var(--space-l); list-style-position: outside; }
+
+  /* Version + release date. It shares a centered, wrapping row with the
+     "On this page" toggle on narrow/medium widths (the toggle drops below the
+     version when there's no room); on wide widths it sits atop the reading
+     column with the TOC in the gutter (grid rules further below). */
+  .version-marker {
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--step-0);
+  }
+  .version-marker a { color: var(--link); font-weight: 600; text-decoration: none; }
+  .version-marker a:hover { text-decoration: underline; }
+  .version-date::before { content: " · "; color: var(--muted); }
+
+  /* "Changelog basics" titles the triptych, centered above it. */
+  .content #basics { text-align: center; }
+
+  /* Intro triptych: What / Why / Who as a row of blocks on wide screens,
+     stacked on narrow ones. */
+  .content .intro-grid {
+    display: grid;
+    gap: var(--space-m);
+  }
+  @media (min-width: 48rem) {
+    .content .intro-grid {
+      grid-template-columns: repeat(3, 1fr);
+      /* Break out wider than the reading measure so the cards aren't cramped,
+         staying centered on the viewport. The width math lives in custom
+         properties so the Sass-based CSS minifier passes it through untouched. */
+      --bleed: min(60rem, 100vw - 2 * var(--space-m));
+      --bleed-margin: calc(50% - var(--bleed) / 2);
+      inline-size: var(--bleed);
+      margin-inline: var(--bleed-margin);
+    }
+  }
+  .content .intro-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-block-start: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: var(--space-m);
+    font-size: var(--step--1);
+  }
+  .content .intro-card > * + * { margin-block-start: var(--space-xs); }
+  /* Card headings drop the section-separator treatment and sit tighter. */
+  .content .intro-card :is(h2, h3) {
+    margin-block-start: 0;
+    padding-block-start: 0;
+    border-block-start: 0;
+    font-size: var(--step-1);
+  }
+
+  /* Top-level headings (##) separate sections; sub-headings (###) just breathe. */
+  .content h2 {
+    margin-block-start: var(--space-l);
+    padding-block-start: var(--space-m);
+    border-block-start: 1px solid var(--rule);
+  }
+  .content > h2:first-child {
+    margin-block-start: var(--space-s);
+    padding-block-start: 0;
+    border-block-start: 0;
+    /* It has no top padding/border to sit behind, so a TOC jump would land it
+       flush against the top. Match the breathing room other headings get from
+       their padding when jumped to, without adding space in normal flow. */
+    scroll-margin-top: var(--space-m);
+  }
+  .content h3 { margin-block-start: var(--space-m); }
+
+  /* Heading anchors — a "#" link revealed on hover/focus to grab a section link. */
+  .content .heading-anchor {
+    margin-inline-start: 0.35em;
+    color: var(--accent);
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0;
+    user-select: none;
+    transition: opacity 0.12s ease;
+  }
+  /* The "#" is presentational: render it as generated content so it never lands
+     in copied heading text or the accessibility tree (the link's aria-label
+     already names it). */
+  .content .heading-anchor::before { content: "#"; }
+  .content :is(h2, h3):hover > .heading-anchor,
+  .content .heading-anchor:focus-visible { opacity: 1; }
+  @media (hover: none) {
+    /* No hover on touch devices — keep the anchors quietly visible. */
+    .content .heading-anchor { opacity: 0.4; }
+  }
+
+  /* Code examples (fenced blocks). Rouge wraps each block as
+     <div class="highlight"><pre class="highlight">...</pre></div>, so style the
+     <pre> alone; styling both doubled the padding and stacked two backgrounds.
+     The wrapper div stays a plain passthrough and gets its spacing from the
+     .content > * + * flow rule above. */
+  .content pre {
+    overflow-x: auto;
+    font-size: var(--step--1);
+    line-height: 1.6;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    padding: var(--space-s) var(--space-m);
+  }
+  .content pre code { background: none; padding: 0; border: 0; color: var(--code-text); }
+
+  /* Aside notes — clarifying sidebars set apart from the main flow:
+     a filled callout with an ocre rule. */
+  .content aside {
+    padding: var(--space-m);
+    border-inline-start: 4px solid var(--ocre);
+    background: var(--code-bg);
+    color: var(--text);
+    font-size: var(--step-0);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .content aside > * + * { margin-block-start: var(--space-xs); }
+  /* The aside fill is the code background, so give inline code a surface fill
+     here to keep it distinct from the callout behind it. */
+  .content aside code { background: var(--surface); }
+
+  /* Blockquotes — definitions and citations. Visually distinct from asides:
+     no fill, italic, a gold rule. */
+  .content blockquote {
+    margin-inline: 0;
+    padding-inline-start: var(--space-m);
+    border-inline-start: 4px solid var(--gold);
+    color: var(--text);
+    font-style: italic;
+  }
+  .content blockquote > * + * { margin-block-start: var(--space-xs); }
+
+  /* ---- Table of contents: disclosure on narrow, sticky sidebar on wide ---- */
+  /* On narrow/medium widths the TOC is a centered block under the version marker,
+     with its toggle centered (the sidebar rules below override this at wide). */
+  .toc {
+    max-inline-size: var(--measure);
+    margin-inline: auto;
+    text-align: center;
+  }
+  .toc-disclosure > summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--step--1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-block-start: var(--space-m);
+    padding: 0.45em 0.9em;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    /* Never wrap "On this page": in the narrow gutter it was shrinking to
+       min-content and breaking across lines. */
+    white-space: nowrap;
+  }
+  .toc-disclosure > summary::-webkit-details-marker { display: none; }
+  .toc-disclosure > summary::after {
+    content: "";
+    inline-size: 0.45em;
+    block-size: 0.45em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .toc-disclosure[open] > summary::after { transform: rotate(-135deg); }
+
+  .toc-list { list-style: none; padding: 0; margin-block: var(--space-s) 0; font-size: var(--step--1); }
+  .toc-list a {
+    display: block;
+    padding: 0.4em 0.75em;
+    line-height: 1.35;
+    color: var(--muted);
+    text-decoration: none;
+    border-inline-start: 2px solid var(--rule);
+  }
+  .toc-list a:hover { color: var(--text); border-inline-start-color: var(--muted); }
+  .toc-list a[aria-current="true"] {
+    /* --link is the contrast-safe ocre/gold (clears 4.5:1); the bright --accent
+       is reserved for the non-text border marker. */
+    color: var(--link);
+    border-inline-start-color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Version marker and the "On this page" toggle share one line: a symmetric
+     1fr/auto/1fr grid keeps the version centered (the toggle sits in the right
+     gutter and can't drag it off-center), with the content full width below. */
+  @media (max-width: 77.99rem) {
+    .article-body {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: baseline;
+      column-gap: var(--space-s);
+    }
+    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-m) var(--space-2xs); }
+    .article-body > .toc { grid-column: 3; justify-self: start; margin-inline: 0; position: relative; }
+    .article-body > .content { grid-column: 1 / -1; align-self: start; }
+    /* The open list drops as a popover anchored to the toggle, so the narrow
+       gutter can't clip it. */
+    .toc-disclosure[open] > nav {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-end: 0;
+      z-index: 20;
+      margin-block-start: var(--space-2xs);
+      /* Size to the longest item rather than shrink-wrapping to the toggle's
+         narrow box; capped so it stays on screen. */
+      inline-size: max-content;
+      max-inline-size: 22rem;
+      text-align: start;
+      padding: var(--space-2xs);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
+    }
+    .toc-list { margin-block: 0; }
+    .toc-list a {
+      padding: 0.6em 0.75em;
+      border-inline-start: 0;
+      border-radius: calc(var(--radius) - 2px);
+    }
+    .toc-list a:hover { background: var(--code-bg); }
+    .toc-list a[aria-current="true"] {
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+  }
+
+  /* Narrow: stack the toggle below the centered version, each centered, with the
+     open list back in normal flow. The long "Version … Published on …" line plus
+     the toggle don't sit comfortably side by side until ~600px, so stack below
+     that rather than cramming the toggle into a thin gutter. */
+  @media (max-width: 37.49rem) {
+    .article-body { grid-template-columns: 1fr; justify-items: center; }
+    .article-body > .version-marker,
+    .article-body > .toc,
+    .article-body > .content { grid-column: 1; }
+    .article-body > .toc { justify-self: center; }
+    .article-body > .content { justify-self: stretch; }
+    /* Tighten the stack: the toggle sits close under the version, and the
+       content starts soon after, instead of floating in large gaps. */
+    .toc-disclosure > summary { margin-block-start: var(--space-2xs); }
+    .article-body > .content { padding-block-start: var(--space-s); }
+    .toc-disclosure[open] > nav {
+      position: static;
+      margin-inline: auto;
+      box-shadow: none;
+    }
+  }
+
+  @media (min-width: 78rem) {
+    /* Centered reading column with the TOC anchored in the left gutter. */
+    .article-body {
+      display: grid;
+      /* Side gutters never shrink below the TOC's width, so it can't overflow
+         its column and shove the centered reading column off-center. */
+      grid-template-columns: minmax(15rem, 1fr) minmax(0, var(--measure)) minmax(15rem, 1fr);
+      column-gap: var(--space-l);
+    }
+    .article-body > .version-marker { grid-column: 2; margin-block: var(--space-l) var(--space-2xs); }
+    .article-body > .content { grid-column: 2; }
+    .article-body > .toc {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      justify-self: start;
+      align-self: start;
+      text-align: start;
+      inline-size: 15rem;
+      max-inline-size: none;
+      margin-inline: 0;
+      padding-inline: var(--space-m);
+      position: sticky;
+      top: var(--space-m);
+      max-block-size: calc(100vh - 4rem);
+      overflow: auto;
+      margin-block-start: var(--space-2xl);
+    }
+    /* Keep the triptych in the reading column only at the low end of the sidebar
+       regime (78-90rem), where a viewport-centered breakout would overlap the
+       TOC. It breaks out again at 90rem (below). */
+    .content .intro-grid {
+      inline-size: auto;
+      margin-inline: 0;
+    }
+  }
+
+  /* Second breakpoint: once the viewport is wide enough that a centered breakout
+     clears the left TOC (a 60rem breakout needs ~90rem to leave a 15rem gutter),
+     let the triptych break out again even with the sidebar present. This lifts
+     the common 1440-1600px widths, which otherwise waste ~40% of their width. */
+  @media (min-width: 90rem) {
+    .content .intro-grid {
+      inline-size: var(--bleed);
+      margin-inline: var(--bleed-margin);
+    }
+  }
+
+  /* Third breakpoint: ample room, so widen the TOC (titles wrap less). The
+     triptych already broke out at 90rem above. */
+  @media (min-width: 104rem) {
+    .article-body > .toc { inline-size: 19rem; }
+  }
+
+  /* Sticky header revealed after the hero. Once the hero scrolls out of view a
+     script toggles .header-stuck on <html>; the header then pins to the top with
+     the brand mark shown (reusing the narrow-screen "mark in the header" toggle),
+     so the language and theme controls stay reachable while reading. Only above
+     the narrow breakpoint, where the mark otherwise lives in the hero. The header
+     leaves normal flow when pinned, so article gains matching top padding to
+     avoid a scroll jump, and anchored jumps gain a matching scroll offset. These
+     rules sit in the content layer so they win over the base header rules. */
+  @media (min-width: 30.01rem) {
+    :root.header-stuck { scroll-padding-block-start: calc(var(--header-h) + var(--space-2xs)); }
+    :root.header-stuck article { padding-block-start: var(--header-h); }
+    :root.header-stuck article > header {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      z-index: 50;
+      box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.5);
+      animation: kac-header-drop 0.22s ease;
+    }
+    :root.header-stuck article > header .mark { display: inline-block; }
+    :root.header-stuck .locales::before { display: block; }
+    /* Push the sticky TOC rail below the pinned header so its top isn't covered. */
+    :root.header-stuck .article-body > .toc { inset-block-start: calc(var(--header-h) + var(--space-s)); }
+  }
+  /* On wider viewports, show the wordmark beside the logo in the pinned header. */
+  @media (min-width: 48rem) {
+    :root.header-stuck .header-title { display: inline-block; }
+  }
+  @keyframes kac-header-drop {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+}

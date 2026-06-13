@@ -42,6 +42,8 @@ GEM
     json (2.15.2.1)
     kramdown (2.4.0)
       rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -179,6 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
+  kramdown-parser-gfm
   middleman (~> 4.5.1)
   middleman-autoprefixer
   middleman-blog

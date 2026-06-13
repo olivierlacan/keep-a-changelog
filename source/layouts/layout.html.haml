@@ -1,19 +1,25 @@
 // Variables
-- latest_version = current_page.metadata[:page][:version] == $last_version
+- latest_version = Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new($last_version)
 - legacy_version = current_page.metadata[:page][:version] == "0.3.0"
 - language_code = current_page.metadata[:page][:language]
 - versions = Dir.entries("source/#{language_code}") - %w[. ..]
 - current_version = current_page.metadata[:page][:version]
+- v2_plus = Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
 - description = current_page.data.description || "bullshit" 
 
 !!! 5
-%html{ lang: current_page.data.language }
+%html{ lang: current_page.data.language, dir: ((%w[ar fa].include?(current_page.data.language) && Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new("2.0.0")) ? "rtl" : "ltr") }
   %head
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ name: 'description', content: current_page.data.description }
+
+    - if v2_plus
+      -# Apply a saved theme before first paint to avoid a flash of the wrong one.
+      :javascript
+        (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 
     -# Open Graph
 
@@ -37,28 +43,40 @@
     %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
     %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
 
-    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Muli:400,700&display=swap"
-    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap"
+    -# Both font families in one request, loaded without blocking render:
+    -# media="print" lets it download async, then onload switches it to all.
+    -# A noscript link covers visitors without JavaScript.
+    - font_href = "//fonts.googleapis.com/css?family=Muli:400,700|Source+Code+Pro:400,700&display=swap"
+    %link{ rel: "stylesheet", href: font_href, media: "print", onload: "this.media='all'" }
+    %noscript
+      %link{ rel: "stylesheet", href: font_href }
     - if legacy_version
       = stylesheet_link_tag 'legacy'
+    - elsif Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
+      = stylesheet_link_tag 'v2'
     - else
       = stylesheet_link_tag 'application'
     = javascript_include_tag 'all', defer: true
 
   %body
+    - if v2_plus
+      %a.skip-link{ href: "#main" } Skip to content
     %article
-      %header
+      %header{ role: "banner" }
         - if !latest_version
+          -# language_code can be an unregistered directory (e.g. the stray "id"
+          -# duplicate of "id-ID"); fall back to {} so the notice still renders.
+          - lang_meta = $languages[language_code] || {}
           - if versions.include?($last_version)
             .newer
-              - if $languages[language_code][:new]
-                = "#{$languages[language_code][:new]}: "
+              - if lang_meta[:new]
+                = "#{lang_meta[:new]}: "
               - else
                 There is a newer version available:
-              = link_to "#{$languages[language_code][:name]} #{$last_version}", "/#{language_code}/#{$last_version}"
+              = link_to "#{lang_meta[:name] || language_code} #{$last_version}", "/#{language_code}/#{$last_version}"
           - else
-            - if $languages[language_code][:notice]
-              .last-version-notice= $languages[language_code][:notice]
+            - if lang_meta[:notice]
+              .last-version-notice= lang_meta[:notice]
             - else
               .last-version-notice
                 The latest version (#{$last_version}) is not yet available in
@@ -68,32 +86,75 @@
                 = link_to "help translate ", "https://github.com/olivierlacan/keep-a-changelog/issues"
                 it.
 
+        -# Brand mark in the header is hidden by default (the hero carries it) and
+        -# revealed only on very narrow screens, where the hero mark is hidden so
+        -# it doesn't crowd the title. CSS handles the swap. The wordmark beside it
+        -# shows only in the pinned (stuck) header on wider viewports.
+        - if v2_plus
+          %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
+          %span.header-title{ "aria-hidden": "true" } Keep a Changelog
         %nav.locales{ role: "navigation" }
-          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }= "Languages (#{$languages.count}):"
-          %select{ name: "language", id: "language-select" }
+          %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
+          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }
+            %span.locales-text= "Languages (#{$languages.count}):"
+          %select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
             - $languages.each do |language|
-              - selected = language_code == language.first
-              - if available_translation = available_translation_for(language)
-                %option{ selected: selected, label: available_translation, value: language.first }
-                  = available_translation
-        - if !legacy_version
+              - version = exposed_version_for(language.first)
+              - if version
+                - selected = language_code == language.first
+                -# Show only major.minor (we don't ship patch releases); the URL keeps the full version.
+                - display_version = version.split(".").first(2).join(".")
+                - label = "#{display_version} #{language.last[:name]}"
+                %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
+                  = label
+        - if v2_plus
+          %div.theme-switch{ role: "group", "aria-label": "Color theme" }
+            %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
+            %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        - elsif !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
-      .main{ role: "main" }
-        = yield
+      .main#main{ role: "main", tabindex: "-1" }
+        - if v2_plus
+          %header.hero
+            .hero-lockup
+              %span.hero-mark{ "aria-hidden": "true" }
+              %h1= current_page.data.title
+            %p.tagline= current_page.data.description
+            %figure.changelog-figure
+              %figcaption.changelog-caption
+                This is our own changelog, written using the conventions described below.
+              %details.changelog-example
+                %summary Example changelog
+                %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Keep a Changelog's own changelog" }= changelog_preview
+          .article-body
+            %p.version-marker
+              = link_to data.links.changelog do
+                Version
+                %strong= current_page.metadata[:page][:version]
+              - release_date = changelog_date_for(current_page.metadata[:page][:version])
+              - if release_date
+                %time.version-date{ datetime: release_date, title: release_date }= "Published on #{human_date(release_date)}"
+            -# A plain container: the table-of-contents navigation landmark and its
+            -# label live on the JS-built <nav> inside, so the wrapper needs no role.
+            %div#toc.toc
+            .content
+              = yield
+        - else
+          = yield
 
-        %footer.footer.clearfix{ role: "contentinfo" }
+      %footer.footer.clearfix{ role: "contentinfo" }
+        - if v2_plus
+          = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"
+        - else
           = image_tag "keep-a-changelog-mark.svg", width: 30, height: 30, class: "mark"
 
-          %p.about
-            This project is
-            = link_to "MIT Licensed", "https://choosealicense.com/licenses/mit/"
-            \ //
-            = link_to "Created & maintained", "https://github.com/olivierlacan/keep-a-changelog/"
-            by
-            = link_to "Olivier Lacan", "https://olivierlacan.com/"
-            \ //
-            Designed by Tyler Fortune
+        %p.about
+          != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
 
   - unless config.gauges_id.blank?
     :javascript

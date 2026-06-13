@@ -2,23 +2,77 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-06-07
+
+2.0.0 is the first major revision of Keep a Changelog. The format itself
+does not change: the six change types, the
+`YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
+so nothing you have already written becomes invalid. What changes is the guidance
+around it. 2.0.0 answers the questions the community has raised most often over the
+years (marking breaking changes, versioning beyond SemVer, monorepos, the
+boundary between Changed, Fixed, and Security) and adds guidance for an era in
+which an LLM can draft a changelog from a diff in seconds. Along the way the
+page is restructured from a flat FAQ into integrated guidance, given a new
+tagline and a redesigned, accessible site, and gathers a round of wording
+refinements that were never worth re-translating over on their own.
+
 ### Added
 
+- New guidance answering long-standing community questions: the `# Changelog`
+  header preamble; marking breaking changes and where upgrade steps belong;
+  choosing between Changed, Fixed, and Security; leading a Security entry with its
+  CVE; why the six change types don't grow; versioning schemes beyond SemVer;
+  linking each version to a `compare` diff with reference links; changelogs versus
+  release notes, how to derive one from the other without duplicate work, and why
+  a host's generated release notes are vendor lock-in; optional per-release
+  summaries; LLM-generated changelogs and a brief you can drop into an `AGENTS.md`;
+  Conventional Commits; fitting a changelog into CI/CD; linking to issues and pull
+  requests; crediting contributors; very large changelogs; monorepos; and a
+  statement of what Keep a Changelog deliberately won't do.
+- A redesigned site for 2.0: light and dark themes with a header
+  switch (system, light, or dark); a header that pins below the hero as you
+  scroll, keeping the language and theme controls and the brand wordmark within
+  reach while reading; a sticky table-of-contents sidebar that collapses to a
+  menu on small screens; a responsive header whose language picker collapses
+  behind a globe icon on narrow screens; a "Changelog basics" intro shown as
+  What/Why/Who cards; heading anchor links; indented lists; the topographic hero
+  pattern and tree-ring mark (in the brand accent) restored; and Tyler Fortune's
+  badge added to the footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is
+  now authored in Markdown, with reference-style links and fenced code examples.
+- A note in the References section on the convention's reach: now translated into
+  dozens of languages and used by tens of thousands of open-source projects.
 - v1.1 Brazilian Portuguese translation.
 - v1.1 German Translation
 - v1.1 Spanish translation.
 - v1.1 Italian translation.
 - v1.1 Polish translation.
 - v1.1 Ukrainian translation.
-- v1.1 Swedish translation (#590).
+- v1.1 Swedish translation.
 
 ### Changed
 
+- New tagline: "Clearly document the evolution of your projects." It replaces
+  "Don't let your friends dump git logs into changelogs." The new line is active,
+  idiom-free, and easier to translate. Earlier versions keep the original line.
+- Restructured the page from a flat list of FAQs into integrated guidance:
+  a how-to section (principles, types, breaking changes, structuring a release,
+  curation, file naming, the header preamble, and release notes), a section on
+  what makes a changelog worse, a section on automation and LLMs, a "Less common
+  questions" section, and leaner About and References sections. The voice is
+  plainer and less first-person, with translators in mind.
+- Reworded and modernized several existing sections (what and why a
+  changelog exists, the guiding principles, reducing maintenance effort, automatic
+  parsing, rewriting, and contributing). These clarifications weren't significant
+  enough to justify re-translating the page for a minor release, so they were
+  held back and batched into this major version instead.
+- Reframed the old "GitHub Releases" answer as "Is a changelog the same as
+  release notes?", broadened beyond GitHub to any host's release system, with the
+  case for keeping the canonical, portable record in your repository.
 - Use frontmatter title & description in each language version template
 - Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
   image that will render properly (although in English for all languages)
@@ -27,6 +81,11 @@ description when links are shared are language-appropriate
 
 ### Removed
 
+- Outdated specifics from two answers (the Vandamme gem reference, in
+  "can changelogs be automatically parsed?", and a GitHub-Releases discoverability
+  note) in favor of more general guidance.
+- The FAQ scaffolding and most of the first-person framing, in favor of plainer
+  prose; the personal podcast note now lives in a synthesized References section.
 - Trademark sign previously shown after the project description in version 
 0.3.0
 
@@ -34,30 +93,30 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- v1.1 Arabic translation (#444).
+- v1.1 Arabic translation.
 - v1.1 French translation.
-- v1.1 Dutch translation (#371).
-- v1.1 Russian translation (#410).
-- v1.1 Japanese translation (#363).
-- v1.1 Norwegian Bokmål translation (#383).
-- v1.1 "Inconsistent Changes" Turkish translation (#347).
+- v1.1 Dutch translation.
+- v1.1 Russian translation.
+- v1.1 Japanese translation.
+- v1.1 Norwegian Bokmål translation.
+- v1.1 "Inconsistent Changes" Turkish translation.
 - Default to most recent versions available for each languages.
 - Display count of available translations (26 to date!).
 - Centralize all links into `/data/links.json` so they can be updated easily.
 
 ### Fixed
 
-- Improve French translation (#377).
-- Improve id-ID translation (#416).
-- Improve Persian translation (#457).
-- Improve Russian translation (#408).
-- Improve Swedish title (#419).
-- Improve zh-CN translation (#359).
-- Improve French translation (#357).
-- Improve zh-TW translation (#360, #355).
-- Improve Spanish (es-ES) transltion (#362).
-- Foldout menu in Dutch translation (#371).
-- Missing periods at the end of each change (#451).
+- Improve French translation.
+- Improve id-ID translation.
+- Improve Persian translation.
+- Improve Russian translation.
+- Improve Swedish title.
+- Improve zh-CN translation.
+- Improve French translation.
+- Improve zh-TW translation.
+- Improve Spanish (es-ES) transltion.
+- Foldout menu in Dutch translation.
+- Missing periods at the end of each change.
 - Fix missing logo in 1.1 pages.
 - Display notice when translation isn't for most recent version.
 - Various broken links, page versions, and indentations.
@@ -76,20 +135,20 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- Danish translation (#297).
-- Georgian translation from (#337).
+- Danish translation.
+- Georgian translation from.
 - Changelog inconsistency section in Bad Practices.
 
 ### Fixed
 
-- Italian translation (#332).
-- Indonesian translation (#336).
+- Italian translation.
+- Indonesian translation.
 
 ## [1.0.0] - 2017-06-20
 
 ### Added
 
-- New visual identity by [@tylerfortune8](https://github.com/tylerfortune8).
+- New visual identity by [@tylerfortune8].
 - Version navigation.
 - Links to latest released version in previous versions.
 - "Why keep a changelog?" section.
@@ -97,21 +156,21 @@ description when links are shared are language-appropriate
 - "How do I make a changelog?" section.
 - "Frequently Asked Questions" section.
 - New "Guiding Principles" sub-section to "How do I make a changelog?".
-- Simplified and Traditional Chinese translations from [@tianshuo](https://github.com/tianshuo).
-- German translation from [@mpbzh](https://github.com/mpbzh) & [@Art4](https://github.com/Art4).
-- Italian translation from [@azkidenz](https://github.com/azkidenz).
-- Swedish translation from [@magol](https://github.com/magol).
-- Turkish translation from [@emreerkan](https://github.com/emreerkan).
-- French translation from [@zapashcanon](https://github.com/zapashcanon).
-- Brazilian Portuguese translation from [@Webysther](https://github.com/Webysther).
-- Polish translation from [@amielucha](https://github.com/amielucha) & [@m-aciek](https://github.com/m-aciek).
-- Russian translation from [@aishek](https://github.com/aishek).
-- Czech translation from [@h4vry](https://github.com/h4vry).
-- Slovak translation from [@jkostolansky](https://github.com/jkostolansky).
-- Korean translation from [@pierceh89](https://github.com/pierceh89).
-- Croatian translation from [@porx](https://github.com/porx).
-- Persian translation from [@Hameds](https://github.com/Hameds).
-- Ukrainian translation from [@osadchyi-s](https://github.com/osadchyi-s).
+- Simplified and Traditional Chinese translations from [@tianshuo].
+- German translation from [@mpbzh] & [@Art4].
+- Italian translation from [@azkidenz].
+- Swedish translation from [@magol].
+- Turkish translation from [@emreerkan].
+- French translation from [@zapashcanon].
+- Brazilian Portuguese translation from [@Webysther].
+- Polish translation from [@amielucha] & [@m-aciek].
+- Russian translation from [@aishek].
+- Czech translation from [@h4vry].
+- Slovak translation from [@jkostolansky].
+- Korean translation from [@pierceh89].
+- Croatian translation from [@porx].
+- Persian translation from [@Hameds].
+- Ukrainian translation from [@osadchyi-s].
 
 ### Changed
 
@@ -141,9 +200,9 @@ description when links are shared are language-appropriate
 
 ### Added
 
-- RU translation from [@aishek](https://github.com/aishek).
-- pt-BR translation from [@tallesl](https://github.com/tallesl).
-- es-ES translation from [@ZeliosAriex](https://github.com/ZeliosAriex).
+- RU translation from [@aishek].
+- pt-BR translation from [@tallesl].
+- es-ES translation from [@ZeliosAriex].
 
 ## [0.2.0] - 2015-10-06
 
@@ -161,7 +220,7 @@ description when links are shared are language-appropriate
 ### Changed
 
 - Improve argument against commit logs.
-- Start following [SemVer](https://semver.org) properly.
+- Start following [SemVer] properly.
 
 ## [0.0.8] - 2015-02-17
 
@@ -247,7 +306,8 @@ description when links are shared are language-appropriate
 - Good examples and basic guidelines, including proper date formatting.
 - Counter-examples: "What makes unicorns cry?".
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
@@ -262,3 +322,24 @@ description when links are shared are language-appropriate
 [0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+[SemVer]: https://semver.org
+[@tylerfortune8]: https://github.com/tylerfortune8
+[@tianshuo]: https://github.com/tianshuo
+[@mpbzh]: https://github.com/mpbzh
+[@Art4]: https://github.com/Art4
+[@azkidenz]: https://github.com/azkidenz
+[@magol]: https://github.com/magol
+[@emreerkan]: https://github.com/emreerkan
+[@zapashcanon]: https://github.com/zapashcanon
+[@Webysther]: https://github.com/Webysther
+[@amielucha]: https://github.com/amielucha
+[@m-aciek]: https://github.com/m-aciek
+[@aishek]: https://github.com/aishek
+[@h4vry]: https://github.com/h4vry
+[@jkostolansky]: https://github.com/jkostolansky
+[@pierceh89]: https://github.com/pierceh89
+[@porx]: https://github.com/porx
+[@Hameds]: https://github.com/Hameds
+[@osadchyi-s]: https://github.com/osadchyi-s
+[@tallesl]: https://github.com/tallesl
+[@ZeliosAriex]: https://github.com/ZeliosAriex

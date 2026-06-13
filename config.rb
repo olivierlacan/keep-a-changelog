@@ -3,12 +3,34 @@
 # --------------------------------------
 
 # ----- Site ----- #
-# Last version should be the latest English version since the manifesto is first
-# written in English, then translated into other languages later.
+# Last version should be the latest English version since Keep a Changelog is
+# first written in English, then translated into other languages later.
 $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # $last_version = $versions.last
-$last_version = "1.1.0"
+
+# Published "latest" version. 2.0.0 is written and built on every run, but stays
+# unpublished — 1.1.0 remains latest — until release. Set the KAC_PREVIEW_V2 flag
+# to promote 2.0.0 to latest for a preview: it flips the "/" and per-language
+# redirects, the default selector version, and the "newer version available"
+# notices to 2.0.0, without changing the default production build. For example:
+#   KAC_PREVIEW_V2=1 bundle exec middleman serve
+# To go live, drop the flag and set $last_version = "2.0.0" outright.
+$last_version = ENV["KAC_PREVIEW_V2"] ? "2.0.0" : "1.1.0"
 $previous_version = $versions[$versions.index($last_version) - 1]
+
+# Expose in-progress version drafts (e.g. a 2.0.0 still being written) only when
+# serving locally — never in a production build. This lets the version/language
+# selector preview and link to newer English versions before they're published,
+# while production stays pinned to $last_version.
+# Newest version available for a language that is at or below the published
+# $last_version. Used for the default per-language redirect so production never
+# routes to an unpublished draft. (Local-dev preview of newer drafts is handled at
+# render time by the build?-aware exposed_version_for helper below.)
+$published_version_for = lambda do |code|
+  $versions.select { |v|
+    File.directory?("source/#{code}/#{v}") && Gem::Version.new(v) <= Gem::Version.new($last_version)
+  }.max_by { |v| Gem::Version.new(v) }
+end
 
 # This list of languages populates the language navigation.
 issues_url = "https://github.com/olivierlacan/keep-a-changelog/issues"
@@ -77,7 +99,7 @@ $languages = {
     name: "polski"
   },
   "pt-BR" => {
-    name: "Português do Brasil",
+    name: "Português (BR)",
     notice: "A última versão (#{$last_version}) ainda não está disponível em
     Português mas nesse momento você pode <a href='/en/'>lê-la em inglês</a> e
     <a href='#{issues_url}'>ajudar em sua tradução</a>."
@@ -141,12 +163,15 @@ set :gauges_id, ""
 set :publisher_url, "https://www.facebook.com/olivier.lacan.5"
 set :site_url, "https://keepachangelog.com"
 
-redirect "index.html", to: "en/#{$last_version}/index.html"
-
+# The root and /en/ landing pages are JS templates (source/index.html.erb and
+# source/en/index.html.erb) rather than plain static redirects, so a ?preview=v2
+# query param can route visitors to the unreleased 2.0 draft (persisted in
+# localStorage; ?preview=off clears it). Without JS they fall through to the
+# published $last_version. Every other language keeps a plain static redirect.
 $languages.each do |language|
   code = language.first
-  versions = Dir.entries("source/#{code}").sort - %w[. ..]
-  redirect "#{code}/index.html", to: "#{code}/#{versions.last}/index.html"
+  next if code == "en"
+  redirect "#{code}/index.html", to: "#{code}/#{$published_version_for.call(code)}/index.html"
 end
 
 # ----- Assets ----- #
@@ -163,39 +188,13 @@ activate :automatic_image_sizes
 # ----- Markdown ----- #
 
 activate :syntax
-set :markdown_engine, :redcarpet
+set :markdown_engine, :kramdown
 
-## Override default Redcarpet renderer in order to define a class
-class CustomMarkdownRenderer < Redcarpet::Render::HTML
-  def doc_header
-    %(<nav class="toc">#{@header}</nav>)
-  end
-
-  def header(text, header_level)
-    slug = text.parameterize
-    tag_name = "h#{header_level}"
-    anchor_link = "<a id='#{slug}' class='anchor' href='##{slug}' aria-hidden='true'></a>"
-    header_tag_open = "<#{tag_name} id='#{slug}'>"
-
-    output = ""
-    output << header_tag_open
-    output << anchor_link
-    output << text
-    output << "</#{tag_name}>"
-
-    output
-  end
-end
-
-$markdown_config = {
-  fenced_code_blocks: true,
-  footnotes: true,
-  smartypants: true,
-  tables: true,
-  with_toc_data: true,
-  renderer: CustomMarkdownRenderer
-}
-set :markdown, $markdown_config
+# input: "GFM" so ```backtick``` fenced code blocks render as <pre><code>
+# (kramdown's default parser only fences with ~~~). hard_wrap: false keeps soft
+# line wraps from becoming <br>, matching the prior default behavior.
+set :markdown, auto_ids: true, smart_quotes: %w[lsquo rsquo ldquo rdquo],
+  input: "GFM", hard_wrap: false
 
 # --------------------------------------
 #   Helpers
@@ -206,15 +205,63 @@ helpers do
     Addressable::URI.join(config.site_url, path).normalize.to_s
   end
 
-  def available_translation_for(language)
-    language_name = language.last[:name]
-    language_path = "source/#{language.first}"
+  # Newest version available for a language. In a production build we cap at the
+  # published $last_version; when serving locally we expose newer drafts (e.g. an
+  # in-progress 2.0.0) so they can be previewed and picked from the selector.
+  def exposed_version_for(code)
+    installed = $versions.select { |v| File.directory?("source/#{code}/#{v}") }
+    installed = installed.select { |v| Gem::Version.new(v) <= Gem::Version.new($last_version) } if build?
+    installed.max_by { |v| Gem::Version.new(v) }
+  end
 
-    if File.exist?("#{language_path}/#{$last_version}")
-      "#{$last_version} #{language_name}"
-    elsif File.exist?("#{language_path}/#{$previous_version}")
-      "#{$previous_version} #{language_name}"
+  def available_translation_for(language)
+    version = exposed_version_for(language.first)
+    "#{version} #{language.last[:name]}" if version
+  end
+
+  # The release date for a version, read from CHANGELOG.md (e.g. the line
+  # "## [2.0.0] - 2026-06-07"). Returns the ISO date string, or nil if the
+  # version has no dated entry yet.
+  def changelog_date_for(version)
+    match = File.read("CHANGELOG.md").match(/^##\s*\[#{Regexp.escape(version)}\]\s*-\s*(\d{4}-\d{2}-\d{2})/)
+    match && match[1]
+  end
+
+  # Human-friendly date with an ordinal day: "2026-06-07" -> "June 7th, 2026".
+  # The ISO string stays available for the <time datetime> attribute and title.
+  def human_date(iso)
+    require "date"
+    d = Date.parse(iso)
+    n = d.day
+    suffix = (11..13).include?(n % 100) ? "th" : { 1 => "st", 2 => "nd", 3 => "rd" }.fetch(n % 10, "th")
+    "#{d.strftime("%B")} #{n}#{suffix}, #{d.year}"
+  end
+
+  # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
+  # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
+  # them: join hard-wrapped lines within paragraphs and list items while keeping
+  # blank lines, headings, list boundaries, and code blocks intact.
+  def changelog_preview
+    in_code = false
+    out = []
+    File.read("CHANGELOG.md").each_line do |raw|
+      line = raw.chomp
+      if line =~ /\A\s*```/
+        in_code = !in_code
+        out << line
+        next
+      end
+      if in_code || line.strip.empty? ||
+         line =~ /\A\s*(#|[-*+]\s|\d+\.\s|>|\|)/ || # heading / list / quote / table
+         line =~ /\A\s{4,}\S/ ||                    # indented code
+         out.empty? || out.last.strip.empty? ||
+         out.last =~ /\A\s*(#|```)/                 # previous line was a heading/fence
+        out << line
+      else
+        out[-1] = "#{out.last} #{line.strip}"
+      end
     end
+    out.join("\n")
   end
 end
 
@@ -226,6 +273,15 @@ end
 
 activate :directory_indexes
 page "/404.html", directory_index: false
+
+# ----- Development ----- #
+
+# Live-reload CSS, JS, and templates during `middleman serve` so changes show
+# without a manual refresh. The gem ships in the Gemfile but must be activated
+# explicitly; without this, edits (especially CSS) don't reload on their own.
+configure :development do
+  activate :livereload
+end
 
 # --------------------------------------
 #   Production

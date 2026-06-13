@@ -99,6 +99,212 @@ Human-readable report with statistics:
 ruby translation_coverage.rb --format text
 ```
 
+## Migration Mode: tracking reworded sections
+
+Plain coverage only answers *"which sections is a translation missing?"* It can't
+see that an existing section was **reworded** in a newer version — the section ID
+is still present, so it looks complete even though the text is now out of date.
+
+Migration mode closes that gap. It **diffs the English text** of every section
+between the previous version (`1.1.0`) and the target (`2.0.0`) and classifies
+each as **new**, **reworded**, or **unchanged**. The text is normalized first —
+HAML element tokens, anchors, interpolation and inline HTML are stripped while
+`link_to "..."` text is kept, and whitespace is collapsed — so reflowing or
+re-indenting a paragraph does *not* register as a change; only the words do.
+
+The English `2.0.0` source also marks changed paragraphs with `new` / `updated`
+CSS classes (see PR #600). Those markers are **not** the source of truth here —
+instead the tool **audits** them against the computed diff and reports any section
+where the annotation and the actual text disagree (see "Annotation check" below),
+which helps keep the markup honest as the draft evolves.
+
+```bash
+ruby translation_coverage.rb --migration
+```
+
+For each language it then reports the work needed to bring its `1.1.0` translation
+up to `2.0.0`:
+
+- **Add** — a brand-new section (e.g. `git`), or a changed section the language
+  never translated.
+- **Revise** — a section that was reworded upstream and already has a prior
+  translation to update.
+- **Carry** — an unchanged section; the existing translation can be reused as-is.
+
+```
+2.0 TRANSLATION MIGRATION  (1.1.0 → 2.0.0)
+Changes detected by diffing English section text (markers used only to audit).
+English 2.0.0 has 21 sections: 1 new, 11 reworded, 9 unchanged.
+  NEW (translate fresh):     git
+  REWORDED (revise):         what, why, principles, effort, ...
+
+Language           Add   Revise   Carry    Work
+fr                   1       11       9      12
+
+ANNOTATION CHECK (authored markers vs computed diff):
+  ✓ markers agree with the text diff for every section
+```
+
+Add `--details` to list the exact section IDs per language, `--language LANG` to
+focus on one, or `--format json` / `--format csv` to export. Renamed sections
+(e.g. `github-releases` → `releases`) are mapped to their previous IDs so they
+count as **revise**, not a spurious add/remove.
+
+### Annotation check
+
+Because the diff is computed from text, it can verify the hand-applied
+`new` / `updated` CSS markers. If a section's text changed but it was never
+marked (or was marked but the text is identical), it appears under
+`ANNOTATION CHECK` so you can fix the markup. A clean run prints a single ✓.
+
+> Note: the report is meaningful for the `1.1.0 → 2.0.0` upgrade, since that's the
+> version pair being diffed. Pass `--version` to target a different version whose
+> English source exists.
+
+## Consistency Mode: auditing translations against the English change pattern
+
+Migration mode asks *"what work does the next version create?"* Consistency mode
+asks a different question about versions that already exist: *"did each
+translation change in step with English, or did inconsistencies creep in?"*
+
+Between two reference English versions (e.g. `1.0.0` → `1.1.0`) we know exactly
+which sections were added, reworded, etc. A translation that has **both** of those
+versions should mirror that pattern. Where it doesn't, the tool flags it:
+
+```bash
+ruby translation_coverage.rb --consistency
+```
+
+- **stale** — English reworded a section, but the translation's text is identical
+  across its own two versions: the update was never propagated.
+- **drift** — the translation changed a section English left unchanged. Split into
+  **major** (similarity `< 0.9`, likely a wholesale re-translation) and **minor**
+  (a word or two). Each drift carries a character-bigram similarity score
+  (language-agnostic, works for CJK and Latin alike).
+- **miss** — English added a section the translation never added.
+- **kept** — English removed a section the translation still carries.
+
+```
+TRANSLATION CONSISTENCY  (1.0.0 → 1.1.0)
+English delta: confusing-dates=reworded, inconsistent-changes=added
+
+Language         Stale  Drift maj/min   Miss   Kept
+ko                   0           16/0      0      0   ← re-translated wholesale
+de                   0            0/2      0      0   ← two minor word changes
+fr                   0            0/0      0      0   ← changed only where English did
+```
+
+Use `--details` for the per-section drift list (sorted by similarity, most-changed
+first), `--language LANG` to focus, or `--format json`.
+
+> Drift is frequently *legitimate* — a translator polishing their wording, or a new
+> maintainer redoing a translation. It isn't necessarily an error; it's a divergence
+> worth reviewing. **stale**, **miss**, and **kept** are the higher-signal flags
+> that a translation has fallen out of step. Comparisons need stable section IDs, so
+> `0.3.0` (translated markdown headings) is excluded.
+
+## Mistranslation QA: deterministic checks + external triage
+
+The modes above audit *structure* and *change patterns*. Catching actual
+**mistranslations** is split into two auditable layers — the tool never makes a
+judgement call itself.
+
+### Layer 1 — Deterministic lint (`--lint`)
+
+Rule-based, fully explainable checks comparing each translated section to its
+English source. Every flag is mechanical and exact (no model, reproducible):
+
+```bash
+ruby translation_coverage.rb --lint            # summary table
+ruby translation_coverage.rb --lint --details  # every finding with its reason
+```
+
+- **untranslated** — section text is ~identical to English (≥ 0.95 similarity);
+  non-Latin scripts score near zero against English, so this only fires on text
+  genuinely left in English.
+- **missing-term** — `[YANKED]` / `Unreleased` / `CHANGELOG` present in English
+  but absent from the translation.
+- **missing-lit** — a release date or semver version present in English is gone.
+- **link-count** — the translation has a different number of links than English
+  (a dropped or added link).
+
+By policy, **localizing the canonical change types** (`Added`/`Changed`/…) into
+each language is **allowed** and is *not* flagged by default. Projects that want
+those headers kept verbatim everywhere can opt in:
+
+```bash
+ruby translation_coverage.rb --lint --strict-types   # adds a loc-type column
+```
+
+Output also as `--format json` / `--format csv`.
+
+### Layer 2 — Semantic triage with an external model
+
+For meaning errors that rule-based checks can't see, export aligned segments and
+score them with a pinned, open-source model — *not* this assistant.
+
+**One-time setup** (creates `tools/.venv`, installs pinned deps, downloads the
+model). The model is **LaBSE**, pulled from Hugging Face
+(`sentence-transformers/LaBSE`, ~1.8 GB) into your standard Hugging Face cache
+(`~/.cache/huggingface`) — the conventional location, shared across projects, so
+it downloads only once:
+
+```bash
+bin/rake translations:setup      # or: tools/setup.sh
+```
+
+To keep the model project-local instead of the shared cache, set `HF_HOME`:
+
+```bash
+HF_HOME="$PWD/tools/.models" tools/setup.sh
+```
+
+**Run the triage** (export segments → score with LaBSE, low similarity first):
+
+```bash
+bin/rake translations:qa         # the whole pipeline in one command
+```
+
+or step by step:
+
+```bash
+# JSONL is the default; `po` and `csv` also work (pofilter / Weblate / sheets).
+ruby translation_coverage.rb --segments --format jsonl > segments.jsonl
+tools/.venv/bin/python tools/labse_triage.py segments.jsonl --max-similarity 0.7
+```
+
+The run prints the exact model + library versions, and `tools/setup.sh` writes
+`tools/requirements.lock.txt` (a `pip freeze`), so every run is reproducible.
+
+**Relative vs absolute scoring.** LaBSE similarity has a strong per-section
+baseline: short sections (a heading, a one-line answer) score low for *every*
+language, so an absolute cutoff (`--max-similarity 0.7`) mostly surfaces hard
+sections, not mistranslations. **`--relative`** (used by `translations:qa`)
+instead ranks each translation by how far it falls *below its section's median
+across all languages* — isolating genuine per-language divergences. In practice
+this is the difference between a noisy list dominated by short sections and a
+short list of real outliers (e.g. it pinpoints a `confusing-dates` translation
+still using an old US-centric date example the English long since replaced —
+a stale-meaning case the deterministic `--consistency` check cannot see).
+
+```bash
+python3 tools/labse_triage.py segments.jsonl --relative              # default cutoff -0.08
+python3 tools/labse_triage.py segments.jsonl --max-similarity 0.6    # absolute, if preferred
+```
+
+The `med` and `d` columns show each section's cross-language median and the
+segment's delta from it, so you can always see whether a low score is the section
+being hard or the translation being an outlier.
+
+`segments.jsonl` can equally be fed to other auditable tools — `pofilter`
+(Translate Toolkit), LanguageTool, Weblate's checks, or COMET-Kiwi. The export is
+deterministic (aligned by stable section ID), so whichever tool you choose, the
+inputs are reproducible.
+
+> Both layers **flag candidates**; a human makes the final call. Layer 1 is
+> rule-explainable; Layer 2 is reproducible via a pinned model but not
+> rule-explainable. Neither relies on a black-box judgement from an LLM.
+
 ## Understanding the Output
 
 ### Version 1.1.0 and 1.0.0
@@ -188,9 +394,14 @@ This shows French translation status across all versions, helping identify if a 
 
 | Option | Short | Description |
 |--------|-------|-------------|
-| `--version VERSION` | `-v` | Filter by specific version (1.1.0, 1.0.0, or 0.3.0) |
+| `--version VERSION` | `-v` | Filter by specific version (2.0.0, 1.1.0, 1.0.0, or 0.3.0) |
 | `--language LANG` | `-l` | Filter by specific language code (e.g., es-ES, fr, de) |
 | `--format FORMAT` | `-f` | Output format: text (default), json, or csv |
+| `--migration` | `-m` | Show 2.0 migration workload (add / revise / carry per language) |
+| `--consistency` | `-c` | Audit translation change patterns vs English (stale / drift / miss / kept) |
+| `--lint` | | Deterministic QA: untranslated text, dropped terms/dates/versions, link mismatches |
+| `--strict-types` | | With `--lint`, also flag change types (`Added`/…) that were localized |
+| `--segments` | | Export aligned en↔translation segments (`--format jsonl`/`csv`/`po`) for external QA |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
 
