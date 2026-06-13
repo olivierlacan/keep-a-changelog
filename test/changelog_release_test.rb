@@ -159,29 +159,48 @@ class ChangelogReleaseCreateTest < Minitest::Test
     ChangelogRelease::Runner.new(@entries, github: github, logger: @log)
   end
 
-  def test_creates_release_and_tag_when_missing
+  def test_creates_every_missing_release_oldest_first
     github = FakeGitHub.new
-    assert runner(github).create_latest(sha: "abc123")
+    created = runner(github).create_missing(sha: "abc123")
 
-    assert_equal ["v1.1.0"], github.created.map { |c| c[:tag] }
-    assert_equal "1.1.0", github.created.first[:title]
-    assert_includes github.created.first[:notes], "Italian translation."
+    # Fixture has v1.1.0, v1.0.0, v0.0.5 — all missing, created oldest first.
+    assert_equal ["v0.0.5", "v1.0.0", "v1.1.0"], created
+    assert_equal ["v0.0.5", "v1.0.0", "v1.1.0"], github.created.map { |c| c[:tag] }
     assert_includes github.tags, "v1.1.0"
   end
 
-  def test_does_nothing_when_release_exists
-    github = FakeGitHub.new(releases: {"v1.1.0" => "whatever"})
-    refute runner(github).create_latest(sha: "abc123")
+  def test_creates_only_the_missing_ones
+    github = FakeGitHub.new(releases: {"v1.0.0" => "whatever"})
+    created = runner(github).create_missing(sha: "abc123")
 
+    assert_equal ["v0.0.5", "v1.1.0"], created # v1.0.0 already existed
+    refute_includes created, "v1.0.0"
+  end
+
+  def test_create_uses_yanked_title
+    github = FakeGitHub.new
+    runner(github).create_missing(sha: "abc123")
+
+    yanked = github.created.find { |c| c[:tag] == "v0.0.5" }
+    assert_equal "0.0.5 [YANKED]", yanked[:title]
+  end
+
+  def test_does_nothing_when_all_releases_exist
+    existing = {"v1.1.0" => "a", "v1.0.0" => "b", "v0.0.5" => "c"}
+    github = FakeGitHub.new(releases: existing)
+    created = runner(github).create_missing(sha: "abc123")
+
+    assert_empty created
     assert_empty github.created
   end
 
   def test_does_not_recreate_existing_tag
-    github = FakeGitHub.new(tags: ["v1.1.0"])
-    runner(github).create_latest(sha: "abc123")
+    github = FakeGitHub.new(tags: ["v1.1.0", "v1.0.0", "v0.0.5"])
+    runner(github).create_missing(sha: "abc123")
 
-    assert_equal ["v1.1.0"], github.tags # not duplicated
-    assert_equal ["v1.1.0"], github.created.map { |c| c[:tag] }
+    # Tags already present, so none are re-created; releases still are.
+    assert_equal ["v1.1.0", "v1.0.0", "v0.0.5"], github.tags
+    assert_equal ["v0.0.5", "v1.0.0", "v1.1.0"], github.created.map { |c| c[:tag] }
   end
 end
 
@@ -280,31 +299,42 @@ class ChangelogReleasePlanTest < Minitest::Test
     ChangelogRelease::Runner.new(@entries, github: github, logger: @log)
   end
 
-  def test_create_plan_marks_missing_latest_as_create
+  def test_create_plan_marks_every_missing_version_as_create
     items = runner(FakeGitHub.new).plan(mode: :create)
 
-    assert_equal 1, items.length # create mode only considers the latest
-    assert_equal :create, items.first.action
+    # Every version in the changelog is planned, all missing → all create.
+    assert_equal %w[v1.1.0 v1.0.0 v0.0.5], items.map(&:tag)
+    assert(items.all? { |item| item.action == :create })
     assert_includes items.first.details, "Italian translation."
     assert ChangelogRelease.changes?(items)
   end
 
-  def test_create_plan_marks_existing_matching_latest_as_unchanged
+  def test_create_plan_leaves_existing_releases_unchanged
     github = FakeGitHub.new(releases: {"v1.1.0" => @entries.first.notes})
     items = runner(github).plan(mode: :create)
+    by_tag = items.to_h { |item| [item.tag, item] }
 
-    assert_equal :unchanged, items.first.action
+    assert_equal :unchanged, by_tag["v1.1.0"].action # exists, not reconciled in create
+    assert_equal :create, by_tag["v1.0.0"].action # still missing → create
+    assert ChangelogRelease.changes?(items)
+  end
+
+  def test_create_plan_with_all_releases_present_has_no_changes
+    existing = @entries.to_h { |e| [e.tag, e.notes] }
+    items = runner(FakeGitHub.new(releases: existing)).plan(mode: :create)
+
+    assert(items.all? { |item| item.action == :unchanged })
     refute ChangelogRelease.changes?(items)
   end
 
-  def test_sync_plan_covers_every_version_with_diff_for_drift
+  def test_sync_plan_creates_missing_and_diffs_drift
     github = FakeGitHub.new(releases: {"v1.1.0" => "### Added\n"})
     items = runner(github).plan(mode: :sync)
 
     by_tag = items.to_h { |item| [item.tag, item] }
     assert_equal :update, by_tag["v1.1.0"].action
     assert_includes by_tag["v1.1.0"].details, "+- Indonesian translation."
-    assert_equal :skip, by_tag["v1.0.0"].action # exists in changelog, no release yet
+    assert_equal :create, by_tag["v1.0.0"].action # missing → create (no longer skipped)
     assert ChangelogRelease.changes?(items)
   end
 
@@ -319,8 +349,8 @@ class ChangelogReleasePlanTest < Minitest::Test
   end
 
   def test_format_plan_reports_when_nothing_to_do
-    github = FakeGitHub.new(releases: {"v1.1.0" => @entries.first.notes})
-    items = runner(github).plan(mode: :create)
+    existing = @entries.to_h { |e| [e.tag, e.notes] }
+    items = runner(FakeGitHub.new(releases: existing)).plan(mode: :create)
     markdown = ChangelogRelease.format_plan(items, sync: false)
 
     assert_includes markdown, "Nothing to create or update"
