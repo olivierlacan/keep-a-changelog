@@ -249,6 +249,17 @@
     font-size: var(--step--1);
     color: var(--muted);
   }
+  /* A subtle vertical hairline separating the brand (mark + wordmark) from the
+     language picker, so the globe doesn't read as part of the logo. Shown only
+     when the header carries the mark (revealed in the conditions below). */
+  .locales::before {
+    content: "";
+    display: none;
+    inline-size: 1px;
+    block-size: 1.5em;
+    margin-inline-end: var(--space-2xs);
+    background: var(--rule);
+  }
   #language-select {
     font: inherit;
     color: var(--text);
@@ -354,6 +365,7 @@
        hide it in the hero (rule in the content layer) so it doesn't crowd the
        title. */
     article > header .mark { display: inline-block; }
+    .locales::before { display: block; }
     .locales-toggle { display: inline-grid; }
     .locales label { display: none; }
     #language-select { display: none; }
@@ -859,6 +871,7 @@
       animation: kac-header-drop 0.22s ease;
     }
     :root.header-stuck article > header .mark { display: inline-block; }
+    :root.header-stuck .locales::before { display: block; }
     /* Push the sticky TOC rail below the pinned header so its top isn't covered. */
     :root.header-stuck .article-body > .toc { inset-block-start: calc(var(--header-h) + var(--space-s)); }
   }
