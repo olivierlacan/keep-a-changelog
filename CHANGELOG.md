@@ -50,22 +50,16 @@ tagline, and a redesigned, accessible site.
 
 ### Changed
 
-- New tagline: "Clearly document the evolution of your projects." It is active,
-  idiom-free, and easier to translate than the old "Don't let your friends dump
-  git logs into changelogs," which earlier versions keep.
-- Restructured the page from a flat FAQ into integrated guidance: a how-to
-  section, a section on what makes a changelog worse, one on automation and LLMs,
-  a "Less common questions" section, and leaner About and References sections.
-  The voice is plainer and less first-person, with translators in mind.
-- Reworded and modernized existing sections (what and why, the guiding
-  principles, maintenance effort, automatic parsing, rewriting, and contributing),
-  batched here rather than re-translated for a minor release.
-- Reframed the old "GitHub Releases" answer as "Is a changelog the same as
-  release notes?", broadened beyond GitHub to any host, making the case for a
-  canonical, portable record in your repository.
-- Set each language template's title and description from frontmatter, and fixed
-  the OpenGraph image, title, and description so shared links render properly and
-  language-appropriately (the image is in English for all languages).
+- New tagline: "Clearly document the evolution of your projects." (replacing
+  "Don't let your friends dump git logs into changelogs," kept on earlier versions).
+- Restructured the page from a flat FAQ into integrated guidance, in a plainer,
+  less first-person voice.
+- Reworded and modernized existing sections, batched here rather than
+  re-translated for a minor release.
+- Reframed the "GitHub Releases" answer as "Is a changelog the same as release
+  notes?", broadened beyond GitHub to any host.
+- Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
+  so shared links render correctly and language-appropriately.
 
 ### Removed
 
