@@ -9,85 +9,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2026-06-07
 
-2.0.0 is the first major revision of Keep a Changelog. The format itself
-does not change: the six change types, the
-`YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
-so nothing you have already written becomes invalid. What changes is the guidance
-around it. 2.0.0 answers the questions the community has raised most often over the
-years (marking breaking changes, versioning beyond SemVer, monorepos, the
-boundary between Changed, Fixed, and Security) and adds guidance for an era in
-which an LLM can draft a changelog from a diff in seconds. Along the way the
-page is restructured from a flat FAQ into integrated guidance, given a new
-tagline and a redesigned, accessible site, and gathers a round of wording
-refinements that were never worth re-translating over on their own.
+2.0.0 is the first major revision of Keep a Changelog. The format itself is
+unchanged: the six change types, `YYYY-MM-DD` dates, and the `Unreleased` and
+`[YANKED]` markers all stay valid, so nothing you have already written breaks.
+What changes is the guidance around it, alongside a restructured page, a new
+tagline, and a redesigned, accessible site.
 
 ### Added
 
-- New guidance answering long-standing community questions: the `# Changelog`
-  header preamble; marking breaking changes and where upgrade steps belong;
-  choosing between Changed, Fixed, and Security; leading a Security entry with its
-  CVE; why the six change types don't grow; versioning schemes beyond SemVer;
-  linking each version to a `compare` diff with reference links; changelogs versus
-  release notes, how to derive one from the other without duplicate work, and why
-  a host's generated release notes are vendor lock-in; optional per-release
-  summaries; LLM-generated changelogs and a brief you can drop into an `AGENTS.md`;
-  Conventional Commits; fitting a changelog into CI/CD; linking to issues and pull
-  requests; crediting contributors; very large changelogs; monorepos; and a
-  statement of what Keep a Changelog deliberately won't do.
-- A redesigned site for 2.0: light and dark themes with a header
-  switch (system, light, or dark); a header that pins below the hero as you
-  scroll, keeping the language and theme controls and the brand wordmark within
-  reach while reading; a sticky table-of-contents sidebar that collapses to a
-  menu on small screens; a responsive header whose language picker collapses
-  behind a globe icon on narrow screens; a "Changelog basics" intro shown as
-  What/Why/Who cards; heading anchor links; indented lists; the topographic hero
-  pattern and tree-ring mark (in the brand accent) restored; and Tyler Fortune's
-  badge added to the footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is
-  now authored in Markdown, with reference-style links and fenced code examples.
+- New guidance answering long-standing community questions:
+  - Format: the `# Changelog` header preamble; marking breaking changes and
+    where upgrade steps belong; choosing between Changed, Fixed, and Security;
+    leading a Security entry with its CVE; why the six change types don't grow.
+  - Versioning: schemes beyond SemVer, and linking each version to a `compare`
+    diff with reference links.
+  - Changelogs vs. release notes: how to derive one from the other without
+    duplicate work, and why a host's generated notes are vendor lock-in.
+  - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`;
+    Conventional Commits; CI/CD; linking issues and pull requests; crediting
+    contributors.
+  - Scale: very large changelogs and monorepos.
+  - Optional per-release summaries, and a statement of what Keep a Changelog
+    deliberately won't do.
+- A redesigned 2.0 site, all meeting WCAG 2.1 AA:
+  - Light and dark themes with a system/light/dark header switch.
+  - A header that pins below the hero as you scroll, keeping the language and
+    theme controls and the brand wordmark within reach.
+  - A sticky table-of-contents sidebar that collapses to a menu on small
+    screens, and a language picker that collapses behind a globe icon.
+  - A "Changelog basics" intro shown as What/Why/Who cards, heading anchor
+    links, and indented lists.
+  - The topographic hero pattern and tree-ring mark restored in the brand
+    accent, and Tyler Fortune's badge in the footer.
+  - The English 2.0.0 page is now authored in Markdown, with reference-style
+    links and fenced code examples.
 - A note in the References section on the convention's reach: now translated into
   dozens of languages and used by tens of thousands of open-source projects.
-- v1.1 Brazilian Portuguese translation.
-- v1.1 German Translation
-- v1.1 Spanish translation.
-- v1.1 Italian translation.
-- v1.1 Polish translation.
-- v1.1 Ukrainian translation.
-- v1.1 Swedish translation.
+- v1.1 translations: Brazilian Portuguese, German, Spanish, Italian, Polish,
+  Ukrainian, and Swedish.
 
 ### Changed
 
-- New tagline: "Clearly document the evolution of your projects." It replaces
-  "Don't let your friends dump git logs into changelogs." The new line is active,
-  idiom-free, and easier to translate. Earlier versions keep the original line.
-- Restructured the page from a flat list of FAQs into integrated guidance:
-  a how-to section (principles, types, breaking changes, structuring a release,
-  curation, file naming, the header preamble, and release notes), a section on
-  what makes a changelog worse, a section on automation and LLMs, a "Less common
-  questions" section, and leaner About and References sections. The voice is
-  plainer and less first-person, with translators in mind.
-- Reworded and modernized several existing sections (what and why a
-  changelog exists, the guiding principles, reducing maintenance effort, automatic
-  parsing, rewriting, and contributing). These clarifications weren't significant
-  enough to justify re-translating the page for a minor release, so they were
-  held back and batched into this major version instead.
+- New tagline: "Clearly document the evolution of your projects." It is active,
+  idiom-free, and easier to translate than the old "Don't let your friends dump
+  git logs into changelogs," which earlier versions keep.
+- Restructured the page from a flat FAQ into integrated guidance: a how-to
+  section, a section on what makes a changelog worse, one on automation and LLMs,
+  a "Less common questions" section, and leaner About and References sections.
+  The voice is plainer and less first-person, with translators in mind.
+- Reworded and modernized existing sections (what and why, the guiding
+  principles, maintenance effort, automatic parsing, rewriting, and contributing),
+  batched here rather than re-translated for a minor release.
 - Reframed the old "GitHub Releases" answer as "Is a changelog the same as
-  release notes?", broadened beyond GitHub to any host's release system, with the
-  case for keeping the canonical, portable record in your repository.
-- Use frontmatter title & description in each language version template
-- Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
-  image that will render properly (although in English for all languages)
-- Fix OpenGraph title & description for all languages so the title and 
-description when links are shared are language-appropriate
+  release notes?", broadened beyond GitHub to any host, making the case for a
+  canonical, portable record in your repository.
+- Set each language template's title and description from frontmatter, and fixed
+  the OpenGraph image, title, and description so shared links render properly and
+  language-appropriately (the image is in English for all languages).
 
 ### Removed
 
-- Outdated specifics from two answers (the Vandamme gem reference, in
-  "can changelogs be automatically parsed?", and a GitHub-Releases discoverability
-  note) in favor of more general guidance.
-- The FAQ scaffolding and most of the first-person framing, in favor of plainer
-  prose; the personal podcast note now lives in a synthesized References section.
-- Trademark sign previously shown after the project description in version 
-0.3.0
+- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
+  discoverability note) in favor of more general guidance.
+- The FAQ scaffolding and most first-person framing; the podcast note now lives
+  in the References section.
+- The trademark sign shown after the project description since 0.3.0.
 
 ## [1.1.1] - 2023-03-05
 
