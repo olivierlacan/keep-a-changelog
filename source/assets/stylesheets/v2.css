@@ -7,10 +7,12 @@
 /* ----------------------------------------------------------------- tokens */
 @layer tokens {
   :root {
-    /* Brand palette, tuned from the classic hex into oklch.
-       ocre #E05735 · gold #faa930 · bark #3F2B2D · sand #FEECD3 · ink #342828 */
-    --ocre: oklch(0.645 0.19 33);
-    --gold: oklch(0.79 0.155 67);
+    /* Brand palette from the Keep a Changelog Brand Guide:
+       Fire Orange #F15D30 · Flame Yellow #FBA92F · Dark Earth #3F2B2D ·
+       Clay #F4E0C2 · Light Clay #FFEED5. (The earlier ocre #E05735 read too red;
+       this is the brand's truer orange, hue ~40 rather than ~33.) */
+    --ocre: #F15D30;
+    --gold: #FBA92F;
     --bark: oklch(0.30 0.025 18);
     --sand: oklch(0.95 0.03 80);
     --ink: oklch(0.30 0.02 25);
@@ -25,16 +27,19 @@
     --muted: light-dark(oklch(0.44 0.02 30), oklch(0.72 0.02 70));
     /* A darker ocre for text/links so it clears 4.5:1 on white (the bright --ocre
        is mid-luminance and only passes as large text or as decoration); gold in dark. */
-    --link: light-dark(oklch(0.55 0.18 33), var(--gold));
+    --link: light-dark(oklch(0.55 0.18 41), var(--gold));
     --rule: light-dark(oklch(0.88 0.015 70), oklch(0.36 0.02 30));
     --code-bg: light-dark(oklch(0.955 0.02 75), oklch(0.27 0.02 30));
     --code-text: light-dark(var(--bark), var(--sand));
     /* Deeper ocre for the hero so light text clears 4.5:1. Light topographic
        contour lines sit over it; a scrim keeps the title legible. */
-    --hero-bg: light-dark(oklch(0.50 0.17 33), oklch(0.46 0.13 33));
+    /* A darkened orange (not the bright Fire Orange, which fails contrast under
+       cream text). Hue ~42 keeps it orange instead of the brick red the old
+       hue-33 darkening produced. Cream text clears 4.5:1 (light) / 5.8:1 (dark). */
+    --hero-bg: light-dark(oklch(0.53 0.19 42), oklch(0.49 0.18 42));
     --hero-text: var(--sand);
     --accent: light-dark(var(--ocre), var(--gold));
-    --focus: light-dark(oklch(0.55 0.18 33), var(--gold));
+    --focus: light-dark(oklch(0.55 0.18 41), var(--gold));
     /* Brand mark follows the accent: ocre on the white header in light, gold on
        the dark surface in dark (a branded palette color rather than plain cream). */
     --mark: var(--accent);
