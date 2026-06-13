@@ -230,3 +230,99 @@ class ChangelogReleaseSyncTest < Minitest::Test
     assert_includes @log.string, "v1.0.0 — no release yet"
   end
 end
+
+class ChangelogReleaseDiffTest < Minitest::Test
+  def test_added_line_shows_as_insert
+    diff = ChangelogRelease.unified_diff("- A thing.", "- A thing.\n- Italian translation.")
+
+    assert_includes diff, " - A thing."
+    assert_includes diff, "+- Italian translation."
+    refute_match(/^-/, diff.lines.map(&:chomp).reject { |l| l.start_with?("+", " ", "@") }.join)
+  end
+
+  def test_removed_line_shows_as_delete
+    diff = ChangelogRelease.unified_diff("- keep\n- drop", "- keep")
+
+    assert_includes diff, " - keep"
+    assert_includes diff, "-- drop"
+  end
+
+  def test_diff_ops_classify_each_line
+    ops = ChangelogRelease.diff_ops("a\nb", "a\nc")
+
+    assert_equal [[:equal, "a"], [:delete, "b"], [:insert, "c"]], ops
+  end
+
+  def test_long_unchanged_runs_collapse
+    old = (1..20).map { |n| "line #{n}" }.join("\n")
+    new = old + "\n- added at the end"
+    diff = ChangelogRelease.unified_diff(old, new, context: 3)
+
+    assert_includes diff, "+- added at the end"
+    assert_match(/@@ \d+ unchanged line\(s\) @@/, diff)
+    refute_includes diff, "line 1\n" # far-from-change context is collapsed away
+  end
+
+  def test_cosmetic_only_difference_yields_no_changed_lines
+    diff = ChangelogRelease.unified_diff("a\nb", "a   \r\nb\n\n")
+
+    refute_match(/^[-+]/, diff)
+  end
+end
+
+class ChangelogReleasePlanTest < Minitest::Test
+  def setup
+    @entries = ChangelogRelease.parse(CHANGELOG_FIXTURE)
+    @log = StringIO.new
+  end
+
+  def runner(github)
+    ChangelogRelease::Runner.new(@entries, github: github, logger: @log)
+  end
+
+  def test_create_plan_marks_missing_latest_as_create
+    items = runner(FakeGitHub.new).plan(mode: :create)
+
+    assert_equal 1, items.length # create mode only considers the latest
+    assert_equal :create, items.first.action
+    assert_includes items.first.details, "Italian translation."
+    assert ChangelogRelease.changes?(items)
+  end
+
+  def test_create_plan_marks_existing_matching_latest_as_unchanged
+    github = FakeGitHub.new(releases: {"v1.1.0" => @entries.first.notes})
+    items = runner(github).plan(mode: :create)
+
+    assert_equal :unchanged, items.first.action
+    refute ChangelogRelease.changes?(items)
+  end
+
+  def test_sync_plan_covers_every_version_with_diff_for_drift
+    github = FakeGitHub.new(releases: {"v1.1.0" => "### Added\n"})
+    items = runner(github).plan(mode: :sync)
+
+    by_tag = items.to_h { |item| [item.tag, item] }
+    assert_equal :update, by_tag["v1.1.0"].action
+    assert_includes by_tag["v1.1.0"].details, "+- Indonesian translation."
+    assert_equal :skip, by_tag["v1.0.0"].action # exists in changelog, no release yet
+    assert ChangelogRelease.changes?(items)
+  end
+
+  def test_format_plan_renders_table_and_diff_fence
+    github = FakeGitHub.new(releases: {"v1.1.0" => "### Added\n"})
+    items = runner(github).plan(mode: :sync)
+    markdown = ChangelogRelease.format_plan(items, sync: true)
+
+    assert_includes markdown, "| Tag | Date | Action |"
+    assert_includes markdown, "| `v1.1.0` | 2019-02-15 | ✏️ update |"
+    assert_includes markdown, "```diff"
+  end
+
+  def test_format_plan_reports_when_nothing_to_do
+    github = FakeGitHub.new(releases: {"v1.1.0" => @entries.first.notes})
+    items = runner(github).plan(mode: :create)
+    markdown = ChangelogRelease.format_plan(items, sync: false)
+
+    assert_includes markdown, "Nothing to create or update"
+  end
+end
