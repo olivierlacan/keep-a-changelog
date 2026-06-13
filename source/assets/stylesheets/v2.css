@@ -395,8 +395,9 @@
 /* ----------------------------------------------------------------- content */
 @layer content {
   /* Hero band — the brand identity lives here. Light topographic contour lines
-     over the deep ocre base; a top scrim (solid → transparent) keeps the title
-     and tagline legible while the pattern shows around and below them. */
+     over the deep ocre base. A gentle scrim keeps the pattern subtle throughout:
+     solid behind the title for legibility, faintly revealed through the middle,
+     then easing back out so the pattern is least opaque toward the bottom. */
   .hero {
     background-color: var(--hero-bg);
     /* PNG fallback first, then WebP via image-set where supported (about half the
@@ -405,14 +406,14 @@
     background-image:
       linear-gradient(to bottom,
         var(--hero-bg) 0,
-        var(--hero-bg) 34%,
-        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+        color-mix(in srgb, var(--hero-bg) 84%, transparent) 35%,
+        color-mix(in srgb, var(--hero-bg) 92%, transparent) 100%),
       url("../images/hero-topo@2x.png");
     background-image:
       linear-gradient(to bottom,
         var(--hero-bg) 0,
-        var(--hero-bg) 34%,
-        color-mix(in srgb, var(--hero-bg) 45%, transparent) 100%),
+        color-mix(in srgb, var(--hero-bg) 84%, transparent) 35%,
+        color-mix(in srgb, var(--hero-bg) 92%, transparent) 100%),
       image-set(
         url("../images/hero-topo@2x.webp") type("image/webp"),
         url("../images/hero-topo@2x.png") type("image/png"));
