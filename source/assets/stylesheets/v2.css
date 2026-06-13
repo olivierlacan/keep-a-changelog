@@ -257,7 +257,10 @@
     display: none;
     inline-size: 1px;
     block-size: 1.5em;
-    margin-inline-end: var(--space-2xs);
+    /* The header's --space-s gap sits on the title side of the rule; add this on
+       the picker side so the rule is equidistant: --space-xs (the .locales gap)
+       + 0.25rem = --space-s on both sides. */
+    margin-inline-end: 0.25rem;
     background: var(--rule);
   }
   #language-select {
