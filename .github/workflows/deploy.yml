@@ -1,0 +1,52 @@
+name: Deploy
+
+# Manual deploy. Builds the production site and publishes it to the gh-pages
+# branch that GitHub Pages serves at keepachangelog.com — the same thing
+# `rake deploy` does locally, but reproducibly from CI. Trigger it from the
+# Actions tab ("Run workflow"); you can pick which branch to build from.
+#
+# Note: the build uses the default config, so $last_version (currently 1.1.0)
+# decides the published "latest" version. 2.0 stays behind ?preview=v2 until you
+# flip that flag in config.rb.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write # push the built site to the gh-pages branch
+
+# Never run two deploys at once; don't cancel an in-progress publish.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec middleman build
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
+          # Keep the custom domain on the published branch.
+          cname: keepachangelog.com
+          # Replace gh-pages with a single fresh commit each deploy (built output
+          # has no history worth keeping); adds .nojekyll so Pages serves the
+          # pre-built files as-is.
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          full_commit_message: 'Deploy ${{ github.sha }}'
