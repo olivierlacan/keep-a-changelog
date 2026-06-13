@@ -1,16 +1,14 @@
 name: Release from changelog
 
-# Keeps GitHub Releases in sync with CHANGELOG.md. It reads the latest dated
-# version, and if no release exists for it yet, creates one whose tag, notes,
-# and date come straight from the changelog entry. (The changelog is the source;
-# the release is derived from it — exactly what the project recommends.)
+# Keeps GitHub Releases in sync with CHANGELOG.md. The changelog is the source of
+# truth; every release is derived from it. All the logic lives in (and is tested
+# by) tools/changelog_release.rb — this workflow just runs it.
 #
-# Idempotent: if the release already exists, it does nothing.
-#
-# Optional "sync notes" mode (manual only): reconciles the body of *every*
-# existing release against its changelog entry and updates any that have drifted.
-# This is how a translation added to an already-released version (same minor, or
-# a patch) gets pushed up to its published release. Off by default.
+#   create (default): create a release for the latest dated version if one is
+#                     missing. Idempotent — does nothing if it already exists.
+#   sync (manual opt-in): also reconcile the body of every existing release
+#                     against its changelog entry, updating any that have drifted
+#                     (e.g. a translation added to an already-released version).
 
 on:
   workflow_dispatch:
@@ -44,84 +42,9 @@ jobs:
         with:
           ruby-version: '3.3'
 
-      - name: Read latest version from CHANGELOG.md
-        id: changelog
-        env:
-          RELEASE_NOTES_FILE: release_notes.md
-          RELEASE_MANIFEST: release_manifest.json
-          RELEASE_NOTES_DIR: release_notes
-          # Only the manual run can set this; on a CHANGELOG.md push it's empty,
-          # so sync mode stays off and we only create-if-missing.
-          SYNC_RELEASE_NOTES: ${{ inputs.sync_notes }}
-        run: ruby tools/changelog_release.rb
-
-      - name: Create the release if it's missing
+      # "sync" only when the box is ticked on a manual run; every other trigger
+      # (including a CHANGELOG.md push) just does create-if-missing.
+      - name: Sync releases with the changelog
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ steps.changelog.outputs.tag }}
-          VERSION: ${{ steps.changelog.outputs.version }}
-          DATE: ${{ steps.changelog.outputs.date }}
-          YANKED: ${{ steps.changelog.outputs.yanked }}
-        run: |
-          set -euo pipefail
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists — nothing to do."
-            exit 0
-          fi
-
-          echo "Creating release $TAG (version $VERSION, dated $DATE)…"
-
-          # Annotated tag at this commit, dated to the changelog entry so the tag
-          # carries the right date even though GitHub stamps the release with the
-          # publish time.
-          if ! git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
-            GIT_AUTHOR_DATE="${DATE}T12:00:00Z" GIT_COMMITTER_DATE="${DATE}T12:00:00Z" \
-              git tag -a "$TAG" -m "$VERSION" "$GITHUB_SHA"
-            git push origin "refs/tags/$TAG"
-          fi
-
-          title="$VERSION"
-          if [ "$YANKED" = "true" ]; then
-            title="$VERSION [YANKED]"
-          fi
-
-          gh release create "$TAG" \
-            --title "$title" \
-            --notes-file release_notes.md \
-            --verify-tag
-
-      - name: Reconcile existing release notes with the changelog
-        if: steps.changelog.outputs.sync == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-
-          # Normalize so we don't churn on cosmetic differences: drop CR, trailing
-          # whitespace per line, and leading/trailing blank lines.
-          normalize() {
-            sed -e 's/\r$//' -e 's/[[:space:]]*$//' \
-              | sed -e '/./,$!d' \
-              | awk '{ lines[n++] = $0 }
-                     END { while (n > 0 && lines[n-1] == "") n--;
-                           for (i = 0; i < n; i++) print lines[i] }'
-          }
-
-          jq -r '.[] | [.tag, .notes_file] | @tsv' release_manifest.json \
-            | while IFS=$'\t' read -r tag notes_file; do
-            if ! gh release view "$tag" >/dev/null 2>&1; then
-              echo "· $tag — no release yet, skipping (the create step handles the latest)."
-              continue
-            fi
-
-            gh release view "$tag" --json body -q .body > current_body.md || : > current_body.md
-
-            if diff -q <(normalize < current_body.md) <(normalize < "$notes_file") >/dev/null; then
-              echo "· $tag — already matches."
-            else
-              echo "· $tag — body drifted, updating from changelog."
-              gh release edit "$tag" --notes-file "$notes_file"
-            fi
-          done
-
-          echo "Reconcile pass complete."
+        run: ruby tools/changelog_release.rb ${{ inputs.sync_notes && 'sync' || 'create' }}
