@@ -1,0 +1,84 @@
+name: Release from changelog
+
+# Keeps GitHub Releases in sync with CHANGELOG.md. The changelog is the source of
+# truth; every release is derived from it. All the logic lives in (and is tested
+# by) tools/changelog_release.rb — this workflow just runs it, in two stages:
+#
+#   1. plan  — a dry run that writes the proposed releases (and a diff of any
+#              that would change) to the run summary, and reports whether there's
+#              anything to do.
+#   2. apply — gated behind the "release" environment's required reviewers, so it
+#              pauses for manual approval. Review the plan, then approve to create
+#              and update the releases, or reject to cancel. Only runs when the
+#              plan found changes.
+#
+# Modes:
+#   create (default): create a release for the latest dated version if missing.
+#   sync (manual opt-in): also reconcile the body of every existing release
+#                         against its changelog entry (e.g. a translation added
+#                         to an already-released version).
+
+on:
+  workflow_dispatch:
+    inputs:
+      sync_notes:
+        description: "Reconcile every existing release's notes with the changelog"
+        type: boolean
+        default: false
+  push:
+    branches: [ "main" ]
+    paths: [ "CHANGELOG.md" ]
+
+permissions:
+  contents: write # create the tag and the release
+
+concurrency:
+  group: release-from-changelog
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.plan.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      # Writes the plan (creates + diffs) to the job summary and sets the
+      # `changes` output. "sync" only when the box is ticked on a manual run.
+      - name: Plan releases
+        id: plan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ruby tools/changelog_release.rb ${{ inputs.sync_notes && 'sync' || 'create' }} --dry-run
+
+  apply:
+    needs: plan
+    if: needs.plan.outputs.changes == 'true'
+    runs-on: ubuntu-latest
+    # Required reviewers on this environment pause the job for manual approval.
+    # Review the plan from the previous job, then approve or reject.
+    environment: release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Apply releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ruby tools/changelog_release.rb ${{ inputs.sync_notes && 'sync' || 'create' }}
