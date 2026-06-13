@@ -6,9 +6,19 @@ name: Release from changelog
 # the release is derived from it — exactly what the project recommends.)
 #
 # Idempotent: if the release already exists, it does nothing.
+#
+# Optional "sync notes" mode (manual only): reconciles the body of *every*
+# existing release against its changelog entry and updates any that have drifted.
+# This is how a translation added to an already-released version (same minor, or
+# a patch) gets pushed up to its published release. Off by default.
 
 on:
   workflow_dispatch:
+    inputs:
+      sync_notes:
+        description: "Reconcile every existing release's notes with the changelog"
+        type: boolean
+        default: false
   push:
     branches: [ "main" ]
     paths: [ "CHANGELOG.md" ]
@@ -38,6 +48,11 @@ jobs:
         id: changelog
         env:
           RELEASE_NOTES_FILE: release_notes.md
+          RELEASE_MANIFEST: release_manifest.json
+          RELEASE_NOTES_DIR: release_notes
+          # Only the manual run can set this; on a CHANGELOG.md push it's empty,
+          # so sync mode stays off and we only create-if-missing.
+          SYNC_RELEASE_NOTES: ${{ inputs.sync_notes }}
         run: ruby tools/changelog_release.rb
 
       - name: Create the release if it's missing
@@ -74,3 +89,39 @@ jobs:
             --title "$title" \
             --notes-file release_notes.md \
             --verify-tag
+
+      - name: Reconcile existing release notes with the changelog
+        if: steps.changelog.outputs.sync == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Normalize so we don't churn on cosmetic differences: drop CR, trailing
+          # whitespace per line, and leading/trailing blank lines.
+          normalize() {
+            sed -e 's/\r$//' -e 's/[[:space:]]*$//' \
+              | sed -e '/./,$!d' \
+              | awk '{ lines[n++] = $0 }
+                     END { while (n > 0 && lines[n-1] == "") n--;
+                           for (i = 0; i < n; i++) print lines[i] }'
+          }
+
+          jq -r '.[] | [.tag, .notes_file] | @tsv' release_manifest.json \
+            | while IFS=$'\t' read -r tag notes_file; do
+            if ! gh release view "$tag" >/dev/null 2>&1; then
+              echo "· $tag — no release yet, skipping (the create step handles the latest)."
+              continue
+            fi
+
+            gh release view "$tag" --json body -q .body > current_body.md || : > current_body.md
+
+            if diff -q <(normalize < current_body.md) <(normalize < "$notes_file") >/dev/null; then
+              echo "· $tag — already matches."
+            else
+              echo "· $tag — body drifted, updating from changelog."
+              gh release edit "$tag" --notes-file "$notes_file"
+            fi
+          done
+
+          echo "Reconcile pass complete."
