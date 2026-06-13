@@ -32,8 +32,6 @@ tagline, and a redesigned, accessible site.
   - Optional per-release summaries, and a statement of what Keep a Changelog
     deliberately won't do.
 - A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
-- v1.1 translations: Brazilian Portuguese, German, Spanish, Italian, Polish,
-  Ukrainian, and Swedish.
 
 ### Changed
 
@@ -52,6 +50,18 @@ tagline, and a redesigned, accessible site.
   discoverability note) in favor of more general guidance.
 - The FAQ scaffolding and most first-person framing; the podcast note now lives
   in the References section.
+
+## [1.1.2] - 2024-02-05
+
+### Added
+
+- v1.1 German translation.
+- v1.1 Italian translation.
+- v1.1 Polish translation.
+- v1.1 Spanish translation.
+- v1.1 Brazilian Portuguese translation.
+- v1.1 Ukrainian translation.
+- v1.1 Swedish translation.
 
 ## [1.1.1] - 2023-03-05
 
@@ -271,7 +281,8 @@ tagline, and a redesigned, accessible site.
 - Counter-examples: "What makes unicorns cry?".
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v2.0.0
+[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2...v2.0.0
+[1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
