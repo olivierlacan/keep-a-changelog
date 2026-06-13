@@ -8,11 +8,11 @@
 # isolation — see test/changelog_release_test.rb) and a command-line tool:
 #
 #   ruby tools/changelog_release.rb create [--dry-run]
-#       Create a release for the latest dated version if one doesn't exist yet.
-#       Idempotent: does nothing if the release is already there.
+#       Create a release for every dated version that doesn't have one yet.
+#       Idempotent: skips versions whose release already exists.
 #
 #   ruby tools/changelog_release.rb sync [--dry-run]
-#       Create-if-missing for the latest version, then reconcile the body of
+#       Create every missing release (as above), then reconcile the body of
 #       *every* existing release against its changelog entry, updating any that
 #       have drifted. This is how a translation added to an already-released
 #       version (same minor, or a patch) gets pushed up to its published release.
@@ -38,16 +38,15 @@ module ChangelogRelease
     end
   end
 
-  # One line of the dry-run plan. +action+ is :create, :update, :unchanged, or
-  # :skip; +details+ holds the new notes (:create) or a unified diff (:update).
+  # One line of the dry-run plan. +action+ is :create, :update, or :unchanged;
+  # +details+ holds the new notes (:create) or a unified diff (:update).
   PlanItem = Struct.new(:tag, :date, :action, :details, keyword_init: true)
 
   # Human-readable labels for each plan action, used in the summary table.
   ACTION_LABELS = {
     create: "🆕 create",
     update: "✏️ update",
-    unchanged: "✓ unchanged",
-    skip: "⏭ skip (no release yet)"
+    unchanged: "✓ unchanged"
   }.freeze
 
   # A dated version heading, e.g. "## [1.1.0] - 2019-02-15" — skips
@@ -277,25 +276,28 @@ module ChangelogRelease
       @logger = logger
     end
 
-    # Create a release for the latest version if it doesn't exist yet. Returns
-    # true if it created one, false if the release was already there.
-    def create_latest(sha:)
-      entry = @entries.first
-      if @github.release_exists?(entry.tag)
-        log "#{entry.tag} already exists — nothing to create."
-        return false
-      end
+    # Create a release for every dated version that doesn't have one yet, oldest
+    # first so the timeline is built in order. Existing releases are left alone.
+    # Tags are created (dated to the changelog entry) only when missing. Returns
+    # the tags it created.
+    def create_missing(sha:)
+      @entries.reverse_each.each_with_object([]) do |entry, created|
+        if @github.release_exists?(entry.tag)
+          log "#{entry.tag} already exists — skipping."
+          next
+        end
 
-      log "Creating release #{entry.tag} (version #{entry.version}, dated #{entry.date})…"
-      @github.create_tag(entry.tag, message: entry.version, date: entry.date, sha: sha) unless @github.tag_exists?(entry.tag)
-      @github.create_release(tag: entry.tag, title: entry.title, notes: entry.notes)
-      true
+        log "Creating release #{entry.tag} (version #{entry.version}, dated #{entry.date})…"
+        @github.create_tag(entry.tag, message: entry.version, date: entry.date, sha: sha) unless @github.tag_exists?(entry.tag)
+        @github.create_release(tag: entry.tag, title: entry.title, notes: entry.notes)
+        created << entry.tag
+      end
     end
 
     # Update the body of every existing release whose notes have drifted from the
-    # changelog. Releases that don't exist yet are skipped (create_latest owns the
-    # newest one); releases that already match are left untouched. Returns the
-    # tags it updated.
+    # changelog. Releases that don't exist yet are skipped (create_missing makes
+    # those); releases that already match are left untouched. Returns the tags it
+    # updated.
     def sync_all
       @entries.each_with_object([]) do |entry, updated|
         unless @github.release_exists?(entry.tag)
@@ -313,30 +315,30 @@ module ChangelogRelease
       end
     end
 
-    # Compute, without making any changes, what create/sync would do. +mode+ is
-    # :create (latest only) or :sync (latest + reconcile every existing release).
-    # Returns an array of PlanItem.
+    # Compute, without making any changes, what create/sync would do. Every
+    # missing release is planned as a create. +mode+ :sync additionally reconciles
+    # existing releases (so they show as :update or :unchanged); :create leaves
+    # existing releases untouched (always :unchanged). Returns an array of PlanItem.
     def plan(mode:)
-      items = [plan_for(@entries.first, create_if_missing: true)]
-      @entries.drop(1).each { |entry| items << plan_for(entry, create_if_missing: false) } if mode == :sync
-      items
+      reconcile = mode == :sync
+      @entries.map { |entry| plan_for(entry, reconcile: reconcile) }
     end
 
     private
 
-    def plan_for(entry, create_if_missing:)
-      if @github.release_exists?(entry.tag)
-        current = @github.release_body(entry.tag)
-        if ChangelogRelease.normalize(current) == ChangelogRelease.normalize(entry.notes)
-          PlanItem.new(tag: entry.tag, date: entry.date, action: :unchanged)
-        else
-          PlanItem.new(tag: entry.tag, date: entry.date, action: :update,
-            details: ChangelogRelease.unified_diff(current, entry.notes))
-        end
-      elsif create_if_missing
-        PlanItem.new(tag: entry.tag, date: entry.date, action: :create, details: entry.notes)
+    def plan_for(entry, reconcile:)
+      unless @github.release_exists?(entry.tag)
+        return PlanItem.new(tag: entry.tag, date: entry.date, action: :create, details: entry.notes)
+      end
+
+      return PlanItem.new(tag: entry.tag, date: entry.date, action: :unchanged) unless reconcile
+
+      current = @github.release_body(entry.tag)
+      if ChangelogRelease.normalize(current) == ChangelogRelease.normalize(entry.notes)
+        PlanItem.new(tag: entry.tag, date: entry.date, action: :unchanged)
       else
-        PlanItem.new(tag: entry.tag, date: entry.date, action: :skip)
+        PlanItem.new(tag: entry.tag, date: entry.date, action: :update,
+          details: ChangelogRelease.unified_diff(current, entry.notes))
       end
     end
 
@@ -370,7 +372,7 @@ if $PROGRAM_NAME == __FILE__
       File.open(output, "a") { |file| file.puts "changes=#{ChangelogRelease.changes?(items)}" }
     end
   else
-    runner.create_latest(sha: ENV.fetch("GITHUB_SHA"))
+    runner.create_missing(sha: ENV.fetch("GITHUB_SHA"))
     runner.sync_all if mode == :sync
   end
 end
