@@ -31,20 +31,7 @@ tagline, and a redesigned, accessible site.
   - Scale: very large changelogs and monorepos.
   - Optional per-release summaries, and a statement of what Keep a Changelog
     deliberately won't do.
-- A redesigned 2.0 site, all meeting WCAG 2.1 AA:
-  - Light and dark themes with a system/light/dark header switch.
-  - A header that pins below the hero as you scroll, keeping the language and
-    theme controls and the brand wordmark within reach.
-  - A sticky table-of-contents sidebar that collapses to a menu on small
-    screens, and a language picker that collapses behind a globe icon.
-  - A "Changelog basics" intro shown as What/Why/Who cards, heading anchor
-    links, and indented lists.
-  - The topographic hero pattern and tree-ring mark restored in the brand
-    accent, and Tyler Fortune's badge in the footer.
-  - The English 2.0.0 page is now authored in Markdown, with reference-style
-    links and fenced code examples.
-- A note in the References section on the convention's reach: now translated into
-  dozens of languages and used by tens of thousands of open-source projects.
+- A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
 - v1.1 translations: Brazilian Portuguese, German, Spanish, Italian, Polish,
   Ukrainian, and Swedish.
 
@@ -54,8 +41,6 @@ tagline, and a redesigned, accessible site.
   "Don't let your friends dump git logs into changelogs," kept on earlier versions).
 - Restructured the page from a flat FAQ into integrated guidance, in a plainer,
   less first-person voice.
-- Reworded and modernized existing sections, batched here rather than
-  re-translated for a minor release.
 - Reframed the "GitHub Releases" answer as "Is a changelog the same as release
   notes?", broadened beyond GitHub to any host.
 - Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
@@ -67,7 +52,6 @@ tagline, and a redesigned, accessible site.
   discoverability note) in favor of more general guidance.
 - The FAQ scaffolding and most first-person framing; the podcast note now lives
   in the References section.
-- The trademark sign shown after the project description since 0.3.0.
 
 ## [1.1.1] - 2023-03-05
 
