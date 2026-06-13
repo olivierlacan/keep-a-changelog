@@ -1,0 +1,76 @@
+name: Release from changelog
+
+# Keeps GitHub Releases in sync with CHANGELOG.md. It reads the latest dated
+# version, and if no release exists for it yet, creates one whose tag, notes,
+# and date come straight from the changelog entry. (The changelog is the source;
+# the release is derived from it — exactly what the project recommends.)
+#
+# Idempotent: if the release already exists, it does nothing.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths: [ "CHANGELOG.md" ]
+
+permissions:
+  contents: write # create the tag and the release
+
+concurrency:
+  group: release-from-changelog
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history + existing tags
+          fetch-tags: true
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Read latest version from CHANGELOG.md
+        id: changelog
+        env:
+          RELEASE_NOTES_FILE: release_notes.md
+        run: ruby tools/changelog_release.rb
+
+      - name: Create the release if it's missing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.changelog.outputs.tag }}
+          VERSION: ${{ steps.changelog.outputs.version }}
+          DATE: ${{ steps.changelog.outputs.date }}
+          YANKED: ${{ steps.changelog.outputs.yanked }}
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists — nothing to do."
+            exit 0
+          fi
+
+          echo "Creating release $TAG (version $VERSION, dated $DATE)…"
+
+          # Annotated tag at this commit, dated to the changelog entry so the tag
+          # carries the right date even though GitHub stamps the release with the
+          # publish time.
+          if ! git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            GIT_AUTHOR_DATE="${DATE}T12:00:00Z" GIT_COMMITTER_DATE="${DATE}T12:00:00Z" \
+              git tag -a "$TAG" -m "$VERSION" "$GITHUB_SHA"
+            git push origin "refs/tags/$TAG"
+          fi
+
+          title="$VERSION"
+          if [ "$YANKED" = "true" ]; then
+            title="$VERSION [YANKED]"
+          fi
+
+          gh release create "$TAG" \
+            --title "$title" \
+            --notes-file release_notes.md \
+            --verify-tag
