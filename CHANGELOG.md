@@ -9,11 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2026-06-07
 
-2.0.0 is the first major revision of Keep a Changelog. The format itself is
-unchanged: the six change types, `YYYY-MM-DD` dates, and the `Unreleased` and
-`[YANKED]` markers all stay valid, so nothing you have already written breaks.
-What changes is the guidance around it, alongside a restructured page, a new
-tagline, and a redesigned, accessible site.
+2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance,
+not the format: the six change types, `YYYY-MM-DD` dates, and the `Unreleased`
+and `[YANKED]` markers are all unchanged, so your existing changelog stays valid.
+What breaks is the surface around it. The page is restructured so some older
+section links no longer resolve, the recommended guidance has shifted, and
+existing translations are out of date until they catch up. The breaking changes
+are marked below.
 
 ### Added
 
@@ -35,10 +37,11 @@ tagline, and a redesigned, accessible site.
 
 ### Changed
 
-- New tagline: "Clearly document the evolution of your projects." (replacing
-  "Don't let your friends dump git logs into changelogs," kept on earlier versions).
-- Restructured the page from a flat FAQ into integrated guidance, in a plainer,
-  less first-person voice.
+- **Breaking:** Retired the tagline "Don't let your friends dump git logs into
+  changelogs" for "Clearly document the evolution of your projects." Earlier
+  versions keep the original.
+- **Breaking:** Restructured the page from a flat FAQ into integrated guidance,
+  in a plainer, less first-person voice. Some older section links no longer resolve.
 - Reframed the "GitHub Releases" answer as "Is a changelog the same as release
   notes?", broadened beyond GitHub to any host.
 - Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
@@ -48,8 +51,8 @@ tagline, and a redesigned, accessible site.
 
 - Outdated specifics (the Vandamme gem reference and a GitHub-Releases
   discoverability note) in favor of more general guidance.
-- The FAQ scaffolding and most first-person framing; the podcast note now lives
-  in the References section.
+- **Breaking:** The FAQ scaffolding and most first-person framing, whose section
+  anchors no longer resolve; the podcast note now lives in the References section.
 
 ## [1.1.2] - 2024-09-27
 
