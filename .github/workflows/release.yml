@@ -13,7 +13,7 @@ name: Release from changelog
 #              plan found changes.
 #
 # Modes:
-#   create (default): create a release for the latest dated version if missing.
+#   create (default): create a release for every dated version that's missing one.
 #   sync (manual opt-in): also reconcile the body of every existing release
 #                         against its changelog entry (e.g. a translation added
 #                         to an already-released version).
