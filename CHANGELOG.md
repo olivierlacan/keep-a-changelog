@@ -9,85 +9,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2026-06-07
 
-2.0.0 is the first major revision of Keep a Changelog. The format itself
-does not change: the six change types, the
-`YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers all stay the same,
-so nothing you have already written becomes invalid. What changes is the guidance
-around it. 2.0.0 answers the questions the community has raised most often over the
-years (marking breaking changes, versioning beyond SemVer, monorepos, the
-boundary between Changed, Fixed, and Security) and adds guidance for an era in
-which an LLM can draft a changelog from a diff in seconds. Along the way the
-page is restructured from a flat FAQ into integrated guidance, given a new
-tagline and a redesigned, accessible site, and gathers a round of wording
-refinements that were never worth re-translating over on their own.
+2.0.0 is the first major revision of Keep a Changelog. The format itself is
+unchanged: the six change types, `YYYY-MM-DD` dates, and the `Unreleased` and
+`[YANKED]` markers all stay valid, so nothing you have already written breaks.
+What changes is the guidance around it, alongside a restructured page, a new
+tagline, and a redesigned, accessible site.
 
 ### Added
 
-- New guidance answering long-standing community questions: the `# Changelog`
-  header preamble; marking breaking changes and where upgrade steps belong;
-  choosing between Changed, Fixed, and Security; leading a Security entry with its
-  CVE; why the six change types don't grow; versioning schemes beyond SemVer;
-  linking each version to a `compare` diff with reference links; changelogs versus
-  release notes, how to derive one from the other without duplicate work, and why
-  a host's generated release notes are vendor lock-in; optional per-release
-  summaries; LLM-generated changelogs and a brief you can drop into an `AGENTS.md`;
-  Conventional Commits; fitting a changelog into CI/CD; linking to issues and pull
-  requests; crediting contributors; very large changelogs; monorepos; and a
-  statement of what Keep a Changelog deliberately won't do.
-- A redesigned site for 2.0: light and dark themes with a header
-  switch (system, light, or dark); a header that pins below the hero as you
-  scroll, keeping the language and theme controls and the brand wordmark within
-  reach while reading; a sticky table-of-contents sidebar that collapses to a
-  menu on small screens; a responsive header whose language picker collapses
-  behind a globe icon on narrow screens; a "Changelog basics" intro shown as
-  What/Why/Who cards; heading anchor links; indented lists; the topographic hero
-  pattern and tree-ring mark (in the brand accent) restored; and Tyler Fortune's
-  badge added to the footer, all meeting WCAG 2.1 AA. The English 2.0.0 page is
-  now authored in Markdown, with reference-style links and fenced code examples.
-- A note in the References section on the convention's reach: now translated into
-  dozens of languages and used by tens of thousands of open-source projects.
-- v1.1 Brazilian Portuguese translation.
-- v1.1 German Translation
-- v1.1 Spanish translation.
-- v1.1 Italian translation.
-- v1.1 Polish translation.
-- v1.1 Ukrainian translation.
-- v1.1 Swedish translation.
+- New guidance answering long-standing community questions:
+  - Format: the `# Changelog` header preamble; marking breaking changes and
+    where upgrade steps belong; choosing between Changed, Fixed, and Security;
+    leading a Security entry with its CVE; why the six change types don't grow.
+  - Versioning: schemes beyond SemVer, and linking each version to a `compare`
+    diff with reference links.
+  - Changelogs vs. release notes: how to derive one from the other without
+    duplicate work, and why a host's generated notes are vendor lock-in.
+  - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`;
+    Conventional Commits; CI/CD; linking issues and pull requests; crediting
+    contributors.
+  - Scale: very large changelogs and monorepos.
+  - Optional per-release summaries, and a statement of what Keep a Changelog
+    deliberately won't do.
+- A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
 
 ### Changed
 
-- New tagline: "Clearly document the evolution of your projects." It replaces
-  "Don't let your friends dump git logs into changelogs." The new line is active,
-  idiom-free, and easier to translate. Earlier versions keep the original line.
-- Restructured the page from a flat list of FAQs into integrated guidance:
-  a how-to section (principles, types, breaking changes, structuring a release,
-  curation, file naming, the header preamble, and release notes), a section on
-  what makes a changelog worse, a section on automation and LLMs, a "Less common
-  questions" section, and leaner About and References sections. The voice is
-  plainer and less first-person, with translators in mind.
-- Reworded and modernized several existing sections (what and why a
-  changelog exists, the guiding principles, reducing maintenance effort, automatic
-  parsing, rewriting, and contributing). These clarifications weren't significant
-  enough to justify re-translating the page for a minor release, so they were
-  held back and batched into this major version instead.
-- Reframed the old "GitHub Releases" answer as "Is a changelog the same as
-  release notes?", broadened beyond GitHub to any host's release system, with the
-  case for keeping the canonical, portable record in your repository.
-- Use frontmatter title & description in each language version template
-- Replace broken OpenGraph image with an appropriately-sized Keep a Changelog 
-  image that will render properly (although in English for all languages)
-- Fix OpenGraph title & description for all languages so the title and 
-description when links are shared are language-appropriate
+- New tagline: "Clearly document the evolution of your projects." (replacing
+  "Don't let your friends dump git logs into changelogs," kept on earlier versions).
+- Restructured the page from a flat FAQ into integrated guidance, in a plainer,
+  less first-person voice.
+- Reframed the "GitHub Releases" answer as "Is a changelog the same as release
+  notes?", broadened beyond GitHub to any host.
+- Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
+  so shared links render correctly and language-appropriately.
 
 ### Removed
 
-- Outdated specifics from two answers (the Vandamme gem reference, in
-  "can changelogs be automatically parsed?", and a GitHub-Releases discoverability
-  note) in favor of more general guidance.
-- The FAQ scaffolding and most of the first-person framing, in favor of plainer
-  prose; the personal podcast note now lives in a synthesized References section.
-- Trademark sign previously shown after the project description in version 
-0.3.0
+- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
+  discoverability note) in favor of more general guidance.
+- The FAQ scaffolding and most first-person framing; the podcast note now lives
+  in the References section.
+
+## [1.1.2] - 2024-09-27
+
+### Added
+
+- v1.1 German translation.
+- v1.1 Italian translation.
+- v1.1 Simplified Chinese translation.
+- v1.1 Persian translation.
+- v1.1 Polish translation.
+- v1.1 Slovenian translation.
+- v1.1 Traditional Chinese translation.
+- v1.1 Spanish translation.
+- v1.1 Brazilian Portuguese translation.
+- v1.1 Czech translation.
+- v1.1 Romanian translation.
+- v1.1 Swedish translation.
+- v1.1 Ukrainian translation.
+- v1.1 Korean translation.
+- v1.1 Indonesian translation.
+
+### Fixed
+
+- Improve French translation.
+- Improve Dutch translation.
 
 ## [1.1.1] - 2023-03-05
 
@@ -307,7 +294,8 @@ description when links are shared are language-appropriate
 - Counter-examples: "What makes unicorns cry?".
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v2.0.0
+[2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2...v2.0.0
+[1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0
