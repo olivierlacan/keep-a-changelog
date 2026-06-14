@@ -51,17 +51,30 @@ tagline, and a redesigned, accessible site.
 - The FAQ scaffolding and most first-person framing; the podcast note now lives
   in the References section.
 
-## [1.1.2] - 2024-02-05
+## [1.1.2] - 2024-09-27
 
 ### Added
 
 - v1.1 German translation.
 - v1.1 Italian translation.
+- v1.1 Simplified Chinese translation.
+- v1.1 Persian translation.
 - v1.1 Polish translation.
+- v1.1 Slovenian translation.
+- v1.1 Traditional Chinese translation.
 - v1.1 Spanish translation.
 - v1.1 Brazilian Portuguese translation.
-- v1.1 Ukrainian translation.
+- v1.1 Czech translation.
+- v1.1 Romanian translation.
 - v1.1 Swedish translation.
+- v1.1 Ukrainian translation.
+- v1.1 Korean translation.
+- v1.1 Indonesian translation.
+
+### Fixed
+
+- Improve French translation.
+- Improve Dutch translation.
 
 ## [1.1.1] - 2023-03-05
 
