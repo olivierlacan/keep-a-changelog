@@ -31,12 +31,14 @@
     --rule: light-dark(oklch(0.88 0.015 70), oklch(0.36 0.02 30));
     --code-bg: light-dark(oklch(0.955 0.02 75), oklch(0.27 0.02 30));
     --code-text: light-dark(var(--bark), var(--sand));
-    /* Deeper ocre for the hero so light text clears 4.5:1. Light topographic
-       contour lines sit over it; a scrim keeps the title legible. */
-    /* A darkened orange (not the bright Fire Orange, which fails contrast under
-       cream text). Hue ~42 keeps it orange instead of the brick red the old
-       hue-33 darkening produced. Cream text clears 4.5:1 (light) / 5.8:1 (dark). */
-    --hero-bg: light-dark(oklch(0.53 0.19 42), oklch(0.49 0.18 42));
+    /* Muted orange for the hero. Light topographic contour lines sit over it;
+       a scrim keeps the title legible. */
+    /* Slightly lower chroma than the Fire Orange (0.15 vs ~0.19) for a softer,
+       less saturated wash, while lightness stays low enough that cream text keeps
+       clearing 4.5:1. Going lighter (toward a true pastel) isn't possible with
+       cream text; it would need dark text. Hue ~42 keeps it orange, not brick
+       red. Cream text clears 4.87:1 (light) / 5.78:1 (dark). */
+    --hero-bg: light-dark(oklch(0.53 0.15 42), oklch(0.49 0.15 42));
     --hero-text: var(--sand);
     --accent: light-dark(var(--ocre), var(--gold));
     --focus: light-dark(oklch(0.55 0.18 41), var(--gold));
