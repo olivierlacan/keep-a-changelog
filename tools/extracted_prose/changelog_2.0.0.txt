@@ -1,0 +1,40 @@
+[2.0.0] - 2026-06-07
+
+2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance,
+not the format: the six change types, YYYY-MM-DD dates, and the Unreleased
+and [YANKED] markers are all unchanged, so your existing changelog stays valid.
+What breaks is the surface around it. The page is restructured so some older
+section links no longer resolve, the recommended guidance has shifted, and
+existing translations are out of date until they catch up. The breaking changes
+are marked below.
+Added
+New guidance answering long-standing community questions:
+Format: the # Changelog header preamble; marking breaking changes and
+    where upgrade steps belong; choosing between Changed, Fixed, and Security;
+    leading a Security entry with its CVE; why the six change types don't grow.
+Versioning: schemes beyond SemVer, and linking each version to a compare
+    diff with reference links.
+Changelogs vs. release notes: how to derive one from the other without
+    duplicate work, and why a host's generated notes are vendor lock-in.
+Automation: LLM-drafted changelogs with a brief for an AGENTS.md;
+    Conventional Commits; CI/CD; linking issues and pull requests; crediting
+    contributors.
+Scale: very large changelogs and monorepos.
+Optional per-release summaries, and a statement of what Keep a Changelog
+    deliberately won't do.
+A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
+Changed
+Breaking: Retired the tagline "Don't let your friends dump git logs into
+  changelogs" for "Clearly document the evolution of your projects." Earlier
+  versions keep the original.
+Breaking: Restructured the page from a flat FAQ into integrated guidance,
+  in a plainer, less first-person voice. Some older section links no longer resolve.
+Reframed the "GitHub Releases" answer as "Is a changelog the same as release
+  notes?", broadened beyond GitHub to any host.
+Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
+  so shared links render correctly and language-appropriately.
+Removed
+Outdated specifics (the Vandamme gem reference and a GitHub-Releases
+  discoverability note) in favor of more general guidance.
+Breaking: The FAQ scaffolding and most first-person framing, whose section
+  anchors no longer resolve; the podcast note now lives in the References section.

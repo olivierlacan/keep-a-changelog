@@ -50,7 +50,27 @@ do not read it as an AI signal.
   false positives on polished technical writing — exactly this genre. Treat any
   single "AI probability" number, GPTZero's included, with skepticism.
 
-## To get a real GPTZero score
+## Attempted: local GPT-2 perplexity (the faithful offline stand-in)
+
+`tools/ai_perplexity_probe.py` computes perplexity + perplexity-burstiness with
+a local GPT-2 — the closest offline equivalent of GPTZero's core signal, with no
+text leaving the machine. `torch` and `transformers` install fine from PyPI, but
+**the GPT-2 weights download from `huggingface.co`, which the sandbox allowlist
+blocks**, so it can't run here. It will work as-is the moment `huggingface.co`
+is allowlisted or the weights are pre-cached:
+
+    python3 tools/ai_perplexity_probe.py
+
+Both the hosted-detector path and the local-model path are gated behind a blocked
+domain, so the stylometric proxy above is the best result obtainable offline.
+
+## Zero-infrastructure path to a real score
+
+`tools/extracted_prose/` holds the clean, code-and-markup-stripped prose for both
+texts. Paste either file into any free web detector (GPTZero, ZeroGPT, Quillbot)
+to get an actual model-based number without a key or allowlist change.
+
+## To get a real GPTZero score (API)
 
 Provide a `GPTZERO_API_KEY` and allowlist `api.gptzero.me`, then POST each text
 to `https://api.gptzero.me/v2/predict/text` with header `x-api-key`. The
