@@ -1,0 +1,17 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8"> <title>Keep a Changelog</title> <link rel="canonical" href="/en/1.1.0/"> <meta name="robots" content="noindex,follow"> <meta http-equiv="cache-control" content="no-cache"> <script>
+      (function () {
+        var DEFAULT = "/en/1.1.0/";
+        var PREVIEW = "/en/2.0.0/";
+        var KEY = "kac-preview";
+        var p = new URLSearchParams(window.location.search).get("preview");
+        try {
+          if (p === "v2") { localStorage.setItem(KEY, "v2"); }
+          else if (p === "off" || p === "0") { localStorage.removeItem(KEY); }
+        } catch (e) {}
+        var on = p === "v2";
+        if (!on && p !== "off" && p !== "0") {
+          try { on = localStorage.getItem(KEY) === "v2"; } catch (e) {}
+        }
+        window.location.replace(on ? PREVIEW : DEFAULT);
+      })();
+    </script> <meta http-equiv="refresh" content="0; url=/en/1.1.0/"> </head> <body> <p><a href="/en/1.1.0/">Continue to Keep a Changelog</a></p> </body> </html>

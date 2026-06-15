@@ -1,0 +1,297 @@
+<!DOCTYPE html> <html dir='ltr' lang='en'> <head> <meta charset='utf-8'> <meta content='IE=edge' http-equiv='X-UA-Compatible'> <meta content='width=device-width, initial-scale=1.0' name='viewport'> <meta content='Clearly document the evolution of your projects.' name='description'> <script>
+  (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script> <meta content='https://www.facebook.com/olivier.lacan.5' property='og:article:publisher'> <meta content='Keep a Changelog' property='og:title'> <meta content='article' property='og:type'> <meta content='https://keepachangelog.com/en/2.0.0/' property='og:url'> <meta content='Clearly document the evolution of your projects.' property='og:description'> <meta content='https://keepachangelog.com/assets/images/keep-a-changelog-opengraph-851f2d20.png' property='og:image'> <link href='/assets/images/favicon.ico' rel='shortcut icon' type='image/x-icon'> <link href='https://keepachangelog.com/en/2.0.0/' rel='canonical'> <link href='https://ruby.social/@olivierlacan' rel='me'> <title>Keep a Changelog</title> <link href='https://fonts.googleapis.com' rel='preconnect'> <link crossorigin='true' href='https://fonts.gstatic.com' rel='preconnect'> <link href='//fonts.googleapis.com/css?family=Muli:400,700|Source+Code+Pro:400,700&amp;display=swap' media='print' onload='this.media=&#39;all&#39;' rel='stylesheet'> <noscript> <link href='//fonts.googleapis.com/css?family=Muli:400,700|Source+Code+Pro:400,700&amp;display=swap' rel='stylesheet'> </noscript> <link href="/assets/stylesheets/v2-61b3577e.css" rel="stylesheet"/> <script src="/assets/javascripts/all-3c95695f.js" defer="defer"></script> </head> <body> <a class='skip-link' href='#main'>Skip to content</a> <article> <header role='banner'> <span aria-label='Keep a Changelog' class='mark' role='img'></span> <span aria-hidden='true' class='header-title'>Keep a Changelog</span> <nav class='locales' role='navigation'> <button aria-controls='language-select' aria-expanded='false' aria-label='Show language menu' class='locales-toggle' title='Pick one of the 28 translations' type='button'></button> <label for='language-select' title='Pick one of the 28 translations'> <span class='locales-text'>Languages (28):</span> </label> <select aria-label='Choose a language' id='language-select' name='language'> <option label='1.0 العربية' value='ar/1.0.0/'> 1.0 العربية </option> <option label='1.1 Čeština' value='cs/1.1.0/'> 1.1 Čeština </option> <option label='1.1 Dansk' value='da/1.1.0/'> 1.1 Dansk </option> <option label='1.1 Deutsch' value='de/1.1.0/'> 1.1 Deutsch </option> <option label='1.1 English' selected value='en/1.1.0/'> 1.1 English </option> <option label='1.1 Español' value='es-ES/1.1.0/'> 1.1 Español </option> <option label='1.1 Français' value='fr/1.1.0/'> 1.1 Français </option> <option label='1.0 Hrvatski' value='hr/1.0.0/'> 1.0 Hrvatski </option> <option label='1.0 Indonesia' value='id-ID/1.0.0/'> 1.0 Indonesia </option> <option label='1.1 Italiano' value='it-IT/1.1.0/'> 1.1 Italiano </option> <option label='1.1 日本語' value='ja/1.1.0/'> 1.1 日本語 </option> <option label='1.1 Norsk (Bokmål)' value='nb/1.1.0/'> 1.1 Norsk (Bokmål) </option> <option label='1.1 Nederlands' value='nl/1.1.0/'> 1.1 Nederlands </option> <option label='1.1 polski' value='pl/1.1.0/'> 1.1 polski </option> <option label='1.1 Português (BR)' value='pt-BR/1.1.0/'> 1.1 Português (BR) </option> <option label='1.1 română' value='ro/1.1.0/'> 1.1 română </option> <option label='1.1 Pyccкий' value='ru/1.1.0/'> 1.1 Pyccкий </option> <option label='1.0 Slovenčina' value='sk/1.0.0/'> 1.0 Slovenčina </option> <option label='1.0 ქართული' value='ka/1.0.0/'> 1.0 ქართული </option> <option label='1.1 Slovenščina' value='sl/1.1.0/'> 1.1 Slovenščina </option> <option label='1.0 Srpski' value='sr/1.0.0/'> 1.0 Srpski </option> <option label='1.1 Svenska' value='sv/1.1.0/'> 1.1 Svenska </option> <option label='1.1 Türkçe' value='tr-TR/1.1.0/'> 1.1 Türkçe </option> <option label='1.1 Українська' value='uk/1.1.0/'> 1.1 Українська </option> <option label='1.1 简体中文' value='zh-CN/1.1.0/'> 1.1 简体中文 </option> <option label='1.1 正體中文' value='zh-TW/1.1.0/'> 1.1 正體中文 </option> <option label='1.1 한국어' value='ko/1.1.0/'> 1.1 한국어 </option> <option label='1.1 فارسی' value='fa/1.1.0/'> 1.1 فارسی </option> </select> </nav> <div aria-label='Color theme' class='theme-switch' role='group'> <button aria-label='Match system theme' aria-pressed='true' class='theme-btn' data-set-theme='system' title='System theme' type='button'> <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg> </button> <button aria-label='Light theme' aria-pressed='false' class='theme-btn' data-set-theme='light' title='Light theme' type='button'> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg> </button> <button aria-label='Dark theme' aria-pressed='false' class='theme-btn' data-set-theme='dark' title='Dark theme' type='button'> <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> </button> </div> </header> <div class='main' id='main' role='main' tabindex='-1'> <header class='hero'> <div class='hero-lockup'> <span aria-hidden='true' class='hero-mark'></span> <h1>Keep a Changelog</h1> </div> <p class='tagline'>Clearly document the evolution of your projects.</p> <figure class='changelog-figure'> <figcaption class='changelog-caption'> This is our own changelog, written using the conventions described below. </figcaption> <details class='changelog-example'> <summary>Example changelog</summary> <pre aria-label='Keep a Changelog&#39;s own changelog' class='changelog' lang='en' role='region' tabindex='0'># Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [2.0.0] - 2026-06-07
+
+2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance, not the format: the six change types, `YYYY-MM-DD` dates, and the `Unreleased` and `[YANKED]` markers are all unchanged, so your existing changelog stays valid. What breaks is the surface around it. The page is restructured so some older section links no longer resolve, the recommended guidance has shifted, and existing translations are out of date until they catch up. The breaking changes are marked below.
+
+### Added
+
+- New guidance answering long-standing community questions:
+  - Format: the `# Changelog` header preamble; marking breaking changes and
+    where upgrade steps belong; choosing between Changed, Fixed, and Security;
+    leading a Security entry with its CVE; why the six change types don&#39;t grow.
+  - Versioning: schemes beyond SemVer, and linking each version to a `compare`
+    diff with reference links.
+  - Changelogs vs. release notes: how to derive one from the other without
+    duplicate work, and why a host&#39;s generated notes are vendor lock-in.
+  - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`;
+    Conventional Commits; CI/CD; linking issues and pull requests; crediting
+    contributors.
+  - Scale: very large changelogs and monorepos.
+  - Optional per-release summaries, and a statement of what Keep a Changelog
+    deliberately won&#39;t do.
+- A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
+
+### Changed
+
+- **Breaking:** Retired the tagline &quot;Don&#39;t let your friends dump git logs into changelogs&quot; for &quot;Clearly document the evolution of your projects.&quot; Earlier versions keep the original.
+- **Breaking:** Restructured the page from a flat FAQ into integrated guidance, in a plainer, less first-person voice. Some older section links no longer resolve.
+- Reframed the &quot;GitHub Releases&quot; answer as &quot;Is a changelog the same as release notes?&quot;, broadened beyond GitHub to any host.
+- Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata so shared links render correctly and language-appropriately.
+
+### Removed
+
+- Outdated specifics (the Vandamme gem reference and a GitHub-Releases discoverability note) in favor of more general guidance.
+- **Breaking:** The FAQ scaffolding and most first-person framing, whose section anchors no longer resolve; the podcast note now lives in the References section.
+
+## [1.1.2] - 2024-09-27
+
+### Added
+
+- v1.1 German translation.
+- v1.1 Italian translation.
+- v1.1 Simplified Chinese translation.
+- v1.1 Persian translation.
+- v1.1 Polish translation.
+- v1.1 Slovenian translation.
+- v1.1 Traditional Chinese translation.
+- v1.1 Spanish translation.
+- v1.1 Brazilian Portuguese translation.
+- v1.1 Czech translation.
+- v1.1 Romanian translation.
+- v1.1 Swedish translation.
+- v1.1 Ukrainian translation.
+- v1.1 Korean translation.
+- v1.1 Indonesian translation.
+
+### Fixed
+
+- Improve French translation.
+- Improve Dutch translation.
+
+## [1.1.1] - 2023-03-05
+
+### Added
+
+- v1.1 Arabic translation.
+- v1.1 French translation.
+- v1.1 Dutch translation.
+- v1.1 Russian translation.
+- v1.1 Japanese translation.
+- v1.1 Norwegian Bokmål translation.
+- v1.1 &quot;Inconsistent Changes&quot; Turkish translation.
+- Default to most recent versions available for each languages.
+- Display count of available translations (26 to date!).
+- Centralize all links into `/data/links.json` so they can be updated easily.
+
+### Fixed
+
+- Improve French translation.
+- Improve id-ID translation.
+- Improve Persian translation.
+- Improve Russian translation.
+- Improve Swedish title.
+- Improve zh-CN translation.
+- Improve French translation.
+- Improve zh-TW translation.
+- Improve Spanish (es-ES) transltion.
+- Foldout menu in Dutch translation.
+- Missing periods at the end of each change.
+- Fix missing logo in 1.1 pages.
+- Display notice when translation isn&#39;t for most recent version.
+- Various broken links, page versions, and indentations.
+
+### Changed
+
+- Upgrade dependencies: Ruby 3.2.1, Middleman, etc.
+
+### Removed
+
+- Unused normalize.css file.
+- Identical links assigned in each translation file.
+- Duplicate index file for the english version.
+
+## [1.1.0] - 2019-02-15
+
+### Added
+
+- Danish translation.
+- Georgian translation from.
+- Changelog inconsistency section in Bad Practices.
+
+### Fixed
+
+- Italian translation.
+- Indonesian translation.
+
+## [1.0.0] - 2017-06-20
+
+### Added
+
+- New visual identity by [@tylerfortune8].
+- Version navigation.
+- Links to latest released version in previous versions.
+- &quot;Why keep a changelog?&quot; section.
+- &quot;Who needs a changelog?&quot; section.
+- &quot;How do I make a changelog?&quot; section.
+- &quot;Frequently Asked Questions&quot; section.
+- New &quot;Guiding Principles&quot; sub-section to &quot;How do I make a changelog?&quot;.
+- Simplified and Traditional Chinese translations from [@tianshuo].
+- German translation from [@mpbzh] &amp; [@Art4].
+- Italian translation from [@azkidenz].
+- Swedish translation from [@magol].
+- Turkish translation from [@emreerkan].
+- French translation from [@zapashcanon].
+- Brazilian Portuguese translation from [@Webysther].
+- Polish translation from [@amielucha] &amp; [@m-aciek].
+- Russian translation from [@aishek].
+- Czech translation from [@h4vry].
+- Slovak translation from [@jkostolansky].
+- Korean translation from [@pierceh89].
+- Croatian translation from [@porx].
+- Persian translation from [@Hameds].
+- Ukrainian translation from [@osadchyi-s].
+
+### Changed
+
+- Start using &quot;changelog&quot; over &quot;change log&quot; since it&#39;s the common usage.
+- Start versioning based on the current English version at 0.3.0 to help translation authors keep things up-to-date.
+- Rewrite &quot;What makes unicorns cry?&quot; section.
+- Rewrite &quot;Ignoring Deprecations&quot; sub-section to clarify the ideal scenario.
+- Improve &quot;Commit log diffs&quot; sub-section to further argument against them.
+- Merge &quot;Why can’t people just use a git log diff?&quot; with &quot;Commit log diffs&quot;.
+- Fix typos in Simplified Chinese and Traditional Chinese translations.
+- Fix typos in Brazilian Portuguese translation.
+- Fix typos in Turkish translation.
+- Fix typos in Czech translation.
+- Fix typos in Swedish translation.
+- Improve phrasing in French translation.
+- Fix phrasing and spelling in German translation.
+
+### Removed
+
+- Section about &quot;changelog&quot; vs &quot;CHANGELOG&quot;.
+
+## [0.3.0] - 2015-12-03
+
+### Added
+
+- RU translation from [@aishek].
+- pt-BR translation from [@tallesl].
+- es-ES translation from [@ZeliosAriex].
+
+## [0.2.0] - 2015-10-06
+
+### Changed
+
+- Remove exclusionary mentions of &quot;open source&quot; since this project can benefit both &quot;open&quot; and &quot;closed&quot; source projects equally.
+
+## [0.1.0] - 2015-10-06
+
+### Added
+
+- Answer &quot;Should you ever rewrite a change log?&quot;.
+
+### Changed
+
+- Improve argument against commit logs.
+- Start following [SemVer] properly.
+
+## [0.0.8] - 2015-02-17
+
+### Changed
+
+- Update year to match in every README example.
+- Reluctantly stop making fun of Brits only, since most of the world writes dates in a strange way.
+
+### Fixed
+
+- Fix typos in recent README changes.
+- Update outdated unreleased diff link.
+
+## [0.0.7] - 2015-02-16
+
+### Added
+
+- Link, and make it obvious that date format is ISO 8601.
+
+### Changed
+
+- Clarified the section on &quot;Is there a standard change log format?&quot;.
+
+### Fixed
+
+- Fix Markdown links to tag comparison URL with footnote-style links.
+
+## [0.0.6] - 2014-12-12
+
+### Added
+
+- README section on &quot;yanked&quot; releases.
+
+## [0.0.5] - 2014-08-09
+
+### Added
+
+- Markdown links to version tags on release headings.
+- Unreleased section to gather unreleased changes and encourage note keeping prior to releases.
+
+## [0.0.4] - 2014-08-09
+
+### Added
+
+- Better explanation of the difference between the file (&quot;CHANGELOG&quot;) and its function &quot;the change log&quot;.
+
+### Changed
+
+- Refer to a &quot;change log&quot; instead of a &quot;CHANGELOG&quot; throughout the site to differentiate between the file and the purpose of the file — the logging of changes.
+
+### Removed
+
+- Remove empty sections from CHANGELOG, they occupy too much space and create too much noise in the file. People will have to assume that the missing sections were intentionally left out because they contained no notable changes.
+
+## [0.0.3] - 2014-08-09
+
+### Added
+
+- &quot;Why should I care?&quot; section mentioning The Changelog podcast.
+
+## [0.0.2] - 2014-07-10
+
+### Added
+
+- Explanation of the recommended reverse chronological release ordering.
+
+## [0.0.1] - 2014-05-31
+
+### Added
+
+- This CHANGELOG file to hopefully serve as an evolving example of a standardized open source project CHANGELOG.
+- CNAME file to enable GitHub Pages custom domain.
+- README now contains answers to common questions about CHANGELOGs.
+- Good examples and basic guidelines, including proper date formatting.
+- Counter-examples: &quot;What makes unicorns cry?&quot;.
+
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v2.0.0...HEAD [2.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2...v2.0.0 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...v1.1.2 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0 [1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0 [0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0 [0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0 [0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0 [0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8 [0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7 [0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6 [0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5 [0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4 [0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2 [0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1 [SemVer]: https://semver.org [@tylerfortune8]: https://github.com/tylerfortune8 [@tianshuo]: https://github.com/tianshuo [@mpbzh]: https://github.com/mpbzh [@Art4]: https://github.com/Art4 [@azkidenz]: https://github.com/azkidenz [@magol]: https://github.com/magol [@emreerkan]: https://github.com/emreerkan [@zapashcanon]: https://github.com/zapashcanon [@Webysther]: https://github.com/Webysther [@amielucha]: https://github.com/amielucha [@m-aciek]: https://github.com/m-aciek [@aishek]: https://github.com/aishek [@h4vry]: https://github.com/h4vry [@jkostolansky]: https://github.com/jkostolansky [@pierceh89]: https://github.com/pierceh89 [@porx]: https://github.com/porx [@Hameds]: https://github.com/Hameds [@osadchyi-s]: https://github.com/osadchyi-s [@tallesl]: https://github.com/tallesl [@ZeliosAriex]: https://github.com/ZeliosAriex</pre> </details> </figure> </header> <div class='article-body'> <p class='version-marker'> <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">Version <strong>2.0.0</strong> </a><time class='version-date' datetime='2026-06-07' title='2026-06-07'>Published on June 7th, 2026</time> </p> <div class='toc' id='toc'></div> <div class='content'> <h2 id="basics">Changelog basics</h2> <div class="intro-grid"> <section class="intro-card"> <h3 id="what">What is it?</h3> <p>A changelog is a curated, chronologically ordered list of the notable changes for each version of a project.</p> </section> <section class="intro-card"> <h3 id="why">Why keep one?</h3> <p>To make it easy for users and contributors to see the notable changes between each version.</p> </section> <section class="intro-card"> <h3 id="who">Who needs this?</h3> <p>People do. Anyone who uses or builds software wants to know what changed, and why.</p> </section> </div> <h2 id="how">How do I keep a good changelog?</h2> <h3 id="principles">Guiding principles</h3> <ul> <li>Changelogs are <em>for humans</em>, not machines.</li> <li>Every version should have an entry.</li> <li>Group changes of the same type.</li> <li>Make versions and sections linkable.</li> <li>List the latest version first.</li> <li>Show the release date of each version.</li> <li>Note which <a href="https://en.wikipedia.org/wiki/Software_versioning#Schemes">versioning scheme</a> you use.</li> <li>Write plainly. Many of your readers are not native speakers, so favor clear, concise wording.</li> </ul> <h3 id="types">Types of changes</h3> <ul> <li><code>Added</code> for new features.</li> <li><code>Changed</code> for changes in existing functionality.</li> <li><code>Deprecated</code> for soon-to-be removed features.</li> <li><code>Removed</code> for now removed features.</li> <li><code>Fixed</code> for bug fixes.</li> <li><code>Security</code> for vulnerabilities.</li> </ul> <p>Usually the right type is clear. Three of them cause the most questions:</p> <ul> <li><code>Fixed</code>: the behavior was wrong, and is now correct.</li> <li><code>Changed</code>: the behavior worked as intended, and now works differently.</li> <li><code>Security</code>: the change addresses a vulnerability. It could fit under Fixed or Changed, but its urgency and audience are different.</li> </ul> <p>When you are unsure, ask whether the old behavior was a bug. If it was, use <code>Fixed</code>. If it was intentional and you are changing it, use <code>Changed</code>.</p> <p>When a <code>Security</code> entry has a CVE identifier, lead with it so readers and security tools can match the entry to the advisory:</p> <div class="highlight"><pre class="highlight plaintext"><code>- CVE-2024-12345: out-of-bounds read when parsing malformed input.
+</code></pre></div> <aside> <p>There are only six types on purpose. What kind of change it is goes in the type; why it matters goes in the wording of the entry, not in a new type.</p> </aside> <p>An entry like "Rewrote JSON parser; 3x faster on large files" fits better under <code>Changed</code> than <code>Performance</code>. You can add a category if you genuinely need one, but you rarely will: <code>Improved</code> and <code>New</code> are often the same as <code>Changed</code> and <code>Added</code>, and <code>Internal</code> or <code>Housekeeping</code> changes are rarely notable enough to list at all. Keeping to the six leaves every changelog readable the same way, and parseable by the same tools.</p> <p>Two other type requests are common:</p> <ul> <li><strong>Dependencies</strong> are not a type of change. A dependency update can be harmless, a fix, or breaking. If it matters to your users, describe its effect under the right type. If it does not, leave it out.</li> <li><strong>Known issues</strong> are discovered, not changed. Note them on the affected version or in your issue tracker. When one is fixed, it goes under <code>Fixed</code>.</li> </ul> <h3 id="breaking">Breaking changes</h3> <p>Mark breaking changes clearly. The version number already signals them (under <a href="https://semver.org/">Semantic Versioning</a>, a major release is where they belong), but the number is easy to miss, so highlight them in the entry. Breaking changes usually go under <code>Changed</code> or <code>Removed</code>. Add a short <code>**Breaking:**</code> marker so they stand out, and keep them with the type of change they are:</p> <div class="highlight"><pre class="highlight plaintext"><code>- **Breaking:** parse() now returns a result object instead of raising.
+</code></pre></div> <p>Say what breaks. The word means little until readers know which interface you keep stable: a command line, a library API, a network protocol, a file format, or a configuration schema. State which one your versioning scheme covers.</p> <p>A short upgrade note can sit in the entry itself, such as "rename the <code>color</code> option to <code>theme</code>." When the steps are substantial, link to them (a migration guide or the release notes) rather than spelling them out here. A long procedure buries what changed and turns a scannable record into a how-to: a different kind of document, for a narrower audience. Keep the <code>**Breaking:**</code> marker on the entry itself, within its type, rather than collecting breaks into a separate section, so anyone scanning <code>Changed</code> or <code>Removed</code> sees them in place.</p> <h3 id="releasing">Structuring a release</h3> <p>Keep an <code>Unreleased</code> section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.</p> <p>A version starts with its number and date, for example <code>## [1.0.0] - 2017-07-17</code>. Use the <code>YYYY-MM-DD</code> format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO standard</a>.</p> <p>The square brackets around <code>[1.0.0]</code> make it a Markdown reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:</p> <div class="highlight"><pre class="highlight plaintext"><code>[Unreleased]: https://github.com/your/project/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/your/project/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
+</code></pre></div> <p><code>[Unreleased]</code> compares the latest tag to <code>HEAD</code> (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.</p> <p>When you cut a release, rename <code>Unreleased</code> to the new version in both the heading and its link, then add a fresh, empty <code>Unreleased</code> section pointing at <code>HEAD</code>.</p> <p>A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.</p> <p>You do not have to use Semantic Versioning. <a href="https://calver.org/">Calendar versioning</a>, a plain number, or a date all work; note which scheme you use so readers can read your version numbers. Some projects release continuously and have no version numbers. A changelog still helps: keep dated entries under <code>Unreleased</code>.</p> <h3 id="curation">Curate, don't accumulate</h3> <p>Keeping a changelog is partly an act of restraint. A changelog records <em>notable</em> changes, which means some changes are not notable and do not belong in it. Deciding which is which takes judgment, and that judgment is human.</p> <aside> <p>Making changes and communicating about changes are two different tasks. Curating a changelog does not mean sorting every commit into a type as you make it. That is tedious, and it is not the goal: write the changelog as a summary for your readers, not as a record of your commits.</p> </aside> <h3 id="filename">What should the file be named?</h3> <p>Name it <code>CHANGELOG.md</code>. Some projects use <code>HISTORY</code>, <code>NEWS</code>, or <code>RELEASES</code>, but a predictable name makes it easy to find. A changelog does not need to list every change. Version control already does that. It lists the notable ones.</p> <h3 id="header">What goes at the top of the file?</h3> <p>Open with a <code># Changelog</code> heading and a short, fixed preamble that says what the file is and which conventions it follows:</p> <div class="highlight"><pre class="highlight plaintext"><code># Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+</code></pre></div> <p>Stating the conventions you follow tells readers, and tools, what to expect. The first link declares the format; the second names your versioning scheme (Semantic Versioning here, but reference whichever you use). Pin the Keep a Changelog link to the version you follow, so it stays accurate as this page changes.</p> <h3 id="release-notes">Is a changelog the same as release notes?</h3> <p>No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published when that version ships. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.</p> <p>This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable <code>## [x.y.z]</code> heading, a small script can extract that section and create the release without anyone retyping it.</p> <p>A host will offer to do this for you. See that offer for what it is. Their release systems attach notes to a tag, notify watchers, and collect build files; often even generating the notes (from merged pull requests or commit messages). But everything is stored in the host's database, not your repository. These releases don't travel with the repository and follow you to another host: the convenience is the hook. Meanwhile, your changelog goes where your code goes; what a host generates and keeps for you does not, and you lose it the day you leave.</p> <p>You can treat a generated draft as a starting point, but keep <code>CHANGELOG.md</code> as the canonical record. You can then generate host-specific release posts from it. A changelog file brings the same information these systems present, except it reads offline. You still benefit from the host's reach (notifications, a visible page, attached downloads) without entirely depending on it to hold your project's history.</p> <h2 id="bad-practices">What makes a changelog worse?</h2> <p>A few habits make a changelog less useful.</p> <h3 id="log-diffs">Commit log diffs</h3> <p>Do not use a list of commits as a changelog. It is full of noise: merge commits, unclear messages, internal changes. A commit records a step in the source code. A changelog entry records a notable difference, often across several commits, written for the people who use the software.</p> <blockquote> <p>A "git log" is the list of commits in a <a href="https://en.wikipedia.org/wiki/Git">git</a> repository. We mention git because it is the most common <a href="https://en.wikipedia.org/wiki/Distributed_version_control">version control system</a>, but this applies to any of them: a raw commit history is not a changelog.</p> </blockquote> <h3 id="ignoring-deprecations">Ignoring deprecations</h3> <p>When someone upgrades, it should be clear what will break. Announce a deprecation before you act on it: mark it <code>Deprecated</code> in one release, and only <code>Removed</code> in a later one, so anyone upgrading meets the warning before the change. Say which version will remove it, so they can plan. If you do nothing else, always record deprecations, removals, and breaking changes.</p> <h3 id="inconsistent-changes">Inconsistent changes</h3> <p>A changelog that records only some changes can mislead as much as no changelog. Readers treat it as the full picture. Leave out trivial changes, but include every notable one. A changelog is only trustworthy if it is kept up to date consistently.</p> <h2 id="automation">Changelogs, automation, and LLMs</h2> <p>A changelog that follows a consistent shape can be read by tools and by language models, because it was written for people first. There is no separate machine format, and there will not be one: this page is the format. A consistent changelog is easy to parse, a benefit of writing clearly, not a reason to write for machines.</p> <p>Machines can also help write a changelog. A language model can draft one from a diff in seconds, which is useful as a starting point. But it is now easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: <strong>machines can draft, but humans curate</strong>.</p> <p>A model can't decide what's notable for your readers, or say it plainly for them. If you use a tool for the first draft, give it the brief you would give a contributor: summarize notable, user-facing changes; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; and remove anything not worth reading. Then read the result before anyone else does.</p> <aside> <p>If your project uses coding agents, record that brief where they read it, for example an <code>AGENTS.md</code> or <code>CLAUDE.md</code> file. There is no format to configure; the instructions are the interface.</p> </aside> <p>The same caution applies to changelogs generated from commit messages. A convention such as <a href="https://www.conventionalcommits.org/">Conventional Commits</a>, with tools such as <a href="https://github.com/semantic-release/semantic-release">semantic-release</a>, release-please, Changesets, and git-cliff, reads structured commits to choose the next version and draft a changelog. That can give you a starting point, but a commit and a changelog entry are written for different people, and one does not convert cleanly into the other.</p> <p>Generating the entry from the commit assumes that every commit belongs in the changelog, and that the right entry is a reworded commit message. Usually it is neither: many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is raw material at best: a person still has to choose what is notable, group it, and write it for the reader.</p> <p>Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the <code>Unreleased</code> section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change. That teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.</p> <h2 id="less-common">Less common questions</h2> <h3 id="yanked">What about yanked releases?</h3> <p>A yanked release is a version pulled because of a serious bug or security issue. List it; do not hide it. Mark it like this:</p> <div class="highlight"><pre class="highlight plaintext"><code>## [0.0.5] - 2014-12-13 [YANKED]
+</code></pre></div> <p>The brackets make the tag easy to notice and easy to parse.</p> <h3 id="rewrite">Should you ever rewrite a changelog?</h3> <p>You can improve a changelog after a release. A project may forget an entry, or discover a breaking change it did not record. Fixing this is reasonable. When you do, consider noting the date you updated the entry, so readers notice the change.</p> <h3 id="large-changelog">What if the changelog gets too big?</h3> <p>A single file is usually fine, even a long one; many projects keep decades of history in one <code>CHANGELOG.md</code>. If it becomes hard to manage, you can move old history into separate files, but link the main file and the archives both ways, or readers will not find the older entries. Archive only versions old enough that they will not need editing, and do not delete old entries: someone may still upgrade from an old version.</p> <h3 id="monorepos">What about monorepos?</h3> <p>It depends on whether the repository holds one product or many. Unrelated projects that share a repository each keep their own changelog. A single product made of many parts (say, a framework split into separate libraries) can keep a changelog per component, but should also keep one central changelog. Readers should not have to read a dozen component changelogs to understand what a release means. The per-component changelogs are the detailed record; the central one is the summary.</p> <h3 id="linking">Should I link to issues or pull requests?</h3> <p>You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one host, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare <code>(#1234)</code> references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.</p> <h3 id="credits">Should you credit contributors?</h3> <p>The commit history already records who did what, so a changelog does not need to credit anyone. But naming contributors, especially in a notable release, is a common and generous way to recognize their work and encourage more of it. If you do, keep it brief, and remember that a <code>@handle</code> belongs to one host, so a name or a link to a profile travels better. For fuller credits, a <code>CONTRIBUTORS</code> or <code>AUTHORS</code> file keeps them in the repository without crowding the record of what changed.</p> <h2 id="about">About Keep a Changelog</h2> <h3 id="standard">Is there a standard changelog format?</h3> <p>Not a formal one. There are older conventions, such as the <a href="https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs">GNU changelog style guide</a> and the <a href="https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File">GNU NEWS file</a>, but they are limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.</p> <h3 id="scope">What does it deliberately leave out?</h3> <p>A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:</p> <ul> <li>No new change types: six are enough.</li> <li>No machine format, schema, or strict layout: this is the format.</li> <li>No tool or service to install: a convention should cost only attention.</li> <li>No dependence on a vendor: a changelog is a plain file in your repository.</li> </ul> <p>None of this is fixed; it is open to discussion. But additions to a widely used convention deserve care.</p> <h3 id="contribute">How can I contribute?</h3> <p>Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please <a href="https://github.com/olivierlacan/keep-a-changelog">contribute</a> or start a <a href="https://github.com/olivierlacan/keep-a-changelog/discussions">conversation</a> if you have ideas or need help.</p> <h2 id="references">References</h2> <p>Keep a Changelog grew from good practices observed in open source, gathered into the convention this page describes, and demonstrated in <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md">its own changelog</a>. Olivier Lacan discussed the motivation behind it on <a href="https://changelog.com/podcast/127">The Changelog podcast</a>.</p> <p>Since then it has been translated into dozens of languages and adopted by <a href="https://github.com/search?q=%22based+on+%5BKeep+a+Changelog%5D%28https%3A%2F%2Fkeepachangelog.com%22&amp;type=code">tens of thousands of open-source projects</a> whose changelogs note that their format is based on it.</p> <p>Among the adopters are NASA and the UK's National Archives, the Wikimedia Foundation, and companies such as Cloudflare and Unity, several of which recommend it in their own contributor guides and engineering handbooks.</p> <p>Its reach extends past software, too. Peer-reviewed research on software versioning and breaking changes cites it, and research-data guidelines such as The Turing Way and the Helmholtz Metadata Collaboration recommend it for tracking changes to scientific datasets.</p> </div> </div> </div> <footer class='footer clearfix' role='contentinfo'> <img src="/assets/images/keep-a-changelog-badge-74c5e186.svg" width="140" height="140" class="badge" alt="Keep a Changelog badge, designed by Tyler Fortune"/> <p class='about'> Keep a Changelog is <a href="https://choosealicense.com/licenses/mit/">MIT licensed</a>, <a href="https://github.com/olivierlacan/keep-a-changelog/">created and maintained</a> by <a href="https://olivierlacan.com/">Olivier Lacan</a>, and designed by Tyler Fortune. </p> </footer> </article> </body> <script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5389808eeddd5b055a00440d');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script> </html>
