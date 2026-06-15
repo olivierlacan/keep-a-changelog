@@ -423,10 +423,16 @@
        extends the pattern downward instead of re-centering and shifting it. */
     background-position: center top;
     color: var(--hero-text);
-    /* Fluid top padding: roomy on wide screens, tight on phones. (The clamp lives
-       in a custom property so the Sass-based minifier doesn't try to evaluate it.) */
+    /* Fluid top padding: roomy on wide screens, tight on phones. (The clamps live
+       in custom properties so the Sass-based minifier doesn't try to evaluate them.) */
     --hero-pad-top: clamp(var(--space-m), 5vw, var(--space-2xl));
-    padding-block: var(--hero-pad-top) var(--space-xl);
+    /* Fluid bottom padding too. It used to be a fixed --space-xl, which on phones
+       (where the top padding shrinks to its --space-m floor) left the bottom ~2.5x
+       the top. Tracking the same 5vw with a smaller --space-l floor keeps the bottom
+       a touch larger than the top on narrow screens instead of dwarfing it, while
+       the wider-screen look is unchanged. */
+    --hero-pad-bottom: clamp(var(--space-l), 5vw, var(--space-xl));
+    padding-block: var(--hero-pad-top) var(--hero-pad-bottom);
     padding-inline: var(--space-m);
     text-align: center;
   }
