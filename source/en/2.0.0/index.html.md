@@ -97,7 +97,7 @@ Keep an `Unreleased` section at the top to collect upcoming changes. It shows re
 
 A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601]. A written-out date like `July 17, 2017` is clear enough, but it is written differently around the world — `17 July 2017`, with or without an ordinal — and an all-numeric form is genuinely ambiguous: `02-03-2017` is February in some countries and March in others. None of these will break a changelog, but `YYYY-MM-DD` reads the same everywhere, which is why it is the form to prefer.
 
-A changelog is written in [Markdown][markdown]: a plain-text format that stays readable on its own and renders as formatted HTML on any host. That is why a version is a `##` heading and the square brackets around `[1.0.0]` make it a reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:
+A changelog is written in [Markdown][markdown]: a plain-text format that stays readable on its own and renders as formatted HTML on any host. That is why each version sits under a `##` second-level heading — the single `#` is reserved for the `# Changelog` title at the top of the file — and the square brackets around `[1.0.0]` make it a reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:
 
 ```
 [Unreleased]: https://github.com/your/project/compare/v1.1.0...HEAD
@@ -254,7 +254,7 @@ Its reach extends past software, too. Peer-reviewed research on software version
 [versioning-schemes]: https://en.wikipedia.org/wiki/Software_versioning#Schemes
 [semver]: https://semver.org/
 [iso-8601]: https://www.iso.org/iso-8601-date-and-time-format.html
-[markdown]: https://www.markdownguide.org/
+[markdown]: https://commonmark.org/help/
 [calver]: https://calver.org/
 [git]: https://en.wikipedia.org/wiki/Git
 [vcs]: https://en.wikipedia.org/wiki/Distributed_version_control
