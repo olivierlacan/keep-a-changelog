@@ -95,7 +95,7 @@ A short upgrade note can sit in the entry itself, such as "rename the `color` op
 
 Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
 
-A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
+A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601]. A written-out date like `July 17, 2017` is clear enough, but it is written differently around the world — `17 July 2017`, with or without an ordinal — and an all-numeric form is genuinely ambiguous: `02-03-2017` is February in some countries and March in others. None of these will break a changelog, but `YYYY-MM-DD` reads the same everywhere, which is why it is the form to prefer.
 
 The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve it once at the bottom of the file, pointing each version to a comparison with the one before it:
 
@@ -105,7 +105,7 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 [1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
 ```
 
-`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly — and since hosts render each `##` heading as an HTML anchor, a clean heading is also a clean, direct link to that version.
 
 When you cut a release, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
