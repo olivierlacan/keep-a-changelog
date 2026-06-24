@@ -174,6 +174,21 @@ $languages.each do |language|
   redirect "#{code}/index.html", to: "#{code}/#{$published_version_for.call(code)}/index.html"
 end
 
+# Patch releases of this project (e.g. 1.1.1) ship fixes to the site and tooling
+# without changing the changelog *specification*, so they never get their own
+# spec page — the spec stays at the x.y.0 minor (1.1.0). But those patch versions
+# do appear in our own example changelog on the homepage, so visitors spot one
+# and try /en/1.1.1/, which would otherwise 404 (issue #690). Redirect each such
+# patch URL to the minor spec page it belongs to, when that page exists.
+File.read("CHANGELOG.md").scan(/^##\s*\[(\d+)\.(\d+)\.(\d+)\]/).each do |major, minor, patch|
+  next if patch == "0" # minor/major releases already have their own spec page
+  spec_version = "#{major}.#{minor}.0"
+  patch_version = "#{major}.#{minor}.#{patch}"
+  next unless File.directory?("source/en/#{spec_version}")
+  next if File.directory?("source/en/#{patch_version}") # never shadow a real spec page
+  redirect "en/#{patch_version}/index.html", to: "en/#{spec_version}/index.html"
+end
+
 # ----- Assets ----- #
 
 set :css_dir, "assets/stylesheets"
