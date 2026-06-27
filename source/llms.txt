@@ -1,0 +1,8 @@
+# Keep a Changelog
+
+> A project promoting a standardized format for documenting notable changes in software projects. The format emphasizes human readability while maintaining consistency and clarity across version histories.
+
+## Documentation
+
+- [Changelog Format Guide](https://keepachangelog.com/changelog-format.txt): Comprehensive guide to the Keep a Changelog format, including principles, types of changes, and best practices
+- [Example Changelog](https://github.com/olivierlacan/keep-a-changelog/blob/main/CHANGELOG.md): Reference implementation of the Keep a Changelog format
