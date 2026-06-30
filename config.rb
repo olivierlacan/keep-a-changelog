@@ -2,6 +2,11 @@
 #   Config
 # --------------------------------------
 
+# Version routing (which spec version each entry point resolves to) lives in a
+# pure module so it can be unit-tested without booting Middleman. See
+# test/version_routing_test.rb.
+require_relative "tools/version_routing"
+
 # ----- Site ----- #
 # Last version should be the latest English version since Keep a Changelog is
 # first written in English, then translated into other languages later.
@@ -15,7 +20,7 @@ $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # notices to 2.0.0, without changing the default production build. For example:
 #   KAC_PREVIEW_V2=1 bundle exec middleman serve
 # To go live, drop the flag and set $last_version = "2.0.0" outright.
-$last_version = ENV["KAC_PREVIEW_V2"] ? "2.0.0" : "1.1.0"
+$last_version = VersionRouting.last_version(preview: ENV["KAC_PREVIEW_V2"])
 $previous_version = $versions[$versions.index($last_version) - 1]
 
 # Expose in-progress version drafts (e.g. a 2.0.0 still being written) only when
@@ -27,9 +32,8 @@ $previous_version = $versions[$versions.index($last_version) - 1]
 # routes to an unpublished draft. (Local-dev preview of newer drafts is handled at
 # render time by the build?-aware exposed_version_for helper below.)
 $published_version_for = lambda do |code|
-  $versions.select { |v|
-    File.directory?("source/#{code}/#{v}") && Gem::Version.new(v) <= Gem::Version.new($last_version)
-  }.max_by { |v| Gem::Version.new(v) }
+  installed = $versions.select { |v| File.directory?("source/#{code}/#{v}") }
+  VersionRouting.published_version_for(installed, last_version: $last_version)
 end
 
 # This list of languages populates the language navigation.
@@ -225,8 +229,7 @@ helpers do
   # in-progress 2.0.0) so they can be previewed and picked from the selector.
   def exposed_version_for(code)
     installed = $versions.select { |v| File.directory?("source/#{code}/#{v}") }
-    installed = installed.select { |v| Gem::Version.new(v) <= Gem::Version.new($last_version) } if build?
-    installed.max_by { |v| Gem::Version.new(v) }
+    VersionRouting.exposed_version_for(installed, last_version: $last_version, build: build?)
   end
 
   def available_translation_for(language)
