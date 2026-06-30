@@ -94,19 +94,25 @@
           %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
           %span.header-title{ "aria-hidden": "true" } Keep a Changelog
         %nav.locales{ role: "navigation" }
-          %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
-          %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }
-            %span.locales-text= "Languages (#{$languages.count}):"
-          %select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
-            - $languages.each do |language|
-              - version = exposed_version_for(language.first)
-              - if version
-                - selected = language_code == language.first
-                -# Show only major.minor (we don't ship patch releases); the URL keeps the full version.
-                - display_version = version.split(".").first(2).join(".")
-                - label = "#{display_version} #{language.last[:name]}"
-                %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
-                  = label
+          -# v2 ships separate version + language selectors that expose every
+          -# version for every language (issue #719). Legacy pages keep the older
+          -# combined picker until the dual selector is back-ported.
+          - if v2_plus
+            = partial "partials/locale_nav", locals: { language_code: language_code, current_version: current_version }
+          - else
+            %button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "language-select", "aria-label": "Show language menu", title: "Pick one of the #{$language_count} translations" }
+            %label{ for: "language-select", title: "Pick one of the #{$language_count} translations" }
+              %span.locales-text= "Languages (#{$languages.count}):"
+            %select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
+              - $languages.each do |language|
+                - version = exposed_version_for(language.first)
+                - if version
+                  - selected = language_code == language.first
+                  -# Show only major.minor (we don't ship patch releases); the URL keeps the full version.
+                  - display_version = version.split(".").first(2).join(".")
+                  - label = "#{display_version} #{language.last[:name]}"
+                  %option{ selected: selected, label: label, value: "#{language.first}/#{version}/" }
+                    = label
         - if v2_plus
           %div.theme-switch{ role: "group", "aria-label": "Color theme" }
             %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
