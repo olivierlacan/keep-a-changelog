@@ -279,8 +279,6 @@
      number), the language one carries the names. */
   .locale-fields { display: inline-flex; align-items: center; gap: var(--space-xs); }
   .locale-field { display: inline-flex; align-items: center; }
-  /* No per-field globe — the collapse globe lives on .locales-toggle. */
-  .locale-field::before { content: none; }
   #version-select { max-inline-size: 6.5rem; }
   /* Show a compact globe icon in place of the "Languages (N):" text at every
      width; the text stays in the DOM (and the label's title) for screen readers. */
@@ -295,9 +293,10 @@
     white-space: nowrap;
   }
   /* Flex-center the globe so it sits on the header axis without depending on
-     baseline/vertical-align nudges. */
+     baseline/vertical-align nudges. The globe belongs to the legacy single
+     picker's label only — the v2 .locale-field labels opt out. */
   .locales label { display: inline-flex; align-items: center; }
-  .locales label::before {
+  .locales label:not(.locale-field)::before {
     content: "";
     display: block;
     inline-size: 1.3em;
