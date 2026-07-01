@@ -279,7 +279,11 @@
      number), the language one carries the names. */
   .locale-fields { display: inline-flex; align-items: center; gap: var(--space-xs); }
   .locale-field { display: inline-flex; align-items: center; }
-  #version-select { max-inline-size: 6.5rem; }
+  #version-select { max-inline-size: 8.5rem; }
+  /* Dim the untranslated options where the browser honours option colors
+     (Firefox, Chromium); they stay selectable so the pick reaches the
+     interstitial, and the "(n/a)" tag covers browsers that ignore this. */
+  .locale-select option[data-available="false"] { color: var(--muted); }
   /* Show a compact globe icon in place of the "Languages (N):" text at every
      width; the text stays in the DOM (and the label's title) for screen readers. */
   .locales-text {
