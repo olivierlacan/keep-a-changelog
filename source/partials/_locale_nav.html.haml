@@ -1,0 +1,35 @@
+-# Version + language selectors (v2). Rendered inside a %nav.locales wrapper by
+-# both the page layout and the missing-translation interstitial, so it receives
+-# the current page's coordinates explicitly:
+-#   language_code   — the language being viewed (e.g. "fr")
+-#   current_version — the spec version being viewed (e.g. "1.1.0")
+-#
+-# Both selectors list the full grid and tag combinations we don't have yet with
+-# a compact "(n/a)" rather than hiding them: a version pick keeps your language
+-# fixed, a language pick keeps your version fixed, and either way an option we
+-# can't satisfy resolves to a generated interstitial that explains the gap.
+%button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "locale-fields", "aria-label": "Show version and language menu", title: "Choose a version or translation" }
+
+.locale-fields#locale-fields
+  %label.locale-field{ for: "version-select" }
+    %span.locales-text Version:
+    %select.locale-select{ name: "version", id: "version-select", "aria-label": "Choose a version" }
+      - selectable_versions.reverse_each do |v|
+        - available = version_available?(language_code, v)
+        -# Untranslated versions stay selectable (picking one lands on the
+        -# interstitial that explains the gap); a compact "(n/a)" tag marks them
+        -# instead of a full sentence, with the detail in the option's tooltip.
+        - label = available ? display_version(v) : "#{display_version(v)} (n/a)"
+        - hint = available ? nil : "Version #{display_version(v)} isn’t translated into #{language_name(language_code)} yet"
+        %option{ value: "#{language_code}/#{v}/", selected: (v == current_version), label: label, title: hint, "data-available": available.to_s }
+          = label
+
+  %label.locale-field{ for: "language-select" }
+    %span.locales-text= "Language (#{$languages.count}):"
+    %select.locale-select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
+      - $languages.each do |code, meta|
+        - available = version_available?(code, current_version)
+        - label = available ? meta[:name] : "#{meta[:name]} (n/a)"
+        - hint = available ? nil : "#{meta[:name]} doesn’t have version #{display_version(current_version)} yet"
+        %option{ value: "#{code}/#{current_version}/", selected: (code == language_code), label: label, title: hint, "data-available": available.to_s }
+          = label

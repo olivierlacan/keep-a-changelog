@@ -9,14 +9,18 @@ document.addEventListener("DOMContentLoaded", function(){
     else if (previewParam === 'off' || previewParam === '0') { localStorage.removeItem('kac-preview'); }
   } catch (e) {}
 
-  var select = document.querySelector('.locales select');
-  if (select) {
+  // Version and/or language selectors. Each option's value is a "lang/version/"
+  // path, so changing either one just navigates there — a real spec page when we
+  // have that translation, or a generated interstitial when we don't.
+  var selects = document.querySelectorAll('.locales select');
+  Array.prototype.forEach.call(selects, function(select){
     select.addEventListener('change', function(event){
-      origin = window.location.origin;
-      languageCode = event.currentTarget.selectedOptions[0].value
-      window.location.replace(origin + "/" + languageCode)
+      var origin = window.location.origin;
+      var target = event.currentTarget.selectedOptions[0].value;
+      window.location.replace(origin + "/" + target);
     });
-  }
+  });
+  var select = selects[0];
 
   // On very narrow viewports the language picker collapses behind a globe
   // button (see the max-width query in v2.css). Toggle it open; the select is

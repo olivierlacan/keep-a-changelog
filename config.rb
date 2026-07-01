@@ -178,6 +178,37 @@ $languages.each do |language|
   redirect "#{code}/index.html", to: "#{code}/#{$published_version_for.call(code)}/index.html"
 end
 
+# Every (language, version) pair that hasn't been translated yet still resolves
+# to a real URL: a generated interstitial that explains the gap in the target
+# language (or English) and links to the English text plus how to contribute the
+# missing translation — instead of a 404. This is what lets the version/language
+# selectors offer *every* version for *every* language (issue #719): pick one we
+# don't have and you land somewhere helpful rather than nowhere.
+#
+# We mirror the selector's exposure rule: all spec versions when serving locally
+# (so an in-progress 2.0.0 draft previews), capped at the published $last_version
+# in a production build so unreleased drafts never ship.
+spec_versions = $versions.select { |v| File.directory?("source/en/#{v}") }
+
+generate_interstitials = lambda do |max_version|
+  $languages.each_key do |code|
+    spec_versions.each do |version|
+      next if max_version && Gem::Version.new(version) > Gem::Version.new(max_version)
+      next if File.directory?("source/#{code}/#{version}") # real translation exists
+      proxy "/#{code}/#{version}/index.html", "/missing.html",
+        locals: { language_code: code, version: version }, ignore: true
+    end
+  end
+end
+
+configure :development do
+  generate_interstitials.call(nil)
+end
+
+configure :build do
+  generate_interstitials.call($last_version)
+end
+
 # Patch releases of this project (e.g. 1.1.1) ship fixes to the site and tooling
 # without changing the changelog *specification*, so they never get their own
 # spec page — the spec stays at the x.y.0 minor (1.1.0). But those patch versions
@@ -235,6 +266,38 @@ helpers do
   def available_translation_for(language)
     version = exposed_version_for(language.first)
     "#{version} #{language.last[:name]}" if version
+  end
+
+  # The spec versions a visitor may pick from the version selector. We cap at the
+  # published $last_version in a production build so unreleased drafts (e.g. an
+  # in-progress 2.0.0) never surface; serving locally exposes the full set so
+  # drafts can be previewed. Oldest → newest.
+  def selectable_versions
+    versions = spec_versions
+    versions = versions.select { |v| Gem::Version.new(v) <= Gem::Version.new($last_version) } if build?
+    versions
+  end
+
+  # The real spec version directories ($versions also carries the en index
+  # template that the glob picks up), oldest → newest.
+  def spec_versions
+    dirs = $versions.select { |v| File.directory?("source/en/#{v}") }
+    dirs.sort_by { |v| Gem::Version.new(v) }
+  end
+
+  # Whether a given spec version has actually been translated for a language.
+  def version_available?(code, version)
+    File.directory?("source/#{code}/#{version}")
+  end
+
+  # major.minor for display (we never ship patch-level spec pages).
+  def display_version(version)
+    version.split(".").first(2).join(".")
+  end
+
+  # A language's autonym (e.g. "Français"), falling back to its code.
+  def language_name(code)
+    ($languages[code] || {})[:name] || code
   end
 
   # The release date for a version, read from CHANGELOG.md (e.g. the line

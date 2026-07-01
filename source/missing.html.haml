@@ -1,0 +1,87 @@
+---
+layout: false
+title: Keep a Changelog
+description: This version hasn't been translated into this language yet.
+---
+-# Interstitial for a (language, version) pair we don't have a translation for.
+-# Generated as a proxy for every missing combination in config.rb, so the
+-# version/language selectors can offer every version for every language and any
+-# gap lands here with an explanation instead of a 404 (issue #719). The proxy
+-# passes `language_code` and `version` as locals.
+- lang_name = language_name(language_code)
+- pretty = display_version(version)
+- rtl = %w[ar fa].include?(language_code) && Gem::Version.new(version) >= Gem::Version.new("2.0.0")
+- newest_local = exposed_version_for(language_code)
+- repo = "https://github.com/olivierlacan/keep-a-changelog"
+!!! 5
+%html{ lang: language_code, dir: (rtl ? "rtl" : "ltr") }
+  %head
+    %meta{ charset: "utf-8" }
+    %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %meta{ name: "description", content: current_page.data.description }
+    %meta{ name: "robots", content: "noindex,follow" }
+    -# Apply a saved theme before first paint to avoid a flash of the wrong one.
+    :javascript
+      (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+    %link{ rel: "shortcut icon", type: "image/x-icon", href: image_path("favicon.ico") }
+    %title= "Keep a Changelog #{pretty} — #{lang_name}"
+    %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
+    %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
+    - font_href = "//fonts.googleapis.com/css?family=Muli:400,700|Source+Code+Pro:400,700&display=swap"
+    %link{ rel: "stylesheet", href: font_href, media: "print", onload: "this.media='all'" }
+    %noscript
+      %link{ rel: "stylesheet", href: font_href }
+    = stylesheet_link_tag "v2"
+    = javascript_include_tag "all", defer: true
+
+  %body.missing-page
+    %a.skip-link{ href: "#main" } Skip to content
+    %article
+      %header{ role: "banner" }
+        %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
+        %span.header-title Keep a Changelog
+        %nav.locales{ role: "navigation" }
+          = partial "partials/locale_nav", locals: { language_code: language_code, current_version: version }
+        %div.theme-switch{ role: "group", "aria-label": "Color theme" }
+          %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
+          %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+
+      .main#main{ role: "main", tabindex: "-1" }
+        %section.missing
+          %p.missing-eyebrow Translation missing
+          %h1.missing-title
+            Keep a Changelog #{pretty} isn’t available in #{lang_name} yet
+          %p.missing-lede
+            Version #{pretty} of the specification hasn’t been translated into
+            #{lang_name} so far. Here’s what you can do in the meantime.
+
+          %ul.missing-actions
+            - if version_available?("en", version)
+              %li
+                = link_to "Read version #{pretty} in English", "/en/#{version}/"
+            - if newest_local
+              %li
+                = link_to "Read the latest #{lang_name} translation (#{display_version(newest_local)})", "/#{language_code}/#{newest_local}/"
+            %li
+              = link_to "Help translate this version", "#{repo}/issues"
+
+          .missing-contribute
+            %h2 Contribute the #{lang_name} translation
+            %p
+              != "Translations live in the #{link_to "Keep a Changelog repository", repo}. To add #{lang_name} for version #{pretty}, copy the English source at <code>source/en/#{version}/</code> to <code>source/#{language_code}/#{version}/</code> and translate its contents, then #{link_to "open a pull request", "#{repo}/pulls"} or #{link_to "start by filing an issue", "#{repo}/issues/new"}."
+            %p.missing-meta
+              See
+              = link_to "the contribution guide", "#{repo}/blob/main/CONTRIBUTING.md"
+              and
+              = link_to "current translation coverage", "#{repo}/blob/main/TRANSLATION_COVERAGE.md"
+              for details.
+
+      %footer.footer.clearfix{ role: "contentinfo" }
+        = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"
+        %p.about
+          != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', repo} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."

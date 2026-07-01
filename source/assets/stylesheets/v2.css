@@ -265,7 +265,8 @@
     margin-inline-end: 0.25rem;
     background: var(--rule);
   }
-  #language-select {
+  /* Both the version and language selects share one look. */
+  .locales select {
     font: inherit;
     color: var(--text);
     background: var(--bg);
@@ -274,6 +275,15 @@
     padding: 0.4em 0.6em;
     max-inline-size: 16rem;
   }
+  /* The two selectors sit side by side; the version one is narrow (just a
+     number), the language one carries the names. */
+  .locale-fields { display: inline-flex; align-items: center; gap: var(--space-xs); }
+  .locale-field { display: inline-flex; align-items: center; }
+  #version-select { max-inline-size: 8.5rem; }
+  /* Dim the untranslated options where the browser honours option colors
+     (Firefox, Chromium); they stay selectable so the pick reaches the
+     interstitial, and the "(n/a)" tag covers browsers that ignore this. */
+  .locale-select option[data-available="false"] { color: var(--muted); }
   /* Show a compact globe icon in place of the "Languages (N):" text at every
      width; the text stays in the DOM (and the label's title) for screen readers. */
   .locales-text {
@@ -287,9 +297,10 @@
     white-space: nowrap;
   }
   /* Flex-center the globe so it sits on the header axis without depending on
-     baseline/vertical-align nudges. */
+     baseline/vertical-align nudges. The globe belongs to the legacy single
+     picker's label only — the v2 .locale-field labels opt out. */
   .locales label { display: inline-flex; align-items: center; }
-  .locales label::before {
+  .locales label:not(.locale-field)::before {
     content: "";
     display: block;
     inline-size: 1.3em;
@@ -363,8 +374,9 @@
     text-wrap: pretty;
   }
 
-  /* Very narrow: collapse the language picker behind the globe so the header
-     stays on one row. Tapping the globe reveals the select (JS sets data-open). */
+  /* Very narrow: collapse the version + language selectors behind the globe so
+     the header stays on one row. Tapping the globe reveals them (JS sets
+     data-open). */
   @media (max-width: 30rem) {
     /* Show the brand mark in the header (before the picker) at this width, and
        hide it in the hero (rule in the content layer) so it doesn't crowd the
@@ -372,25 +384,34 @@
     article > header .mark { display: inline-block; }
     .locales::before { display: block; }
     .locales-toggle { display: inline-grid; }
-    .locales label { display: none; }
-    #language-select { display: none; }
-    /* Open as a popover anchored under the globe so it doesn't reflow the nav.
-       The width cap lives in a custom property so the Sass minifier passes the
-       min()/calc through untouched. */
-    .locales[data-open] #language-select {
+    .locale-fields { display: none; }
+    /* Open as a stacked popover anchored under the globe so it doesn't reflow the
+       nav. The width cap lives in a custom property so the Sass minifier passes
+       the min()/calc through untouched. */
+    .locales[data-open] .locale-fields {
       --locale-popover-max: min(16rem, calc(100vw - 2 * var(--space-m)));
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-2xs);
       position: absolute;
       inset-block-start: 100%;
       inset-inline-start: 0;
       margin-block-start: var(--space-2xs);
       z-index: 20;
+      padding: var(--space-xs);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
       max-inline-size: var(--locale-popover-max);
       box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
     }
-    /* Grow the white header while the picker is open so the revealed select
-       rests on the header surface instead of hanging over the orange hero. */
-    article > header:has(.locales[data-open]) { padding-block-end: 3.25rem; }
+    .locales[data-open] .locale-field { display: flex; }
+    .locales[data-open] .locale-fields select { inline-size: 100%; max-inline-size: none; }
+    .locales[data-open] .locale-fields #version-select { max-inline-size: none; }
+    /* Grow the white header while the picker is open so the revealed selects
+       rest on the header surface instead of hanging over the orange hero. */
+    article > header:has(.locales[data-open]) { padding-block-end: 5.5rem; }
   }
 }
 
@@ -895,4 +916,64 @@
     from { transform: translateY(-100%); }
     to { transform: translateY(0); }
   }
+
+  /* ---------------------------------------------- missing-translation page */
+  /* The interstitial has no hero, so surface the brand mark and wordmark in its
+     header at every width (the regular pages hide them outside the pinned state). */
+  .missing-page article > header .mark { display: inline-block; }
+  .missing-page .header-title { display: inline-block; }
+
+  .missing {
+    max-inline-size: 44rem;
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-m);
+  }
+  .missing-eyebrow {
+    margin: 0 0 var(--space-2xs);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .missing-title { margin: 0 0 var(--space-s); }
+  .missing-lede {
+    margin: 0 0 var(--space-l);
+    font-size: var(--step-1);
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .missing-actions {
+    margin: 0 0 var(--space-xl);
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+  .missing-actions a {
+    display: inline-block;
+    padding: 0.55em 1em;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--link);
+    text-decoration: none;
+  }
+  .missing-actions a:hover { border-color: var(--link); }
+  .missing-contribute {
+    padding: var(--space-l);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .missing-contribute h2 { margin-block-start: 0; }
+  .missing-contribute code {
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--text) 8%, transparent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.9em;
+  }
+  .missing-meta { margin-block-end: 0; font-size: var(--step--1); color: var(--muted); }
 }
