@@ -59,6 +59,13 @@ few native speakers of the language you're translating to in the Pull Request
 comments. They'll help review your translation for simple mistakes and give us
 a better idea of whether your translation is accurate.
 
+Translations are human work. This project does not use LLMs to replace
+translators, and a translation needs your judgment about what reads naturally
+in your language and culture — not just what matches the English words. The
+automated checks below only help find gaps and inconsistencies; they don't
+write or approve translations. [AGENTS.md](AGENTS.md) explains how the project
+uses LLMs and where it draws the line.
+
 ### Translation checks
 
 - `ruby translation_coverage.rb` reports how complete each translation is

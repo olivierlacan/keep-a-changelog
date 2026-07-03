@@ -51,6 +51,44 @@ is in [CONTRIBUTING.md](CONTRIBUTING.md)). Protect that: any change to how
 pages are structured or versioned must remain easy for a non-programmer
 translator to follow.
 
+## How we use LLMs
+
+Keep a Changelog has one maintainer and myriad contributors. Keeping a free
+open source project like this alive involves complicated logistics: dozens of
+languages, several spec versions in each, and a steady stream of contributions
+to review. That work does not happen without automation — and even automation
+requires maintenance. LLMs help carry that load, within strict limits, because
+wasting resources is antithetical to what this project stands for.
+
+LLMs are **not** used to:
+
+- **Replace translators.** Translations are created and reviewed by people who
+  speak the language and know the culture. No model output can substitute for
+  that judgment.
+- **Decide what Keep a Changelog says.** The guidelines are human positions,
+  reasoned about and owned by humans.
+- **Spend tokens on needless features.** If a feature would not exist without
+  an LLM to justify it, it should not exist.
+
+LLMs **are** used to:
+
+- **Build reusable tools that do not need an LLM to run.** The translation
+  coverage lint, the semantic QA pipeline, and the version routing tests are
+  ordinary scripts anyone can run, offline, for free, forever. An LLM may help
+  write a tool once; the tool must then stand on its own.
+- **Validate accessibility, design, and functionality requirements** — checks
+  a single maintainer could not perform by hand across every language, version,
+  and browser.
+
+The most daunting recurring problem this addresses is translation upkeep.
+Every version-specific translation must:
+
+1. exist — or the site must give clear guidance for contributing one;
+2. be accurate and consistent with the original English guidelines, while
+   remaining understandable in its own language and culture.
+
+Tooling helps check these. Humans decide them.
+
 ## Writing and content
 
 The content is held to `docs/tone-and-voice.md`. In short: write plainly,
