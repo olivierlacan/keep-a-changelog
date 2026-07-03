@@ -78,6 +78,14 @@ article img
   border-radius: 7px
   padding: 0.4em 0.9em
 
+// The framed-screenshot treatment above is meant for content images; the
+// footer's brand mark is page chrome and looked boxed-in with it (no 0.3.0
+// page embeds content images today, so the frame only ever showed there).
+.footer img
+  box-shadow: none
+  border-radius: 0
+  padding: 0
+
 article > ul
   font-size: 1.2em
   padding-left: 0
