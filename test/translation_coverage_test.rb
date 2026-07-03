@@ -46,6 +46,19 @@ class TranslationCoverageTest < Minitest::Test
     refute_includes what, "]("
   end
 
+  def test_dashboard_embedding_api_is_public
+    # config.rb builds /translations and /translations/progress from these two
+    # methods on every site build; they must stay public.
+    assert_respond_to analyzer, :dashboard_html
+    assert_respond_to analyzer, :dashboard_data
+
+    data = analyzer.dashboard_data
+    assert_equal "1.1.0", data[:published_version]
+    codes = data[:languages].map { |l| l[:code] }
+    assert_includes codes, "fr"
+    refute_includes codes, "en", "English is the baseline, not a translation"
+  end
+
   def test_dashboard_output_is_self_contained_html
     Dir.mktmpdir do |dir|
       path = File.join(dir, "dashboard.html")
@@ -56,7 +69,9 @@ class TranslationCoverageTest < Minitest::Test
       assert_includes html, %("latest_version":"2.0.0")
       assert_includes html, %("published_version":"1.1.0")
       assert_includes html, "Français" # language names resolved from config.rb
-      refute_match(/src=|href=|url\(/, html[/<head>.*<\/head>/m], "no external assets")
+      head = html[/<head>.*<\/head>/m]
+      refute_match(/(?:src|href)="(?!data:)/, head, "no external assets (data: URIs are fine)")
+      refute_match(/url\(/, head, "no external assets")
     end
   end
 end

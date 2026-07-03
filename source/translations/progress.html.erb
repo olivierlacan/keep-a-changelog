@@ -1,0 +1,9 @@
+---
+layout: false
+---
+<%#
+  The translation-progress dashboard, rebuilt from the live source tree on
+  every site build. The page is entirely self-contained (see
+  tools/dashboard_template.html); the same HTML can be generated locally with
+  `bin/rake translations:dashboard`.
+%><%= TranslationCoverageAnalyzer.new({}).dashboard_html %>

@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Keep a Changelog — Translation progress</title>
+<link rel="icon" href="data:,"><!-- self-contained: no favicon request -->
+<script>
+  // Honor the theme picked on the spec pages before first paint.
+  (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
   :root {
     --page:        #f9f9f7;
@@ -18,7 +23,7 @@
     --meter-track: #cde2fb;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --page:        #0d0d0d;
       --surface:     #1a1a19;
       --ink:         #ffffff;
@@ -31,6 +36,18 @@
       --meter-track: #0d366b;
     }
   }
+  :root[data-theme="dark"] {
+    --page:        #0d0d0d;
+    --surface:     #1a1a19;
+    --ink:         #ffffff;
+    --ink-2:       #c3c2b7;
+    --muted:       #898781;
+    --grid:        #2c2c2a;
+    --baseline:    #383835;
+    --border:      rgba(255, 255, 255, 0.10);
+    --meter-fill:  #3987e5;
+    --meter-track: #0d366b;
+  }
 
   * { box-sizing: border-box; }
   body {
@@ -40,6 +57,10 @@
     font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  .crumb { font-size: 14px; margin: 0 0 16px; }
+  .crumb a { color: var(--meter-fill); text-decoration: none; }
+  .crumb a:hover { text-decoration: underline; }
 
   header h1 { font-size: 24px; font-weight: 650; margin: 0 0 4px; }
   header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
@@ -190,6 +211,10 @@
 </head>
 <body>
 <main>
+  <!-- Site navigation; hidden when the file is opened locally via file://,
+       where root-relative links have nowhere to go. -->
+  <p class="crumb site-only"><a href="/translations/">← All translations</a> · <a href="/">keepachangelog.com</a></p>
+
   <header>
     <h1>Translation progress</h1>
     <p class="sub">
@@ -243,7 +268,7 @@
 <div id="tooltip" role="status" aria-hidden="true"></div>
 
 <script>
-const DATA = {"generated_at":"2026-07-03 21:51 UTC","latest_version":"2.0.0","published_version":"1.1.0","versions":[{"version":"2.0.0","sections":30,"id_based":true,"published":false},{"version":"1.1.0","sections":20,"id_based":true,"published":true},{"version":"1.0.0","sections":19,"id_based":true,"published":true},{"version":"0.3.0","sections":14,"id_based":false,"published":true}],"languages":[{"code":"ar","name":"العربية","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"cs","name":"Čeština","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"da","name":"Dansk","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"de","name":"Deutsch","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"es-ES","name":"Español","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"fa","name":"فارسی","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"fr","name":"Français","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"hr","name":"Hrvatski","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"id","name":"Indonesia","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"id-ID","name":"Indonesia","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"it-IT","name":"Italiano","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"ja","name":"日本語","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"ka","name":"ქართული","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"ko","name":"한국어","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"nb","name":"Norsk (Bokmål)","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"nl","name":"Nederlands","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"pl","name":"polski","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"pt-BR","name":"Português (BR)","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"ro","name":"română","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"ru","name":"Pyccкий","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":21.43,"complete":3,"missing":11,"missing_sections":[]}}},{"code":"sk","name":"Slovenčina","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"sl","name":"Slovenščina","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"sr","name":"Srpski","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"sv","name":"Svenska","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"tr-TR","name":"Türkçe","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"uk","name":"Українська","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"zh-CN","name":"简体中文","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":14.29,"complete":2,"missing":12,"missing_sections":[]}}},{"code":"zh-TW","name":"正體中文","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":14.29,"complete":2,"missing":12,"missing_sections":[]}}}]};
+const DATA = {"generated_at":"2026-07-03 22:04 UTC","latest_version":"2.0.0","published_version":"1.1.0","versions":[{"version":"2.0.0","sections":30,"id_based":true,"published":false},{"version":"1.1.0","sections":20,"id_based":true,"published":true},{"version":"1.0.0","sections":19,"id_based":true,"published":true},{"version":"0.3.0","sections":14,"id_based":false,"published":true}],"languages":[{"code":"ar","name":"العربية","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"cs","name":"Čeština","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"da","name":"Dansk","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"de","name":"Deutsch","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"es-ES","name":"Español","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"fa","name":"فارسی","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"fr","name":"Français","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"hr","name":"Hrvatski","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"id","name":"Indonesia","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"id-ID","name":"Indonesia","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"it-IT","name":"Italiano","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"ja","name":"日本語","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"ka","name":"ქართული","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"ko","name":"한국어","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"nb","name":"Norsk (Bokmål)","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"nl","name":"Nederlands","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"pl","name":"polski","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"pt-BR","name":"Português (BR)","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"ro","name":"română","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]}}},{"code":"ru","name":"Pyccкий","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":21.43,"complete":3,"missing":11,"missing_sections":[]}}},{"code":"sk","name":"Slovenčina","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"sl","name":"Slovenščina","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"sr","name":"Srpski","versions":{"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"sv","name":"Svenska","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"tr-TR","name":"Türkçe","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":100.0,"complete":14,"missing":0,"missing_sections":[]}}},{"code":"uk","name":"Українська","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]}}},{"code":"zh-CN","name":"简体中文","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":14.29,"complete":2,"missing":12,"missing_sections":[]}}},{"code":"zh-TW","name":"正體中文","versions":{"1.1.0":{"coverage":100.0,"complete":20,"missing":0,"missing_sections":[]},"1.0.0":{"coverage":100.0,"complete":19,"missing":0,"missing_sections":[]},"0.3.0":{"coverage":14.29,"complete":2,"missing":12,"missing_sections":[]}}}]};
 
 // Sequential blue ramp (palette steps 100..700). In dark mode the anchor flips:
 // near-zero recedes toward the dark surface, high coverage reads light.
@@ -251,7 +276,14 @@ const RAMP_LIGHT = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184
 const RAMP_DARK  = ['#0d366b', '#184f95', '#256abf', '#3987e5', '#6da7ec', '#9ec5f4', '#cde2fb'];
 const darkQuery  = window.matchMedia('(prefers-color-scheme: dark)');
 
-function ramp() { return darkQuery.matches ? RAMP_DARK : RAMP_LIGHT; }
+function isDark() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  if (theme === 'dark') return true;
+  if (theme === 'light') return false;
+  return darkQuery.matches;
+}
+
+function ramp() { return isDark() ? RAMP_DARK : RAMP_LIGHT; }
 
 function rampColor(coverage) {
   const steps = ramp();
@@ -489,6 +521,10 @@ function renderAll() {
 renderAll();
 // The heatmap fills are inline styles, so re-render when the OS theme flips.
 if (darkQuery.addEventListener) darkQuery.addEventListener('change', renderAll);
+// Opened straight from disk, root-relative site links have nowhere to go.
+if (location.protocol === 'file:') {
+  document.querySelectorAll('.site-only').forEach(el => el.remove());
+}
 </script>
 </body>
 </html>

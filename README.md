@@ -47,12 +47,16 @@ few native speakers of the language you're translating to in the Pull Request
 comments. They'll help review your translation for simple mistakes and give us
 a better idea of whether your translation is accurate.
 
-To see where help is needed at a glance, open
-[`translation-dashboard.html`](translation-dashboard.html) in a browser — a
-static dashboard of translation coverage across every language and version,
-regenerated with `bin/rake translations:dashboard` whenever translations
-change. See [TRANSLATION_COVERAGE.md](TRANSLATION_COVERAGE.md) for the full
-analysis tooling behind it.
+To see where help is needed at a glance, visit
+[keepachangelog.com/translations](https://keepachangelog.com/translations/) —
+a simple overview of every available translation — or the detailed
+[translation-progress dashboard](https://keepachangelog.com/translations/progress/)
+showing coverage across every language and version. Both pages are rebuilt
+from the source tree on every deploy. The same dashboard can be generated
+locally with `bin/rake translations:dashboard` (it writes the standalone
+[`translation-dashboard.html`](translation-dashboard.html)). See
+[TRANSLATION_COVERAGE.md](TRANSLATION_COVERAGE.md) for the full analysis
+tooling behind it.
 
 ## Contribute
 

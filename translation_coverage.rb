@@ -868,10 +868,12 @@ class TranslationCoverageAnalyzer
     { language: lang, section: section, kind: kind, detail: detail }
   end
 
-  # Count `link_to` helpers per section in a HAML file.
+  # Count links per section: `link_to` helpers in a HAML file, inline and
+  # reference-style markdown links (but not images) in a markdown file.
   def section_link_counts(language, version)
-    path = File.join(SOURCE_DIR, language, version, 'index.html.haml')
-    return {} unless File.exist?(path)
+    path = source_file(language, version)
+    return {} if path.nil?
+    return markdown_section_link_counts(path) if path.end_with?('.md')
 
     counts = Hash.new(0)
     current = nil
@@ -888,6 +890,30 @@ class TranslationCoverageAnalyzer
       next unless current
 
       counts[current] += line.scan(/link_to/).size
+    end
+    counts
+  end
+
+  def markdown_section_link_counts(path)
+    counts = Hash.new(0)
+    current = nil
+    in_code = false
+    File.foreach(path, encoding: 'UTF-8') do |line|
+      if line.match?(/^\s*(```|~~~)/)
+        in_code = !in_code
+        next
+      end
+      next if in_code
+
+      if (m = line.match(/^\#{2,4}\s+.*\{#([\w-]+)\}\s*$/))
+        current = m[1]
+        counts[current] += 0
+        next
+      end
+      next unless current
+      next if line.match?(/^\[[^\]]+\]:\s*\S/) # link reference definitions
+
+      counts[current] += line.scan(/(?<!!)\[[^\]]+\](?:\([^)]*\)|\[[^\]]*\])/).size
     end
     counts
   end
@@ -965,14 +991,21 @@ class TranslationCoverageAnalyzer
 
   def generate_dashboard
     output = @dashboard.is_a?(String) ? @dashboard : DASHBOARD_OUTPUT
+    File.write(output, dashboard_html, encoding: 'UTF-8')
+    puts "Wrote #{output} — open it directly in a browser, no server needed."
+  end
+
+  # The complete self-contained dashboard page as a string. Public (see the
+  # `public` declarations at the bottom of the class) so config.rb can embed it
+  # as the /translations/progress page on every site build.
+  def dashboard_html
     template = File.read(DASHBOARD_TEMPLATE, encoding: 'UTF-8')
     json = JSON.generate(dashboard_data, script_safe: true)
     html = template.sub('__DASHBOARD_DATA__') { json }
 
     abort("Template placeholder __DASHBOARD_DATA__ not found in #{DASHBOARD_TEMPLATE}") if html == template
 
-    File.write(output, html, encoding: 'UTF-8')
-    puts "Wrote #{output} — open it directly in a browser, no server needed."
+    html
   end
 
   def dashboard_data
@@ -1038,6 +1071,10 @@ class TranslationCoverageAnalyzer
     end
     names
   end
+
+  # The embedding surface for the Middleman site (config.rb): the finished
+  # dashboard page and the raw analysis data behind it.
+  public :dashboard_html, :dashboard_data
 
   def print_text_report(results)
     puts "=" * 80

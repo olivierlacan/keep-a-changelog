@@ -7,6 +7,11 @@
 # test/version_routing_test.rb.
 require_relative "tools/version_routing"
 
+# Translation coverage analysis. The /translations overview and the
+# /translations/progress dashboard embed its data at build time, so both pages
+# refresh automatically on every build/deploy — no manual regeneration step.
+require_relative "translation_coverage"
+
 # ----- Site ----- #
 # Last version should be the latest English version since Keep a Changelog is
 # first written in English, then translated into other languages later.

@@ -1,0 +1,217 @@
+---
+layout: false
+title: Available translations — Keep a Changelog
+---
+<%
+  # A visitor-facing overview of the available translations, rendered from the
+  # coverage analyzer at build time (no client-side data or JS needed). The
+  # detailed maintainer view lives at /translations/progress/.
+  dash      = TranslationCoverageAnalyzer.new({}).dashboard_data
+  published = dash[:published_version]
+  latest    = dash[:latest_version]
+  cap       = Gem::Version.new(published)
+
+  entries = dash[:languages].filter_map do |lang|
+    public_versions = lang[:versions].keys.select { |v| Gem::Version.new(v) <= cap }
+    newest = public_versions.max_by { |v| Gem::Version.new(v) }
+    next if newest.nil? # only draft translations exist — nothing published to link
+
+    cell = lang[:versions][newest]
+    status =
+      if newest == published && cell[:coverage] >= 100
+        :current
+      elsif cell[:coverage] < 100
+        :partial
+      else
+        :behind
+      end
+    { code: lang[:code], name: lang[:name], newest: newest, cell: cell, status: status }
+  end
+
+  current  = entries.select { |e| e[:status] == :current }.sort_by { |e| e[:code] }
+  outdated = (entries - current).sort_by { |e| e[:code] }
+
+  latest_is_draft = latest && latest != published
+  started_latest  = dash[:languages].count { |l| l[:versions].key?(latest) }
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Keep a Changelog is available in <%= entries.size %> languages. Find your language and see how current each translation is.">
+<title><%= current_page.data.title %></title>
+<link rel="shortcut icon" type="image/x-icon" href="<%= image_path("favicon.ico") %>">
+<script>
+  // Honor the theme picked on the spec pages before first paint.
+  (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<style>
+  :root {
+    --page:     #f9f9f7;
+    --surface:  #fcfcfb;
+    --ink:      #0b0b0b;
+    --ink-2:    #52514e;
+    --muted:    #898781;
+    --grid:     #e1e0d9;
+    --border:   rgba(11, 11, 11, 0.10);
+    --accent:   #2a78d6;
+    --good:     #006300;
+    --serious:  #a34718;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page:     #0d0d0d;
+      --surface:  #1a1a19;
+      --ink:      #ffffff;
+      --ink-2:    #c3c2b7;
+      --muted:    #898781;
+      --grid:     #2c2c2a;
+      --border:   rgba(255, 255, 255, 0.10);
+      --accent:   #3987e5;
+      --good:     #0ca30c;
+      --serious:  #ec835a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page:     #0d0d0d;
+    --surface:  #1a1a19;
+    --ink:      #ffffff;
+    --ink-2:    #c3c2b7;
+    --muted:    #898781;
+    --grid:     #2c2c2a;
+    --border:   rgba(255, 255, 255, 0.10);
+    --accent:   #3987e5;
+    --good:     #0ca30c;
+    --serious:  #ec835a;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 20px 64px; }
+
+  .crumb { font-size: 14px; margin: 0 0 16px; }
+  .crumb a { color: var(--accent); text-decoration: none; }
+  .crumb a:hover { text-decoration: underline; }
+
+  h1 { font-size: 28px; font-weight: 650; margin: 0 0 6px; }
+  .lede { color: var(--ink-2); margin: 0; max-width: 640px; }
+  .lede a { color: var(--accent); }
+
+  h2 { font-size: 15px; font-weight: 650; margin: 32px 0 4px; }
+  .group-desc { color: var(--ink-2); font-size: 13.5px; margin: 0 0 12px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+  }
+  a.card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  a.card:hover, a.card:focus-visible { border-color: var(--accent); }
+  .card .lname { font-weight: 600; font-size: 16px; }
+  .card .lcode { color: var(--muted); font-size: 12px; margin-left: 6px; }
+  .card .status { display: block; font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+  .dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    margin-right: 5px; vertical-align: 1px;
+  }
+  .dot.current { background: var(--good); }
+  .dot.behind, .dot.partial { background: var(--serious); }
+
+  .draft-note {
+    margin-top: 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .draft-note a { color: var(--accent); }
+
+  footer { color: var(--muted); font-size: 13px; margin-top: 40px; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <p class="crumb"><a href="/">← keepachangelog.com</a></p>
+
+  <h1>Translations</h1>
+  <p class="lede">
+    Keep a Changelog is written in <a href="/en/<%= published %>/">English</a>
+    and translated by volunteers into <%= entries.size %> languages.
+    <%= current.size %> translations cover the current version (<%= published %>).
+    Want to help? <a href="https://github.com/olivierlacan/keep-a-changelog#translations">Contribute a translation</a>,
+    or dig into the <a href="/translations/progress/">detailed progress dashboard</a>.
+  </p>
+
+  <h2>Up to date — version <%= published %> (<%= current.size %>)</h2>
+  <p class="group-desc">Fully translated to the current version of the spec.</p>
+  <div class="grid">
+    <% current.each do |e| %>
+    <a class="card" href="/<%= e[:code] %>/<%= e[:newest] %>/" hreflang="<%= e[:code] %>">
+      <span class="lname" lang="<%= e[:code] %>" dir="auto"><%= e[:name] %></span><span class="lcode"><%= e[:code] %></span>
+      <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · <%= e[:newest] %></span>
+    </a>
+    <% end %>
+  </div>
+
+  <% unless outdated.empty? %>
+  <h2>Older version available (<%= outdated.size %>)</h2>
+  <p class="group-desc">
+    These translations exist but haven't caught up with <%= published %> yet —
+    a great place to <a href="https://github.com/olivierlacan/keep-a-changelog#translations">lend a hand</a>.
+  </p>
+  <div class="grid">
+    <% outdated.each do |e| %>
+    <a class="card" href="/<%= e[:code] %>/<%= e[:newest] %>/" hreflang="<%= e[:code] %>">
+      <span class="lname" lang="<%= e[:code] %>" dir="auto"><%= e[:name] %></span><span class="lcode"><%= e[:code] %></span>
+      <span class="status">
+        <span class="dot <%= e[:status] %>" aria-hidden="true"></span>
+        <% if e[:status] == :partial %>
+          Partial · <%= e[:newest] %> · <%= e[:cell][:coverage].round %>%
+        <% else %>
+          Newest translation: <%= e[:newest] %>
+        <% end %>
+      </span>
+    </a>
+    <% end %>
+  </div>
+  <% end %>
+
+  <% if latest_is_draft %>
+  <p class="draft-note">
+    <strong><%= latest %> is being written</strong> — the next version of the
+    spec is drafted in <a href="/en/<%= latest %>/">English</a> first, then
+    translated.
+    <% if started_latest.zero? %>
+      Translations haven't started yet;
+    <% else %>
+      <%= started_latest %> language<%= "s" unless started_latest == 1 %> started translating it;
+    <% end %>
+    follow along on the <a href="/translations/progress/">progress dashboard</a>.
+  </p>
+  <% end %>
+
+  <footer>
+    This page is regenerated from the source tree on every site build.
+    See <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/TRANSLATION_COVERAGE.md">TRANSLATION_COVERAGE.md</a>
+    for the analysis tooling behind it.
+  </footer>
+</main>
+</body>
+</html>

@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Keep a Changelog — Translation progress</title>
+<link rel="icon" href="data:,"><!-- self-contained: no favicon request -->
+<script>
+  // Honor the theme picked on the spec pages before first paint.
+  (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
   :root {
     --page:        #f9f9f7;
@@ -18,7 +23,7 @@
     --meter-track: #cde2fb;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --page:        #0d0d0d;
       --surface:     #1a1a19;
       --ink:         #ffffff;
@@ -31,6 +36,18 @@
       --meter-track: #0d366b;
     }
   }
+  :root[data-theme="dark"] {
+    --page:        #0d0d0d;
+    --surface:     #1a1a19;
+    --ink:         #ffffff;
+    --ink-2:       #c3c2b7;
+    --muted:       #898781;
+    --grid:        #2c2c2a;
+    --baseline:    #383835;
+    --border:      rgba(255, 255, 255, 0.10);
+    --meter-fill:  #3987e5;
+    --meter-track: #0d366b;
+  }
 
   * { box-sizing: border-box; }
   body {
@@ -40,6 +57,10 @@
     font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  .crumb { font-size: 14px; margin: 0 0 16px; }
+  .crumb a { color: var(--meter-fill); text-decoration: none; }
+  .crumb a:hover { text-decoration: underline; }
 
   header h1 { font-size: 24px; font-weight: 650; margin: 0 0 4px; }
   header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
@@ -190,6 +211,10 @@
 </head>
 <body>
 <main>
+  <!-- Site navigation; hidden when the file is opened locally via file://,
+       where root-relative links have nowhere to go. -->
+  <p class="crumb site-only"><a href="/translations/">← All translations</a> · <a href="/">keepachangelog.com</a></p>
+
   <header>
     <h1>Translation progress</h1>
     <p class="sub">
@@ -251,7 +276,14 @@ const RAMP_LIGHT = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184
 const RAMP_DARK  = ['#0d366b', '#184f95', '#256abf', '#3987e5', '#6da7ec', '#9ec5f4', '#cde2fb'];
 const darkQuery  = window.matchMedia('(prefers-color-scheme: dark)');
 
-function ramp() { return darkQuery.matches ? RAMP_DARK : RAMP_LIGHT; }
+function isDark() {
+  const theme = document.documentElement.getAttribute('data-theme');
+  if (theme === 'dark') return true;
+  if (theme === 'light') return false;
+  return darkQuery.matches;
+}
+
+function ramp() { return isDark() ? RAMP_DARK : RAMP_LIGHT; }
 
 function rampColor(coverage) {
   const steps = ramp();
@@ -489,6 +521,10 @@ function renderAll() {
 renderAll();
 // The heatmap fills are inline styles, so re-render when the OS theme flips.
 if (darkQuery.addEventListener) darkQuery.addEventListener('change', renderAll);
+// Opened straight from disk, root-relative site links have nowhere to go.
+if (location.protocol === 'file:') {
+  document.querySelectorAll('.site-only').forEach(el => el.remove());
+}
 </script>
 </body>
 </html>

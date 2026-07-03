@@ -35,6 +35,15 @@ backend, no server, no build step. Re-run the task whenever translations
 change to refresh it. The file is committed, so the latest snapshot is one
 double-click away after cloning.
 
+The same dashboard is **hosted on the site** at
+[keepachangelog.com/translations/progress](https://keepachangelog.com/translations/progress/):
+`source/translations/progress.html.erb` embeds the analyzer's output at build
+time, so every build/deploy refreshes it automatically. A simpler
+visitor-facing overview of the available translations — which languages
+exist, which are up to date, and which need help — is built the same way at
+[keepachangelog.com/translations](https://keepachangelog.com/translations/)
+from `source/translations/index.html.erb`.
+
 The page adapts to light/dark color schemes, and every value is also readable
 as plain text (the heatmap is a real table with the percentage in each cell),
 so nothing depends on color alone. Pass a path to write elsewhere:
