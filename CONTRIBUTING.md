@@ -1,1 +1,77 @@
-See [README](README.md#development).
+# Contributing to Keep a Changelog
+
+Please do contribute! Issues and pull requests are welcome. This file is the
+single home for contributor guidance — how to set up the project, work on it,
+and submit changes. For the principles behind how the project is built, see
+[AGENTS.md](AGENTS.md).
+
+## Development
+
+### Dependencies
+
+- Ruby ([see version][ruby-version], [rbenv][rbenv] recommended)
+- Bundler (`gem install bundler`)
+
+### Installation
+
+- `git clone https://github.com/olivierlacan/keep-a-changelog.git`
+- `cd keep-a-changelog`
+- `bundle install`
+
+### Common tasks
+
+- `bin/rake serve` starts a local development server at http://localhost:4567
+  which will reload with any local file changes
+- `bin/rake build` runs middleman build with `--verbose` flag so build errors are
+  logged for easier debugging
+- `bin/rake test` runs the Minitest suite (also the default task)
+- `bundle exec standardrb` checks Ruby style ([Standard][standard])
+
+### Visual regression tests
+
+Cross-browser screenshot tests (Playwright, dev-only; not shipped with the
+site) guard against unintended visual changes:
+
+- `bin/rake snapshots:baseline` builds the site and records baseline screenshots
+- `bin/rake snapshots:check` rebuilds and diffs against the baseline
+
+### Deployment
+
+- `bin/rake clean` can clean a corrupted `build/` directory in
+  case `publish` failed
+- `bin/rake deploy` cleans, builds and pushes to the `gh-pages` branch on GitHub so
+  the site is deployed to keepachangelog.com
+
+## Translations
+
+Create a new directory in [`source/`][source] named after the ISO 639-1 code
+for the language you wish to translate Keep a Changelog to. For example,
+assuming you want to translate to French Canadian:
+
+- create the `source/fr-CA` directory.
+- duplicate the `source/en/1.0.0/index.html.haml` file in `source/fr-CA`.
+- edit `source/fr-CA/1.0.0/index.html.haml` until your translation is ready.
+- commit your changes to your own [fork][fork]
+- submit a [Pull Request][pull-request] with your changes
+
+It may take some time to review your submitted Pull Request. Try to involve a
+few native speakers of the language you're translating to in the Pull Request
+comments. They'll help review your translation for simple mistakes and give us
+a better idea of whether your translation is accurate.
+
+### Translation checks
+
+- `ruby translation_coverage.rb` reports how complete each translation is
+  (see [TRANSLATION_COVERAGE.md](TRANSLATION_COVERAGE.md))
+- `bin/rake translations:lint` runs a deterministic, rule-based translation lint
+- `bin/rake translations:qa` scores translated segments semantically
+  (one-time setup: `bin/rake translations:setup`)
+
+Thank you for your help improving software one changelog at a time!
+
+[rbenv]: https://github.com/rbenv/rbenv
+[ruby-version]: .ruby-version
+[source]: source/
+[standard]: https://github.com/standardrb/standard
+[pull-request]: https://help.github.com/articles/creating-a-pull-request/
+[fork]: https://help.github.com/articles/fork-a-repo/
