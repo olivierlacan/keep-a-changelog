@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Fixed
 
-- Version-pinned example changelog: once a newer spec version is published,
-  each older version's page shows this changelog as it stood at that track's
-  last release, derived at build time from this file.
+- Older spec pages no longer display an example changelog written to newer
+  conventions than the page describes: each page's example is now pinned to
+  its own version's last release, derived at build time from this file.
 
 ## [2.0.0] - 2026-06-07
 

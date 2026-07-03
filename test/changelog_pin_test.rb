@@ -7,19 +7,38 @@ require_relative "../tools/changelog_pin"
 # fixture written from a hypothetical future (a 3.0.0 spec has shipped), then
 # check the invariants that hold against the real CHANGELOG.md today.
 class ChangelogPinPinnedTest < Minitest::Test
-  def test_older_versions_are_pinned
-    assert ChangelogPin.pinned?("2.0.0", last_version: "2.1.0")
-    assert ChangelogPin.pinned?("1.1.0", last_version: "2.0.0")
+  # The newest release the changelog documents is 2.0.0.
+  FIXTURE = <<~MD
+    ## [Unreleased]
+    ## [2.0.0] - 2026-06-07
+    ## [1.1.2] - 2024-09-27
+    ## [1.1.0] - 2019-02-15
+  MD
+
+  def test_pages_on_older_tracks_are_pinned
+    # The 1.1.0 page pins as soon as the changelog records 2.0.0, regardless of
+    # which version the site publishes as its default (the issue #720 report:
+    # 1.x pages were showing the 2.0.0 example while 1.1.0 was still latest).
+    assert ChangelogPin.pinned?(FIXTURE, "1.1.0")
+    assert ChangelogPin.pinned?(FIXTURE, "1.0.0")
+    assert ChangelogPin.pinned?(FIXTURE, "0.3.0")
   end
 
-  def test_the_latest_version_shows_the_live_changelog
-    refute ChangelogPin.pinned?("2.0.0", last_version: "2.0.0")
+  def test_the_newest_documented_track_shows_the_live_changelog
+    refute ChangelogPin.pinned?(FIXTURE, "2.0.0")
   end
 
-  def test_a_newer_draft_shows_the_live_changelog
-    # Production today: $last_version is 1.1.0 while the 2.0.0 draft is built
-    # and previewable. The draft's page must keep showing the live changelog.
-    refute ChangelogPin.pinned?("2.0.0", last_version: "1.1.0")
+  def test_patch_releases_stay_on_their_minor_track
+    # A 2.0.1 entry must not pin the 2.0.0 page — same track.
+    refute ChangelogPin.pinned?("## [2.0.1] - 2026-08-01\n", "2.0.0")
+  end
+
+  def test_a_draft_page_newer_than_every_entry_shows_the_live_changelog
+    refute ChangelogPin.pinned?(FIXTURE, "3.0.0")
+  end
+
+  def test_a_changelog_with_no_dated_entries_never_pins
+    refute ChangelogPin.pinned?("# Changelog\n", "1.0.0")
   end
 end
 
@@ -152,6 +171,13 @@ end
 
 class ChangelogPinRealChangelogTest < Minitest::Test
   REAL = File.read(File.expand_path("../CHANGELOG.md", __dir__), encoding: "UTF-8")
+
+  def test_the_1_1_page_pins_today
+    # The live changelog documents 2.0.0, so every 1.x and 0.x page is pinned
+    # right now — this is the fix for the issue #720 report.
+    assert ChangelogPin.pinned?(REAL, "1.1.0")
+    refute ChangelogPin.pinned?(REAL, "2.0.0")
+  end
 
   def test_pinning_the_1_1_page_reconstructs_the_1_1_2_era
     pinned = ChangelogPin.pin(REAL, "1.1.0")

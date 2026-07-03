@@ -5,15 +5,17 @@ that page describes, even after newer spec versions ship.
 
 ## The problem
 
-The example changelog shown on every 2.0+ spec page is the project's own
-`CHANGELOG.md`, read live from the repository root at build time. The live file
-always follows the *latest* spec: its preamble links to the newest spec URL,
-and new entries adopt whatever conventions the newest spec recommends.
+The example changelog shown on every spec page is the project's own
+`CHANGELOG.md`, read live from the repository root at build time — the 2.0+
+hero figure and the pre-2.0 header `<pre>` both embed it. The live file always
+follows the *newest* spec it documents: its preamble links to the newest spec
+URL, and new entries adopt whatever conventions that spec recommends.
 
-That's exactly right for the latest version's page, but wrong for older ones.
-Once 2.1.0 or 3.0.0 ships, a visitor reading `/en/2.0.0/` would see an example
-written to conventions the page doesn't describe — a caption claiming "written
-using the conventions described below" over a changelog that isn't.
+That's exactly right for the newest version's page, but wrong for older ones.
+As reported in [issue #720's comments](https://github.com/olivierlacan/keep-a-changelog/issues/720#issuecomment-4831774411),
+the 1.0.0 and 1.1.0 pages were displaying the 2.0.0 example — a changelog
+whose preamble declares it follows a spec the page doesn't describe. The same
+would happen to `/en/2.0.0/` the day 2.1.0 or 3.0.0 ships.
 
 ## Approaches considered
 
@@ -38,12 +40,18 @@ is reconstructable from today's file.
 ## How derivation works
 
 `tools/changelog_pin.rb` (pure, unit-tested in `test/changelog_pin_test.rb`;
-wired up through the `changelog_preview`/`changelog_example_pinned?` helpers in
-`config.rb` and the hero figure in `source/layouts/layout.html.haml`):
+wired up through the `changelog_example`/`changelog_preview`/
+`changelog_example_pinned?` helpers in `config.rb`, the hero figure in
+`source/layouts/layout.html.haml`, and the `changelog_example` embed in every
+pre-2.0 version page):
 
-- A page shows a pinned view only when its spec version is **older than the
-  published `$last_version`**. The latest version's page — and any newer draft
-  being previewed — keeps showing the live file, `Unreleased` section and all.
+- A page shows a pinned view only when the changelog **already documents a
+  release on a newer major.minor track** than the page's. This is independent
+  of which version the site publishes as its default: the moment the 2.0.0
+  entry landed in `CHANGELOG.md`, the 1.x pages pinned to their own era, even
+  while 1.1.0 remained the published latest. The newest documented track's
+  page — and any still-undocumented draft — keeps showing the live file,
+  `Unreleased` section and all.
 - The pin cutoff is the **newest release on the page's major.minor track**
   (the 2.0.0 page pins to the last 2.0.x, not to 2.0.0 itself), because patch
   releases ship translations and site fixes without changing the spec.
@@ -62,8 +70,8 @@ wired up through the `changelog_preview`/`changelog_example_pinned?` helpers in
 
 - `CHANGELOG.md` stays the single source of truth, the same philosophy as the
   release tooling (`tools/changelog_release.rb`).
-- No release-time step: the moment `$last_version` moves past a version, that
-  version's page pins itself.
+- No release-time step: the moment the changelog records a release on a newer
+  track, the older tracks' pages pin themselves.
 - Later copy edits to old entries (typo fixes, clarified wording) still flow
   into the pinned views, and a patch release on an old track moves that track's
   pin forward automatically.

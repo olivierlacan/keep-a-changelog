@@ -6,8 +6,9 @@ require "rubygems" # Gem::Version
 # "Example changelog" shown on each spec page — so the example always follows
 # the conventions of the spec version being read.
 #
-# The live CHANGELOG.md tracks the *latest* spec. Once a newer spec ships, an
-# older version's page (say /en/2.0.0/ after 2.1.0 is released) should show the
+# The live CHANGELOG.md tracks the *newest* spec it documents. A page for an
+# older spec (say /en/1.1.0/ once the changelog records 2.0.0, or /en/2.0.0/
+# after 2.1.0 is released — see the report in issue #720) should show the
 # changelog as it stood at that track's last release, not one written to newer
 # conventions. Rather than snapshotting files or maintaining per-minor tracking
 # branches (the production deploy builds from a single shallow checkout, so
@@ -41,11 +42,21 @@ module ChangelogPin
   LINK_DEF = /^\[[^\]]+\]:\s/
 
   # Should +page_version+'s page show a pinned view instead of the live
-  # changelog? Only pages older than the published latest: the latest version's
-  # page (and any newer draft being previewed) shows the live file, Unreleased
+  # changelog? Only when the changelog already documents a release on a newer
+  # major.minor track than the page's — the moment a 2.0.0 entry lands, the
+  # 1.1.0 page pins to the 1.1.x era, regardless of which version the site
+  # currently publishes as its default. The page for the newest documented
+  # track (and any still-undocumented draft) shows the live file, Unreleased
   # section and all.
-  def pinned?(page_version, last_version:)
-    Gem::Version.new(page_version) < Gem::Version.new(last_version)
+  def pinned?(text, page_version)
+    newest = text.scan(VERSION_HEADING).flatten.max_by { |v| Gem::Version.new(v) }
+    return false unless newest
+    track(newest) > track(page_version)
+  end
+
+  # A version's major.minor track, as a comparable Gem::Version.
+  def track(version)
+    Gem::Version.new(version.split(".").first(2).join("."))
   end
 
   # The newest release recorded in +text+ on the page's major.minor track —
