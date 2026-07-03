@@ -155,6 +155,7 @@
 
         %p.about
           != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
+          != "It is available in #{link_to "#{$language_count} languages", '/translations/'} thanks to volunteer translators."
 
   - unless config.gauges_id.blank?
     :javascript
