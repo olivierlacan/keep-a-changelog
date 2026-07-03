@@ -7,6 +7,11 @@
 # test/version_routing_test.rb.
 require_relative "tools/version_routing"
 
+# Version pinning for the hero example changelog (which CHANGELOG.md view each
+# spec page shows) lives in a pure module for the same reason. See
+# test/changelog_pin_test.rb.
+require_relative "tools/changelog_pin"
+
 # Translation coverage analysis. The /translations overview and the
 # /translations/progress dashboard embed its data at build time, so both pages
 # refresh automatically on every build/deploy — no manual regeneration step.
@@ -260,14 +265,35 @@ helpers do
     "#{d.strftime("%B")} #{n}#{suffix}, #{d.year}"
   end
 
-  # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
+  # Should +version+'s page show the pinned (historical) example changelog
+  # rather than the live one? Only when the changelog already documents a
+  # release on a newer major.minor track than the page's, and the page's own
+  # track has a release to pin to.
+  def changelog_example_pinned?(version)
+    return false unless version
+    text = File.read("CHANGELOG.md")
+    ChangelogPin.pinned?(text, version) && !ChangelogPin.track_release(text, version).nil?
+  end
+
+  # The project's own CHANGELOG, the example every spec page embeds. Pages for
+  # spec versions older than the newest track the changelog documents get a
+  # view pinned to their own track's last release (see tools/changelog_pin.rb)
+  # so the example always matches the conventions the page describes. Raw
+  # markdown, hard wraps preserved — what the pre-2.0 pages render directly.
+  def changelog_example(version = current_page.metadata[:page][:version])
+    text = File.read("CHANGELOG.md")
+    changelog_example_pinned?(version) ? ChangelogPin.pin(text, version) : text
+  end
+
+  # The example changelog for the 2.0+ hero figure. Soft line wraps in the
   # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
   # them: join hard-wrapped lines within paragraphs and list items while keeping
   # blank lines, headings, list boundaries, and code blocks intact.
-  def changelog_preview
+  def changelog_preview(version = nil)
+    text = changelog_example(version)
     in_code = false
     out = []
-    File.read("CHANGELOG.md").each_line do |raw|
+    text.each_line do |raw|
       line = raw.chomp
       if line =~ /\A\s*```/
         in_code = !in_code

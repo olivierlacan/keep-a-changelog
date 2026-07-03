@@ -126,11 +126,18 @@
               %h1= current_page.data.title
             %p.tagline= current_page.data.description
             %figure.changelog-figure
+              -# Pages for spec versions older than the published latest show the
+              -# changelog pinned to their track's last release, so the example
+              -# always follows the conventions this page describes.
+              - pinned_example = changelog_example_pinned?(current_version)
               %figcaption.changelog-caption
-                This is our own changelog, written using the conventions described below.
+                - if pinned_example
+                  = "This is our own changelog as of the last #{current_version.split(".").first(2).join(".")} release, written using the conventions described below."
+                - else
+                  This is our own changelog, written using the conventions described below.
               %details.changelog-example
                 %summary Example changelog
-                %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Keep a Changelog's own changelog" }= changelog_preview
+                %pre.changelog{ lang: current_page.data.language, tabindex: "0", role: "region", "aria-label": "Keep a Changelog's own changelog" }= changelog_preview(current_version)
           .article-body
             %p.version-marker
               = link_to data.links.changelog do

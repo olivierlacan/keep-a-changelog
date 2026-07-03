@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Older spec pages no longer display an example changelog written to newer
+  conventions than the page describes: each page's example is now pinned to
+  its own version's last release, derived at build time from this file.
+
 ## [2.0.0] - 2026-06-07
 
 2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance,
