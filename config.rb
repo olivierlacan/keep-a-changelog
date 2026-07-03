@@ -7,6 +7,11 @@
 # test/version_routing_test.rb.
 require_relative "tools/version_routing"
 
+# Version pinning for the hero example changelog (which CHANGELOG.md view each
+# spec page shows) lives in a pure module for the same reason. See
+# test/changelog_pin_test.rb.
+require_relative "tools/changelog_pin"
+
 # ----- Site ----- #
 # Last version should be the latest English version since Keep a Changelog is
 # first written in English, then translated into other languages later.
@@ -255,14 +260,29 @@ helpers do
     "#{d.strftime("%B")} #{n}#{suffix}, #{d.year}"
   end
 
-  # The project's own CHANGELOG, shown as the hero example. Soft line wraps in the
+  # Should +version+'s page show the pinned (historical) example changelog
+  # rather than the live one? Only spec versions older than the published
+  # latest, and only when the changelog has a release on that version's
+  # major.minor track to pin to.
+  def changelog_example_pinned?(version)
+    return false unless version
+    return false unless ChangelogPin.pinned?(version, last_version: $last_version)
+    !ChangelogPin.track_release(File.read("CHANGELOG.md"), version).nil?
+  end
+
+  # The project's own CHANGELOG, shown as the hero example. Pages for spec
+  # versions older than the published latest get a view pinned to their track's
+  # last release (see tools/changelog_pin.rb) so the example always matches the
+  # conventions the page describes. Soft line wraps in the
   # source (manual 80-column breaks) read badly in a narrow preview, so unwrap
   # them: join hard-wrapped lines within paragraphs and list items while keeping
   # blank lines, headings, list boundaries, and code blocks intact.
-  def changelog_preview
+  def changelog_preview(version = nil)
+    text = File.read("CHANGELOG.md")
+    text = ChangelogPin.pin(text, version) if changelog_example_pinned?(version)
     in_code = false
     out = []
-    File.read("CHANGELOG.md").each_line do |raw|
+    text.each_line do |raw|
       line = raw.chomp
       if line =~ /\A\s*```/
         in_code = !in_code
