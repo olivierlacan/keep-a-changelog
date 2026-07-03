@@ -22,6 +22,11 @@ task :clean do
 end
 
 namespace :translations do
+  desc "Regenerate the static translation-progress dashboard (translation-dashboard.html)"
+  task :dashboard do
+    sh "ruby translation_coverage.rb --dashboard"
+  end
+
   desc "One-time setup: Python venv + LaBSE model for translation QA"
   task :setup do
     sh "tools/setup.sh"

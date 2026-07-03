@@ -5,6 +5,7 @@ require 'yaml'
 require 'json'
 require 'optparse'
 require 'set'
+require_relative 'tools/version_routing'
 
 # Translation Coverage Analyzer for Keep a Changelog
 # This utility analyzes which sections are translated in each language version
@@ -64,6 +65,7 @@ class TranslationCoverageAnalyzer
     @segments = options[:segments]
     @lint = options[:lint]
     @strict_types = options[:strict_types]
+    @dashboard = options[:dashboard]
   end
 
   def analyze
@@ -80,6 +82,7 @@ class TranslationCoverageAnalyzer
   end
 
   def report
+    return generate_dashboard if @dashboard
     return migration_report if @migration
     return consistency_report if @consistency
     return export_segments if @segments
@@ -158,12 +161,27 @@ class TranslationCoverageAnalyzer
     version_data
   end
 
-  def extract_sections(language, version)
-    file_path = File.join(SOURCE_DIR, language, version, 'index.html.haml')
+  # A version's page is HAML for 0.3.0–1.1.0 and markdown (with explicit {#id}
+  # heading anchors) from 2.0.0 on. Both spellings are treated as the same page.
+  def source_file(language, version)
+    base = File.join(SOURCE_DIR, language, version)
+    ['index.html.haml', 'index.html.md']
+      .map { |name| File.join(base, name) }
+      .find { |path| File.exist?(path) }
+  end
 
-    return nil unless File.exist?(file_path)
+  def markdown_source?(language, version)
+    source_file(language, version)&.end_with?('.md')
+  end
+
+  def extract_sections(language, version)
+    file_path = source_file(language, version)
+
+    return nil if file_path.nil?
 
     content = File.read(file_path, encoding: 'UTF-8')
+    return extract_markdown_anchor_sections(content) if file_path.end_with?('.md')
+
     sections = []
 
     # Extract h3 and h4 heading IDs (for versions 1.0.0+)
@@ -185,6 +203,26 @@ class TranslationCoverageAnalyzer
                       .gsub(/^-|-$/, '')  # Remove leading/trailing hyphens
         sections << slug unless slug.empty?
       end
+    end
+
+    sections
+  end
+
+  # Section IDs of a markdown page: every ##–#### heading carrying an explicit
+  # kramdown anchor ({#id}). Fenced code blocks are skipped so example changelog
+  # headings inside them don't count as sections.
+  def extract_markdown_anchor_sections(content)
+    sections = []
+    in_code = false
+
+    content.each_line do |line|
+      if line.match?(/^\s*(```|~~~)/)
+        in_code = !in_code
+        next
+      end
+      next if in_code
+
+      sections << Regexp.last_match(1) if line =~ /^\#{2,4}\s+.*\{#([\w-]+)\}\s*$/
     end
 
     sections
@@ -260,8 +298,9 @@ class TranslationCoverageAnalyzer
   # reflowing or re-indenting a paragraph does NOT register as a change — only the
   # words do. Returns { section_id => "normalized text" }.
   def extract_section_texts(language, version)
-    file_path = File.join(SOURCE_DIR, language, version, 'index.html.haml')
-    return {} unless File.exist?(file_path)
+    file_path = source_file(language, version)
+    return {} if file_path.nil?
+    return extract_markdown_section_texts(file_path) if file_path.end_with?('.md')
 
     texts = {}
     current = nil
@@ -296,6 +335,56 @@ class TranslationCoverageAnalyzer
   def append_fragment(buffer, line)
     frag = normalize_fragment(line)
     buffer << ' ' << frag unless frag.empty?
+  end
+
+  # Markdown counterpart of the HAML text extractor: the translator-visible words
+  # of each anchored section, with front matter, link URLs, inline HTML, list
+  # markers and emphasis punctuation stripped and whitespace collapsed.
+  def extract_markdown_section_texts(file_path)
+    lines = File.read(file_path, encoding: 'UTF-8').lines.map(&:rstrip)
+
+    # Drop YAML front matter (--- ... --- at the very top of the file).
+    if lines.first == '---' && (closing = lines[1..].index('---'))
+      lines = lines[(closing + 2)..] || []
+    end
+
+    texts = {}
+    current = nil
+    in_code = false
+
+    lines.each do |line|
+      if line.match?(/^\s*(```|~~~)/)
+        in_code = !in_code
+        next
+      end
+
+      if !in_code && (heading = line.match(/^\#{2,4}\s+(.*?)\s*\{#([\w-]+)\}\s*$/))
+        current = heading[2]
+        texts[current] = +''
+        texts[current] << normalize_markdown_fragment(heading[1])
+        next
+      end
+
+      next unless current
+      next if line.match?(/^\[[^\]]+\]:\s*\S/) # link reference definitions
+
+      frag = in_code ? line.strip : normalize_markdown_fragment(line)
+      texts[current] << ' ' << frag unless frag.empty?
+    end
+
+    texts.transform_values { |t| t.gsub(/\s+/, ' ').strip }
+  end
+
+  # Reduce a markdown line to its human-visible words.
+  def normalize_markdown_fragment(line)
+    s = line.dup
+    s = s.gsub(/!\[([^\]]*)\]\([^)]*\)/, '\1')  # images -> alt text
+    s = s.gsub(/\[([^\]]+)\]\([^)]*\)/, '\1')   # inline links -> link text
+    s = s.gsub(/\[([^\]]+)\]\[[^\]]*\]/, '\1')  # reference links -> link text
+    s = s.gsub(/<[^>]+>/, '') while s.match?(/<[^>]+>/) # inline HTML, keep inner text
+    s = s.sub(/^\s*(?:[-*+]|\d+\.)\s+/, '')     # list markers
+    s = s.tr('`*_', '')                          # code ticks / emphasis punctuation
+    s.gsub(/\s+/, ' ').strip
   end
 
   # Reduce a HAML line to its human-visible words.
@@ -369,16 +458,22 @@ class TranslationCoverageAnalyzer
 
     # Source of truth: diff the English text of every section between versions.
     computed = compute_section_changes(prev, target)
-    # Cross-check: what the authored `new` / `updated` markers claim.
-    markers  = marker_status_map(target)
+    # Cross-check: what the authored `new` / `updated` markers claim. Markdown
+    # sources carry no markers, so the audit is skipped (nil) rather than
+    # reporting every changed section as a spurious discrepancy.
+    discrepancies =
+      if markdown_source?('en', target)
+        nil
+      else
+        markers = marker_status_map(target)
+        target_sections.filter_map do |sec|
+          marked   = markers[sec]   || :unchanged
+          detected = computed[sec]  || :unchanged
+          next if marked == detected
 
-    discrepancies = target_sections.filter_map do |sec|
-      marked   = markers[sec]   || :unchanged
-      detected = computed[sec]  || :unchanged
-      next if marked == detected
-
-      { section: sec, marked: marked, computed: detected }
-    end
+          { section: sec, marked: marked, computed: detected }
+        end
+      end
 
     langs = available_languages(prev).reject { |l| l == 'en' }
     langs.select! { |l| l == @language_filter } if @language_filter
@@ -478,8 +573,14 @@ class TranslationCoverageAnalyzer
 
   # Flag sections where the authored `new` / `updated` markers disagree with the
   # computed text diff — i.e. annotations that need fixing in the English source.
+  # nil means the target is a markdown source, which carries no markers to audit.
   def print_annotation_check(discrepancies)
     puts "ANNOTATION CHECK (authored markers vs computed diff):"
+    if discrepancies.nil?
+      puts "  (skipped — the markdown source carries no new/updated markers)"
+      puts
+      return
+    end
     if discrepancies.empty?
       puts "  ✓ markers agree with the text diff for every section"
     else
@@ -854,6 +955,90 @@ class TranslationCoverageAnalyzer
     kinds + ['missing-term', 'missing-literal', 'link-count']
   end
 
+  # --- Static dashboard ----------------------------------------------------
+  # Render the coverage analysis into a single self-contained HTML file: the
+  # data is embedded as JSON in tools/dashboard_template.html, so the result
+  # opens directly in a browser (file://) with no server and no network access.
+
+  DASHBOARD_TEMPLATE = File.join(__dir__, 'tools', 'dashboard_template.html')
+  DASHBOARD_OUTPUT   = File.join(__dir__, 'translation-dashboard.html')
+
+  def generate_dashboard
+    output = @dashboard.is_a?(String) ? @dashboard : DASHBOARD_OUTPUT
+    template = File.read(DASHBOARD_TEMPLATE, encoding: 'UTF-8')
+    json = JSON.generate(dashboard_data, script_safe: true)
+    html = template.sub('__DASHBOARD_DATA__') { json }
+
+    abort("Template placeholder __DASHBOARD_DATA__ not found in #{DASHBOARD_TEMPLATE}") if html == template
+
+    File.write(output, html, encoding: 'UTF-8')
+    puts "Wrote #{output} — open it directly in a browser, no server needed."
+  end
+
+  def dashboard_data
+    results = analyze
+    names = language_names
+
+    versions = VERSIONS.filter_map do |v|
+      data = results[:versions][v]
+      next if data.nil?
+
+      { version: v,
+        sections: data[:section_count],
+        id_based: !data[:uses_markdown],
+        published: Gem::Version.new(v) <= Gem::Version.new(VersionRouting::PUBLISHED_VERSION) }
+    end
+
+    codes = results[:versions].values.compact.flat_map { |d| d[:languages].keys }.uniq.sort
+
+    languages = codes.map do |code|
+      cells = versions.each_with_object({}) do |ver, h|
+        info = results[:versions][ver[:version]]&.dig(:languages, code)
+        next unless info
+
+        h[ver[:version]] = { coverage: info[:coverage_percentage],
+                             complete: info[:complete_count],
+                             missing: info[:missing_count],
+                             missing_sections: info[:missing_sections] || [] }
+      end
+
+      { code: code, name: names[code] || code, versions: cells }
+    end
+
+    { generated_at: Time.now.utc.strftime('%Y-%m-%d %H:%M UTC'),
+      latest_version: LATEST_VERSION,
+      published_version: VersionRouting::PUBLISHED_VERSION,
+      versions: versions,
+      languages: languages }
+  end
+
+  # Human-readable language names, read from the $languages map in config.rb so
+  # the dashboard never needs its own copy. Codes missing there (e.g. `id`,
+  # which only exists as `id-ID` in config) fall back to a base-code match, then
+  # to the code itself.
+  def language_names
+    config_path = File.join(__dir__, 'config.rb')
+    return {} unless File.exist?(config_path)
+
+    names = {}
+    current = nil
+    File.foreach(config_path, encoding: 'UTF-8') do |line|
+      if (entry = line.match(/^\s*"([\w-]+)"\s*=>\s*\{/))
+        current = entry[1]
+      elsif current && (name = line.match(/^\s*name:\s*"([^"]+)"/))
+        names[current] = name[1]
+        current = nil
+      end
+    end
+
+    names.default_proc = proc do |hash, code|
+      base = code.split('-').first
+      match = hash.keys.find { |k| k.split('-').first == base }
+      match && hash[match]
+    end
+    names
+  end
+
   def print_text_report(results)
     puts "=" * 80
     puts "TRANSLATION COVERAGE REPORT"
@@ -1024,6 +1209,11 @@ if __FILE__ == $PROGRAM_NAME
     opts.on("--segments", "Export aligned en<->translation segments for external QA",
             "  tools (use --format jsonl [default], csv, or po)") do
       options[:segments] = true
+    end
+
+    opts.on("--dashboard [PATH]", "Write a self-contained HTML dashboard of coverage",
+            "  across languages and versions (default: translation-dashboard.html)") do |path|
+      options[:dashboard] = path || true
     end
 
     opts.on("-f", "--format FORMAT", "Output format: text (default), json, or csv") do |f|

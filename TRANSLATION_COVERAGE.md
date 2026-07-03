@@ -18,6 +18,28 @@ This tool helps maintainers track which sections have been translated in each la
   - ◐ = 50-74% complete
   - ○ = 0-49% complete
 
+## Dashboard: a static visual overview
+
+For a graphical view of the same data — a language × version coverage heatmap,
+per-language progress bars toward the newest English version, and the list of
+missing sections — generate the dashboard:
+
+```bash
+bin/rake translations:dashboard    # or: ruby translation_coverage.rb --dashboard
+```
+
+This writes [`translation-dashboard.html`](translation-dashboard.html), a
+single **self-contained** file: the data is embedded as JSON and there are no
+external assets, so it opens directly in any browser via `file://` — no
+backend, no server, no build step. Re-run the task whenever translations
+change to refresh it. The file is committed, so the latest snapshot is one
+double-click away after cloning.
+
+The page adapts to light/dark color schemes, and every value is also readable
+as plain text (the heatmap is a real table with the percentage in each cell),
+so nothing depends on color alone. Pass a path to write elsewhere:
+`ruby translation_coverage.rb --dashboard build/dashboard.html`.
+
 ## Usage
 
 ### Basic Usage
@@ -402,6 +424,7 @@ This shows French translation status across all versions, helping identify if a 
 | `--lint` | | Deterministic QA: untranslated text, dropped terms/dates/versions, link mismatches |
 | `--strict-types` | | With `--lint`, also flag change types (`Added`/…) that were localized |
 | `--segments` | | Export aligned en↔translation segments (`--format jsonl`/`csv`/`po`) for external QA |
+| `--dashboard [PATH]` | | Write the self-contained HTML dashboard (default: `translation-dashboard.html`) |
 | `--details` | `-d` | Show detailed section-by-section breakdown |
 | `--help` | `-h` | Show help message |
 
@@ -415,8 +438,11 @@ This shows French translation status across all versions, helping identify if a 
 The tool works by:
 
 1. **Scanning** the `source/` directory for all language/version combinations
-2. **Extracting** section identifiers from HAML files:
-   - For 1.0.0+: Extracts heading IDs from `%h3#section-id` and `%h4#section-id`
+2. **Extracting** section identifiers from each version's page (HAML for
+   0.3.0–1.1.0, markdown from 2.0.0 on):
+   - For 1.0.0 and 1.1.0: Extracts heading IDs from `%h3#section-id` and `%h4#section-id`
+   - For 2.0.0+: Extracts explicit kramdown anchors (`## Heading {#section-id}`)
+     from `index.html.md`, skipping fenced code blocks
    - For 0.3.0: Extracts markdown headings from `:markdown` blocks
 3. **Comparing** each language's sections against the English baseline
 4. **Calculating** coverage percentages and identifying missing sections

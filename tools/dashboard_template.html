@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keep a Changelog — Translation progress</title>
+<style>
+  :root {
+    --page:        #f9f9f7;
+    --surface:     #fcfcfb;
+    --ink:         #0b0b0b;
+    --ink-2:       #52514e;
+    --muted:       #898781;
+    --grid:        #e1e0d9;
+    --baseline:    #c3c2b7;
+    --border:      rgba(11, 11, 11, 0.10);
+    --meter-fill:  #2a78d6;
+    --meter-track: #cde2fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page:        #0d0d0d;
+      --surface:     #1a1a19;
+      --ink:         #ffffff;
+      --ink-2:       #c3c2b7;
+      --muted:       #898781;
+      --grid:        #2c2c2a;
+      --baseline:    #383835;
+      --border:      rgba(255, 255, 255, 0.10);
+      --meter-fill:  #3987e5;
+      --meter-track: #0d366b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  header h1 { font-size: 24px; font-weight: 650; margin: 0 0 4px; }
+  header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+  header code {
+    font-size: 13px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .tile .label { color: var(--ink-2); font-size: 13px; }
+  .tile .value { font-size: 30px; font-weight: 600; line-height: 1.2; }
+  .tile .value small { font-size: 16px; font-weight: 500; color: var(--ink-2); }
+  .tile .note { color: var(--muted); font-size: 12px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .card h2 { font-size: 16px; font-weight: 650; margin: 0; }
+  .card .desc { color: var(--ink-2); font-size: 13px; margin: 2px 0 0; }
+  .card-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  /* Ramp legend */
+  .legend { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-2); }
+  .legend .swatches { display: flex; border-radius: 3px; overflow: hidden; }
+  .legend .swatches i { width: 14px; height: 10px; display: block; }
+  .legend .none-key { display: inline-flex; align-items: center; gap: 5px; margin-left: 12px; }
+  .legend .none-swatch {
+    width: 14px; height: 10px; border-radius: 3px;
+    border: 1px solid var(--grid); background: var(--surface);
+  }
+
+  /* Coverage matrix */
+  .matrix-wrap { overflow-x: auto; }
+  table.matrix { border-collapse: separate; border-spacing: 2px 2px; width: 100%; }
+  table.matrix th { font-size: 12px; font-weight: 500; color: var(--ink-2); text-align: left; }
+  table.matrix thead th { vertical-align: bottom; padding: 0 8px 6px; }
+  table.matrix thead th.ver { text-align: center; min-width: 84px; }
+  table.matrix thead .vnum { font-size: 13px; font-weight: 650; color: var(--ink); }
+  table.matrix thead .vmeta { font-size: 11px; color: var(--muted); font-weight: 400; }
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    border: 1px solid var(--baseline); border-radius: 999px;
+    color: var(--ink-2); padding: 0 6px; margin-left: 4px; vertical-align: 1px;
+  }
+  table.matrix tbody th {
+    position: sticky; left: 0; background: var(--surface);
+    padding: 0 12px 0 0; white-space: nowrap; font-size: 13px;
+  }
+  table.matrix tbody th .lname { color: var(--ink); font-weight: 500; }
+  table.matrix tbody th .lcode { color: var(--muted); font-size: 11.5px; margin-left: 6px; }
+  td.cell {
+    border-radius: 4px;
+    text-align: center;
+    padding: 5px 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    cursor: default;
+  }
+  td.cell:focus-visible { outline: 2px solid var(--meter-fill); outline-offset: 1px; }
+  td.cell.none { color: var(--muted); font-weight: 400; border: 1px solid var(--grid); }
+
+  /* Meters */
+  .meter-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 110px;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+  .meter-row .mname { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meter-row .mname .lcode { color: var(--muted); font-size: 11.5px; margin-left: 6px; }
+  .meter-track { background: var(--meter-track); border-radius: 999px; height: 8px; overflow: hidden; }
+  .meter-fill { background: var(--meter-fill); height: 100%; border-radius: 999px; min-width: 0; }
+  .meter-row .mval { color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) {
+    .meter-row { grid-template-columns: 110px 1fr 96px; }
+  }
+
+  /* Gaps */
+  .gap-row { padding: 10px 0; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .gap-row:first-child { border-top: none; }
+  .gap-row .where { font-weight: 600; }
+  .gap-row .where .lcode { color: var(--muted); font-weight: 400; font-size: 12px; }
+  .chips { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    font-size: 11.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--ink-2);
+    background: var(--page);
+    border: 1px solid var(--grid);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+  .gap-note { color: var(--ink-2); }
+  .all-complete { color: var(--ink-2); font-size: 13.5px; margin: 8px 0 0; }
+
+  /* Tooltip */
+  #tooltip {
+    position: fixed;
+    z-index: 10;
+    max-width: 320px;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    padding: 8px 10px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    pointer-events: none;
+    display: none;
+  }
+  #tooltip .t-title { font-weight: 650; }
+  #tooltip .t-sub { color: var(--ink-2); }
+  #tooltip .t-missing { color: var(--ink-2); margin-top: 4px; }
+  #tooltip code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; }
+
+  footer { color: var(--muted); font-size: 12.5px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Translation progress</h1>
+    <p class="sub">
+      Keep a Changelog · generated <span id="generated"></span> ·
+      regenerate any time translations change with <code>bin/rake translations:dashboard</code>
+    </p>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Summary"></section>
+
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <h2>Coverage by language and version</h2>
+        <p class="desc">Each cell is the share of the English section anchors that language has translated.</p>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix" id="matrix"></table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <h2 id="meters-title">Progress toward the next version</h2>
+        <p class="desc" id="meters-desc"></p>
+      </div>
+    </div>
+    <div id="meters"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <h2>Incomplete translations</h2>
+        <p class="desc">Existing translations that are missing sections, with the section IDs still to do.</p>
+      </div>
+    </div>
+    <div id="gaps"></div>
+  </section>
+
+  <footer>
+    Data source: <code>translation_coverage.rb</code> comparing each
+    <code>source/&lt;lang&gt;/&lt;version&gt;</code> page against the English baseline.
+    This file is fully self-contained — no server, no network access.
+  </footer>
+</main>
+
+<div id="tooltip" role="status" aria-hidden="true"></div>
+
+<script>
+const DATA = __DASHBOARD_DATA__;
+
+// Sequential blue ramp (palette steps 100..700). In dark mode the anchor flips:
+// near-zero recedes toward the dark surface, high coverage reads light.
+const RAMP_LIGHT = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184f95', '#0d366b'];
+const RAMP_DARK  = ['#0d366b', '#184f95', '#256abf', '#3987e5', '#6da7ec', '#9ec5f4', '#cde2fb'];
+const darkQuery  = window.matchMedia('(prefers-color-scheme: dark)');
+
+function ramp() { return darkQuery.matches ? RAMP_DARK : RAMP_LIGHT; }
+
+function rampColor(coverage) {
+  const steps = ramp();
+  const idx = coverage >= 100 ? steps.length - 1
+            : Math.max(0, Math.floor(coverage / 100 * (steps.length - 1)));
+  return steps[idx];
+}
+
+// Ink on a colored fill: pick black or white by the fill's relative luminance.
+// The 0.179 threshold is where the two inks tie; either side clears WCAG 4.5:1
+// against every step of the ramp.
+function inkOn(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const lin = c => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+  const L = 0.2126 * lin(n >> 16) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255);
+  return L >= 0.179 ? '#0b0b0b' : '#ffffff';
+}
+
+const fmtPct = v => (Math.round(v * 10) / 10).toString().replace(/\.0$/, '') + '%';
+
+// ---- Tooltip --------------------------------------------------------------
+
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(html, x, y) {
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
+  tooltip.setAttribute('aria-hidden', 'false');
+  const rect = tooltip.getBoundingClientRect();
+  const left = Math.min(x + 14, window.innerWidth - rect.width - 8);
+  const top  = (y + 16 + rect.height > window.innerHeight) ? y - rect.height - 10 : y + 16;
+  tooltip.style.left = Math.max(8, left) + 'px';
+  tooltip.style.top = Math.max(8, top) + 'px';
+}
+
+function hideTooltip() {
+  tooltip.style.display = 'none';
+  tooltip.setAttribute('aria-hidden', 'true');
+}
+
+function attachTooltip(el, buildHtml) {
+  el.addEventListener('mousemove', e => showTooltip(buildHtml(), e.clientX, e.clientY));
+  el.addEventListener('mouseleave', hideTooltip);
+  el.addEventListener('focus', () => {
+    const r = el.getBoundingClientRect();
+    showTooltip(buildHtml(), r.left + r.width / 2, r.bottom);
+  });
+  el.addEventListener('blur', hideTooltip);
+}
+
+const escapeHtml = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ---- Derived figures --------------------------------------------------------
+
+const latest    = DATA.versions.find(v => v.version === DATA.latest_version);
+const published = DATA.versions.find(v => v.version === DATA.published_version);
+const langs     = DATA.languages;
+
+const completeOnPublished = langs.filter(l => {
+  const c = l.versions[DATA.published_version];
+  return c && c.coverage >= 100;
+}).length;
+
+const startedLatest = latest
+  ? langs.filter(l => l.versions[DATA.latest_version]).length
+  : 0;
+
+// ---- Stat tiles -------------------------------------------------------------
+
+function renderTiles() {
+  const tiles = [
+    { label: 'Languages', value: String(langs.length), note: 'with at least one translation' },
+    { label: `Complete on ${DATA.published_version} (published)`,
+      value: `${completeOnPublished}<small> of ${langs.length}</small>`,
+      note: 'every section translated' },
+  ];
+  if (latest && latest.version !== DATA.published_version) {
+    tiles.push({ label: `Translating ${latest.version} (draft)`,
+                 value: `${startedLatest}<small> of ${langs.length}</small>`,
+                 note: 'languages started' });
+    tiles.push({ label: `Sections in English ${latest.version}`,
+                 value: String(latest.sections),
+                 note: 'anchors each translation needs' });
+  }
+  document.getElementById('tiles').innerHTML = tiles.map(t => `
+    <div class="tile">
+      <div class="label">${t.label}</div>
+      <div class="value">${t.value}</div>
+      <div class="note">${t.note}</div>
+    </div>`).join('');
+}
+
+// ---- Legend -----------------------------------------------------------------
+
+function renderLegend() {
+  document.getElementById('legend').innerHTML = `
+    <span>0%</span>
+    <span class="swatches">${ramp().map(c => `<i style="background:${c}"></i>`).join('')}</span>
+    <span>100%</span>
+    <span class="none-key"><span class="none-swatch"></span> not started</span>`;
+}
+
+// ---- Coverage matrix ----------------------------------------------------------
+
+function cellTooltip(lang, ver, cell) {
+  const head = `<div class="t-title">${escapeHtml(lang.name)} <code>${lang.code}</code> · ${ver.version}</div>`;
+  if (!cell) {
+    return head + `<div class="t-sub">Not started — no <code>source/${lang.code}/${ver.version}</code> page yet.</div>`;
+  }
+  const total = ver.sections;
+  let html = head + `<div class="t-sub">${cell.complete} of ${total} sections translated (${fmtPct(cell.coverage)})</div>`;
+  if (cell.missing > 0) {
+    if (cell.missing_sections.length) {
+      const shown = cell.missing_sections.slice(0, 8).map(s => `<code>${escapeHtml(s)}</code>`).join(', ');
+      const more = cell.missing_sections.length > 8 ? ` … +${cell.missing_sections.length - 8} more` : '';
+      html += `<div class="t-missing">Missing: ${shown}${more}</div>`;
+    } else {
+      html += `<div class="t-missing">${cell.missing} section(s) missing (compared by count — this version translates its headings).</div>`;
+    }
+  }
+  return html;
+}
+
+function renderMatrix() {
+  const table = document.getElementById('matrix');
+  const headCells = DATA.versions.map(v => {
+    const badge = v.version === DATA.published_version ? '<span class="badge">published</span>'
+                : v.version === DATA.latest_version && v.version !== DATA.published_version ? '<span class="badge">draft</span>'
+                : '';
+    return `<th scope="col" class="ver"><span class="vnum">${v.version}</span>${badge}<br>
+            <span class="vmeta">${v.sections} sections</span></th>`;
+  }).join('');
+
+  const rows = langs.map((lang, li) => {
+    const cells = DATA.versions.map((v, vi) => {
+      const cell = lang.versions[v.version];
+      if (!cell) {
+        return `<td class="cell none" tabindex="0" data-l="${li}" data-v="${vi}"
+                    aria-label="${escapeHtml(lang.name)}, ${v.version}: not started">—</td>`;
+      }
+      const bg = rampColor(cell.coverage);
+      return `<td class="cell" tabindex="0" data-l="${li}" data-v="${vi}"
+                  style="background:${bg};color:${inkOn(bg)}"
+                  aria-label="${escapeHtml(lang.name)}, ${v.version}: ${cell.complete} of ${v.sections} sections (${fmtPct(cell.coverage)})">
+                ${fmtPct(cell.coverage)}</td>`;
+    }).join('');
+    return `<tr>
+      <th scope="row"><span class="lname">${escapeHtml(lang.name)}</span><span class="lcode">${lang.code}</span></th>
+      ${cells}</tr>`;
+  }).join('');
+
+  table.innerHTML = `
+    <thead><tr><th scope="col">Language</th>${headCells}</tr></thead>
+    <tbody>${rows}</tbody>`;
+
+  table.querySelectorAll('td.cell').forEach(td => {
+    const lang = langs[+td.dataset.l];
+    const ver = DATA.versions[+td.dataset.v];
+    attachTooltip(td, () => cellTooltip(lang, ver, lang.versions[ver.version]));
+  });
+}
+
+// ---- Meters: progress toward the newest version -------------------------------
+
+function renderMeters() {
+  const target = latest || published;
+  document.getElementById('meters-title').textContent =
+    `Progress toward ${target.version}` + (target.version !== DATA.published_version ? ' (draft)' : '');
+
+  const rows = langs
+    .map(l => {
+      const cell = l.versions[target.version];
+      return { lang: l, done: cell ? cell.complete : 0, cov: cell ? cell.coverage : 0 };
+    })
+    .sort((a, b) => b.cov - a.cov || a.lang.code.localeCompare(b.lang.code));
+
+  const doneCount = rows.filter(r => r.cov >= 100).length;
+  document.getElementById('meters-desc').textContent =
+    startedLatest === 0 && target === latest && target.version !== DATA.published_version
+      ? `English ${target.version} has ${target.sections} sections. No language has started translating it yet — every bar below is the to-do list.`
+      : `${doneCount} of ${langs.length} languages complete; each bar is sections translated out of ${target.sections}.`;
+
+  document.getElementById('meters').innerHTML = rows.map(r => `
+    <div class="meter-row">
+      <span class="mname"><span class="lname">${escapeHtml(r.lang.name)}</span><span class="lcode">${r.lang.code}</span></span>
+      <span class="meter-track" role="img"
+            aria-label="${escapeHtml(r.lang.name)}: ${r.done} of ${target.sections} sections">
+        <span class="meter-fill" style="width:${Math.min(100, r.cov)}%"></span>
+      </span>
+      <span class="mval">${r.done}/${target.sections} · ${fmtPct(r.cov)}</span>
+    </div>`).join('');
+}
+
+// ---- Incomplete translations ---------------------------------------------------
+
+function renderGaps() {
+  const items = [];
+  langs.forEach(lang => {
+    DATA.versions.forEach(v => {
+      const cell = lang.versions[v.version];
+      if (!cell || cell.missing <= 0) return;
+      items.push({ lang, v, cell });
+    });
+  });
+
+  const el = document.getElementById('gaps');
+  if (!items.length) {
+    el.innerHTML = '<p class="all-complete">Every existing translation is complete for its version. 🎉</p>';
+    return;
+  }
+
+  el.innerHTML = items.map(({ lang, v, cell }) => {
+    const body = cell.missing_sections.length
+      ? `<div class="chips">${cell.missing_sections.map(s => `<span class="chip">${escapeHtml(s)}</span>`).join('')}</div>`
+      : `<div class="gap-note">${cell.missing} of ${v.sections} sections missing
+         (this version translates its headings, so only counts are compared).</div>`;
+    return `<div class="gap-row">
+      <span class="where">${escapeHtml(lang.name)} <span class="lcode">${lang.code}</span> · ${v.version}
+        — ${cell.complete}/${v.sections} (${fmtPct(cell.coverage)})</span>
+      ${body}</div>`;
+  }).join('');
+}
+
+// ---- Boot -----------------------------------------------------------------------
+
+function renderAll() {
+  document.getElementById('generated').textContent = DATA.generated_at;
+  renderTiles();
+  renderLegend();
+  renderMatrix();
+  renderMeters();
+  renderGaps();
+}
+
+renderAll();
+// The heatmap fills are inline styles, so re-render when the OS theme flips.
+if (darkQuery.addEventListener) darkQuery.addEventListener('change', renderAll);
+</script>
+</body>
+</html>
