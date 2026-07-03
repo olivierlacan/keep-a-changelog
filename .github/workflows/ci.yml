@@ -1,0 +1,75 @@
+name: CI checks
+
+# Validation only — nothing in this workflow deploys. Every push and pull
+# request against main builds the site fresh and checks it two ways:
+#
+#   test — the Rake suite: unit tests (version routing, changelog pinning,
+#          release tooling) plus a full Middleman build.
+#   axe  — the axe-core accessibility audit (WCAG 2.1 A/AA + best-practice)
+#          of the 2.0 page across light/dark, desktop/mobile, and the
+#          pinned-header and open-picker states. Fails on any violation.
+#
+# The live site only changes when the "Deploy site (manual)" workflow is run
+# from the Actions tab. See .github/workflows/README.md for the full map of
+# everything that appears in the Actions list.
+#
+# This file replaced ruby.yml ("Ruby") and accessibility.yml ("Accessibility");
+# the job ids (and so the check names "test (3.3)" and "axe") are unchanged.
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.3']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Run tests
+        run: bin/rake test
+
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build site
+        run: bundle exec middleman build
+
+      - name: Run axe accessibility audit
+        # The Playwright config serves ./build and the spec audits /en/2.0.0/.
+        run: npx playwright test test/visual/a11y.spec.js --project=chromium

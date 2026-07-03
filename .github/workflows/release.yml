@@ -1,8 +1,10 @@
 name: Release from changelog
 
-# Keeps GitHub Releases in sync with CHANGELOG.md. The changelog is the source of
-# truth; every release is derived from it. All the logic lives in (and is tested
-# by) tools/changelog_release.rb — this workflow just runs it, in two stages:
+# Keeps GitHub Releases in sync with CHANGELOG.md. It creates tags and GitHub
+# Releases — it never touches the live site (that's "Deploy site (manual)").
+# The changelog is the source of truth; every release is derived from it. All
+# the logic lives in (and is tested by) tools/changelog_release.rb — this
+# workflow just runs it, in two stages:
 #
 #   1. plan  — a dry run that writes the proposed releases (and a diff of any
 #              that would change) to the run summary, and reports whether there's

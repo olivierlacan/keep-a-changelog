@@ -1,13 +1,20 @@
-name: Deploy
+name: Deploy site (manual)
 
-# Manual deploy. Builds the production site and publishes it to the gh-pages
-# branch that GitHub Pages serves at keepachangelog.com — the same thing
-# `rake deploy` does locally, but reproducibly from CI. Trigger it from the
-# Actions tab ("Run workflow"); you can pick which branch to build from.
+# The ONLY workflow that changes the live site. Builds the production site and
+# publishes it to the gh-pages branch that GitHub Pages serves at
+# keepachangelog.com — the same thing `rake deploy` does locally, but
+# reproducibly from CI. Trigger it from the Actions tab ("Run workflow"); you
+# can pick which branch to build from.
+#
+# After this pushes gh-pages, GitHub's own "pages-build-deployment" workflow
+# runs automatically to serve the branch — that entry in the Actions list is
+# GitHub-managed, not defined in this repo. See .github/workflows/README.md.
 #
 # Note: the build uses the default config, so $last_version (currently 1.1.0)
 # decides the published "latest" version. 2.0 stays behind ?preview=v2 until you
 # flip that flag in config.rb.
+
+run-name: Deploy ${{ github.ref_name }} to keepachangelog.com
 
 on:
   workflow_dispatch:
