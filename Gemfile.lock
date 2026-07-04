@@ -12,12 +12,15 @@ GEM
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     backports (3.25.0)
+    base64 (0.3.0)
+    bigdecimal (4.1.2)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.3)
     contracts (0.16.1)
+    csv (3.3.5)
     dotenv (3.1.2)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
@@ -103,6 +106,7 @@ GEM
       middleman-core (>= 3.2)
       rouge (~> 3.2)
     minitest (5.25.2)
+    mutex_m (0.3.0)
     padrino-helpers (0.15.3)
       i18n (>= 0.6.7, < 2)
       padrino-support (= 0.15.3)
@@ -181,6 +185,9 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
+  base64
+  bigdecimal
+  csv
   kramdown-parser-gfm
   middleman (~> 4.5.1)
   middleman-autoprefixer
@@ -190,6 +197,7 @@ DEPENDENCIES
   middleman-minify-html
   middleman-syntax
   minitest
+  mutex_m
   redcarpet
   standard (~> 1.51)
 
