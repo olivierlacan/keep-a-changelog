@@ -5,10 +5,14 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.60.0",
-    "axe-core": "^4.12.0"
+    "axe-core": "^4.12.0",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard": "^40.0.0"
   },
   "scripts": {
     "snapshot:baseline": "playwright test --update-snapshots",
-    "snapshot:check": "playwright test"
+    "snapshot:check": "playwright test",
+    "lint:css": "stylelint \"source/assets/stylesheets/**/*.css\"",
+    "lint:css:fix": "stylelint \"source/assets/stylesheets/**/*.css\" --fix"
   }
 }

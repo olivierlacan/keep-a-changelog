@@ -1,0 +1,32 @@
+name: CSS Lint
+
+# Lints the hand-authored CSS with stylelint (see .stylelintrc.cjs) and fails the
+# build on any violation, so mistakes like duplicate selectors, redundant
+# longhands, or invalid values can't merge.
+
+on:
+  push:
+    branches: [ "main", "2-0-0" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Lint CSS
+        run: npm run lint:css
