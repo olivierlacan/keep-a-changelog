@@ -35,6 +35,14 @@ site) guard against unintended visual changes:
 - `bin/rake snapshots:baseline` builds the site and records baseline screenshots
 - `bin/rake snapshots:check` rebuilds and diffs against the baseline
 
+Two kinds of coverage run together: full-page shots of representative pages
+on all three browser engines (`test/visual/visual.spec.js`), and a
+breakpoint sweep (`test/visual/responsive.spec.js`) that screenshots
+individual components — header, hero, footer, and so on — at one width per
+layout regime, so a change checked only at desktop width can't silently
+break the phone or tablet layouts. If you add or move a CSS breakpoint,
+update the width list in the sweep to keep one probe inside each regime.
+
 ### Deployment
 
 - `bin/rake clean` can clean a corrupted `build/` directory in
