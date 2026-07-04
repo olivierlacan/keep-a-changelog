@@ -936,9 +936,9 @@
     font-size: var(--step-2);
   }
 
-  /* Everything below the heading is capped back to a comfortable reading measure. */
+  /* The lede and contribute box keep a comfortable reading measure; the action
+     row spans the wider block so its buttons sit side by side rather than stack. */
   .missing-lede,
-  .missing-actions,
   .missing-contribute { max-inline-size: 44rem; }
 
   /* The action buttons and the contribute box share one surface-panel look, so
@@ -951,7 +951,7 @@
   }
 
   .missing-lede {
-    margin: 0 0 var(--space-m);
+    margin: 0 0 var(--space-s);
     font-size: var(--step-1);
     color: var(--muted);
     text-wrap: pretty;
@@ -961,7 +961,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-s);
-    margin: 0 0 var(--space-l);
+    margin: 0 0 var(--space-m);
     padding: 0;
     list-style: none;
   }
@@ -973,17 +973,11 @@
   }
   .missing-actions a:hover { border-color: var(--link); }
 
-  .missing-contribute { padding: var(--space-xl) var(--space-l); }
-  /* Even vertical rhythm between the heading, body, and call to action. */
+  .missing-contribute { padding: var(--space-m) var(--space-l); }
+  /* Even vertical rhythm between the heading and body. */
   .missing-contribute > * { margin-block: 0; }
-  .missing-contribute > * + * { margin-block-start: var(--space-m); }
-  .missing-contribute h2 {
-    font-size: var(--step-1);
-    text-wrap: nowrap;
-  }
-  .missing-meta {
-    font-size: var(--step--1);
-    color: var(--muted);
-    text-align: end;
-  }
+  .missing-contribute > * + * { margin-block-start: var(--space-s); }
+  /* Smaller than the page heading; wraps (via the global balance) only when the
+     box is too narrow, e.g. on phones — otherwise it overflows and scrolls. */
+  .missing-contribute h2 { font-size: var(--step-1); }
 }
