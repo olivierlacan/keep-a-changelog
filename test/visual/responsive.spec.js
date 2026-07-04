@@ -33,7 +33,10 @@ const PAGES = [
     footer: ".footer",
   }],
   ["v1", "/en/1.1.0/", {
-    header: "article > header",
+    // Not `article > header`: on this design every header child floats, so
+    // the header box itself is zero-height and can't be screenshotted. The
+    // picker nav is the header's visible content.
+    locales: ".locales",
     footer: ".footer",
   }],
   ["legacy", "/en/0.3.0/", {
