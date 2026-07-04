@@ -71,10 +71,7 @@ description: This version hasn't been translated into this language yet.
             %h2= t.("contribute_title") % vars
             - guide = link_to(t.("guide_label"), "#{repo}/blob/main/CONTRIBUTING.md")
             - coverage = link_to(t.("coverage_label"), "#{repo}/blob/main/TRANSLATION_COVERAGE.md")
-            - pr = link_to(t.("pr_label"), "#{repo}/pulls")
-            - issue = link_to(t.("issue_label"), "#{repo}/issues/new")
             %p!= t.("contribute_body") % vars.merge(guide: guide, coverage: coverage)
-            %p.missing-meta!= t.("cta") % { pr: pr, issue: issue }
 
       %footer.footer.clearfix{ role: "contentinfo" }
         = image_tag "keep-a-changelog-badge.svg", width: 140, height: 140, class: "badge", alt: "Keep a Changelog badge, designed by Tyler Fortune"

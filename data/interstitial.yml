@@ -12,8 +12,6 @@
 #   %{latest}    newest translated version for this language, e.g. "1.1"
 #   %{guide}     link to the contribution guide (uses guide_label as its text)
 #   %{coverage}  link to translation coverage (uses coverage_label as its text)
-#   %{pr}        link to open a pull request (uses pr_label as its text)
-#   %{issue}     link to file an issue (uses issue_label as its text)
 
 en:
   title: "Keep a Changelog %{version} isn’t available in %{language} yet"
@@ -21,12 +19,9 @@ en:
   read_english: "Read version %{version} in English"
   read_latest: "Read the latest %{language} translation (%{latest})"
   contribute_title: "Contribute the %{language} translation"
-  contribute_body: "Want to see %{version} in %{language}? The %{guide} walks you through adding a translation, and %{coverage} shows what’s already underway."
+  contribute_body: "Want to see version %{version} in %{language}? The %{guide} walks you through adding a translation, and %{coverage} shows what’s already underway."
   guide_label: "contribution guide"
   coverage_label: "coverage"
-  cta: "Start by %{pr} or %{issue}."
-  pr_label: "opening a pull request"
-  issue_label: "filing an issue"
 
 de:
   title: "Keep a Changelog %{version} ist noch nicht auf %{language} verfügbar"
@@ -34,12 +29,9 @@ de:
   read_english: "Version %{version} auf Englisch lesen"
   read_latest: "Die neueste %{language}-Übersetzung lesen (%{latest})"
   contribute_title: "Zur %{language}-Übersetzung beitragen"
-  contribute_body: "Möchtest du %{version} auf %{language} sehen? Der %{guide} zeigt dir, wie du eine Übersetzung hinzufügst, und die %{coverage} zeigt, was bereits in Arbeit ist."
+  contribute_body: "Möchtest du Version %{version} auf %{language} sehen? Der %{guide} zeigt dir, wie du eine Übersetzung hinzufügst, und die %{coverage} zeigt, was bereits in Arbeit ist."
   guide_label: "Beitragsleitfaden"
   coverage_label: "Übersetzungsübersicht"
-  cta: "Beginne, indem du %{pr} oder %{issue}."
-  pr_label: "einen Pull Request eröffnest"
-  issue_label: "ein Issue erstellst"
 
 es-ES:
   title: "Keep a Changelog %{version} aún no está disponible en %{language}"
@@ -47,12 +39,9 @@ es-ES:
   read_english: "Leer la versión %{version} en inglés"
   read_latest: "Leer la última traducción en %{language} (%{latest})"
   contribute_title: "Contribuir a la traducción al %{language}"
-  contribute_body: "¿Quieres ver la %{version} en %{language}? La %{guide} te explica cómo añadir una traducción, y la %{coverage} muestra lo que ya está en marcha."
+  contribute_body: "¿Quieres ver la versión %{version} en %{language}? La %{guide} te explica cómo añadir una traducción, y la %{coverage} muestra lo que ya está en marcha."
   guide_label: "guía de contribución"
   coverage_label: "cobertura de traducciones"
-  cta: "Empieza por %{pr} o %{issue}."
-  pr_label: "abrir un pull request"
-  issue_label: "crear una issue"
 
 fr:
   title: "Keep a Changelog %{version} n’est pas encore disponible en %{language}"
@@ -60,12 +49,9 @@ fr:
   read_english: "Lire la version %{version} en anglais"
   read_latest: "Lire la dernière traduction en %{language} (%{latest})"
   contribute_title: "Contribuer à la traduction en %{language}"
-  contribute_body: "Envie de voir la %{version} en %{language} ? Le %{guide} vous explique comment ajouter une traduction, et la %{coverage} montre ce qui est déjà en cours."
+  contribute_body: "Envie de voir la version %{version} en %{language} ? Le %{guide} vous explique comment ajouter une traduction, et la %{coverage} montre ce qui est déjà en cours."
   guide_label: "guide de contribution"
   coverage_label: "couverture des traductions"
-  cta: "Commencez par %{pr} ou %{issue}."
-  pr_label: "ouvrir une pull request"
-  issue_label: "signaler une issue"
 
 it-IT:
   title: "Keep a Changelog %{version} non è ancora disponibile in %{language}"
@@ -73,12 +59,9 @@ it-IT:
   read_english: "Leggi la versione %{version} in inglese"
   read_latest: "Leggi l’ultima traduzione in %{language} (%{latest})"
   contribute_title: "Contribuisci alla traduzione in %{language}"
-  contribute_body: "Vuoi vedere la %{version} in %{language}? La %{guide} ti spiega come aggiungere una traduzione, e la %{coverage} mostra cosa è già in corso."
+  contribute_body: "Vuoi vedere la versione %{version} in %{language}? La %{guide} ti spiega come aggiungere una traduzione, e la %{coverage} mostra cosa è già in corso."
   guide_label: "guida ai contributi"
   coverage_label: "copertura delle traduzioni"
-  cta: "Inizia %{pr} o %{issue}."
-  pr_label: "aprendo una pull request"
-  issue_label: "segnalando una issue"
 
 nb:
   title: "Keep a Changelog %{version} er ikke tilgjengelig på %{language} ennå"
@@ -86,12 +69,9 @@ nb:
   read_english: "Les versjon %{version} på engelsk"
   read_latest: "Les den nyeste oversettelsen på %{language} (%{latest})"
   contribute_title: "Bidra til oversettelsen på %{language}"
-  contribute_body: "Vil du se %{version} på %{language}? %{guide} viser deg hvordan du legger til en oversettelse, og %{coverage} viser hva som allerede er underveis."
+  contribute_body: "Vil du se versjon %{version} på %{language}? %{guide} viser deg hvordan du legger til en oversettelse, og %{coverage} viser hva som allerede er underveis."
   guide_label: "bidragsguiden"
   coverage_label: "oversettelsesdekningen"
-  cta: "Start med å %{pr} eller %{issue}."
-  pr_label: "åpne en pull request"
-  issue_label: "opprette en issue"
 
 pt-BR:
   title: "Keep a Changelog %{version} ainda não está disponível em %{language}"
@@ -99,12 +79,9 @@ pt-BR:
   read_english: "Ler a versão %{version} em inglês"
   read_latest: "Ler a tradução mais recente em %{language} (%{latest})"
   contribute_title: "Contribuir com a tradução em %{language}"
-  contribute_body: "Quer ver a %{version} em %{language}? O %{guide} mostra como adicionar uma tradução, e a %{coverage} mostra o que já está em andamento."
+  contribute_body: "Quer ver a versão %{version} em %{language}? O %{guide} mostra como adicionar uma tradução, e a %{coverage} mostra o que já está em andamento."
   guide_label: "guia de contribuição"
   coverage_label: "cobertura de traduções"
-  cta: "Comece %{pr} ou %{issue}."
-  pr_label: "abrindo um pull request"
-  issue_label: "criando uma issue"
 
 ru:
   title: "Keep a Changelog %{version} пока недоступен на языке %{language}"
@@ -112,12 +89,9 @@ ru:
   read_english: "Читать версию %{version} на английском"
   read_latest: "Читать последний перевод на языке %{language} (%{latest})"
   contribute_title: "Помочь с переводом на язык %{language}"
-  contribute_body: "Хотите увидеть %{version} на языке %{language}? %{guide} расскажет, как добавить перевод, а %{coverage} показывает, что уже в работе."
+  contribute_body: "Хотите увидеть версию %{version} на языке %{language}? %{guide} расскажет, как добавить перевод, а %{coverage} показывает, что уже в работе."
   guide_label: "руководство для участников"
   coverage_label: "страница покрытия переводов"
-  cta: "Начните с того, чтобы %{pr} или %{issue}."
-  pr_label: "открыть пул-реквест"
-  issue_label: "создать issue"
 
 sv:
   title: "Keep a Changelog %{version} är inte tillgänglig på %{language} ännu"
@@ -125,12 +99,9 @@ sv:
   read_english: "Läs version %{version} på engelska"
   read_latest: "Läs den senaste översättningen på %{language} (%{latest})"
   contribute_title: "Bidra till översättningen på %{language}"
-  contribute_body: "Vill du se %{version} på %{language}? %{guide} visar hur du lägger till en översättning, och %{coverage} visar vad som redan är på gång."
+  contribute_body: "Vill du se version %{version} på %{language}? %{guide} visar hur du lägger till en översättning, och %{coverage} visar vad som redan är på gång."
   guide_label: "bidragsguiden"
   coverage_label: "översättningstäckningen"
-  cta: "Börja med att %{pr} eller %{issue}."
-  pr_label: "öppna en pull request"
-  issue_label: "skapa en issue"
 
 zh-CN:
   title: "Keep a Changelog %{version} 尚未提供%{language}版本"
@@ -138,12 +109,9 @@ zh-CN:
   read_english: "阅读 %{version} 英文版"
   read_latest: "阅读最新的%{language}翻译（%{latest}）"
   contribute_title: "参与%{language}翻译"
-  contribute_body: "想看到%{language}版的 %{version} 吗？%{guide}会指导你如何添加翻译，%{coverage}则显示当前的翻译进度。"
+  contribute_body: "想看到 %{version} 版本的%{language}翻译吗？%{guide}会指导你如何添加翻译，%{coverage}则显示当前的翻译进度。"
   guide_label: "贡献指南"
   coverage_label: "翻译覆盖情况"
-  cta: "从%{pr}或%{issue}开始。"
-  pr_label: "提交合并请求"
-  issue_label: "创建 issue"
 
 zh-TW:
   title: "Keep a Changelog %{version} 尚未提供%{language}版本"
@@ -151,9 +119,116 @@ zh-TW:
   read_english: "閱讀 %{version} 英文版"
   read_latest: "閱讀最新的%{language}翻譯（%{latest}）"
   contribute_title: "參與%{language}翻譯"
-  contribute_body: "想看到%{language}版的 %{version} 嗎？%{guide}會引導你如何新增翻譯，%{coverage}則顯示目前的翻譯進度。"
+  contribute_body: "想看到 %{version} 版本的%{language}翻譯嗎？%{guide}會引導你如何新增翻譯，%{coverage}則顯示目前的翻譯進度。"
   guide_label: "貢獻指南"
   coverage_label: "翻譯涵蓋情況"
-  cta: "從%{pr}或%{issue}開始。"
-  pr_label: "提交合併請求"
-  issue_label: "建立 issue"
+
+ja:
+  title: "Keep a Changelog %{version} はまだ%{language}で利用できません"
+  lede: "それまでの間、次のことができます。"
+  read_english: "%{version} を英語で読む"
+  read_latest: "最新の%{language}翻訳を読む（%{latest}）"
+  contribute_title: "%{language}翻訳に貢献する"
+  contribute_body: "バージョン %{version} を%{language}で見たいですか？%{guide}では翻訳の追加方法を説明し、%{coverage}では現在進行中の翻訳を確認できます。"
+  guide_label: "貢献ガイド"
+  coverage_label: "翻訳状況"
+
+ko:
+  title: "Keep a Changelog %{version}은(는) 아직 %{language}로 제공되지 않습니다"
+  lede: "그동안 다음을 할 수 있습니다."
+  read_english: "%{version} 영어 버전 읽기"
+  read_latest: "최신 %{language} 번역 읽기 (%{latest})"
+  contribute_title: "%{language} 번역에 기여하기"
+  contribute_body: "%{version} 버전을 %{language}로 보고 싶으신가요? %{guide}에서 번역을 추가하는 방법을 안내하고, %{coverage}에서 현재 진행 상황을 확인할 수 있습니다."
+  guide_label: "기여 가이드"
+  coverage_label: "번역 현황"
+
+nl:
+  title: "Keep a Changelog %{version} is nog niet beschikbaar in het %{language}"
+  lede: "Dit kun je in de tussentijd doen."
+  read_english: "Lees versie %{version} in het Engels"
+  read_latest: "Lees de nieuwste vertaling in het %{language} (%{latest})"
+  contribute_title: "Draag bij aan de vertaling in het %{language}"
+  contribute_body: "Wil je versie %{version} in het %{language} zien? De %{guide} legt uit hoe je een vertaling toevoegt, en %{coverage} laat zien wat er al onderweg is."
+  guide_label: "bijdragegids"
+  coverage_label: "vertaaldekking"
+
+pl:
+  title: "Keep a Changelog %{version} nie został jeszcze przetłumaczony na %{language}"
+  lede: "Oto co możesz zrobić w międzyczasie."
+  read_english: "Przeczytaj wersję %{version} po angielsku"
+  read_latest: "Przeczytaj najnowsze tłumaczenie na %{language} (%{latest})"
+  contribute_title: "Pomóż w tłumaczeniu na %{language}"
+  contribute_body: "Chcesz zobaczyć wersję %{version} przetłumaczoną na %{language}? %{guide} wyjaśnia, jak dodać tłumaczenie, a %{coverage} pokazuje, co jest już w toku."
+  guide_label: "przewodnik dla współtwórców"
+  coverage_label: "stan tłumaczeń"
+
+cs:
+  title: "Keep a Changelog %{version} zatím není k dispozici v jazyce %{language}"
+  lede: "Mezitím můžete udělat toto:"
+  read_english: "Přečtěte si verzi %{version} v angličtině"
+  read_latest: "Přečtěte si nejnovější překlad do jazyka %{language} (%{latest})"
+  contribute_title: "Přispějte k překladu do jazyka %{language}"
+  contribute_body: "Chcete vidět verzi %{version} v jazyce %{language}? %{guide} vás provede přidáním překladu a %{coverage} ukazuje, co se už připravuje."
+  guide_label: "průvodce pro přispěvatele"
+  coverage_label: "pokrytí překladů"
+
+da:
+  title: "Keep a Changelog %{version} er endnu ikke tilgængelig på %{language}"
+  lede: "Her er, hvad du kan gøre i mellemtiden."
+  read_english: "Læs version %{version} på engelsk"
+  read_latest: "Læs den nyeste %{language}-oversættelse (%{latest})"
+  contribute_title: "Bidrag til %{language}-oversættelsen"
+  contribute_body: "Vil du se version %{version} på %{language}? %{guide} viser dig, hvordan du tilføjer en oversættelse, og %{coverage} viser, hvad der allerede er i gang."
+  guide_label: "bidragsguide"
+  coverage_label: "oversættelsesdækning"
+
+tr-TR:
+  title: "Keep a Changelog %{version} henüz %{language} olarak mevcut değil"
+  lede: "Bu arada şunları yapabilirsiniz:"
+  read_english: "%{version} sürümünü İngilizce okuyun"
+  read_latest: "En son %{language} çevirisini okuyun (%{latest})"
+  contribute_title: "%{language} çevirisine katkıda bulunun"
+  contribute_body: "%{version} sürümünü %{language} olarak görmek ister misiniz? %{guide} bir çevirinin nasıl ekleneceğini anlatır, %{coverage} ise halihazırda devam eden çalışmaları gösterir."
+  guide_label: "katkı kılavuzu"
+  coverage_label: "çeviri kapsamı"
+
+uk:
+  title: "Keep a Changelog %{version} поки що недоступний мовою %{language}"
+  lede: "Ось що можна зробити тим часом."
+  read_english: "Читати версію %{version} англійською"
+  read_latest: "Читати останній переклад мовою %{language} (%{latest})"
+  contribute_title: "Допомогти з перекладом мовою %{language}"
+  contribute_body: "Хочете побачити версію %{version} мовою %{language}? %{guide} розповість, як додати переклад, а %{coverage} показує, що вже в роботі."
+  guide_label: "посібник для учасників"
+  coverage_label: "сторінка покриття перекладів"
+
+ro:
+  title: "Keep a Changelog %{version} nu este încă disponibil în %{language}"
+  lede: "Iată ce poți face între timp."
+  read_english: "Citește versiunea %{version} în engleză"
+  read_latest: "Citește cea mai recentă traducere în %{language} (%{latest})"
+  contribute_title: "Contribuie la traducerea în %{language}"
+  contribute_body: "Vrei să vezi versiunea %{version} în %{language}? %{guide} îți explică cum să adaugi o traducere, iar %{coverage} arată ce este deja în lucru."
+  guide_label: "ghidul de contribuție"
+  coverage_label: "acoperirea traducerilor"
+
+id-ID:
+  title: "Keep a Changelog %{version} belum tersedia dalam bahasa %{language}"
+  lede: "Inilah yang bisa Anda lakukan sementara itu."
+  read_english: "Baca versi %{version} dalam bahasa Inggris"
+  read_latest: "Baca terjemahan bahasa %{language} terbaru (%{latest})"
+  contribute_title: "Bantu terjemahan bahasa %{language}"
+  contribute_body: "Ingin melihat versi %{version} dalam bahasa %{language}? %{guide} menjelaskan cara menambahkan terjemahan, dan %{coverage} menunjukkan apa yang sedang dikerjakan."
+  guide_label: "panduan kontribusi"
+  coverage_label: "cakupan terjemahan"
+
+ar:
+  title: "Keep a Changelog %{version} غير متوفر بعد باللغة %{language}"
+  lede: "إليك ما يمكنك فعله في هذه الأثناء."
+  read_english: "اقرأ الإصدار %{version} بالإنجليزية"
+  read_latest: "اقرأ أحدث ترجمة إلى %{language} (%{latest})"
+  contribute_title: "ساهم في الترجمة إلى %{language}"
+  contribute_body: "هل تريد رؤية الإصدار %{version} باللغة %{language}؟ يشرح لك %{guide} كيفية إضافة ترجمة، ويعرض %{coverage} ما هو قيد التنفيذ بالفعل."
+  guide_label: "دليل المساهمة"
+  coverage_label: "تغطية الترجمة"
