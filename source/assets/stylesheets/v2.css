@@ -310,15 +310,17 @@
     mask: var(--globe-mask);
   }
 
-  /* Globe button that collapses the language picker on very narrow viewports.
-     Hidden by default; the narrow media query below reveals it and hides the
-     select until it is toggled open. */
+  /* Globe button that collapses the version + language pickers on very narrow
+     viewports. Hidden by default; the narrow media query below reveals it and
+     hides the fields until it is toggled open. The chevron marks it as a menu
+     that opens (it holds more than languages), echoing the site's other
+     disclosure toggles. */
   .locales-toggle {
     display: none;
-    place-items: center;
-    inline-size: 1.9rem;
+    align-items: center;
+    gap: 0.35em;
     block-size: 1.9rem;
-    padding: 0;
+    padding: 0 0.5em;
     border: 0;
     border-radius: var(--radius);
     background: transparent;
@@ -332,6 +334,20 @@
     background-color: currentColor;
     -webkit-mask: var(--globe-mask);
     mask: var(--globe-mask);
+  }
+  .locales-toggle::after {
+    content: "";
+    inline-size: 0.4em;
+    block-size: 0.4em;
+    margin-block-start: -0.2em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .locales-toggle[aria-expanded="true"]::after {
+    margin-block-start: 0.2em;
+    transform: rotate(-135deg);
   }
   .locales-toggle:hover { color: var(--text); }
   /* Pressed/active look while open, so it reads as a toggle you can tap to close. */
@@ -375,43 +391,61 @@
   }
 
   /* Very narrow: collapse the version + language selectors behind the globe so
-     the header stays on one row. Tapping the globe reveals them (JS sets
-     data-open). */
+     the header stays on one row. Tapping the globe expands the header downward
+     into a full-width sheet holding both fields (JS sets data-open). */
   @media (max-width: 30rem) {
     /* Show the brand mark in the header (before the picker) at this width, and
        hide it in the hero (rule in the content layer) so it doesn't crowd the
        title. */
     article > header .mark { display: inline-block; }
     .locales::before { display: block; }
-    .locales-toggle { display: inline-grid; }
+    .locales-toggle { display: inline-flex; }
     .locale-fields { display: none; }
-    /* Open as a stacked popover anchored under the globe so it doesn't reflow the
-       nav. The width cap lives in a custom property so the Sass minifier passes
-       the min()/calc through untouched. */
+    /* The open sheet anchors to the header itself — not the nav — so it spans
+       the full viewport width regardless of where the globe sits. It reads as
+       the header extending: same surface, a bottom hairline continuing the
+       header's own, and a shadow separating it from the hero underneath. */
+    article > header { position: relative; }
+    .locales { position: static; }
     .locales[data-open] .locale-fields {
-      --locale-popover-max: min(16rem, calc(100vw - 2 * var(--space-m)));
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-s);
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline: 0;
+      z-index: 20;
+      padding: var(--space-s) var(--space-m) var(--space-m);
+      background: var(--surface);
+      border-block-end: 1px solid var(--rule);
+      box-shadow: 0 14px 24px -14px rgba(0, 0, 0, 0.5);
+    }
+    /* Each field is a labelled block: the label text — screen-reader-only when
+       the selects sit inline at wider widths — becomes a small visible heading
+       above a full-width select, so a bare "1.1" next to "English" can't be
+       mistaken for the language picker (or vice versa). */
+    .locales[data-open] .locale-field {
       display: flex;
       flex-direction: column;
       align-items: stretch;
       gap: var(--space-2xs);
-      position: absolute;
-      inset-block-start: 100%;
-      inset-inline-start: 0;
-      margin-block-start: var(--space-2xs);
-      z-index: 20;
-      padding: var(--space-xs);
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      max-inline-size: var(--locale-popover-max);
-      box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.45);
     }
-    .locales[data-open] .locale-field { display: flex; }
+    .locales[data-open] .locales-text {
+      position: static;
+      inline-size: auto;
+      block-size: auto;
+      margin: 0;
+      overflow: visible;
+      clip-path: none;
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--muted);
+    }
     .locales[data-open] .locale-fields select { inline-size: 100%; max-inline-size: none; }
+    /* The ID'd width cap on the version select outranks the class rule above;
+       lift it here so both fields fill the sheet. */
     .locales[data-open] .locale-fields #version-select { max-inline-size: none; }
-    /* Grow the white header while the picker is open so the revealed selects
-       rest on the header surface instead of hanging over the orange hero. */
-    article > header:has(.locales[data-open]) { padding-block-end: 5.5rem; }
   }
 }
 

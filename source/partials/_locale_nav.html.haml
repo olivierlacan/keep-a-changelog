@@ -12,7 +12,7 @@
 
 .locale-fields#locale-fields
   %label.locale-field{ for: "version-select" }
-    %span.locales-text Version:
+    %span.locales-text Version
     %select.locale-select{ name: "version", id: "version-select", "aria-label": "Choose a version" }
       - selectable_versions.reverse_each do |v|
         - available = version_available?(language_code, v)
@@ -25,7 +25,7 @@
           = label
 
   %label.locale-field{ for: "language-select" }
-    %span.locales-text= "Language (#{$languages.count}):"
+    %span.locales-text= "Language (#{$languages.count})"
     %select.locale-select{ name: "language", id: "language-select", "aria-label": "Choose a language" }
       - $languages.each do |code, meta|
         - available = version_available?(code, current_version)
