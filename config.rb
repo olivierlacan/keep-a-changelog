@@ -155,6 +155,12 @@ $languages = {
 }
 $language_count = $languages.size
 
+# Localized copy for the "translation missing" interstitial (source/missing.html.haml),
+# keyed by the same language codes as $languages. English is the canonical set and
+# the per-key fallback — see data/interstitial.yml and the interstitial_string helper.
+require "yaml"
+$interstitial = YAML.load_file("data/interstitial.yml")
+
 activate :i18n,
   lang_map: $languages,
   mount_at_root: :en
@@ -260,11 +266,6 @@ helpers do
     installed.max_by { |v| Gem::Version.new(v) }
   end
 
-  def available_translation_for(language)
-    version = exposed_version_for(language.first)
-    "#{version} #{language.last[:name]}" if version
-  end
-
   # The spec versions a visitor may pick from the version selector. We cap at the
   # published $last_version in a production build so unreleased drafts (e.g. an
   # in-progress 2.0.0) never surface; serving locally exposes the full set so
@@ -295,6 +296,14 @@ helpers do
   # A language's autonym (e.g. "Français"), falling back to its code.
   def language_name(code)
     ($languages[code] || {})[:name] || code
+  end
+
+  # A localized interstitial string for a language, keyed by e.g. "title" or
+  # "lede". Falls back to English per key, so a partially-translated (or entirely
+  # untranslated) language still renders a complete page. Interpolate the result
+  # with String#% and the appropriate %{...} placeholders. See data/interstitial.yml.
+  def interstitial_string(code, key)
+    ($interstitial[code] || {})[key] || $interstitial["en"][key]
   end
 
   # The release date for a version, read from CHANGELOG.md (e.g. the line

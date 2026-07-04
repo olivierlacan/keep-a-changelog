@@ -819,11 +819,13 @@
     .article-body > .toc,
     .article-body > .content { grid-column: 1; }
     .article-body > .toc { justify-self: center; }
-    .article-body > .content { justify-self: stretch; }
-    /* Tighten the stack: the toggle sits close under the version, and the
-       content starts soon after, instead of floating in large gaps. */
+    /* Tighten the stack: the content stretches full width and starts soon after
+       the toggle, which itself sits close under the version. */
     .toc-disclosure > summary { margin-block-start: var(--space-2xs); }
-    .article-body > .content { padding-block-start: var(--space-s); }
+    .article-body > .content {
+      justify-self: stretch;
+      padding-block-start: var(--space-s);
+    }
     .toc-disclosure[open] > nav {
       position: static;
       margin-inline: auto;
@@ -845,8 +847,7 @@
     .article-body > .toc {
       grid-column: 1;
       grid-row: 1 / span 2;
-      justify-self: start;
-      align-self: start;
+      place-self: start;
       text-align: start;
       inline-size: 15rem;
       max-inline-size: none;
@@ -919,61 +920,70 @@
 
   /* ---------------------------------------------- missing-translation page */
   /* The interstitial has no hero, so surface the brand mark and wordmark in its
-     header at every width (the regular pages hide them outside the pinned state). */
-  .missing-page article > header .mark { display: inline-block; }
+     header at every width (regular pages hide them outside the pinned state). */
+  .missing-page article > header .mark,
   .missing-page .header-title { display: inline-block; }
 
+  /* The block runs wider than the body's reading measure so a long heading can
+     use the available width instead of wrapping inside a narrow column. */
   .missing {
-    max-inline-size: 44rem;
-    margin: var(--space-2xl) auto;
+    max-inline-size: 72rem;
+    margin: var(--space-xl) auto;
     padding: 0 var(--space-m);
   }
-  .missing-eyebrow {
-    margin: 0 0 var(--space-2xs);
-    font-size: var(--step--1);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
+  .missing-title {
+    margin: 0 0 var(--space-s);
+    font-size: var(--step-2);
   }
-  .missing-title { margin: 0 0 var(--space-s); }
+
+  /* Everything below the heading is capped back to a comfortable reading measure. */
+  .missing-lede,
+  .missing-actions,
+  .missing-contribute { max-inline-size: 44rem; }
+
+  /* The action buttons and the contribute box share one surface-panel look, so
+     keep its border, radius, and background defined in a single place. */
+  .missing-actions a,
+  .missing-contribute {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
   .missing-lede {
-    margin: 0 0 var(--space-l);
+    margin: 0 0 var(--space-m);
     font-size: var(--step-1);
     color: var(--muted);
     text-wrap: pretty;
   }
+
   .missing-actions {
-    margin: 0 0 var(--space-xl);
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-s);
+    margin: 0 0 var(--space-l);
+    padding: 0;
+    list-style: none;
   }
   .missing-actions a {
     display: inline-block;
     padding: 0.55em 1em;
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    background: var(--surface);
     color: var(--link);
     text-decoration: none;
   }
   .missing-actions a:hover { border-color: var(--link); }
-  .missing-contribute {
-    padding: var(--space-l);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    background: var(--surface);
+
+  .missing-contribute { padding: var(--space-xl) var(--space-l); }
+  /* Even vertical rhythm between the heading, body, and call to action. */
+  .missing-contribute > * { margin-block: 0; }
+  .missing-contribute > * + * { margin-block-start: var(--space-m); }
+  .missing-contribute h2 {
+    font-size: var(--step-1);
+    text-wrap: nowrap;
   }
-  .missing-contribute h2 { margin-block-start: 0; }
-  .missing-contribute code {
-    padding: 0.1em 0.35em;
-    border-radius: 4px;
-    background: color-mix(in srgb, var(--text) 8%, transparent);
-    font-family: "Source Code Pro", monospace;
-    font-size: 0.9em;
+  .missing-meta {
+    font-size: var(--step--1);
+    color: var(--muted);
+    text-align: end;
   }
-  .missing-meta { margin-block-end: 0; font-size: var(--step--1); color: var(--muted); }
 }
