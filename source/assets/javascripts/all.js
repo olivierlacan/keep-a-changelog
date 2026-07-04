@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(){
   var select = selects[0];
 
   // On very narrow viewports the version + language pickers collapse behind a
-  // globe button (see the max-width query in v2.css); tapping it expands the
+  // gear button (see the max-width query in v2.css); tapping it expands the
   // header into a full-width sheet with both fields labelled. The fields are
   // hidden via CSS until .locales carries data-open. At wider widths the button
   // is display:none and the selects show inline, so this is a no-op there.

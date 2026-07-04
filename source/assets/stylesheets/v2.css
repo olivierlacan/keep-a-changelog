@@ -71,13 +71,11 @@
     /* Globe icon shared by the language label (wide) and the collapse button
        (narrow). Kept as a custom property so both reference one source. */
     --globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
-    /* Tag + globe pair for the narrow-screen picker toggle: the tag stands for
-       versions (as on release tags), the globe for languages, so the button
-       advertises both fields the sheet holds — a globe alone read as
-       language-only, and a generic gear would read as preferences (that's the
-       theme switch beside it) rather than navigation. One combined mask because
-       the button's two pseudo-elements are spoken for (icons + chevron). */
-    --tag-globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2052%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20.59%2013.41l-7.17%207.17a2%202%200%200%201-2.83%200L2%2012V2h10l8.59%208.59a2%202%200%200%201%200%202.83z'/%3E%3Cline%20x1='7'%20y1='7'%20x2='7.01'%20y2='7'/%3E%3Cg%20transform='translate(28)'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    /* Gear for the narrow-screen picker toggle: one generic "options" glyph
+       for the sheet's two fields. A globe alone read as language-only while
+       hiding the version picker, and pairing it with a version tag read as
+       two crowded buttons — a single neutral icon covers both. */
+    --gear-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='3'/%3E%3Cpath%20d='M19.4%2015a1.65%201.65%200%200%200%20.33%201.82l.06.06a2%202%200%200%201%200%202.83%202%202%200%200%201-2.83%200l-.06-.06a1.65%201.65%200%200%200-1.82-.33%201.65%201.65%200%200%200-1%201.51V21a2%202%200%200%201-2%202%202%202%200%200%201-2-2v-.09A1.65%201.65%200%200%200%209%2019.4a1.65%201.65%200%200%200-1.82.33l-.06.06a2%202%200%200%201-2.83%200%202%202%200%200%201%200-2.83l.06-.06a1.65%201.65%200%200%200%20.33-1.82%201.65%201.65%200%200%200-1.51-1H3a2%202%200%200%201-2-2%202%202%200%200%201%202-2h.09A1.65%201.65%200%200%200%204.6%209a1.65%201.65%200%200%200-.33-1.82l-.06-.06a2%202%200%200%201%200-2.83%202%202%200%200%201%202.83%200l.06.06a1.65%201.65%200%200%200%201.82.33H9a1.65%201.65%200%200%200%201-1.51V3a2%202%200%200%201%202-2%202%202%200%200%201%202%202v.09a1.65%201.65%200%200%200%201%201.51%201.65%201.65%200%200%200%201.82-.33l.06-.06a2%202%200%200%201%202.83%200%202%202%200%200%201%200%202.83l-.06.06a1.65%201.65%200%200%200-.33%201.82V9a1.65%201.65%200%200%200%201.51%201H21a2%202%200%200%201%202%202%202%202%200%200%201-2%202h-.09a1.65%201.65%200%200%200-1.51%201z'/%3E%3C/svg%3E") center / contain no-repeat;
 
     --font-sans: "Muli", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -196,7 +194,7 @@
   article > header .mark { display: none; inline-size: 36px; block-size: 36px; }
 
   /* Forced colors / Windows High Contrast: the mask-based icons (brand mark,
-     globe) draw with background-color, which the OS forces to a system color and
+     globe, gear) draw with background-color, which the OS forces to a system color and
      can erase them on the matching background. Pin them to CanvasText so they
      stay visible. The theme-switch SVGs use currentColor and already adapt. */
   @media (forced-colors: active) {
@@ -317,10 +315,10 @@
     mask: var(--globe-mask);
   }
 
-  /* Tag + globe button that collapses the version + language pickers on very
-     narrow viewports. Hidden by default; the narrow media query below reveals
-     it and hides the fields until it is toggled open. The chevron marks it as
-     a menu that opens, echoing the site's other disclosure toggles. */
+  /* Gear button that collapses the version + language pickers on very narrow
+     viewports. Hidden by default; the narrow media query below reveals it and
+     hides the fields until it is toggled open. The chevron marks it as a menu
+     that opens, echoing the site's other disclosure toggles. */
   .locales-toggle {
     display: none;
     align-items: center;
@@ -335,11 +333,11 @@
   }
   .locales-toggle::before {
     content: "";
+    inline-size: 1.3em;
     block-size: 1.3em;
-    aspect-ratio: 52 / 24;
     background-color: currentColor;
-    -webkit-mask: var(--tag-globe-mask);
-    mask: var(--tag-globe-mask);
+    -webkit-mask: var(--gear-mask);
+    mask: var(--gear-mask);
   }
   .locales-toggle::after {
     content: "";
