@@ -113,11 +113,32 @@ footer
   overflow-x: auto
   height: 20em
 
-.locales li
-  display: inline
-  list-style-type: none
-  padding-right: 20px
+// Dual version + language selectors (shared v2 partial). 0.3.0 predated the
+// picker, so give it just enough to be usable and accessible: centered, both
+// fields always shown, and the v2-only narrow-screen toggle hidden.
+.locales
+  text-align: center
+  margin: 1em auto
+
+.locales-toggle
+  display: none
+
+.locale-fields
+  display: inline-flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: .3rem 1rem
+
+.locale-field
+  display: inline-flex
+  align-items: center
+  gap: .4rem
+
+.locales-text
   white-space: nowrap
+
+.locale-select
+  font-family: inherit
 
 pre, code
   font-family: $source-code-font-family

@@ -115,12 +115,30 @@ header
   border-radius: .5rem
   padding: .7rem 1rem
 
-.locales li
-  float: right
-  font-size: 0.7em
-  display: inline
-  list-style-type: none
+// Dual version + language selectors (shared v2 partial). The narrow-screen
+// toggle is a v2-only affordance, so hide it and always show both fields.
+.locales-toggle
+  display: none
+
+.locale-fields
+  display: flex
+  flex-direction: column
+  gap: .4rem
+
+.locale-field
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: .5rem
+
+.locales-text
+  font-size: .85em
   white-space: nowrap
+
+.locale-select
+  font-family: inherit
+  font-size: .9em
+  max-width: 11rem
 
 pre, code
   background-color: $color-light-sand
