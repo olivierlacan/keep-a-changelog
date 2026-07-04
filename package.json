@@ -12,6 +12,8 @@
   "scripts": {
     "snapshot:baseline": "playwright test --update-snapshots",
     "snapshot:check": "playwright test",
+    "snapshot:sweep:baseline": "playwright test responsive.spec.js --project=chromium --update-snapshots",
+    "snapshot:sweep": "playwright test responsive.spec.js --project=chromium",
     "lint:css": "stylelint \"source/assets/stylesheets/**/*.css\"",
     "lint:css:fix": "stylelint \"source/assets/stylesheets/**/*.css\" --fix"
   }

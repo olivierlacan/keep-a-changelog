@@ -57,6 +57,21 @@ namespace :snapshots do
   task check: :build do
     sh "npm run snapshot:check"
   end
+
+  # The breakpoint sweep (test/visual/responsive.spec.js) runs as part of the
+  # tasks above; these run it alone, which is much faster while iterating on
+  # a layout change at a single breakpoint.
+  namespace :sweep do
+    desc "Build, then record baselines for the breakpoint sweep only"
+    task baseline: :build do
+      sh "npm run snapshot:sweep:baseline"
+    end
+
+    desc "Rebuild, then diff the breakpoint sweep against its baseline"
+    task check: :build do
+      sh "npm run snapshot:sweep"
+    end
+  end
 end
 
 require "minitest/test_task"
