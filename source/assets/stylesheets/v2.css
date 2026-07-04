@@ -71,6 +71,13 @@
     /* Globe icon shared by the language label (wide) and the collapse button
        (narrow). Kept as a custom property so both reference one source. */
     --globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/svg%3E") center / contain no-repeat;
+    /* Tag + globe pair for the narrow-screen picker toggle: the tag stands for
+       versions (as on release tags), the globe for languages, so the button
+       advertises both fields the sheet holds — a globe alone read as
+       language-only, and a generic gear would read as preferences (that's the
+       theme switch beside it) rather than navigation. One combined mask because
+       the button's two pseudo-elements are spoken for (icons + chevron). */
+    --tag-globe-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2052%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20.59%2013.41l-7.17%207.17a2%202%200%200%201-2.83%200L2%2012V2h10l8.59%208.59a2%202%200%200%201%200%202.83z'/%3E%3Cline%20x1='7'%20y1='7'%20x2='7.01'%20y2='7'/%3E%3Cg%20transform='translate(28)'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cline%20x1='3'%20y1='12'%20x2='21'%20y2='12'/%3E%3Cellipse%20cx='12'%20cy='12'%20rx='4'%20ry='9'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
 
     --font-sans: "Muli", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -310,11 +317,10 @@
     mask: var(--globe-mask);
   }
 
-  /* Globe button that collapses the version + language pickers on very narrow
-     viewports. Hidden by default; the narrow media query below reveals it and
-     hides the fields until it is toggled open. The chevron marks it as a menu
-     that opens (it holds more than languages), echoing the site's other
-     disclosure toggles. */
+  /* Tag + globe button that collapses the version + language pickers on very
+     narrow viewports. Hidden by default; the narrow media query below reveals
+     it and hides the fields until it is toggled open. The chevron marks it as
+     a menu that opens, echoing the site's other disclosure toggles. */
   .locales-toggle {
     display: none;
     align-items: center;
@@ -329,11 +335,11 @@
   }
   .locales-toggle::before {
     content: "";
-    inline-size: 1.3em;
     block-size: 1.3em;
+    aspect-ratio: 52 / 24;
     background-color: currentColor;
-    -webkit-mask: var(--globe-mask);
-    mask: var(--globe-mask);
+    -webkit-mask: var(--tag-globe-mask);
+    mask: var(--tag-globe-mask);
   }
   .locales-toggle::after {
     content: "";
