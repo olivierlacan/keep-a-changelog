@@ -201,28 +201,33 @@ end
 # selectors offer *every* version for *every* language (issue #719): pick one we
 # don't have and you land somewhere helpful rather than nowhere.
 #
-# We mirror the selector's exposure rule: all spec versions when serving locally
-# (so an in-progress 2.0.0 draft previews), capped at the published $last_version
-# in a production build so unreleased drafts never ship.
+# Interstitials cover every version with an English page — including an
+# unreleased draft like 2.0.0. The draft page itself ships in production
+# (that's how it is previewed), and its language selector links every language
+# at that version, so each of those URLs must resolve. Capping this at
+# $last_version in production builds made /fr/2.0.0/ a 404 that the dev
+# server, which generated the full set, never showed. Keeping drafts from
+# being *surfaced* is the job of selectable_versions, which caps the version
+# dropdown in production builds; it is not a reason to leave selector-emitted
+# URLs dangling.
 spec_versions = $versions.select { |v| File.directory?("source/en/#{v}") }
 
-generate_interstitials = lambda do |max_version|
-  $languages.each_key do |code|
-    spec_versions.each do |version|
-      next if max_version && Gem::Version.new(version) > Gem::Version.new(max_version)
-      next if File.directory?("source/#{code}/#{version}") # real translation exists
-      proxy "/#{code}/#{version}/index.html", "/missing.html",
-        locals: { language_code: code, version: version }, ignore: true
-    end
+# Beyond the registered $languages, cover any stray language directory in
+# source/ (e.g. "id", the unregistered duplicate of "id-ID"): its pages build
+# and render the version selector like any other, so their untranslated
+# versions need interstitials too — /id/1.0.0/ was a production 404 reachable
+# from /id/1.1.0/'s own version dropdown.
+language_dirs = Dir.glob("source/*/*/")
+  .select { |d| File.basename(d) =~ /\A\d+\.\d+\.\d+\z/ }
+  .map { |d| File.basename(File.dirname(d)) }
+  .uniq
+
+($languages.keys | language_dirs).each do |code|
+  spec_versions.each do |version|
+    next if File.directory?("source/#{code}/#{version}") # real translation exists
+    proxy "/#{code}/#{version}/index.html", "/missing.html",
+      locals: { language_code: code, version: version }, ignore: true
   end
-end
-
-configure :development do
-  generate_interstitials.call(nil)
-end
-
-configure :build do
-  generate_interstitials.call($last_version)
 end
 
 # Patch releases of this project (e.g. 1.1.1) ship fixes to the site and tooling
