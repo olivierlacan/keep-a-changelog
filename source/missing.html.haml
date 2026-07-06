@@ -45,14 +45,7 @@ description: This version hasn't been translated into this language yet.
         %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
         %span.header-title Keep a Changelog
         %nav.locales{ role: "navigation" }
-          = partial "partials/locale_nav", locals: { language_code: language_code, current_version: version }
-        %div.theme-switch{ role: "group", "aria-label": "Color theme" }
-          %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
-          %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          = partial "partials/locale_nav", locals: { language_code: language_code, current_version: version, theme_switch: true }
 
       .main#main{ role: "main", tabindex: "-1" }
         %section.missing

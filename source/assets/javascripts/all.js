@@ -20,13 +20,15 @@ document.addEventListener("DOMContentLoaded", function(){
       window.location.replace(origin + "/" + target);
     });
   });
-  var select = selects[0];
 
-  // On very narrow viewports the version + language pickers collapse behind a
-  // gear button (see the max-width query in v2.css); tapping it expands the
-  // header into a full-width sheet with both fields labelled. The fields are
-  // hidden via CSS until .locales carries data-open. At wider widths the button
-  // is display:none and the selects show inline, so this is a no-op there.
+  // On narrow viewports the version + language pickers and the theme switch
+  // collapse behind a gear button (see the max-width query in v2.css); tapping
+  // it expands the header into a full-width sheet with all three fields
+  // labelled. The fields are hidden via CSS until .locales carries data-open.
+  // At wider widths the button is display:none and the fields show inline, so
+  // this is a no-op there. Focus stays on the gear rather than moving into the
+  // sheet: focusing a <select> makes iOS pop its picker wheel open, which
+  // hijacks the first tap.
   var locales = document.querySelector('.locales');
   var localesToggle = locales && locales.querySelector('.locales-toggle');
   if (locales && localesToggle) {
@@ -36,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
       localesToggle.setAttribute('aria-expanded', String(open));
     };
     localesToggle.addEventListener('click', function(){
-      var open = !locales.hasAttribute('data-open');
-      setLocalesOpen(open);
-      if (open && select) { select.focus(); }
+      setLocalesOpen(!locales.hasAttribute('data-open'));
     });
     document.addEventListener('keydown', function(event){
       if (event.key === 'Escape' && locales.hasAttribute('data-open')) {

@@ -222,9 +222,12 @@
     white-space: nowrap;
   }
 
-  /* Header order: brand mark and language picker grouped on the left, the theme
-     switch pushed to the far right. */
-  .theme-switch { display: inline-flex; gap: 2px; margin-inline-start: auto; }
+  /* Header order: brand mark and pickers grouped on the left, the theme switch
+     — the last field in the settings nav — pushed to the far right. The nav and
+     its field row stretch across the header's leftover width so the auto margin
+     has room to work. */
+  .theme-switch { display: inline-flex; gap: 2px; }
+  .locale-field-theme { margin-inline-start: auto; }
   .theme-btn {
     display: grid;
     place-items: center;
@@ -251,6 +254,7 @@
   .locales {
     position: relative;
     display: flex;
+    flex: 1;
     align-items: center;
     gap: var(--space-xs);
     font-size: var(--step--1);
@@ -282,7 +286,7 @@
   }
   /* The two selectors sit side by side; the version one is narrow (just a
      number), the language one carries the names. */
-  .locale-fields { display: inline-flex; align-items: center; gap: var(--space-xs); }
+  .locale-fields { display: inline-flex; flex: 1; align-items: center; gap: var(--space-xs); }
   .locale-field { display: inline-flex; align-items: center; }
   #version-select { max-inline-size: 8.5rem; }
   /* Dim the untranslated options where the browser honours option colors
@@ -315,10 +319,10 @@
     mask: var(--globe-mask);
   }
 
-  /* Gear button that collapses the version + language pickers on very narrow
-     viewports. Hidden by default; the narrow media query below reveals it and
-     hides the fields until it is toggled open. The chevron marks it as a menu
-     that opens, echoing the site's other disclosure toggles. */
+  /* Gear button that collapses the version + language pickers and the theme
+     switch on narrow viewports. Hidden by default; the narrow media query below
+     reveals it and hides the fields until it is toggled open. The chevron marks
+     it as a menu that opens, echoing the site's other disclosure toggles. */
   .locales-toggle {
     display: none;
     align-items: center;
@@ -394,23 +398,28 @@
     text-wrap: pretty;
   }
 
-  /* Very narrow: collapse the version + language selectors behind the globe so
-     the header stays on one row. Tapping the globe expands the header downward
-     into a full-width sheet holding both fields (JS sets data-open). */
-  @media (max-width: 30rem) {
-    /* Show the brand mark in the header (before the picker) at this width, and
-       hide it in the hero (rule in the content layer) so it doesn't crowd the
-       title. */
+  /* Narrow: collapse every setting — version, language, and theme — behind the
+     gear so the header stays on one row. Tapping the gear expands the header
+     downward into a full-width sheet holding all three fields (JS sets
+     data-open). The threshold is sized for the widest header this design
+     produces: the interstitial's mark + wordmark next to both selects and the
+     theme switch needs about 45rem, so anything narrower gets the gear. */
+  @media (max-width: 48rem) {
+    /* Show the brand mark in the header (before the picker) at this width. On
+       phones (see the hero rules in the content layer) the hero mark is hidden
+       so it doesn't crowd the title. */
     article > header .mark { display: inline-block; }
     .locales::before { display: block; }
     .locales-toggle { display: inline-flex; }
     .locale-fields { display: none; }
     /* The open sheet anchors to the header itself — not the nav — so it spans
-       the full viewport width regardless of where the globe sits. It reads as
+       the full viewport width regardless of where the gear sits. It reads as
        the header extending: same surface, a bottom hairline continuing the
        header's own, and a shadow separating it from the hero underneath. */
     article > header { position: relative; }
-    .locales { position: static; }
+    /* Collapsed, the nav holds only the hairline and the gear; let the header's
+       space-between place it at the far end instead of stretching it. */
+    .locales { position: static; flex: none; }
     .locales[data-open] .locale-fields {
       display: flex;
       flex-direction: column;
@@ -450,6 +459,12 @@
     /* The ID'd width cap on the version select outranks the class rule above;
        lift it here so both fields fill the sheet. */
     .locales[data-open] .locale-fields #version-select { max-inline-size: none; }
+    /* In the stacked sheet the theme field sits under its heading like the
+       selects do; drop the far-right auto margin and give the three buttons
+       comfortable touch targets. */
+    .locales[data-open] .locale-field-theme { margin-inline-start: 0; }
+    .locales[data-open] .theme-switch { gap: var(--space-2xs); }
+    .locales[data-open] .theme-btn { inline-size: 2.6rem; block-size: 2.2rem; }
   }
 }
 
@@ -522,8 +537,11 @@
   .hero h1 { font-size: 1em; color: var(--hero-text); margin: 0; text-wrap: balance; }
   .hero .tagline { font-size: var(--step-1); font-weight: 400; margin-block-start: var(--space-2xs); opacity: 0.95; }
   .hero a { color: var(--hero-text); }
-  /* On phones the brand mark moves up into the header, so drop it from the hero
-     and let the title use the full width, centered like the tagline below it. */
+  /* On phones the header already carries the brand mark (the base-layer
+     collapse rules reveal it below 48rem), so drop it from the hero and let the
+     title use the full width, centered like the tagline below it. Between this
+     width and the collapse threshold both marks show — a small echo, and the
+     hero still has room for its own. */
   @media (max-width: 30rem) {
     .hero-mark { display: none; }
     .hero h1 { text-align: center; }

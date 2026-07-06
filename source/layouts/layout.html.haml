@@ -94,20 +94,13 @@
           %span.mark{ role: "img", "aria-label": "Keep a Changelog" }
           %span.header-title{ "aria-hidden": "true" } Keep a Changelog
         %nav.locales{ role: "navigation" }
-          -# Version + language selectors on every version (issue #719). The shared
-          -# v2 partial is design-agnostic markup; the older designs style the two
-          -# selects in their own stylesheets and drop the narrow-screen toggle,
-          -# which is a v2-only affordance.
-          = partial "partials/locale_nav", locals: { language_code: language_code, current_version: current_version }
-        - if v2_plus
-          %div.theme-switch{ role: "group", "aria-label": "Color theme" }
-            %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
-            %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        - elsif !legacy_version
+          -# Version + language selectors on every version (issue #719), plus the
+          -# theme switch on v2. The shared partial is design-agnostic markup; the
+          -# older designs style the two selects in their own stylesheets and drop
+          -# the narrow-screen toggle and theme switch, which are v2-only
+          -# affordances.
+          = partial "partials/locale_nav", locals: { language_code: language_code, current_version: current_version, theme_switch: v2_plus }
+        - if !v2_plus && !legacy_version
           = image_tag "keep-a-changelog-mark.svg", width: 130, height: 100, class: "mark"
 
       .main#main{ role: "main", tabindex: "-1" }

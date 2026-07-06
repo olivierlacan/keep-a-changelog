@@ -3,12 +3,16 @@
 -# the current page's coordinates explicitly:
 -#   language_code   — the language being viewed (e.g. "fr")
 -#   current_version — the spec version being viewed (e.g. "1.1.0")
+-#   theme_switch    — optional; when true the color-theme buttons render as a
+-#                     third field so every setting lives behind the one gear
+-#                     button on narrow screens. The v2 design passes true; the
+-#                     older designs have no theme switch and omit it.
 -#
 -# Both selectors list the full grid and tag combinations we don't have yet with
 -# a compact "(n/a)" rather than hiding them: a version pick keeps your language
 -# fixed, a language pick keeps your version fixed, and either way an option we
 -# can't satisfy resolves to a generated interstitial that explains the gap.
-%button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "locale-fields", "aria-label": "Show version and language menu", title: "Choose a version or translation" }
+%button.locales-toggle{ type: "button", "aria-expanded": "false", "aria-controls": "locale-fields", "aria-label": "Show settings menu", title: "Settings" }
 
 .locale-fields#locale-fields
   %label.locale-field{ for: "version-select" }
@@ -33,3 +37,19 @@
         - hint = available ? nil : "#{meta[:name]} doesn’t have version #{display_version(current_version)} yet"
         %option{ value: "#{code}/#{current_version}/", selected: (code == language_code), label: label, title: hint, "data-available": available.to_s }
           = label
+
+  - if defined?(theme_switch) && theme_switch
+    -# Theme switch: system (follow OS) / light / dark. A field like the two
+    -# selects so the narrow-screen sheet reveals every setting in one place;
+    -# at wider widths CSS pushes it to the far end of the header. The span is
+    -# the group's accessible name — visually hidden inline, shown as the
+    -# field's heading inside the open sheet.
+    .locale-field.locale-field-theme
+      %span.locales-text#theme-label Theme
+      .theme-switch{ role: "group", "aria-labelledby": "theme-label" }
+        %button.theme-btn{ type: "button", "data-set-theme": "system", "aria-pressed": "true", "aria-label": "Match system theme", title: "System theme" }
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
+        %button.theme-btn{ type: "button", "data-set-theme": "light", "aria-pressed": "false", "aria-label": "Light theme", title: "Light theme" }
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        %button.theme-btn{ type: "button", "data-set-theme": "dark", "aria-pressed": "false", "aria-label": "Dark theme", title: "Dark theme" }
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>

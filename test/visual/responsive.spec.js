@@ -7,9 +7,9 @@ const { test, expect } = require("@playwright/test");
 // every other baseline on the page.
 //
 // The widths straddle every media query in the stylesheets:
-//   v2.css      — 480 (collapsed picker), 600 (version/TOC row), 768 (triptych
-//                 row + open example), 1248 (TOC sidebar), 1440 (triptych
-//                 breakout), 1664 (wide TOC)
+//   v2.css      — 480 (hero mark), 600 (version/TOC row), 768 (collapsed
+//                 settings + triptych row + open example), 1248 (TOC sidebar),
+//                 1440 (triptych breakout), 1664 (wide TOC)
 //   application — 576 / 768 / 992 / 1200 (the sm/md/lg/xl Sass mixins)
 // If a breakpoint is added or moved, add or move a width here to keep one
 // probe inside each regime.
@@ -68,10 +68,9 @@ for (const [slug, path, elements] of PAGES) {
   }
 }
 
-// The narrow-screen picker sheet on v2-styled pages is invisible until
+// The narrow-screen settings sheet on v2-styled pages is invisible until
 // toggled, so the element sweep above never sees it — open it explicitly at
-// the phone width. (The focus ring on the version select is part of the
-// deal: the toggle handler moves focus into the sheet.)
+// the phone width.
 for (const [slug, path] of [["v2", "/en/2.0.0/"], ["interstitial", "/ro/1.0.0/"]]) {
   test(`${slug} locale sheet @ 390px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
