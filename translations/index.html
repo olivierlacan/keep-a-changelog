@@ -1,0 +1,102 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="description" content="Keep a Changelog is available in 28 languages. Find your language and see how current each translation is."> <title>Available translations — Keep a Changelog</title> <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico"> <script>
+  // Honor the theme picked on the spec pages before first paint.
+  (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script> <style>
+  :root {
+    --page:     #f9f9f7;
+    --surface:  #fcfcfb;
+    --ink:      #0b0b0b;
+    --ink-2:    #52514e;
+    --muted:    #898781;
+    --grid:     #e1e0d9;
+    --border:   rgba(11, 11, 11, 0.10);
+    --accent:   #2a78d6;
+    --good:     #006300;
+    --serious:  #a34718;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page:     #0d0d0d;
+      --surface:  #1a1a19;
+      --ink:      #ffffff;
+      --ink-2:    #c3c2b7;
+      --muted:    #898781;
+      --grid:     #2c2c2a;
+      --border:   rgba(255, 255, 255, 0.10);
+      --accent:   #3987e5;
+      --good:     #0ca30c;
+      --serious:  #ec835a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page:     #0d0d0d;
+    --surface:  #1a1a19;
+    --ink:      #ffffff;
+    --ink-2:    #c3c2b7;
+    --muted:    #898781;
+    --grid:     #2c2c2a;
+    --border:   rgba(255, 255, 255, 0.10);
+    --accent:   #3987e5;
+    --good:     #0ca30c;
+    --serious:  #ec835a;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 20px 64px; }
+
+  .crumb { font-size: 14px; margin: 0 0 16px; }
+  .crumb a { color: var(--accent); text-decoration: none; }
+  .crumb a:hover { text-decoration: underline; }
+
+  h1 { font-size: 28px; font-weight: 650; margin: 0 0 6px; }
+  .lede { color: var(--ink-2); margin: 0; max-width: 640px; }
+  .lede a { color: var(--accent); }
+
+  h2 { font-size: 15px; font-weight: 650; margin: 32px 0 4px; }
+  .group-desc { color: var(--ink-2); font-size: 13.5px; margin: 0 0 12px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+  }
+  a.card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  a.card:hover, a.card:focus-visible { border-color: var(--accent); }
+  .card .lname { font-weight: 600; font-size: 16px; }
+  .card .lcode { color: var(--muted); font-size: 12px; margin-left: 6px; }
+  .card .status { display: block; font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+  .dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    margin-right: 5px; vertical-align: 1px;
+  }
+  .dot.current { background: var(--good); }
+  .dot.behind, .dot.partial { background: var(--serious); }
+
+  .draft-note {
+    margin-top: 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .draft-note a { color: var(--accent); }
+
+  footer { color: var(--muted); font-size: 13px; margin-top: 40px; }
+  footer a { color: var(--accent); }
+</style> </head> <body> <main> <p class="crumb"><a href="/">← keepachangelog.com</a></p> <h1>Translations</h1> <p class="lede"> Keep a Changelog is written in <a href="/en/1.1.0/">English</a> and translated by volunteers into 28 languages. 22 translations cover the current version (1.1.0). Want to help? <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md#translations">Contribute a translation</a>, or dig into the <a href="/translations/progress/">detailed progress dashboard</a>. </p> <h2>Up to date — version 1.1.0 (22)</h2> <p class="group-desc">Fully translated to the current version of the spec.</p> <div class="grid"> <a class="card" href="/cs/1.1.0/" hreflang="cs"> <span class="lname" lang="cs" dir="auto">Čeština</span><span class="lcode">cs</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/da/1.1.0/" hreflang="da"> <span class="lname" lang="da" dir="auto">Dansk</span><span class="lcode">da</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/de/1.1.0/" hreflang="de"> <span class="lname" lang="de" dir="auto">Deutsch</span><span class="lcode">de</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/es-ES/1.1.0/" hreflang="es-ES"> <span class="lname" lang="es-ES" dir="auto">Español</span><span class="lcode">es-ES</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/fa/1.1.0/" hreflang="fa"> <span class="lname" lang="fa" dir="auto">فارسی</span><span class="lcode">fa</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/fr/1.1.0/" hreflang="fr"> <span class="lname" lang="fr" dir="auto">Français</span><span class="lcode">fr</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/id/1.1.0/" hreflang="id"> <span class="lname" lang="id" dir="auto">Indonesia</span><span class="lcode">id</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/it-IT/1.1.0/" hreflang="it-IT"> <span class="lname" lang="it-IT" dir="auto">Italiano</span><span class="lcode">it-IT</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/ja/1.1.0/" hreflang="ja"> <span class="lname" lang="ja" dir="auto">日本語</span><span class="lcode">ja</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/ko/1.1.0/" hreflang="ko"> <span class="lname" lang="ko" dir="auto">한국어</span><span class="lcode">ko</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/nb/1.1.0/" hreflang="nb"> <span class="lname" lang="nb" dir="auto">Norsk (Bokmål)</span><span class="lcode">nb</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/nl/1.1.0/" hreflang="nl"> <span class="lname" lang="nl" dir="auto">Nederlands</span><span class="lcode">nl</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/pl/1.1.0/" hreflang="pl"> <span class="lname" lang="pl" dir="auto">polski</span><span class="lcode">pl</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/pt-BR/1.1.0/" hreflang="pt-BR"> <span class="lname" lang="pt-BR" dir="auto">Português (BR)</span><span class="lcode">pt-BR</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/ro/1.1.0/" hreflang="ro"> <span class="lname" lang="ro" dir="auto">română</span><span class="lcode">ro</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/ru/1.1.0/" hreflang="ru"> <span class="lname" lang="ru" dir="auto">Pyccкий</span><span class="lcode">ru</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/sl/1.1.0/" hreflang="sl"> <span class="lname" lang="sl" dir="auto">Slovenščina</span><span class="lcode">sl</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/sv/1.1.0/" hreflang="sv"> <span class="lname" lang="sv" dir="auto">Svenska</span><span class="lcode">sv</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/tr-TR/1.1.0/" hreflang="tr-TR"> <span class="lname" lang="tr-TR" dir="auto">Türkçe</span><span class="lcode">tr-TR</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/uk/1.1.0/" hreflang="uk"> <span class="lname" lang="uk" dir="auto">Українська</span><span class="lcode">uk</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/zh-CN/1.1.0/" hreflang="zh-CN"> <span class="lname" lang="zh-CN" dir="auto">简体中文</span><span class="lcode">zh-CN</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> <a class="card" href="/zh-TW/1.1.0/" hreflang="zh-TW"> <span class="lname" lang="zh-TW" dir="auto">正體中文</span><span class="lcode">zh-TW</span> <span class="status"><span class="dot current" aria-hidden="true"></span>Up to date · 1.1.0</span> </a> </div> <h2>Older version available (6)</h2> <p class="group-desc"> These translations exist but haven't caught up with 1.1.0 yet — a great place to <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md#translations">lend a hand</a>. </p> <div class="grid"> <a class="card" href="/ar/1.0.0/" hreflang="ar"> <span class="lname" lang="ar" dir="auto">العربية</span><span class="lcode">ar</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> <a class="card" href="/hr/1.0.0/" hreflang="hr"> <span class="lname" lang="hr" dir="auto">Hrvatski</span><span class="lcode">hr</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> <a class="card" href="/id-ID/1.0.0/" hreflang="id-ID"> <span class="lname" lang="id-ID" dir="auto">Indonesia</span><span class="lcode">id-ID</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> <a class="card" href="/ka/1.0.0/" hreflang="ka"> <span class="lname" lang="ka" dir="auto">ქართული</span><span class="lcode">ka</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> <a class="card" href="/sk/1.0.0/" hreflang="sk"> <span class="lname" lang="sk" dir="auto">Slovenčina</span><span class="lcode">sk</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> <a class="card" href="/sr/1.0.0/" hreflang="sr"> <span class="lname" lang="sr" dir="auto">Srpski</span><span class="lcode">sr</span> <span class="status"> <span class="dot behind" aria-hidden="true"></span> Newest translation: 1.0.0 </span> </a> </div> <p class="draft-note"> <strong>2.0.0 is being written</strong> — the next version of the spec is drafted in <a href="/en/2.0.0/">English</a> first, then translated. Translations haven't started yet; follow along on the <a href="/translations/progress/">progress dashboard</a>. </p> <footer> This page is regenerated from the source tree on every site build. See <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/TRANSLATION_COVERAGE.md">TRANSLATION_COVERAGE.md</a> for the analysis tooling behind it. </footer> </main> </body> </html>
