@@ -325,14 +325,14 @@ helpers do
   end
 
   # The release date for a version, read from CHANGELOG.md (e.g. the line
-  # "## [2.0.0] - 2026-06-07"). Returns the ISO date string, or nil if the
+  # "## [2.0.0] - 2026-08-24"). Returns the ISO date string, or nil if the
   # version has no dated entry yet.
   def changelog_date_for(version)
     match = File.read("CHANGELOG.md").match(/^##\s*\[#{Regexp.escape(version)}\]\s*-\s*(\d{4}-\d{2}-\d{2})/)
     match && match[1]
   end
 
-  # Human-friendly date with an ordinal day: "2026-06-07" -> "June 7th, 2026".
+  # Human-friendly date with an ordinal day: "2026-08-24" -> "August 24th, 2026".
   # The ISO string stays available for the <time datetime> attribute and title.
   def human_date(iso)
     require "date"
