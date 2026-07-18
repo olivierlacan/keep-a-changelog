@@ -6,7 +6,8 @@ require "rubygems" # Gem::Version
 # unit-tested without booting Middleman. It answers one question for each entry
 # point: which spec version does a visitor land on?
 #
-#   - last_version          the published "latest" (preview promotes the v2 draft)
+#   - last_version          the published "latest" (preview promotes a newer draft,
+#                           when one exists)
 #   - published_version_for the per-language default redirect target (never a draft)
 #   - exposed_version_for   the newest version offered in the version selector
 #   - landing_decision      the client-side "/" and "/en/" redirect — a Ruby mirror
@@ -14,19 +15,21 @@ require "rubygems" # Gem::Version
 #                           source/en/index.html.erb, kept in sync so the preview
 #                           routing can be characterized in a fast test
 #
-# Keeping these here means the "2.0.0 must not become the default until it is
-# released" contract is asserted in CI, not just trusted to live config.
+# Keeping these here means the routing contract — 2.0.0 is released and is the
+# default everywhere — is asserted in CI, not just trusted to live config.
 module VersionRouting
   module_function
 
-  # 2.0.0 is written and built on every run but stays unpublished — 1.1.0 remains
-  # latest — until release. The KAC_PREVIEW_V2 flag promotes the draft to latest.
-  PUBLISHED_VERSION = "1.1.0"
+  # 2.0.0 was released on 2026-08-24 and is the published latest. No newer draft
+  # is in preview right now, so PREVIEW_VERSION equals PUBLISHED_VERSION and the
+  # KAC_PREVIEW_V2 flag is a no-op; when the next draft starts, bump
+  # PREVIEW_VERSION and the preview machinery comes back to life unchanged.
+  PUBLISHED_VERSION = "2.0.0"
   PREVIEW_VERSION = "2.0.0"
 
-  # The published "latest" version. A truthy preview flag promotes the draft.
-  # Mirrors config.rb's `ENV["KAC_PREVIEW_V2"] ? "2.0.0" : "1.1.0"`, so an empty
-  # string still counts as "on" (Ruby truthiness), matching the env-var behavior.
+  # The published "latest" version. A truthy preview flag promotes the draft,
+  # when one exists. An empty string still counts as "on" (Ruby truthiness),
+  # matching how config.rb passes the raw env var.
   def last_version(preview:)
     preview ? PREVIEW_VERSION : PUBLISHED_VERSION
   end

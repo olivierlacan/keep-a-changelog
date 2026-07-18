@@ -23,13 +23,12 @@ require_relative "translation_coverage"
 $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # $last_version = $versions.last
 
-# Published "latest" version. 2.0.0 is written and built on every run, but stays
-# unpublished — 1.1.0 remains latest — until release. Set the KAC_PREVIEW_V2 flag
-# to promote 2.0.0 to latest for a preview: it flips the "/" and per-language
-# redirects, the default selector version, and the "newer version available"
-# notices to 2.0.0, without changing the default production build. For example:
-#   KAC_PREVIEW_V2=1 bundle exec middleman serve
-# To go live, drop the flag and set $last_version = "2.0.0" outright.
+# Published "latest" version. 2.0.0 is released and is the default everywhere:
+# the "/" and per-language redirects, the default selector version, and the
+# "newer version available" notices all derive from it. The KAC_PREVIEW_V2
+# mechanism stays wired but is a no-op until a newer draft exists (see
+# tools/version_routing.rb); when one does, the flag promotes it to latest
+# locally, e.g.: KAC_PREVIEW_V2=1 bundle exec middleman serve
 $last_version = VersionRouting.last_version(preview: ENV["KAC_PREVIEW_V2"])
 $previous_version = $versions[$versions.index($last_version) - 1]
 

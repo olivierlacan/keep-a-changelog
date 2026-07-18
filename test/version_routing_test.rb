@@ -1,23 +1,23 @@
 require "minitest/autorun"
 require_relative "../tools/version_routing"
 
-# Routing tests for issue #720 ("Default-link to version 2"). They pin the
-# contract that 2.0.0 is built and previewable but never the default until it is
-# released, and they reproduce the one path that does surface 2.0.0 without a
-# ?preview param: a visitor who opted into the preview earlier (it persists).
+# Routing tests originally written for issue #720 ("Default-link to version 2").
+# Before release they pinned the contract that 2.0.0 was previewable but never
+# the default; since the 2.0.0 release they pin the inverse: 2.0.0 is the
+# default everywhere, with or without a preview flag or ?preview param.
 class VersionRoutingLastVersionTest < Minitest::Test
-  def test_default_is_the_published_version_not_the_draft
-    # No preview flag (the production build): "latest" stays 1.1.0, never 2.0.0.
-    assert_equal "1.1.0", VersionRouting.last_version(preview: nil)
-    assert_equal "1.1.0", VersionRouting.last_version(preview: false)
+  def test_default_is_the_released_version
+    # No preview flag (the production build): "latest" is the released 2.0.0.
+    assert_equal "2.0.0", VersionRouting.last_version(preview: nil)
+    assert_equal "2.0.0", VersionRouting.last_version(preview: false)
   end
 
-  def test_preview_flag_promotes_the_draft
+  def test_preview_flag_is_a_no_op_while_no_newer_draft_exists
+    # PREVIEW_VERSION equals PUBLISHED_VERSION between draft cycles, so the
+    # flag changes nothing. When the next draft starts, PREVIEW_VERSION is
+    # bumped and these expectations diverge again.
     assert_equal "2.0.0", VersionRouting.last_version(preview: "1")
     assert_equal "2.0.0", VersionRouting.last_version(preview: true)
-  end
-
-  def test_empty_string_flag_counts_as_on_like_an_env_var
     # ENV["KAC_PREVIEW_V2"]="" is truthy in Ruby; config.rb relies on that.
     assert_equal "2.0.0", VersionRouting.last_version(preview: "")
   end
