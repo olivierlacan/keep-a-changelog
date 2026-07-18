@@ -2,7 +2,7 @@
 
 [![Keep a Changelog v2.0.0 badge][changelog-badge]][changelog] [![Version 2.0.0 Badge][version-badge]][changelog] [![MIT License Badge][license-badge]][license]
 
-Don’t let your friends dump git logs into changelogs™
+Clearly document the evolution of your projects.
 
 This repository generates https://keepachangelog.com/.
 

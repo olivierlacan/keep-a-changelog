@@ -178,7 +178,7 @@ activate :i18n,
   lang_map: $languages,
   mount_at_root: :en
 
-set :gauges_id, ""
+set :fathom_site_id, ""
 set :publisher_url, "https://www.facebook.com/olivier.lacan.5"
 set :site_url, "https://keepachangelog.com"
 
@@ -415,7 +415,9 @@ end
 # ----- Optimization ----- #
 
 configure :build do
-  set :gauges_id, "5389808eeddd5b055a00440d"
+  # Fathom replaced Gauges for analytics. Set the production Fathom site ID
+  # here to enable it; with no ID, the built site loads no analytics at all.
+  set :fathom_site_id, ""
   activate :asset_hash
   activate :gzip, {exts: %w[
     .css

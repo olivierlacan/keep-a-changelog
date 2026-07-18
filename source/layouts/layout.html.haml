@@ -149,16 +149,5 @@
           != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
           != "It is available in #{link_to "#{$language_count} languages", '/translations/'} thanks to volunteer translators."
 
-  - unless config.gauges_id.blank?
-    :javascript
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '#{config.gauges_id}');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
+  - unless config.fathom_site_id.blank?
+    %script{src: "https://cdn.usefathom.com/script.js", "data-site" => config.fathom_site_id, defer: true}

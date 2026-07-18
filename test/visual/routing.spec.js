@@ -1,18 +1,19 @@
 const { test, expect } = require("@playwright/test");
 
-// Routing tests for issue #720 ("Default-link to version 2"). They drive the
-// real built landing pages — the client-side redirect in source/index.html.erb
-// and source/en/index.html.erb plus the static per-language redirects — and pin
-// when a visitor lands on the unreleased 2.0.0 draft versus the published 1.1.0.
+// Routing tests originally written for issue #720 ("Default-link to version
+// 2"). Before release they pinned the contract that 2.0.0 was previewable but
+// never the default; since the 2.0.0 release they pin the inverse: every entry
+// point lands on 2.0.0, with or without a ?preview param, with or without
+// JavaScript. The ?preview param stays recognized but is a no-op while no
+// newer draft exists, so links shared before the release keep working.
 //
 // These complement test/version_routing_test.rb: that unit-tests a Ruby mirror
 // of the decision; this exercises the shipped JavaScript and localStorage.
 
-const PUBLISHED = /\/en\/1\.1\.0\/$/;
-const PREVIEW = /\/en\/2\.0\.0\/$/;
+const PUBLISHED = /\/en\/2\.0\.0\/$/;
 
 // Land on `path`, then wait for the JS-replace / meta-refresh redirect to settle
-// on a versioned spec page (e.g. /en/1.1.0/ or /de/1.1.0/) and return that URL.
+// on a versioned spec page (e.g. /en/2.0.0/ or /de/1.1.0/) and return that URL.
 async function landed(page, path) {
   // "commit" (not "load"): the landing page calls location.replace during load,
   // which aborts a load-waiting goto. Then poll the URL until the redirect lands
@@ -26,47 +27,39 @@ async function landed(page, path) {
 test.describe("landing redirect (/)", () => {
   test.use({ storageState: { cookies: [], origins: [] } }); // start with empty storage
 
-  test("with no preview param, defaults to the published version", async ({ page }) => {
+  test("with no preview param, defaults to the released 2.0.0", async ({ page }) => {
     expect(await landed(page, "/")).toMatch(PUBLISHED);
   });
 
-  test("/en/ also defaults to the published version", async ({ page }) => {
+  test("/en/ also defaults to the released 2.0.0", async ({ page }) => {
     expect(await landed(page, "/en/")).toMatch(PUBLISHED);
   });
 
-  test("?preview=v2 opts into the 2.0.0 draft", async ({ page }) => {
-    expect(await landed(page, "/?preview=v2")).toMatch(PREVIEW);
+  test("?preview=v2 still lands on 2.0.0 (pre-release links keep working)", async ({ page }) => {
+    expect(await landed(page, "/?preview=v2")).toMatch(PUBLISHED);
   });
 
-  // The heart of issue #720: opting into the preview persists, so a later bare
-  // visit with no param still lands on 2.0.0. That is "2.0.0 is the default even
-  // without ?preview" — by design (localStorage), but reproduced here explicitly.
-  test("a remembered preview makes 2.0.0 the default on the next bare visit", async ({ page }) => {
-    expect(await landed(page, "/?preview=v2")).toMatch(PREVIEW);
-    expect(await landed(page, "/")).toMatch(PREVIEW); // no param, yet still 2.0.0
-  });
-
-  test("?preview=off clears the memory and returns to the published version", async ({ page }) => {
-    expect(await landed(page, "/?preview=v2")).toMatch(PREVIEW);
+  test("?preview=off no longer opts out of the released version", async ({ page }) => {
+    expect(await landed(page, "/?preview=v2")).toMatch(PUBLISHED);
     expect(await landed(page, "/?preview=off")).toMatch(PUBLISHED);
-    expect(await landed(page, "/")).toMatch(PUBLISHED); // memory cleared
+    expect(await landed(page, "/")).toMatch(PUBLISHED);
   });
 });
 
 test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
-  // The meta-refresh fallback must always send no-JS visitors to the published
-  // version, never the draft — even the PREVIEW constant is JS-only.
-  test("falls back to the published version via meta refresh", async ({ page }) => {
-    expect(await landed(page, "/?preview=v2")).toMatch(PUBLISHED);
+  // The meta-refresh fallback sends no-JS visitors to the published version,
+  // which is now 2.0.0.
+  test("falls back to the released 2.0.0 via meta refresh", async ({ page }) => {
+    expect(await landed(page, "/")).toMatch(PUBLISHED);
   });
 });
 
 test.describe("per-language static redirects", () => {
-  // A partially translated language has no 2.0.0 draft, so its bare path must
-  // redirect to its newest published spec — capped at the published version.
-  test("/de/ redirects to the newest published German spec", async ({ page }) => {
+  // A language without a 2.0.0 translation must redirect to its newest
+  // translated spec, never to a page that does not exist in that language.
+  test("/de/ redirects to the newest translated German spec", async ({ page }) => {
     expect(await landed(page, "/de/")).toMatch(/\/de\/1\.1\.0\/$/);
   });
 });
