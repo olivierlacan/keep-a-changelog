@@ -160,6 +160,12 @@ title: Available translations — Keep a Changelog
   </p>
 
   <h2>Up to date — version <%= published %> (<%= current.size %>)</h2>
+  <% if current.empty? %>
+  <p class="group-desc">
+    No translation covers <%= published %> yet. Every language below is a
+    chance to <a href="https://github.com/olivierlacan/keep-a-changelog/blob/main/CONTRIBUTING.md#translations">contribute the first one</a>.
+  </p>
+  <% else %>
   <p class="group-desc">Fully translated to the current version of the spec.</p>
   <div class="grid">
     <% current.each do |e| %>
@@ -169,6 +175,7 @@ title: Available translations — Keep a Changelog
     </a>
     <% end %>
   </div>
+  <% end %>
 
   <% unless outdated.empty? %>
   <h2>Older version available (<%= outdated.size %>)</h2>

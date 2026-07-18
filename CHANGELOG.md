@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Older spec pages no longer display an example changelog written to newer
   conventions than the page describes: each page's example is now pinned to
   its own version's last release, derived at build time from this file.
+- The translations overview no longer shows an empty "up to date" grid when
+  no translation covers the newly published version yet; it invites readers
+  to contribute the first one instead.
 
 ## [2.0.0] - 2026-08-24
 
