@@ -139,7 +139,7 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 
 When you release a version, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
-You can also announce a release before it ships. When changes are slated for a planned version, it is fine to gather them under a dated heading ahead of time, using the date you plan to release. Telling readers what is coming, and when, is part of communicating change. If the date slips, correct it when the release actually ships. `Unreleased` remains the place for changes not yet slated for any release.
+You can also announce a release before it ships. Once changes are slated for a planned version — gathered on a release branch, staged in a merge request, or simply decided — it is fine to move them under their own version heading ahead of time. Telling readers what is coming, and when, is part of communicating change. Use the planned date if you have one, and correct it if it slips. If you only know the version, mark the release as pending in the date's place — `## [2.0.0] - Unknown`, or a similar marker — so no reader mistakes it for a shipped release, and stamp the real date when it ships. The marker matters less than the practice: stage the release information where readers will find it. `Unreleased` remains the place for changes not yet slated for any release.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
