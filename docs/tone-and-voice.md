@@ -45,6 +45,10 @@ translate, easy to apply, and easy to trust.
    clarity, never aimed at one person, and never the kind of joke or reference
    that rewards insiders and leaves everyone else out. This is the voice 2.0 moves
    toward, away from the older, jokier tone.
+9. **Contractions are the default.** Write _it's_, _don't_, _haven't_ — the page
+   should read the way a person talks. Spell out _it is_ only when the longer form
+   carries weight: to contradict or correct a point the page just raised (_"That
+   is tedious, and it is not the goal"_).
 
 ## Do / don't
 
@@ -58,6 +62,7 @@ translate, easy to apply, and easy to trust.
 | "if your project leans on coding agents"                           | "if your project uses coding agents"         |
 | phrasal-verb idioms (bolt on, call out, chase down)                | plain verbs (add, highlight, find)           |
 | "if conflicts get tedious"                                         | "if conflict becomes tedious"
+| "it is fine to move them under their own heading"                  | "it's fine to move them under their own heading" |
 
 ## Quick test before publishing a sentence
 

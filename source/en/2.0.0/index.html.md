@@ -123,7 +123,7 @@ An added benefit follows from writing these plainly. Because the names are consi
 
 ### Structuring a release {#releasing}
 
-Keep an `Unreleased` section at the top to collect changes you have not yet slated for a release. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
+Keep an `Unreleased` section at the top to collect changes you haven't yet assigned to a release. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
 
 A version starts with its number and date, for example `## [1.0.0] - 2017-07-17`. Use the `YYYY-MM-DD` format. It orders from the largest unit to the smallest, avoids the confusion of regional date formats, and is an [ISO standard][iso-8601].
 
@@ -139,7 +139,7 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 
 When you release a version, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
-You can also announce a release before it ships. Once changes are slated for a planned version — gathered on a release branch, staged in a merge request, or simply decided — it is fine to move them under their own version heading ahead of time. Telling readers what is coming, and when, is part of communicating change. Use the planned date if you have one, and correct it if it slips. If you only know the version, mark the release as pending in the date's place — `## [2.0.0] - Unknown`, or a similar marker — so no reader mistakes it for a shipped release, and stamp the real date when it ships. The marker matters less than the practice: stage the release information where readers will find it. `Unreleased` remains the place for changes not yet slated for any release.
+You can also announce a release before you release it. When changes are assigned to a planned version, on a release branch or in an open merge request, it's fine to move them under their own version heading early. Telling readers what's coming, and when, is part of communicating change. Use the planned date if you have one, and correct it if the plan changes. If you only know the version, put a pending marker where the date would go, such as `## [2.0.0] - Unknown`, so readers can see the version isn't released yet. Replace the marker with the real date when you release. The marker matters less than the practice: put the release information where readers will find it. `Unreleased` remains the place for changes not yet assigned to any release.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
@@ -192,7 +192,7 @@ A few habits make a changelog less useful.
 
 Do not use a list of commits as a changelog. It is full of noise: merge commits, unclear messages, internal changes. A commit records a step in the source code. A changelog entry records a notable difference, often across several commits, written for the people who use the software.
 
-> A "git log" is the list of commits in a [git][git] repository. We mention git because it is the most common [version control system][vcs], but this applies to any of them: a raw commit history is not a changelog.
+> A "git log" is the list of commits in a [git][git] repository. We mention git because it's the most common [version control system][vcs], but this applies to any of them: a raw commit history is not a changelog.
 
 ### Ignoring deprecations {#ignoring-deprecations}
 
@@ -200,7 +200,7 @@ When someone upgrades, it should be clear what will break. Announce a deprecatio
 
 ### Inconsistent changes {#inconsistent-changes}
 
-A changelog that records only some changes can mislead as much as no changelog. Readers treat it as the full picture. Leave out trivial changes, but include every notable one. A changelog is only trustworthy if it is kept up to date consistently.
+A changelog that records only some changes can mislead as much as no changelog. Readers treat it as the full picture. Leave out trivial changes, but include every notable one. A changelog is only trustworthy if it's kept up to date consistently.
 
 ## Changelogs, automation, and LLMs {#automation}
 
@@ -252,7 +252,7 @@ It depends on whether the repository holds one product or many. Unrelated projec
 
 ### Should I link to issues or pull requests? {#linking}
 
-You can, and it is sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one host, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
+You can, and it's sometimes helpful. Keep two things in mind: links break when a repository moves, and pull request numbers belong to one host, not to your code. Git tags and commit references stay with the repository. Link when it helps, prefer plain prose over a list of bare `(#1234)` references, and use portable references when you want a pointer that will still work later. Collect these as reference-style links at the bottom of the file, the way the version comparisons are, so the prose stays readable and every pointer lives in one place you control.
 
 ### Should you credit contributors? {#credits}
 
@@ -277,7 +277,7 @@ None of this is fixed; it is open to discussion. But additions to a widely used 
 
 ### How can I contribute? {#contribute}
 
-Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you have ideas or need help.
+Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it's still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you have ideas or need help.
 
 ## References {#references}
 
