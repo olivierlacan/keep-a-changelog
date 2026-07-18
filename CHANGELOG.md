@@ -50,7 +50,8 @@ are marked below.
     where upgrade steps belong; naming which part of the project an entry
     touches; choosing between Changed, Fixed, and Security; leading a Security
     entry with its CVE and pointing it to the full advisory; why the six change
-    types don't grow, and a recommended order for them.
+    types don't grow, and a recommended order for them; announcing a planned
+    release with a dated heading before it ships.
   - Versioning: schemes beyond SemVer, and linking each version to a `compare`
     diff with reference links.
   - Changelogs vs. release notes: how to derive one from the other without
