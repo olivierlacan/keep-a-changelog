@@ -206,6 +206,12 @@ You can improve a changelog after a release. A project may forget an entry, or d
 
 A single file is usually fine, even a long one; many projects keep decades of history in one `CHANGELOG.md`. If it becomes hard to manage, you can move old history into separate files, but link the main file and the archives both ways, or readers will not find the older entries. Archive only versions old enough that they will not need editing, and do not delete old entries: someone may still upgrade from an old version.
 
+### How do I avoid changelog merge conflicts? {#merge-conflicts}
+
+A shared `Unreleased` section is convenient, but it may lead to merge conflicts when branches are frequently merged. While keeping entries short and on the same branch as changes can help, when conflicts are frequent you can tell your version control system to retain conflicting lines with a union merge (e.g. `merge=union` in `.gitattributes` file).
+
+Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does adds complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
+
 ### What about monorepos? {#monorepos}
 
 It depends on whether the repository holds one product or many. Unrelated projects that share a repository each keep their own changelog. A single product made of many parts (say, a framework split into separate libraries) can keep a changelog per component, but should also keep one central changelog. Readers should not have to read a dozen component changelogs to understand what a release means. The per-component changelogs are the detailed record; the central one is the summary.
