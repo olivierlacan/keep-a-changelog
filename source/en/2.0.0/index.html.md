@@ -208,13 +208,9 @@ A single file is usually fine, even a long one; many projects keep decades of hi
 
 ### How do I avoid changelog merge conflicts? {#merge-conflicts}
 
-A shared `Unreleased` section is easy to keep, but it has one rough edge: when several branches add entries in the same place, they conflict when you merge them. For most projects this is rare and quick to fix by hand. Two habits make it rarer: keep each entry short, and add it in the same branch that makes the change, so the entry travels with the work.
+A shared `Unreleased` section is convenient, but it may lead to merge conflicts when branches are frequently merged. While keeping entries short and on the same branch as changes can help, when conflicts are frequent you can tell your version control system to retain conflicting lines with a union merge (e.g. `merge=union` in `.gitattributes` file).
 
-When conflicts get tedious, you can tell version control to keep both sides instead of stopping. In git, set a union merge for the changelog file (a `merge=union` line in a `.gitattributes` file), and two branches that each append an entry both survive the merge. This handles the common case — new lines added in the same spot — with no extra process.
-
-Higher-volume projects sometimes go further and keep each unreleased entry in its own file, in a directory such as `changelog.d/`. A branch adds a file instead of editing a shared section, so two branches never touch the same lines and cannot conflict. At release time the files are collected into a dated version in `CHANGELOG.md` and removed, usually by a small tool. Treat this as a scaling choice, not a default: it solves a real problem for projects with many parallel contributions, and adds friction to projects without them. Start with a shared `Unreleased` section and short entries, add a union merge if conflicts get tedious, and move to per-change files only when the volume clearly calls for it.
-
-Whichever you choose, remember that merging a branch is not the same as releasing. Several changes can land under `Unreleased` before anyone prepares a version, and what gathers there is not always one release: a maintainer may split it into several, or hold it, depending on what the changes are. Keep the entries under `Unreleased` as they merge, and decide the version boundaries later, when you cut the release.
+Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does adds complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
 
 ### What about monorepos? {#monorepos}
 
