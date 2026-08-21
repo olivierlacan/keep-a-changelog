@@ -57,6 +57,7 @@ translate, easy to apply, and easy to trust.
 | "a happy side effect of writing clearly"                           | "a benefit of writing clearly"               |
 | "if your project leans on coding agents"                           | "if your project uses coding agents"         |
 | phrasal-verb idioms (bolt on, call out, chase down)                | plain verbs (add, highlight, find)           |
+| "if conflicts get tedious"                                         | "if conflict becomes tedious"
 
 ## Quick test before publishing a sentence
 
