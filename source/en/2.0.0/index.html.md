@@ -113,9 +113,9 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 [1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
 ```
 
-`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has changed since the last release. The oldest version links to its tag, since there is nothing earlier to compare it with. Every version is then tied to its tag and links to the exact diff of what changed. Any host exposes tag and comparison URLs, so this works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
 
-When you cut a release, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
+When you release a version, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
@@ -150,13 +150,13 @@ Stating the conventions you follow tells readers, and tools, what to expect. The
 
 ### Is a changelog the same as release notes? {#release-notes}
 
-No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published when that version ships. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.
+No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published at release time. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.
 
 This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable `## [x.y.z]` heading, a small script can extract that section and create the release without anyone retyping it.
 
-A host will offer to do this for you. See that offer for what it is. Their release systems attach notes to a tag, notify watchers, and collect build files; often even generating the notes (from merged pull requests or commit messages). But everything is stored in the host's database, not your repository. These releases don't travel with the repository and follow you to another host: the convenience is the hook. Meanwhile, your changelog goes where your code goes; what a host generates and keeps for you does not, and you lose it the day you leave.
+A host will offer to do this for you. Its release system attaches notes to a tag, notifies watchers, collects build files, and can even generate the notes from merged pull requests or commit messages. But the result lives in the host's database, not your repository. Those notes do not travel with the code, so if you move to another host, they do not come with you. Your changelog does, because it is a file in the repository.
 
-You can treat a generated draft as a starting point, but keep `CHANGELOG.md` as the canonical record. You can then generate host-specific release posts from it. A changelog file brings the same information these systems present, except it reads offline. You still benefit from the host's reach (notifications, a visible page, attached downloads) without entirely depending on it to hold your project's history.
+You can treat a generated draft as a starting point, but keep `CHANGELOG.md` as the canonical record and generate host-specific release posts from it. That way you still get the host's reach (notifications, a visible page, attached downloads), and the full history stays in a file you control and can read offline.
 
 ## What makes a changelog worse? {#bad-practices}
 
@@ -218,7 +218,7 @@ A single file is usually fine, even a long one; many projects keep decades of hi
 
 A shared `Unreleased` section is convenient, but it may lead to merge conflicts when branches are frequently merged. While keeping entries short and on the same branch as changes can help, when conflicts are frequent you can tell your version control system to retain conflicting lines with a union merge (e.g. `merge=union` in `.gitattributes` file).
 
-Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does adds complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
+Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does add complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
 
 ### What about monorepos? {#monorepos}
 
