@@ -54,7 +54,9 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 - `Fixed` for bug fixes.
 - `Added` for new features.
 
-These sections are ordered by urgency, most pressing first. What a reader must act on (security fixes, removals, and breaking changes) comes before what is optional, such as new features. Keep this order in every release, and omit any section with no entries, so readers always know where to look. Within a section, order entries whichever way helps your readers most.
+The sections above are listed in order of urgency, most pressing first. Readers skim a changelog to find what affects them, and not every release has every type. An order that leads with new features can leave a security fix or a removal far down the list, where someone upgrading might miss it. Ordering by urgency puts what a reader must act on (a vulnerability, a removed or changed feature) above what is only good to know (a new feature or a minor fix).
+
+Keep this order in every release so readers always know where to look, and omit any section with no entries. The order is a recommendation, not a rule; if you prefer a different one, keep it consistent for the same reason. Within a section, order entries whichever way helps your readers most.
 
 Usually the right type is clear. Three of them cause the most questions:
 
