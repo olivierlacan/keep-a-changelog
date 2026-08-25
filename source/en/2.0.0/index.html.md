@@ -54,6 +54,8 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 - `Fixed` for bug fixes.
 - `Security` for vulnerabilities.
 
+Keep these sections in the same order in every release, so readers always know where to look; not every release has every type. The order they are listed above is a sensible default, and the one the examples use. Within a section, order entries whichever way helps your readers most.
+
 Usually the right type is clear. Three of them cause the most questions:
 
 - `Fixed`: the behavior was wrong, and is now correct.
