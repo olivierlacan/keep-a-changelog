@@ -166,19 +166,21 @@ version: 1.1.0
     #{link_to "ISO standard", data.links.isodate}, are why it is the recommended date
     format for changelog entries.
 
-  %h4#inconsistent-changes
-    %a.anchor{ href: "#inconsistent-changes", aria_hidden: "true" }
-    Inconsistent Changes
+  %h4#inconsistent-updates
+    %a.anchor{ href: "#inconsistent-updates", aria_hidden: "true" }
+    Inconsistent Updates
 
   %p
-    A changelog which only mentions some of the changes can be as dangerous
-    as not having a changelog. While many of the changes may not be
-    relevant - for instance, removing a single whitespace may not need
-    to be recorded in all instances - any important changes should be
-    mentioned in the changelog. By inconsistently applying changes,
-    your users may mistakenly think that the changelog is the single source
-    of truth. It ought to be. With great power comes great responsibility -
-    having a good changelog means having a consistently updated changelog.
+    You might decide that some tiny changes aren't worth a place in the
+    changelog - for example, if you remove a single whitespace from a rarely
+    seen error message. On the other hand, if none of your users cares about
+    that fix, then why did you make it? And if any user cares, we'd argue that
+    the change belongs to the changelog - maybe wrapped in a generic
+    entry such as: "Fix error message typos".
+    
+    Some of your users may see the changelog as an authoritative source of
+    truth. With authority comes responsibility: a good changelog is
+    consistently updated.
 
   %aside
     There’s more. Help me collect these antipatterns by
