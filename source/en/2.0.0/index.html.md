@@ -47,14 +47,14 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 
 ### Types of changes {#types}
 
-- `Added` for new features.
+- `Security` for vulnerabilities.
+- `Removed` for now removed features.
 - `Changed` for changes in existing functionality.
 - `Deprecated` for soon-to-be removed features.
-- `Removed` for now removed features.
 - `Fixed` for bug fixes.
-- `Security` for vulnerabilities.
+- `Added` for new features.
 
-Keep these sections in the same order in every release, so readers always know where to look; not every release has every type. The order they are listed above is a sensible default, and the one the examples use. Within a section, order entries whichever way helps your readers most.
+These sections are ordered by urgency, most pressing first. What a reader must act on (security fixes, removals, and breaking changes) comes before what is optional, such as new features. Keep this order in every release, and omit any section with no entries, so readers always know where to look. Within a section, order entries whichever way helps your readers most.
 
 Usually the right type is clear. Three of them cause the most questions:
 

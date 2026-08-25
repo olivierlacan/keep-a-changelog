@@ -23,6 +23,25 @@ section links no longer resolve, the recommended guidance has shifted, and
 existing translations are out of date until they catch up. The breaking changes
 are marked below.
 
+### Removed
+
+- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
+  discoverability note) in favor of more general guidance.
+- **Breaking:** The FAQ scaffolding and most first-person framing, whose section
+  anchors no longer resolve; the podcast note now lives in the References section.
+
+### Changed
+
+- **Breaking:** Retired the tagline "Don't let your friends dump git logs into
+  changelogs" for "Clearly document the evolution of your projects." Earlier
+  versions keep the original.
+- **Breaking:** Restructured the page from a flat FAQ into integrated guidance,
+  in a plainer, less first-person voice. Some older section links no longer resolve.
+- Reframed the "GitHub Releases" answer as "Is a changelog the same as release
+  notes?", broadened beyond GitHub to any host.
+- Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
+  so shared links render correctly and language-appropriately.
+
 ### Added
 
 - New guidance answering long-standing community questions:
@@ -41,25 +60,6 @@ are marked below.
   - Optional per-release summaries, and a statement of what Keep a Changelog
     deliberately won't do.
 - A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
-
-### Changed
-
-- **Breaking:** Retired the tagline "Don't let your friends dump git logs into
-  changelogs" for "Clearly document the evolution of your projects." Earlier
-  versions keep the original.
-- **Breaking:** Restructured the page from a flat FAQ into integrated guidance,
-  in a plainer, less first-person voice. Some older section links no longer resolve.
-- Reframed the "GitHub Releases" answer as "Is a changelog the same as release
-  notes?", broadened beyond GitHub to any host.
-- Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
-  so shared links render correctly and language-appropriately.
-
-### Removed
-
-- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
-  discoverability note) in favor of more general guidance.
-- **Breaking:** The FAQ scaffolding and most first-person framing, whose section
-  anchors no longer resolve; the podcast note now lives in the References section.
 
 ## [1.1.2] - 2024-09-27
 
