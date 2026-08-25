@@ -72,6 +72,10 @@ When a `Security` entry has a CVE identifier, lead with it so readers and securi
 - CVE-2024-12345: out-of-bounds read when parsing malformed input.
 ```
 
+A Security entry is a short, human-readable summary, not the full advisory. Keep it brief and link to the advisory (a CVE record, a security database entry, or your own security page) where readers and tools can find the affected versions, severity, and fix.
+
+Some projects also have formal ways they must disclose vulnerabilities (a security advisory database, or rules for certain products). A changelog does not replace those; publish the advisory where it belongs and point to it.
+
 <aside markdown="1">
 There are only six types on purpose. What kind of change it is goes in the type; why it matters goes in the wording of the entry, not in a new type.
 </aside>
