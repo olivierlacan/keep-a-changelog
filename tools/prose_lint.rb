@@ -7,10 +7,11 @@
 # link machinery, and reports two severities:
 #
 #   :error  high-confidence tone or house-style breaks that should fail CI
-#           (em/en dashes, "ship" where "release" is meant, gatekeeping words
-#           the guide bans, a handful of idioms it calls out by name)
+#           ("ship" where "release" is meant, gatekeeping words the guide bans,
+#           a handful of idioms it calls out by name)
 #   :warn   context-dependent smells worth a human glance but not a build
-#           failure on their own (a bare "just", a very long sentence)
+#           failure on their own (a bare "just", a very long sentence, several
+#           em-dashes piled into one sentence as bracketed asides)
 #
 # Scope is the 2.0+ Markdown pages (source/en/*/index.html.md). The older HAML
 # pages keep the earlier, jokier voice on purpose (they are pinned to their era),
@@ -30,15 +31,17 @@ module ProseLint
   # warning means something when it does fire.
   LONG_SENTENCE_WORDS = 45
 
+  # Em-dashes are welcome for a genuine break. What reads poorly is piling
+  # several into one sentence as bracketed asides, where a colon, commas, or
+  # parentheses would be cleaner, so warn only past this many in one sentence.
+  # A lone em-dash never fires.
+  EM_DASH = "—"
+  MAX_EM_DASHES_PER_SENTENCE = 1
+
   # Each rule: a matcher, a severity, a short id, and a hint naming the fix. The
   # matchers are case-insensitive and word-bounded so "relationship" never trips
   # the "ship" rule. Order is report order.
   RULES = [
-    # --- House style: the 2.0 page uses no em/en dashes (commas, colons, or
-    # parentheses instead), so a stray one is almost always a paste artifact. ---
-    { id: "em-dash", severity: :error, re: /[—–]/,
-      hint: "no em/en dashes on the page; use a comma, colon, or parentheses" },
-
     # --- Gatekeeping (guide principle 2): words that tell a reader they should
     # already understand. "just" is the same family but too common to fail on,
     # so it is a warning below. ---
@@ -122,6 +125,14 @@ module ProseLint
           match: "#{words} words", hint: truncate(sentence)
         )
       end
+
+      dash_heavy_sentences(prose).each do |count|
+        findings << Finding.new(
+          line: lineno, severity: :warn, rule: "em-dash-aside",
+          match: "#{count} em-dashes",
+          hint: "several em-dashes in one sentence; a colon, commas, or parentheses may read cleaner"
+        )
+      end
     end
 
     findings
@@ -149,6 +160,16 @@ module ProseLint
       next if sentence.count(";") >= 2 # a list, not a run-on
       words = sentence.split(/\s+/).count { |w| w =~ /[[:alpha:]]/ }
       [sentence, words] if words > LONG_SENTENCE_WORDS
+    end
+  end
+
+  # Sentences leaning on em-dashes as bracketed asides. A lone em-dash is fine;
+  # two or more in one sentence is the excessive apposition a colon or commas
+  # usually replace. Returns the em-dash count for each offending sentence.
+  def dash_heavy_sentences(prose)
+    prose.split(/(?<=[.!?])\s+/).filter_map do |sentence|
+      count = sentence.count(EM_DASH)
+      count if count > MAX_EM_DASHES_PER_SENTENCE
     end
   end
 

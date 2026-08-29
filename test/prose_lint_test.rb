@@ -26,10 +26,22 @@ class ProseLintTest < Minitest::Test
     assert_empty errors("The relationship between commits and entries.")
   end
 
-  def test_flags_named_idioms_and_house_style
+  def test_flags_named_idioms
     assert_includes ids("When you cut a release, rename it."), "idiom"
     assert_includes ids("Check that the file is well-formed."), "well-formed"
-    assert_includes ids("This is a break — a real one."), "em-dash"
+  end
+
+  def test_a_lone_em_dash_is_allowed_but_several_in_a_sentence_warn
+    # A single em-dash is a legitimate break, not a finding.
+    assert_empty ProseLint.lint("This is a break — a real one.")
+    # Two or more in one sentence read as a bracketed aside a colon or commas
+    # would replace: warn, never error.
+    findings = ProseLint.lint("The tool — a small script — runs fine.")
+    assert(findings.any? { |f| f.rule == "em-dash-aside" && f.severity == :warn })
+    assert_empty findings.select { |f| f.severity == :error }
+    # The aside count is measured per sentence, so one dash each in two
+    # sentences stays clean.
+    assert_empty ProseLint.lint("One break — here. Another break — there.")
   end
 
   def test_just_is_a_warning_not_an_error
