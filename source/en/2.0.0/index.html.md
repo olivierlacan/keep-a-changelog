@@ -99,6 +99,21 @@ Say what breaks. The word means little until readers know which interface you ke
 
 A short upgrade note can sit in the entry itself, such as "rename the `color` option to `theme`." When the steps are substantial, link to them (a migration guide or the release notes) rather than spelling them out here. A long procedure buries what changed and turns a scannable record into a how-to: a different kind of document, for a narrower audience. Keep the `**Breaking:**` marker on the entry itself, within its type, rather than collecting breaks into a separate section, so anyone scanning `Changed` or `Removed` sees them in place.
 
+### Naming the part it touches {#areas}
+
+In a project with distinct parts (a command line and a library, a handful of modules, the areas of an app), an entry can say which part it changed by opening with the part's name and a colon:
+
+```
+- CLI: `brcat` alias for decoding concatenated streams.
+- Parser: recover from a truncated final chunk instead of raising.
+```
+
+This is prose, not a new kind of change. The name reads as the start of the sentence, and it groups entries by area for anyone scanning: the same job the six types do by kind, on a second axis you define. Keep it a lead-in within the type, never a new `### CLI` heading. The six types are what every reader and tool can rely on, and a per-area heading fragments them. It pairs naturally with the per-component record a larger project already keeps.
+
+Keep the names few, consistent, and drawn from words your readers know. A name is worth adding when it tells the reader something the entry does not already; skip it when the change is plainly about one thing. Like the `**Breaking:**` marker, this is an option, not a requirement.
+
+An added benefit follows from writing these plainly. Because the names are consistent, a short script can group the changelog by area as easily as by version. It is the same "the changelog is the source" idea behind release notes, extended from one part of the history to one part of the product.
+
 ### Structuring a release {#releasing}
 
 Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
