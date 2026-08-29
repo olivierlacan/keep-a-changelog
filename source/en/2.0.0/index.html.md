@@ -163,6 +163,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Stating the conventions you follow tells readers, and tools, what to expect. The first link declares the format; the second names your versioning scheme (Semantic Versioning here, but reference whichever you use). Pin the Keep a Changelog link to the version you follow, so it stays accurate as this page changes.
 
+Adopting a newer version of this format does not mean rewriting your history. Leave past entries as they are, apply the new conventions from your next release onward, and update the version in the link to match. Noting the switch in that release helps readers, for example a short summary line saying the changelog now follows Keep a Changelog 2.0.0. A changelog spans years and more than one version of these conventions, and old entries stay valid, so there is no need to redo them.
+
 ### Is a changelog the same as release notes? {#release-notes}
 
 No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published at release time. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.

@@ -45,7 +45,8 @@ are marked below.
 ### Added
 
 - New guidance answering long-standing community questions:
-  - Format: the `# Changelog` header preamble; marking breaking changes and
+  - Format: the `# Changelog` header preamble, and adopting a newer version of
+    the format without rewriting history; marking breaking changes and
     where upgrade steps belong; naming which part of the project an entry
     touches; choosing between Changed, Fixed, and Security; leading a Security
     entry with its CVE and pointing it to the full advisory; why the six change
