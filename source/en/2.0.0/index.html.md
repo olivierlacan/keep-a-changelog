@@ -101,18 +101,25 @@ A short upgrade note can sit in the entry itself, such as "rename the `color` op
 
 ### Naming the part it touches {#areas}
 
-In a project with distinct parts (a command line and a library, a handful of modules, the areas of an app), an entry can say which part it changed by opening with the part's name and a colon:
+In a project with distinct parts or features, an entry can specify which was impacted on a change entry:
 
 ```
-- CLI: `brcat` alias for decoding concatenated streams.
-- Parser: recover from a truncated final chunk instead of raising.
+- CLI: `brcat` alias for decoding streams.
+- Parser: recover from a missing final chunk instead of raising.
 ```
 
-This is prose, not a new kind of change. The name reads as the start of the sentence, and it groups entries by area for anyone scanning: the same job the six types do by kind, on a second axis you define. Keep it a lead-in within the type, never a new `### CLI` heading. The six types are what every reader and tool can rely on, and a per-area heading fragments them. It pairs naturally with the per-component record a larger project already keeps.
+Similarly to change types they can group entries by area of focus. They shouldn't be used at at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
 
-Keep the names few, consistent, and drawn from words your readers know. A name is worth adding when it tells the reader something the entry does not already; skip it when the change is plainly about one thing. Like the `**Breaking:**` marker, this is an option, not a requirement.
+```
+### Added
+#### CLI
+- New `--verbose` flag for detailed output
+- New `--dry-run` flag that won't execute commands
+```
 
-An added benefit follows from writing these plainly. Because the names are consistent, a short script can group the changelog by area as easily as by version. It is the same "the changelog is the source" idea behind release notes, extended from one part of the history to one part of the product.
+Try to limit those areas and to be consistent. A name is worth adding when it tells readers something the entry doesn't; skip it when the change is plainly about one thing. Like the `**Breaking:**` marker, this is an option, not a requirement.
+
+An added benefit follows from writing these plainly. Because the names are consistent, a short script can group the changelog by area. As with release notes, the changelog remains the source, but in this case focused on the history of one area.
 
 ### Structuring a release {#releasing}
 
