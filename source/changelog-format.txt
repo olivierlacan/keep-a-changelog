@@ -1,0 +1,83 @@
+# Keep a Changelog Format Guide
+
+A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project. This guide outlines the standardized format promoted by Keep a Changelog.
+
+## Core Principles
+
+1. Changelogs are for humans, not machines
+2. Every version must have its own entry
+3. Group similar changes together
+4. Versions and sections should be linkable
+5. Latest version comes first
+6. Release dates must be displayed
+7. Follow Semantic Versioning
+
+## Standard Format
+
+```markdown
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/),
+and this project adheres to [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+### Added
+- New features
+
+### Changed
+- Changes in existing functionality
+
+## [1.0.0] - YYYY-MM-DD
+
+### Added
+- Initial release features
+
+[unreleased]: https://example.com/compare/v1.0.0...HEAD
+[1.0.0]: https://example.com/releases/tag/v1.0.0
+```
+
+## Change Types
+
+Changes must be grouped under these standardized headings:
+
+- `Added`: New features
+- `Changed`: Changes in existing functionality
+- `Deprecated`: Soon-to-be removed features
+- `Removed`: Removed features
+- `Fixed`: Bug fixes
+- `Security`: Vulnerability fixes
+
+## Best Practices
+
+1. Maintain an "Unreleased" section at the top for upcoming changes
+2. Use ISO 8601 format for dates (YYYY-MM-DD)
+3. Mention whether you follow Semantic Versioning
+4. Include reference links at the bottom for version comparisons
+5. Mark yanked releases with [YANKED] tag
+6. Keep entries clear, relevant, and human-readable
+7. Document all important changes consistently
+
+## File Conventions
+
+- Name the file `CHANGELOG.md`
+- Place it in the root directory of your project
+- Use Markdown format for better readability
+- Keep one file per project
+
+## Common Mistakes to Avoid
+
+1. Using git commit logs as changelogs
+2. Not documenting deprecations
+3. Using ambiguous dates
+4. Including only selective changes
+5. Mixing multiple types of changes under one heading
+
+## Integration with Tools
+
+1. GitHub Releases can be used alongside CHANGELOG.md
+2. Automatic parsing is possible but challenging due to format variations
+3. Various tools exist to help maintain changelog format compliance
+
+Remember: A good changelog helps users and contributors understand what meaningful changes have been made between each release of your project.
