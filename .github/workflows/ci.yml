@@ -41,6 +41,11 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
+      - name: Lint prose
+        # Enforces docs/tone-and-voice.md on every English spec page. Dependency
+        # free, so it runs before the build and fails fast on a tone slip.
+        run: ruby tools/prose_lint.rb
+
       - name: Run tests
         run: bin/rake test
 

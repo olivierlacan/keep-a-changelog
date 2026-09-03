@@ -47,6 +47,13 @@ namespace :translations do
   end
 end
 
+namespace :prose do
+  desc "Lint the English spec prose against docs/tone-and-voice.md"
+  task :lint do
+    sh "ruby tools/prose_lint.rb"
+  end
+end
+
 namespace :snapshots do
   desc "Build, then record cross-browser baseline screenshots (run before migrating)"
   task baseline: :build do

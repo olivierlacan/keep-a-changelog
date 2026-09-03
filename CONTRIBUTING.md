@@ -25,6 +25,9 @@ and submit changes. For the principles behind how the project is built, see
 - `bin/rake build` runs middleman build with `--verbose` flag so build errors are
   logged for easier debugging
 - `bin/rake test` runs the Minitest suite (also the default task)
+- `bin/rake prose:lint` checks the English spec prose against
+  [docs/tone-and-voice.md](docs/tone-and-voice.md); it also runs in CI. Add
+  `<!-- prose-lint-ignore -->` to a line to skip a deliberate exception.
 - `bundle exec standardrb` checks Ruby style ([Standard][standard])
 
 ### Visual regression tests

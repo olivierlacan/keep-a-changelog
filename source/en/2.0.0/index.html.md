@@ -47,12 +47,16 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 
 ### Types of changes {#types}
 
-- `Added` for new features.
+- `Security` for vulnerabilities.
+- `Removed` for now removed features.
 - `Changed` for changes in existing functionality.
 - `Deprecated` for soon-to-be removed features.
-- `Removed` for now removed features.
 - `Fixed` for bug fixes.
-- `Security` for vulnerabilities.
+- `Added` for new features.
+
+Changelog sections are listed in order of urgency since readers often skim a changelog to find what affects them. Starting with new features might make it harder to notice security fixes or important removals. Ordering by urgency puts what a reader must act on above what is only good to know.
+
+If you prefer a different order for sections, try to keep it consistent across releases so readers know where to look. Omit any section with no entries instead of cluttering your changelog with empty sections. Within a section, order entries based on what's most useful to readers.
 
 Usually the right type is clear. Three of them cause the most questions:
 
@@ -67,6 +71,10 @@ When a `Security` entry has a CVE identifier, lead with it so readers and securi
 ```
 - CVE-2024-12345: out-of-bounds read when parsing malformed input.
 ```
+
+A Security entry is a short, human-readable summary, not the full advisory. Keep it brief and link to the advisory (a CVE record, a security database entry, or your own security page) where readers and tools can find the affected versions, severity, and fix.
+
+Some projects also have formal ways they must disclose vulnerabilities (a security advisory database, or rules for certain products). A changelog does not replace those; publish the advisory where it belongs and point to it.
 
 <aside markdown="1">
 There are only six types on purpose. What kind of change it is goes in the type; why it matters goes in the wording of the entry, not in a new type.
@@ -91,6 +99,28 @@ Say what breaks. The word means little until readers know which interface you ke
 
 A short upgrade note can sit in the entry itself, such as "rename the `color` option to `theme`." When the steps are substantial, link to them (a migration guide or the release notes) rather than spelling them out here. A long procedure buries what changed and turns a scannable record into a how-to: a different kind of document, for a narrower audience. Keep the `**Breaking:**` marker on the entry itself, within its type, rather than collecting breaks into a separate section, so anyone scanning `Changed` or `Removed` sees them in place.
 
+### Naming the part it touches {#areas}
+
+In a project with distinct parts or features, an entry can specify which was impacted on a change entry:
+
+```
+- CLI: `brcat` alias for decoding streams.
+- Parser: recover from a missing final chunk instead of raising.
+```
+
+Similarly to change types they can group entries by area of focus. They shouldn't be used at at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
+
+```
+### Added
+#### CLI
+- New `--verbose` flag for detailed output
+- New `--dry-run` flag that won't execute commands
+```
+
+Try to limit those areas and to be consistent. A name is worth adding when it tells readers something the entry doesn't; skip it when the change is plainly about one thing. Like the `**Breaking:**` marker, this is an option, not a requirement.
+
+An added benefit follows from writing these plainly. Because the names are consistent, a short script can group the changelog by area. As with release notes, the changelog remains the source, but in this case focused on the history of one area.
+
 ### Structuring a release {#releasing}
 
 Keep an `Unreleased` section at the top to collect upcoming changes. It shows readers what to expect, and at release time you move its contents into a new version. Starting on a project that has no changelog? Begin here, recording notable changes from now on. Reconstructing past releases from your version history is also worthwhile if you want a fuller record; either is fine.
@@ -105,9 +135,9 @@ The square brackets around `[1.0.0]` make it a Markdown reference link. Resolve 
 [1.0.0]: https://github.com/your/project/releases/tag/v1.0.0
 ```
 
-`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has accrued since the last release, and the oldest version links to its tag, since there is nothing earlier to compare it with. Now every version is tied to its tag and links to the exact diff of what changed: the same association a hosted release page makes for you, kept in a file you own instead of a host's database. Any host exposes tag and comparison URLs, so the pattern works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
+`[Unreleased]` compares the latest tag to `HEAD` (the current state of your code), so it always shows what has changed since the last release. The oldest version links to its tag, since there is nothing earlier to compare it with. Every version is then tied to its tag and links to the exact diff of what changed. Any host exposes tag and comparison URLs, so this works wherever your code lives, and the link stays out of the heading, so the changelog still reads cleanly.
 
-When you cut a release, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
+When you release a version, rename `Unreleased` to the new version in both the heading and its link, then add a fresh, empty `Unreleased` section pointing at `HEAD`.
 
 A version may open with a short summary before the typed sections: a sentence or two on the theme of the release or a notable change. This is optional. Use it when a release is worth introducing, and skip it otherwise.
 
@@ -140,15 +170,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Stating the conventions you follow tells readers, and tools, what to expect. The first link declares the format; the second names your versioning scheme (Semantic Versioning here, but reference whichever you use). Pin the Keep a Changelog link to the version you follow, so it stays accurate as this page changes.
 
+Adopting a newer version of this format does not mean rewriting your history. Leave past entries as they are, apply the new conventions from your next release onward, and update the version in the link to match. Noting the switch in that release helps readers, for example a short summary line saying the changelog now follows Keep a Changelog 2.0.0. A changelog spans years and more than one version of these conventions, and old entries stay valid, so there is no need to redo them.
+
 ### Is a changelog the same as release notes? {#release-notes}
 
-No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published when that version ships. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.
+No, although they draw from the same material. A changelog is the complete, ongoing record: every notable change, across every version, kept in one file in the repository and written plainly for anyone. Release notes are an announcement for a single release: a curated selection of its headline changes, often with upgrade steps and a marketing voice, published at release time. The changelog is the source; release notes are drawn from it and shaped for the announcement. Keep the changelog as the record, and write the release notes from it rather than maintaining two.
 
 This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable `## [x.y.z]` heading, a small script can extract that section and create the release without anyone retyping it.
 
-A host will offer to do this for you. See that offer for what it is. Their release systems attach notes to a tag, notify watchers, and collect build files; often even generating the notes (from merged pull requests or commit messages). But everything is stored in the host's database, not your repository. These releases don't travel with the repository and follow you to another host: the convenience is the hook. Meanwhile, your changelog goes where your code goes; what a host generates and keeps for you does not, and you lose it the day you leave.
+A host will offer to do this for you. Its release system attaches notes to a tag, notifies watchers, collects build files, and can even generate the notes from merged pull requests or commit messages. But the result lives in the host's database, not your repository. Those notes do not travel with the code, so if you move to another host, they do not come with you. Your changelog does, because it is a file in the repository.
 
-You can treat a generated draft as a starting point, but keep `CHANGELOG.md` as the canonical record. You can then generate host-specific release posts from it. A changelog file brings the same information these systems present, except it reads offline. You still benefit from the host's reach (notifications, a visible page, attached downloads) without entirely depending on it to hold your project's history.
+You can treat a generated draft as a starting point, but keep `CHANGELOG.md` as the canonical record and generate host-specific release posts from it. That way you still get the host's reach (notifications, a visible page, attached downloads), and the full history stays in a file you control and can read offline.
 
 ## What makes a changelog worse? {#bad-practices}
 
@@ -210,7 +242,7 @@ A single file is usually fine, even a long one; many projects keep decades of hi
 
 A shared `Unreleased` section is convenient, but it may lead to merge conflicts when branches are frequently merged. While keeping entries short and on the same branch as changes can help, when conflicts are frequent you can tell your version control system to retain conflicting lines with a union merge (e.g. `merge=union` in `.gitattributes` file).
 
-Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does adds complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
+Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does add complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
 
 ### What about monorepos? {#monorepos}
 

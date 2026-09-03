@@ -23,23 +23,12 @@ section links no longer resolve, the recommended guidance has shifted, and
 existing translations are out of date until they catch up. The breaking changes
 are marked below.
 
-### Added
+### Removed
 
-- New guidance answering long-standing community questions:
-  - Format: the `# Changelog` header preamble; marking breaking changes and
-    where upgrade steps belong; choosing between Changed, Fixed, and Security;
-    leading a Security entry with its CVE; why the six change types don't grow.
-  - Versioning: schemes beyond SemVer, and linking each version to a `compare`
-    diff with reference links.
-  - Changelogs vs. release notes: how to derive one from the other without
-    duplicate work, and why a host's generated notes are vendor lock-in.
-  - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`;
-    Conventional Commits; CI/CD; linking issues and pull requests; crediting
-    contributors.
-  - Scale: very large changelogs and monorepos.
-  - Optional per-release summaries, and a statement of what Keep a Changelog
-    deliberately won't do.
-- A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
+- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
+  discoverability note) in favor of more general guidance.
+- **Breaking:** The FAQ scaffolding and most first-person framing, whose section
+  anchors no longer resolve; the podcast note now lives in the References section.
 
 ### Changed
 
@@ -53,12 +42,26 @@ are marked below.
 - Set page titles and descriptions from frontmatter, and fixed OpenGraph metadata
   so shared links render correctly and language-appropriately.
 
-### Removed
+### Added
 
-- Outdated specifics (the Vandamme gem reference and a GitHub-Releases
-  discoverability note) in favor of more general guidance.
-- **Breaking:** The FAQ scaffolding and most first-person framing, whose section
-  anchors no longer resolve; the podcast note now lives in the References section.
+- New guidance answering long-standing community questions:
+  - Format: the `# Changelog` header preamble, and adopting a newer version of
+    the format without rewriting history; marking breaking changes and
+    where upgrade steps belong; naming which part of the project an entry
+    touches; choosing between Changed, Fixed, and Security; leading a Security
+    entry with its CVE and pointing it to the full advisory; why the six change
+    types don't grow, and a recommended order for them.
+  - Versioning: schemes beyond SemVer, and linking each version to a `compare`
+    diff with reference links.
+  - Changelogs vs. release notes: how to derive one from the other without
+    duplicate work, and why a host's generated notes are vendor lock-in.
+  - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`;
+    Conventional Commits; CI/CD; linking issues and pull requests; crediting
+    contributors.
+  - Scale: very large changelogs and monorepos.
+  - Optional per-release summaries, and a statement of what Keep a Changelog
+    deliberately won't do.
+- A redesigned, accessible site (WCAG 2.1 AA) with light and dark themes.
 
 ## [1.1.2] - 2024-09-27
 
