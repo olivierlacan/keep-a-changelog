@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   no translation covers the newly published version yet; it invites readers
   to contribute the first one instead.
 
-## [2.0.0] - 2026-08-24
+## [2.0.0] - 2026-09-07
 
 2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance,
 not the format: the six change types, `YYYY-MM-DD` dates, and the `Unreleased`

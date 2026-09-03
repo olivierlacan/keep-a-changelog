@@ -20,7 +20,7 @@ require "rubygems" # Gem::Version
 module VersionRouting
   module_function
 
-  # 2.0.0 was released on 2026-08-24 and is the published latest. No newer draft
+  # 2.0.0 was released on 2026-09-07 and is the published latest. No newer draft
   # is in preview right now, so PREVIEW_VERSION equals PUBLISHED_VERSION and the
   # KAC_PREVIEW_V2 flag is a no-op; when the next draft starts, bump
   # PREVIEW_VERSION and the preview machinery comes back to life unchanged.
