@@ -9,7 +9,10 @@
 #
 #   ruby tools/changelog_release.rb create [--dry-run]
 #       Create a release for every dated version that doesn't have one yet.
-#       Idempotent: skips versions whose release already exists.
+#       Idempotent: skips versions whose release already exists. A version
+#       dated after today is a pre-announced release (the changelog may name a
+#       planned date before it ships); it is reported as scheduled and left
+#       alone until that date arrives.
 #
 #   ruby tools/changelog_release.rb sync [--dry-run]
 #       Create every missing release (as above), then reconcile the body of
@@ -25,6 +28,7 @@
 # All GitHub/git access goes through GitHubCli, which is injected into Runner so
 # the orchestration can be tested against a fake without touching the network.
 
+require "date"
 require "open3"
 require "tempfile"
 
@@ -38,15 +42,17 @@ module ChangelogRelease
     end
   end
 
-  # One line of the dry-run plan. +action+ is :create, :update, or :unchanged;
-  # +details+ holds the new notes (:create) or a unified diff (:update).
+  # One line of the dry-run plan. +action+ is :create, :update, :unchanged, or
+  # :scheduled (dated after today, so not created yet); +details+ holds the new
+  # notes (:create) or a unified diff (:update).
   PlanItem = Struct.new(:tag, :date, :action, :details, keyword_init: true)
 
   # Human-readable labels for each plan action, used in the summary table.
   ACTION_LABELS = {
     create: "🆕 create",
     update: "✏️ update",
-    unchanged: "✓ unchanged"
+    unchanged: "✓ unchanged",
+    scheduled: "⏳ scheduled"
   }.freeze
 
   # A dated version heading, e.g. "## [1.1.0] - 2019-02-15" — skips
@@ -190,6 +196,12 @@ module ChangelogRelease
     items.each { |item| lines << "| `#{item.tag}` | #{item.date} | #{ACTION_LABELS.fetch(item.action)} |" }
 
     actionable = items.select { |item| %i[create update].include?(item.action) }
+    scheduled = items.select { |item| item.action == :scheduled }
+    scheduled.each do |item|
+      lines << ""
+      lines << "_`#{item.tag}` is dated #{item.date}, which is after today. Run this workflow again on or after that date to create it._"
+    end
+
     if actionable.empty?
       lines << ""
       lines << "_Nothing to create or update — every release already matches the changelog._"
@@ -270,20 +282,28 @@ module ChangelogRelease
 
   # Orchestrates create/sync/plan against an injected +github+ adapter.
   class Runner
-    def initialize(entries, github:, logger: $stderr)
+    # +today+ decides which dated versions are releasable: an entry dated after
+    # it is a pre-announced release and is left alone until that date.
+    def initialize(entries, github:, logger: $stderr, today: Date.today)
       @entries = entries
       @github = github
       @logger = logger
+      @today = today
     end
 
     # Create a release for every dated version that doesn't have one yet, oldest
-    # first so the timeline is built in order. Existing releases are left alone.
-    # Tags are created (dated to the changelog entry) only when missing. Returns
-    # the tags it created.
+    # first so the timeline is built in order. Existing releases are left alone,
+    # and so are versions dated after today. Tags are created (dated to the
+    # changelog entry) only when missing. Returns the tags it created.
     def create_missing(sha:)
       @entries.reverse_each.each_with_object([]) do |entry, created|
         if @github.release_exists?(entry.tag)
           log "#{entry.tag} already exists — skipping."
+          next
+        end
+
+        if scheduled?(entry)
+          log "#{entry.tag} is dated #{entry.date}, after today — skipping until then."
           next
         end
 
@@ -316,9 +336,10 @@ module ChangelogRelease
     end
 
     # Compute, without making any changes, what create/sync would do. Every
-    # missing release is planned as a create. +mode+ :sync additionally reconciles
-    # existing releases (so they show as :update or :unchanged); :create leaves
-    # existing releases untouched (always :unchanged). Returns an array of PlanItem.
+    # missing release is planned as a create, unless it is dated after today
+    # (:scheduled). +mode+ :sync additionally reconciles existing releases (so
+    # they show as :update or :unchanged); :create leaves existing releases
+    # untouched (always :unchanged). Returns an array of PlanItem.
     def plan(mode:)
       reconcile = mode == :sync
       @entries.map { |entry| plan_for(entry, reconcile: reconcile) }
@@ -328,7 +349,8 @@ module ChangelogRelease
 
     def plan_for(entry, reconcile:)
       unless @github.release_exists?(entry.tag)
-        return PlanItem.new(tag: entry.tag, date: entry.date, action: :create, details: entry.notes)
+        action = scheduled?(entry) ? :scheduled : :create
+        return PlanItem.new(tag: entry.tag, date: entry.date, action: action, details: entry.notes)
       end
 
       return PlanItem.new(tag: entry.tag, date: entry.date, action: :unchanged) unless reconcile
@@ -340,6 +362,11 @@ module ChangelogRelease
         PlanItem.new(tag: entry.tag, date: entry.date, action: :update,
           details: ChangelogRelease.unified_diff(current, entry.notes))
       end
+    end
+
+    # A version whose changelog date hasn't arrived yet.
+    def scheduled?(entry)
+      Date.parse(entry.date) > @today
     end
 
     def log(message)

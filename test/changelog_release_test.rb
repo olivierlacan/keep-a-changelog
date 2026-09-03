@@ -204,6 +204,75 @@ class ChangelogReleaseCreateTest < Minitest::Test
   end
 end
 
+# A changelog that pre-announces a release under a date that hasn't arrived.
+SCHEDULED_FIXTURE = <<~MARKDOWN
+  # Changelog
+
+  ## [Unreleased]
+
+  ## [2.0.0] - 2026-09-07
+
+  ### Changed
+
+  - Everything, carefully.
+
+  ## [1.1.0] - 2019-02-15
+
+  ### Added
+
+  - Italian translation.
+MARKDOWN
+
+class ChangelogReleaseScheduledTest < Minitest::Test
+  def setup
+    @entries = ChangelogRelease.parse(SCHEDULED_FIXTURE)
+    @log = StringIO.new
+  end
+
+  def runner(github, today:)
+    ChangelogRelease::Runner.new(@entries, github: github, logger: @log, today: today)
+  end
+
+  def test_create_skips_a_version_dated_after_today
+    github = FakeGitHub.new
+    created = runner(github, today: Date.new(2026, 9, 3)).create_missing(sha: "abc123")
+
+    assert_equal ["v1.1.0"], created
+    refute_includes github.tags, "v2.0.0"
+    assert_includes @log.string, "v2.0.0 is dated 2026-09-07, after today"
+  end
+
+  def test_create_releases_a_version_on_its_date
+    github = FakeGitHub.new(releases: {"v1.1.0" => "whatever"})
+    created = runner(github, today: Date.new(2026, 9, 7)).create_missing(sha: "abc123")
+
+    assert_equal ["v2.0.0"], created
+    assert_includes github.tags, "v2.0.0"
+  end
+
+  def test_plan_marks_a_future_version_scheduled_and_reports_no_changes
+    github = FakeGitHub.new(releases: {"v1.1.0" => @entries.last.notes})
+    items = runner(github, today: Date.new(2026, 9, 3)).plan(mode: :create)
+    by_tag = items.to_h { |item| [item.tag, item] }
+
+    assert_equal :scheduled, by_tag["v2.0.0"].action
+    assert_equal :unchanged, by_tag["v1.1.0"].action
+    refute ChangelogRelease.changes?(items)
+
+    markdown = ChangelogRelease.format_plan(items, sync: false)
+    assert_includes markdown, "| `v2.0.0` | 2026-09-07 | ⏳ scheduled |"
+    assert_includes markdown, "after today"
+  end
+
+  def test_plan_creates_a_future_version_once_its_date_arrives
+    github = FakeGitHub.new(releases: {"v1.1.0" => @entries.last.notes})
+    items = runner(github, today: Date.new(2026, 9, 7)).plan(mode: :create)
+
+    assert_equal :create, items.first.action
+    assert ChangelogRelease.changes?(items)
+  end
+end
+
 class ChangelogReleaseSyncTest < Minitest::Test
   def setup
     @entries = ChangelogRelease.parse(CHANGELOG_FIXTURE)

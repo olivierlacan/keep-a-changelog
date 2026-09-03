@@ -14,6 +14,10 @@ name: Release from changelog
 #              and update the releases, or reject to cancel. Only runs when the
 #              plan found changes.
 #
+# A version dated after today (a release announced in the changelog before it
+# ships) is listed in the plan as "scheduled" and not created. Run the workflow
+# again on or after that date to create it.
+#
 # Modes:
 #   create (default): create a release for every dated version that's missing one.
 #   sync (manual opt-in): also reconcile the body of every existing release
