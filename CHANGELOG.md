@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- The 2.0 page prints, and saves as a PDF, as a plain single-column document:
+  black on white in either theme, without the pickers or the page navigation,
+  and with the example changelog and code blocks shown in full instead of
+  cut off.
+
 ### Fixed
 
 - Older spec pages no longer display an example changelog written to newer

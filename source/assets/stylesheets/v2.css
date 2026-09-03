@@ -1055,3 +1055,166 @@
      box is too narrow, e.g. on phones — otherwise it overflows and scrolls. */
   .missing-contribute h2 { font-size: var(--step-1); }
 }
+
+/* ------------------------------------------------------------------ print */
+/* Paper (and "save as PDF") gets a plain document: one column across the page,
+   black on white, and nothing you cannot use in print. These rules sit outside
+   every @layer on purpose — unlayered declarations beat layered ones, so the
+   screen design is overridden here without a single !important. */
+@media print {
+  @page { margin: 18mm 20mm; }
+
+  /* Black on white whatever the theme is set to, and a type scale in points
+     rather than the screen's viewport-relative one. */
+  :root,
+  :root[data-theme="light"],
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --bg: #fff;
+    --surface: #fff;
+    --text: #000;
+    --muted: #000;
+    --link: #000;
+    --rule: #999;
+    --code-bg: #fff;
+    --code-text: #000;
+    --hero-bg: #fff;
+    --hero-text: #000;
+    --accent: #000;
+    --ocre: #000;
+    --gold: #000;
+    --focus: #000;
+
+    --step--1: 9.5pt;
+    --step-0: 11pt;
+    --step-1: 13pt;
+    --step-2: 16pt;
+    --step-3: 22pt;
+
+    --space-xl: 2rem;
+    --space-2xl: 2rem;
+  }
+  html, body { background: #fff; color: #000; }
+  body { font-size: var(--step-0); }
+
+  /* Chrome with no meaning on paper: the pickers and theme switch, the skip
+     link, the table of contents (page numbers would be wrong anyway), the
+     hover-only heading anchors, and the brand marks. */
+  .skip-link,
+  .locales,
+  .toc,
+  .heading-anchor,
+  .hero-mark,
+  .header-title,
+  article > header .mark,
+  .footer .mark,
+  .footer .badge { display: none; }
+
+  /* What's left in the header is the "newer version available" notice, which is
+     worth printing. With everything else hidden the bar itself collapses. */
+  article > header {
+    display: block;
+    padding: 0;
+    background: none;
+    border-block-end: 0;
+  }
+  .newer,
+  .last-version-notice { margin-block-end: var(--space-s); font-size: var(--step--1); }
+
+  /* Nothing sticks or floats on paper. */
+  :root.header-stuck article { padding-block-start: 0; }
+  :root.header-stuck article > header {
+    position: static;
+    box-shadow: none;
+    animation: none;
+  }
+
+  /* The hero becomes a plain title block: no orange band, no contour pattern
+     (which would print as a grey wash), text ranged left like the body. */
+  .hero {
+    background: none;
+    color: var(--text);
+    padding: 0 0 var(--space-m);
+    text-align: start;
+  }
+  .hero-lockup { justify-content: flex-start; }
+  .hero h1 { font-size: var(--step-3); }
+  .hero .tagline { font-size: var(--step-1); opacity: 1; }
+
+  /* The example changelog is the page's centerpiece, so print all of it: no
+     scroll box, no height cap, and open even when the narrow-screen disclosure
+     left it collapsed. It is far taller than a page, so it must be free to
+     break across pages. */
+  .hero .changelog-figure { max-inline-size: none; margin-inline: 0; }
+  .hero .changelog-example > summary { display: none; }
+  .hero .changelog-example > .changelog { display: block; }
+  .hero .changelog-example::details-content { content-visibility: visible; }
+  .hero .changelog {
+    max-block-size: none;
+    overflow: visible;
+    box-shadow: none;
+    border: 1px solid var(--rule);
+    padding: var(--space-s);
+    break-inside: auto;
+  }
+
+  /* One column across the page: no side gutters, no reading-measure cap, no
+     grid tracks left empty. */
+  .article-body { display: block; }
+  .content {
+    max-inline-size: none;
+    inline-size: auto;
+    margin-inline: 0;
+    padding: 0;
+  }
+  .version-marker { text-align: start; margin-block: 0 var(--space-s); }
+
+  /* The three intro cards stack instead of splitting the width into narrow
+     columns, and each stays on one page. */
+  .content #basics { text-align: start; }
+  .content .intro-grid {
+    display: block;
+    inline-size: auto;
+    margin-inline: 0;
+  }
+  .content .intro-grid > * + * { margin-block-start: var(--space-s); }
+  .content .intro-card {
+    font-size: var(--step-0);
+    padding: var(--space-s);
+    break-inside: avoid;
+  }
+
+  /* Code blocks lose their scrollbar and wrap long lines instead of clipping
+     them. With no background fill, a hairline marks the block. */
+  .content pre {
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    border: 1px solid var(--rule);
+  }
+
+  /* Page breaks: keep a heading with the text it introduces, and don't split
+     short blocks that read as one unit. */
+  h1, h2, h3 { break-after: avoid; }
+  .content :is(pre, aside, blockquote, li) { break-inside: avoid; }
+  p, li { orphans: 3; widows: 3; }
+
+  /* Spell out where a link goes, since a printed one can't be followed. Only in
+     the prose: the example changelog carries its own reference links as plain
+     text, and the footer's credits don't need URLs after them. */
+  .content a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    overflow-wrap: break-word;
+  }
+
+  .footer {
+    margin-block-start: var(--space-m);
+    padding: var(--space-s) 0 0;
+    background: none;
+    font-size: var(--step--1);
+    text-align: start;
+    break-inside: avoid;
+  }
+  .footer .about { margin-inline: 0; max-inline-size: none; }
+}
