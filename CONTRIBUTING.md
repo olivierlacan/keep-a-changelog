@@ -69,9 +69,13 @@ Create a new directory in [`source/`][source] named after the ISO 639-1 code
 for the language you wish to translate Keep a Changelog to. For example,
 assuming you want to translate to French Canadian:
 
-- create the `source/fr-CA` directory.
-- duplicate the `source/en/1.0.0/index.html.haml` file in `source/fr-CA`.
-- edit `source/fr-CA/1.0.0/index.html.haml` until your translation is ready.
+- create the `source/fr-CA/2.0.0` directory.
+- copy `source/en/2.0.0/index.html.md` (the current English version, written in
+  Markdown) to `source/fr-CA/2.0.0/index.html.md`.
+- in the copied file, change `language: en` at the top to `language: fr-CA`,
+  then translate the `title`, the `description`, and the page until your
+  translation is ready. Keep the `{#anchor}` markers on headings as they are:
+  they are what the version selector and cross-language links point to.
 - commit your changes to your own [fork][fork]
 - submit a [Pull Request][pull-request] with your changes
 

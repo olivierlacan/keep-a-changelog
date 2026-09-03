@@ -6,7 +6,8 @@
 - current_version = current_page.metadata[:page][:version]
 - v2_plus = Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
-- description = current_page.data.description || "bullshit" 
+-# Pages without a frontmatter description fall back to the site's tagline.
+- description = current_page.data.description || "Clearly document the evolution of your projects."
 
 !!! 5
 %html{ lang: current_page.data.language, dir: ((%w[ar fa].include?(current_page.data.language) && Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new("2.0.0")) ? "rtl" : "ltr") }
@@ -14,7 +15,7 @@
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-    %meta{ name: 'description', content: current_page.data.description }
+    %meta{ name: 'description', content: description }
 
     - if v2_plus
       -# Apply a saved theme before first paint to avoid a flash of the wrong one.
