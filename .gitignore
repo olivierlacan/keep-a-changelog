@@ -22,3 +22,4 @@ segments.jsonl
 /playwright.local.config.js
 /playwright-report
 /test/visual/__screenshots__
+tools/.og_render.html
