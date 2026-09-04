@@ -101,9 +101,11 @@ uses LLMs and where it draws the line.
 - `bin/rake translations:lint` runs a deterministic, rule-based translation lint
 - `bin/rake og:images` regenerates the link preview images
   (`source/assets/images/opengraph/<language>/<version>.jpg`) from each
-  page's title and description, in the design of that version's site. A
-  maintainer runs it after a translation lands; until then a new translation
-  shares the English preview for its version.
+  page's title and description, in the design of that version's site, with
+  the word for "version" taken from `data/opengraph.yml` (add your language
+  there if it's missing; English is the fallback). A maintainer runs it after
+  a translation lands; until then a new translation shares the English preview
+  for its version.
 - `bin/rake translations:qa` scores translated segments semantically
   (one-time setup: `bin/rake translations:setup`)
 

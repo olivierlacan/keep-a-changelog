@@ -12,9 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Page titles now include the version, for example "Keep a Changelog 2.0.0",
   so a browser tab, a bookmark, or a saved PDF says which guidelines it holds.
 - Link previews (OpenGraph images) for every language and version, each in
-  the design of that version's site and naming the version, generated from
-  the page's own title and description by `bin/rake og:images`. Before,
-  every page shared one English image with the retired tagline.
+  the design of that version's site and naming the version in the page's
+  language, generated from the page's own title and description by
+  `bin/rake og:images`. Before, every page shared one English image with the
+  retired tagline.
 - The 2.0 page prints, and saves as a PDF, as a plain single-column document:
   black on white in either theme, without the pickers or the page navigation,
   with the example changelog kept to a one-page preview and code blocks

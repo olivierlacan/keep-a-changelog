@@ -1,0 +1,97 @@
+# Localized copy for the link preview cards (tools/og_images.js renders them
+# into source/assets/images/opengraph/<language>/<version>.jpg).
+#
+# Keyed by the same language codes as $languages in config.rb. English ("en")
+# is the fallback: a language absent here gets the English label. To translate
+# a language, add its block and keep the %{version} placeholder, which is
+# replaced with the version number.
+#
+# Keep the values plain: the generator reads this file with a minimal parser
+# that expects one `key: "value"` line per key.
+
+en:
+  version: "Version %{version}"
+
+ar:
+  version: "الإصدار %{version}"
+
+cs:
+  version: "Verze %{version}"
+
+da:
+  version: "Version %{version}"
+
+de:
+  version: "Version %{version}"
+
+es-ES:
+  version: "Versión %{version}"
+
+fa:
+  version: "نسخهٔ %{version}"
+
+fr:
+  version: "Version %{version}"
+
+hr:
+  version: "Verzija %{version}"
+
+id:
+  version: "Versi %{version}"
+
+id-ID:
+  version: "Versi %{version}"
+
+it-IT:
+  version: "Versione %{version}"
+
+ja:
+  version: "バージョン %{version}"
+
+ka:
+  version: "ვერსია %{version}"
+
+ko:
+  version: "버전 %{version}"
+
+nb:
+  version: "Versjon %{version}"
+
+nl:
+  version: "Versie %{version}"
+
+pl:
+  version: "Wersja %{version}"
+
+pt-BR:
+  version: "Versão %{version}"
+
+ro:
+  version: "Versiunea %{version}"
+
+ru:
+  version: "Версия %{version}"
+
+sk:
+  version: "Verzia %{version}"
+
+sl:
+  version: "Različica %{version}"
+
+sr:
+  version: "Verzija %{version}"
+
+sv:
+  version: "Version %{version}"
+
+tr-TR:
+  version: "Sürüm %{version}"
+
+uk:
+  version: "Версія %{version}"
+
+zh-CN:
+  version: "版本 %{version}"
+
+zh-TW:
+  version: "版本 %{version}"

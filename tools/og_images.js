@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Renders one OpenGraph preview card per spec page into
 // source/assets/images/opengraph/<language>/<version>.jpg, from the title and
-// description in the page's frontmatter plus the version, in the design of that version's
-// site (0.3, 1.x, or 2.0). The layout picks the card for the page's language
+// description in the page's frontmatter plus a version label localized in
+// data/opengraph.yml, in the design of that version's site (0.3, 1.x, or 2.0). The layout picks the card for the page's language
 // and version, and falls back to the English card for the version, so a new
 // translation works before this is re-run.
 //
@@ -22,6 +22,7 @@ const root = path.resolve(__dirname, "..");
 const sourceDir = path.join(root, "source");
 const outDir = path.join(sourceDir, "assets", "images", "opengraph");
 const template = path.join(__dirname, "og_template.html");
+const labelsFile = path.join(root, "data", "opengraph.yml");
 
 // Scripts the site's fonts don't cover, and the Google Fonts family that
 // stands in for them.
@@ -52,6 +53,31 @@ const fontsUrl = (() => {
 function design(version) {
   if (version === "0.3.0") return "legacy";
   return Number(version.split(".")[0]) >= 2 ? "v2" : "v1";
+}
+
+// data/opengraph.yml: language blocks of `key: "value"` lines, nothing more,
+// so a few lines of parsing stand in for a YAML library.
+function labels() {
+  const table = {};
+  let block = null;
+  for (const line of fs.readFileSync(labelsFile, "utf8").split("\n")) {
+    const heading = line.match(/^([\w-]+):\s*$/);
+    if (heading) {
+      block = table[heading[1]] = {};
+      continue;
+    }
+    const entry = block && line.match(/^\s+([\w-]+):\s*"(.*)"\s*$/);
+    if (entry) block[entry[1]] = entry[2].replace(/\\"/g, '"');
+  }
+  return table;
+}
+
+// The version label for a language, e.g. ["Version ", "2.0.0", ""], falling
+// back to English for a language the data file doesn't cover.
+function versionLabel(table, code, version) {
+  const text = (table[code] || {}).version || table.en.version;
+  const [before, after = ""] = text.split("%{version}");
+  return { before, version, after };
 }
 
 // The frontmatter here is flat "key: value" lines; that is all we read.
@@ -89,6 +115,8 @@ function pages() {
 
 (async () => {
   const items = pages();
+  const table = labels();
+  if (!table.en || !table.en.version) throw new Error(`${labelsFile}: needs an "en" block with a version label`);
   fs.mkdirSync(outDir, { recursive: true });
 
   // The template is written next to itself with the fonts URL filled in, so
@@ -113,7 +141,7 @@ function pages() {
 
     for (const item of items) {
       await page.evaluate(
-        ({ code, version, title, description, design, dir, langFont }) => {
+        ({ code, label, title, description, design, dir, langFont }) => {
           document.documentElement.lang = code;
           document.documentElement.dir = dir;
           document.documentElement.style.setProperty("--lang-font", langFont);
@@ -122,11 +150,13 @@ function pages() {
           h1.style.fontSize = "";
           h1.textContent = title;
           document.getElementById("description").textContent = description;
-          document.getElementById("version").textContent = version;
+          document.getElementById("version-before").textContent = label.before;
+          document.getElementById("version").textContent = label.version;
+          document.getElementById("version-after").textContent = label.after;
         },
         {
           code: item.code,
-          version: item.version,
+          label: versionLabel(table, item.code, item.version),
           title: item.title,
           description: item.description,
           design: design(item.version),
