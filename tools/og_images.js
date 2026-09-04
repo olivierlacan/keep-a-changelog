@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Renders one OpenGraph preview card per spec page into
 // source/assets/images/opengraph/<language>/<version>.jpg, from the title and
-// description in the page's frontmatter, in the design of that version's
+// description in the page's frontmatter plus the version, in the design of that version's
 // site (0.3, 1.x, or 2.0). The layout picks the card for the page's language
 // and version, and falls back to the English card for the version, so a new
 // translation works before this is re-run.
@@ -113,7 +113,7 @@ function pages() {
 
     for (const item of items) {
       await page.evaluate(
-        ({ code, title, description, design, dir, langFont }) => {
+        ({ code, version, title, description, design, dir, langFont }) => {
           document.documentElement.lang = code;
           document.documentElement.dir = dir;
           document.documentElement.style.setProperty("--lang-font", langFont);
@@ -122,9 +122,11 @@ function pages() {
           h1.style.fontSize = "";
           h1.textContent = title;
           document.getElementById("description").textContent = description;
+          document.getElementById("version").textContent = version;
         },
         {
           code: item.code,
+          version: item.version,
           title: item.title,
           description: item.description,
           design: design(item.version),

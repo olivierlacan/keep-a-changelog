@@ -30,7 +30,8 @@
   h1, p { margin: 0; }
   h1 { font-weight: 700; line-height: 1.08; text-wrap: balance; }
   p { line-height: 1.4; }
-  .site { position: absolute; font-family: var(--mono); font-size: 26px; opacity: 0.8; }
+  .site, .version { position: absolute; font-family: var(--mono); font-size: 26px; opacity: 0.8; }
+  .version strong { font-weight: 700; }
 
   /* 2.0: the hero band, sand on deep orange, with the contour pattern. */
   body[data-design="v2"] {
@@ -53,6 +54,7 @@
   [data-design="v2"] h1 { font-size: 88px; letter-spacing: -0.01em; margin-block-end: 28px; }
   [data-design="v2"] p { font-family: var(--mono); font-size: 34px; opacity: 0.92; max-width: 22em; }
   [data-design="v2"] .site { bottom: 48px; inset-inline-end: 80px; }
+  [data-design="v2"] .version { bottom: 48px; inset-inline-start: 80px; }
 
   /* 1.x: the orange header with its pattern, the mark beside a lowercase
      title in sand, and the tagline in the page's ink color. */
@@ -72,6 +74,7 @@
   [data-design="v1"] h1 { color: var(--sand); font-size: 84px; text-transform: lowercase; margin-block-end: 20px; }
   [data-design="v1"] p { font-size: 34px; }
   [data-design="v1"] .site { bottom: 40px; inset-inline-end: 90px; color: var(--sand); }
+  [data-design="v1"] .version { bottom: 40px; inset-inline-start: 90px; color: var(--sand); }
 
   /* 0.3: the original page, a centered monospace title in magenta over white
      with the tagline in bold sans below it. */
@@ -87,6 +90,7 @@
   [data-design="legacy"] h1 { color: var(--magenta); font-family: var(--mono); font-size: 88px; word-spacing: -0.3em; margin-block-end: 24px; }
   [data-design="legacy"] p { font-family: var(--carrois); font-weight: 700; font-size: 34px; }
   [data-design="legacy"] .site { bottom: 40px; inset-inline-end: 100px; color: #999; }
+  [data-design="legacy"] .version { bottom: 40px; inset-inline-start: 100px; color: #999; }
 </style>
 </head>
 <body data-design="v2">
@@ -96,6 +100,7 @@
       <h1 id="title"></h1>
       <p id="description"></p>
     </div>
+    <div class="version">Version <strong id="version"></strong></div>
     <div class="site">keepachangelog.com</div>
   </div>
 </body>
