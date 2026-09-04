@@ -10,9 +10,10 @@ name: Deploy site (manual)
 # runs automatically to serve the branch — that entry in the Actions list is
 # GitHub-managed, not defined in this repo. See .github/workflows/README.md.
 #
-# Note: the build uses the default config, so $last_version (currently 1.1.0)
-# decides the published "latest" version. 2.0 stays behind ?preview=v2 until you
-# flip that flag in config.rb.
+# Note: the build uses the default config, so VersionRouting::PUBLISHED_VERSION
+# (currently 2.0.0, set in tools/version_routing.rb) decides the published
+# "latest" version. A newer draft stays behind ?preview until that constant is
+# bumped.
 
 run-name: Deploy ${{ github.ref_name }} to keepachangelog.com
 

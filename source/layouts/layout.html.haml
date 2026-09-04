@@ -6,7 +6,11 @@
 - current_version = current_page.metadata[:page][:version]
 - v2_plus = Gem::Version.new(current_version) >= Gem::Version.new("2.0.0")
 - newer_version_available = File.exist?("source/#{language_code}/#{$last_version}")
-- description = current_page.data.description || "bullshit" 
+-# Pages without a frontmatter description fall back to the site's tagline.
+- description = current_page.data.description || "Clearly document the evolution of your projects."
+-# The version belongs in the title: it tells a reader which guidelines they
+-# are looking at, and it names the file when the page is saved as a PDF.
+- page_title = "#{current_page.data.title} #{current_version}"
 
 !!! 5
 %html{ lang: current_page.data.language, dir: ((%w[ar fa].include?(current_page.data.language) && Gem::Version.new(current_page.metadata[:page][:version]) >= Gem::Version.new("2.0.0")) ? "rtl" : "ltr") }
@@ -14,7 +18,7 @@
     %meta{ charset: 'utf-8' }
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-    %meta{ name: 'description', content: current_page.data.description }
+    %meta{ name: 'description', content: description }
 
     - if v2_plus
       -# Apply a saved theme before first paint to avoid a flash of the wrong one.
@@ -23,12 +27,22 @@
 
     -# Open Graph
 
+    -# One preview card per language and version, in that version's design
+    -# (tools/og_images.js). A language without a card for this version shows
+    -# the English card for it, so a new translation works before the cards
+    -# are regenerated.
+    - og_candidates = ["opengraph/#{language_code}/#{current_version}.jpg", "opengraph/en/#{current_version}.jpg", "opengraph/en/#{$last_version}.jpg"]
+    - og_image = og_candidates.find { |f| File.exist?("source/assets/images/#{f}") } || og_candidates.last
     %meta{ property: 'og:article:publisher', content: config.publisher_url }
-    %meta{ property: 'og:title', content: current_page.data.title }
+    %meta{ property: 'og:title', content: page_title }
     %meta{ property: 'og:type', content: 'article' }
     %meta{ property: 'og:url', content: path_to_url(current_page.url) }
     %meta{ property: 'og:description', content: description }
-    %meta{ property: 'og:image', content: path_to_url(image_path("keep-a-changelog-opengraph.png")) }
+    %meta{ property: 'og:image', content: path_to_url(image_path(og_image)) }
+    %meta{ property: 'og:image:width', content: '1200' }
+    %meta{ property: 'og:image:height', content: '630' }
+    %meta{ property: 'og:image:alt', content: "#{current_page.data.title}: #{description}" }
+    %meta{ name: 'twitter:card', content: 'summary_large_image' }
     = yield_content :og
 
     -# Icons
@@ -38,7 +52,7 @@
 
     %link{ rel: "me", href: "https://ruby.social/@olivierlacan" }
 
-    %title= current_page.data.title
+    %title= page_title
 
     %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
     %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
@@ -149,16 +163,5 @@
           != "Keep a Changelog is #{link_to 'MIT licensed', 'https://choosealicense.com/licenses/mit/'}, #{link_to 'created and maintained', 'https://github.com/olivierlacan/keep-a-changelog/'} by #{link_to 'Olivier Lacan', 'https://olivierlacan.com/'}, and designed by Tyler Fortune."
           != "It is available in #{link_to "#{$language_count} languages", '/translations/'} thanks to volunteer translators."
 
-  - unless config.gauges_id.blank?
-    :javascript
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '#{config.gauges_id}');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
+  - unless config.fathom_site_id.blank?
+    %script{src: "https://cdn.usefathom.com/script.js", "data-site" => config.fathom_site_id, defer: true}

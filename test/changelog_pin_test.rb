@@ -10,7 +10,7 @@ class ChangelogPinPinnedTest < Minitest::Test
   # The newest release the changelog documents is 2.0.0.
   FIXTURE = <<~MD
     ## [Unreleased]
-    ## [2.0.0] - 2026-06-07
+    ## [2.0.0] - 2026-09-07
     ## [1.1.2] - 2024-09-27
     ## [1.1.0] - 2019-02-15
   MD
@@ -48,7 +48,7 @@ class ChangelogPinTrackReleaseTest < Minitest::Test
     ## [3.0.0] - 2027-01-01
     ## [2.0.10] - 2026-12-01
     ## [2.0.2] - 2026-08-01
-    ## [2.0.0] - 2026-06-07
+    ## [2.0.0] - 2026-09-07
     ## [1.1.2] - 2024-09-27
   MD
 
@@ -97,7 +97,7 @@ class ChangelogPinPinTest < Minitest::Test
 
     - Improve French translation.
 
-    ## [2.0.0] - 2026-06-07
+    ## [2.0.0] - 2026-09-07
 
     ### Added
 
@@ -129,7 +129,7 @@ class ChangelogPinPinTest < Minitest::Test
   def test_the_track_and_everything_older_survive_intact
     assert_includes pinned, "## [2.0.1] - 2026-08-01"
     assert_includes pinned, "- Improve French translation."
-    assert_includes pinned, "## [2.0.0] - 2026-06-07"
+    assert_includes pinned, "## [2.0.0] - 2026-09-07"
     assert_includes pinned, "## [1.1.2] - 2024-09-27"
     assert_includes pinned, "- v1.1 German translation."
   end

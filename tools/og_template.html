@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- Template for the OpenGraph preview cards. tools/og_images.js loads it once,
+     then fills in the title, description, language, direction and design for
+     each page and screenshots the 1200x630 card. The three designs follow the
+     three generations of the site: the original 0.3 page, the 1.x page
+     (application.css.sass), and the 2.0 hero (v2.css). -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__FONTS__">
+<style>
+  :root {
+    --lang-font: sans-serif; /* set per language by the generator */
+    --sans: "Muli", var(--lang-font), system-ui, sans-serif;
+    --mono: "Source Code Pro", var(--lang-font), ui-monospace, monospace;
+  }
+  html, body { margin: 0; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: var(--sans);
+  }
+  .card {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  h1, p { margin: 0; }
+  h1 { font-weight: 700; line-height: 1.08; text-wrap: balance; }
+  p { line-height: 1.4; }
+  .site, .version { position: absolute; font-family: var(--mono); font-size: 26px; opacity: 0.8; }
+  .version strong { font-weight: 700; }
+
+  /* 2.0: the hero band, sand on deep orange, with the contour pattern. */
+  body[data-design="v2"] {
+    --hero-bg: oklch(0.53 0.15 42);
+    --sand: oklch(0.95 0.03 80);
+    color: var(--sand);
+    background-color: var(--hero-bg);
+    background-image:
+      linear-gradient(to bottom,
+        var(--hero-bg) 0,
+        color-mix(in srgb, var(--hero-bg) 84%, transparent) 35%,
+        color-mix(in srgb, var(--hero-bg) 92%, transparent) 100%),
+      url("../source/assets/images/hero-topo@2x.png");
+    background-size: auto, 1360px auto;
+    background-position: center top, center 40%;
+  }
+  [data-design="v2"] .card { padding: 64px 80px; display: flex; flex-direction: column; justify-content: center; }
+  [data-design="v2"] .mark { position: absolute; top: 56px; inset-inline-start: 80px; width: 96px; }
+  [data-design="v2"] .text { padding-block-start: 96px; }
+  [data-design="v2"] h1 { font-size: 88px; letter-spacing: -0.01em; margin-block-end: 28px; }
+  [data-design="v2"] p { font-family: var(--mono); font-size: 34px; opacity: 0.92; max-width: 22em; }
+  [data-design="v2"] .site { bottom: 48px; inset-inline-end: 80px; }
+  [data-design="v2"] .version { bottom: 48px; inset-inline-start: 80px; }
+
+  /* 1.x: the orange header with its pattern, the mark beside a lowercase
+     title in sand, and the tagline in the page's ink color. */
+  body[data-design="v1"] {
+    --ocre: #E05735;
+    --sand: #FEECD3;
+    --ink: #342828;
+    color: var(--ink);
+    background-color: var(--ocre);
+    background-image: url("../source/assets/images/bg-hero@2x.png");
+    background-size: cover;
+    background-position: center;
+  }
+  [data-design="v1"] .card { padding: 80px 90px; display: flex; align-items: center; gap: 64px; }
+  [data-design="v1"] .mark { width: 190px; flex: none; }
+  [data-design="v1"] .text { flex: 1; min-width: 0; }
+  [data-design="v1"] h1 { color: var(--sand); font-size: 84px; text-transform: lowercase; margin-block-end: 20px; }
+  [data-design="v1"] p { font-size: 34px; }
+  [data-design="v1"] .site { bottom: 40px; inset-inline-end: 90px; color: var(--sand); }
+  [data-design="v1"] .version { bottom: 40px; inset-inline-start: 90px; color: var(--sand); }
+
+  /* 0.3: the original page, a centered monospace title in magenta over white
+     with the tagline in bold sans below it. */
+  body[data-design="legacy"] {
+    --magenta: #C647BF;
+    --carrois: "Carrois Gothic", var(--lang-font), "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    background: #fff;
+    font-family: var(--carrois);
+  }
+  [data-design="legacy"] .card { padding: 80px 100px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  [data-design="legacy"] .mark { display: none; }
+  [data-design="legacy"] h1 { color: var(--magenta); font-family: var(--mono); font-size: 88px; word-spacing: -0.3em; margin-block-end: 24px; }
+  [data-design="legacy"] p { font-family: var(--carrois); font-weight: 700; font-size: 34px; }
+  [data-design="legacy"] .site { bottom: 40px; inset-inline-end: 100px; color: #999; }
+  [data-design="legacy"] .version { bottom: 40px; inset-inline-start: 100px; color: #999; }
+</style>
+</head>
+<body data-design="v2">
+  <div class="card">
+    <img class="mark" src="../source/assets/images/keep-a-changelog-mark.svg" alt="">
+    <div class="text">
+      <h1 id="title"></h1>
+      <p id="description"></p>
+    </div>
+    <div class="version"><span id="version-before"></span><strong id="version"></strong><span id="version-after"></span></div>
+    <div class="site">keepachangelog.com</div>
+  </div>
+</body>
+</html>

@@ -7,13 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Page titles now include the version, for example "Keep a Changelog 2.0.0",
+  so a browser tab, a bookmark, or a saved PDF says which guidelines it holds.
+- Link previews (OpenGraph images) for every language and version, each in
+  the design of that version's site and naming the version in the page's
+  language, generated from the page's own title and description by
+  `bin/rake og:images`. Before, every page shared one English image with the
+  retired tagline.
+- The 2.0 page prints, and saves as a PDF, as a plain single-column document:
+  black on white in either theme, without the pickers or the page navigation,
+  with the example changelog kept to a one-page preview and code blocks
+  wrapped instead of cut off.
+
 ### Fixed
 
 - Older spec pages no longer display an example changelog written to newer
   conventions than the page describes: each page's example is now pinned to
   its own version's last release, derived at build time from this file.
+- The translations overview no longer shows an empty "up to date" grid when
+  no translation covers the newly published version yet; it invites readers
+  to contribute the first one instead.
 
-## [2.0.0] - 2026-06-07
+## [2.0.0] - 2026-09-07
 
 2.0.0 is the first major revision of Keep a Changelog. It breaks the guidance,
 not the format: the six change types, `YYYY-MM-DD` dates, and the `Unreleased`
@@ -50,7 +67,8 @@ are marked below.
     where upgrade steps belong; naming which part of the project an entry
     touches; choosing between Changed, Fixed, and Security; leading a Security
     entry with its CVE and pointing it to the full advisory; why the six change
-    types don't grow, and a recommended order for them.
+    types don't grow, and a recommended order for them; announcing a planned
+    release early, under a heading with its planned date or a pending marker.
   - Versioning: schemes beyond SemVer, and linking each version to a `compare`
     diff with reference links.
   - Changelogs vs. release notes: how to derive one from the other without

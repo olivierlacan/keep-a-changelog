@@ -53,7 +53,7 @@ class TranslationCoverageTest < Minitest::Test
     assert_respond_to analyzer, :dashboard_data
 
     data = analyzer.dashboard_data
-    assert_equal "1.1.0", data[:published_version]
+    assert_equal "2.0.0", data[:published_version]
     codes = data[:languages].map { |l| l[:code] }
     assert_includes codes, "fr"
     refute_includes codes, "en", "English is the baseline, not a translation"
@@ -67,7 +67,7 @@ class TranslationCoverageTest < Minitest::Test
       html = File.read(path, encoding: "UTF-8")
       refute_includes html, "__DASHBOARD_DATA__", "data placeholder must be substituted"
       assert_includes html, %("latest_version":"2.0.0")
-      assert_includes html, %("published_version":"1.1.0")
+      assert_includes html, %("published_version":"2.0.0")
       assert_includes html, "Français" # language names resolved from config.rb
       head = html[/<head>.*<\/head>/m]
       refute_match(/(?:src|href)="(?!data:)/, head, "no external assets (data: URIs are fine)")

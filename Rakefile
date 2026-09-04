@@ -47,6 +47,13 @@ namespace :translations do
   end
 end
 
+namespace :og do
+  desc "Regenerate the per-language OpenGraph preview cards (source/assets/images/opengraph/)"
+  task :images do
+    sh "npm run og:images"
+  end
+end
+
 namespace :prose do
   desc "Lint the English spec prose against docs/tone-and-voice.md"
   task :lint do

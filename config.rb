@@ -23,13 +23,12 @@ require_relative "translation_coverage"
 $versions = Dir.glob("source/en/*").map { |e| e.sub("source/en/", "") }.sort
 # $last_version = $versions.last
 
-# Published "latest" version. 2.0.0 is written and built on every run, but stays
-# unpublished — 1.1.0 remains latest — until release. Set the KAC_PREVIEW_V2 flag
-# to promote 2.0.0 to latest for a preview: it flips the "/" and per-language
-# redirects, the default selector version, and the "newer version available"
-# notices to 2.0.0, without changing the default production build. For example:
-#   KAC_PREVIEW_V2=1 bundle exec middleman serve
-# To go live, drop the flag and set $last_version = "2.0.0" outright.
+# Published "latest" version. 2.0.0 is released and is the default everywhere:
+# the "/" and per-language redirects, the default selector version, and the
+# "newer version available" notices all derive from it. The KAC_PREVIEW_V2
+# mechanism stays wired but is a no-op until a newer draft exists (see
+# tools/version_routing.rb); when one does, the flag promotes it to latest
+# locally, e.g.: KAC_PREVIEW_V2=1 bundle exec middleman serve
 $last_version = VersionRouting.last_version(preview: ENV["KAC_PREVIEW_V2"])
 $previous_version = $versions[$versions.index($last_version) - 1]
 
@@ -179,7 +178,7 @@ activate :i18n,
   lang_map: $languages,
   mount_at_root: :en
 
-set :gauges_id, ""
+set :fathom_site_id, ""
 set :publisher_url, "https://www.facebook.com/olivier.lacan.5"
 set :site_url, "https://keepachangelog.com"
 
@@ -325,14 +324,14 @@ helpers do
   end
 
   # The release date for a version, read from CHANGELOG.md (e.g. the line
-  # "## [2.0.0] - 2026-06-07"). Returns the ISO date string, or nil if the
+  # "## [2.0.0] - 2026-09-07"). Returns the ISO date string, or nil if the
   # version has no dated entry yet.
   def changelog_date_for(version)
     match = File.read("CHANGELOG.md").match(/^##\s*\[#{Regexp.escape(version)}\]\s*-\s*(\d{4}-\d{2}-\d{2})/)
     match && match[1]
   end
 
-  # Human-friendly date with an ordinal day: "2026-06-07" -> "June 7th, 2026".
+  # Human-friendly date with an ordinal day: "2026-09-07" -> "September 7th, 2026".
   # The ISO string stays available for the <time datetime> attribute and title.
   def human_date(iso)
     require "date"
@@ -416,7 +415,9 @@ end
 # ----- Optimization ----- #
 
 configure :build do
-  set :gauges_id, "5389808eeddd5b055a00440d"
+  # Fathom replaced Gauges for analytics. Set the production Fathom site ID
+  # here to enable it; with no ID, the built site loads no analytics at all.
+  set :fathom_site_id, ""
   activate :asset_hash
   activate :gzip, {exts: %w[
     .css

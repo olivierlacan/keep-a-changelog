@@ -19,5 +19,7 @@ segments.jsonl
 
 /node_modules
 /test-results
+/playwright.local.config.js
 /playwright-report
 /test/visual/__screenshots__
+tools/.og_render.html

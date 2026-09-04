@@ -29,6 +29,18 @@ description: This version hasn't been translated into this language yet.
       (function(){try{var t=localStorage.getItem('kac-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
     %link{ rel: "shortcut icon", type: "image/x-icon", href: image_path("favicon.ico") }
     %title= "Keep a Changelog #{pretty} — #{lang_name}"
+    -# Shared links to a missing translation still get a preview: the English
+    -# card for this version (tools/og_images.js).
+    - og_image = File.exist?("source/assets/images/opengraph/en/#{version}.jpg") ? "opengraph/en/#{version}.jpg" : "opengraph/en/#{$last_version}.jpg"
+    %meta{ property: "og:title", content: "Keep a Changelog #{pretty} — #{lang_name}" }
+    %meta{ property: "og:type", content: "article" }
+    %meta{ property: "og:url", content: path_to_url(current_page.url) }
+    %meta{ property: "og:description", content: current_page.data.description }
+    %meta{ property: "og:image", content: path_to_url(image_path(og_image)) }
+    %meta{ property: "og:image:width", content: "1200" }
+    %meta{ property: "og:image:height", content: "630" }
+    %meta{ property: "og:image:alt", content: "Keep a Changelog #{pretty}" }
+    %meta{ name: "twitter:card", content: "summary_large_image" }
     %link{ rel: "preconnect", href: "https://fonts.googleapis.com" }
     %link{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
     - font_href = "//fonts.googleapis.com/css?family=Muli:400,700|Source+Code+Pro:400,700&display=swap"
