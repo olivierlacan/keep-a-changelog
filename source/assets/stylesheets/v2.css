@@ -1141,21 +1141,22 @@
   .hero h1 { font-size: var(--step-3); }
   .hero .tagline { font-size: var(--step-1); opacity: 1; }
 
-  /* The example changelog is the page's centerpiece, so print all of it: no
-     scroll box, no height cap, and open even when the narrow-screen disclosure
-     left it collapsed. It is far taller than a page, so it must be free to
-     break across pages. */
+  /* The example changelog is a preview, on paper as on screen: the same
+     height as the scroll box, cut off where the box ends, and kept on one
+     page. Printing all of it would run to several pages before the guidance
+     starts. It is open even when the narrow-screen disclosure left it
+     collapsed. */
   .hero .changelog-figure { max-inline-size: none; margin-inline: 0; }
   .hero .changelog-example > summary { display: none; }
   .hero .changelog-example > .changelog { display: block; }
   .hero .changelog-example::details-content { content-visibility: visible; }
   .hero .changelog {
-    max-block-size: none;
-    overflow: visible;
+    max-block-size: 22rem;
+    overflow: hidden;
     box-shadow: none;
     border: 1px solid var(--rule);
     padding: var(--space-s);
-    break-inside: auto;
+    break-inside: avoid;
   }
 
   /* One column across the page: no side gutters, no reading-measure cap, no
