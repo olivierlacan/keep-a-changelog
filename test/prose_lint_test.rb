@@ -50,6 +50,23 @@ class ProseLintTest < Minitest::Test
     assert_empty findings.select { |f| f.severity == :error }
   end
 
+  def test_machine_flavored_patterns_warn_but_do_not_error
+    hedge = ProseLint.lint("It is recommended that you keep the file in the repository.")
+    assert(hedge.any? { |f| f.rule == "impersonal" && f.severity == :warn })
+
+    buffer = ProseLint.lint("Here are a few ways to think about this.")
+    assert(buffer.any? { |f| f.rule == "buffer" && f.severity == :warn })
+    assert_includes ids("Usually the right type is clear."), "buffer"
+
+    flow = ProseLint.lint("If it was a bug, use `Fixed`. If it was intentional, use `Changed`.")
+    assert(flow.any? { |f| f.rule == "flowchart" && f.severity == :warn })
+
+    # A single conditional is ordinary prose, not a flowchart.
+    assert_empty ProseLint.lint("If it matters to your users, describe its effect.").select { |f| f.rule == "flowchart" }
+    # None of these are build failures on their own.
+    assert_empty errors("It is recommended. Here are a few ways. If a, use b. If c, use d.")
+  end
+
   def test_ignores_code_links_and_suppressed_lines
     # Banned words inside inline code or a URL are not prose.
     assert_empty errors("Use the `--ship` flag.")

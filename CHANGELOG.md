@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The 2.0.0 page reads less like a manual. First-person framing and direct
+  address are back where the guidance is an opinion, transition sentences are
+  gone, and choosing between `Fixed`, `Changed`, and `Security` is explained
+  with an example of each instead of an if-then procedure. The structure and
+  section links are unchanged.
+
 ### Fixed
 
 - Older spec pages no longer display an example changelog written to newer
