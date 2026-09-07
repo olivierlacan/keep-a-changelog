@@ -1,6 +1,6 @@
 ---
 title: Keep a Changelog
-description: Clearly document the evolution of your projects.
+description: Tell the story of your project's evolution.
 language: en
 version: 2.0.0
 ---

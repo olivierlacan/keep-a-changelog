@@ -59,8 +59,9 @@ translate, easy to apply, and easy to trust.
    propositions or textbook neutrality. Keep memorable, opinionated wording
    when it does not cost clarity. The original tagline, _"Don't let your
    friends dump git logs into changelogs"_, was retired because it leaned on an
-   English idiom, not because it had an opinion. Whatever replaces it should
-   still take a position.
+   English idiom, not because it had an opinion. Its replacement, _"Tell the
+   story of your project's evolution"_, is plain and still says what a
+   changelog is for.
 10. **Keep the first person and direct address.** "I", "we", and "you" are not
     flaws to edit out. This is a community-driven opinion written by people, not
     an ISO standard, and the voice should feel like it comes from humans, for

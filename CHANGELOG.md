@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The tagline is now "Tell the story of your project's evolution." The 2.0.0
+  line, "Clearly document the evolution of your projects," read like a product
+  page.
 - The 2.0.0 page reads less like a manual. First-person framing and direct
   address are back where the guidance is an opinion, transition sentences are
   gone, and choosing between `Fixed`, `Changed`, and `Security` is explained
