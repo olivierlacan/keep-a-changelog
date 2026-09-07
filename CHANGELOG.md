@@ -7,8 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The tagline is now "Tell the story of your project's evolution." The 2.0.0
+  line, "Clearly document the evolution of your projects," read like a product
+  page.
+- The 2.0.0 page reads less like a manual. First-person framing and direct
+  address are back where the guidance is an opinion, transition sentences are
+  gone, and choosing between `Fixed`, `Changed`, and `Security` is explained
+  with an example of each instead of an if-then procedure. The structure and
+  section links are unchanged.
+
 ### Fixed
 
+- The "Changelog basics" cards no longer shrink as the window grows. Between
+  1248px and 1440px the row collapsed into the reading column to clear the
+  table of contents, leaving the cards narrower than they were at 1200px and
+  wrapping their headings. The row now grows continuously across that range,
+  and card headings are sized against the card so they stay on one line.
 - Older spec pages no longer display an example changelog written to newer
   conventions than the page describes: each page's example is now pinned to
   its own version's last release, derived at build time from this file.

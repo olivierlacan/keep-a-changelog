@@ -671,6 +671,9 @@
     }
   }
   .content .intro-card {
+    /* A size container so the card's heading can be sized against the card
+       rather than the viewport (see the heading rule below). */
+    container-type: inline-size;
     background: var(--surface);
     border: 1px solid var(--rule);
     border-block-start: 3px solid var(--accent);
@@ -679,12 +682,19 @@
     font-size: var(--step--1);
   }
   .content .intro-card > * + * { margin-block-start: var(--space-xs); }
-  /* Card headings drop the section-separator treatment and sit tighter. */
+  /* Card headings drop the section-separator treatment and sit tighter. They
+     are sized against the card, not the viewport: a viewport-fluid step-1 has
+     no idea how much room the card actually has, so "Who needs this?" wrapped
+     onto two lines whenever three cards had to share a narrower row. 10.5cqi
+     is the widest type that still fits the longest of the three headings on one
+     line, capped at step-1 so wide cards look exactly as before and floored at
+     step-0 so a longer translation wraps rather than shrinking below body text. */
   .content .intro-card :is(h2, h3) {
     margin-block-start: 0;
     padding-block-start: 0;
     border-block-start: 0;
-    font-size: var(--step-1);
+    font-size: clamp(var(--step-0), 10.5cqi, var(--step-1));
+    text-wrap: balance;
   }
 
   /* Top-level headings (##) separate sections; sub-headings (###) just breathe. */
@@ -915,23 +925,16 @@
       overflow: auto;
       margin-block-start: var(--space-2xl);
     }
-    /* Keep the triptych in the reading column only at the low end of the sidebar
-       regime (78-90rem), where a viewport-centered breakout would overlap the
-       TOC. It breaks out again at 90rem (below). */
+    /* Once the TOC occupies the left gutter, the breakout has to stop before it.
+       Narrow the bleed to the widest viewport-centered box whose left edge
+       clears the 15rem sidebar, rather than dropping the triptych back into the
+       reading column: pinning it to the measure made the cards *narrower* at
+       1248-1440px than they were at 1200px, which wrapped the card headings.
+       This reaches the 60rem cap on its own at 90rem, so the row grows
+       continuously across the whole sidebar range. The floor keeps it at least
+       as wide as the reading column it sits in. */
     .content .intro-grid {
-      inline-size: auto;
-      margin-inline: 0;
-    }
-  }
-
-  /* Second breakpoint: once the viewport is wide enough that a centered breakout
-     clears the left TOC (a 60rem breakout needs ~90rem to leave a 15rem gutter),
-     let the triptych break out again even with the sidebar present. This lifts
-     the common 1440-1600px widths, which otherwise waste ~40% of their width. */
-  @media (min-width: 90rem) {
-    .content .intro-grid {
-      inline-size: var(--bleed);
-      margin-inline: var(--bleed-margin);
+      --bleed: max(100%, min(60rem, 100vw - 30rem));
     }
   }
 

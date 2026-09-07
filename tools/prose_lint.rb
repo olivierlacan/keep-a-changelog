@@ -11,7 +11,9 @@
 #           a handful of idioms it calls out by name)
 #   :warn   context-dependent smells worth a human glance but not a build
 #           failure on their own (a bare "just", a very long sentence, several
-#           em-dashes piled into one sentence as bracketed asides)
+#           em-dashes piled into one sentence as bracketed asides, and the
+#           machine-flavored patterns the guide lists: impersonal hedging,
+#           buffer sentences, and if-then flowchart explanations)
 #
 # Scope is the 2.0+ Markdown pages (source/en/*/index.html.md). The older HAML
 # pages keep the earlier, jokier voice on purpose (they are pinned to their era),
@@ -78,7 +80,24 @@ module ProseLint
     { id: "just", severity: :warn, re: /\bjust\b/i,
       hint: "often filler; if it means 'merely', cut it" },
     { id: "call-out", severity: :warn, re: /\bcall(s|ed|ing)? out\b/i,
-      hint: "idiom; prefer 'highlight'" }
+      hint: "idiom; prefer 'highlight'" },
+
+    # --- Machine-flavored prose (guide principles 9-12). These are the tells
+    # the guide names, matched only in their most recognizable forms; the rest
+    # needs a human reader. All warnings: each has legitimate uses. ---
+    { id: "impersonal", severity: :warn, re: /\bit is (recommended|advised|suggested|best practice)\b/i,
+      hint: "impersonal hedging; say who recommends it ('we recommend', 'you can')" },
+    { id: "impersonal", severity: :warn, re: /\bone (may|might|should|can) \b/i,
+      hint: "impersonal 'one'; address the reader as 'you'" },
+    { id: "buffer", severity: :warn,
+      re: /\b(here (are|is)|there are) (a few|some|several|two|three|many) (ways|things|habits|points|options|reasons|cases)\b/i,
+      hint: "buffer sentence; start with the list or the point" },
+    { id: "buffer", severity: :warn, re: /\b(usually|generally|typically|in most cases),? the (right|correct|best) \w+ is (clear|obvious|easy)\b/i,
+      hint: "buffer sentence; delete it or say which cases are hard" },
+    # Two consecutive "If ..., use X." sentences read as a flowchart. Inline code
+    # is scrubbed before matching, so `Fixed` leaves a blank where the name was.
+    { id: "flowchart", severity: :warn, re: /\bIf [^.?!]{1,60}, (use|choose|pick) [^.?!]{0,30}\. If\b/,
+      hint: "flowchart phrasing; give the distinction and a brief example instead" }
   ].freeze
 
   module_function

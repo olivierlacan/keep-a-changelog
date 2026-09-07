@@ -1,6 +1,6 @@
 ---
 title: Keep a Changelog
-description: Clearly document the evolution of your projects.
+description: Tell the story of your project's evolution.
 language: en
 version: 2.0.0
 ---
@@ -54,17 +54,15 @@ People do. Anyone who uses or builds software wants to know what changed, and wh
 - `Fixed` for bug fixes.
 - `Added` for new features.
 
-Changelog sections are listed in order of urgency since readers often skim a changelog to find what affects them. Starting with new features might make it harder to notice security fixes or important removals. Ordering by urgency puts what a reader must act on above what is only good to know.
+We list the types in order of urgency, because readers skim a changelog to find what affects them. Lead with new features and they may miss a security fix or a removal. What a reader must act on goes above what is only good to know.
 
-If you prefer a different order for sections, try to keep it consistent across releases so readers know where to look. Omit any section with no entries instead of cluttering your changelog with empty sections. Within a section, order entries based on what's most useful to readers.
+Prefer a different order? Fine, but keep it consistent across releases so readers know where to look. Leave out empty sections. Within a section, put the entries readers care about most first.
 
-Usually the right type is clear. Three of them cause the most questions:
+Three of the six are easy to confuse:
 
-- `Fixed`: the behavior was wrong, and is now correct.
-- `Changed`: the behavior worked as intended, and now works differently.
-- `Security`: the change addresses a vulnerability. It could fit under Fixed or Changed, but its urgency and audience are different.
-
-When you are unsure, ask whether the old behavior was a bug. If it was, use `Fixed`. If it was intentional and you are changing it, use `Changed`.
+- `Fixed`: the behavior was wrong, and is now correct. A crash on empty input that no longer crashes is `Fixed`.
+- `Changed`: the behavior worked as intended, and now works differently. A default timeout going from 30 to 60 seconds is `Changed`, even if users asked for it.
+- `Security`: the change closes a vulnerability. It could fit under `Fixed` or `Changed`, but readers need to find it fast, and some of those readers are tools, so it gets its own type.
 
 When a `Security` entry has a CVE identifier, lead with it so readers and security tools can match the entry to the advisory:
 
@@ -80,12 +78,11 @@ Some projects also have formal ways they must disclose vulnerabilities (a securi
 There are only six types on purpose. What kind of change it is goes in the type; why it matters goes in the wording of the entry, not in a new type.
 </aside>
 
-An entry like "Rewrote JSON parser; 3x faster on large files" fits better under `Changed` than `Performance`. You can add a category if you genuinely need one, but you rarely will: `Improved` and `New` are often the same as `Changed` and `Added`, and `Internal` or `Housekeeping` changes are rarely notable enough to list at all. Keeping to the six leaves every changelog readable the same way, and parseable by the same tools.
+An entry like "Rewrote JSON parser; 3x faster on large files" belongs under `Changed`, not `Performance`. You can add a type if you truly need one. We have yet to see a case that did: `Improved` and `New` are `Changed` and `Added` with different labels, and `Internal` or `Housekeeping` changes rarely deserve an entry at all. Six types mean every changelog reads the same way, and parses the same way.
 
-Two other type requests are common:
+**Dependencies** are not a type of change. A dependency update can be harmless, a fix, or breaking. If it matters to your users, describe its effect under the right type. If it does not, leave it out.
 
-- **Dependencies** are not a type of change. A dependency update can be harmless, a fix, or breaking. If it matters to your users, describe its effect under the right type. If it does not, leave it out.
-- **Known issues** are discovered, not changed. Note them on the affected version or in your issue tracker. When one is fixed, it goes under `Fixed`.
+**Known issues** are discovered, not changed. Note them on the affected version or in your issue tracker. When one is fixed, it goes under `Fixed`.
 
 ### Breaking changes {#breaking}
 
@@ -101,14 +98,14 @@ A short upgrade note can sit in the entry itself, such as "rename the `color` op
 
 ### Naming the part it touches {#areas}
 
-In a project with distinct parts or features, an entry can specify which was impacted on a change entry:
+In a project with distinct parts or features, an entry can name the part it touches:
 
 ```
 - CLI: `brcat` alias for decoding streams.
 - Parser: recover from a missing final chunk instead of raising.
 ```
 
-Similarly to change types they can group entries by area of focus. They shouldn't be used at at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
+Similarly to change types they can group entries by area of focus. They shouldn't be used at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
 
 ```
 ### Added
@@ -153,7 +150,7 @@ Making changes and communicating about changes are two different tasks. Curating
 
 ### What should the file be named? {#filename}
 
-Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`, but a predictable name makes it easy to find. A changelog does not need to list every change. Version control already does that. It lists the notable ones.
+Name it `CHANGELOG.md`. Some projects use `HISTORY`, `NEWS`, or `RELEASES`. The name may feel unimportant, but why make it harder for your users to find what changed? A changelog does not need to list every change; version control already does that. It lists the notable ones.
 
 ### What goes at the top of the file? {#header}
 
@@ -178,27 +175,25 @@ No, although they draw from the same material. A changelog is the complete, ongo
 
 This does not have to mean doing the work twice. At release time, the version's section in the changelog is already the draft: copy it into the release, and expand it only if the announcement wants more. Because every version sits under a predictable `## [x.y.z]` heading, a small script can extract that section and create the release without anyone retyping it.
 
-A host will offer to do this for you. Its release system attaches notes to a tag, notifies watchers, collects build files, and can even generate the notes from merged pull requests or commit messages. But the result lives in the host's database, not your repository. Those notes do not travel with the code, so if you move to another host, they do not come with you. Your changelog does, because it is a file in the repository.
+A host will offer to do this for you. Its release system attaches notes to a tag, notifies watchers, collects build files, and can even generate the notes from merged pull requests or commit messages. That is convenient, and we are not telling you to skip it. But the result lives in the host's database, not your repository. Those notes do not travel with the code, so if you move to another host, they do not come with you. Your changelog does, because it is a file in the repository.
 
 You can treat a generated draft as a starting point, but keep `CHANGELOG.md` as the canonical record and generate host-specific release posts from it. That way you still get the host's reach (notifications, a visible page, attached downloads), and the full history stays in a file you control and can read offline.
 
 ## What makes a changelog worse? {#bad-practices}
 
-A few habits make a changelog less useful.
-
 ### Commit log diffs {#log-diffs}
 
-Do not use a list of commits as a changelog. It is full of noise: merge commits, unclear messages, internal changes. A commit records a step in the source code. A changelog entry records a notable difference, often across several commits, written for the people who use the software.
+Do not paste a list of commits and call it a changelog. It is full of noise: merge commits, unclear messages, internal changes. A commit records a step in the source code. A changelog entry records a notable difference, often across several commits, written for the people who use the software.
 
 > A "git log" is the list of commits in a [git][git] repository. We mention git because it is the most common [version control system][vcs], but this applies to any of them: a raw commit history is not a changelog.
 
 ### Ignoring deprecations {#ignoring-deprecations}
 
-When someone upgrades, it should be clear what will break. Announce a deprecation before you act on it: mark it `Deprecated` in one release, and only `Removed` in a later one, so anyone upgrading meets the warning before the change. Say which version will remove it, so they can plan. If you do nothing else, always record deprecations, removals, and breaking changes.
+When someone upgrades, it should be impossible to miss what will break. Announce a deprecation before you act on it: mark it `Deprecated` in one release, and only `Removed` in a later one, so anyone upgrading meets the warning before the change. Say which version will remove it, so they can plan. If you do nothing else, always record deprecations, removals, and breaking changes.
 
 ### Inconsistent changes {#inconsistent-changes}
 
-A changelog that records only some changes can mislead as much as no changelog. Readers treat it as the full picture. Leave out trivial changes, but include every notable one. A changelog is only trustworthy if it is kept up to date consistently.
+A changelog that records only some changes can mislead as much as no changelog. Readers treat it as the full picture. It should be. Leave out trivial changes, but include every notable one. A changelog is only trustworthy if it is kept up to date consistently.
 
 ## Changelogs, automation, and LLMs {#automation}
 
@@ -228,11 +223,11 @@ A yanked release is a version pulled because of a serious bug or security issue.
 ## [0.0.5] - 2014-12-13 [YANKED]
 ```
 
-The brackets make the tag easy to notice and easy to parse.
+The `[YANKED]` tag is loud on purpose. People need to notice it, and the brackets make it easy to parse too.
 
 ### Should you ever rewrite a changelog? {#rewrite}
 
-You can improve a changelog after a release. A project may forget an entry, or discover a breaking change it did not record. Fixing this is reasonable. When you do, consider noting the date you updated the entry, so readers notice the change.
+Sure. There are always good reasons to improve a changelog. I have opened many pull requests to add missing releases to projects whose changelogs stopped being updated. You may also discover that you forgot to record a breaking change. Fix it, and consider noting the date you updated the entry so readers notice.
 
 ### What if the changelog gets too big? {#large-changelog}
 
@@ -240,9 +235,9 @@ A single file is usually fine, even a long one; many projects keep decades of hi
 
 ### How do I avoid changelog merge conflicts? {#merge-conflicts}
 
-A shared `Unreleased` section is convenient, but it may lead to merge conflicts when branches are frequently merged. While keeping entries short and on the same branch as changes can help, when conflicts are frequent you can tell your version control system to retain conflicting lines with a union merge (e.g. `merge=union` in `.gitattributes` file).
+A shared `Unreleased` section is convenient, but it can cause merge conflicts when branches are merged often. Short entries, committed on the same branch as the change, help. When conflicts stay frequent, tell your version control system to keep both sides with a union merge (`merge=union` in a `.gitattributes` file).
 
-Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This helps with scalability but it does add complexity. It's best to start with a shared `Unreleased` section; add a union merge if conflicts become tedious; and evolve to per-branch files when it becomes unavoidable.
+Higher-volume projects can also keep unreleased entries in a separate file inside a directory such as `changelog.d/`. Branches avoid conflict by not editing the same section of the changelog file. At release time the files can be combined into the `CHANGELOG.md` and removed from the subdirectory. This scales, but it adds complexity. Start with a shared `Unreleased` section. Add a union merge if conflicts become tedious. Move to per-branch files only when nothing else works.
 
 ### What about monorepos? {#monorepos}
 
@@ -260,11 +255,11 @@ The commit history already records who did what, so a changelog does not need to
 
 ### Is there a standard changelog format? {#standard}
 
-Not a formal one. There are older conventions, such as the [GNU changelog style guide][gnu-changelog] and the [GNU NEWS file][gnu-news], but they are limited. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
+Not really. The [GNU changelog style guide][gnu-changelog] and the two-paragraph [GNU NEWS file][gnu-news] guideline exist, and neither is enough. Keep a Changelog does not aim to be the one true standard. It aims to show that clear, consistent communication about changes is worth the effort. It started from good practices in open source and applies to any project that needs to communicate its changes.
 
 ### What does it deliberately leave out? {#scope}
 
-A convention is also defined by what it leaves out. Some common requests are deliberate non-goals:
+A convention is defined by what it leaves out as much as by what it includes. Some common requests are deliberate non-goals:
 
 - No new change types: six are enough.
 - No machine format, schema, or strict layout: this is the format.
@@ -275,11 +270,11 @@ None of this is fixed; it is open to discussion. But additions to a widely used 
 
 ### How can I contribute? {#contribute}
 
-Keep a Changelog is one carefully considered opinion with examples, not the only way to communicate changes. It has helped many projects, and it is still a work in progress. Each version came from discussion in the community. Please [contribute][contribute] or start a [conversation][discussions] if you have ideas or need help.
+This page is not the truth. It is my carefully considered opinion, with examples and information gathered over years, and it is still a work in progress. Every version was shaped by discussion in the community, and I think the discussion matters as much as the result. So please [contribute][contribute], or start a [conversation][discussions] if you have ideas or need help.
 
 ## References {#references}
 
-Keep a Changelog grew from good practices observed in open source, gathered into the convention this page describes, and demonstrated in [its own changelog][kac-changelog]. Olivier Lacan discussed the motivation behind it on [The Changelog podcast][changelog-podcast].
+Keep a Changelog grew from good practices observed in open source, gathered into the convention this page describes, and demonstrated in [its own changelog][kac-changelog]. I went on [The Changelog podcast][changelog-podcast] to talk about why maintainers and contributors should care about changelogs, and about the motivation behind this project.
 
 Since then it has been translated into dozens of languages and adopted by [tens of thousands of open-source projects][adoption-search] whose changelogs note that their format is based on it.
 
