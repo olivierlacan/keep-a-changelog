@@ -70,25 +70,34 @@ version: 1.1.0
   %a.anchor{ href: "#types", aria_hidden: "true" }
   %h4#types Types of changes
 
+  %p
+    Each type of change below is a section heading under a version. List sections in
+    the following order of urgency (omit empty sections):
+
   %ul
     %li
-      %code Added
-      for new features.
-    %li
-      %code Changed
-      for changes in existing functionality.
-    %li
-      %code Deprecated
-      for soon-to-be removed features.
+      %code Security
+      for fixes to known security vulnerabilities and advisories.
     %li
       %code Removed
       for now removed features.
     %li
-      %code Fixed
-      for any bug fixes.
+      %code Changed
+      for changes in existing functionality; prefix breaking changes so they stand out
+      (e.g.
+      %code BREAKING:
+      or
+      %strong BREAKING:
+      ).
     %li
-      %code Security
-      in case of vulnerabilities.
+      %code Deprecated
+      for soon-to-be removed features.
+    %li
+      %code Fixed
+      for any bug fixes unrelated to security.
+    %li
+      %code Added
+      for new features.
 
 .effort
 
@@ -146,9 +155,8 @@ version: 1.1.0
     become removals.
 
   %p
-    If you do nothing else, list deprecations, removals, and any
-    breaking changes in your changelog.
-
+    That said, if you do nothing else, list removals and breaking changes
+    in your changelog.
 
   %h4#confusing-dates
     %a.anchor{ href: "#confusing-dates", aria_hidden: "true" }
