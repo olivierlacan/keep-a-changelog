@@ -83,6 +83,10 @@ $languages = {
     l'instant et <a href='#{issues_url}'>aider à la traduire</a>.",
     new: "Une nouvelle version est disponible"
   },
+  "hi" => {
+    name: "हिन्दी",
+    new: "एक नया संस्करण उपलब्ध है"
+  },
   "hr" => {
     name: "Hrvatski"
   },

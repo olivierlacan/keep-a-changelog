@@ -232,3 +232,13 @@ ar:
   contribute_body: "هل تريد رؤية الإصدار %{version} باللغة %{language}؟ يشرح لك %{guide} كيفية إضافة ترجمة، ويعرض %{coverage} ما هو قيد التنفيذ بالفعل."
   guide_label: "دليل المساهمة"
   coverage_label: "تغطية الترجمة"
+
+hi:
+  title: "Keep a Changelog %{version} अभी %{language} में उपलब्ध नहीं है"
+  lede: "तब तक आप ये कर सकते हैं।"
+  read_english: "संस्करण %{version} अंग्रेज़ी में पढ़ें"
+  read_latest: "%{language} का नवीनतम अनुवाद पढ़ें (%{latest})"
+  contribute_title: "%{language} अनुवाद में योगदान दें"
+  contribute_body: "संस्करण %{version} को %{language} में देखना चाहते हैं? %{guide} बताता है कि अनुवाद कैसे जोड़ा जाता है, और %{coverage} दिखाता है कि क्या-क्या पहले से चल रहा है।"
+  guide_label: "योगदान गाइड"
+  coverage_label: "अनुवाद स्थिति"
