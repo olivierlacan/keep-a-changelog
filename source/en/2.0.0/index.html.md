@@ -108,7 +108,7 @@ In a project with distinct parts or features, an entry can specify which was imp
 - Parser: recover from a missing final chunk instead of raising.
 ```
 
-Similarly to change types they can group entries by area of focus. They shouldn't be used at at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
+Similarly to change types they can group entries by area of focus. They shouldn't be used at the same heading level as types but there may be situations where multiple changes relate to the same focus area. In that case nesting under a level-4 heading can work:
 
 ```
 ### Added
@@ -204,19 +204,25 @@ A changelog that records only some changes can mislead as much as no changelog. 
 
 A changelog that follows a consistent shape can be read by tools and by language models, because it was written for people first. There is no separate machine format, and there will not be one: this page is the format. A consistent changelog is easy to parse, a benefit of writing clearly, not a reason to write for machines.
 
-Machines can also help write a changelog. A language model can draft one from a diff in seconds, which is useful as a starting point. But it is now easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**.
+Machines can also help write a changelog. A language model can draft one from a diff in seconds, and in many projects coding agents now write both the change and its entry. This makes a changelog easier to keep than it has ever been. It also makes it easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**.
 
-A model can't decide what's notable for your readers, or say it plainly for them. If you use a tool for the first draft, give it the brief you would give a contributor: summarize notable, user-facing changes; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; and remove anything not worth reading. Then read the result before anyone else does.
+An unread entry now costs more. People use the changelog to decide whether to upgrade, and so do the models that work for them: an agent asked to update a dependency reads the changelog to learn what changed. Every reader that trusts a wrong entry repeats it. When machines write the code and the commits, the changelog may be the one place where a person confirms what changed.
+
+A model is good at summarizing and sorting changes. It does not know who your readers are, or what matters to them, unless you say so. Decide first who the changelog is for: the people who use the project, the people who build it, or both. Then give the tool the brief you would give a contributor: summarize the changes that are notable for those readers; do not paste a git log; sort each change into one of the six types; explain the reason in the text; mark breaking changes; remove anything not worth reading; and name the commits or pull requests behind each entry.
+
+Then read the result before anyone else does. Reviewing an entry means checking it against the work, not only reading it for style. One entry often summarizes many commits, so use the sources the tool named to compare each claim with the change. Does the entry describe what the software now does? Is anything notable missing? This review is small and useful: if an entry surprises you, the change behind it deserves a closer look.
+
+You do not need to publish those sources in the entry. Each version already links to its comparison, and the sources can stay in the pull request that adds the entry. Keep one in the changelog only when it [helps a reader](#linking).
 
 <aside markdown="1">
 If your project uses coding agents, record that brief where they read it, for example an `AGENTS.md` or `CLAUDE.md` file. There is no format to configure; the instructions are the interface.
 </aside>
 
-The same caution applies to changelogs generated from commit messages. A convention such as [Conventional Commits][conventional-commits], with tools such as [semantic-release][semantic-release], release-please, Changesets, and git-cliff, reads structured commits to choose the next version and draft a changelog. That can give you a starting point, but a commit and a changelog entry are written for different people, and one does not convert cleanly into the other.
+Structured commit messages can help. A convention such as [Conventional Commits][conventional-commits] gives each commit a type and a scope, which makes it easier for a person or a tool to find the changes worth an entry. Tools such as [semantic-release][semantic-release], release-please, and git-cliff read those commits to choose the next version and draft a changelog. The convention is useful, but not required: a language model can sort plain commits into the six types by reading the changes themselves.
 
-Generating the entry from the commit assumes that every commit belongs in the changelog, and that the right entry is a reworded commit message. Usually it is neither: many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is raw material at best: a person still has to choose what is notable, group it, and write it for the reader.
+However the commits are sorted, a commit and a changelog entry are written for different people, and one does not convert cleanly into the other. Many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is a draft: a person still has to decide what is notable, and confirm that each entry is accurate and written for the reader.
 
-Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change. That teaches people to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
+Continuous integration can help, but keep it in a supporting role. Use it for mechanical tasks: move the `Unreleased` section into a dated version at release time, check that the file is formatted correctly, and optionally remind a contributor that a change may need an entry. Do not make a changelog edit a required check on every change. That teaches people, and agents, to add a line to pass the check, which fills the changelog with noise. Let automation handle the mechanics, and leave the judgment to people.
 
 ## Less common questions {#less-common}
 
