@@ -56,8 +56,9 @@ are marked below.
   - Changelogs vs. release notes: how to derive one from the other without
     duplicate work, and why a host's generated notes are vendor lock-in.
   - Automation: LLM-drafted changelogs with a brief for an `AGENTS.md`, and
-    how to review a drafted entry against the commits behind it; Conventional
-    Commits; CI/CD; linking issues and pull requests; crediting contributors.
+    how to review a drafted entry against the commits behind it; commit
+    message conventions; CI/CD; linking issues and pull requests; crediting
+    contributors.
   - Scale: very large changelogs and monorepos.
   - Optional per-release summaries, and a statement of what Keep a Changelog
     deliberately won't do.

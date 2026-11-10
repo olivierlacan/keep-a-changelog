@@ -204,6 +204,8 @@ A changelog that records only some changes can mislead as much as no changelog. 
 
 A changelog that follows a consistent shape can be read by tools and by language models, because it was written for people first. There is no separate machine format, and there will not be one: this page is the format. A consistent changelog is easy to parse, a benefit of writing clearly, not a reason to write for machines.
 
+Keep a Changelog has never been a machine-readable specification. It is plain guidance written for people, the same kind of text as the instruction files now written for coding agents: a person can read it, and for that reason a model can too. This may explain why its use keeps growing as more of its readers are language models.
+
 Machines can also help write a changelog. A language model can draft one from a diff in seconds, and in many projects coding agents now write both the change and its entry. This makes a changelog easier to keep than it has ever been. It also makes it easy to publish a fluent changelog that no one has read. The principle that started this project matters more as machines write more code: **machines can draft, but humans curate**.
 
 An unread entry now costs more. People use the changelog to decide whether to upgrade, and so do the models that work for them: an agent asked to update a dependency reads the changelog to learn what changed. Every reader that trusts a wrong entry repeats it. When machines write the code and the commits, the changelog may be the one place where a person confirms what changed.
@@ -218,7 +220,7 @@ You do not need to publish those sources in the entry. Each version already link
 If your project uses coding agents, record that brief where they read it, for example an `AGENTS.md` or `CLAUDE.md` file. There is no format to configure; the instructions are the interface.
 </aside>
 
-Structured commit messages can help. A convention such as [Conventional Commits][conventional-commits] gives each commit a type and a scope, which makes it easier for a person or a tool to find the changes worth an entry. Tools such as [semantic-release][semantic-release], release-please, and git-cliff read those commits to choose the next version and draft a changelog. The convention is useful, but not required: a language model can sort plain commits into the six types by reading the changes themselves.
+Structured commit messages can help. Some projects follow a commit message convention that gives each commit a type and a scope. This makes it easier for a person or a tool to find the changes worth an entry, and some tools read those commits to choose the next version and draft a changelog. Such a convention is not required, and it is less necessary than it was: a language model can sort plain commits into the six types by reading the changes themselves.
 
 However the commits are sorted, a commit and a changelog entry are written for different people, and one does not convert cleanly into the other. Many commits do not matter to your readers, and the changes that do often span several commits and need to be described from the reader's point of view. Sorting commits by type shortens the list, but it does not make that shift. A generated changelog is a draft: a person still has to decide what is notable, and confirm that each entry is accurate and written for the reader.
 
@@ -301,8 +303,6 @@ Its reach extends past software, too. Peer-reviewed research on software version
 [calver]: https://calver.org/
 [git]: https://en.wikipedia.org/wiki/Git
 [vcs]: https://en.wikipedia.org/wiki/Distributed_version_control
-[conventional-commits]: https://www.conventionalcommits.org/
-[semantic-release]: https://github.com/semantic-release/semantic-release
 [gnu-changelog]: https://www.gnu.org/prep/standards/html_node/Style-of-Change-Logs.html#Style-of-Change-Logs
 [gnu-news]: https://www.gnu.org/prep/standards/html_node/NEWS-File.html#NEWS-File
 [contribute]: https://github.com/olivierlacan/keep-a-changelog
